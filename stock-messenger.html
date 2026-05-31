@@ -14,7 +14,7 @@
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <title>종목 분석 후 텔레그램으로 보고 받기 | AI ROASTING</title>
-    <meta name="description" content="DART 스킬로 종목을 분석하고 텔레그램으로 자동 보고받는 Codex 실전 워크플로우. 봇 연결부터 스케줄링까지. (카카오톡 백업 시나리오 포함)">
+    <meta name="description" content="DART 스킬로 종목을 분석하고 텔레그램으로 자동 보고받는 Codex 실전 워크플로우. 봇 연결부터 스케줄링까지.">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -775,11 +775,6 @@
         <span class="sm-title">트러블슈팅</span>
         <span class="sm-sub">막힐 때</span>
     </a>
-    <a href="#kakao-backup" data-sec="kakao-backup">
-        <span class="sm-num">+</span>
-        <span class="sm-title">부록</span>
-        <span class="sm-sub">카톡 백업</span>
-    </a>
 </nav>
 
 <main class="container">
@@ -795,10 +790,10 @@
             <!-- 실행 환경 강조 -->
             <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: linear-gradient(135deg, rgba(56,65,61,0.12), rgba(56,65,61,0.04)); border: 1.5px solid rgba(56,65,61,0.3); border-radius: 14px; margin-bottom: 20px;">
                 <span style="font-size: 24px;">&#x1F4BB;</span>
-                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 Codex입니다.</strong> 텔레그램 봇 연결, DART 스킬 설치, 플러그인 패키징, 스케줄 자동화 모두 Codex 한 곳에서 처리합니다. 카카오톡으로 받고 싶다면 페이지 하단의 <a href="#kakao-backup" style="color: var(--book-teal); font-weight: 600;">부록 &middot; 카톡 백업 시나리오</a>를 참고하세요.</p>
+                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 Codex입니다.</strong> 텔레그램 봇 연결, DART 스킬 설치, 플러그인 패키징, 스케줄 자동화 모두 Codex 한 곳에서 처리합니다.</p>
             </div>
 
-            <p>매일 아침 관심 종목의 실적을 확인하고 싶지만, DART 공시를 직접 찾아보기는 번거롭습니다. 이 실습에서는 <strong>Codex</strong>에 <strong>텔레그램 봇</strong>을 먼저 연결합니다. 그다음 <strong>DART 스킬</strong>을 설치하고 키를 발급받아 실제로 한 번 돌려봅니다. 마지막으로 두 기능을 묶어 <code>daily-stock-report</code>라는 <strong>플러그인</strong>으로 만들고, <strong>월~금 아침 9시</strong>에 자동으로 실행되도록 등록합니다.</p>
+            <p>관심 종목 실적을 매일 확인하고 싶지만 DART 공시를 직접 뒤지기는 번거롭습니다. 이 실습은 <strong>Codex</strong>에 <strong>텔레그램 봇</strong>을 연결하고, <strong>DART 스킬</strong>을 설치해 한 번 돌려본 뒤, 둘을 <code>daily-stock-report</code> <strong>플러그인</strong>으로 묶어 <strong>월~금 아침 9시</strong>에 자동 실행되게 만듭니다.</p>
 
             <p style="margin-top: 12px;">완성하면 흐름은 이렇게 됩니다.</p>
 
@@ -903,7 +898,7 @@
             <h2>BotFather로 봇을 만들고 Codex에 토큰 연결하기</h2>
             <p class="card-subtitle">분석 결과를 보낼 통로를 먼저 만듭니다. 텔레그램 봇 생성부터 페어링까지 5분이면 끝납니다</p>
 
-            <p>텔레그램은 <strong>봇 API</strong>가 잘 정비돼 있어 메시지 전송 자동화가 쉽습니다. Codex의 <strong>telegram 플러그인</strong>은 봇 토큰만 등록하면 대화 안에서 곧바로 메시지를 보낼 수 있도록 도와줍니다.</p>
+            <p>텔레그램은 <strong>봇 API</strong>가 잘 정비돼 있어 전송 자동화가 쉽습니다. Codex의 <strong>telegram 플러그인</strong>은 봇 토큰만 등록하면 대화 안에서 바로 메시지를 보냅니다.</p>
 
             <a class="ref-link" href="https://core.telegram.org/bots/features#botfather" target="_blank" rel="noopener" style="margin: 16px 0;">
                 <span class="ref-icon">&#x1F517;</span>
@@ -916,7 +911,7 @@
                     <div class="wf-step-num">1</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">텔레그램에서 BotFather 열기</div>
-                        <div class="wf-step-desc">텔레그램 앱에서 <code>@BotFather</code>를 검색해 대화창을 엽니다. BotFather는 텔레그램이 공식으로 운영하는 봇 관리용 봇입니다.</div>
+                        <div class="wf-step-desc">텔레그램 앱에서 <code>@BotFather</code>(텔레그램 공식 봇 관리 봇)를 검색해 대화창을 엽니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
@@ -924,7 +919,7 @@
                     <div class="wf-step-num">2</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">/newbot 으로 봇 생성</div>
-                        <div class="wf-step-desc">BotFather와의 대화에서 <code>/newbot</code>을 입력합니다. 안내에 따라 <strong>봇 이름</strong>(아무 문자열)과 <strong>봇 username</strong>(<code>_bot</code>으로 끝나야 함, 예: <code>my_stock_report_bot</code>)을 정합니다. 완료되면 <strong>HTTP API 토큰</strong>이 나옵니다. 이 토큰을 안전한 곳에 복사해 두세요.</div>
+                        <div class="wf-step-desc"><code>/newbot</code>을 입력하고 안내에 따라 <strong>봇 이름</strong>(자유)과 <strong>username</strong>(<code>_bot</code>으로 끝나야 함, 예: <code>my_stock_report_bot</code>)을 정합니다. 완료되면 나오는 <strong>HTTP API 토큰</strong>을 안전한 곳에 복사해 둡니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
@@ -932,7 +927,7 @@
                     <div class="wf-step-num">3</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">본인 채팅 시작 &amp; chat_id 확인</div>
-                        <div class="wf-step-desc">방금 만든 봇을 검색해 <code>/start</code>를 보냅니다. 그다음 텔레그램에서 <code>@userinfobot</code>을 찾아 <code>/start</code>를 보내면 본인 <strong>chat_id</strong>(숫자)가 나옵니다. 이 값은 STEP 5의 플러그인에서 "누구에게 보낼지" 지정할 때 씁니다.</div>
+                        <div class="wf-step-desc">방금 만든 봇에 <code>/start</code>를 보냅니다. 이어 <code>@userinfobot</code>에 <code>/start</code>를 보내면 본인 <strong>chat_id</strong>(숫자)가 나옵니다. STEP 5에서 "누구에게 보낼지" 지정할 때 씁니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
@@ -940,7 +935,7 @@
                     <div class="wf-step-num">4</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">Codex에 토큰 등록</div>
-                        <div class="wf-step-desc">터미널에서 Codex를 켜고 <code>/telegram:configure</code> 스킬을 실행합니다. 안내에 따라 BotFather에서 받은 <strong>HTTP API 토큰</strong>을 붙여 넣습니다. 토큰은 로컬 설정 파일에만 저장되며 외부로 나가지 않습니다.</div>
+                        <div class="wf-step-desc">Codex를 켜고 <code>/telegram:configure</code>를 실행한 뒤 BotFather에서 받은 <strong>토큰</strong>을 붙여 넣습니다. 토큰은 로컬 설정 파일에만 저장됩니다.</div>
                     </div>
                 </div>
             </div>
@@ -952,7 +947,7 @@
                     <div class="wf-step-num">5</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">접근 허용 (allowlist)</div>
-                        <div class="wf-step-desc">텔레그램 메시지를 Codex 쪽에서 받기까지 하려면 <code>/telegram:access</code> 스킬로 본인 chat_id를 허용 목록에 추가합니다. 외부에서 누가 봇에게 메시지를 보내도 사용자가 허용한 사람만 Codex에 도달합니다.</div>
+                        <div class="wf-step-desc">Codex가 텔레그램 메시지를 받게 하려면 <code>/telegram:access</code>로 본인 chat_id를 허용 목록에 추가합니다. 허용한 사람의 메시지만 Codex에 도달합니다.</div>
                     </div>
                 </div>
             </div>
@@ -961,12 +956,12 @@
 
             <div class="tip-box" style="margin-top: 16px;">
                 <div class="tip-label">연결 확인</div>
-                <p>본인 텔레그램에서 봇에게 아무 메시지("ping" 같은)를 보냅니다. Codex 세션에 메시지가 도착하면 양방향 연결이 끝난 것입니다. 이제 봇은 사용자에게 자유롭게 메시지를 보낼 수 있는 통로가 됐습니다.</p>
+                <p>봇에게 아무 메시지나("ping") 보내 Codex 세션에 도착하면 양방향 연결이 끝난 것입니다. 이제 봇이 사용자에게 메시지를 보낼 수 있습니다.</p>
             </div>
 
             <div class="tip-box">
                 <div class="tip-label">보안</div>
-                <p>BotFather 토큰은 비밀번호와 같습니다. <strong>GitHub 공개 저장소에 절대 커밋하지 마세요.</strong> <code>/telegram:configure</code>가 저장하는 위치는 로컬 <code>~/.claude/</code> 안이므로 별도 파일로 옮기지 마세요. 노출됐다면 BotFather에서 <code>/revoke</code> 또는 <code>/token</code> 명령으로 즉시 재발급할 수 있습니다.</p>
+                <p>BotFather 토큰은 비밀번호와 같습니다. <strong>공개 저장소에 커밋하지 마세요.</strong> <code>/telegram:configure</code>가 토큰을 로컬 <code>~/.codex/</code>에 저장하므로 따로 옮기지 않아도 됩니다. 노출됐다면 BotFather에서 <code>/revoke</code> 또는 <code>/token</code>으로 즉시 재발급하세요.</p>
             </div>
         </div>
     </section>
@@ -990,18 +985,18 @@
                 <span class="sp-arrow">&rarr;</span>
             </a>
 
-            <p>DART 스킬은 Codex의 <strong>전역 스킬 디렉터리</strong>(<code>~/.claude/skills/</code>)에 설치합니다. Codex가 이 경로의 스킬을 자동으로 인식하므로 <code>/dart</code> 명령으로 바로 호출됩니다.</p>
+            <p>DART 스킬은 <strong>전역 스킬 디렉터리</strong>(<code>~/.codex/skills/</code>)에 설치합니다. Codex가 이 경로를 자동 인식해 <code>/dart</code>로 바로 호출됩니다.</p>
 
             <div class="wf-steps">
                 <div class="wf-step">
                     <div class="wf-step-num">1</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">스킬 클론</div>
-                        <div class="wf-step-desc">터미널에서 다음 명령을 실행하면 <code>~/.claude/skills/dart</code> 폴더가 자동으로 만들어집니다.</div>
+                        <div class="wf-step-desc">다음 명령을 실행하면 <code>~/.codex/skills/dart</code> 폴더가 자동 생성됩니다.</div>
                     </div>
                 </div>
             </div>
-            <div class="prompt-box" id="prompt-clone">git clone https://github.com/airoasting/dart ~/.claude/skills/dart<button class="copy-btn" onclick="copyPrompt('prompt-clone')">복사</button></div>
+            <div class="prompt-box" id="prompt-clone">git clone https://github.com/airoasting/dart ~/.codex/skills/dart<button class="copy-btn" onclick="copyPrompt('prompt-clone')">복사</button></div>
 
             <div class="wf-steps">
                 <div class="wf-step">
@@ -1019,14 +1014,14 @@
                     <div class="wf-step-num">3</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">Codex에서 인식 확인</div>
-                        <div class="wf-step-desc">Codex 대화창에서 <code>/dart</code>를 입력했을 때 자동완성에 스킬이 나타나면 설치는 끝난 것입니다. 실제 실행은 STEP 3에서 API 키를 등록한 다음 STEP 4에서 시도합니다.</div>
+                        <div class="wf-step-desc"><code>/dart</code> 입력 시 자동완성에 스킬이 뜨면 설치 완료입니다. 실제 실행은 STEP 3에서 키를 등록한 뒤 STEP 4에서 합니다.</div>
                     </div>
                 </div>
             </div>
 
             <div class="tip-box" style="margin-top: 16px;">
                 <div class="tip-label">왜 지금은 키 없이 설치만 하나요?</div>
-                <p>스킬 파일과 API 키는 분리해 두는 편이 안전합니다. 스킬은 누구나 동일하게 받아 쓰고, 키는 본인 환경에만 두면 실수로 같이 공유될 위험이 줄어듭니다. 다음 STEP 3에서 키를 발급해 <code>.env</code>에 따로 보관합니다.</p>
+                <p>스킬 파일과 키는 분리하는 편이 안전합니다. 스킬은 누구나 같게 받고, 키는 본인 환경에만 두면 실수로 공유될 위험이 줄어듭니다. 키는 STEP 3에서 <code>.env</code>에 따로 보관합니다.</p>
             </div>
         </div>
     </section>
@@ -1051,7 +1046,7 @@
                     <div class="wf-step-num">1</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">사이트 접속과 회원가입</div>
-                        <div class="wf-step-desc"><a href="https://opendart.fss.or.kr" target="_blank" rel="noopener" style="color: var(--book-teal); font-weight: 600;">opendart.fss.or.kr</a>에 접속해 <strong>회원가입</strong>을 진행합니다. 이메일 인증까지 끝내야 다음 단계로 넘어갈 수 있습니다.</div>
+                        <div class="wf-step-desc"><a href="https://opendart.fss.or.kr" target="_blank" rel="noopener" style="color: var(--book-teal); font-weight: 600;">opendart.fss.or.kr</a>에서 <strong>회원가입</strong>하고 이메일 인증까지 마칩니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
@@ -1059,7 +1054,7 @@
                     <div class="wf-step-num">2</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">인증키 신청</div>
-                        <div class="wf-step-desc">상단 메뉴 <strong>인증키 신청/관리 &gt; 인증키 신청</strong>에서 이용 목적(예: "개인 투자 분석")을 입력하고 신청합니다. <strong>대개 즉시 발급</strong>되며 늦어도 다음 영업일에는 이메일로 도착합니다.</div>
+                        <div class="wf-step-desc">상단 <strong>인증키 신청/관리 &gt; 인증키 신청</strong>에서 이용 목적(예: "개인 투자 분석")을 적고 신청합니다. <strong>대개 즉시</strong>, 늦어도 다음 영업일에 이메일로 발급됩니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
@@ -1075,7 +1070,7 @@
                     <div class="wf-step-num">4</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">.env 파일에 저장</div>
-                        <div class="wf-step-desc">DART 스킬을 실행할 <strong>프로젝트 루트</strong>에 <code>.env</code> 파일을 만들고 키를 넣습니다. <code>.gitignore</code>에 <code>.env</code>를 함께 추가해 두면 실수로 공개 저장소에 올릴 위험이 사라집니다.</div>
+                        <div class="wf-step-desc">DART 스킬을 실행할 <strong>프로젝트 루트</strong>에 <code>.env</code>를 만들어 키를 넣습니다. <code>.gitignore</code>에 <code>.env</code>를 추가하면 공개 저장소에 올라갈 위험이 사라집니다.</div>
                     </div>
                 </div>
             </div>
@@ -1085,8 +1080,8 @@ DART_API_KEY=여기에_40자_API_키_붙여넣기<button class="copy-btn" onclic
 
             <div class="tip-box">
                 <div class="tip-label">.env와 .gitignore가 뭔가요?</div>
-                <p><strong><code>.env</code></strong>는 <strong>environment</strong>(환경)의 줄임말로, API 키처럼 노출되면 안 되는 값을 코드 바깥에 따로 담아두는 텍스트 파일입니다.</p>
-                <p style="margin-top: 6px;"><strong><code>.gitignore</code></strong>는 Git이 추적하지 않을 파일 목록입니다. <code>.env</code>를 한 줄 적어두면 <code>git push</code>를 해도 키가 함께 올라가지 않습니다.</p>
+                <p><strong><code>.env</code></strong>는 <strong>environment</strong>(환경)의 줄임말로, 노출되면 안 되는 값을 코드 바깥에 담는 텍스트 파일입니다.</p>
+                <p style="margin-top: 6px;"><strong><code>.gitignore</code></strong>는 Git이 추적하지 않을 파일 목록입니다. <code>.env</code>를 적어두면 <code>git push</code>에도 키가 올라가지 않습니다.</p>
             </div>
 
             <div class="tip-box">
@@ -1105,7 +1100,7 @@ DART_API_KEY=여기에_40자_API_키_붙여넣기<button class="copy-btn" onclic
             <h2>실제로 한 종목을 분석해 보기</h2>
             <p class="card-subtitle">플러그인을 만들기 전에 스킬 단독으로 한 번 돌려서 분석 흐름과 결과 포맷을 확인합니다</p>
 
-            <p>여기까지 오면 <strong>텔레그램 봇 연결 + DART 스킬 설치 + API 키 등록</strong>이 모두 끝난 상태입니다. STEP 5의 플러그인을 만들기 전에 스킬을 한 번 직접 실행해 보면, 어떤 출력을 기준으로 요약 메시지를 만들어야 할지 감이 잡힙니다.</p>
+            <p>여기까지면 <strong>봇 연결 + 스킬 설치 + 키 등록</strong>이 모두 끝났습니다. STEP 5 플러그인을 만들기 전에 스킬을 한 번 돌려보면 어떤 출력으로 요약을 만들지 감이 잡힙니다.</p>
 
             <p style="margin-top: 14px;">Codex에서 종목명만 붙여 호출합니다.</p>
 
@@ -1152,7 +1147,7 @@ DART_API_KEY=여기에_40자_API_키_붙여넣기<button class="copy-btn" onclic
 
             <div class="tip-box" style="margin-top: 16px;">
                 <div class="tip-label">체크 포인트</div>
-                <p>스킬이 정상 동작했다면 <code>output/</code> 폴더에 HTML 리포트가 만들어지고, 13인 페르소나 평가 점수가 화면에 출력됩니다. 이 두 가지가 STEP 5 플러그인의 입력 재료가 됩니다.</p>
+                <p>정상 동작하면 <code>output/</code> 폴더에 HTML 리포트가 생기고 13인 페르소나 점수가 출력됩니다. 이 둘이 STEP 5 플러그인의 입력 재료입니다.</p>
             </div>
         </div>
     </section>
@@ -1166,14 +1161,14 @@ DART_API_KEY=여기에_40자_API_키_붙여넣기<button class="copy-btn" onclic
             <h2>분석과 텔레그램 전송을 <code>daily-stock-report</code> 플러그인으로 묶기</h2>
             <p class="card-subtitle">매번 두 번씩 명령하지 않고, 한 줄로 분석과 전송이 한꺼번에 일어나도록 패키징합니다</p>
 
-            <p>STEP 4에서 분석 명령을, STEP 1에서 텔레그램 전송 통로를 준비했습니다. 이제 둘을 하나의 <strong>플러그인</strong>으로 묶어 Codex에서 한 줄로 호출할 수 있게 만듭니다. 플러그인은 두 가지 방식으로 동작합니다.</p>
+            <p>STEP 4에서 분석 명령을, STEP 1에서 전송 통로를 준비했습니다. 이제 둘을 한 <strong>플러그인</strong>으로 묶어 한 줄로 호출합니다. 동작은 두 가지입니다.</p>
             <ul style="margin: 8px 0 0 20px; color: #5C5650; font-size: 14px; line-height: 1.75;">
                 <li><code>/daily-stock-report</code>: 기본 종목 리스트 전체를 분석</li>
                 <li><code>/daily-stock-report 카카오</code>: 뒤에 종목명을 붙이면 그 종목만 분석</li>
             </ul>
             <p style="margin-top: 14px;">Codex에 다음과 같이 요청하세요.</p>
 
-            <div class="prompt-box" id="prompt-skill">~/.claude/plugins/daily-stock-report 폴더에
+            <div class="prompt-box" id="prompt-skill">~/.codex/plugins/daily-stock-report 폴더에
 PLUGIN.md 파일을 만들어줘.
 
 플러그인 이름: daily-stock-report
@@ -1221,12 +1216,12 @@ description: 관심 종목을 DART로 분석하고 텔레그램으로 요약 전
 최저: {페르소나} (점수): 1줄 근거
 한 줄 코멘트<button class="copy-btn" onclick="copyPrompt('prompt-pluginmd')">복사</button></div>
 
-            <p style="margin-top: 16px;"><code>TELEGRAM_CHAT_ID</code>는 STEP 1에서 <code>@userinfobot</code>으로 확인한 본인 숫자 ID입니다. 셸 환경 파일이나 프로젝트 <code>.env</code>에 함께 등록해 두세요.</p>
+            <p style="margin-top: 16px;"><code>TELEGRAM_CHAT_ID</code>는 STEP 1에서 <code>@userinfobot</code>으로 확인한 본인 숫자 ID입니다. <code>.env</code>나 셸 환경 파일에 등록해 두세요.</p>
 
             <div class="prompt-box" id="prompt-tg-chatid"># .env 또는 ~/.zshrc 에 추가
 TELEGRAM_CHAT_ID=숫자_chat_id_붙여넣기<button class="copy-btn" onclick="copyPrompt('prompt-tg-chatid')">복사</button></div>
 
-            <p style="margin-top: 16px;">이제 Codex 어디서든 <code>/daily-stock-report</code> 한 줄이면 기본 종목 전체를 한꺼번에 분석합니다. <code>/daily-stock-report 카카오</code>처럼 종목명을 붙이면 그 종목 하나만 빠르게 받아볼 수 있습니다.</p>
+            <p style="margin-top: 16px;">이제 <code>/daily-stock-report</code> 한 줄이면 기본 종목 전체를, 종목명을 붙이면(<code>/daily-stock-report 카카오</code>) 그 종목만 분석합니다.</p>
 
             <!-- 텔레그램 수신 예시 -->
             <div class="inset-box" style="margin-top: 18px;">
@@ -1274,7 +1269,7 @@ TELEGRAM_CHAT_ID=숫자_chat_id_붙여넣기<button class="copy-btn" onclick="co
 
             <div class="tip-box">
                 <div class="tip-label">종목 리스트 변경</div>
-                <p><code>PLUGIN.md</code>의 <strong>## 기본 종목 리스트</strong> 섹션만 고치면 분석 대상을 자유롭게 바꿀 수 있습니다. Codex를 다시 켜지 않아도 곧바로 반영됩니다.</p>
+                <p><code>PLUGIN.md</code>의 <strong>## 기본 종목 리스트</strong>만 고치면 분석 대상이 바뀝니다. Codex를 다시 켜지 않아도 바로 반영됩니다.</p>
             </div>
         </div>
 
@@ -1291,7 +1286,7 @@ TELEGRAM_CHAT_ID=숫자_chat_id_붙여넣기<button class="copy-btn" onclick="co
                     <ul>
                         <li><strong>한 가지 작업</strong>을 잘 해내는 단위</li>
                         <li>예: <code>dart</code> (종목 분석)</li>
-                        <li>경로: <code>~/.claude/skills/{이름}/SKILL.md</code></li>
+                        <li>경로: <code>~/.codex/skills/{이름}/SKILL.md</code></li>
                         <li><code>SKILL.md</code> 한 파일에 동작과 트리거를 정의</li>
                     </ul>
                 </div>
@@ -1303,12 +1298,12 @@ TELEGRAM_CHAT_ID=숫자_chat_id_붙여넣기<button class="copy-btn" onclick="co
                     <ul>
                         <li><strong>여러 스킬과 도구를 묶은 워크플로우</strong> 단위</li>
                         <li>예: <code>daily-stock-report</code> (분석 + 텔레그램 전송)</li>
-                        <li>경로: <code>~/.claude/plugins/{이름}/PLUGIN.md</code></li>
+                        <li>경로: <code>~/.codex/plugins/{이름}/PLUGIN.md</code></li>
                         <li>스킬을 조합해 한 번에 실행할 작업으로 묶음</li>
                     </ul>
                 </div>
             </div>
-            <p style="font-size: 13.5px; color: #5C5650; line-height: 1.75; margin-top: 14px; padding: 14px 18px; background: var(--nm-bg); border-radius: 12px; box-shadow: var(--nm-shadow-sm);">쉽게 말하면 <strong>스킬은 부품, 플러그인은 그 부품을 모아 만든 제품</strong>입니다. DART 스킬은 "분석"이라는 한 가지 일만 하고, daily-stock-report 플러그인은 그 스킬을 호출한 뒤 텔레그램 reply 도구로 결과를 보내는 두 단계를 한 줄로 묶어줍니다.</p>
+            <p style="font-size: 13.5px; color: #5C5650; line-height: 1.75; margin-top: 14px; padding: 14px 18px; background: var(--nm-bg); border-radius: 12px; box-shadow: var(--nm-shadow-sm);">쉽게 말하면 <strong>스킬은 부품, 플러그인은 그 부품으로 만든 제품</strong>입니다. DART 스킬은 "분석" 하나만 하고, daily-stock-report 플러그인은 그 스킬 호출과 텔레그램 전송을 한 줄로 묶습니다.</p>
         </div>
     </section>
 
@@ -1334,7 +1329,7 @@ cron: 0 9 * * 1-5
                 cron 표현식 <code>0 9 * * 1-5</code>는 분(0), 시(9), 일(*), 월(*), <strong>요일(1~5, 월~금)</strong>을 뜻합니다.
             </p>
 
-            <p style="margin-top: 20px;">등록을 마치면 매주 월~금 오전 9시에 Codex가 자동으로 이렇게 움직입니다.</p>
+            <p style="margin-top: 20px;">등록하면 매주 월~금 9시에 Codex가 이렇게 움직입니다.</p>
 
             <div class="wf-steps">
                 <div class="wf-step">
@@ -1357,7 +1352,7 @@ cron: 0 9 * * 1-5
                     <div class="wf-step-num">&#x1F4F1;</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">텔레그램 전송</div>
-                        <div class="wf-step-desc">요약 메시지가 STEP 1에서 만든 봇을 통해 본인 텔레그램으로 도착합니다. 9시 10분쯤 출근길에서 확인할 수 있습니다.</div>
+                        <div class="wf-step-desc">STEP 1에서 만든 봇이 요약 메시지를 본인 텔레그램으로 보냅니다. 9시 10분쯤 출근길에 확인할 수 있습니다.</div>
                     </div>
                 </div>
             </div>
@@ -1370,11 +1365,11 @@ cron: 0 9 * * 1-5
             <div class="highlight-box">
                 <div class="hl-title">&#x1F680; 확장 아이디어</div>
                 <ul>
-                    <li><strong>이상 징후 알림</strong>: 영업이익이 전년 대비 30% 넘게 줄면 즉시 텔레그램으로 알립니다</li>
-                    <li><strong>실적 발표 시즌</strong>: 분기 실적 발표 주에는 하루 두 번(오전 9시, 오후 6시) 실행합니다</li>
-                    <li><strong>동종 비교</strong>: 카카오, 네이버 같은 같은 업종 3사를 비교하는 리포트를 추가합니다</li>
-                    <li><strong>팀 채널 공유</strong>: 봇을 텔레그램 팀 그룹에 초대해 chat_id를 그룹 ID로 바꾸면 팀 전체가 같이 받아볼 수 있습니다</li>
-                    <li><strong>주간 회고</strong>: 매주 금요일 저녁에 한 주간 리포트를 모아 평가 정확도를 점검합니다</li>
+                    <li><strong>이상 징후 알림</strong>: 영업이익이 전년 대비 30% 넘게 줄면 즉시 알립니다</li>
+                    <li><strong>실적 발표 시즌</strong>: 발표 주에는 하루 두 번(9시, 18시) 실행합니다</li>
+                    <li><strong>동종 비교</strong>: 같은 업종 3사를 비교하는 리포트를 추가합니다</li>
+                    <li><strong>팀 채널 공유</strong>: 봇을 팀 그룹에 초대하고 chat_id를 그룹 ID로 바꾸면 팀 전체가 받습니다</li>
+                    <li><strong>주간 회고</strong>: 금요일 저녁에 한 주 리포트를 모아 평가 정확도를 점검합니다</li>
                 </ul>
             </div>
         </div>
@@ -1400,9 +1395,9 @@ cron: 0 9 * * 1-5
                         <ol>
                             <li>다음 명령으로 두 파일이 모두 있는지 확인합니다.
                                 <ul style="margin-top: 8px;">
-                                    <li><strong>Mac &middot; Linux</strong> (터미널): <code>ls ~/.claude/skills/dart/SKILL.md</code> 와 <code>ls ~/.claude/plugins/daily-stock-report/PLUGIN.md</code></li>
-                                    <li><strong>Windows</strong> (명령 프롬프트): <code>dir %USERPROFILE%\.claude\skills\dart\SKILL.md</code> 와 <code>dir %USERPROFILE%\.claude\plugins\daily-stock-report\PLUGIN.md</code></li>
-                                    <li><strong>Windows</strong> (PowerShell): <code>Get-ChildItem $HOME\.claude\skills\dart\SKILL.md</code> 와 <code>Get-ChildItem $HOME\.claude\plugins\daily-stock-report\PLUGIN.md</code></li>
+                                    <li><strong>Mac &middot; Linux</strong> (터미널): <code>ls ~/.codex/skills/dart/SKILL.md</code> 와 <code>ls ~/.codex/plugins/daily-stock-report/PLUGIN.md</code></li>
+                                    <li><strong>Windows</strong> (명령 프롬프트): <code>dir %USERPROFILE%\.codex\skills\dart\SKILL.md</code> 와 <code>dir %USERPROFILE%\.codex\plugins\daily-stock-report\PLUGIN.md</code></li>
+                                    <li><strong>Windows</strong> (PowerShell): <code>Get-ChildItem $HOME\.codex\skills\dart\SKILL.md</code> 와 <code>Get-ChildItem $HOME\.codex\plugins\daily-stock-report\PLUGIN.md</code></li>
                                 </ul>
                             </li>
                             <li>Codex 세션을 새로고침하거나 새 대화를 시작합니다.</li>
@@ -1433,12 +1428,12 @@ cron: 0 9 * * 1-5
                     <div class="faq-a">
                         <p><strong>원인 후보 4가지:</strong></p>
                         <ul>
-                            <li><strong>봇과 대화 시작 안 함</strong>: STEP 1에서 봇에게 <code>/start</code>를 한 번이라도 보내지 않으면 봇이 먼저 DM을 보낼 수 없습니다.</li>
-                            <li><strong>chat_id 오타</strong>: <code>TELEGRAM_CHAT_ID</code> 값이 다른 사람의 ID이거나 마이너스 부호가 빠졌을 수 있습니다. <code>@userinfobot</code>으로 다시 확인합니다.</li>
-                            <li><strong>토큰 만료 또는 재발급</strong>: BotFather에서 토큰을 재발급한 적이 있으면 <code>/telegram:configure</code>를 다시 실행해 갱신합니다.</li>
+                            <li><strong>봇과 대화 시작 안 함</strong>: STEP 1에서 봇에 <code>/start</code>를 보내지 않으면 봇이 먼저 DM을 보낼 수 없습니다.</li>
+                            <li><strong>chat_id 오타</strong>: <code>TELEGRAM_CHAT_ID</code>가 남의 ID이거나 마이너스 부호가 빠졌을 수 있습니다. <code>@userinfobot</code>으로 다시 확인합니다.</li>
+                            <li><strong>토큰 재발급</strong>: BotFather에서 토큰을 재발급했다면 <code>/telegram:configure</code>를 다시 실행해 갱신합니다.</li>
                             <li><strong>allowlist 누락</strong>: <code>/telegram:access</code>에서 본인 chat_id가 허용 목록에 있는지 확인합니다.</li>
                         </ul>
-                        <p style="margin-top:10px;"><strong>1차 진단:</strong> Codex에서 <code>"텔레그램으로 '테스트' 라고 나에게 보내줘"</code>라고 입력해 봅니다. 메시지가 안 오면 봇/토큰/chat_id 쪽 문제, 오면 플러그인 쪽 문제입니다.</p>
+                        <p style="margin-top:10px;"><strong>1차 진단:</strong> Codex에 <code>"텔레그램으로 '테스트' 보내줘"</code>라고 입력해 봅니다. 안 오면 봇/토큰/chat_id 문제, 오면 플러그인 문제입니다.</p>
                     </div>
                 </details>
 
@@ -1506,11 +1501,6 @@ cron: 0 9 * * 1-5
                     Telegram Bot API 레퍼런스
                     <span class="ref-desc">Telegram</span>
                 </a>
-                <a class="ref-link" href="https://playmcp.kakao.com/" target="_blank" rel="noopener">
-                    <span class="ref-icon">&#x1F517;</span>
-                    PlayMCP 공식 사이트 (카톡 백업 시나리오용)
-                    <span class="ref-desc">PlayMCP</span>
-                </a>
             </div>
         </div>
     </div>
@@ -1531,70 +1521,6 @@ cron: 0 9 * * 1-5
         </div>
     </div>
 
-
-    <!-- ====== 부록 · 카카오톡 백업 시나리오 ====== -->
-    <div class="content-section" id="kakao-backup"></div>
-    <div class="step-divider"><span class="step-badge">부록 &middot; 카카오톡으로 받기 (백업 시나리오)</span></div>
-    <section class="anim-fade-up">
-        <div class="nm-card" style="background: linear-gradient(135deg, rgba(255,244,240,0.62), rgba(236,232,255,0.48)); border: 1.5px dashed rgba(141,156,245,0.36);">
-            <h2 style="border-left-color: #5B62D8;">텔레그램 대신 카카오톡으로 받고 싶다면</h2>
-            <p class="card-subtitle">텔레그램이 어렵거나 사내 정책으로 못 쓰는 경우를 위한 백업 경로입니다. STEP 1의 텔레그램 연결 부분만 아래 내용으로 치환하면 됩니다</p>
-
-            <p>카카오톡으로 받으려면 텔레그램 봇 대신 <strong>PlayMCP의 "카카오톡 나에게 보내기"</strong> 도구나 카카오 API 연동을 별도로 검토해야 합니다. 이 본문은 텔레그램을 기본 경로로 두고, 카카오톡은 조직의 도구 정책과 지원 환경을 확인한 뒤 붙이는 백업 경로로 봅니다.</p>
-
-            <div class="highlight-box" style="margin-top: 16px;">
-                <div class="hl-title">&#x1F4CC; 카톡 경로로 바꿀 때 STEP 1이 이렇게 바뀝니다</div>
-                <ol style="padding-left: 20px; margin-top: 8px;">
-                    <li><strong>PlayMCP 가입</strong>: <a href="https://playmcp.kakao.com/" target="_blank" rel="noopener" style="color: var(--book-teal); font-weight: 600;">playmcp.kakao.com</a>에서 <strong>본인이 메시지를 받을 카카오 계정</strong>으로 회원가입합니다.</li>
-                    <li><strong>도구함에 "카카오톡 나에게 보내기" 담기</strong>: PlayMCP 도구 카탈로그에서 해당 도구를 도구함에 추가하고 저장합니다.</li>
-                    <li><strong>실행 환경 확인</strong>: ChatGPT 앱, Codex MCP, 또는 사내 자동화 도구에서 PlayMCP 호출을 지원하는지 확인합니다. 지원하지 않으면 카카오 API를 직접 붙이는 별도 작업이 필요합니다.</li>
-                    <li><strong>연결 확인</strong>: 테스트 메시지를 본인 카카오톡으로 보낸 뒤, 실패하면 텔레그램 경로를 유지합니다.</li>
-                </ol>
-            </div>
-
-            <p style="margin-top: 16px;">STEP 5 플러그인의 <code>PLUGIN.md</code>에서는 <strong>"telegram 플러그인의 reply 도구"</strong>로 적힌 부분을 <strong>"PlayMCP 카카오톡 나에게 보내기 도구"</strong>로 바꾸고, <code>TELEGRAM_CHAT_ID</code> 환경변수는 제거합니다. PlayMCP 카톡 도구는 OAuth로 본인 계정이 이미 묶여 있어 별도 chat_id가 필요 없습니다.</p>
-
-            <div class="compare-grid" style="margin-top: 18px;">
-                <div class="compare-nm">
-                    <div class="cmp-header">
-                        <span class="cmp-dot" style="background: #14192E;"></span>
-                        <h4>텔레그램 경로 (본문)</h4>
-                    </div>
-                    <ul>
-                        <li>실행 환경: <strong>Codex</strong></li>
-                        <li>전송 도구: telegram 플러그인 reply</li>
-                        <li>인증: BotFather 토큰 + chat_id</li>
-                        <li>비용: 무료</li>
-                        <li>장점: 봇 API가 단순, 그룹 채널로 확장 쉬움</li>
-                    </ul>
-                </div>
-                <div class="compare-nm">
-                    <div class="cmp-header">
-                        <span class="cmp-dot" style="background: #5B62D8;"></span>
-                        <h4>카카오톡 경로 (이 부록)</h4>
-                    </div>
-                    <ul>
-                        <li>실행 환경: <strong>별도 커넥터 또는 API 연동</strong></li>
-                        <li>전송 도구: PlayMCP "나에게 보내기"</li>
-                        <li>인증: PlayMCP 가입 또는 카카오 API 인증</li>
-                        <li>비용: 선택한 연결 도구와 API 정책에 따름</li>
-                        <li>장점: 한국 사용자에게 익숙, 별도 앱 설치 불필요</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tip-box" style="margin-top: 16px;">
-                <div class="tip-label">유의 사항</div>
-                <p>카카오톡 경로는 조직 환경에 따라 지원 여부가 달라집니다. 이 가이드는 텔레그램 경로를 기본값으로 두고, 카카오톡은 연결 도구와 권한을 검증한 뒤 보조 경로로 붙입니다. PlayMCP 설정의 연결된 서비스에서 언제든 액세스 권한을 해제할 수 있습니다.</p>
-            </div>
-
-            <a class="ref-link" href="https://pineapple-cub-4dd.notion.site/Claude-2ae9b97b4888801cb219d4ee3b9b28f2" target="_blank" rel="noopener" style="margin-top: 14px;">
-                <span class="ref-icon">&#x1F4D6;</span>
-                PlayMCP 공식 가이드
-                <span class="ref-desc">Notion</span>
-            </a>
-        </div>
-    </section>
 
 </main>
 

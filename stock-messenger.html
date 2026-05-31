@@ -1556,11 +1556,11 @@ cron: 0 9 * * 1-5
     links.forEach(function(l){ var s = document.getElementById(l.dataset.sec); if(s) sections.push({id:l.dataset.sec, el:s, link:l}); });
 
     function update(){
-        var smEl = document.getElementById('subMenu');
-        var scrollY = window.scrollY + (smEl ? smEl.offsetHeight : 0) + 16;
+        // 감지선을 앵커의 scroll-margin-top(155px)에 맞춘다. 약간의 버퍼(+10)로 도킹 직후 활성화.
+        var line = 165;
         var current = sections[0];
         for(var i = 0; i < sections.length; i++){
-            if(sections[i].el.offsetTop <= scrollY) current = sections[i];
+            if(sections[i].el.getBoundingClientRect().top <= line) current = sections[i];
         }
         links.forEach(function(l){ l.classList.remove('active'); });
         if(current) current.link.classList.add('active');

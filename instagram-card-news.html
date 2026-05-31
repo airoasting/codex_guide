@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/instagram-card-news.html">
+    <meta property="og:title" content="AI ROASTING 홍보 카드뉴스 만들기 | AI ROASTING">
+    <meta property="og:description" content="AI ROASTING Codex 가이드를 실제로 홍보하는 7장 인스타그램 카드뉴스를 기획하고, 1080×1350 PNG로 내려받는 실전 제작 과정.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/instagram-card-news.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>AI ROASTING 홍보 카드뉴스 만들기 | AI ROASTING</title>
+    <meta name="description" content="30대 여성 실무자 감성에 맞춘 AI ROASTING 홍보 카드뉴스 7장을 진단, 5단계, CTA 흐름으로 제작하는 Codex 실전 예제.">
+    <style>
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('assets/fonts/PretendardVariable.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
+            --nm-light: #FFFFFF;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --codex-accent: #5B62D8;
+            --codex-blue: var(--codex-accent);
+            --codex-graphite: #070707;
+            --codex-slate: #14192E;
+            --codex-panel: #F0F1F3;
+            --codex-pill-text: #283052;
+            --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+            --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+            --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+            --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            word-break: keep-all;
+            font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif;
+            background: #FFFFFF;
+            color: #332F2A;
+            line-height: 1.65;
+        }
+        a { color: inherit; }
+
+        header {
+            background: #070707;
+            padding: 28px 40px 42px;
+            border-radius: 0 0 32px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) { position: relative; z-index: 2; }
+        .back-link {
+            display: inline-block;
+            color: rgba(255,255,255,0.68);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .back-link:hover { color: #fff; }
+        header h1 {
+            font-size: 42px;
+            font-weight: 850;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            letter-spacing: 0;
+            margin-bottom: 10px;
+        }
+        header > p {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 16px;
+            color: rgba(255,255,255,0.82);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+        }
+        .header-pages {
+            max-width: 1080px;
+            margin: 22px auto 0;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+        }
+        .header-page-link {
+            flex: 1 1 0;
+            min-width: 0;
+            max-width: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.72);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 22px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.07);
+            box-shadow: 5px 5px 12px rgba(0,0,0,0.35), -5px -5px 12px rgba(255,255,255,0.06);
+            white-space: nowrap;
+        }
+        .header-page-link:hover { background: rgba(255,255,255,0.13); color: #fff; }
+        .header-page-link.active {
+            background: rgba(255,255,255,0.14);
+            box-shadow: inset 3px 3px 8px rgba(0,0,0,0.35), inset -3px -3px 8px rgba(255,255,255,0.06);
+            color: #fff;
+        }
+        /* ## EXAMPLE-TOGGLE-NAV START ## */
+        .ex-tabs {
+            display: inline-flex; gap: 4px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px; padding: 4px;
+            margin: 18px auto 0;
+            position: relative; z-index: 1;
+        }
+        .ex-tab {
+            font-size: 13px; font-weight: 700;
+            color: rgba(255,255,255,0.55);
+            padding: 6px 22px; border-radius: 20px;
+            cursor: pointer; transition: all 0.2s; user-select: none;
+        }
+        .ex-tab.active { background: rgba(255,255,255,0.18); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+        .ex-tab:hover:not(.active) { color: rgba(255,255,255,0.8); }
+        #pages-basic, #pages-mcp { margin-top: 16px; }
+        /* ## EXAMPLE-TOGGLE-NAV END ## */
+        .header-page-link .hpl-icon { font-size: 18px; line-height: 1; }
+
+        .content-section { scroll-margin-top: 155px; }
+        .sub-menu {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(240, 241, 243, 0.92);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(210,216,226,0.76);
+            border-radius: 0 0 32px 32px;
+            padding: 14px 0;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+        .sub-menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 9px;
+            text-decoration: none;
+            padding: 8px 14px;
+            flex: 1;
+            max-width: 132px;
+            color: #596070;
+        }
+        .sub-menu a:hover {
+            background: rgba(236, 232, 255, 0.46);
+            border-radius: 14px;
+        }
+        .sub-menu a.active {
+            background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58));
+            border-radius: 14px;
+            box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10);
+        }
+        .sm-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--codex-pill-bg-muted);
+            color: var(--codex-pill-text);
+            border: 1px solid rgba(255,255,255,0.66);
+            box-shadow: var(--codex-pill-shadow);
+            font-size: 13px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sm-title { font-size: 15px; font-weight: 750; color: #38404F; white-space: nowrap; }
+        .sm-sub { font-size: 13px; color: #7B8498; white-space: nowrap; }
+        .sub-menu a.active .sm-title { color: #14192E; font-weight: 850; }
+        .sub-menu a.active .sm-sub { color: #5B62D8; }
+        .sub-menu a.active .sm-num {
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
+        }
+        .step-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 28px 0;
+        }
+        .step-divider::before,
+        .step-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #DED8CF;
+            box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+        }
+        .step-badge {
+            font-size: 11px;
+            font-weight: 850;
+            letter-spacing: 1.5px;
+            color: var(--codex-pill-text);
+            background: var(--codex-pill-bg);
+            border: 1px solid rgba(255,255,255,0.66);
+            box-shadow: var(--codex-pill-shadow);
+            padding: 7px 18px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .container { max-width: 1080px; margin: 0 auto; padding: 32px 32px 80px; }
+        .nm-card {
+            background: var(--nm-bg);
+            border-radius: 20px;
+            box-shadow: var(--nm-shadow);
+            padding: 30px 32px;
+            margin-bottom: 24px;
+        }
+        .nm-card h2 {
+            font-size: 21px;
+            font-weight: 800;
+            color: #332F2A;
+            margin-bottom: 8px;
+            padding-left: 16px;
+            border-left: 4px solid var(--codex-accent);
+            letter-spacing: 0;
+        }
+        .nm-card h3 {
+            font-size: 16px;
+            font-weight: 800;
+            color: #332F2A;
+            margin: 22px 0 8px;
+        }
+        .card-subtitle {
+            font-size: 13px;
+            color: #7C756E;
+            margin-bottom: 18px;
+            padding-left: 20px;
+        }
+        .nm-card p,
+        .nm-card li {
+            font-size: 14px;
+            color: #5B554F;
+            line-height: 1.75;
+        }
+        .nm-card ul,
+        .nm-card ol { padding-left: 20px; margin-top: 10px; }
+        .nm-card li { margin-bottom: 8px; }
+        strong { color: #26221F; }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.92em;
+            color: #231F20;
+            background: rgba(255,255,255,0.62);
+            border: 1px solid rgba(255,255,255,0.72);
+            border-radius: 7px;
+            padding: 2px 6px;
+        }
+        .tip-box {
+            background: var(--nm-bg);
+            border-radius: 14px;
+            box-shadow: var(--nm-shadow-sm);
+            border-left: 4px solid var(--codex-accent);
+            padding: 18px 22px;
+            margin: 18px 0;
+        }
+        .tip-label {
+            font-size: 11px;
+            font-weight: 850;
+            color: var(--codex-accent);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .flow-row {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin: 20px 0 4px;
+        }
+        .flow-node {
+            background: var(--nm-bg);
+            border-radius: 16px;
+            box-shadow: var(--nm-shadow-sm);
+            padding: 16px 14px;
+            text-align: center;
+        }
+        .fn-icon { font-size: 25px; line-height: 1; margin-bottom: 8px; }
+        .fn-label { font-size: 13px; font-weight: 850; color: #332F2A; }
+        .fn-sub { font-size: 11px; color: #827B73; margin-top: 2px; }
+
+        .generator-shell {
+            display: grid;
+            grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+            gap: 22px;
+            align-items: start;
+        }
+        .control-panel,
+        .preview-panel {
+            background: var(--nm-bg);
+            border-radius: 18px;
+            box-shadow: var(--nm-shadow-sm);
+            padding: 22px;
+        }
+        .field { margin-bottom: 14px; }
+        .field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 850;
+            color: #38404F;
+            margin-bottom: 7px;
+        }
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            border: none;
+            outline: none;
+            border-radius: 12px;
+            background: var(--nm-bg);
+            box-shadow: var(--nm-inset);
+            color: #332F2A;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.45;
+            padding: 12px 14px;
+        }
+        .field textarea { min-height: 92px; resize: vertical; }
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .action-btn {
+            border: none;
+            border-radius: 13px;
+            background: var(--codex-accent);
+            color: #fff;
+            box-shadow: 4px 4px 10px #C9C3B7, 0 1px 3px rgba(20,25,46,0.06);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 800;
+            padding: 11px 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+        }
+        .action-btn.secondary {
+            background: var(--nm-bg);
+            color: #38404F;
+            box-shadow: var(--nm-shadow-sm);
+        }
+        .action-btn:hover { filter: brightness(1.03); }
+        .mini-note {
+            font-size: 12px;
+            color: #807970;
+            margin-top: 14px;
+            line-height: 1.55;
+        }
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+        .insta-card {
+            aspect-ratio: 4 / 5;
+            border-radius: 18px;
+            color: var(--card-ink, #14192E);
+            background:
+                linear-gradient(152deg, transparent 0%, transparent 64%, var(--card-band, #ECE8FF) 64%, var(--card-band, #ECE8FF) 100%),
+                var(--card-bg, #F8F4EE);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 8px 10px 24px rgba(20,25,46,0.10), 0 0 0 1px rgba(20,25,46,0.06);
+            min-height: 320px;
+        }
+        .insta-card::before {
+            content: '';
+            position: absolute;
+            inset: 14px;
+            border: 1px solid var(--card-line, rgba(20,25,46,0.12));
+            border-radius: 14px;
+            pointer-events: none;
+        }
+        .insta-card::after {
+            content: '';
+            position: absolute;
+            right: 24px;
+            top: 24px;
+            width: 58px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--card-accent, #5B62D8);
+            opacity: 0.92;
+        }
+        .insta-card.denim {
+        }
+        .insta-card.red {
+        }
+        .insta-card.resort {
+        }
+        .insta-head,
+        .insta-foot {
+            position: relative;
+            z-index: 1;
+        }
+        .insta-kicker {
+            display: inline-flex;
+            align-items: center;
+            max-width: calc(100% - 76px);
+            min-height: 28px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--card-chip-bg, rgba(255,255,255,0.58));
+            color: var(--card-muted, #667085);
+            font-size: 10px;
+            font-weight: 850;
+            line-height: 1;
+            letter-spacing: 1.2px;
+            overflow-wrap: anywhere;
+        }
+        .insta-title {
+            color: var(--card-ink, #14192E);
+            font-size: clamp(28px, 2.7vw, 38px);
+            font-weight: 900;
+            line-height: 1.04;
+            letter-spacing: 0;
+            text-wrap: balance;
+            overflow-wrap: anywhere;
+            margin: 32px 0 0;
+        }
+        .insta-copy {
+            color: var(--card-copy, #4B5563);
+            font-size: 13px;
+            font-weight: 650;
+            line-height: 1.62;
+            letter-spacing: 0;
+            overflow-wrap: anywhere;
+        }
+        .insta-num {
+            width: auto;
+            min-width: 46px;
+            height: 32px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-accent, #5B62D8);
+            color: var(--card-accent-text, #FFFFFF);
+            font-size: 13px;
+            font-weight: 900;
+            margin-top: 18px;
+            padding: 0 12px;
+        }
+        .insta-foot {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .insta-card.is-dark {
+            --card-line: rgba(255,255,255,0.18);
+            --card-chip-bg: rgba(255,255,255,0.12);
+        }
+        .download-card-btn {
+            width: 100%;
+            margin-top: 9px;
+            border: none;
+            border-radius: 11px;
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            color: #38404F;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 9px 8px;
+        }
+        .card-cell { min-width: 0; }
+
+        .story-grid,
+        .prompt-grid,
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .story-card,
+        .prompt-card,
+        .source-card {
+            background: var(--nm-bg);
+            border-radius: 16px;
+            box-shadow: var(--nm-shadow-sm);
+            padding: 18px 20px;
+        }
+        .story-card strong,
+        .prompt-card strong,
+        .source-card strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 7px;
+            color: #332F2A;
+        }
+        .source-card a {
+            display: inline-flex;
+            margin-top: 8px;
+            color: var(--codex-accent);
+            font-size: 13px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+        .prompt-box {
+            background: #151923;
+            color: #F3F4FB;
+            border-radius: 16px;
+            padding: 18px 20px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            margin-top: 16px;
+        }
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .check-item {
+            background: var(--nm-bg);
+            border-radius: 14px;
+            box-shadow: var(--nm-shadow-sm);
+            padding: 15px 16px;
+        }
+        .check-item span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            font-size: 12px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            box-shadow: var(--codex-pill-shadow);
+        }
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
+        .footer-about-link {
+            display: inline-block; margin-top: 8px;
+            color: rgba(255,255,255,0.75); text-decoration: none;
+            font-size: 12px; font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 1px; transition: all 0.2s;
+        }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
+        .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
+        .footer-link-row .footer-about-link { margin-top: 0; }
+        .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
+
+        @media (max-width: 1160px) {
+            .header-page-link {
+                font-size: 12px;
+                padding: 8px 14px;
+                border-radius: 12px;
+            }
+        }
+        @media (max-width: 980px) {
+            .generator-shell { grid-template-columns: 1fr; }
+            .preview-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+            .flow-row,
+            .checklist { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 768px) {
+            header { padding: 24px 22px 32px; }
+            header h1 { font-size: 30px; }
+            header > p { font-size: 14px; }
+            .container { padding: 28px 18px 64px; }
+            .nm-card { padding: 24px 20px; border-radius: 18px; }
+            .sub-menu { display: none !important; }
+            .header-pages {
+                flex-direction: column !important;
+                flex-wrap: nowrap !important;
+                max-width: 100% !important;
+                gap: 8px !important;
+                align-items: stretch !important;
+            }
+            .header-page-link {
+                flex: none !important;
+                max-width: none !important;
+                width: 100% !important;
+                white-space: normal !important;
+                word-break: keep-all !important;
+                justify-content: center !important;
+                font-size: 13px !important;
+                padding: 11px 14px !important;
+                border-radius: 12px !important;
+            }
+            .story-grid,
+            .prompt-grid,
+            .source-grid,
+            .flow-row,
+            .checklist { grid-template-columns: 1fr; }
+            .preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .insta-card { min-height: 280px; padding: 20px; }
+            .insta-title { font-size: clamp(24px, 7vw, 32px); }
+        }
+        @media (max-width: 520px) {
+            .preview-grid { grid-template-columns: 1fr; }
+            .insta-card { min-height: 330px; }
+            .button-row { flex-direction: column; }
+            .action-btn { width: 100%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
+    <a href="index.html" class="back-link">&larr; 목록으로</a>
+    <h1>AI ROASTING 홍보 카드뉴스 만들기</h1>
+    <p>이 사이트를 실제로 홍보한다는 관점에서, 진단부터 5단계 실행법과 CTA까지 7장짜리 인스타그램 카드뉴스를 완성하는 실전 워크플로우</p>
+    <div class="ex-tabs">
+        <span class="ex-tab active" id="extab-basic" onclick="switchExampleTab('basic')">기본 예제</span>
+        <span class="ex-tab" id="extab-mcp" onclick="switchExampleTab('mcp')">MCP 연결</span>
+    </div>
+    <div class="header-pages" id="pages-basic">
+        <a href="google-sheets-dashboard.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span> 구글 시트 대시보드</a>
+        <a href="instagram-card-news.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span> 인스타 카드뉴스</a>
+        <a href="harness-book.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> 책 쓰기</a>
+    </div>
+    <div class="header-pages" id="pages-mcp" style="display:none;">
+        <a href="playmcp-kakao.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span> 카카오톡 PlayMCP</a>
+        <a href="korean-law-mcp.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></svg></span> 한국 법령 MCP</a>
+        <a href="stock-messenger.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></svg></span> 종목 분석 &rarr; 텔레그램</a>
+    </div>
+</header>
+
+<nav class="sub-menu" id="subMenu">
+    <a href="#intro" class="active" data-sec="intro"><span class="sm-num">0</span><span class="sm-title">진단</span><span class="sm-sub">캠페인 목표</span></a>
+    <a href="#demo" data-sec="demo"><span class="sm-num">1</span><span class="sm-title">카드뉴스</span><span class="sm-sub">7장 생성</span></a>
+    <a href="#story" data-sec="story"><span class="sm-num">2</span><span class="sm-title">구성</span><span class="sm-sub">진단→CTA</span></a>
+    <a href="#prompt" data-sec="prompt"><span class="sm-num">3</span><span class="sm-title">프롬프트</span><span class="sm-sub">Codex 요청</span></a>
+    <a href="#build" data-sec="build"><span class="sm-num">4</span><span class="sm-title">제작</span><span class="sm-sub">카피와 톤</span></a>
+    <a href="#export" data-sec="export"><span class="sm-num">5</span><span class="sm-title">게시</span><span class="sm-sub">인스타 점검</span></a>
+</nav>
+
+<main class="container">
+    <div class="content-section" id="intro"></div>
+    <div class="step-divider"><span class="step-badge">INTRO</span></div>
+    <section class="nm-card">
+        <h2>캠페인 진단: 이 사이트를 왜 저장하게 만들까</h2>
+        <p class="card-subtitle">AI ROASTING은 Codex를 읽는 강의가 아니라, 따라 하며 결과물을 완성하는 실전 가이드로 포지셔닝합니다</p>
+        <p>이번 카드뉴스는 이 사이트를 실제로 홍보하는 인스타그램 캠페인입니다. 타깃은 <strong>일과 사이드프로젝트를 동시에 키우는 30대 여성 실무자</strong>. 메시지는 과장된 AI 성공담이 아니라, 바쁜 사람이 오늘 바로 하나를 끝내게 해주는 조용하고 유능한 제작 루틴입니다.</p>
+        <div class="flow-row">
+            <div class="flow-node">
+                <div class="fn-icon">&#x1F50E;</div>
+                <div class="fn-label">진단</div>
+                <div class="fn-sub">AI가 안 끝나는 이유</div>
+            </div>
+            <div class="flow-node">
+                <div class="fn-icon">&#x1F4DD;</div>
+                <div class="fn-label">5단계</div>
+                <div class="fn-sub">결과물 제작 흐름</div>
+            </div>
+            <div class="flow-node">
+                <div class="fn-icon">&#x1F5BC;</div>
+                <div class="fn-label">7장 카드</div>
+                <div class="fn-sub">1080×1350 PNG</div>
+            </div>
+            <div class="flow-node">
+                <div class="fn-icon">&#x1F517;</div>
+                <div class="fn-label">CTA</div>
+                <div class="fn-sub">사이트 방문 유도</div>
+            </div>
+        </div>
+        <div class="tip-box">
+            <div class="tip-label">캠페인 톤</div>
+            <p><strong>차분하지만 놓치기 아까운 실전감.</strong> 30대 여성 감성에 맞춰 지나친 테크 과시 대신, 일 잘하는 사람의 책상 위에 놓인 가이드처럼 정리합니다. 첫 장은 호기심을 만들고, 마지막 장은 저장과 방문을 자연스럽게 유도합니다.</p>
+        </div>
+    </section>
+
+    <div class="content-section" id="demo"></div>
+    <div class="step-divider"><span class="step-badge">STEP 1</span></div>
+    <section class="nm-card">
+        <h2>7장 홍보 카드뉴스 생성 데모</h2>
+        <p class="card-subtitle">진단 1장, 실행 단계 5장, CTA 1장으로 구성된 실제 홍보용 카드뉴스입니다</p>
+        <div class="generator-shell">
+            <aside class="control-panel">
+                <div class="field">
+                    <label for="topicInput">홍보할 사이트</label>
+                    <input id="topicInput" type="text" value="AI ROASTING Codex 완전 정복">
+                </div>
+                <div class="field">
+                    <label for="targetInput">타깃</label>
+                    <input id="targetInput" type="text" value="일과 사이드프로젝트를 동시에 키우는 30대 여성 실무자">
+                </div>
+                <div class="field">
+                    <label for="brandInput">핵심 약속</label>
+                    <textarea id="brandInput">웹사이트, 카드뉴스, 문서, 자동화를 Codex로 끝까지 만들어보는 실전 가이드. 코딩 지식보다 좋은 브리프와 검수 루틴에 집중합니다.</textarea>
+                </div>
+                <div class="field">
+                    <label for="paletteInput">시각 톤</label>
+                    <select id="paletteInput">
+                        <option value="denim">슬레이트 블루 & 라벤더</option>
+                        <option value="red">로즈 레드 포인트</option>
+                        <option value="resort">민트 세이지 포인트</option>
+                    </select>
+                </div>
+                <div class="button-row">
+                    <button class="action-btn" id="generateBtn" type="button">스토리라인 만들기</button>
+                    <button class="action-btn secondary" id="downloadAllBtn" type="button">전체 PNG 다운로드</button>
+                </div>
+                <p class="mini-note">다운로드 파일은 카드별 PNG입니다. 크기는 인스타그램 피드 세로형에 맞춘 1080×1350이며, 파일명은 01부터 07까지 정렬됩니다.</p>
+            </aside>
+            <section class="preview-panel">
+                <div class="preview-grid" id="previewGrid" aria-live="polite"></div>
+            </section>
+        </div>
+    </section>
+
+    <div class="content-section" id="story"></div>
+    <div class="step-divider"><span class="step-badge">STEP 2</span></div>
+    <section class="nm-card">
+        <h2>진단부터 CTA까지 7장 구조</h2>
+        <p class="card-subtitle">카드뉴스는 예쁜 장표보다 넘길 이유가 먼저 필요합니다</p>
+        <div class="story-grid">
+            <div class="story-card">
+                <strong>1. 진단: 왜 AI를 써도 일이 그대로일까?</strong>
+                <p>첫 장은 사이트명을 바로 외치지 않습니다. 타깃이 이미 느끼는 답답함을 질문으로 열어 저장과 다음 장 넘김을 만듭니다.</p>
+            </div>
+            <div class="story-card">
+                <strong>2. STEP 1: 질문보다 결과물을 정한다</strong>
+                <p>대시보드, 카드뉴스, 문서, 자동화처럼 오늘 끝낼 결과물을 먼저 지정하게 합니다. 막연한 AI 활용을 실행 단위로 바꿉니다.</p>
+            </div>
+            <div class="story-card">
+                <strong>3. STEP 2: Codex에게 맥락을 준다</strong>
+                <p>목표, 타깃, 파일, 톤, 제약을 함께 주면 Codex는 단순 답변이 아니라 작업 파트너처럼 움직입니다.</p>
+            </div>
+            <div class="story-card">
+                <strong>4. STEP 3: 첫 버전을 만든다</strong>
+                <p>완벽한 프롬프트를 기다리지 않고 HTML, 문서, 카드뉴스 초안을 먼저 만듭니다. 결과물이 있어야 검수가 쉬워집니다.</p>
+            </div>
+            <div class="story-card">
+                <strong>5. STEP 4: 눈으로 확인하며 고친다</strong>
+                <p>브라우저에서 직접 보고 문구, 간격, 모바일 화면을 다듬습니다. 30대 여성 타깃에게는 차분한 신뢰감과 읽기 쉬움이 핵심입니다.</p>
+            </div>
+            <div class="story-card">
+                <strong>6. STEP 5: 내 업무 템플릿으로 남긴다</strong>
+                <p>한 번 만든 결과물을 다음 프로젝트의 출발점으로 남깁니다. AI ROASTING은 이 반복 가능한 제작 감각을 익히게 합니다.</p>
+            </div>
+            <div class="story-card">
+                <strong>7. CTA: 저장하고 사이트에서 따라 한다</strong>
+                <p>마지막 장은 구매 압박보다 낮은 행동을 둡니다. 저장, 링크 방문, 첫 예제 따라 하기로 자연스럽게 전환합니다.</p>
+            </div>
+        </div>
+        <h3>메시지 기준</h3>
+        <p>이 캠페인은 AI ROASTING의 핵심 장점인 <strong>따라 하면 결과물이 남는 실전성</strong>을 전면에 둡니다. 기술 설명은 줄이고, 바쁜 실무자가 오늘 하나를 끝내는 장면을 더 선명하게 보여줍니다.</p>
+        <div class="source-grid">
+            <div class="source-card">
+                <strong>사이트 약속</strong>
+                <p>비즈니스 리더와 실무자가 Codex로 실제 페이지, 문서, 자동화를 완성하도록 돕습니다.</p>
+                <a href="index.html">AI ROASTING 홈 보기</a>
+            </div>
+            <div class="source-card">
+                <strong>전환 행동</strong>
+                <p>카드뉴스를 저장한 뒤, 예제 페이지 하나를 열고 같은 방식으로 따라 하게 만듭니다.</p>
+                <a href="google-sheets-dashboard.html">다른 실전 예제 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section" id="prompt"></div>
+    <div class="step-divider"><span class="step-badge">STEP 3</span></div>
+    <section class="nm-card">
+        <h2>Codex에 맡길 프롬프트</h2>
+        <p class="card-subtitle">이 요청을 프로젝트 폴더에서 실행하면 같은 흐름의 정적 HTML 카드뉴스 도구를 만들 수 있습니다</p>
+        <div class="prompt-box" id="codexPrompt">너는 20년차 마케팅 홍보 캠페인 인스타그램 디자이너이자 프론트엔드 개발자야.
+
+AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 카드뉴스 페이지를 만들어줘.
+디자인 톤은 기존 페이지와 동일하게 유지하고, 내용은 30대 여성 실무자가 저장하고 싶어지는 감성으로 완전히 새로 구성해줘.
+
+카드뉴스는 총 7장이다.
+1장은 호기심을 자극하는 진단 카드로 시작한다.
+2~6장은 STEP 1부터 STEP 5까지 실행 단계로 구성한다.
+7장은 사이트 방문을 유도하는 CTA 카드로 마무리한다.
+
+필수 요구사항:
+1. Vanilla HTML, CSS, JS만 쓴다.
+2. 외부 이미지 생성 API 없이 canvas로 1080×1350 PNG를 만든다.
+3. 카드뉴스 문구는 실제 홍보물처럼 간결하고 프로페셔널해야 한다.
+4. 타깃은 일과 사이드프로젝트를 동시에 키우는 30대 여성 실무자다.
+5. 사이트의 핵심 약속은 Codex로 웹사이트, 카드뉴스, 문서, 자동화를 끝까지 만들어보는 실전 가이드다.
+6. 파일명은 instagram-card-01.png부터 instagram-card-07.png까지 정렬한다.
+7. 모바일에서도 입력폼, 미리보기, 버튼 텍스트가 겹치지 않아야 한다.</div>
+        <div class="button-row">
+            <button class="action-btn" id="copyPromptBtn" type="button">프롬프트 복사</button>
+        </div>
+    </section>
+
+    <div class="content-section" id="build"></div>
+    <div class="step-divider"><span class="step-badge">STEP 4</span></div>
+    <section class="nm-card">
+        <h2>카피와 디자인을 잡을 때의 핵심</h2>
+        <p class="card-subtitle">30대 여성 실무자에게 설득되는 홍보물로 보이려면 차분한 확신이 필요합니다</p>
+        <div class="prompt-grid">
+            <div class="prompt-card">
+                <strong>첫 장은 질문으로 멈춰 세웁니다</strong>
+                <p>"AI를 잘 쓰고 싶은데 왜 결과물이 없을까?"처럼 타깃이 이미 가진 생각을 건드립니다. 호기심은 크게, 불안감은 과하게 키우지 않습니다.</p>
+            </div>
+            <div class="prompt-card">
+                <strong>단계는 업무 언어로 번역합니다</strong>
+                <p>프롬프트, 개발, 배포 같은 말만 나열하지 않습니다. 결과물 정하기, 맥락 주기, 첫 버전 만들기처럼 바로 움직일 수 있는 동사로 바꿉니다.</p>
+            </div>
+            <div class="prompt-card">
+                <strong>디자인은 과장보다 밀도를 선택합니다</strong>
+                <p>라벤더, 슬레이트 블루, 로즈 포인트를 쓰되 장식은 줄입니다. 프리미엄 노트 앱처럼 차분하고 정리된 인상을 목표로 합니다.</p>
+            </div>
+            <div class="prompt-card">
+                <strong>CTA는 하나만 남깁니다</strong>
+                <p>좋아요, 댓글, 공유, 구매를 한 번에 요구하지 않습니다. 이 캠페인의 행동은 저장 후 사이트 방문, 그리고 첫 예제 따라 하기입니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section" id="export"></div>
+    <div class="step-divider"><span class="step-badge">STEP 5</span></div>
+    <section class="nm-card">
+        <h2>인스타그램에 올리기 전 점검</h2>
+        <p class="card-subtitle">다운로드가 끝난 뒤에는 디자인 완성도와 전환 흐름을 함께 봅니다</p>
+        <div class="checklist">
+            <div class="check-item">
+                <span>1</span>
+                <p><strong>첫 장이 멈추게 하는가.</strong> 사이트명보다 타깃의 고민이 먼저 읽혀야 합니다.</p>
+            </div>
+            <div class="check-item">
+                <span>2</span>
+                <p><strong>7장의 흐름이 선명한가.</strong> 진단, STEP 1~5, CTA 순서가 한눈에 이어져야 합니다.</p>
+            </div>
+            <div class="check-item">
+                <span>3</span>
+                <p><strong>모바일에서 글자가 작은가.</strong> 6.1인치 화면에서 제목과 CTA를 확인합니다.</p>
+            </div>
+            <div class="check-item">
+                <span>4</span>
+                <p><strong>저장할 이유가 있는가.</strong> 5단계 구조가 다시 볼 체크리스트처럼 느껴져야 합니다.</p>
+            </div>
+            <div class="check-item">
+                <span>5</span>
+                <p><strong>CTA가 하나인가.</strong> 저장 후 사이트 방문이라는 행동만 남겨 전환을 분산시키지 않습니다.</p>
+            </div>
+            <div class="check-item">
+                <span>6</span>
+                <p><strong>파일 순서가 맞는가.</strong> 업로드 전 파일명이 01부터 07까지 이어지는지 확인합니다.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p class="footer-brand">AI ROASTING</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
+    <span class="footer-link-row">
+        <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
+        <span class="footer-link-sep" aria-hidden="true">&middot;</span>
+        <a href="index.html?license=1" class="footer-about-link">라이선스</a>
+    </span>
+    <p class="footer-text" style="margin-top:10px;opacity:0.7;">&copy; 2026 AI ROASTING. All rights reserved.</p>
+</footer>
+
+<script>
+(function() {
+    var paletteMap = {
+        denim: {
+            cls: 'denim',
+            themes: [
+                { bg: '#F8F4EE', band: '#ECE8FF', ink: '#14192E', copy: '#4A5164', muted: '#6B7280', accent: '#5B62D8', accentText: '#FFFFFF', chipBg: '#ECE8FF' },
+                { bg: '#14192E', band: '#263257', ink: '#FFFFFF', copy: '#D7DBF0', muted: '#B8C5FF', accent: '#F2B8A2', accentText: '#14192E', chipBg: 'rgba(255,255,255,0.12)', dark: true },
+                { bg: '#EEF5F2', band: '#DDECE8', ink: '#17212B', copy: '#4E5B63', muted: '#667C75', accent: '#27A6A6', accentText: '#FFFFFF', chipBg: '#DDECE8' },
+                { bg: '#FFF6F1', band: '#FFE3DB', ink: '#201A1D', copy: '#62545B', muted: '#8A6B72', accent: '#D46A71', accentText: '#FFFFFF', chipBg: '#FFE3DB' }
+            ]
+        },
+        red: {
+            cls: 'red',
+            themes: [
+                { bg: '#FFF6F1', band: '#FFE2E0', ink: '#211A20', copy: '#60545A', muted: '#8A6871', accent: '#D94E67', accentText: '#FFFFFF', chipBg: '#FFE2E0' },
+                { bg: '#1F1C2B', band: '#3A2538', ink: '#FFFFFF', copy: '#F3D9DD', muted: '#F2B8C4', accent: '#F6C4A8', accentText: '#1F1C2B', chipBg: 'rgba(255,255,255,0.12)', dark: true },
+                { bg: '#F4F2FF', band: '#E4DEFF', ink: '#171331', copy: '#55506C', muted: '#746C98', accent: '#6C63DD', accentText: '#FFFFFF', chipBg: '#E4DEFF' },
+                { bg: '#F8F4EE', band: '#F3E2D6', ink: '#241F1C', copy: '#5D5650', muted: '#8B7565', accent: '#B8664D', accentText: '#FFFFFF', chipBg: '#F3E2D6' }
+            ]
+        },
+        resort: {
+            cls: 'resort',
+            themes: [
+                { bg: '#F3F8F5', band: '#DDECE8', ink: '#14211F', copy: '#4D5D59', muted: '#647B73', accent: '#2F9C8E', accentText: '#FFFFFF', chipBg: '#DDECE8' },
+                { bg: '#12243A', band: '#1F4352', ink: '#FFFFFF', copy: '#D8ECEB', muted: '#BDE2DE', accent: '#F1C58E', accentText: '#12243A', chipBg: 'rgba(255,255,255,0.12)', dark: true },
+                { bg: '#FFF7EA', band: '#F7E4C6', ink: '#252018', copy: '#645A4D', muted: '#8A7658', accent: '#C98639', accentText: '#FFFFFF', chipBg: '#F7E4C6' },
+                { bg: '#F1F4FF', band: '#DDE5FF', ink: '#12182E', copy: '#4B5368', muted: '#687493', accent: '#6073D7', accentText: '#FFFFFF', chipBg: '#DDE5FF' }
+            ]
+        }
+    };
+
+    var cards = [];
+    var topicInput = document.getElementById('topicInput');
+    var targetInput = document.getElementById('targetInput');
+    var brandInput = document.getElementById('brandInput');
+    var paletteInput = document.getElementById('paletteInput');
+    var previewGrid = document.getElementById('previewGrid');
+    var generateBtn = document.getElementById('generateBtn');
+    var downloadAllBtn = document.getElementById('downloadAllBtn');
+    var copyPromptBtn = document.getElementById('copyPromptBtn');
+
+    function cleanText(value, fallback) {
+        var text = String(value || '').replace(/\s+/g, ' ').trim();
+        return text || fallback;
+    }
+
+    function buildCards() {
+        var topic = cleanText(topicInput.value, 'AI ROASTING Codex 완전 정복');
+        var target = cleanText(targetInput.value, '일과 사이드프로젝트를 동시에 키우는 30대 여성 실무자');
+        var promise = cleanText(brandInput.value, 'Codex로 웹사이트, 카드뉴스, 문서, 자동화를 끝까지 만들어보는 실전 가이드');
+        var siteLabel = topic.length > 24 ? 'AI ROASTING' : topic;
+        var targetLabel = target.length > 22 ? '바쁜 실무자' : target;
+        var promiseLabel = promise.length > 32 ? '오늘 하나가 실제 포트폴리오가 됩니다.' : promise;
+        return [
+            {
+                kicker: '01 | DIAGNOSIS',
+                title: 'AI를 써도 결과물이 안 남는 이유',
+                copy: '답만 받는 흐름에서 벗어나, 브리프-제작-검수까지 한 번에 이어가세요.'
+            },
+            {
+                kicker: '02 | STEP 1',
+                title: '오늘 끝낼 산출물 하나 고르기',
+                copy: targetLabel + '에게 필요한 건 더 많은 강의보다 오늘 끝낼 한 가지입니다.'
+            },
+            {
+                kicker: '03 | STEP 2',
+                title: '맥락을 브리프처럼 건네기',
+                copy: '목표, 타깃, 톤, 파일, 제약을 함께 주면 작업 속도가 달라집니다.'
+            },
+            {
+                kicker: '04 | STEP 3',
+                title: '첫 버전은 바로 화면에 꺼내기',
+                copy: '초안이 있어야 판단할 수 있습니다. 먼저 만들고, 화면에서 바로 고칩니다.'
+            },
+            {
+                kicker: '05 | STEP 4',
+                title: '눈으로 보며 다듬기',
+                copy: '모바일 화면, 문구 리듬, 간격을 확인하며 실제 게시물처럼 다듬습니다.'
+            },
+            {
+                kicker: '06 | STEP 5',
+                title: '내 업무 템플릿으로 저장하기',
+                copy: '잘 만든 흐름은 다음 프로젝트의 출발점입니다. 반복 가능한 템플릿으로 남기세요.'
+            },
+            {
+                kicker: '07 | CTA',
+                title: '저장해두고 오늘 하나 완성하기',
+                copy: siteLabel + '에서 첫 예제를 열어보세요. ' + promiseLabel
+            }
+        ];
+    }
+
+    function getTheme(palette, index) {
+        var themes = palette.themes || paletteMap.denim.themes;
+        return themes[index % themes.length];
+    }
+
+    function applyThemeVars(element, theme) {
+        element.style.setProperty('--card-bg', theme.bg);
+        element.style.setProperty('--card-band', theme.band);
+        element.style.setProperty('--card-ink', theme.ink);
+        element.style.setProperty('--card-copy', theme.copy);
+        element.style.setProperty('--card-muted', theme.muted);
+        element.style.setProperty('--card-accent', theme.accent);
+        element.style.setProperty('--card-accent-text', theme.accentText);
+        element.style.setProperty('--card-chip-bg', theme.chipBg);
+    }
+
+    function renderPreviews() {
+        cards = buildCards();
+        var palette = paletteMap[paletteInput.value] || paletteMap.denim;
+        previewGrid.innerHTML = '';
+        cards.forEach(function(card, index) {
+            var theme = getTheme(palette, index);
+            var cell = document.createElement('div');
+            cell.className = 'card-cell';
+            var article = document.createElement('article');
+            article.className = 'insta-card ' + palette.cls + (theme.dark ? ' is-dark' : '');
+            applyThemeVars(article, theme);
+
+            var top = document.createElement('div');
+            top.className = 'insta-head';
+            var kicker = document.createElement('div');
+            kicker.className = 'insta-kicker';
+            kicker.textContent = card.kicker;
+            var title = document.createElement('div');
+            title.className = 'insta-title';
+            title.textContent = card.title;
+            top.appendChild(kicker);
+            top.appendChild(title);
+
+            var bottom = document.createElement('div');
+            bottom.className = 'insta-foot';
+            var copy = document.createElement('p');
+            copy.className = 'insta-copy';
+            copy.textContent = card.copy;
+            var num = document.createElement('div');
+            num.className = 'insta-num';
+            num.textContent = String(index + 1).padStart(2, '0');
+            bottom.appendChild(copy);
+            bottom.appendChild(num);
+
+            article.appendChild(top);
+            article.appendChild(bottom);
+            cell.appendChild(article);
+
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'download-card-btn';
+            btn.textContent = 'PNG 다운로드';
+            btn.addEventListener('click', function() {
+                downloadCard(index);
+            });
+            cell.appendChild(btn);
+            previewGrid.appendChild(cell);
+        });
+    }
+
+    function wrapText(ctx, text, maxWidth) {
+        var words = String(text).split(' ');
+        var lines = [];
+        var line = '';
+        words.forEach(function(word) {
+            if (ctx.measureText(word).width > maxWidth) {
+                if (line) {
+                    lines.push(line);
+                    line = '';
+                }
+                var chunk = '';
+                Array.prototype.forEach.call(word, function(ch) {
+                    var testChunk = chunk + ch;
+                    if (ctx.measureText(testChunk).width > maxWidth && chunk) {
+                        lines.push(chunk);
+                        chunk = ch;
+                    } else {
+                        chunk = testChunk;
+                    }
+                });
+                if (chunk) line = chunk;
+                return;
+            }
+            var testLine = line ? line + ' ' + word : word;
+            if (ctx.measureText(testLine).width > maxWidth && line) {
+                lines.push(line);
+                line = word;
+            } else {
+                line = testLine;
+            }
+        });
+        if (line) lines.push(line);
+        return lines;
+    }
+
+    function drawWrapped(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+        var lines = wrapText(ctx, text, maxWidth).slice(0, maxLines || 12);
+        lines.forEach(function(line, i) {
+            ctx.fillText(line, x, y + i * lineHeight);
+        });
+        return y + lines.length * lineHeight;
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+        ctx.closePath();
+    }
+
+    function makeCanvas(index) {
+        var card = cards[index];
+        var palette = paletteMap[paletteInput.value] || paletteMap.denim;
+        var theme = getTheme(palette, index);
+        var canvas = document.createElement('canvas');
+        canvas.width = 1080;
+        canvas.height = 1350;
+        var ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = theme.bg;
+        ctx.fillRect(0, 0, 1080, 1350);
+
+        ctx.fillStyle = theme.band;
+        ctx.beginPath();
+        ctx.moveTo(1080, 760);
+        ctx.lineTo(1080, 1350);
+        ctx.lineTo(470, 1350);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = theme.accent;
+        roundRect(ctx, 82, 88, 92, 14, 7);
+        ctx.fill();
+
+        ctx.strokeStyle = theme.dark ? 'rgba(255,255,255,0.20)' : 'rgba(20,25,46,0.13)';
+        ctx.lineWidth = 3;
+        roundRect(ctx, 54, 54, 972, 1242, 38);
+        ctx.stroke();
+
+        ctx.fillStyle = theme.chipBg;
+        roundRect(ctx, 82, 132, 330, 62, 31);
+        ctx.fill();
+        ctx.fillStyle = theme.muted;
+        ctx.font = '800 28px Pretendard, Arial, sans-serif';
+        ctx.fillText(card.kicker, 112, 172);
+
+        ctx.fillStyle = theme.accent;
+        roundRect(ctx, 840, 118, 130, 82, 41);
+        ctx.fill();
+        ctx.fillStyle = theme.accentText;
+        ctx.font = '900 36px Pretendard, Arial, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(String(index + 1).padStart(2, '0'), 905, 170);
+        ctx.textAlign = 'left';
+
+        ctx.fillStyle = theme.ink;
+        ctx.font = '900 86px Pretendard, Arial, sans-serif';
+        var titleEnd = drawWrapped(ctx, card.title, 84, 392, 860, 92, 4);
+
+        ctx.fillStyle = theme.copy;
+        ctx.font = '650 40px Pretendard, Arial, sans-serif';
+        drawWrapped(ctx, card.copy, 88, Math.max(770, titleEnd + 78), 835, 60, 5);
+
+        ctx.fillStyle = theme.accent;
+        roundRect(ctx, 82, 1118, 246, 76, 38);
+        ctx.fill();
+        ctx.fillStyle = theme.accentText;
+        ctx.font = '850 30px Pretendard, Arial, sans-serif';
+        ctx.fillText(index === cards.length - 1 ? 'START NOW' : 'SAVE FLOW', 112, 1166);
+
+        ctx.fillStyle = theme.muted;
+        ctx.font = '850 28px Pretendard, Arial, sans-serif';
+        ctx.fillText('AI ROASTING CODEX GUIDE', 82, 1254);
+
+        ctx.fillStyle = theme.accent;
+        ctx.globalAlpha = 0.82;
+        ctx.fillRect(0, 1328, 1080, 22);
+        ctx.globalAlpha = 1;
+        return canvas;
+    }
+
+    function downloadCard(index) {
+        cards = buildCards();
+        var canvas = makeCanvas(index);
+        var link = document.createElement('a');
+        link.download = 'instagram-card-' + String(index + 1).padStart(2, '0') + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }
+
+    function downloadAll() {
+        cards = buildCards();
+        cards.forEach(function(_, index) {
+            window.setTimeout(function() {
+                downloadCard(index);
+            }, index * 180);
+        });
+    }
+
+    function copyPrompt() {
+        var prompt = document.getElementById('codexPrompt').textContent.trim();
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(prompt).then(function() {
+                copyPromptBtn.textContent = '복사 완료';
+                window.setTimeout(function() { copyPromptBtn.textContent = '프롬프트 복사'; }, 1400);
+            });
+        }
+    }
+
+    generateBtn.addEventListener('click', renderPreviews);
+    paletteInput.addEventListener('change', renderPreviews);
+    downloadAllBtn.addEventListener('click', downloadAll);
+    copyPromptBtn.addEventListener('click', copyPrompt);
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(renderPreviews);
+    } else {
+        renderPreviews();
+    }
+})();
+</script>
+
+<script>
+(function() {
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.content-section'));
+    var links = Array.prototype.slice.call(document.querySelectorAll('.sub-menu a'));
+    if (!sections.length || !links.length) return;
+    function updateActive() {
+        var current = sections[0].id;
+        var offset = window.scrollY + 150;
+        sections.forEach(function(section) {
+            if (section.offsetTop <= offset) current = section.id;
+        });
+        links.forEach(function(link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+})();
+</script>
+
+<!-- ## SM-HAMBURGER START ## -->
+<style>
+.sm-menu-toggle {
+    display: none;
+    position: fixed !important;
+    top: 14px !important;
+    right: 14px !important;
+    z-index: 1200 !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    border: none !important;
+    cursor: pointer;
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.sm-menu-toggle svg { width: 22px; height: 22px; stroke: #2D3748; }
+.sm-menu-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1150;
+    background: rgba(0,0,0,0.45);
+}
+body.sm-menu-open .sm-menu-backdrop { display: block; }
+body.sm-menu-open { overflow: hidden; }
+.sm-drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1160;
+    width: 78%;
+    max-width: 320px;
+    height: 100vh;
+    height: 100dvh;
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: -8px 0 28px rgba(0,0,0,0.25);
+    padding: 72px 18px 24px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateX(105%);
+}
+body.sm-menu-open .sm-drawer { transform: translateX(0); }
+.sm-drawer-heading {
+    font-size: 17px;
+    font-weight: 850;
+    color: #14192E;
+    line-height: 1.35;
+    letter-spacing: 0;
+    padding: 0 4px 12px;
+    margin: 0 0 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    word-break: keep-all;
+}
+.sm-drawer-heading:empty { display: none; }
+.sm-drawer-back,
+.sm-drawer-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+    border-radius: 12px;
+    text-decoration: none;
+}
+.sm-drawer-back {
+    margin: 0 0 16px;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 750;
+}
+.sm-drawer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.sm-drawer-item {
+    padding: 12px 14px;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+    font-size: 13px;
+    font-weight: 850;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+}
+.sm-drawer-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+.sm-drawer-title {
+    font-size: 14px;
+    font-weight: 750;
+    color: #38404F !important;
+    line-height: 1.35;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+    font-weight: 850;
+}
+.sm-drawer-sub {
+    font-size: 11px;
+    color: #7B8498 !important;
+    line-height: 1.4;
+}
+@media (max-width: 768px) {
+    .sm-menu-toggle { display: inline-flex; }
+    .sm-menu-toggle .sm-icon-close { display: none; }
+    body.sm-menu-open .sm-menu-toggle .sm-icon-open { display: none; }
+    body.sm-menu-open .sm-menu-toggle .sm-icon-close { display: block; }
+    .sm-drawer { display: block; }
+}
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-badge { position: relative; overflow: hidden; }
+        .step-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
+<button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+    <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+</button>
+<div class="sm-menu-backdrop" id="smMenuBackdrop"></div>
+<aside class="sm-drawer" id="smDrawer" aria-label="섹션 메뉴">
+    <div class="sm-drawer-heading" id="smDrawerHeading"></div>
+    <a href="index.html" class="sm-drawer-back">
+        <span aria-hidden="true">←</span><span>목록으로</span>
+    </a>
+    <nav class="sm-drawer-list" id="smDrawerList"></nav>
+</aside>
+<script>
+(function() {
+    var src = document.querySelector('nav.sub-menu');
+    var list = document.getElementById('smDrawerList');
+    var toggle = document.getElementById('smMenuToggle');
+    var backdrop = document.getElementById('smMenuBackdrop');
+    var heading = document.getElementById('smDrawerHeading');
+    if (heading) {
+        var pageTitle = '';
+        var activeLink = document.querySelector('.header-page-link.active');
+        if (activeLink) {
+            var clone = activeLink.cloneNode(true);
+            var icon = clone.querySelector('.hpl-icon');
+            if (icon) icon.remove();
+            pageTitle = clone.textContent.trim();
+        }
+        if (!pageTitle) {
+            var h1 = document.querySelector('header h1');
+            if (h1) pageTitle = h1.textContent.trim();
+        }
+        if (!pageTitle && document.title) pageTitle = document.title.split('|')[0].trim();
+        heading.textContent = pageTitle;
+    }
+    var srcLinks = src ? src.querySelectorAll('a') : [];
+    var drawerItems = [];
+    if (src && list) srcLinks.forEach(function(a) {
+        var num = a.querySelector('.sm-num');
+        var title = a.querySelector('.sm-title');
+        var sub = a.querySelector('.sm-sub');
+        var item = document.createElement('a');
+        item.href = a.getAttribute('href');
+        item.className = 'sm-drawer-item' + (a.classList.contains('active') ? ' active' : '');
+        var html = '<span class="sm-drawer-num">' + (num ? num.textContent : '') + '</span>' +
+            '<span class="sm-drawer-text">' +
+                '<span class="sm-drawer-title">' + (title ? title.textContent : a.textContent.trim()) + '</span>';
+        if (sub && sub.textContent.trim()) html += '<span class="sm-drawer-sub">' + sub.textContent + '</span>';
+        html += '</span>';
+        item.innerHTML = html;
+        item.addEventListener('click', function() { setOpen(false); });
+        list.appendChild(item);
+        drawerItems.push(item);
+    });
+    function setOpen(open) {
+        document.body.classList.toggle('sm-menu-open', open);
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+        }
+    }
+    if (toggle) toggle.addEventListener('click', function() {
+        setOpen(!document.body.classList.contains('sm-menu-open'));
+    });
+    if (backdrop) backdrop.addEventListener('click', function() { setOpen(false); });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && document.body.classList.contains('sm-menu-open')) setOpen(false);
+    });
+    if (src) {
+        var observer = new MutationObserver(function() {
+            srcLinks.forEach(function(a, i) {
+                if (drawerItems[i]) drawerItems[i].classList.toggle('active', a.classList.contains('active'));
+            });
+        });
+        observer.observe(src, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    }
+})();
+</script>
+<!-- ## SM-HAMBURGER END ## -->
+<script>
+// 실전 예제 헤더 토글 (기본 예제 / MCP 연결)
+function switchExampleTab(mode){
+    var b=document.getElementById('pages-basic'), m=document.getElementById('pages-mcp');
+    var tb=document.getElementById('extab-basic'), tm=document.getElementById('extab-mcp');
+    if(!b||!m) return;
+    b.style.display = mode==='basic' ? 'flex' : 'none';
+    m.style.display = mode==='mcp' ? 'flex' : 'none';
+    if(tb) tb.classList.toggle('active', mode==='basic');
+    if(tm) tm.classList.toggle('active', mode==='mcp');
+}
+</script>
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
+</body>
+</html>

@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://airoasting.github.io/claude_guide/">
-    <meta property="og:title" content="AI ROASTING · Claude 완전 정복">
-    <meta property="og:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/">
+    <meta property="og:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <meta property="og:url" content="https://airoasting.github.io/claude_guide/">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI ROASTING · Claude 완전 정복">
-    <meta name="twitter:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
-    <meta name="twitter:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <title>AI ROASTING · Claude 완전 정복</title>
-    <meta name="description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
+    <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <title>AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복</title>
+    <meta name="description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -25,44 +25,84 @@
         }
 
         :root {
-            --nm-bg: #EDE8DF;
-            --nm-dark: #C8C3BA;
+            /* Flat clean-white: 뉴모피즘 제거. 카드는 1px 하어라인 보더 + 약한 드롭섀도로 분리 */
+            --nm-bg: #FFFFFF;
+            --nm-dark: #ECECF1;
             --nm-light: #FFFFFF;
-            --nm-shadow: 8px 8px 18px var(--nm-dark), -8px -8px 18px var(--nm-light);
-            --nm-shadow-sm: 5px 5px 10px var(--nm-dark), -5px -5px 10px var(--nm-light);
-            --nm-inset: inset 5px 5px 10px var(--nm-dark), inset -5px -5px 10px var(--nm-light);
-            --ant-orange: #D97757;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            /* 카드: 순백 배경과 구분되는 은은한 라벤더 블루 (과하지 않게) */
+            --card-bg: #F3F5FD;
+            --card-border: #E3E7F6;
             --ant-dark: #1A1917;
+            --codex-graphite: #070707;
+            --codex-slate: #14192E;
+            --codex-accent: #5B62D8;
+            --codex-blue: var(--codex-accent);
+            --codex-panel: #F0F1F3;
+            --codex-pill-text: #283052;
+            --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+            --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+            --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+            --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+            /* 진단·단계 필버튼: 더 진한 라벤더 블루 */
+            --codex-num-bg: linear-gradient(135deg, #7E84EC 0%, #5762D6 100%);
+            --codex-num-bg-active: linear-gradient(135deg, #6A73E6 0%, #444FCE 100%);
+            --codex-num-text: #fff;
+            --codex-num-shadow: 0 4px 12px rgba(78,90,210,0.34), inset 1px 1px 0 rgba(255,255,255,0.28);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { word-break: keep-all; font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif; background: var(--nm-bg); color: #3A3530; line-height: 1.6; overflow-x: clip; }
+        body { word-break: keep-all; font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif; background: var(--nm-bg); color: #2C2F3A; line-height: 1.6; overflow-x: clip; }
 
         /* ── HERO ── */
         .hero {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
-            padding: 48px 40px 44px;
+            background: #11142E;
+            min-height: 430px;
+            padding: 56px 40px 48px;
             position: relative;
             overflow: hidden;
             border-radius: 0 0 32px 32px;
-            box-shadow: 0 12px 32px rgba(122,46,21,0.18);
+            /* video 등 합성 레이어까지 확실히 둥글게 잘라낸다 */
+            clip-path: inset(0 round 0 0 32px 32px);
+            box-shadow: none;
+            isolation: isolate;
+        }
+        .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            /* 합성 레이어(video)는 부모 overflow:hidden 라운딩을 무시하므로 직접 라운딩 */
+            border-radius: inherit;
         }
         .hero::before {
             content: '';
-            position: absolute; top: -80px; right: -40px;
-            width: 480px; height: 480px;
-            background: radial-gradient(circle, rgba(196,98,63,0.2) 0%, transparent 60%);
+            position: absolute;
+            inset: 0;
+            /* codex-orientation.html 헤더와 동일한 스크림 그라데이션 */
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%);
             pointer-events: none;
+            z-index: 1;
         }
         .hero::after {
             content: '';
             position: absolute; bottom: -28px; left: 0; right: 0;
             height: 28px;
-            background: linear-gradient(to bottom, rgba(122,46,21,0.08) 0%, transparent 100%);
+            background: transparent;
             pointer-events: none;
+            z-index: 1;
         }
-        .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 2; }
 
         .hero-watermark { display: none; }
 
@@ -70,66 +110,147 @@
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
             text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 14px;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.12);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.30);
+            text-decoration: none; cursor: pointer;
+            transition: color 0.25s ease;
         }
+        .hero-brand:hover { color: #fff; }
         .hero-brand-logo {
             display: inline-flex; align-items: center; justify-content: center;
             width: 18px; height: 18px; border-radius: 50%;
-            background: rgba(253,246,240,0.92);
-            box-shadow: 0 0 0 0.5px #fff;
+            background: transparent;
+            box-shadow: none;
             transform: translateY(0.5px);
         }
         .hero-brand-logo img {
             width: 18px; height: 18px; display: block; border-radius: 50%;
+            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .hero-brand:hover .hero-brand-logo img {
+            transform: rotate(360deg) scale(1.12);
         }
         .hero h1 {
-            font-size: 49px; font-weight: 800; color: #fff;
-            letter-spacing: -1px; line-height: 1.2; margin-bottom: 8px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 52px; font-weight: 800; color: #fff;
+            letter-spacing: 0; line-height: 1.16; margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(34,30,78,0.55), 0 4px 20px rgba(34,30,78,0.42);
+        }
+        .hero-status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            align-items: center;
+            margin: 0 0 32px;
+        }
+        .hero-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            min-height: 25px;
+            padding: 4.5px 11px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(14,16,38,0.30);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            box-shadow: inset 1px 1px 0 rgba(255,255,255,0.10), 0 6px 16px rgba(6,8,24,0.22);
+            color: rgba(255,255,255,0.82);
+            font-size: 11.7px;
+            font-weight: 700;
+            line-height: 1.2;
+            white-space: nowrap;
+            cursor: default;
+            transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .hero-status-pill:hover {
+            transform: translateY(-2px);
+            background: rgba(24,27,58,0.46);
+            border-color: rgba(255,255,255,0.42);
+            box-shadow: inset 1px 1px 0 rgba(255,255,255,0.16), 0 8px 20px rgba(6,8,24,0.30);
+        }
+        .hero-status-pill:hover .hero-status-dot {
+            box-shadow: 0 0 0 4px rgba(93,224,140,0.22), 0 0 16px rgba(93,224,140,0.75);
+        }
+        .hero-status-pill strong {
+            color: rgba(255,255,255,0.94);
+            font-weight: 800;
+        }
+        .hero-status-dot {
+            width: 6.3px;
+            height: 6.3px;
+            border-radius: 50%;
+            background: #5DE08C;
+            box-shadow: 0 0 14px rgba(93,224,140,0.55);
+            flex: 0 0 auto;
         }
         .hero-sub {
-            font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 32px;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            font-size: 15px; color: rgba(255,255,255,0.96); margin-bottom: 32px;
+            text-shadow: 0 1px 3px rgba(34,30,78,0.52);
         }
 
-        /* 히어로 내 Claude 소개 */
-        .hero-intro { margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); }
+        /* 히어로 내 Codex 소개 */
+        .hero-intro {
+            max-width: 980px;
+            margin-top: 38px;
+        }
         .hero-intro-header {
             display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
+            text-shadow: 0 1px 4px rgba(34,30,78,0.55);
         }
-        .hero-intro-header strong { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.95); }
-        .hero-intro-header span  { font-size: 13px; color: rgba(255,255,255,0.62); }
+        .hero-intro-header strong { font-size: 14px; font-weight: 700; color: #fff; }
+        .hero-intro-header span  { font-size: 13px; color: rgba(255,255,255,0.92); }
         .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
         .hero-btn { flex: 1; }
         .hero-btn {
             display: inline-flex; flex-direction: column; align-items: flex-start;
-            padding: 11px 18px; background: rgba(255,255,255,0.06);
-            border: none; border-radius: 12px;
-            box-shadow: 4px 4px 12px rgba(0,0,0,0.4), -2px -2px 8px rgba(255,255,255,0.07);
-            text-decoration: none; transition: all 0.2s ease; gap: 2px;
+            padding: 13px 18px;
+            background: rgba(14,16,38,0.34);
+            -webkit-backdrop-filter: blur(10px) saturate(1.1);
+            backdrop-filter: blur(10px) saturate(1.1);
+            border: 1px solid rgba(255,255,255,0.14); border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(6,8,24,0.28), inset 0 1px 0 rgba(255,255,255,0.10);
+            text-decoration: none; gap: 3px;
+            transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
-        .hero-btn:hover { background: rgba(255,255,255,0.1); box-shadow: inset 4px 4px 12px rgba(0,0,0,0.4), inset -2px -2px 8px rgba(255,255,255,0.07); }
-        .hero-btn-name { font-size: 14px; font-weight: 700; color: #fff; }
-        .hero-btn-desc { font-size: 12px; color: rgba(255,255,255,0.55); }
-        .hero-btn-mobile-only { display: none; }
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(20,23,52,0.46);
+            border-color: rgba(143,150,255,0.55);
+            box-shadow: 0 12px 30px rgba(6,8,24,0.38), inset 0 1px 0 rgba(255,255,255,0.14);
+        }
+        .hero-btn-name { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: 0.2px; }
+        .hero-btn-desc { font-size: 12px; color: rgba(255,255,255,0.74); }
+        /* 키보드 포커스 가시성 (접근성) */
+        .hero-btn:focus-visible, .about-link:focus-visible, .hero-brand:focus-visible,
+        .hero-status-pill:focus-visible, .guide-btn:focus-visible {
+            outline: 2px solid #AEB6FF; outline-offset: 3px; border-radius: 12px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-video { display: none; }
+            .hero {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(216,223,250,0.52) 0%, rgba(141,156,245,0.28) 38%, transparent 60%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.36) 0%, transparent 42%),
+                    linear-gradient(135deg, #11142E 0%, #25306A 56%, #4B56ED 100%);
+            }
+        }
 
         /* ── MOBILE NOTICE ── */
         .mobile-notice { display: none; background: var(--nm-bg); text-align: center; padding: 10px 20px; font-size: 13px; color: #888; box-shadow: inset 3px 3px 8px var(--nm-dark), inset -3px -3px 8px var(--nm-light); }
 
         /* ── MAIN ── */
-        .container { max-width: 1280px; margin: 0 auto; padding: 20px 44px 64px; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 20px 44px 0; }
 
         /* ── 스티키 네비 ── */
         .nav-wrapper {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(237,232,223,0.85);
+            background: var(--nm-bg);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             padding: 12px calc(50vw - 50%);
             margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
             margin-top: 12px; margin-bottom: 24px;
-            transition: box-shadow 0.3s ease;
         }
-        .nav-wrapper.scrolled { box-shadow: 0 6px 20px var(--nm-dark), 0 -2px 8px var(--nm-light); }
+        .nav-wrapper.scrolled { box-shadow: 0 8px 24px rgba(56,65,61,0.18), 0 -2px 8px var(--nm-light); }
         .guide-btn-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; position: relative; }
         .guide-btn-row::before {
             content: '';
@@ -141,21 +262,36 @@
         }
         .guide-btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-            padding: 10px 8px; background: var(--nm-bg); border: none; border-radius: 12px;
+            padding: 10px 8px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
             width: 100%; justify-self: center;
-            box-shadow: var(--nm-shadow-sm);
-            font-size: 13px; font-weight: 600; color: #4A4540;
+            box-shadow: 0 1px 2px rgba(20,25,46,0.04);
+            font-size: 13px; font-weight: 600; color: #3A3F4D;
             text-decoration: none; white-space: nowrap; position: relative;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
         }
-        .guide-btn:hover, .guide-btn.active {
-            box-shadow: var(--nm-inset);
-            color: var(--ant-orange); background: var(--nm-bg);
+        .guide-btn:hover {
+            box-shadow: 0 4px 12px rgba(20,25,46,0.08);
+            border-color: rgba(99,102,241,0.30);
+            color: #20242E; background: #FFFFFF;
+        }
+        .guide-btn.active {
+            border-color: rgba(99,102,241,0.45);
+            box-shadow: 0 6px 16px rgba(99,102,241,0.16);
+            color: #1B1F2B;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F4F3FF 100%);
+        }
+        .guide-btn.active::after {
+            content: ''; position: absolute; left: 16px; right: 16px; bottom: -1px; height: 2px;
+            background: linear-gradient(90deg, #8F96FF, #6B74FF);
+            border-radius: 2px;
         }
         .guide-btn-num {
-            color: #fff; background: var(--ant-orange); font-weight: 700;
+            color: var(--codex-num-text); background: var(--codex-num-bg); font-weight: 700;
             font-size: 12px; padding: 3px 9px; border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.30);
+            box-shadow: var(--codex-num-shadow);
         }
-        .guide-btn:hover .guide-btn-num, .guide-btn.active .guide-btn-num { background: var(--ant-dark); }
+        .guide-btn:hover .guide-btn-num, .guide-btn.active .guide-btn-num { background: var(--codex-num-bg-active); color: var(--codex-num-text); }
         /* 방문 완료 표시 */
         .guide-btn .done-mark {
             position: absolute; top: -4px; right: -4px; width: 14px; height: 14px;
@@ -169,35 +305,48 @@
         .card-section { margin-bottom: 52px; scroll-margin-top: 80px; }
         .section-header { display: flex; align-items: center; gap: 12px; padding-top: 48px; margin-bottom: 6px; }
         #section-1 .section-header { padding-top: 24px; }
-        .section-num { font-size: 12px; font-weight: 700; color: #fff; background: var(--ant-orange); padding: 5px 14px; border-radius: 100px; line-height: 1; flex-shrink: 0; }
-        .section-title { font-size: 21px; font-weight: 700; color: #3A3530; }
-        .section-subtitle { font-size: 14px; color: #aaa; margin-bottom: 16px; }
+        .section-num { font-size: 12px; font-weight: 700; color: var(--codex-num-text); background: var(--codex-num-bg); padding: 5px 14px; border-radius: 100px; line-height: 1; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.30); box-shadow: var(--codex-num-shadow); }
+        .section-title { font-size: 24px; font-weight: 700; color: #181B24; letter-spacing: -0.015em; }
+        .section-subtitle { font-size: 14px; color: #5A6072; margin-bottom: 16px; }
         .nm-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--nm-dark) 20%, var(--nm-dark) 80%, transparent); opacity: 0.4; margin: 4px 0; box-shadow: 0 1px 0 var(--nm-light); }
 
         /* ── 카드 ── */
-        .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; grid-auto-rows: 1fr; }
         .card {
             display: flex; flex-direction: column; text-decoration: none; color: inherit;
-            background: var(--nm-bg); border-radius: 16px;
-            box-shadow: var(--nm-shadow);
-            border: none;
-            padding: 24px 26px; transition: box-shadow 0.2s ease, transform 0.2s ease;
-            position: relative; overflow: hidden; min-height: 165px;
+            background: var(--card-bg); border-radius: 22px;
+            box-shadow: 0 1px 3px rgba(20,25,46,0.05), 0 12px 30px rgba(20,25,46,0.06);
+            border: 1.5px solid var(--card-border);
+            padding: 26px 26px 28px; transition: box-shadow 0.24s ease, transform 0.24s ease, border-color 0.24s ease;
+            position: relative; overflow: hidden; min-height: 172px;
         }
-        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: transparent; transition: background 0.2s ease; border-radius: 16px 16px 0 0; }
-        .card:hover { box-shadow: 10px 10px 26px var(--nm-dark), -10px -10px 26px var(--nm-light); transform: translateY(-2px); }
-        .card:hover::before { background: var(--ant-orange); }
-        .card:has(.badge-level.beginner)    { border-left: 3px solid #2E8B2E; }
-        .card:has(.badge-level.intermediate){ border-left: 3px solid #C99412; }
-        .card:has(.badge-level.advanced)    { border-left: 3px solid #A33246; }
-        .card:has(.badge-level.reference)   { border-left: 3px solid #8A8F99; }
-        .card.featured                      { border-left: 3px solid var(--ant-orange); }
-        .card-icon { font-size: 26px; flex-shrink: 0; line-height: 1; }
-        .card-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-        .card h2 { font-size: 17px; font-weight: 700; color: #3A3530; line-height: 1.3; }
-        .card p { font-size: 14px; color: #888; line-height: 1.55; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .card:hover { box-shadow: 0 6px 16px rgba(99,102,241,0.10), 0 22px 44px rgba(99,102,241,0.14); transform: translateY(-4px); border-color: var(--codex-accent); }
+        /* 브랜드 액센트: 호버 시 아이콘이 브랜드 컬러로 — 콘텐츠 영역에 정체성 부여 */
+        .card:hover .card-icon { box-shadow: 0 3px 10px rgba(99,102,241,0.20), inset 0 0 0 1px #B6BBF5; }
+        .card:hover .card-icon svg { stroke: var(--codex-accent); }
+        .card:hover .card-icon svg.ic-fill { fill: var(--codex-accent); }
+        /* featured(진단·핵심 레슨): 브랜드 퍼플 타일 + 흰 아이콘으로 리듬·강조 */
+        .card.featured { background: linear-gradient(180deg, #F4F5FE 0%, #EBEEFC 100%); border-color: #CBD0F4; }
+        .card.featured .card-icon { background: var(--codex-num-bg); box-shadow: var(--codex-num-shadow); }
+        .card.featured .card-icon svg { stroke: #FFFFFF; }
+        .card.featured:hover { border-color: var(--codex-accent); }
+        .card.featured:hover .card-icon svg { stroke: #FFFFFF; }
+        .card-icon {
+            width: 46px; height: 46px; flex-shrink: 0;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 24px; line-height: 1;
+            border-radius: 13px;
+            background: #FFFFFF;
+            box-shadow: 0 1px 2px rgba(20,25,46,0.05), 0 1px 3px rgba(20,25,46,0.06);
+        }
+        .card-icon svg { width: 23px; height: 23px; fill: none; stroke: #2A2F3C;
+            stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        .card-icon svg.ic-fill { fill: #20242E; stroke: none; }
+        .card-title-row { display: flex; align-items: center; gap: 13px; margin-bottom: 14px; }
+        .card h2 { font-size: 18px; font-weight: 700; color: #20242E; line-height: 1.32; letter-spacing: -0.01em; }
+        .card p { font-size: 14px; color: #5A6072; line-height: 1.55; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
         .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-        .badge-time { font-size: 12px; font-weight: 600; color: #888; background: var(--nm-bg); border: none; box-shadow: var(--nm-shadow-sm); padding: 3px 10px; border-radius: 20px; }
+        .badge-time { font-size: 12px; font-weight: 600; color: #5A6072; background: #F1F2F7; border: 1px solid rgba(20,25,46,0.07); box-shadow: none; padding: 3px 10px; border-radius: 20px; }
         .badge-level { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
         .badge-level.beginner     { color: #1F6B22; background: rgba(46,139,46,0.13); }
         .badge-level.intermediate { color: #8A5C0A; background: rgba(212,160,23,0.16); }
@@ -218,17 +367,18 @@
             top: 0; bottom: 0;
             left: calc(-50vw + 50%);
             width: 100vw;
-            background: linear-gradient(180deg, rgba(160,72,40,0.09) 0%, rgba(160,72,40,0.14) 100%);
+            background: linear-gradient(180deg, #F1F1F7 0%, #E8E9F2 100%);
+            border: 1px solid rgba(20,25,46,0.06);
             border-radius: 28px;
             z-index: -1;
             pointer-events: none;
         }
         #section-voices > .section-header { padding-top: 0 !important; }
-        #section-voices .section-subtitle { color: #7d6357; margin-bottom: 22px; }
+        #section-voices .section-subtitle { color: #68716B; margin-bottom: 22px; }
         .voice-card p b,
         .voice-card p strong {
             font-weight: 700;
-            color: #2a2520;
+            color: #20242E;
         }
         .voices-wrap {
             position: relative;
@@ -252,10 +402,10 @@
         .voices::-webkit-scrollbar { display: none; }
         .voice-card {
             flex: 0 0 calc((100% - 48px) / 3);
-            background: #FBF8F1;
-            border-radius: 14px;
-            box-shadow: none;
-            border: 1px solid rgba(58,53,48,0.07);
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 1px 2px rgba(20,25,46,0.04), 0 6px 20px rgba(20,25,46,0.05);
+            border: 1px solid var(--card-border);
             padding: 28px 26px 22px;
             position: relative; overflow: hidden;
             display: flex; flex-direction: column; min-height: 230px;
@@ -276,32 +426,32 @@
             opacity: 1;
             filter: saturate(1);
             box-shadow: none;
-            border-color: rgba(160, 72, 40, 0.7);
+            border-color: rgba(99,102,241,0.68);
             z-index: 1;
         }
-        .voice-card:hover { border-color: rgba(217,119,87,0.35); }
+        .voice-card:hover { border-color: rgba(99,102,241,0.35); }
         .voice-card::before {
             content: '\201C';
             position: absolute; top: 8px; left: 18px;
             font-family: Georgia, 'Times New Roman', serif;
-            font-size: 56px; line-height: 1; color: var(--ant-orange); opacity: 0.22;
+            font-size: 56px; line-height: 1; color: var(--codex-accent); opacity: 0.22;
             pointer-events: none;
         }
         .voice-card p {
-            font-size: 14.5px; line-height: 1.65; color: #3A3530;
+            font-size: 14.5px; line-height: 1.65; color: #2C2F3A;
             margin: 18px 0 18px; flex: 1; position: relative;
         }
         .voice-card .voice-tag {
-            font-size: 12px; font-weight: 600; color: #8A5C0A;
-            background: rgba(212,160,23,0.16); padding: 4px 11px;
+            font-size: 12px; font-weight: 600; color: #246344;
+            background: rgba(99,102,241,0.13); padding: 4px 11px;
             border-radius: 20px; align-self: flex-start; line-height: 1;
         }
         .voices-nav {
             flex-shrink: 0;
             width: 38px; height: 38px; border-radius: 50%;
-            background: #FBF8F1;
-            border: 1px solid rgba(58,53,48,0.1);
-            box-shadow: 0 1px 3px rgba(58,53,48,0.06);
+            background: #FFFFFF;
+            border: 1px solid rgba(20,25,46,0.1);
+            box-shadow: 0 1px 3px rgba(20,25,46,0.08);
             cursor: pointer; z-index: 2;
             display: flex; align-items: center; justify-content: center;
             color: #5A5046;
@@ -309,8 +459,8 @@
         }
         .voices-nav:hover {
             background: #fff;
-            color: var(--ant-orange);
-            border-color: rgba(217,119,87,0.4);
+            color: var(--codex-blue);
+            border-color: rgba(99,102,241,0.34);
         }
         .voices-nav:active { transform: scale(0.94); }
         .voices-nav svg { width: 16px; height: 16px; }
@@ -320,15 +470,15 @@
         }
         .voices-dots button {
             width: 7px; height: 7px; border-radius: 50%; border: none;
-            background: rgba(58,53,48,0.2); cursor: pointer; padding: 0;
+            background: rgba(20,25,46,0.18); cursor: pointer; padding: 0;
             transition: background 0.25s ease, width 0.25s ease;
         }
-        .voices-dots button.active { background: var(--ant-orange); width: 22px; border-radius: 4px; }
+        .voices-dots button.active { background: var(--codex-accent); width: 22px; border-radius: 4px; }
         .voices-progress {
             width: 100%; max-width: 280px;
             height: 2px;
             margin: 14px auto 0;
-            background: rgba(58,53,48,0.12);
+            background: rgba(20,25,46,0.12);
             border-radius: 2px;
             overflow: hidden;
         }
@@ -336,7 +486,7 @@
             display: block;
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, var(--ant-orange) 0%, #C46245 100%);
+            background: var(--codex-accent);
             border-radius: 2px;
             transform-origin: left center;
         }
@@ -364,27 +514,63 @@
         }
         .track-label-badge {
             font-size: 12px; font-weight: 700; padding: 5px 14px;
-            border-radius: 100px; color: #fff; flex-shrink: 0; line-height: 1;
+            border-radius: 100px; color: var(--codex-pill-text); flex-shrink: 0; line-height: 1;
+            border: 1px solid rgba(255,255,255,0.66);
+            box-shadow: var(--codex-pill-shadow);
         }
-        .track-label-badge.nocode { background: #3a7a5a; }
-        .track-label-badge.cli    { background: #2a4a7a; }
-        .track-label-badge.concept { background: #5a6a7a; }
-        .track-label-badge.skill   { background: #6a4a8a; }
-        .track-label-badge.final   { background: #8B6914; }
+        .track-label-badge.nocode { background: var(--codex-pill-bg); }
+        .track-label-badge.cli    { background: linear-gradient(135deg, #EDE9FF 0%, #CFD8FF 100%); }
+        .track-label-badge.concept { background: var(--codex-pill-bg-muted); color: #38404F; }
+        .track-label-badge.skill   { background: linear-gradient(135deg, #FFF0F7 0%, #E6DFFF 100%); color: #3E315E; }
+        .track-label-badge.final   { background: var(--codex-pill-bg); }
         .track-label-text { font-size: 15px; font-weight: 700; color: #3A3530; }
         .track-label-sub  { font-size: 13px; color: #aaa; }
         .track-section { margin-bottom: 8px; }
-        /* 카드 등장 애니메이션 */
-        .card-section .card { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .deploy-split {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 18px;
+        }
+        .deploy-track {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .deploy-track .track-label {
+            margin: 0 0 12px;
+        }
+        .deploy-track .cards {
+            grid-template-columns: 1fr !important;
+            margin-top: 0;
+            flex: 1;
+        }
+        .deploy-track .card {
+            height: 100%;
+        }
+        /* 카드·헤더 등장 애니메이션 — 섹션 진입 시 헤더 → 카드 순서로 떠오른다 */
+        .card-section .section-header,
+        .card-section .section-subtitle {
+            opacity: 0; transform: translateY(14px);
+            transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1);
+        }
+        .card-section.in-view .section-header { opacity: 1; transform: none; }
+        .card-section.in-view .section-subtitle { opacity: 1; transform: none; transition-delay: 0.06s; }
+
+        .card-section .card { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1); }
         .card-section.in-view .card { opacity: 1; transform: translateY(0); }
-        .card-section .cards .card:nth-child(2) { transition-delay: 0.1s; }
-        .card-section .cards .card:nth-child(3) { transition-delay: 0.2s; }
+        .card-section.in-view .cards .card:nth-child(1) { transition-delay: 0.12s; }
+        .card-section.in-view .cards .card:nth-child(2) { transition-delay: 0.20s; }
+        .card-section.in-view .cards .card:nth-child(3) { transition-delay: 0.28s; }
+        .card-section.in-view .cards .card:nth-child(4) { transition-delay: 0.34s; }
+        .card-section.in-view .cards .card:nth-child(5) { transition-delay: 0.40s; }
+        .card-section.in-view .cards .card:nth-child(n+6) { transition-delay: 0.46s; }
         .track-upgrade {
             display: flex; align-items: center; gap: 12px;
             margin-top: 16px; padding: 14px 18px;
             background: var(--nm-bg); border-radius: 10px;
             box-shadow: var(--nm-shadow-sm);
-            border-left: 3px solid var(--ant-orange);
+            border-left: 3px solid var(--codex-accent);
         }
         .track-upgrade-text { font-size: 13px; color: #888; }
         .track-upgrade-text strong { color: #3A3530; }
@@ -405,45 +591,88 @@
         .track-info-title { font-size: 15px; font-weight: 700; color: #3A3530; }
         .track-info-desc { font-size: 13px; color: #888; line-height: 1.55; }
 
+        /* ── 하단 콘텐츠 영역 (배경 없음, 일반 페이지 톤) ── */
+        .lower-ambient {
+            position: relative;
+            isolation: isolate;
+            width: 100%;
+            margin: 12px 0 0;
+            padding: 0;
+            background: transparent;
+        }
+        .lower-ambient-video { display: none; }
+        .lower-ambient-inner {
+            position: relative;
+            z-index: 2;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+        .lower-ambient .card-section {
+            position: relative;
+            margin-bottom: 56px;
+        }
+        .lower-ambient .card-section:last-child { margin-bottom: 0; }
+        /* 수강생 한 마디만 자체 배경 밴드 유지 */
+        #section-voices .section-title { color: #20242E; }
+        #section-voices .section-subtitle { color: #5A6072; }
+
         /* ── 뉴스레터 ── */
-        .newsletter-section { background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%); padding: 48px 44px 52px; border-radius: 32px 32px 0 0; }
-        .newsletter-header { max-width: 1280px; margin: 0 auto 24px; padding: 0 44px; display: flex; align-items: center; justify-content: space-between; }
-        .newsletter-header-text { font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.95); }
-        .newsletter-header-sub { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 4px; }
+        .newsletter-section {
+            position: relative;
+            isolation: isolate;
+            background: linear-gradient(165deg, #DEE2F3 0%, #C2C8E6 50%, #A7B0DA 100%);
+            padding: 48px 0 52px;
+            margin-top: 72px;
+            border-radius: 28px 28px 0 0;
+        }
+        .newsletter-section .footer-video { display: none; }
+        .newsletter-header { max-width: 1280px; margin: 0 auto 16px; padding: 0 44px; display: flex; align-items: center; justify-content: space-between; }
+        .newsletter-header-text { font-size: 18px; font-weight: 700; color: #20242E; }
+        .newsletter-header-sub { font-size: 13px; color: #5A6072; margin-top: 4px; }
         .newsletter-cards { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; padding: 0 44px; }
-        .newsletter-section .card { background: rgba(255,255,255,0.08); box-shadow: 4px 4px 12px rgba(0,0,0,0.3), -2px -2px 8px rgba(255,255,255,0.05); border: none; min-height: 130px; padding: 24px 22px; }
-        .newsletter-section .card:hover { background: rgba(255,255,255,0.13); box-shadow: inset 4px 4px 12px rgba(0,0,0,0.3), inset -2px -2px 8px rgba(255,255,255,0.05); transform: translateY(-2px); }
-        .newsletter-section .card:hover::before { background: rgba(255,255,255,0.3); }
-        .newsletter-section .card h2 { color: #fff; }
-        .newsletter-section .card p { color: rgba(255,255,255,0.75); -webkit-line-clamp: 2; font-size: 13px; line-height: 1.45; }
+        .newsletter-section .card { min-height: 130px; padding: 22px 22px; }
+        .newsletter-section .card h2 { color: #20242E; }
+        .newsletter-section .card p { color: #5A6072; -webkit-line-clamp: 2; font-size: 13px; line-height: 1.45; }
         .newsletter-section .card h2 { font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .newsletter-section .card-title-row { margin-bottom: 4px; min-width: 0; gap: 8px; }
-        .newsletter-section .card-icon { font-size: 19px; }
+        .newsletter-section .card-icon { width: auto; height: auto; background: none; box-shadow: none; border-radius: 0; font-size: 19px; }
         .newsletter-section .card-title-row h2 span { font-size: 12px !important; }
 
         /* ── 푸터 ── */
-        footer { background: var(--ant-dark); text-align: center; padding: 36px 32px 28px; }
-        .footer-brand { font-size: 13px; font-weight: 700; color: var(--ant-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        footer {
+            position: relative;
+            isolation: isolate;
+            background: #14161D;
+            border-top: none;
+            text-align: center;
+            padding: 40px 32px 36px;
+            margin-top: 0;
+        }
+        footer .footer-video { display: none; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
 
         /* ── 가이드 소개 모달 ── */
         .hero-sub-row {
             display: flex; align-items: baseline;
             gap: 16px; flex-wrap: wrap;
-            margin-bottom: 32px;
+            margin-bottom: 12px;
         }
         .hero-sub-row .hero-sub { margin-bottom: 0; }
         .about-link {
             display: inline-flex; align-items: center; gap: 4px;
             color: #fff; text-decoration: none;
             font-size: 13px; font-weight: 600;
-            background: rgba(255,255,255,0.18);
+            background: rgba(14,16,38,0.34);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
             padding: 6px 14px; border-radius: 100px;
-            border: none;
-            transition: background 0.2s, color 0.2s;
+            border: 1px solid rgba(255,255,255,0.16);
             white-space: nowrap;
+            transition: background 0.25s ease, border-color 0.25s ease;
         }
-        .about-link:hover { background: rgba(255,255,255,0.3); color: #fff; }
+        .about-link:hover { background: rgba(24,27,58,0.5); border-color: rgba(143,150,255,0.5); color: #fff; }
         .footer-about-link {
             display: inline-block; margin-top: 8px;
             color: rgba(255,255,255,0.75); text-decoration: none;
@@ -451,7 +680,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 1px; transition: all 0.2s;
         }
-        .footer-about-link:hover { color: #fff; border-color: #fff; }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
         .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
         .footer-link-row .footer-about-link { margin-top: 0; }
         .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
@@ -461,12 +690,12 @@
             padding: 14px 16px;
             background: var(--bg, #EDEAE4);
             border-radius: 12px;
-            box-shadow: var(--nm-sm, 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF);
+            box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
             color: #3A3530; text-decoration: none;
             font-size: 14px; font-weight: 700;
             align-items: center; justify-content: space-between;
         }
-        .drawer-about .da-arrow { color: #8B6914; font-size: 18px; }
+        .drawer-about .da-arrow { color: var(--codex-accent); font-size: 18px; }
         @media (max-width: 768px) { .drawer-about { display: flex; } }
 
         .about-overlay {
@@ -483,7 +712,7 @@
         body.about-open { overflow: hidden; }
         .about-modal {
             position: relative;
-            background: #F6F2EC;
+            background: #F0F1F3;
             border-radius: 24px;
             box-shadow: 0 24px 60px rgba(0,0,0,0.35);
             width: 100%; max-width: 920px;
@@ -514,18 +743,18 @@
             padding: 26px 36px 20px;
         }
         .about-eyebrow {
-            font-size: 12px; font-weight: 800; color: #A04828;
+            font-size: 12px; font-weight: 800; color: var(--codex-blue);
             letter-spacing: 3px; text-transform: uppercase;
             margin-bottom: 10px;
         }
         .about-quote {
-            border-left: 4px solid #A04828;
+            border-left: 4px solid var(--codex-blue);
             padding: 6px 0 6px 20px;
             margin-bottom: 18px;
         }
         .about-quote h1 {
             font-size: 24px; font-weight: 800; color: #2D2622;
-            line-height: 1.4; margin: 0 0 8px; letter-spacing: -0.3px;
+            line-height: 1.4; margin: 0 0 8px; letter-spacing: 0;
         }
         .about-quote p {
             font-size: 14px; color: #7A7570; line-height: 1.5; margin: 0;
@@ -546,7 +775,7 @@
             background: #FFFFFF;
             border-radius: 16px;
             padding: 18px 22px;
-            border-left: 4px solid #A04828;
+            border-left: 4px solid var(--codex-blue);
             box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 18px rgba(74,53,7,0.05);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             cursor: default;
@@ -555,21 +784,21 @@
             transform: translateY(-4px);
             box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 12px 28px rgba(74,53,7,0.12);
         }
-        .about-card.accent-2 { border-left-color: #B35535; }
+        .about-card.accent-2 { border-left-color: var(--codex-accent); }
         .about-card-head {
             display: flex; align-items: center; gap: 12px;
             margin-bottom: 10px;
         }
         .about-card-num {
             width: 28px; height: 28px; border-radius: 50%;
-            background: #A04828; color: #fff;
+            background: var(--codex-blue); color: #fff;
             display: flex; align-items: center; justify-content: center;
             font-size: 12px; font-weight: 800; letter-spacing: 0.5px;
             flex-shrink: 0;
         }
-        .about-card.accent-2 .about-card-num { background: #B35535; }
+        .about-card.accent-2 .about-card-num { background: var(--codex-accent); }
         .about-card-title {
-            font-size: 16px; font-weight: 800; color: #2D2622; letter-spacing: -0.2px;
+            font-size: 16px; font-weight: 800; color: #2D2622; letter-spacing: 0;
         }
         .about-card p {
             font-size: 14px; color: #4A433D; line-height: 1.7;
@@ -592,7 +821,7 @@
         .about-sublist .ab-roman {
             display: flex; align-items: center; justify-content: center;
             width: 26px; height: 26px; border-radius: 50%;
-            border: 1.5px solid #B35535; color: #A04828;
+            border: 1.5px solid var(--codex-blue); color: var(--codex-blue);
             font-size: 12px; font-weight: 800;
             flex-shrink: 0; font-family: 'Times New Roman', serif;
             font-style: normal;
@@ -600,16 +829,16 @@
         .about-byline-name {
             font-size: 13px; font-weight: 700; color: #3A3530;
         }
-        .about-byline-name span { color: #A04828; }
+        .about-byline-name span { color: var(--codex-blue); }
         .about-byline-meta {
             font-size: 12px; color: #7A7570; line-height: 1.4;
         }
         .about-byline-link {
-            color: #A04828; font-weight: 700; text-decoration: none;
-            border-bottom: 1px solid rgba(160,72,40,0.4);
+            color: var(--codex-blue); font-weight: 700; text-decoration: none;
+            border-bottom: 1px solid rgba(99,102,241,0.4);
             transition: border-color 0.2s;
         }
-        .about-byline-link:hover { border-bottom-color: #A04828; }
+        .about-byline-link:hover { border-bottom-color: var(--codex-blue); }
         .about-byline-icons { display: flex; gap: 6px; flex-shrink: 0; }
         .about-byline-icons a {
             display: inline-flex; align-items: center; justify-content: center;
@@ -628,8 +857,8 @@
         .about-cta-bar {
             flex-shrink: 0;
             padding: 12px 32px;
-            background: #F0EBE3;
-            border-top: 1px solid rgba(0,0,0,0.06);
+            background: linear-gradient(135deg, #ECE8FF 0%, #D9E0FF 100%);
+            border-top: 1px solid rgba(91,98,216,0.14);
             display: flex; align-items: center; justify-content: space-between;
             gap: 12px;
         }
@@ -639,10 +868,12 @@
         .about-byline-logo {
             display: inline-flex; align-items: center; justify-content: center;
             width: 20px; height: 20px; border-radius: 50%;
-            background: #fff;
-            box-shadow: 0 0 0 0.5px rgba(58,53,48,0.18);
+            background: var(--codex-num-bg);
+            box-shadow: 0 0 0 0.5px rgba(91,98,216,0.30);
             flex-shrink: 0;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+        .about-byline-logo:hover { transform: rotate(360deg); }
         .about-byline-logo img {
             width: 20px; height: 20px; display: block; border-radius: 50%;
         }
@@ -657,11 +888,11 @@
             white-space: nowrap;
             box-sizing: border-box;
         }
-        .about-cta-btn:hover { background: #A04828; transform: translateY(-1px); }
+        .about-cta-btn:hover { background: var(--codex-blue); transform: translateY(-1px); }
         /* ── 라이선스 (About 모달 내장) ── */
         .license-title {
             font-size: 22px; font-weight: 800; color: #2D2622;
-            line-height: 1.3; margin: 0 0 18px; letter-spacing: -0.3px;
+            line-height: 1.3; margin: 0 0 18px; letter-spacing: 0;
         }
         .license-text {
             margin: 0;
@@ -740,15 +971,14 @@
             box-shadow: 0 4px 14px rgba(0,0,0,0.18);
             backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
             align-items: center; justify-content: center;
-            transition: all 0.2s;
         }
-        .menu-toggle:hover { background: #fff; transform: translateY(-1px); }
+        .menu-toggle:hover { background: #fff; }
         .menu-toggle svg { width: 22px; height: 22px; stroke: #2D3748; }
         .menu-backdrop {
             display: none;
             position: fixed; inset: 0; z-index: 150;
             background: rgba(0,0,0,0.45);
-            opacity: 0; transition: opacity 0.25s;
+            opacity: 0;
         }
         body.menu-open .menu-backdrop { display: block; opacity: 1; }
         body.menu-open { overflow: hidden; }
@@ -759,26 +989,34 @@
             .menu-toggle .icon-close { display: none; }
             body.menu-open .menu-toggle .icon-open { display: none; }
             body.menu-open .menu-toggle .icon-close { display: block; }
-            .hero { padding: 32px 20px 28px; border-radius: 0 0 20px 20px; }
-            .hero h1 { font-size: 25px; letter-spacing: -0.5px; }
+            .hero { min-height: 0; padding: 32px 20px 28px; border-radius: 0 0 32px 32px; background-position: center right; }
+            .hero h1 { font-size: 25px; letter-spacing: 0; }
             .hero-brand { font-size: 11px; margin-bottom: 10px; }
+            .hero-status-row { display: none; }
+            .hero-status-pill {
+                min-height: 28px;
+                padding: 5px 12px;
+                gap: 7px;
+                font-size: 13px;
+                white-space: normal;
+            }
+            .hero-status-dot { width: 7px; height: 7px; }
             .hero-sub { font-size: 13px; margin-bottom: 20px; }
-            .hero-sub-row { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 20px; }
+            .hero-sub-row { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 12px; }
             .hero-sub-row .hero-sub { margin-bottom: 0; }
 
-            /* 히어로 내 Claude 소개 */
-            .hero-intro { margin-top: 24px; padding-top: 20px; }
+            /* 히어로 내 Codex 소개 */
+            .hero-intro { margin-top: 24px; }
             .hero-intro-header { flex-direction: column; align-items: flex-start; gap: 4px; }
             .hero-intro-header span { font-size: 12px; }
             .hero-intro-extra { display: none; }
             .hero-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
             .hero-btn { flex: unset; padding: 10px 14px; border-radius: 10px; }
-            .hero-btn-mobile-only { display: flex; }
             .hero-btn-name { font-size: 13px; }
             .hero-btn-desc { font-size: 11px; }
 
             /* 메인 컨테이너 */
-            .container { padding: 16px 16px 40px; }
+            .container { padding: 16px 16px 0; }
             /* 모바일에서 햄버거 메뉴가 열렸을 때, main 컨테이너를 스택 위로 올려 드로어가 히어로 위에 보이도록 보장 */
             body.menu-open .container { position: relative; z-index: 200; }
 
@@ -786,14 +1024,13 @@
             .nav-wrapper {
                 position: fixed; top: 0; right: 0; z-index: 170;
                 width: 78%; max-width: 320px; height: 100vh; height: 100dvh;
-                background: #EDE8DF;
+                background: var(--codex-panel);
                 backdrop-filter: none; -webkit-backdrop-filter: none;
                 box-shadow: -8px 0 28px rgba(0,0,0,0.25);
                 padding: 72px 18px 24px;
                 margin: 0;
                 overflow-y: auto; -webkit-overflow-scrolling: touch;
                 transform: translateX(105%);
-                transition: transform 0.28s ease;
                 border-radius: 0;
             }
             body.menu-open .nav-wrapper { transform: translateX(0); }
@@ -831,7 +1068,21 @@
             .card-section .cards { margin-top: 14px; }
             .card-section > .section-header + .cards,
             .card-section > .section-header + .section-subtitle + .cards { margin-top: 12px; }
+            .deploy-split { grid-template-columns: 1fr; gap: 22px; margin-top: 16px; }
+            .deploy-track .track-label { margin-bottom: 8px; }
             .code-track-info { margin-top: 12px !important; margin-bottom: 14px !important; }
+            .lower-ambient {
+                margin-top: 44px;
+                padding: 38px 0 42px;
+                border-radius: 24px 24px 0 0;
+            }
+            .lower-ambient-inner { padding: 0; }
+            .lower-ambient .card-section { margin-bottom: 38px; }
+            .lower-ambient #section-glossary,
+            .lower-ambient #section-gallery {
+                margin-top: 40px !important;
+                padding-top: 28px !important;
+            }
 
             /* 트랙 선택 */
             .track-chooser { grid-template-columns: 1fr; gap: 10px; padding: 16px; }
@@ -843,8 +1094,6 @@
             .track-info-desc { font-size: 12px; }
             /* 바이브코딩 구분선 → 모바일에서는 위쪽 안내만 표시 */
             .divider-after-text { display: none; }
-            /* CLI란? 카드는 JS로 CLI 트랙 위로 이동되며, 이동 후 여백 조정 */
-            #cliInfoCard.cli-info--moved { margin-top: 8px; margin-bottom: 16px; }
 
             /* 트랙 라벨 */
             .track-label { margin: 6px 0 8px; gap: 8px; }
@@ -858,11 +1107,11 @@
             .track-upgrade-text { font-size: 12px; }
 
             /* 뉴스레터 */
-            .newsletter-section { padding: 32px 16px 36px; border-radius: 24px 24px 0 0; }
-            .newsletter-header { padding: 0 4px; margin-bottom: 16px; flex-direction: column; align-items: flex-start; gap: 4px; }
+            .newsletter-section { padding: 0; margin-top: 48px; border-radius: 0; }
+            .newsletter-header { padding: 0 16px; margin-bottom: 16px; flex-direction: column; align-items: flex-start; gap: 4px; }
             .newsletter-header-text { font-size: 16px; }
             .newsletter-header-sub { font-size: 12px; }
-            .newsletter-cards { grid-template-columns: 1fr; padding: 0 4px; gap: 12px; }
+            .newsletter-cards { grid-template-columns: 1fr; padding: 0 16px; gap: 12px; }
 
             /* 용어 사전 섹션 */
             #section-glossary { margin-top: 40px !important; padding-top: 28px !important; }
@@ -897,85 +1146,110 @@
             .guide-btn { font-size: 13px; padding: 12px 14px; }
         }
 
-        /* ── PAGE LOAD ANIMATIONS ── */
-        @keyframes nm-fade-up {
-            from { opacity: 0; transform: translate3d(0, 16px, 0); }
+        /* ── PAGE LOAD / SCROLL ANIMATIONS ── */
+        /* 섹션 래퍼: 뷰포트에 들어올 때 떠오른다 (스크롤 리빌) */
+        .card-section {
+            opacity: 0; transform: translate3d(0, 28px, 0);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+        .card-section.in-view { opacity: 1; transform: none; }
+
+        /* 히어로(헤더) 등장 — 위 콘텐츠가 부드럽게 떠오른다 */
+        @keyframes hero-rise {
+            from { opacity: 0; transform: translate3d(0, 18px, 0); }
             to   { opacity: 1; transform: translate3d(0, 0, 0); }
         }
-        @keyframes nm-fade-in {
-            from { opacity: 0; }
-            to   { opacity: 1; }
+        .hero-brand,
+        .hero h1,
+        .hero-sub-row,
+        .hero-status-row,
+        .hero-intro {
+            animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
-        main.container { animation: nm-fade-in 0.7s ease-out 0.55s both; }
-        .card-section { animation: nm-fade-up 0.65s ease-out both; opacity: 0; }
-        .card-section:nth-of-type(1) { animation-delay: 0.65s; }
-        .card-section:nth-of-type(2) { animation-delay: 0.74s; }
-        .card-section:nth-of-type(3) { animation-delay: 0.82s; }
-        .card-section:nth-of-type(4) { animation-delay: 0.88s; }
-        .card-section:nth-of-type(5) { animation-delay: 0.94s; }
-        .card-section:nth-of-type(n+6) { animation-delay: 1.0s; }
+        .hero-brand     { animation-delay: 0.05s; }
+        .hero h1        { animation-delay: 0.14s; }
+        .hero-sub-row   { animation-delay: 0.24s; }
+        .hero-status-row{ animation-delay: 0.32s; }
+        .hero-intro     { animation-delay: 0.42s; }
 
         @media (prefers-reduced-motion: reduce) {
-            .hero, .hero-brand, .hero h1, .hero-sub-row, .hero-intro,
-            .hero-btn, .nav-wrapper, main.container, .card-section {
+            .hero-brand, .hero h1, .hero-sub-row, .hero-status-row, .hero-intro {
                 animation: none !important;
                 opacity: 1 !important;
                 transform: none !important;
+            }
+            .card-section,
+            .card-section .section-header,
+            .card-section .section-subtitle,
+            .card-section .card {
+                animation: none !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .lower-ambient-video,
+            .footer-video {
+                display: none !important;
+            }
+            .lower-ambient,
+            .newsletter-section,
+            footer {
+                background:
+                    radial-gradient(circle at 80% 10%, rgba(216,223,250,0.42) 0%, transparent 44%),
+                    radial-gradient(circle at 18% 68%, rgba(141,156,245,0.28) 0%, transparent 38%),
+                    linear-gradient(135deg, #11142E 0%, #25306A 58%, #4B56ED 100%) !important;
             }
         }
 
     </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polygon points="16 8 13.5 13.5 8 16 10.5 10.5 16 8"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></symbol><symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol><symbol id="i-presentation" viewBox="0 0 24 24"><path d="M2 3h20v12H2z"/><path d="M12 15v4"/><path d="M8 21l4-2 4 2"/></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol><symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="1.3"/><circle cx="17.5" cy="10.5" r="1.3"/><circle cx="8.5" cy="7.5" r="1.3"/><circle cx="6.5" cy="12.5" r="1.3"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.7 0 2-1.5 1-2.5-.8-.8-.5-2.5 1-2.5h2c2.5 0 4-2 4-4.5C20 6 16.4 2 12 2z"/></symbol><symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4.5a1.5 1.5 0 0 1 3 0V6h3a1 1 0 0 1 1 1v3h1.5a1.5 1.5 0 0 1 0 3H17v3a1 1 0 0 1-1 1h-3v1.5a1.5 1.5 0 0 1-3 0V17H7a1 1 0 0 1-1-1v-3H4.5a1.5 1.5 0 0 1 0-3H6V7a1 1 0 0 1 1-1h3z"/></symbol><symbol id="i-toolbox" viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="11" rx="2"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><line x1="2" y1="13" x2="22" y2="13"/><line x1="10" y1="13" x2="10" y2="15"/><line x1="14" y1="13" x2="14" y2="15"/></symbol><symbol id="i-trending" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol><symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol><symbol id="i-bookopen" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22 6 12 13 2 6"/></symbol><symbol id="i-coffee" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></symbol><symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol></svg>
 
 <!-- ── HERO ── -->
 <header class="hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <img class="hero-watermark" src="assets/logos/logo1-white.png" alt="" aria-hidden="true">
     <div class="hero-inner">
-        <p class="hero-brand"><span class="hero-brand-logo"><img src="assets/logos/logo1-transparent.png" alt="AI ROASTING 로고"></span>AI ROASTING</p>
-        <h1>비즈니스 리더를 위한 <span class="hero-h1-break">Claude 완전 정복</span></h1>
+        <a href="index.html" class="hero-brand" aria-label="AI ROASTING 홈으로"><span class="hero-brand-logo"><img src="assets/logos/logo1-white.png" alt="AI ROASTING 로고"></span>AI ROASTING</a>
+        <h1>비즈니스 리더를 위한 Codex 완전 정복</h1>
         <div class="hero-sub-row">
             <p class="hero-sub">AI와 함께 일하는 5단계 실전 가이드 · 진단부터 자동화까지</p>
             <a href="?about=1" class="about-link" data-about-open>이 가이드는 어떤 목적으로 만들어졌나요? <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="hero-status-row" aria-label="가이드 상태">
+            <span class="hero-status-pill"><span class="hero-status-dot" aria-hidden="true"></span>최종 업데이트 <strong>2026년 6월</strong></span>
+            <span class="hero-status-pill">최신 모델 <strong>ChatGPT 5.5</strong></span>
+        </div>
 
-        <!-- Claude 소개 (히어로 하단) -->
+        <!-- Codex 소개 (히어로 하단) -->
         <div class="hero-intro">
             <div class="hero-intro-header">
-                <strong>Claude가 처음이라면?</strong>
-                <span>ChatGPT처럼 대화하는 AI로, Anthropic이 만들었습니다.<span class="hero-intro-extra"> 사용 방식은 다섯 가지입니다.</span></span>
+                <strong>Codex가 처음이라면?</strong>
+                <span>ChatGPT로 작업을 구상하고 Codex 앱으로 코드 작업을 이어갑니다.<span class="hero-intro-extra"> 시작점은 세 가지입니다.</span></span>
             </div>
             <div class="hero-btns">
                 <a href="#section-claudeai" class="hero-btn">
-                    <span class="hero-btn-name">Claude.ai</span>
-                    <span class="hero-btn-desc">브라우저에서 바로 시작</span>
-                </a>
-                <a href="#section-design-plugin" class="hero-btn">
-                    <span class="hero-btn-name">Claude Design</span>
-                    <span class="hero-btn-desc">디자인 결과물 생성</span>
+                    <span class="hero-btn-name">ChatGPT</span>
+                    <span class="hero-btn-desc">대화로 작업 구상</span>
                 </a>
                 <a href="#section-plugin" class="hero-btn">
-                    <span class="hero-btn-name">플러그인</span>
-                    <span class="hero-btn-desc">크롬·파워포인트·엑셀·워드</span>
-                </a>
-                <a href="#section-cowork" class="hero-btn">
-                    <span class="hero-btn-name">Claude Cowork</span>
-                    <span class="hero-btn-desc">파일·구글 드라이브 연결</span>
+                    <span class="hero-btn-name">ChatGPT 플러그인</span>
+                    <span class="hero-btn-desc">업무 도구 연결</span>
                 </a>
                 <a href="#section-code" class="hero-btn">
-                    <span class="hero-btn-name">Claude Code</span>
-                    <span class="hero-btn-desc">바이브 코딩</span>
-                </a>
-                <a href="#section-final" class="hero-btn hero-btn-mobile-only">
-                    <span class="hero-btn-name">실전 예제</span>
-                    <span class="hero-btn-desc">실제 프로젝트 사례</span>
+                    <span class="hero-btn-name">Codex 앱</span>
+                    <span class="hero-btn-desc">앱에서 작업 실행</span>
                 </a>
             </div>
         </div>
     </div>
 </header>
 
-<div class="mobile-notice">이 가이드는 데스크탑에 최적화되어 있습니다</div>
 
 <!-- 모바일 햄버거 버튼 + 백드롭 -->
 <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navWrapper">
@@ -996,9 +1270,9 @@
         <div class="guide-btn-row">
             <a class="guide-btn" href="#section-1" data-section="section-1"><span class="guide-btn-num">진단</span> 내 수준 파악<span class="done-mark"></span></a>
             <a class="guide-btn" href="#section-project" data-section="section-project"><span class="guide-btn-num">1단계</span> 기본기부터<span class="done-mark"></span></a>
-            <a class="guide-btn" href="#section-plugin" data-section="section-plugin"><span class="guide-btn-num">2단계</span> 디자인·플러그인<span class="done-mark"></span></a>
-            <a class="guide-btn" href="#section-cowork" data-section="section-cowork"><span class="guide-btn-num">3단계</span> 클로드 코워크<span class="done-mark"></span></a>
-            <a class="guide-btn" href="#section-code" data-section="section-code"><span class="guide-btn-num">4단계</span> 클로드 코드<span class="done-mark"></span></a>
+            <a class="guide-btn" href="#section-plugin" data-section="section-plugin"><span class="guide-btn-num">2단계</span> 플러그인<span class="done-mark"></span></a>
+            <a class="guide-btn" href="#section-code" data-section="section-code"><span class="guide-btn-num">3단계</span> Codex 실행<span class="done-mark"></span></a>
+            <a class="guide-btn" href="#section-deploy" data-section="section-deploy"><span class="guide-btn-num">4단계</span> 저장·배포<span class="done-mark"></span></a>
             <a class="guide-btn" href="#section-skills" data-section="section-skills"><span class="guide-btn-num">5단계</span> 자동화<span class="done-mark"></span></a>
         </div>
     </div>
@@ -1012,17 +1286,17 @@
         </div>
         <p class="section-subtitle">나의 AI 활용 단계를 진단하고, 맞춤 학습 로드맵을 설계합니다</p>
         <section class="cards" style="grid-template-columns: 1fr 1fr;">
-            <a class="card featured" href="claude-orientation.html">
+            <a class="card featured" href="codex-orientation.html">
                 <div class="card-title-row">
-                    <span class="card-icon">🧭</span>
-                    <h2>Claude 완전 정복, 5분 오리엔테이션</h2>
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-compass"/></svg></span>
+                    <h2>Codex 완전 정복, 5분 오리엔테이션</h2>
                 </div>
                 <div class="card-meta"><span class="badge-time">⏱ 5분</span><span class="badge-level beginner">입문</span></div>
-                <p>왜 Claude인가, 무엇을 배우는가, 어떻게 따라가는가. 세 질문에 답하면 시작점이 보입니다.</p>
+                <p>Codex라는 말의 뜻, OpenAI Codex의 역할, 첫 작업을 맡기는 법을 빠르게 정리합니다.</p>
             </a>
             <a class="card featured" href="ai-levels.html">
                 <div class="card-title-row">
-                    <span class="card-icon">📊</span>
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span>
                     <h2>나는 지금 몇 단계일까?</h2>
                 </div>
                 <div class="card-meta"><span class="badge-time">⏱ 5분</span><span class="badge-level beginner">입문</span></div>
@@ -1037,20 +1311,20 @@
             <span class="section-num">1단계</span>
             <span class="section-title">기본기부터</span>
         </div>
-        <p class="section-subtitle">프로젝트 설정부터 멀티 페르소나 토론까지, Claude를 전략적으로 활용하는 방법을 배웁니다</p>
+        <p class="section-subtitle">프롬프트 원칙, 프로젝트 설정, 멀티 페르소나 토론까지 ChatGPT와 Codex를 전략적으로 활용하는 방법을 배웁니다</p>
         <section class="cards">
             <a class="card" href="ai-fluency.html">
-                <div class="card-title-row"><span class="card-icon">📊</span><h2>프롬프트 잘 쓰는 사람들의 11가지 습관</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-pencil"/></svg></span><h2>프롬프트 잘 쓰는 비결</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
-                <p>Anthropic이 9,830개 대화를 분석해 발견한 11가지 습관. 셀프 체크로 내 AI 활용 수준을 진단하고 맞춤 학습 경로를 받으세요.</p>
+                <p>이전의 가이드와 새로운 가이드 (v5.5)를 비교해, 이제 무엇을 줄이고 무엇을 더 분명히 써야 하는지 정리합니다.</p>
             </a>
             <a class="card" href="project-intro.html">
-                <div class="card-title-row"><span class="card-icon">📁</span><h2>프로젝트 만들기</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg></span><h2>프로젝트 만들기</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 20분</span><span class="badge-level beginner">입문</span></div>
                 <p>프로젝트 생성부터 시스템 프롬프트 작성까지 한 번에. 10분 설정으로 항상 내 업무 맥락을 기억하게 만듭니다.</p>
             </a>
             <a class="card" href="multi-persona.html">
-                <div class="card-title-row"><span class="card-icon">👥</span><h2>멀티 페르소나 토론</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><h2>멀티 페르소나 토론</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level intermediate">중급</span></div>
                 <p>AI 한 명에게 묻지 말고, 5인 전문가 팀을 구성해 토론시키세요. 같은 질문, 완전히 다른 퀄리티의 답이 나옵니다.</p>
             </a>
@@ -1058,127 +1332,74 @@
     </div>
 
     <!--2단계: 플러그인 -->
-    <div id="section-design-plugin" aria-hidden="true" style="position: relative; height: 0;"></div>
     <div class="card-section" id="section-plugin">
         <div class="section-header">
             <span class="section-num">2단계</span>
-            <span class="section-title">디자인·플러그인</span>
+            <span class="section-title">플러그인</span>
         </div>
-        <p class="section-subtitle">설치 없이, 지금 쓰는 도구에서 바로 Claude를 연결합니다</p>
-        <section class="cards">
-            <a class="card" href="claude-design.html">
-                <div class="card-title-row"><span class="card-icon">🎨</span><h2>Claude Design</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
-                <p>아이디어에서 편집 가능한 디자인까지, 대화로 만드는 프로토타입·프레젠테이션·웹사이트. Anthropic Labs의 새로운 디자인 도구입니다.</p>
-            </a>
-            <a class="card" href="chrome-plugin.html">
-                <div class="card-title-row"><span class="card-icon">🌐</span><h2>크롬에서 Claude 사용</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
-                <p>브라우저를 떠나지 않고 Claude를 사용합니다. 웹 페이지 요약, 이메일 작성, 검색 보조까지 크롬 안에서 해결합니다.</p>
-            </a>
-            <a class="card" href="claude-plugin.html">
-                <div class="card-title-row"><span class="card-icon">📎</span><h2>MS Office에서 Claude 사용</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
-                <p>엑셀·파워포인트·워드에 Claude를 붙여 문서 작업을 한 번에 자동화합니다. Office 3종 플러그인 실전 가이드.</p>
-            </a>
-        </section>
-    </div>
-
-    <!--3단계: 코워크 -->
-    <div class="card-section" id="section-cowork">
-        <div class="section-header">
-            <span class="section-num">3단계</span>
-            <span class="section-title">클로드 코워크</span>
-        </div>
-        <p class="section-subtitle">내 PC 파일, Gmail, Calendar를 AI에 직접 연결합니다</p>
+        <p class="section-subtitle">Excel과 PowerPoint 안에서 ChatGPT를 바로 연결합니다</p>
         <section class="cards" style="grid-template-columns: 1fr 1fr;">
-            <a class="card" href="cowork-intro.html">
-                <div class="card-title-row"><span class="card-icon">🤝</span><h2>Claude Cowork란?</h2></div>
+            <a class="card" href="excel-plugin.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span><h2>Excel에서 ChatGPT 사용</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
-                <p>Claude Desktop에서 내 PC 파일, Gmail, Calendar, Drive를 AI에 직접 연결합니다. 설치부터 설정까지.</p>
+                <p>Excel 사이드바에서 워크북을 만들고, 수식을 설명하고, 시나리오와 민감도 분석을 실행합니다.</p>
             </a>
-            <a class="card" href="cowork.html">
-                <div class="card-title-row"><span class="card-icon">🎯</span><h2>클로드 코워크 실전 과제 8가지</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 과제별 상이</span><span class="badge-level intermediate">중급</span></div>
-                <p>Gmail 정리, 보고서 초안, 데이터 분석… Claude가 실제 업무를 대신 처리하는 8가지 실습 과제.</p>
+            <a class="card" href="pptx-plugin.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-presentation"/></svg></span><h2>PowerPoint에서 ChatGPT 사용</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
+                <p>PowerPoint 사이드바에서 슬라이드 초안, 기존 덱 수정, 스토리 점검, 발표 준비를 진행합니다.</p>
             </a>
         </section>
     </div>
 
-    <!--4단계: 코드 -->
+    <!--3단계: Codex 실행 -->
     <div class="card-section" id="section-code">
         <div class="section-header">
-            <span class="section-num">4단계</span>
-            <span class="section-title">클로드 코드</span>
+            <span class="section-num">3단계</span>
+            <span class="section-title">Codex로 실행하기</span>
         </div>
-        <p class="section-subtitle">터미널 없이도 시작할 수 있습니다. 방법을 선택하세요</p>
-
-        <!-- 설명 카드 2개 -->
-        <div class="code-track-info" style="margin-top: 16px; margin-bottom: 32px;">
-            <div class="track-info-card" id="nocodeInfoCard">
-                <div class="track-info-header">
-                    <span class="track-label-badge nocode" style="font-size:11px; padding:4px 12px;">노코드</span>
-                    <span class="track-info-title">노코드란?</span>
-                </div>
-                <p class="track-info-desc">터미널(검은 화면) 없이 Claude Desktop 앱에서 바로 클로드 코드를 사용하는 방식입니다. 설치가 간단하고 직관적이어서 코딩 경험이 없어도 바로 시작할 수 있습니다.</p>
-            </div>
-            <div class="track-info-card" id="cliInfoCard">
-                <div class="track-info-header">
-                    <span class="track-label-badge cli" style="font-size:11px; padding:4px 12px;">CLI</span>
-                    <span class="track-info-title">CLI란?</span>
-                </div>
-                <p class="track-info-desc">Command Line Interface의 약자로, 터미널에서 직접 명령어를 입력해 Claude Code를 제어하는 방식입니다. 더 강력하고 세밀한 제어가 가능하며, 자동화와 고급 기능을 활용할 수 있습니다.</p>
-            </div>
-        </div>
-
-        <!-- 노코드 트랙 -->
-        <div class="track-label" id="nocodeTrackLabel">
-            <span class="track-label-badge nocode">🖥️ 노코드</span>
-            <span class="track-label-text">검은 화면 없이</span>
-        </div>
-        <section class="cards" style="grid-template-columns: 1fr 1fr 1fr;">
-            <a class="card featured" href="claude-code-101.html">
-                <div class="card-title-row"><span class="card-icon">🖥️</span><h2>클로드 코드 101</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
-                <p>터미널 없이 Claude Desktop에서 시작하는 가장 쉬운 방법. 계획서 먼저, 자연어로 실행까지.</p>
-            </a>
-            <a class="card" href="claude-code-tasks.html">
-                <div class="card-title-row"><span class="card-icon">🎯</span><h2>클로드 코드 실전 과제 7가지</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 과제별 상이</span><span class="badge-level intermediate">중급</span></div>
-                <p>스탑워치부터 CEO 대시보드까지. 바이브코딩으로 직접 만들며 배우는 7단계 실전 프로젝트.</p>
-            </a>
-            <a class="card" href="github-guide.html">
-                <div class="card-title-row"><span class="card-icon">🚀</span><h2>GitHub &amp; Vercel</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 20분</span><span class="badge-level intermediate">중급</span></div>
-                <p>코드를 저장하고, 웹 주소로 접속하기까지 한번에</p>
-            </a>
-        </section>
-
-        <!-- 바이브코딩 구분선 -->
-        <div style="margin: 40px 0 0; text-align: center; position: relative;">
-            <div style="border-top: 2px dashed #CECAC3; margin: 0 0 0 0;"></div>
-            <span style="display: inline-block; background: var(--bg, #EDEAE4); padding: 0 20px; position: relative; top: -13px; font-size: 13px; font-weight: 700; color: #7A7570; letter-spacing: 0.3px;">↑ 여기까지면 바이브코딩 준비 완료<span class="divider-after-text">&nbsp;&nbsp;│&nbsp;&nbsp; ↓ 아래부터 고급 실전</span></span>
-        </div>
-
-        <!-- CLI 트랙 -->
-        <div class="track-label" id="cliTrackLabel" style="margin-top: 0;">
-            <span class="track-label-badge cli">⌨️ CLI</span>
-            <span class="track-label-text">Command Line Interface</span>
-        </div>
+        <p class="section-subtitle">작은 작업부터 맡기고, 결과를 확인하며 실행 감각을 익힙니다</p>
         <section class="cards" style="grid-template-columns: 1fr 1fr;">
-            <a class="card" href="checklist.html">
-                <div class="card-title-row"><span class="card-icon">✅</span><h2>클로드 코드 20단계로 따라하기</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 단계별</span><span class="badge-level advanced">고급</span></div>
-                <p>기초부터 고급까지 20개 항목. 체크할수록 내가 무엇을 모르는지 보입니다.</p>
+            <a class="card featured" href="codex-101.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-monitor"/></svg></span><h2>Codex 앱 시작하기</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
+                <p>Codex 앱에서 프로젝트를 열고, 작은 파일 작업을 맡기고, 결과를 확인하는 첫 과정을 익힙니다.</p>
             </a>
-            <a class="card" href="cheatsheet.html">
-                <div class="card-title-row"><span class="card-icon">⌨️</span><h2>명령어 모음</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 레퍼런스</span><span class="badge-level reference">참고</span></div>
-                <p>외울 필요 없습니다. 자주 쓰는 슬래시 명령어와 단축키를 한 곳에 모았습니다.</p>
+            <a class="card" href="codex-tasks.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-target"/></svg></span><h2>Codex 실전 과제 8가지</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 과제별 상이</span><span class="badge-level intermediate">중급</span></div>
+                <p>스탑워치부터 3D 게임 월드까지. 직접 만들며 Codex에게 일을 맡기는 감각을 익힙니다.</p>
             </a>
         </section>
+    </div>
 
-
+    <!--4단계: GitHub와 배포 -->
+    <div class="card-section" id="section-deploy">
+        <div class="section-header">
+            <span class="section-num">4단계</span>
+            <span class="section-title">GitHub와 배포</span>
+        </div>
+        <p class="section-subtitle">작업 결과를 저장하고, 공유하고, 웹 주소로 배포합니다</p>
+        <div class="deploy-split" aria-label="저장과 배포 분리 카드">
+            <div class="deploy-track">
+                <section class="cards">
+                    <a class="card" href="github-guide.html">
+                        <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 16 16" aria-hidden="true" class="ic-fill"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span><h2>GitHub 저장과 공유</h2></div>
+                        <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
+                        <p>저장소를 만들고 파일을 올립니다. GitHub Pages로 정적 사이트를 공개하는 기본 과정까지 익힙니다.</p>
+                    </a>
+                </section>
+            </div>
+            <div class="deploy-track">
+                <section class="cards">
+                    <a class="card" href="vercel-guide.html">
+                        <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-rocket"/></svg></span><h2>Vercel 배포</h2></div>
+                        <div class="card-meta"><span class="badge-time">⏱ 8분</span><span class="badge-level intermediate">중급</span></div>
+                        <p>프로젝트를 Vercel에 올립니다. 수정할 때마다 자동으로 다시 배포되는 과정을 익힙니다.</p>
+                    </a>
+                </section>
+            </div>
+        </div>
     </div>
 
     <!--5단계: 자동화 -->
@@ -1195,18 +1416,18 @@
             <span class="track-label-text">나만의 자동화 만들기</span>
         </div>
         <section class="cards" style="grid-template-columns: 1fr 1fr 1fr;">
-            <a class="card" href="claude-md-templates.html">
-                <div class="card-title-row"><span class="card-icon">📋</span><h2>CLAUDE.md로 내 규칙 알려주기</h2></div>
+            <a class="card" href="agents-md-templates.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-clipboard"/></svg></span><h2>AGENTS.md로 내 규칙 알려주기</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level intermediate">중급</span></div>
-                <p>Claude의 행동을 프로젝트별로 설정하는 파일입니다. "한국어로 답해줘" 같은 규칙을 저장합니다.</p>
+                <p>Codex와 ChatGPT가 읽을 프로젝트 규칙 파일입니다. "한국어로 답해줘" 같은 기준을 저장합니다.</p>
             </a>
             <a class="card" href="skills.html">
-                <div class="card-title-row"><span class="card-icon">🎨</span><h2>나만의 Skill 만들기</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-palette"/></svg></span><h2>나만의 Skill 만들기</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 20분</span><span class="badge-level intermediate">중급</span></div>
-                <p>이메일은 이렇게, 보고서는 저렇게. 내 스타일을 Claude에게 등록하면 한 마디로 완성됩니다.</p>
+                <p>이메일은 이렇게, 보고서는 저렇게. 내 스타일을 Codex에게 등록하면 한 마디로 완성됩니다.</p>
             </a>
             <a class="card" href="code-plugin.html">
-                <div class="card-title-row"><span class="card-icon">🧩</span><h2>스킬·MCP를 플러그인으로 묶기</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-puzzle"/></svg></span><h2>스킬·MCP를 플러그인으로 묶기</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 20분</span><span class="badge-level intermediate">중급</span></div>
                 <p>내가 만든 스킬과 자주 쓰는 MCP를 하나의 패키지로 묶습니다.</p>
             </a>
@@ -1219,12 +1440,12 @@
         </div>
         <section class="cards" style="grid-template-columns: 1fr 1fr;">
             <a class="card" href="harness-engineering.html">
-                <div class="card-title-row"><span class="card-icon">🐴</span><h2>하네스 엔지니어링이란?</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-toolbox"/></svg></span><h2>하네스 엔지니어링이란?</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
                 <p>같은 AI 모델도 하네스에 따라 결과가 달라집니다. AI가 일하는 환경을 설계하는 6가지 구성 요소를 배웁니다.</p>
             </a>
             <a class="card" href="agent-design.html">
-                <div class="card-title-row"><span class="card-icon">🧩</span><h2>팀 설계: 솔로에서 오케스트라까지</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-puzzle"/></svg></span><h2>팀 설계: 솔로에서 오케스트라까지</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 20분</span><span class="badge-level advanced">고급</span></div>
                 <p>솔로 · 파이프라인 · 팀 · 오케스트라. AI에게 일을 맡기는 4가지 설계 패턴을 실전 가이드로 익힙니다.</p>
             </a>
@@ -1232,49 +1453,87 @@
 
     </div>
 
+    <section class="lower-ambient" aria-label="인덱스 하단 콘텐츠">
+        <video class="lower-ambient-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+            <source src="assets/media/hero-bg.mp4" type="video/mp4">
+        </video>
+        <div class="lower-ambient-inner">
+
     <!-- 실전 예제 -->
     <div class="card-section" id="section-final" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
         <div class="section-header" style="padding-top: 0;">
-            <span class="section-num" style="background: #8B6914;">예제</span>
+            <span class="section-num">예제</span>
             <span class="section-title">실전 예제</span>
         </div>
-        <p class="section-subtitle">하네스 엔지니어링을 실제 프로젝트에 적용한 사례</p>
-        <section class="cards" style="grid-template-columns: 1fr 1fr;">
-            <a class="card" href="google-sheets-dashboard.html" style="border-left: 3px solid #B8860B; background: linear-gradient(135deg, var(--nm-bg), #f5f0e8);">
+        <p class="section-subtitle">실제 업무에 Codex와 자동화 작업을 붙이는 사례</p>
+
+        <!-- 기본 예제 -->
+        <div class="track-label">
+            <span class="track-label-badge concept">🎯 기본 예제</span>
+            <span class="track-label-text">바로 써먹는 실무 자동화</span>
+        </div>
+        <section class="cards">
+            <a class="card" href="google-sheets-dashboard.html">
                 <div class="card-title-row">
-                    <span class="card-icon">&#x1F4CB;</span>
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-trending"/></svg></span>
                     <h2>구글 시트 기반 대시보드 만들기</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: #B8860B; background: rgba(184,134,11,0.12); padding: 3px 10px; border-radius: 20px; margin-left: auto;">실전</span>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
                 </div>
                 <div class="card-meta"><span class="badge-time">&#x23F1; 12분</span><span class="badge-level intermediate">중급</span></div>
                 <p>구글 시트에 있는 데이터를 분석하여 인터랙티브 대시보드 만들기.</p>
             </a>
-            <a class="card" href="stock-messenger.html" style="border-left: 3px solid #B8860B; background: linear-gradient(135deg, var(--nm-bg), #f5f0e8);">
+            <a class="card" href="instagram-card-news.html">
                 <div class="card-title-row">
-                    <span class="card-icon">&#x1F4CA;</span>
-                    <h2>종목 분석 후 텔레그램으로 보고 받기</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: #B8860B; background: rgba(184,134,11,0.12); padding: 3px 10px; border-radius: 20px; margin-left: auto;">실전</span>
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-image"/></svg></span>
+                    <h2>인스타그램 카드뉴스 만들기</h2>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
                 </div>
-                <div class="card-meta"><span class="badge-time">&#x23F1; 15분</span><span class="badge-level advanced">고급</span></div>
-                <p>DART 공시 데이터로 관심 종목을 분석하고, 텔레그램 봇으로 리포트를 받아보는 MCP 연동 워크플로우.</p>
+                <div class="card-meta"><span class="badge-time">&#x23F1; 15분</span><span class="badge-level intermediate">중급</span></div>
+                <p>주제와 타깃을 입력해 카드뉴스 스토리라인을 만들고, 1080×1350 PNG로 바로 내려받는 마케팅 자동화 예제.</p>
             </a>
-            <a class="card" href="korean-law-mcp.html" style="border-left: 3px solid #B8860B; background: linear-gradient(135deg, var(--nm-bg), #f5f0e8);">
+            <a class="card" href="harness-book.html">
                 <div class="card-title-row">
-                    <span class="card-icon">&#x2696;&#xFE0F;</span>
-                    <h2>한국 법령 검색 MCP 연결하기</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: #B8860B; background: rgba(184,134,11,0.12); padding: 3px 10px; border-radius: 20px; margin-left: auto;">실전</span>
-                </div>
-                <div class="card-meta"><span class="badge-time">&#x23F1; 10분</span><span class="badge-level intermediate">중급</span></div>
-                <p>Claude Desktop의 Customize 메뉴에서 커스텀 MCP를 붙여, 법령·판례·조례를 실시간으로 검색하고 환각까지 검증하는 실전 사례.</p>
-            </a>
-            <a class="card" href="harness-book.html" style="border-left: 3px solid #B8860B; background: linear-gradient(135deg, var(--nm-bg), #f5f0e8);">
-                <div class="card-title-row">
-                    <span class="card-icon">&#x1F4DA;</span>
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-book"/></svg></span>
                     <h2>하네스 엔지니어링으로 책 쓰기</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: #B8860B; background: rgba(184,134,11,0.12); padding: 3px 10px; border-radius: 20px; margin-left: auto;">실전</span>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
                 </div>
                 <div class="card-meta"><span class="badge-time">&#x23F1; 20분</span><span class="badge-level advanced">고급</span></div>
                 <p>AI 에이전트 팀으로 책 한 권을 완성하는 하네스 엔지니어링 실전 가이드.</p>
+            </a>
+        </section>
+
+        <!-- MCP 연결 -->
+        <div class="track-label" style="margin-top: 32px;">
+            <span class="track-label-badge concept">🔌 MCP 연결</span>
+            <span class="track-label-text">외부 도구와 연동하는 워크플로우</span>
+        </div>
+        <section class="cards">
+            <a class="card" href="playmcp-kakao.html">
+                <div class="card-title-row">
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chat"/></svg></span>
+                    <h2>카카오톡 PlayMCP 연결하기</h2>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
+                </div>
+                <div class="card-meta"><span class="badge-time">&#x23F1; 12분</span><span class="badge-level intermediate">중급</span></div>
+                <p>Codex와 Kakao PlayMCP를 MCP로 연결해, 작업 요약을 카카오톡 나와의 채팅방으로 보내는 실전 과정.</p>
+            </a>
+            <a class="card" href="korean-law-mcp.html">
+                <div class="card-title-row">
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span>
+                    <h2>한국 법령 검색 MCP 연결하기</h2>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
+                </div>
+                <div class="card-meta"><span class="badge-time">&#x23F1; 10분</span><span class="badge-level intermediate">중급</span></div>
+                <p>Codex의 Customize 메뉴에서 커스텀 MCP를 붙여, 법령·판례·조례를 실시간으로 검색하고 환각까지 검증하는 실전 사례.</p>
+            </a>
+            <a class="card" href="stock-messenger.html">
+                <div class="card-title-row">
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span>
+                    <h2>기업 공시 데이터 분석</h2>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
+                </div>
+                <div class="card-meta"><span class="badge-time">&#x23F1; 15분</span><span class="badge-level advanced">고급</span></div>
+                <p>DART 공시 데이터로 관심 종목을 분석하고, 텔레그램 봇으로 리포트를 받아보는 MCP 연동 워크플로우.</p>
             </a>
         </section>
     </div>
@@ -1282,7 +1541,7 @@
     <!-- 수강생 한 마디 -->
     <div class="card-section" id="section-voices">
         <div class="section-header">
-            <span class="section-num" style="background: #8B6914;">후기</span>
+            <span class="section-num">후기</span>
             <span class="section-title">수강생 한 마디</span>
         </div>
         <p class="section-subtitle">이 강의를 들은 분들의 솔직한 한 마디</p>
@@ -1293,28 +1552,28 @@
             </button>
             <section class="voices" id="voicesTrack">
                 <article class="voice-card">
-                    <p>AI 시대에 내가 무엇을 해야 하는지, 앞으로 어디로 가고 싶은지 정리하는 시간이 됐어요. 그리고 <strong>클로드로 마음만 먹으면 못 할 일이 없다</strong>는 걸 알게 되니까 생각이 훨씬 유연해지더라고요. 배우자한테도 꼭 들어보라고 할 겁니다.</p>
-                    <span class="voice-tag">사고의 확장</span>
+                    <p>코드를 전혀 몰라서 처음엔 Codex가 멀게만 느껴졌어요. 그런데 작은 문구 하나 고쳐 달라고 맡겨 보니 금방 감이 오더라고요. <strong>부탁하고, 바뀐 파일 확인하고, 여기 다시 고쳐 달라고 말하는 게</strong> 생각보다 어렵지 않았어요. 개발팀이랑 얘기할 때도 제가 뭘 부탁해야 하는지 한결 또렷해졌고요.</p>
+                    <span class="voice-tag">부탁하는 법</span>
                 </article>
                 <article class="voice-card">
-                    <p><strong>AI 시대가 온 건 아는데 현실로 받아들이기 어려운 분들에게 정말 좋은 강의</strong>였어요. 왜 배워야 하는지, 어떻게 쓰는지, 심지어 바로 쓸 수 있는 도구까지 직접 만들어 나눠주시니까 시작하기가 한결 쉬워졌습니다. 누구한테든 강력 추천합니다.</p>
-                    <span class="voice-tag">진입 장벽 해소</span>
+                    <p>ChatGPT로 아이디어를 정리하고, 그걸 Codex에서 실제 파일로 고쳐 보는 과정이 제일 도움이 됐어요. 예전엔 AI한테 말만 걸다 끝났거든요. 이제는 그 말이 HTML이랑 문서에 그대로 반영되는 걸 직접 봤어요. <strong>머릿속에만 있던 게 눈앞의 결과물로 바뀌는 느낌</strong>이었어요.</p>
+                    <span class="voice-tag">결과물이 생김</span>
                 </article>
                 <article class="voice-card">
-                    <p>솔직히 그전에는 클로드를 그냥 검색 대신 쓰는 정도였어요. 강의를 듣고 나서야 '아, 이렇게 써야 되는 거구나' 싶더라고요. <strong>막연하게 알던 게 진짜 손에 잡히는 느낌</strong>이라 너무 좋았습니다. 주변에도 적극 추천하려고요.</p>
-                    <span class="voice-tag">실전 활용</span>
+                    <p>GitHub랑 배포는 늘 겁났는데, 막상 저장소에 올리고 웹 주소로 열어 보니 생각보다 할 만하더라고요. 코드를 통째로 외우는 수업이 아니라, <strong>Codex한테 맡긴 일을 제가 확인하고 승인하는 법</strong>을 배운 게 좋았어요.</p>
+                    <span class="voice-tag">저장과 배포</span>
                 </article>
                 <article class="voice-card">
-                    <p>머리로 알던 거랑 직접 해본 게 너무 달랐어요. AI를 보는 눈이 바뀌었고, 내가 할 수 있는 일이 이렇게 많다는 게 놀라웠습니다. 그러다 보니 나와 자식 세대는 앞으로 어떻게 살아야 할지 진지하게 생각하게 되더라고요. <strong>솔직히 다른 사람들에게 추천하고 싶기도 하고, 혼자만 알고 싶기도 하고</strong> 그렇습니다.</p>
-                    <span class="voice-tag">관점 전환</span>
+                    <p>비개발자라 터미널이나 파일 이름만 나와도 겁부터 났어요. 그런데 어떤 파일을 열고, 어디까지 맡기고, 어디를 확인하면 되는지 하나씩 짚어 보니 훨씬 덜 낯설더라고요. <strong>개발자한테 부탁하기 전에 초안 정도는 제가 직접 만들어 볼 수 있겠다</strong> 싶었어요.</p>
+                    <span class="voice-tag">덜 무서워짐</span>
                 </article>
                 <article class="voice-card">
-                    <p>그동안 300만 원, 500만 원짜리 강의도 꽤 들어봤어요. 솔직히 들을 때만 그럴싸하고, 끝나고 나면 남는 게 별로 없는 경우가 많았거든요. 그에 비하면 이건 <strong>실전 전문가의 가성비 끝판왕</strong>이었습니다.</p>
-                    <span class="voice-tag">가성비</span>
+                    <p>보고서, 랜딩 페이지, 대시보드처럼 실제 업무에 가까운 예제가 많아서 좋았어요. 그냥 신기한 기능 구경하는 게 아니라, 내 일에 이걸 어떻게 붙일까를 계속 떠올리게 되더라고요. 특히 <strong>수정 요청을 몇 번 주고받으면서 결과물이 점점 나아지는 걸 보는 게</strong> 제일 실전 같았어요.</p>
+                    <span class="voice-tag">업무 적용</span>
                 </article>
                 <article class="voice-card">
-                    <p>AI 강의가 대부분 개발자 중심이잖아요. <strong>이건 영업·운영·기획에서 바로 써먹을 수 있게 짜여 있어서</strong> 너무 좋았습니다. 비개발 직군에 강력 추천합니다.</p>
-                    <span class="voice-tag">비개발 직군</span>
+                    <p>AI를 그냥 검색창처럼 쓰던 단계에서 벗어난 느낌이었어요. Codex가 내놓은 걸 그대로 믿는 게 아니라, 뭐가 바뀌었는지 보고 왜 이렇게 했는지 확인하는 습관이 인상 깊었어요. <strong>팀에서 AI로 일할 때 기준을 세우는 데 바로 써먹을 수 있겠더라고요.</strong></p>
+                    <span class="voice-tag">확인하는 습관</span>
                 </article>
             </section>
             <button class="voices-nav next" id="voicesNext" aria-label="다음 후기" type="button">
@@ -1331,23 +1590,23 @@
     <!-- 참고 1: 바이브코딩 백과사전 -->
     <div class="card-section" id="section-glossary" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
         <div class="section-header" style="padding-top: 0;">
-            <span class="section-num" style="background: #888;">참고</span>
+            <span class="section-num">참고</span>
             <span class="section-title">바이브코딩 백과사전</span>
         </div>
         <p class="section-subtitle">낯선 단어가 나올 때마다 펼쳐보는 비개발자 전용 사전</p>
         <section class="cards" style="grid-template-columns: 1fr 1fr 1fr;">
             <a class="card" href="file-types.html">
-                <div class="card-title-row"><span class="card-icon">📄</span><h2>파일 유형 한눈에 보기</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span><h2>파일 유형 한눈에 보기</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
-                <p>.md부터 .py까지, Claude Code에서 자주 만나는 파일 8종을 예제 코드와 함께 비교합니다.</p>
+                <p>.md부터 .py까지, Codex에서 자주 만나는 파일 8종을 예제 코드와 함께 비교합니다.</p>
             </a>
             <a class="card" href="license-compare.html">
-                <div class="card-title-row"><span class="card-icon">⚖️</span><h2>라이선스 가이드</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span><h2>라이선스 가이드</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
                 <p>MIT, Apache, GPL… 스킬을 배포할 때 꼭 알아야 할 오픈소스 라이선스를 비교합니다.</p>
             </a>
             <a class="card" href="glossary.html">
-                <div class="card-title-row"><span class="card-icon">📖</span><h2>모르는 용어, 바로 찾기</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-bookopen"/></svg></span><h2>모르는 용어, 바로 찾기</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
                 <p>터미널, 커밋, 브랜치… 낯선 단어가 나올 때마다 펼쳐보는 비개발자 전용 사전입니다.</p>
             </a>
@@ -1357,33 +1616,39 @@
     <!-- 참고 2: 디자인·시각화 갤러리 -->
     <div class="card-section" id="section-gallery" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
         <div class="section-header" style="padding-top: 0;">
-            <span class="section-num" style="background: #888;">참고</span>
+            <span class="section-num">참고</span>
             <span class="section-title">디자인·시각화 갤러리</span>
         </div>
         <p class="section-subtitle">바이브 코딩 결과물을 더 풍부하게 만드는 시각 자료 모음</p>
         <section class="cards" style="grid-template-columns: 1fr 1fr 1fr;">
             <a class="card" href="eda-gallery.html">
-                <div class="card-title-row"><span class="card-icon">📊</span><h2>EDA 차트 갤러리 12</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span><h2>EDA 차트 갤러리 12</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
                 <p>히스토그램, 박스플롯, 상관 히트맵… 본격 분석 전에 데이터를 들여다보는 12가지 차트를 모았습니다.</p>
             </a>
             <a class="card" href="component-gallery.html">
-                <div class="card-title-row"><span class="card-icon">🧱</span><h2>UI 컴포넌트 갤러리 40</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-grid"/></svg></span><h2>UI 컴포넌트 갤러리 40</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
                 <p>버튼, 카드, 모달, 폼… 바이브 코딩할 때 자주 쓰는 UI 부품을 한눈에 모았습니다.</p>
             </a>
             <a class="card" href="ui-design.html">
-                <div class="card-title-row"><span class="card-icon">🎨</span><h2>UI 디자인 트렌드 12</h2></div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-palette"/></svg></span><h2>UI 디자인 트렌드 18</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
-                <p>머터리얼, 뉴모피즘, 글라스모피즘… 디자인 스타일을 알면 Claude에게 더 정확히 요청할 수 있습니다.</p>
+                <p>머터리얼, 뉴모피즘, 글라스모피즘… 디자인 스타일을 알면 Codex에게 더 정확히 요청할 수 있습니다.</p>
             </a>
         </section>
     </div>
+
+        </div>
+    </section>
 
 </main>
 
 <!-- ── 뉴스레터 ── -->
 <section class="newsletter-section">
+    <video class="footer-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <div class="newsletter-header">
         <div>
             <div class="newsletter-header-text">AI ROASTING의 다른 콘텐츠</div>
@@ -1392,23 +1657,23 @@
     </div>
     <div class="newsletter-cards">
         <a class="card" href="https://www.linkedin.com/newsletters/ai-%EB%A1%9C%EC%8A%A4%ED%8C%85-7321517076899127296/" target="_blank" rel="noopener">
-            <div class="card-title-row"><span class="card-icon">📬</span><h2>AI 로스팅 뉴스레터 <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
+            <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg></span><h2>AI 로스팅 뉴스레터 <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
             <p>매주 받아보는 AI 퍼스트 인사이트</p>
         </a>
         <a class="card" href="https://airoasting.github.io/blog/index.html" target="_blank" rel="noopener">
-            <div class="card-title-row"><span class="card-icon">☕</span><h2>AI 로스팅 블로그 <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
+            <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-coffee"/></svg></span><h2>AI 로스팅 블로그 <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
             <p>비즈니스 리더를 위한 인사이트 저널</p>
         </a>
         <a class="card" href="https://airoasting.github.io/5color/" target="_blank" rel="noopener">
-            <div class="card-title-row"><span class="card-icon">🎨</span><h2>5 Color Harness <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
+            <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-palette"/></svg></span><h2>5 Color Harness <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
             <p>5색 페르소나 협업 방법론</p>
         </a>
         <a class="card" href="https://airoasting.github.io/skill_library/" target="_blank" rel="noopener">
-            <div class="card-title-row"><span class="card-icon">🛠️</span><h2>스킬 라이브러리 <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
+            <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-tools"/></svg></span><h2>스킬 라이브러리 <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
             <p>엄선한 AI 스킬 모음</p>
         </a>
         <a class="card" href="https://airoasting.github.io/slide_library/" target="_blank" rel="noopener">
-            <div class="card-title-row"><span class="card-icon">🖼️</span><h2>슬라이드 라이브러리 <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
+            <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-image"/></svg></span><h2>슬라이드 라이브러리 <span style="font-size:14px; opacity:0.5;">↗</span></h2></div>
             <p>바로 쓰는 슬라이드 템플릿</p>
         </a>
     </div>
@@ -1426,12 +1691,12 @@
             <p class="about-eyebrow">ABOUT</p>
 
             <div class="about-quote">
-                <h1 id="aboutTitle">"개발 말고, 비즈니스용으로는 Claude를 어떻게 써야 하나요?"</h1>
+                <h1 id="aboutTitle">"개발 말고, 비즈니스용으로는 Codex를 어떻게 써야 하나요?"</h1>
                 <p>AI 이야기를 나누면서 가장 자주 받는 질문입니다.</p>
             </div>
 
             <div class="about-intro">
-                <p>시중에 나와 있는 Claude 자료는 대부분 개발자를 대상으로 합니다. 그래서 이 가이드는 <strong>비즈니스 리더가 의사결정과 보고, 자동화에 바로 활용할 수 있도록</strong> 같은 도구를 비즈니스 관점으로 다시 정리한 자료입니다.</p>
+                <p>시중에 나와 있는 Codex 자료는 대부분 개발자를 대상으로 합니다. 그래서 이 가이드는 <strong>비즈니스 리더가 의사결정과 보고, 자동화에 바로 활용할 수 있도록</strong> 같은 도구를 비즈니스 관점으로 다시 정리한 자료입니다.</p>
                 <p>코드를 한 줄도 모르는 리더도 진단부터 자동화까지 한 번에 따라올 수 있도록 전체 내용을 5단계로 구성했습니다.</p>
             </div>
 
@@ -1441,7 +1706,7 @@
                         <span class="about-card-num">01</span>
                         <span class="about-card-title">왜 만들었나요</span>
                     </div>
-                    <p>AI 강의에서 가장 자주 받는 질문이 있습니다. "프롬프트는 어떻게 써야 잘 쓰나요?", "Claude Code는 어떻게 쓰나요?" 같은 질문입니다.<br><br>매번 같은 답을 반복하는 대신, <strong>한 권으로 정리된 표준 레퍼런스</strong>를 만들기로 했습니다. 이 가이드가 그 시작입니다.</p>
+                    <p>AI 강의에서 가장 자주 받는 질문이 있습니다. "프롬프트는 어떻게 써야 잘 쓰나요?", "Codex는 어떻게 쓰나요?" 같은 질문입니다.<br><br>매번 같은 답을 반복하는 대신, <strong>한 권으로 정리된 표준 레퍼런스</strong>를 만들기로 했습니다. 이 가이드가 그 시작입니다.</p>
                 </section>
 
                 <section class="about-card accent-2">
@@ -1462,7 +1727,7 @@
                 <p class="about-eyebrow" style="margin-top:0;">LICENSE</p>
                 <h2 class="license-title" id="licenseTitle">저작권 안내 (Copyright Notice)</h2>
                 <div class="license-text">
-                    <p class="lic-meta">Copyright (c) 2026 AI ROASTING <span class="lic-author">(강정구 / jaydenjkang@gmail.com<button type="button" class="lic-copy" data-copy-text="jaydenjkang@gmail.com" aria-label="이메일 복사" title="이메일 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>)</span><br>v1.0 · 2026-03-01</p>
+                    <p class="lic-meta">Copyright (c) 2026 AI ROASTING <span class="lic-author">(강정구 / jaydenjkang@gmail.com<button type="button" class="lic-copy" data-copy-text="jaydenjkang@gmail.com" aria-label="이메일 복사" title="이메일 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>)</span><br>v1.0 · 2026-05-31</p>
                     <p class="lic-meta">본 가이드의 저작권은 작성자에게 있습니다. 인용된 Anthropic 콘텐츠와 사용된 외부 자산(Pretendard Variable, MIT/Apache 2.0 등 오픈소스 라이브러리)은 각 권리자에게 귀속되며 해당 라이선스가 적용됩니다.</p>
 
                     <h3>1. 금지되는 행위</h3>
@@ -1490,7 +1755,7 @@
 
         <div class="about-cta-bar">
             <div class="about-cta-left">
-                <span class="about-byline-logo"><img src="assets/logos/logo1-transparent.png" alt="AI ROASTING 로고"></span>
+                <span class="about-byline-logo"><img src="assets/logos/logo1-white.png" alt="AI ROASTING 로고"></span>
                 <span class="about-byline-name">강정구 <span>·</span> Jayden Kang</span>
                 <div class="about-byline-icons">
                     <a href="https://www.linkedin.com/in/jayden-kang/" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -1507,8 +1772,11 @@
 </div>
 
 <footer>
+    <video class="footer-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <p class="footer-brand">AI ROASTING</p>
-    <p class="footer-text">비즈니스 리더를 위한 Claude 완전 정복</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
     <span class="footer-link-row">
         <a href="?about=1" class="footer-about-link" data-about-open>가이드 소개</a>
         <span class="footer-link-sep" aria-hidden="true">·</span>
@@ -1522,6 +1790,24 @@
 document.addEventListener('DOMContentLoaded', function() {
     var navWrapper = document.getElementById('navWrapper');
     var navBtns = document.querySelectorAll('.guide-btn');
+    var motionVideos = document.querySelectorAll('.hero-video, .lower-ambient-video, .footer-video');
+
+    if (motionVideos.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var playMotionVideos = function() {
+            motionVideos.forEach(function(video) {
+                video.muted = true;
+                var playPromise = video.play();
+                if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(function() {});
+            });
+        };
+        motionVideos.forEach(function(video) {
+            if (video.readyState >= 2) playMotionVideos();
+            else video.addEventListener('canplay', playMotionVideos, { once: true });
+        });
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) playMotionVideos();
+        });
+    }
 
     // 모바일 햄버거 메뉴 토글
     var menuToggle = document.getElementById('menuToggle');
@@ -1537,43 +1823,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setMenuOpen(!document.body.classList.contains('menu-open'));
     });
 
-    // 모바일: 노코드란? / CLI란? 카드를 각 트랙 라벨 바로 아래로 이동
-    var nocodeInfo = document.getElementById('nocodeInfoCard');
-    var cliInfo = document.getElementById('cliInfoCard');
-    var infoHome = nocodeInfo ? nocodeInfo.parentNode : (cliInfo ? cliInfo.parentNode : null);
-    var nocodeTrackLabel = document.getElementById('nocodeTrackLabel');
-    var cliTrackLabel = document.getElementById('cliTrackLabel');
-
-    function moveAfter(node, ref) {
-        if (!node || !ref) return;
-        if (ref.nextSibling) ref.parentNode.insertBefore(node, ref.nextSibling);
-        else ref.parentNode.appendChild(node);
-    }
-    function syncInfoCardPositions() {
-        if (!infoHome) return;
-        var mobile = window.matchMedia('(max-width: 768px)').matches;
-        if (mobile) {
-            if (nocodeInfo && nocodeTrackLabel && nocodeInfo.previousElementSibling !== nocodeTrackLabel) {
-                moveAfter(nocodeInfo, nocodeTrackLabel);
-                nocodeInfo.classList.add('cli-info--moved');
-            }
-            if (cliInfo && cliTrackLabel && cliInfo.previousElementSibling !== cliTrackLabel) {
-                moveAfter(cliInfo, cliTrackLabel);
-                cliInfo.classList.add('cli-info--moved');
-            }
-        } else {
-            if (nocodeInfo && nocodeInfo.parentNode !== infoHome) {
-                infoHome.appendChild(nocodeInfo);
-                nocodeInfo.classList.remove('cli-info--moved');
-            }
-            if (cliInfo && cliInfo.parentNode !== infoHome) {
-                infoHome.appendChild(cliInfo);
-                cliInfo.classList.remove('cli-info--moved');
-            }
-        }
-    }
-    syncInfoCardPositions();
-    window.addEventListener('resize', syncInfoCardPositions);
     if (menuBackdrop) menuBackdrop.addEventListener('click', function() { setMenuOpen(false); });
     // 메뉴 항목 탭하면 자동으로 닫기
     navBtns.forEach(function(btn) {
@@ -1690,7 +1939,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (new URLSearchParams(window.location.search).has('license')) {
         scrollToLicense();
     }
-    var sectionIds = ['section-1','section-project','section-plugin','section-cowork','section-code','section-skills','section-final'];
+    var sectionIds = ['section-1','section-project','section-plugin','section-code','section-deploy','section-skills','section-final'];
     var sections = sectionIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
 
     // 방문 기록
@@ -1973,5 +2222,23 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
 </body>
 </html>

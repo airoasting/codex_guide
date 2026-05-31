@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/pptx-plugin.html">
+    <meta property="og:title" content="PowerPoint에서 ChatGPT 사용 | AI ROASTING">
+    <meta property="og:description" content="ChatGPT for PowerPoint 설치, 슬라이드 초안, 덱 수정, 발표 준비를 정리한 실전 가이드">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/pptx-plugin.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PowerPoint에서 ChatGPT 사용 | AI ROASTING">
+    <meta name="twitter:description" content="ChatGPT for PowerPoint 설치, 슬라이드 초안, 덱 수정, 발표 준비를 정리한 실전 가이드">
+    <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <title>PowerPoint에서 ChatGPT 사용 | AI ROASTING</title>
+    <meta name="description" content="PowerPoint 안에서 ChatGPT를 열어 발표자료를 만들고, 고치고, 발표 준비까지 하는 실전 가이드.">
+    <style>
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('assets/fonts/PretendardVariable.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+        :root {
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
+            --nm-light: #FFFFFF;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --codex-accent: #5B62D8;
+            --codex-graphite: #070707;
+            --codex-slate: #14192E;
+            --codex-panel: #F0F1F3;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            word-break: keep-all;
+            font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif;
+            background: #FFFFFF;
+            color: #2C2F3A;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
+            padding: 28px 40px 40px;
+            border-radius: 0 0 32px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -40px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .step-nav { display: flex; align-items: center; justify-content: center; margin: 26px auto 20px; gap: 0; max-width: 80%; position: relative; z-index: 1; }
+        .step-node {
+            width: 37px; height: 37px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.35);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7);
+            background: rgba(0,0,0,0.2);
+            text-decoration: none; flex-shrink: 0;
+        }
+        .step-node.sn-diag { font-size: 11px; }
+        .step-node.active { background: rgba(255,255,255,0.95); border-color: rgba(255,255,255,0.95); color: #1A1917; }
+        .step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.5); min-width: 13px; max-width: 34px; border-radius: 2px; }
+        .back-link {
+            display: inline-block;
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        header h1 {
+            font-size: 44px;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            letter-spacing: 0;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        header p { font-size: 16px; color: rgba(255,255,255,0.8); position: relative; z-index: 1; }
+        .header-badge {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 4px 16px;
+            border-radius: 20px;
+            margin-top: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        .header-pages {
+            max-width: 490px;
+            margin: 22px auto 0;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        .header-page-link {
+            flex: 1 1 0;
+            min-width: 0;
+            max-width: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 22px;
+            white-space: nowrap;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.07);
+            box-shadow: 5px 5px 12px rgba(0,0,0,0.35), -5px -5px 12px rgba(255,255,255,0.06);
+        }
+        .header-page-link.active {
+            background: rgba(255,255,255,0.14);
+            box-shadow: inset 3px 3px 8px rgba(0,0,0,0.35), inset -3px -3px 8px rgba(255,255,255,0.06);
+            color: #fff;
+        }
+        .sub-menu {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #F0EDE8;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border-bottom: 1px solid #E0DDD7;
+            border-radius: 0 0 32px 32px;
+            padding: 14px 0;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .sub-menu::-webkit-scrollbar { display: none; }
+        .sub-menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 9px;
+            text-decoration: none;
+            padding: 8px 18px;
+            flex: 1;
+            max-width: 150px;
+        }
+        .sub-menu a.active { background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)); border-radius: 14px; }
+        .sub-menu a.active .sm-num {
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
+        }
+        .sub-menu a.active .sm-title { color: var(--codex-graphite); font-weight: 800; }
+        .sm-num {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: var(--codex-pill-bg-muted);
+            color: var(--codex-pill-text);
+            font-size: 13px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;}
+        .sm-title { font-size: 15px; font-weight: 700; color: #3A3530; white-space: nowrap; }
+        .sm-sub { font-size: 13px; color: #999; white-space: nowrap; }
+        .content-section { scroll-margin-top: 155px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 32px 32px 80px; }
+        .nm-card {
+            background: var(--nm-bg);
+            border-radius: 20px;
+            box-shadow: var(--nm-shadow);
+            padding: 32px;
+            margin-bottom: 28px;
+        }
+        .nm-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #3A3530;
+            margin-bottom: 6px;
+            padding-left: 16px;
+            border-left: 4px solid var(--codex-accent);
+        }
+        .nm-card h3 { font-size: 17px; font-weight: 700; color: #3A3530; margin: 22px 0 8px; }
+        .nm-card p, .nm-card li { font-size: 14px; color: #5C5650; line-height: 1.75; }
+        .card-subtitle { font-size: 13px; color: #888; margin-bottom: 18px; padding-left: 20px; }
+        .step-divider { display: flex; align-items: center; gap: 16px; margin: 24px 0 28px; }
+        .step-divider::before, .step-divider::after { content: ''; flex: 1; height: 1px; background: #E8E4DE; }
+        .step-badge {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--codex-accent);
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            padding: 6px 20px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .use-case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+        .use-case-item {
+            background: var(--nm-bg);
+            border-radius: 14px;
+            box-shadow: var(--nm-shadow-sm);
+            padding: 20px;
+        }
+        .uc-icon { font-size: 24px; margin-bottom: 8px; }
+        .use-case-item h4 { font-size: 15px; color: #3A3530; margin-bottom: 6px; }
+        .use-case-item p { font-size: 13px; color: #6C6660; }
+        .step-list { list-style: none; padding: 0; counter-reset: step-counter; }
+        .step-list li {
+            counter-increment: step-counter;
+            display: flex;
+            gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .step-list li:last-child { border-bottom: none; }
+        .step-list li::before {
+            content: counter(step-counter);
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--codex-accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+        }
+        .prompt-example {
+            background: var(--codex-graphite);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 12px 0;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 13px;
+            color: #E8E4DE;
+            line-height: 1.75;
+            white-space: pre-wrap;
+            position: relative;
+        }
+        .prompt-copy {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.72);
+            border-radius: 8px;
+            padding: 4px 12px;
+            cursor: pointer;
+            font-family: 'Pretendard', sans-serif;
+            font-size: 12px;
+        }
+        .prompt-copy.copied { background: var(--codex-accent); color: #fff; }
+        .tip-box, .inset-box {
+            background: var(--nm-bg);
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin: 16px 0;
+        }
+        .tip-box { box-shadow: var(--nm-shadow-sm); border-left: 4px solid var(--codex-accent); }
+        .inset-box { box-shadow: var(--nm-inset); }
+        .tip-label, .inset-box strong {
+            display: block;
+            color: var(--codex-accent);
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+        .install-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 4px; }
+        .install-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--codex-accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: var(--nm-shadow-sm);
+        }
+        .summary-table-wrap { overflow-x: auto; margin-top: 16px; border-radius: 16px; box-shadow: var(--nm-shadow-sm); }
+        .summary-table { width: 100%; border-collapse: collapse; min-width: 720px; background: var(--nm-bg); }
+        .summary-table th, .summary-table td { padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,0.06); text-align: left; font-size: 13px; color: #5C5650; vertical-align: top; }
+        .summary-table th { color: var(--codex-accent); font-weight: 800; background: rgba(99,102,241,0.08); }
+        .page-nav { max-width: 960px; margin: 0 auto; padding: 0 32px 48px; display: flex; justify-content: space-between; }
+        .page-nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #3A3530;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 10px 18px;
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            border-radius: 12px;
+        }
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        footer .footer-video { display: none; }
+        footer .footer-brand { font-size: 13px; font-weight: 800; color: #AEB6FF; letter-spacing: 2px; margin-bottom: 5px; }
+        footer .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
+        .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
+        .footer-about-link { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.3); }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
+        .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
+        @media (max-width: 1160px) {
+            .header-page-link { font-size: 12px; padding: 8px 14px; border-radius: 12px; }
+        }
+        @media (max-width: 768px) {
+            header { padding: 24px 18px 26px; border-radius: 0 0 24px 24px; }
+            header h1 { font-size: 26px; }
+            header p { font-size: 14px; }
+            .container { padding: 20px 16px 56px; }
+            .nm-card { padding: 20px 16px; }
+            .use-case-grid { grid-template-columns: 1fr !important; }
+            .page-nav { flex-direction: column; gap: 10px; padding: 0 16px 32px; }
+            .page-nav-btn { justify-content: center; }
+            .sub-menu { padding: 10px 4px; justify-content: flex-start; }
+            .sub-menu a { min-width: 72px; max-width: none; flex: 0 0 auto; padding: 6px 10px; }
+            .sm-title { font-size: 11px; }
+            .sm-sub { font-size: 10px; }
+            .step-nav { max-width: 100%; margin: 18px 0 14px; }
+            .step-node { width: 30px; height: 30px; font-size: 11px; }
+            .step-node.sn-diag { font-size: 9px; }
+            .step-line { min-width: 6px; max-width: 18px; }
+        }
+        @media (max-width: 480px) {
+            header h1 { font-size: 22px; }
+            .back-link { font-size: 12px; margin-bottom: 12px; }
+            .step-badge { font-size: 11px; padding: 6px 14px; }
+            .prompt-example { font-size: 12px; padding: 14px 14px 38px; }
+        }
+
+        /* ── 스크롤 등장 애니메이션 ── */
+        main.container > .content-section,
+        main.container > .nm-card {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        main.container > .content-section.reveal-in,
+        main.container > .nm-card.reveal-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            main.container > .content-section,
+            main.container > .nm-card {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
+    <nav class="step-nav">
+        <a class="step-node sn-diag" href="codex-orientation.html">진단</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="ai-fluency.html">1</a>
+        <div class="step-line"></div>
+        <a class="step-node active" href="excel-plugin.html">2</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="codex-101.html">3</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="github-guide.html">4</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="agents-md-templates.html">5</a>
+    </nav>
+    <a class="back-link" href="index.html">← 목록으로</a>
+    <h1>PowerPoint에서 ChatGPT 사용</h1>
+    <p>슬라이드 초안, 덱 수정, 스토리 점검을 PowerPoint 사이드바에서 시작합니다</p>
+    <div class="header-pages">
+        <a href="excel-plugin.html" class="header-page-link">📊 Excel</a>
+        <a href="pptx-plugin.html" class="header-page-link active">📑 PowerPoint</a>
+    </div>
+</header>
+
+<nav class="sub-menu" id="subMenu">
+    <a href="#sec-why" class="active" data-sec="sec-why"><span class="sm-num">1</span><span class="sm-title">개요</span><span class="sm-sub">역할</span></a>
+    <a href="#sec-install" data-sec="sec-install"><span class="sm-num">2</span><span class="sm-title">설치</span><span class="sm-sub">시작</span></a>
+    <a href="#sec-first" data-sec="sec-first"><span class="sm-num">3</span><span class="sm-title">첫 덱</span><span class="sm-sub">초안</span></a>
+    <a href="#sec-scenarios" data-sec="sec-scenarios"><span class="sm-num">4</span><span class="sm-title">덱 수정</span><span class="sm-sub">실무</span></a>
+    <a href="#sec-review" data-sec="sec-review"><span class="sm-num">5</span><span class="sm-title">검수</span><span class="sm-sub">한계</span></a>
+    <a href="#sec-faq" data-sec="sec-faq"><span class="sm-num">6</span><span class="sm-title">FAQ</span><span class="sm-sub">링크</span></a>
+</nav>
+
+<main class="container">
+    <div id="sec-why" class="step-divider content-section"><span class="step-badge">PowerPoint에서 ChatGPT가 하는 일</span></div>
+    <section class="nm-card">
+        <h2>ChatGPT가 PowerPoint 옆 사이드바로 들어옵니다</h2>
+        <p class="card-subtitle">OpenAI 공식 문서 기준으로 PowerPoint 안에서 열리는 베타 경험입니다</p>
+        <p>ChatGPT for PowerPoint는 Microsoft PowerPoint 안의 사이드바에서 열립니다. 원본 자료로 첫 덱을 만들고, 기존 발표자료를 고치고, 덱의 흐름과 청중 질문까지 점검할 수 있습니다.</p>
+        <p style="margin-top:10px;">PPTX 파일을 ChatGPT 대화창에 올리는 방식과 다릅니다. 이 페이지는 PowerPoint 리본의 Add-ins에서 여는 ChatGPT for PowerPoint 흐름을 기준으로 설명합니다.</p>
+        <div class="use-case-grid">
+            <div class="use-case-item"><div class="uc-icon">📄</div><h4>첫 초안 만들기</h4><p>메모, 문서, 스프레드시트, 기존 덱을 바탕으로 초안을 만듭니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">🧱</div><h4>기존 덱 수정</h4><p>슬라이드를 추가하거나, 순서를 바꾸거나, 메시지를 다듬습니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">🔎</div><h4>스토리 점검</h4><p>덱의 흐름, 빠진 근거, 청중 질문을 찾아냅니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">✍️</div><h4>문구 다듬기</h4><p>액션 타이틀, 발표 노트, 고객용 문장을 다시 씁니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">🧩</div><h4>Skills와 앱</h4><p>템플릿, 반복 발표 방식, 승인된 자료 소스를 함께 씁니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">✅</div><h4>수정 검수</h4><p>AI가 바꾼 슬라이드와 확인할 수치를 검토합니다.</p></div>
+        </div>
+    </section>
+
+    <div id="sec-install" class="step-divider content-section"><span class="step-badge">설치와 권한</span></div>
+    <section class="nm-card">
+        <h2>PowerPoint의 Add-ins에서 ChatGPT를 추가합니다</h2>
+        <p class="card-subtitle">베타 기능입니다. 회사 계정은 관리자가 사용을 막아둘 수 있습니다</p>
+        <ol class="step-list">
+            <li><div><strong>Microsoft PowerPoint 열기</strong><br>PowerPoint를 엽니다.</div></li>
+            <li><div><strong>Home에서 Add-ins로 이동</strong><br>리본 메뉴의 Home 탭에서 Add-ins를 엽니다.</div></li>
+            <li><div><strong>ChatGPT 검색</strong><br>Microsoft Marketplace에서 ChatGPT를 검색합니다.</div></li>
+            <li><div><strong>Add 후 리본에서 열기</strong><br>추가한 뒤 PowerPoint 리본에서 ChatGPT를 엽니다.</div></li>
+            <li><div><strong>ChatGPT 계정으로 로그인</strong><br>접근 권한이 있는 ChatGPT 계정으로 로그인합니다.</div></li>
+        </ol>
+        <div class="tip-box">
+            <span class="tip-label">관리자 배포</span>
+            <p>조직이 Microsoft Store 접근을 막아둔 환경이면 Microsoft 365 관리자가 manifest XML 파일을 써서 내부 배포할 수 있습니다. Integrated apps에서 Deploy Add-in을 선택하고 사용자나 그룹에 할당합니다.</p>
+        </div>
+        <div class="install-row">
+            <a class="install-btn" href="https://help.openai.com/en/articles/20001242-chatgpt-for-powerpoint" target="_blank" rel="noopener">OpenAI PowerPoint 공식 가이드</a>
+            <a class="install-btn" href="https://marketplace.microsoft.com/en-us/product/office/WA200010215" target="_blank" rel="noopener">Microsoft Marketplace</a>
+        </div>
+    </section>
+
+    <div id="sec-first" class="step-divider content-section"><span class="step-badge">첫 덱 만들기</span></div>
+    <section class="nm-card">
+        <h2>원본 자료와 청중을 먼저 알려줍니다</h2>
+        <p class="card-subtitle">덱은 내용보다 목적이 먼저입니다</p>
+        <div class="prompt-example">다음 메모와 KPI를 바탕으로 10장짜리 임원 보고 초안을 만들어 주세요.
+
+청중: 대표이사, CFO
+목적: 다음 분기 투자 우선순위 승인
+발표 시간: 12분
+톤: 결론 먼저, 숫자는 보수적으로
+
+먼저 다음을 제안해 주세요.
+1. 전체 스토리라인
+2. 슬라이드별 제목
+3. 각 장에 필요한 근거 자료
+4. 발표자가 받을 질문 5개
+5. 바로 만들기 전에 확인할 정보</div>
+        <div class="inset-box">
+            <strong>큰 수정 전에는 계획 먼저</strong>
+            <p>공식 가이드는 큰 수정 전에 어떤 슬라이드를 바꿀지 먼저 요청하라고 안내합니다. "바로 고치지 말고 계획부터"라는 문장을 넣으면 검수하기 쉽습니다.</p>
+        </div>
+    </section>
+
+    <div id="sec-scenarios" class="step-divider content-section"><span class="step-badge">덱 수정 프롬프트</span></div>
+    <section class="nm-card">
+        <h2>기존 덱은 보존 범위를 먼저 정합니다</h2>
+        <h3>1. 스토리 진단</h3>
+        <div class="prompt-example">이 덱의 스토리를 진단해 주세요.
+핵심 메시지, 중복 슬라이드, 빠진 근거, 순서가 어색한 부분을 표로 정리해 주세요.
+수정은 아직 하지 말고 이유를 먼저 설명해 주세요.</div>
+        <h3>2. 리스크 슬라이드 추가</h3>
+        <div class="prompt-example">시장 개요 뒤에 리스크 슬라이드 1장을 추가할 계획을 세워 주세요.
+이 덱의 스타일을 유지하고, 주변 슬라이드는 바꾸지 마세요.
+제목, 핵심 메시지, 본문 bullet, 필요한 데이터 자리표시자를 제안해 주세요.</div>
+        <h3>3. 경영진용으로 압축</h3>
+        <div class="prompt-example">이 덱을 경영진 보고용으로 더 날카롭게 줄여 주세요.
+삭제 후보, 합칠 슬라이드, 액션 타이틀로 바꿀 제목을 표로 정리해 주세요.
+결론이 약한 장표는 새 제목을 제안해 주세요.</div>
+        <h3>4. 발표 준비</h3>
+        <div class="prompt-example">이 발표자료를 12분 발표로 준비해 주세요.
+슬라이드별 말할 순서, 예상 질문 7개, 답변 초안, 시간이 부족할 때 건너뛸 슬라이드를 알려 주세요.</div>
+    </section>
+
+    <div id="sec-review" class="step-divider content-section"><span class="step-badge">검수와 한계</span></div>
+    <section class="nm-card">
+        <h2>베타 기능이라 수동 검수가 필요합니다</h2>
+        <div class="summary-table-wrap">
+            <table class="summary-table">
+                <thead><tr><th>항목</th><th>확인할 것</th><th>왜 중요한가</th></tr></thead>
+                <tbody>
+                    <tr><td>스토리</td><td>결론, 근거, 반론 대응</td><td>예쁜 장표보다 설득 구조가 먼저입니다.</td></tr>
+                    <tr><td>숫자</td><td>원본 표, 계산 기준, 날짜</td><td>수치 오류는 발표 신뢰를 바로 떨어뜨립니다.</td></tr>
+                    <tr><td>디자인</td><td>템플릿, 폰트, 도형 정렬</td><td>공식 문서는 템플릿 준수가 완벽하지 않을 수 있다고 안내합니다.</td></tr>
+                    <tr><td>고급 편집</td><td>차트, 도형, 애니메이션, 복잡한 서식</td><td>일부 PowerPoint 고급 기능은 제한될 수 있습니다.</td></tr>
+                    <tr><td>대화 기록</td><td>PowerPoint 사이드바 대화와 ChatGPT.com 대화</td><td>Office add-in 대화는 메인 ChatGPT 대화 기록과 분리됩니다.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tip-box">
+            <span class="tip-label">공유 전 최종 점검</span>
+            <p>공식 가이드는 공유하거나 의존하기 전에 주장, 숫자, 인용, 슬라이드 변경 사항을 검토하라고 안내합니다. 중요한 덱은 복사본에서 먼저 작업하세요.</p>
+        </div>
+    </section>
+
+    <div id="sec-faq" class="step-divider content-section"><span class="step-badge">FAQ와 공식 링크</span></div>
+    <section class="nm-card">
+        <h2>자주 묻는 질문</h2>
+        <div class="inset-box">
+            <strong>Q. 누가 쓸 수 있나요?</strong>
+            <p>OpenAI 공식 문서 기준으로 Free, Go, Plus, Pro, Business, Enterprise, Edu, K-12 사용자가 전 세계에서 베타로 쓸 수 있습니다. Free와 Go는 제한된 사용량이 붙습니다.</p>
+        </div>
+        <div class="inset-box">
+            <strong>Q. 베타라는 말은 무슨 뜻인가요?</strong>
+            <p>기능과 품질이 계속 바뀔 수 있다는 뜻입니다. 생성된 슬라이드는 수동 정리와 검수가 필요할 수 있습니다.</p>
+        </div>
+        <div class="inset-box">
+            <strong>Q. 회사 앱이나 내부 시스템과 연결되나요?</strong>
+            <p>지원되는 앱은 계정 플랜, 관리자 설정, 사용자 권한, 연결 데이터 소스 권한에 따라 보입니다. 앱이 안 보이면 워크스페이스 관리자에게 확인해야 합니다.</p>
+        </div>
+        <div class="inset-box">
+            <strong>Q. 데이터는 어떻게 처리되나요?</strong>
+            <p>ChatGPT는 답변을 만들기 위해 프롬프트, 첨부 파일, 관련 발표자료 맥락을 처리합니다. Microsoft PowerPoint 안에서 실행되므로 Microsoft 약관도 함께 적용됩니다.</p>
+        </div>
+        <div class="install-row">
+            <a class="install-btn" href="https://help.openai.com/en/articles/20001242-chatgpt-for-powerpoint" target="_blank" rel="noopener">OpenAI Help Center</a>
+            <a class="install-btn" href="https://marketplace.microsoft.com/en-us/product/office/WA200010215" target="_blank" rel="noopener">Microsoft Marketplace</a>
+        </div>
+    </section>
+</main>
+
+<nav class="page-nav">
+    <a href="excel-plugin.html" class="page-nav-btn">← 이전: Excel</a>
+    <a href="codex-101.html" class="page-nav-btn">다음: Codex 앱 시작하기 →</a>
+</nav>
+
+<footer>
+    <p class="footer-brand">AI ROASTING</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
+    <span class="footer-link-row">
+        <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
+        <span class="footer-link-sep" aria-hidden="true">·</span>
+        <a href="index.html?license=1" class="footer-about-link">라이선스</a>
+    </span>
+    <p class="footer-text" style="margin-top:10px;opacity:0.7;">© 2026 AI ROASTING. All rights reserved.</p>
+</footer>
+
+<script>
+(function(){
+    var links = document.querySelectorAll('.sub-menu a[data-sec]');
+    var sections = [];
+    links.forEach(function(link) {
+        var section = document.getElementById(link.dataset.sec);
+        if (section) sections.push({ el: section, link: link });
+    });
+    function update() {
+        var offset = window.scrollY + 120;
+        var current = sections[0];
+        sections.forEach(function(section) {
+            if (section.el.offsetTop <= offset) current = section;
+        });
+        links.forEach(function(link) { link.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+})();
+(function(){
+    document.querySelectorAll('.prompt-example').forEach(function(el) {
+        var btn = document.createElement('button');
+        btn.className = 'prompt-copy';
+        btn.textContent = '복사';
+        btn.addEventListener('click', function() {
+            var text = el.textContent.replace('복사', '').replace('완료', '').trim();
+            navigator.clipboard.writeText(text).then(function() {
+                btn.textContent = '완료';
+                btn.classList.add('copied');
+                setTimeout(function() {
+                    btn.textContent = '복사';
+                    btn.classList.remove('copied');
+                }, 1400);
+            });
+        });
+        el.appendChild(btn);
+    });
+})();
+</script>
+<!-- ## SM-HAMBURGER START ## -->
+<style>
+.sm-menu-toggle {
+    display: none;
+    position: fixed !important;
+    top: 14px !important;
+    right: 14px !important;
+    z-index: 1200 !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    border: none !important;
+    cursor: pointer;
+    background: rgba(255,255,255,0.92) !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+}
+.sm-menu-toggle svg { width: 22px; height: 22px; stroke: #2D3748; }
+.sm-menu-backdrop { display: none; position: fixed; inset: 0; z-index: 1150; background: rgba(0,0,0,0.45); }
+body.sm-menu-open .sm-menu-backdrop { display: block; }
+body.sm-menu-open { overflow: hidden; }
+.sm-drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1160;
+    width: 78%;
+    max-width: 320px;
+    height: 100dvh;
+    background: #EDE8DF;
+    box-shadow: -8px 0 28px rgba(0,0,0,0.25);
+    padding: 72px 18px 24px;
+    overflow-y: auto;
+    transform: translateX(105%);
+}
+body.sm-menu-open .sm-drawer { transform: translateX(0); }
+.sm-drawer-heading { font-size: 17px; font-weight: 800; color: #1F1A17; line-height: 1.35; padding: 0 4px 12px; margin: 0 0 12px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+.sm-drawer-back, .sm-drawer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    padding: 12px 14px;
+    background: #F0F1F3;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    color: #38404F;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+.sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
+.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
+.sm-drawer-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--codex-pill-bg-muted);
+    color: var(--codex-pill-text);
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;}
+.sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
+.sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
+@media (max-width: 768px) {
+    .sm-menu-toggle { display: inline-flex; }
+    .sm-menu-toggle .sm-icon-close { display: none; }
+    body.sm-menu-open .sm-menu-toggle .sm-icon-open { display: none; }
+    body.sm-menu-open .sm-menu-toggle .sm-icon-close { display: block; }
+    .sm-drawer { display: block; }
+    nav.sub-menu { display: none !important; }
+    .header-pages {
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        max-width: 100% !important;
+        gap: 8px !important;
+        align-items: stretch !important;
+    }
+    .header-page-link {
+        flex: none !important;
+        max-width: none !important;
+        width: 100% !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+        justify-content: center !important;
+        font-size: 13px !important;
+        padding: 11px 14px !important;
+        border-radius: 12px !important;
+    }
+}
+
+        /* ## CODEX-HERO-VIDEO START ## */
+        header {
+            background: #070707 !important;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+            }
+        }
+        /* ## CODEX-HERO-VIDEO END ## */
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-badge { position: relative; overflow: hidden; }
+        .step-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
+<button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+    <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+</button>
+<div class="sm-menu-backdrop" id="smMenuBackdrop"></div>
+<aside class="sm-drawer" id="smDrawer" aria-label="섹션 메뉴">
+    <div class="sm-drawer-heading" id="smDrawerHeading"></div>
+    <a href="index.html" class="sm-drawer-back"><span aria-hidden="true">←</span><span>목록으로</span></a>
+    <nav class="sm-drawer-list" id="smDrawerList"></nav>
+</aside>
+<script>
+(function() {
+    var src = document.querySelector('nav.sub-menu');
+    var list = document.getElementById('smDrawerList');
+    var toggle = document.getElementById('smMenuToggle');
+    var backdrop = document.getElementById('smMenuBackdrop');
+    var heading = document.getElementById('smDrawerHeading');
+    if (heading) {
+        var activeLink = document.querySelector('.header-page-link.active');
+        heading.textContent = activeLink ? activeLink.textContent.trim() : document.querySelector('header h1').textContent.trim();
+    }
+    var srcLinks = src ? src.querySelectorAll('a') : [];
+    var drawerItems = [];
+    if (src && list) srcLinks.forEach(function(a) {
+        var num = a.querySelector('.sm-num');
+        var title = a.querySelector('.sm-title');
+        var sub = a.querySelector('.sm-sub');
+        var item = document.createElement('a');
+        item.href = a.getAttribute('href');
+        item.className = 'sm-drawer-item' + (a.classList.contains('active') ? ' active' : '');
+        item.innerHTML = '<span class="sm-drawer-num">' + (num ? num.textContent : '') + '</span><span class="sm-drawer-text"><span class="sm-drawer-title">' + (title ? title.textContent : a.textContent.trim()) + '</span>' + (sub ? '<span class="sm-drawer-sub">' + sub.textContent + '</span>' : '') + '</span>';
+        item.addEventListener('click', function() { setOpen(false); });
+        list.appendChild(item);
+        drawerItems.push(item);
+    });
+    function setOpen(open) {
+        document.body.classList.toggle('sm-menu-open', open);
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+        }
+    }
+    if (toggle) toggle.addEventListener('click', function() { setOpen(!document.body.classList.contains('sm-menu-open')); });
+    if (backdrop) backdrop.addEventListener('click', function() { setOpen(false); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') setOpen(false); });
+    if (src) {
+        var observer = new MutationObserver(function() {
+            srcLinks.forEach(function(a, i) {
+                if (drawerItems[i]) drawerItems[i].classList.toggle('active', a.classList.contains('active'));
+            });
+        });
+        observer.observe(src, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    }
+})();
+</script>
+<!-- ## SM-HAMBURGER END ## -->
+<script>
+    /* ── 스크롤 등장 애니메이션 ── */
+    (function() {
+        var els = document.querySelectorAll('main.container > .content-section, main.container > .nm-card');
+        if (!els.length) return;
+        if (!('IntersectionObserver' in window)) {
+            els.forEach(function(el) { el.classList.add('reveal-in'); });
+            return;
+        }
+        var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-in');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        els.forEach(function(el) { io.observe(el); });
+    })();
+</script>
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
+</body>
+</html>

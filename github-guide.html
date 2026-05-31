@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://airoasting.github.io/claude_guide/github-guide.html">
-    <meta property="og:title" content="AI ROASTING · Claude 완전 정복">
-    <meta property="og:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/github-guide.html">
+    <meta property="og:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <meta property="og:url" content="https://airoasting.github.io/claude_guide/github-guide.html">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/github-guide.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI ROASTING · Claude 완전 정복">
-    <meta name="twitter:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
-    <meta name="twitter:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <title>GitHub & Vercel 가이드 | Claude Code</title>
+    <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <title>GitHub 저장과 공유 가이드 | Codex</title>
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -24,13 +24,13 @@
         }
 
         :root {
-            --nm-bg: #EDEAE4;
-            --nm-dark: #CECAC3;
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
             --nm-light: #FFFFFF;
-            --nm-shadow: 6px 6px 14px #CECAC3, -6px -6px 14px #FFFFFF;
-            --nm-shadow-sm: 4px 4px 8px #CECAC3, -4px -4px 8px #FFFFFF;
-            --nm-inset: inset 4px 4px 10px #CECAC3, inset -4px -4px 10px #FFFFFF;
-            --ant-orange: #D97757;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --codex-accent: #5B62D8;
             --ant-dark: #1A1917;
         }
 
@@ -59,8 +59,8 @@
             50% { transform: translateY(-6px); }
         }
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(217,119,87,0.45); }
-            50% { box-shadow: 0 0 0 14px rgba(217,119,87,0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.45); }
+            50% { box-shadow: 0 0 0 14px rgba(99,102,241,0); }
         }
         .reveal {
             opacity: 0;
@@ -131,14 +131,14 @@
 
         body { word-break: keep-all;
             font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif;
-            background: var(--nm-bg);
-            color: #3A3530;
+            background: #FFFFFF;
+            color: #2C2F3A;
             line-height: 1.6;
         }
 
         /* ── HEADER ── */
         header {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             padding: 28px 40px 40px;
             border-radius: 0 0 32px 32px;
             text-align: center;
@@ -149,7 +149,7 @@
             content: '';
             position: absolute; top: -80px; right: -40px;
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(196,98,63,0.18) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
             pointer-events: none;
         }
         .back-link {
@@ -197,7 +197,7 @@
         .step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.5); min-width: 13px; max-width: 34px; border-radius: 2px; }
 
         /* ── Header Page Links ── */
-        .header-pages { max-width: 70%;
+        .header-pages { max-width: 490px;
             margin-left: auto;
             margin-right: auto;
             display: flex; justify-content: center; gap: 14px; margin-top: 22px; position: relative; z-index: 1; }
@@ -221,7 +221,8 @@
             box-shadow: inset 3px 3px 8px rgba(0,0,0,0.35), inset -3px -3px 8px rgba(255,255,255,0.06);
             color: #fff;
         }
-        .header-page-link .hpl-icon { font-size: 18px; }
+        .header-page-link .hpl-icon { font-size: 18px; display: inline-flex; align-items: center; }
+        .header-page-link .hpl-icon svg { width: 16px; height: 16px; fill: currentColor; }
 
         /* ── Mode Tabs ── */
         .mode-tabs {
@@ -256,7 +257,7 @@
 
         h2 {
             font-size: 22px; font-weight: 700; color: #3A3530;
-            padding-left: 16px; border-left: 4px solid var(--ant-orange);
+            padding-left: 16px; border-left: 4px solid var(--codex-accent);
             margin-bottom: 20px;
         }
 
@@ -267,26 +268,28 @@
 
         /* ── #1 오프닝 훅 배너 ── */
         .hook-banner {
-            background: var(--ant-dark);
-            border-radius: 20px;
-            padding: 28px 32px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F4FF 100%);
+            border: 1px solid #E7E5F6;
+            box-shadow: 0 10px 34px rgba(99,102,241,0.07);
+            border-radius: 22px;
+            padding: 26px 30px;
             margin-bottom: 40px;
             display: flex;
-            align-items: center;
-            gap: 24px;
+            flex-direction: column;
+            gap: 20px;
             position: relative;
-            left: 10px;
             overflow: hidden;
         }
         .hook-banner::before {
             content: '';
-            position: absolute; top: -40px; right: -20px;
-            width: 200px; height: 200px;
-            background: radial-gradient(circle, rgba(217,119,87,0.2) 0%, transparent 65%);
+            position: absolute; top: -70px; right: -50px;
+            width: 240px; height: 240px;
+            background: radial-gradient(circle, rgba(99,102,241,0.16) 0%, transparent 68%);
             pointer-events: none;
         }
-        .hook-icon {
-            font-size: 48px; flex-shrink: 0;
+        .hook-head {
+            display: flex; align-items: center; gap: 14px;
+            position: relative; z-index: 1;
         }
         .hook-brand-stack {
             display: flex; gap: 6px;
@@ -294,60 +297,61 @@
             flex-shrink: 0;
         }
         .hook-brand-icon {
-            width: 42px; height: 42px;
-            border-radius: 50%;
-            background: #fff;
+            width: 46px; height: 46px;
+            border-radius: 14px;
+            background: var(--ant-dark);
+            box-shadow: 0 6px 16px rgba(26,25,23,0.22);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
-        .hook-brand-icon svg { display: block; fill: #1A1917; }
-        .hook-brand-icon.brand-gh svg { width: 78%; height: 78%; }
-        .hook-brand-icon.brand-vc svg { width: 50%; height: 50%; }
-        .hook-plus {
-            color: var(--ant-orange);
-            font-size: 22px; font-weight: 800;
-        }
+        .hook-brand-icon svg { display: block; fill: #fff; }
+        .hook-brand-icon.brand-gh svg { width: 60%; height: 60%; }
+        .hook-brand-icon.brand-vc svg { width: 46%; height: 46%; }
         @media (max-width: 768px) {
-            .hook-brand-icon { width: 36px; height: 36px; }
+            .hook-brand-icon { width: 42px; height: 42px; border-radius: 12px; }
         }
+        .hook-text { min-width: 0; }
         .hook-text h3 {
-            font-size: 20px; font-weight: 800; color: #fff;
-            margin-bottom: 6px;
+            font-size: 19px; font-weight: 800; color: var(--ant-dark);
+            letter-spacing: -0.01em; line-height: 1.4;
         }
-        .hook-text p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; }
-        .hook-url {
-            display: inline-block;
-            font-size: 13px; font-weight: 700;
-            color: var(--ant-orange);
-            background: rgba(217,119,87,0.1);
-            border: 1px solid rgba(217,119,87,0.3);
-            padding: 4px 14px; border-radius: 8px;
-            font-family: 'SF Mono', monospace;
-        }
+        .hook-text p { font-size: 14px; color: rgba(26,25,23,0.62); line-height: 1.6; }
         .hook-urls {
-            display: flex; flex-wrap: wrap;
-            gap: 12px; margin-top: 14px;
-            margin-left: 10px;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            position: relative; z-index: 1;
         }
         .hook-url-block {
-            display: flex; flex-direction: column; gap: 5px;
+            display: flex; flex-direction: column; gap: 8px;
         }
         .hook-url-label {
-            font-size: 11px; font-weight: 700;
-            color: rgba(255,255,255,0.6);
-            letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 11.5px; font-weight: 700;
+            color: rgba(26,25,23,0.5);
+            letter-spacing: 0.3px;
         }
-        .hook-url-arrow {
-            color: var(--ant-orange);
-            font-size: 20px; font-weight: 800;
-            padding-top: 16px;
+        .hook-url-label::before {
+            content: '';
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--codex-accent);
+        }
+        .hook-url {
+            display: block;
+            font-size: 13px; font-weight: 700;
+            color: var(--codex-accent);
+            background: rgba(255,255,255,0.7);
+            border: 1px solid rgba(99,102,241,0.22);
+            box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            padding: 10px 14px; border-radius: 11px;
+            font-family: 'SF Mono', ui-monospace, monospace;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         @media (max-width: 768px) {
-            .hook-url-arrow { transform: rotate(90deg); padding-top: 0; }
-            .hook-urls { gap: 8px; }
+            .hook-urls { grid-template-columns: 1fr; gap: 12px; }
+            .hook-url { white-space: normal; word-break: break-all; }
         }
 
         /* ── #2 전체 여정 타임라인 ── */
@@ -376,7 +380,7 @@
         }
         .journey-label { font-size: 12px; font-weight: 700; color: #3A3530; text-align: center; }
         .journey-sub { font-size: 11px; color: #999; text-align: center; }
-        .journey-arrow { font-size: 18px; color: var(--ant-orange); flex-shrink: 0; margin: 0 4px; padding-bottom: 24px; }
+        .journey-arrow { font-size: 18px; color: var(--codex-accent); flex-shrink: 0; margin: 0 4px; padding-bottom: 24px; }
 
         /* ── Concept Cards ── */
         .concept-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
@@ -391,7 +395,7 @@
         .analogy {
             font-size: 13px; color: #5C5650;
             background: var(--nm-bg); box-shadow: var(--nm-inset);
-            border-left: 3px solid var(--ant-orange);
+            border-left: 3px solid var(--codex-accent);
             padding: 8px 12px; border-radius: 0 8px 8px 0;
         }
 
@@ -401,7 +405,7 @@
             border-radius: 12px; padding: 24px; margin-bottom: 20px;
         }
         .info-box p { font-size: 15px; color: #5C5650; line-height: 1.7; }
-        .info-box .highlight { color: var(--ant-orange); font-weight: 700; }
+        .info-box .highlight { color: var(--codex-accent); font-weight: 700; }
 
         /* ── Note Box ── */
         .note-box {
@@ -425,11 +429,11 @@
         .compare-item h3 { font-size: 18px; font-weight: 700; color: #3A3530; margin-bottom: 4px; }
         .compare-item .sub { font-size: 13px; color: #999; margin-bottom: 12px; }
         .compare-item p { font-size: 14px; color: #5C5650; line-height: 1.5; }
-        .compare-arrow { font-size: 24px; color: var(--ant-orange); font-weight: 700; }
+        .compare-arrow { font-size: 24px; color: var(--codex-accent); font-weight: 700; }
 
         .feature-list { list-style: none; padding: 0; }
         .feature-list li { font-size: 14px; color: #5C5650; padding: 8px 0; padding-left: 20px; position: relative; }
-        .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--ant-orange); font-weight: 700; }
+        .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--codex-accent); font-weight: 700; }
 
         /* ── #4 GitHub Pages 시각 카드 ── */
         .pages-cards {
@@ -448,13 +452,13 @@
         }
         .pages-card-num {
             width: 28px; height: 28px;
-            background: var(--ant-orange);
+            background: var(--codex-accent);
             color: #fff;
             border-radius: 50%;
             font-size: 13px; font-weight: 800;
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 10px;
-            box-shadow: 2px 2px 8px rgba(217,119,87,0.4);
+            box-shadow: 2px 2px 8px rgba(99,102,241,0.4);
         }
         .pages-card-icon { font-size: 26px; margin-bottom: 8px; }
         .pages-card h4 { font-size: 14px; font-weight: 700; color: #3A3530; margin-bottom: 4px; }
@@ -469,17 +473,17 @@
         }
         .step:hover { box-shadow: var(--nm-shadow); }
         .step.step-1 { border-left-color: #6aab8e; }
-        .step.step-2 { border-left-color: var(--ant-orange); }
+        .step.step-2 { border-left-color: var(--codex-accent); }
         .step.step-3 { border-left-color: #5a8fbf; }
 
         .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
         .step-number {
-            background: var(--ant-orange); color: #fff;
+            background: var(--codex-accent); color: #fff;
             width: 30px; height: 30px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 14px; font-weight: 800;
             flex-shrink: 0;
-            box-shadow: 2px 2px 6px rgba(217,119,87,0.4);
+            box-shadow: 2px 2px 6px rgba(99,102,241,0.4);
         }
         .step.step-1 .step-number { background: #6aab8e; box-shadow: 2px 2px 6px rgba(106,171,142,0.4); }
         .step.step-3 .step-number { background: #5a8fbf; box-shadow: 2px 2px 6px rgba(90,143,191,0.4); }
@@ -494,7 +498,7 @@
             border-radius: 18px;
             margin-bottom: 16px;
             overflow: hidden;
-            border-left: 4px solid var(--ant-orange);
+            border-left: 4px solid var(--codex-accent);
         }
         .step-block > * {
             margin: 0;
@@ -503,7 +507,7 @@
         }
         .step-block > *:last-child { border-bottom: none; }
         .step-block > .step-goal {
-            background: rgba(217,119,87,0.07);
+            background: rgba(99,102,241,0.07);
             box-shadow: none;
             border-left: none;
             padding: 14px 26px;
@@ -559,10 +563,10 @@
         }
         .step-block > .step-row > .table-wrapper:last-child { margin-bottom: 0; }
         .step-block > .step-row > .vocab-more-toggle { margin-top: 8px; }
-        /* step-block 내부 step-number는 색상 통일 (주황) */
+        /* step-block 내부 step-number는 색상 통일 (Codex 블루 바이올렛) */
         .step-block .step-number {
-            background: var(--ant-orange) !important;
-            box-shadow: 2px 2px 6px rgba(217,119,87,0.4) !important;
+            background: var(--codex-accent) !important;
+            box-shadow: 2px 2px 6px rgba(99,102,241,0.4) !important;
         }
 
         /* ── #3 Code Block + 복사 버튼 ── */
@@ -615,13 +619,13 @@
             font-family: 'SF Mono', 'Fira Code', monospace;
             background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
             padding: 2px 8px; border-radius: 6px;
-            font-size: 13px; color: var(--ant-orange);
+            font-size: 13px; color: var(--codex-accent);
         }
 
         /* ── Key Point ── */
         .key-point {
             background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
-            border-left: 4px solid var(--ant-orange); border-radius: 12px;
+            border-left: 4px solid var(--codex-accent); border-radius: 12px;
             padding: 16px 20px; font-size: 15px; font-weight: 600; color: #3A3530;
             margin-bottom: 20px;
         }
@@ -631,7 +635,7 @@
         .vocab-more-toggle {
             display: flex; align-items: center; gap: 8px;
             cursor: pointer; margin-top: 12px; margin-bottom: 4px;
-            font-size: 13px; font-weight: 700; color: var(--ant-orange);
+            font-size: 13px; font-weight: 700; color: var(--codex-accent);
             padding: 10px 16px;
             background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
             border-radius: 10px; border: none; width: 100%;
@@ -688,12 +692,12 @@
         .ba-label.before { color: #999; }
         .ba-label.after { color: #6aab8e; }
         .ba-content { font-size: 14px; color: #5C5650; line-height: 1.6; }
-        .ba-url { font-size: 13px; font-weight: 700; color: var(--ant-orange); font-family: 'SF Mono', monospace; margin-top: 8px; display: block; }
-        .ba-arrow { font-size: 28px; color: var(--ant-orange); }
+        .ba-url { font-size: 13px; font-weight: 700; color: var(--codex-accent); font-family: 'SF Mono', monospace; margin-top: 8px; display: block; }
+        .ba-arrow { font-size: 28px; color: var(--codex-accent); }
 
         /* ── #7 CTA 섹션 ── */
         .cta-section {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%); border-radius: 20px;
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%); border-radius: 20px;
             padding: 28px 32px; text-align: center; margin-top: 40px;
         }
         .cta-section h3 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px; }
@@ -705,7 +709,7 @@
             padding: 12px 28px; border-radius: 10px;
             text-decoration: none; transition: all 0.2s;
         }
-        .cta-btn.primary { background: #fff; color: #7A1E0C; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+        .cta-btn.primary { background: #fff; color: #5B62D8; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
         .cta-btn.primary:hover { background: #f5f0ee; transform: translateY(-1px); }
         .cta-btn.secondary { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.15); }
         .cta-btn.secondary:hover { background: rgba(255,255,255,0.14); color: #fff; }
@@ -718,7 +722,7 @@
         .checklist-title {
             font-size: 16px; font-weight: 800; color: #3A3530;
             margin-bottom: 16px; padding-left: 14px;
-            border-left: 4px solid var(--ant-orange);
+            border-left: 4px solid var(--codex-accent);
         }
         .checklist { display: flex; flex-direction: column; gap: 10px; }
         .check-item {
@@ -736,7 +740,7 @@
             flex-shrink: 0; font-size: 14px; transition: all 0.2s;
         }
         .check-item.checked .check-box {
-            background: var(--ant-orange); box-shadow: 2px 2px 8px rgba(217,119,87,0.4);
+            background: var(--codex-accent); box-shadow: 2px 2px 8px rgba(99,102,241,0.4);
             color: #fff;
         }
         .check-text { font-size: 14px; font-weight: 600; color: #3A3530; }
@@ -751,9 +755,9 @@
             margin-top: 6px; overflow: hidden;
         }
         .progress-fill {
-            height: 100%; background: var(--ant-orange);
+            height: 100%; background: var(--codex-accent);
             border-radius: 3px; transition: width 0.4s ease;
-            box-shadow: 0 0 8px rgba(217,119,87,0.5);
+            box-shadow: 0 0 8px rgba(99,102,241,0.5);
         }
 
         /* ── Sub Menu ── */
@@ -788,20 +792,20 @@
         .sub-menu a:hover .sm-num { transform: scale(1.1); }
         .sub-menu a:hover .sm-title { color: var(--ant-dark); }
         .sub-menu a.active {
-            background: rgba(217,119,87,0.10);
+            background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58));
             border-radius: 14px;
         }
         .sub-menu a.active .sm-num {
-            background: var(--ant-orange);
-            box-shadow: 0 2px 8px rgba(217,119,87,0.4);
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
         }
         .sub-menu a.active .sm-title { color: var(--ant-dark); font-weight: 800; }
-        .sub-menu a.active .sm-sub { color: var(--ant-orange); }
+        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
         .sm-num {
             width: 28px; height: 28px;
             border-radius: 50%;
-            background: #B0544A;
-            color: #fff;
+            background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
             font-size: 13px; font-weight: 800;
             display: flex; align-items: center; justify-content: center;
             transition: all 0.2s;
@@ -817,9 +821,9 @@
         }
         .sm-title { font-size: 13px; font-weight: 700; color: #3A3530; white-space: nowrap; }
         .sm-sub { font-size: 11px; color: #999; white-space: nowrap; }
-        .content-section { scroll-margin-top: 210px; }
+        .content-section { scroll-margin-top: 155px; }
         /* step-divider도 같은 오프셋으로 잡아두면 첫 클릭 시 배지가 가려지지 않음 */
-        .step-divider { scroll-margin-top: 140px; }
+        .step-divider { scroll-margin-top: 155px; }
 
         /* ── Step Divider + Badge ── */
         .step-divider {
@@ -839,7 +843,7 @@
             position: relative;
             display: inline-block;
             font-size: 15px; font-weight: 800; letter-spacing: 0.5px;
-            color: var(--ant-orange);
+            color: var(--codex-accent);
             background: var(--nm-bg);
             box-shadow: var(--nm-shadow-sm);
             padding: 10px 28px;
@@ -864,12 +868,12 @@
         }
         .step-goal {
             background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
-            border-left: 4px solid var(--ant-orange);
+            border-left: 4px solid var(--codex-accent);
             border-radius: 14px; padding: 16px 22px;
             margin-bottom: 28px;
         }
         .goal-label {
-            font-size: 11px; font-weight: 800; color: var(--ant-orange);
+            font-size: 11px; font-weight: 800; color: var(--codex-accent);
             text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px;
         }
         .step-goal p { font-size: 15px; font-weight: 700; color: #3A3530; margin: 0; }
@@ -887,11 +891,11 @@
             background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
             border-radius: 12px; transition: all 0.2s;
         }
-        .page-nav-btn:hover { box-shadow: var(--nm-inset); color: var(--ant-orange); }
+        .page-nav-btn:hover { box-shadow: var(--nm-inset); color: var(--codex-accent); }
 
         /* ── Footer ── */
-        footer { background: var(--ant-dark); text-align: center; padding: 36px 32px 28px; }
-        .footer-brand { font-size: 13px; font-weight: 700; color: var(--ant-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
         .footer-about-link {
             display: inline-block; margin-top: 8px;
@@ -900,12 +904,12 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 1px; transition: all 0.2s;
         }
-        .footer-about-link:hover { color: #fff; border-color: #fff; }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
         .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
         .footer-link-row .footer-about-link { margin-top: 0; }
         .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
 
-        /* ── Brand Icons (GitHub / Vercel) ── */
+        /* ── Brand Icons ── */
         .brand-icon {
             display: inline-flex;
             align-items: center;
@@ -937,8 +941,8 @@
             margin-left: 10px;
             font-size: 11px;
             font-weight: 700;
-            color: var(--ant-orange);
-            background: rgba(217,119,87,0.12);
+            color: var(--codex-accent);
+            background: rgba(99,102,241,0.12);
             padding: 3px 10px;
             border-radius: 8px;
             text-decoration: none;
@@ -947,7 +951,7 @@
             letter-spacing: 0.3px;
         }
         .brand-cmp .th-go:hover {
-            background: var(--ant-orange);
+            background: var(--codex-accent);
             color: #fff;
         }
 
@@ -989,13 +993,13 @@
             content: '·';
             position: absolute;
             left: 3px; top: 0;
-            color: var(--ant-orange);
+            color: var(--codex-accent);
             font-weight: 800;
             font-size: 16px;
             line-height: 1.55;
         }
 
-        /* ── Why Both Grid (GitHub Pages vs Vercel 사용 시점) ── */
+        /* ── Guide Cards ── */
         .why-both-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1025,7 +1029,7 @@
         }
         .why-card li::before {
             content: '·'; position: absolute; left: 5px; top: 4px;
-            color: var(--ant-orange); font-weight: 800; font-size: 16px;
+            color: var(--codex-accent); font-weight: 800; font-size: 16px;
         }
 
         /* ── 콘텐츠 영역 글자 1pt(약 1px) 축소 ── */
@@ -1118,34 +1122,28 @@
 
 <!-- ── HEADER ── -->
 <header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <nav class="step-nav load-anim load-d1">
-        <a class="step-node sn-diag" href="claude-orientation.html">진단</a>
+        <a class="step-node sn-diag" href="codex-orientation.html">진단</a>
         <div class="step-line"></div>
         <a class="step-node" href="ai-fluency.html">1</a>
         <div class="step-line"></div>
-        <a class="step-node" href="claude-design.html">2</a>
+        <a class="step-node" href="excel-plugin.html">2</a>
         <div class="step-line"></div>
-        <a class="step-node" href="cowork-intro.html">3</a>
+        <a class="step-node" href="codex-101.html">3</a>
         <div class="step-line"></div>
-        <a class="step-node active" href="claude-code-101.html">4</a>
+        <a class="step-node active" href="github-guide.html">4</a>
         <div class="step-line"></div>
-        <a class="step-node" href="claude-md-templates.html">5</a>
+        <a class="step-node" href="agents-md-templates.html">5</a>
     </nav>
     <a class="back-link load-anim load-d2" href="index.html">← 목록으로</a>
-    <h1 class="load-anim load-d3">GitHub & Vercel</h1>
-    <p class="load-anim load-d4">코드를 저장하고, 웹 주소로 접속하기까지 한번에</p>
-    <div class="mode-tabs load-anim load-d5">
-        <span class="mode-tab active" id="tab-nocode" onclick="switchMode('nocode')">노코드</span>
-        <span class="mode-tab" id="tab-cli" onclick="switchMode('cli')">CLI</span>
-    </div>
-    <div class="header-pages load-anim load-d6" id="pages-nocode">
-        <a href="claude-code-101.html" class="header-page-link"><span class="hpl-icon">🖥️</span> 클로드 코드 101</a>
-        <a href="claude-code-tasks.html" class="header-page-link"><span class="hpl-icon">🎯</span> 실전 과제 7가지</a>
-        <a href="github-guide.html" class="header-page-link active"><span class="hpl-icon">🚀</span> GitHub & Vercel</a>
-    </div>
-    <div class="header-pages" id="pages-cli" style="display:none;">
-        <a href="checklist.html" class="header-page-link"><span class="hpl-icon">✅</span> 20단계 따라하기</a>
-        <a href="cheatsheet.html" class="header-page-link"><span class="hpl-icon">⚡</span> 명령어 모음</a>
+    <h1 class="load-anim load-d3">GitHub 저장과 공유</h1>
+    <p class="load-anim load-d4">저장소를 만들고, 파일을 올리고, GitHub Pages로 공개합니다</p>
+    <div class="header-pages load-anim load-d6">
+        <a href="github-guide.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 16 16" aria-hidden="true" class="ic-fill"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span> GitHub 저장과 공유</a>
+        <a href="vercel-guide.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span> Vercel 배포</a>
     </div>
 </header>
 
@@ -1168,16 +1166,11 @@
     </a>
     <a href="#sec-step3" data-sec="sec-step3">
         <span class="sm-num">3</span>
-        <span class="sm-title">GitHub Pages</span>
+        <span class="sm-title">Pages 공개</span>
         <span class="sm-sub">STEP 3</span>
     </a>
-    <a href="#sec-step4" data-sec="sec-step4">
-        <span class="sm-num">4</span>
-        <span class="sm-title">Vercel 배포</span>
-        <span class="sm-sub">STEP 4</span>
-    </a>
     <a href="#sec-ref" data-sec="sec-ref">
-        <span class="sm-num">5</span>
+        <span class="sm-num">4</span>
         <span class="sm-title">참고</span>
         <span class="sm-sub">도움말</span>
     </a>
@@ -1185,542 +1178,322 @@
 
 <main class="container">
 
-    <!-- 섹션 0: 왜 할까? -->
     <section class="content-section" id="sec-why">
-
-    <!-- ── 한 문장 요약 (페이지 첫 화면) ── -->
-    <div class="hook-banner reveal-scale">
-        <div class="hook-brand-stack">
-            <span class="hook-brand-icon brand-gh"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
-            <span class="hook-plus">+</span>
-            <span class="hook-brand-icon brand-vc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L22 20H2L12 2z"/></svg></span>
-        </div>
-        <div class="hook-text">
-            <h3>GitHub에 올린 코드를 Vercel이 자동으로 웹 주소로 띄워줍니다</h3>
+        <div class="hook-banner reveal-scale">
+            <div class="hook-head">
+                <div class="hook-brand-stack">
+                    <span class="hook-brand-icon brand-gh"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
+                </div>
+                <div class="hook-text">
+                    <h3>GitHub은 프로젝트를 저장하고 공유하는 코드 창고입니다</h3>
+                </div>
+            </div>
             <div class="hook-urls">
                 <span class="hook-url-block">
-                    <span class="hook-url-label">GitHub Pages</span>
-                    <span class="hook-url">https://내아이디.github.io/프로젝트이름/</span>
+                    <span class="hook-url-label">저장소 주소</span>
+                    <span class="hook-url">https://github.com/내아이디/프로젝트이름</span>
                 </span>
-                <span class="hook-url-arrow">→</span>
                 <span class="hook-url-block">
-                    <span class="hook-url-label">Vercel</span>
-                    <span class="hook-url">https://내프로젝트.vercel.app/</span>
+                    <span class="hook-url-label">Pages 주소</span>
+                    <span class="hook-url">https://내아이디.github.io/프로젝트이름/</span>
                 </span>
             </div>
         </div>
-    </div>
 
-    <!-- ── GitHub vs Vercel 비교표 ── -->
-    <p class="section-subhead reveal" style="margin-top: 32px; margin-bottom: 12px;">GitHub와 Vercel은 무엇이 다른가요?</p>
-    <div class="table-wrapper reveal">
-        <table class="brand-cmp">
-            <thead>
-                <tr><th style="width: 22%; text-align: center;">항목</th><th style="width: 39%; text-align: center;"><span class="brand-icon brand-gh"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>GitHub<a href="https://github.com" target="_blank" rel="noopener" class="th-go">바로가기 ↗</a></th><th style="width: 39%; text-align: center;"><span class="brand-icon brand-vc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L22 20H2L12 2z"/></svg></span>Vercel<a href="https://vercel.com" target="_blank" rel="noopener" class="th-go">바로가기 ↗</a></th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>서비스 설명</strong></td>
-                    <td>코드를 저장·관리·공유하는 클라우드 창고</td>
-                    <td>코드를 받아 즉시 웹 주소로 띄워주는 배포 서비스</td>
-                </tr>
-                <tr>
-                    <td><strong>만든 사람·연도</strong></td>
-                    <td>2008년 톰 프레스턴 워너, 크리스 완스트라스 등이 창립. 2018년 마이크로소프트가 인수했습니다.</td>
-                    <td>2015년 기예르모 라우치가 ZEIT라는 이름으로 창립. 2020년 Vercel로 사명을 바꾸었습니다.</td>
-                </tr>
-                <tr>
-                    <td><strong>이름의 뜻·어원</strong></td>
-                    <td><strong>Git</strong>(버전 관리 도구) + <strong>Hub</strong>(중심·허브)의 조합입니다. 2005년에 리누스 토르발스가 만든 도구 'Git'을 인터넷에 모아두는 허브 역할을 한다는 뜻에서, 2008년에 'GitHub'이라는 이름이 붙었습니다.<div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(206,202,195,0.7); font-size: 13px; color: #6F665E;">참고로 영어 단어 <strong>git</strong>은 영국 속어로 "고집불통" 또는 "얼간이"를 뜻합니다. 토르발스가 자기 이름처럼 고집 센 프로그램이라며 농담조로 붙인 이름이라고 알려져 있습니다.</div></td>
-                    <td>라틴어 vertere(베르테레, 돌다·변환하다)에서 따왔다고 알려진 신조어입니다. "전환·움직임"의 어감을 담고 있습니다.<div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(206,202,195,0.7); font-size: 13px; color: #6F665E;">이전 사명은 독일어 <strong>ZEIT</strong>(차이트, 시간)였습니다. 2020년 React 프레임워크 Next.js를 만든 회사로 자리매김하면서 라틴어 어원의 신조어 'Vercel'로 사명을 다시 정했습니다.</div></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- ── 왜 GitHub와 Vercel을 함께 쓸까요? ── -->
-    <p class="section-subhead reveal" style="margin-top: 32px; margin-bottom: 12px;">왜 GitHub와 Vercel을 함께 쓸까요?</p>
-    <div class="info-box reveal" style="margin-bottom: 16px;">
-        <p>두 도구는 역할이 다릅니다. <span class="highlight">GitHub은 '코드 창고', Vercel은 '서비스 운영 환경'</span>입니다. Vercel을 쓰는 이유는 <strong>자동 배포·빠른 속도·동적 기능</strong>이 필요해서입니다. 코드는 GitHub에 보관하고, 그 코드로 만든 사이트를 사용자에게 서비스하는 환경으로 Vercel을 함께 사용합니다.</p>
-    </div>
-
-    <div class="why-both-grid">
-        <div class="why-card gh reveal-left">
-            <h4><span class="brand-icon brand-gh"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>GitHub Pages만으로 충분한 경우</h4>
-            <ul>
-                <li>오픈소스 프로젝트의 문서나 데모를 코드와 함께 공개할 때</li>
-                <li>회사 소개·랜딩 페이지처럼 단순한 정적 사이트</li>
-                <li>블로그·문서·포트폴리오처럼 화면이 거의 바뀌지 않는 사이트</li>
-                <li>다른 서비스 가입 없이 GitHub 한 계정으로 끝내고 싶을 때</li>
-            </ul>
+        <p class="section-subhead reveal" style="margin-top: 32px; margin-bottom: 12px;">GitHub에서 무엇을 하나요?</p>
+        <div class="info-box reveal" style="margin-bottom: 16px;">
+            <p>GitHub은 프로젝트 파일과 변경 이력을 한곳에 보관합니다. Codex가 만든 결과물을 저장소에 올리면, 작업 기록을 남기고 다른 사람에게 공유할 수 있습니다.</p>
         </div>
-        <div class="why-card vc reveal-right">
-            <h4><span class="brand-icon brand-vc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L22 20H2L12 2z"/></svg></span>Vercel이 진가를 발휘하는 경우</h4>
-            <ul>
-                <li>로그인·대시보드·DB 연동처럼 동적 기능이 있는 웹앱을 띄울 때</li>
-                <li>Next.js·React 같은 프레임워크 앱을 자동 빌드·배포할 때</li>
-                <li>브랜치별 미리보기 URL로 변경 전·후를 비교할 때</li>
-                <li>서버나 인프라를 직접 관리하지 않고 빠르게 서비스를 띄우고 싶을 때</li>
-            </ul>
+
+        <div class="why-both-grid">
+            <div class="why-card gh reveal-left">
+                <h4>저장소가 필요한 경우</h4>
+                <ul>
+                    <li>작업 파일을 안전하게 백업하고 싶을 때</li>
+                    <li>수정 전과 후의 기록을 남겨야 할 때</li>
+                    <li>동료와 같은 프로젝트를 함께 봐야 할 때</li>
+                    <li>정적 HTML 사이트를 GitHub Pages로 공개하고 싶을 때</li>
+                </ul>
+            </div>
+            <div class="why-card gh reveal-right">
+                <h4>이 페이지에서 끝내는 일</h4>
+                <ul>
+                    <li>계정 만들기</li>
+                    <li>저장소 만들기</li>
+                    <li>Codex로 파일 올리기</li>
+                    <li>GitHub Pages 주소 확인하기</li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </section>
 
-    </section><!-- /sec-why -->
-
-    <!-- STEP 1: 가입하기 -->
     <div class="step-divider reveal"><h2 class="step-badge">STEP 1: GitHub 가입하기</h2></div>
     <section class="content-section" id="sec-step1">
         <div class="step-block">
-        <div class="step-goal">
-            <div class="goal-label">이 단계의 목표</div>
-            <p>GitHub 계정을 만들고 첫 번째 저장소를 생성합니다</p>
-        </div>
-
-        <div class="step step-1 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">1</div>
-                <h3>github.com 접속 → Sign up</h3>
+            <div class="step-goal">
+                <div class="goal-label">이 단계의 목표</div>
+                <p>GitHub 계정을 만들고 첫 번째 저장소를 생성합니다</p>
             </div>
-            <p><a href="https://github.com" style="color: var(--ant-orange); font-weight: 600;">github.com</a>에 접속해서 <strong>Sign up</strong> 버튼을 클릭합니다. 이메일, 비밀번호, 사용자명을 입력하면 끝입니다.</p>
-            <p class="step-tip">💡 사용자명은 나중에 URL에 포함됩니다. 기억하기 쉬운 영문으로 만드세요. (예: honggildong → hong.github.io)</p>
-        </div>
 
-        <div class="step step-2 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">2</div>
-                <h3>새 저장소 만들기</h3>
+            <div class="step step-1 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3>github.com 접속 후 Sign up</h3>
+                </div>
+                <p><a href="https://github.com" style="color: var(--codex-accent); font-weight: 600;">github.com</a>에 접속해서 <strong>Sign up</strong> 버튼을 클릭합니다. 이메일, 비밀번호, 사용자명을 입력합니다.</p>
+                <p class="step-tip">사용자명은 주소에 들어갑니다. 기억하기 쉬운 영문 이름으로 만드세요.</p>
             </div>
-            <p>로그인 후 왼쪽 상단 <strong>New</strong> 버튼을 클릭합니다.</p>
-            <div class="code-block-wrap">
-                <div class="code-block">
-                    <code><span class="comment"># 저장소 설정</span>
+
+            <div class="step step-2 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3>새 저장소 만들기</h3>
+                </div>
+                <p>로그인 후 왼쪽 상단 <strong>New</strong> 버튼을 클릭합니다.</p>
+                <div class="code-block-wrap">
+                    <div class="code-block">
+                        <code><span class="comment"># 저장소 설정</span>
 Repository name: my-project    <span class="comment">← 프로젝트 이름 입력</span>
-Public / Private 선택          <span class="comment">← 공개 or 비공개</span>
+Public / Private 선택          <span class="comment">← 공개 또는 비공개</span>
 [Create repository] 클릭</code>
+                    </div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 </div>
-                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                <p class="code-note">Private 저장소로 만들면 본인과 초대한 사람만 볼 수 있습니다.</p>
             </div>
-            <p class="code-note">※ Private(비공개)으로 만들면 나만 볼 수 있습니다.</p>
-        </div>
 
-        <div class="step step-3 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">3</div>
-                <h3>API Key (Personal Access Token) 발급 <span class="pat-warning">가장 까다로운 단계</span></h3>
-            </div>
-            <p>Claude Code가 GitHub에 접근하려면 인증 키가 필요합니다. 화면 위치가 자주 바뀌니 천천히 따라가세요.</p>
-            <div class="pages-cards" style="margin: 16px 0;">
-                <div class="pages-card reveal-scale stagger-1">
-                    <div class="pages-card-num">1</div>
-                    <div class="pages-card-icon">👤</div>
-                    <h4>프로필 클릭</h4>
-                    <p>우측 상단 프로필 사진 → <strong>Settings</strong></p>
+            <div class="step step-3 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h3>Personal Access Token 발급 <span class="pat-warning">가장 까다로운 단계</span></h3>
                 </div>
-                <div class="pages-card reveal-scale stagger-2">
-                    <div class="pages-card-num">2</div>
-                    <div class="pages-card-icon">🔧</div>
-                    <h4>Developer Settings</h4>
-                    <p>왼쪽 맨 하단 <strong>Developer settings</strong> 클릭</p>
+                <p>Codex가 GitHub에 접근하려면 인증 키가 필요합니다. 화면 위치가 바뀔 수 있으니 메뉴 이름을 기준으로 찾으세요.</p>
+                <div class="pages-cards" style="margin: 16px 0;">
+                    <div class="pages-card reveal-scale stagger-1">
+                        <div class="pages-card-num">1</div>
+                        <div class="pages-card-icon">👤</div>
+                        <h4>프로필 클릭</h4>
+                        <p>우측 상단 프로필 사진 → <strong>Settings</strong></p>
+                    </div>
+                    <div class="pages-card reveal-scale stagger-2">
+                        <div class="pages-card-num">2</div>
+                        <div class="pages-card-icon">🔧</div>
+                        <h4>Developer Settings</h4>
+                        <p>왼쪽 하단 <strong>Developer settings</strong> 클릭</p>
+                    </div>
+                    <div class="pages-card reveal-scale stagger-3">
+                        <div class="pages-card-num">3</div>
+                        <div class="pages-card-icon">🔑</div>
+                        <h4>토큰 생성</h4>
+                        <p>Personal access tokens → <strong>Tokens classic</strong> → Generate new token</p>
+                    </div>
                 </div>
-                <div class="pages-card reveal-scale stagger-3">
-                    <div class="pages-card-num">3</div>
-                    <div class="pages-card-icon">🔑</div>
-                    <h4>토큰 생성</h4>
-                    <p>Personal access tokens → <strong>Tokens (classic)</strong> → Generate new token</p>
+                <div class="code-block-wrap">
+                    <div class="code-block">
+                        <code><span class="comment"># 토큰 설정</span>
+Note: codex-access             <span class="comment">← 이름</span>
+Expiration: 90 days            <span class="comment">← 유효기간</span>
+Scopes: repo 체크              <span class="comment">← 저장소 접근 권한</span>
+[Generate token] 클릭 후 토큰 복사</code>
+                    </div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 </div>
-            </div>
-            <div class="code-block-wrap">
-                <div class="code-block">
-                    <code><span class="comment"># 토큰 설정</span>
-Note: claude-code-access        <span class="comment">← 이름 (자유롭게)</span>
-Expiration: 90 days             <span class="comment">← 유효기간</span>
-Scopes: repo 체크 ✓             <span class="comment">← 저장소 접근 권한</span>
-[Generate token] 클릭 → 토큰 복사 (한 번만 표시됩니다!)</code>
+                <div class="note-box note-danger">
+                    <strong>보안 주의:</strong> 이 토큰은 비밀번호와 같습니다. Codex에게 전달할 때 <strong>"이 키는 절대 메모리나 파일에 저장하지 마"</strong>라고 함께 말하세요.
                 </div>
-                <button class="copy-btn" onclick="copyCode(this)">복사</button>
-            </div>
-            <div class="note-box note-danger">
-                <strong>🔒 보안 주의:</strong> 이 토큰은 비밀번호와 같습니다. Claude에게 전달할 때 <strong>"이 키는 절대 메모리나 파일에 저장하지 마"</strong>라고 함께 말하세요. 세션이 끝나면 토큰을 재발급받는 것이 안전합니다.
             </div>
         </div>
-        </div>
-
     </section>
 
-    <!-- STEP 2: 올리기 -->
-    <div class="step-divider reveal"><h2 class="step-badge">STEP 2: Claude로 올리기</h2></div>
+    <div class="step-divider reveal"><h2 class="step-badge">STEP 2: Codex로 올리기</h2></div>
     <section class="content-section" id="sec-step2">
         <div class="step-block">
-        <div class="step-goal">
-            <div class="goal-label">이 단계의 목표</div>
-            <p>Claude Code에서 프로젝트를 GitHub에 올립니다</p>
-        </div>
-
-        <div class="note-box">
-            <strong>💬 시작 전 확인:</strong> Claude Code가 열려 있고, 작업할 프로젝트 폴더가 현재 열려 있어야 합니다. STEP 1에서 발급받은 API Key도 준비하세요.
-        </div>
-
-        <div class="step step-2 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">1</div>
-                <h3>API Key를 Claude에게 전달하기</h3>
+            <div class="step-goal">
+                <div class="goal-label">이 단계의 목표</div>
+                <p>Codex에서 프로젝트를 GitHub 저장소에 올립니다</p>
             </div>
-            <p>Claude Code에서 GitHub에 처음 접근할 때 API Key가 필요합니다. 이렇게 말하세요:</p>
-            <div class="code-block-wrap">
-                <div class="code-block">
-                    <code><span class="comment"># Claude에게 이렇게 말하세요</span>
+
+            <div class="note-box">
+                <strong>시작 전 확인:</strong> Codex에서 작업할 프로젝트 폴더가 열려 있어야 합니다. STEP 1에서 발급받은 토큰도 준비하세요.
+            </div>
+
+            <div class="step step-2 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3>토큰 전달하기</h3>
+                </div>
+                <p>Codex에게 토큰을 전달할 때는 저장 금지 지시를 함께 줍니다.</p>
+                <div class="code-block-wrap">
+                    <div class="code-block">
+                        <code><span class="comment"># Codex에게 이렇게 말하세요</span>
 > GitHub Personal Access Token은 ghp_xxxxxxxxxxxx야
 > 이 키는 절대 메모리나 파일에 저장하지 마</code>
+                    </div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 </div>
-                <button class="copy-btn" onclick="copyCode(this)">복사</button>
             </div>
-            <div class="note-box note-danger">
-                <strong>🔒 보안:</strong> API Key는 해당 세션에서만 사용하고, 코드나 파일에 절대 저장하지 마세요. 토큰이 노출되면 즉시 GitHub에서 삭제하고 재발급하세요.
-            </div>
-        </div>
 
-        <div class="step step-3 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">2</div>
-                <h3>처음 올릴 때</h3>
-            </div>
-            <p>이미 내 컴퓨터에 프로젝트가 있다면 Claude에게 말하세요:</p>
-            <div class="code-block-wrap">
-                <div class="code-block">
-                    <code><span class="comment"># Claude에게 이렇게 말하세요</span>
+            <div class="step step-3 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3>처음 올릴 때</h3>
+                </div>
+                <div class="code-block-wrap">
+                    <div class="code-block">
+                        <code><span class="comment"># Codex에게 이렇게 말하세요</span>
 > 이 프로젝트를 GitHub에 올려줘
 > GitHub 주소는 https://github.com/내아이디/my-project 야</code>
+                    </div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 </div>
-                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                <p class="code-note">Codex가 필요한 git 명령을 실행합니다. 명령어를 외울 필요는 없습니다.</p>
             </div>
-            <p style="margin-top: 16px;">GitHub에 있는 프로젝트를 내려받고 싶다면:</p>
-            <div class="code-block-wrap">
-                <div class="code-block">
-                    <code><span class="comment"># Claude에게 이렇게 말하세요</span>
-> https://github.com/내아이디/my-project 클론해줘</code>
+
+            <div class="step step-1 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h3>수정한 내용을 다시 올릴 때</h3>
                 </div>
-                <button class="copy-btn" onclick="copyCode(this)">복사</button>
-            </div>
-            <p class="code-note">※ Claude가 알아서 git 명령어를 실행해줍니다. 명령어를 외울 필요 없습니다.</p>
-        </div>
-
-        <div class="step step-1 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">3</div>
-                <h3>이후에 수정했을 때</h3>
-            </div>
-            <div class="key-point" style="margin-bottom: 16px;">
-                🗣️ 한국어로 말하면 Claude가 알아서 git 명령어를 실행합니다
-            </div>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr><th>하고 싶은 것</th><th>Claude에게 이렇게 말하세요</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>변경사항 저장하기</td><td>"지금까지 바꾼 거 커밋해줘"</td></tr>
-                        <tr><td>GitHub에 올리기</td><td>"GitHub에 푸시해줘"</td></tr>
-                        <tr><td>최신 코드 받기</td><td>"GitHub에서 최신 코드 받아줘"</td></tr>
-                        <tr><td>이전 버전으로 돌리기</td><td>"마지막 커밋 전으로 되돌려줘"</td></tr>
-                    </tbody>
-                </table>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>하고 싶은 것</th><th>Codex에게 이렇게 말하세요</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>변경사항 저장하기</td><td>"지금까지 바꾼 거 커밋해줘"</td></tr>
+                            <tr><td>GitHub에 올리기</td><td>"GitHub에 푸시해줘"</td></tr>
+                            <tr><td>최신 코드 받기</td><td>"GitHub에서 최신 코드 받아줘"</td></tr>
+                            <tr><td>이전 버전으로 돌리기</td><td>"마지막 커밋 전으로 되돌려줘"</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-
-        </div>
-
     </section>
 
-    <!-- STEP 3: 공개하기 -->
     <div class="step-divider reveal"><h2 class="step-badge">STEP 3: GitHub Pages로 공개하기</h2></div>
     <section class="content-section" id="sec-step3">
         <div class="step-block">
-        <div class="step-goal">
-            <div class="goal-label">이 단계의 목표</div>
-            <p>GitHub의 무료 호스팅 기능을 켜서 내 URL로 사이트가 열리는 것을 확인합니다</p>
-        </div>
+            <div class="step-goal">
+                <div class="goal-label">이 단계의 목표</div>
+                <p>GitHub Pages를 켜서 정적 사이트 주소를 확인합니다</p>
+            </div>
 
-        <div class="step-row">
-        <p class="section-subhead">GitHub Pages 활성화 3단계</p>
-        <div class="pages-cards">
-            <div class="pages-card reveal-scale stagger-1">
-                <div class="pages-card-num">1</div>
-                <div class="pages-card-icon">⚙️</div>
-                <h4>Settings 클릭</h4>
-                <p>저장소 상단 탭에서 <strong>Settings</strong> 선택</p>
-            </div>
-            <div class="pages-card reveal-scale stagger-2">
-                <div class="pages-card-num">2</div>
-                <div class="pages-card-icon">📄</div>
-                <h4>Pages 메뉴</h4>
-                <p>왼쪽 사이드바에서 <strong>Pages</strong> 클릭</p>
-            </div>
-            <div class="pages-card reveal-scale stagger-3">
-                <div class="pages-card-num">3</div>
-                <div class="pages-card-icon">🚀</div>
-                <h4>branch 선택 후 Save</h4>
-                <p><strong>main</strong> 브랜치 선택 → Save<br><small style="color:#888;">1~2분 후 공개됩니다</small></p>
-            </div>
-        </div>
-        </div>
-
-        <div class="step-row">
-        <div class="info-box reveal">
-            <p>저장소에 올린 HTML/CSS/JS 파일이 바로 웹사이트로 공개됩니다. 내 URL은:</p>
-            <div class="code-block-wrap" style="margin-top: 12px;">
-                <div class="code-block">
-                    <code>https://<span style="color: #e8706a;">내아이디</span>.github.io/<span style="color: #e8706a;">프로젝트이름</span>/</code>
+            <div class="step-row">
+                <p class="section-subhead">GitHub Pages 활성화 3단계</p>
+                <div class="pages-cards">
+                    <div class="pages-card reveal-scale stagger-1">
+                        <div class="pages-card-num">1</div>
+                        <div class="pages-card-icon">⚙️</div>
+                        <h4>Settings 클릭</h4>
+                        <p>저장소 상단 탭에서 <strong>Settings</strong> 선택</p>
+                    </div>
+                    <div class="pages-card reveal-scale stagger-2">
+                        <div class="pages-card-num">2</div>
+                        <div class="pages-card-icon">📄</div>
+                        <h4>Pages 메뉴</h4>
+                        <p>왼쪽 사이드바에서 <strong>Pages</strong> 클릭</p>
+                    </div>
+                    <div class="pages-card reveal-scale stagger-3">
+                        <div class="pages-card-num">3</div>
+                        <div class="pages-card-icon">🚀</div>
+                        <h4>브랜치 선택 후 Save</h4>
+                        <p><strong>main</strong> 브랜치 선택 후 Save<br><small style="color:#888;">1~2분 후 공개됩니다</small></p>
+                    </div>
                 </div>
-                <button class="copy-btn" onclick="copyCode(this)">복사</button>
             </div>
-            <p class="example-line">예) 아이디 <code>hong</code>, 저장소 <code>my-site</code> → <strong>https://hong.github.io/my-site/</strong></p>
-        </div>
-        </div>
-        </div>
 
+            <div class="step-row">
+                <div class="info-box reveal">
+                    <p>저장소에 올린 HTML/CSS/JS 파일이 바로 웹사이트로 공개됩니다. 주소 형식은 다음과 같습니다.</p>
+                    <div class="code-block-wrap" style="margin-top: 12px;">
+                        <div class="code-block">
+                            <code>https://<span style="color: #e8706a;">내아이디</span>.github.io/<span style="color: #e8706a;">프로젝트이름</span>/</code>
+                        </div>
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    </div>
+                    <p class="example-line">예) 아이디 <code>hong</code>, 저장소 <code>my-site</code> → <strong>https://hong.github.io/my-site/</strong></p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- STEP 4: Vercel로 배포하기 -->
-    <div class="step-divider reveal"><h2 class="step-badge">STEP 4: Vercel로 배포하기</h2></div>
-    <section class="content-section" id="sec-step4">
-        <div class="step-block">
-        <div class="step-goal">
-            <div class="goal-label">이 단계의 목표</div>
-            <p>GitHub와 Vercel을 연동해 푸시하면 자동으로 사이트가 갱신되도록 만듭니다</p>
-        </div>
-
-        <div class="step step-1 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">1</div>
-                <h3>vercel.com 접속 → GitHub로 로그인</h3>
-            </div>
-            <p><a href="https://vercel.com" style="color: var(--ant-orange); font-weight: 600;">vercel.com</a>에 접속해서 <strong>Sign Up</strong> 또는 <strong>Continue with GitHub</strong>을 클릭합니다. GitHub 계정과 자동으로 연동되므로 새로 회원가입을 하지 않아도 됩니다.</p>
-            <p class="step-tip">💡 권한 요청 화면이 뜨면 <strong>Authorize Vercel</strong>을 눌러 저장소 접근을 허용합니다. 처음에는 무료 Hobby 플랜으로 시작해도 충분합니다.</p>
-        </div>
-
-        <div class="step step-2 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">2</div>
-                <h3>새 프로젝트 만들기 (Import)</h3>
-            </div>
-            <p>대시보드 우측 상단 <strong>Add New ▾</strong> → <strong>Project</strong>를 누르고, GitHub 저장소 목록에서 STEP 1에서 만든 저장소를 찾아 <strong>Import</strong> 버튼을 클릭합니다.</p>
-            <div class="code-block-wrap">
-                <div class="code-block">
-                    <code><span class="comment"># Import 화면 설정</span>
-Project Name: my-project        <span class="comment">← 자동 입력됨</span>
-Framework Preset: Other         <span class="comment">← 정적 HTML이면 그대로</span>
-Root Directory: ./              <span class="comment">← 보통 그대로 둠</span>
-[Deploy] 클릭</code>
-                </div>
-                <button class="copy-btn" onclick="copyCode(this)">복사</button>
-            </div>
-            <p class="code-note">※ Next.js · React · Vite 같은 프레임워크는 Vercel이 자동으로 감지합니다.</p>
-        </div>
-
-        <div class="step step-3 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">3</div>
-                <h3>1~2분 대기 → 배포된 URL 확인</h3>
-            </div>
-            <p>Deploy를 누르면 1~2분 안에 빌드가 끝나고, Vercel이 자동으로 무료 도메인을 만들어줍니다. 만들어진 URL은 다음과 같은 형식입니다.</p>
-            <div class="code-block-wrap">
-                <div class="code-block">
-                    <code>https://<span style="color: #e8706a;">프로젝트이름</span>.vercel.app/</code>
-                </div>
-                <button class="copy-btn" onclick="copyCode(this)">복사</button>
-            </div>
-            <p class="example-line">예) 저장소 <code>my-site</code> → <strong>https://my-site.vercel.app/</strong></p>
-            <p class="step-tip">💡 내 도메인이 있다면 Settings → Domains에서 직접 연결할 수 있습니다.</p>
-        </div>
-
-        <div class="step step-1 reveal reveal-left">
-            <div class="step-header">
-                <div class="step-number">4</div>
-                <h3>이후엔 푸시만 하면 자동 재배포</h3>
-            </div>
-            <p>한 번 연동해두면, 다음부터는 Claude에게 푸시해달라고 말하는 것만으로 사이트가 자동으로 갱신됩니다.</p>
-            <div class="code-block-wrap">
-                <div class="code-block">
-                    <code><span class="comment"># Claude에게 이렇게 말하세요</span>
-> 변경사항 커밋하고 GitHub에 푸시해줘</code>
-                </div>
-                <button class="copy-btn" onclick="copyCode(this)">복사</button>
-            </div>
-            <p class="code-note">※ 푸시 직후 Vercel 대시보드에서 빌드 진행 상황을 실시간으로 볼 수 있습니다.</p>
-        </div>
-        </div>
-
-    </section>
-
-    <!-- STEP 5: 참고 -->
-    <div class="step-divider reveal"><h2 class="step-badge">STEP 5: 더 알고 싶다면</h2></div>
+    <div class="step-divider reveal"><h2 class="step-badge">STEP 4: 더 알고 싶다면</h2></div>
     <section class="content-section" id="sec-ref">
         <div class="step-block">
-        <div class="step-row">
-        <p class="section-subhead">꼭 알아야 할 용어</p>
-        <div class="table-wrapper">
-            <table class="vocab-table">
-                <thead>
-                    <tr><th>용어</th><th>뜻</th><th>쉽게 말하면</th></tr>
-                </thead>
-                <tbody id="vocab-core">
-                    <tr><td>push (푸시)</td><td>내 컴퓨터 → GitHub으로 올리기</td><td>구글 드라이브에 업로드</td></tr>
-                    <tr><td>pull (풀)</td><td>GitHub → 내 컴퓨터로 받기</td><td>구글 드라이브에서 다운로드</td></tr>
-                    <tr><td>clone (클론)</td><td>GitHub 저장소를 통째로 복사</td><td>공유 폴더를 내 컴퓨터에 복사</td></tr>
-                    <tr><td>commit (커밋)</td><td>변경 내용을 로컬에 저장</td><td>게임 세이브 포인트</td></tr>
-                    <tr><td>branch (브랜치)</td><td>독립된 작업 공간</td><td>원본 복사해서 따로 작업</td></tr>
-                </tbody>
-                <tbody id="vocab-more" class="vocab-more">
-                    <tr><td>PR (풀 리퀘스트)</td><td>코드 변경을 검토 요청</td><td>"이거 확인해주세요" 요청서</td></tr>
-                    <tr><td>fork (포크)</td><td>남의 저장소를 내 계정으로 복사</td><td>남의 레시피를 내 노트에 복사</td></tr>
-                    <tr><td>conflict (충돌)</td><td>같은 부분을 다르게 수정했을 때</td><td>두 사람이 같은 문장을 다르게 고침</td></tr>
-                    <tr><td>.gitignore</td><td>Git이 무시할 파일 목록</td><td>"이 파일들은 추적하지 마" 목록</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <button class="vocab-more-toggle" id="vocab-toggle" onclick="toggleVocab()">
-            <span id="vocab-toggle-icon">▼</span> 심화 용어 4개 더 보기
-        </button>
-        </div>
-
-        <div class="step-row">
-        <p class="section-subhead">Git 용어, 왜 이런 이름이 붙었을까요?</p>
-        <div class="table-wrapper">
-            <table class="origin-cmp">
-                <thead>
-                    <tr><th style="width: 18%; text-align: center;">용어</th><th style="text-align: center;">어원 / 유래</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Git</strong></td>
-                        <td>2005년 리누스 토르발스(Linux 창시자)가 만들었습니다. "git"은 영국 속어로 "고집불통"이라는 뜻. 그는 농담으로 "내 이름처럼 고집 센 프로그램"이라며 이름을 붙였습니다.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>commit</strong></td>
-                        <td>"commit to paper(기록하다)"에서 유래. 변경 내용을 영구적으로 기록한다는 의미입니다. 게임의 세이브 포인트처럼 특정 시점을 확정하는 행위입니다.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>push / pull</strong></td>
-                        <td>방향 비유입니다. 내 컴퓨터에서 서버로 밀어내면(push), 서버에서 내 컴퓨터로 당겨오면(pull)이라고 표현합니다.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>branch</strong></td>
-                        <td>나무 가지(branch)에서 유래. 메인 줄기(main)에서 뻗어나온 독립 작업 공간을 나뭇가지에 비유한 것입니다.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>clone</strong></td>
-                        <td>생물학의 클론(유전적으로 동일한 복제체)에서 유래. 저장소를 100% 동일하게 복사한다는 뜻입니다.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>repository</strong></td>
-                        <td>라틴어 "repositorium(레포지토리움, 보관소·창고)"에서 유래. 코드와 히스토리를 보관하는 공간을 뜻합니다.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>fork</strong></td>
-                        <td>갈림길(fork in the road)에서 유래. 남의 저장소를 내 계정으로 복사해 독립적인 방향으로 발전시킨다는 의미입니다.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        </div>
-
-        <div class="step-row">
-        <p class="section-subhead">React와 Next.js는 무엇인가요?</p>
-        <div class="table-wrapper">
-            <table class="tech-cmp">
-                <thead>
-                    <tr>
-                        <th style="width: 18%; text-align: center;">용어</th>
-                        <th style="text-align: center;">쉬운 설명</th>
-                        <th style="width: 22%; text-align: center;">대표 사용 사례</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>React<br>(리액트)</strong></td>
-                        <td>2013년 페이스북(현 Meta)에서 공개한 자바스크립트 라이브러리입니다. 웹사이트 화면을 작은 부품(컴포넌트)으로 나눠 만들고 조립하는 방식입니다.<div style="margin-top: 8px; padding: 8px 12px; background: rgba(217,119,87,0.08); border-radius: 8px; font-size: 13px; color: #5C5650;">🧱 <strong>비유</strong> · 레고 블록처럼 화면 조각을 따로 만들어 두고, 필요할 때 조립해서 사이트를 만든다고 생각하면 됩니다. 같은 블록을 여러 페이지에서 재사용할 수 있어 개발이 빨라집니다.</div><div style="margin-top: 8px; padding: 8px 12px; background: rgba(0,0,0,0.04); border-radius: 8px; font-size: 13px; color: #5C5650;">📖 <strong>이름 유래</strong> · 영어 단어 <strong>react(반응하다)</strong>에서 따왔습니다. 사용자의 동작이나 데이터 변화에 화면이 즉각 "반응"해 다시 그려진다는 핵심 동작 방식을 그대로 이름에 담은 것입니다.</div></td>
-                        <td>인스타그램, 넷플릭스, 에어비앤비, 페이스북</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Next.js<br>(넥스트JS)</strong></td>
-                        <td>2016년 Vercel에서 공개한 React 기반 프레임워크입니다. React에 서버 처리, 자동 라우팅, 이미지 최적화, 검색엔진 노출(SEO) 같은 부가 기능을 더한 것입니다.<div style="margin-top: 8px; padding: 8px 12px; background: rgba(217,119,87,0.08); border-radius: 8px; font-size: 13px; color: #5C5650;">📦 <strong>비유</strong> · React가 '레고 블록'이라면, Next.js는 '조립 매뉴얼과 모든 부속이 한 박스에 담긴 풀세트'입니다. 처음부터 직접 설계하지 않아도 빠르고 검색에 잘 노출되는 사이트를 만들 수 있습니다.</div><div style="margin-top: 8px; padding: 8px 12px; background: rgba(0,0,0,0.04); border-radius: 8px; font-size: 13px; color: #5C5650;">📖 <strong>이름 유래</strong> · 영어 단어 <strong>next(다음)</strong> + <strong>.js</strong>(JavaScript 파일 확장자)의 조합입니다. "웹의 다음(next) 세대를 만드는 프레임워크"라는 의미를 담아 붙인 이름이라고 알려져 있습니다.</div></td>
-                        <td>틱톡, 노션, 트위치, 훌루</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        </div>
+            <div class="step-row">
+                <p class="section-subhead">꼭 알아야 할 용어</p>
+                <div class="table-wrapper">
+                    <table class="vocab-table">
+                        <thead>
+                            <tr><th>용어</th><th>뜻</th><th>쉽게 말하면</th></tr>
+                        </thead>
+                        <tbody id="vocab-core">
+                            <tr><td>push</td><td>내 컴퓨터에서 GitHub으로 올리기</td><td>구글 드라이브에 업로드</td></tr>
+                            <tr><td>pull</td><td>GitHub에서 내 컴퓨터로 받기</td><td>구글 드라이브에서 다운로드</td></tr>
+                            <tr><td>clone</td><td>GitHub 저장소를 통째로 복사</td><td>공유 폴더를 내 컴퓨터에 복사</td></tr>
+                            <tr><td>commit</td><td>변경 내용을 로컬에 저장</td><td>게임 세이브 포인트</td></tr>
+                            <tr><td>branch</td><td>독립된 작업 공간</td><td>원본을 복사해 따로 작업</td></tr>
+                        </tbody>
+                        <tbody id="vocab-more" class="vocab-more">
+                            <tr><td>PR</td><td>코드 변경 검토 요청</td><td>"이거 확인해주세요" 요청서</td></tr>
+                            <tr><td>fork</td><td>남의 저장소를 내 계정으로 복사</td><td>남의 레시피를 내 노트에 복사</td></tr>
+                            <tr><td>conflict</td><td>같은 부분을 다르게 수정했을 때</td><td>두 사람이 같은 문장을 다르게 고침</td></tr>
+                            <tr><td>.gitignore</td><td>Git이 무시할 파일 목록</td><td>"이 파일들은 추적하지 마" 목록</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="vocab-more-toggle" id="vocab-toggle" onclick="toggleVocab()">
+                    <span id="vocab-toggle-icon">▼</span> 심화 용어 4개 더 보기
+                </button>
+            </div>
         </div>
     </section>
 
-    <!-- 섹션 6: 워크트리 (참고 자료) -->
     <section class="content-section" id="sec-worktree">
         <div class="step-block">
-
             <div class="step-row">
                 <p class="section-subhead">워크트리(worktree) · 한 저장소를 여러 폴더에서 동시에 다루기</p>
-                <p style="font-size: 15px;">하나의 프로젝트에서 작업하다 보면, 진행 중인 일을 잠시 멈추고 다른 버전의 코드를 확인해야 할 때가 생깁니다. 워크트리는 같은 프로젝트의 사본을 여러 폴더로 동시에 펼쳐 두는 기능입니다. 같은 기획안을 여러 회의실에 동시에 띄워 두고 각 회의실에서 서로 다른 수정본을 검토하는 모습과 비슷합니다. 한쪽 폴더에서 신규 기능을 개발하는 동시에, 옆 폴더에서는 긴급 수정을 진행할 수 있기 때문에 작업 흐름이 끊기지 않습니다.</p>
+                <p style="font-size: 15px;">한 프로젝트에서 진행 중인 일을 멈추지 않고 다른 버전을 확인해야 할 때가 있습니다. 워크트리는 같은 프로젝트의 사본을 여러 폴더로 펼쳐 두는 기능입니다.</p>
             </div>
-
-            <div class="step-row">
-                <p class="section-subhead">언제 쓰면 좋을까요?</p>
-                <div class="note-box" style="font-size: 14px;">
-                    <strong>💡 자주 쓰이는 상황</strong>
-                    <ul style="margin: 8px 0 0 20px; padding: 0;">
-                        <li>신규 기능을 개발하던 도중 긴급 수정 요청이 들어왔을 때, 진행하던 작업을 멈추거나 따로 저장하지 않고 옆 폴더에서 바로 수정 작업을 시작할 수 있습니다.</li>
-                        <li>동료가 만든 코드를 검토해야 할 때, 본인 작업 폴더는 그대로 둔 채 별도 폴더에서 동료의 작업 버전을 펼쳐 확인할 수 있습니다.</li>
-                        <li>Claude Code 같은 AI 에이전트에게 작업을 맡길 때, 본인이 직접 작업 중인 폴더와 분리된 폴더에서 진행하도록 해 충돌을 예방할 수 있습니다.</li>
-                    </ul>
-                </div>
-            </div>
-
             <div class="step-row">
                 <p class="section-subhead">핵심 명령어 3가지</p>
                 <div class="code-block-wrap">
                     <div class="code-block">
-                        <code><span class="comment"># 새 워크트리 만들기 (fix-login 브랜치를 ../my-project-fix 폴더로 펼침)</span>
+                        <code><span class="comment"># 새 워크트리 만들기</span>
 git worktree add ../my-project-fix fix-login
 
-<span class="comment"># 현재 만들어진 워크트리 목록 보기</span>
+<span class="comment"># 목록 보기</span>
 git worktree list
 
-<span class="comment"># 다 쓴 워크트리 정리하기</span>
+<span class="comment"># 정리하기</span>
 git worktree remove ../my-project-fix</code>
                     </div>
                     <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 </div>
-                <p class="code-note">※ <strong>add</strong> 뒤에는 새로 만들 폴더 경로와 그 폴더에서 사용할 브랜치 이름을 차례대로 적습니다.</p>
             </div>
-
-            <div class="step-row">
-                <div class="note-box note-danger" style="font-size: 14px;">
-                    <strong>⚠️ 주의</strong> · 같은 작업 버전(브랜치)을 두 폴더에서 동시에 열 수는 없습니다. 한 작업 버전은 한 폴더에서만 열 수 있다고 기억하시면 됩니다. 서로 다른 작업 버전은 얼마든지 동시에 펼쳐 둘 수 있습니다.
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- CTA -->
     <div class="cta-section reveal-scale">
-        <h3>이제 내 프로젝트로 직접 띄워볼 차례입니다</h3>
-        <p>STEP 1~4를 그대로 따라하면 명령어 없이 GitHub 업로드부터 Vercel 배포까지 한번에 끝납니다.<br>실전 과제에서 한 번 더 연습하거나, CLI 모드로 더 깊이 들어가 보세요.</p>
+        <h3>이제 프로젝트를 저장소에 올려볼 차례입니다</h3>
+        <p>계정 생성, 저장소 생성, Codex 업로드, Pages 공개까지 이 페이지 안에서 마무리합니다.</p>
         <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-            <a class="cta-btn secondary" style="min-width:200px; max-width:260px; flex:1; justify-content:center;" href="claude-code-tasks.html">← 실전 과제로 돌아가기</a>
-            <a class="cta-btn primary" style="min-width:200px; max-width:260px; flex:1;" href="checklist.html">✅ CLI로 더 깊이 →</a>
+            <a class="cta-btn secondary" style="min-width:200px; max-width:260px; flex:1; justify-content:center;" href="codex-tasks.html">← 실전 과제로 돌아가기</a>
+            <a class="cta-btn primary" style="min-width:200px; max-width:260px; flex:1;" href="agents-md-templates.html">다음: 자동화 규칙 만들기 →</a>
         </div>
-        <p style="margin-top: 18px; font-size: 12px; color: rgba(255,255,255,0.55);">또는 바로 시작하기 ·
-            <a href="https://github.com" target="_blank" rel="noopener" style="color: var(--ant-orange); text-decoration: none; font-weight: 700;">GitHub</a> ·
-            <a href="https://vercel.com" target="_blank" rel="noopener" style="color: var(--ant-orange); text-decoration: none; font-weight: 700;">Vercel</a>
+        <p style="margin-top: 18px; font-size: 12px; color: rgba(255,255,255,0.55);">바로 시작하기 ·
+            <a href="https://github.com" target="_blank" rel="noopener" style="color: var(--codex-accent); text-decoration: none; font-weight: 700;">GitHub</a>
         </p>
     </div>
+
 
 </main>
 
 
 <footer>
     <p class="footer-brand">AI ROASTING</p>
-    <p class="footer-text">비즈니스 리더를 위한 Claude 완전 정복</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
     <span class="footer-link-row">
         <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
         <span class="footer-link-sep" aria-hidden="true">·</span>
@@ -1730,14 +1503,6 @@ git worktree remove ../my-project-fix</code>
 </footer>
 
 <script>
-// ── Mode Tabs ──
-function switchMode(mode) {
-    document.getElementById('tab-nocode').classList.toggle('active', mode === 'nocode');
-    document.getElementById('tab-cli').classList.toggle('active', mode === 'cli');
-    document.getElementById('pages-nocode').style.display = mode === 'nocode' ? 'flex' : 'none';
-    document.getElementById('pages-cli').style.display = mode === 'cli' ? 'flex' : 'none';
-}
-
     /* ── 스크롤 reveal 애니메이션 ── */
     (function() {
         const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
@@ -1758,7 +1523,6 @@ function switchMode(mode) {
         document.getElementById('sec-step1'),
         document.getElementById('sec-step2'),
         document.getElementById('sec-step3'),
-        document.getElementById('sec-step4'),
         document.getElementById('sec-ref')
     ];
     const navLinks = document.querySelectorAll('.sub-menu a[data-sec]');
@@ -1880,36 +1644,40 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     display: flex; align-items: center; gap: 10px;
     margin: 0 0 16px;
     padding: 14px 16px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
-    color: #3A3530; text-decoration: none;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    color: #38404F; text-decoration: none;
     font-size: 14px; font-weight: 700;
 }
 .sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
 .sm-drawer-item {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 14px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
     text-decoration: none;
-    color: #3A3530;
+    color: #38404F;
     transition: all 0.15s;
 }
-.sm-drawer-item:hover { box-shadow: inset 3px 3px 7px #CECAC3, inset -3px -3px 7px #FFFFFF; }
-.sm-drawer-item.active { background: rgba(217,119,87,0.10); }
-.sm-drawer-item.active .sm-drawer-num { background: #D97757; box-shadow: 0 2px 8px rgba(217,119,87,0.4); }
-.sm-drawer-item.active .sm-drawer-title { color: #1A1917; font-weight: 800; }
+.sm-drawer-item:hover { box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1; }
+.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active);
+    color: var(--codex-pill-text);
+    box-shadow: var(--codex-pill-shadow);
+}
+.sm-drawer-item.active .sm-drawer-title { color: #14192E; font-weight: 800; }
 .sm-drawer-num {
     width: 28px; height: 28px; border-radius: 50%;
-    background: #B0544A; color: #fff;
+    background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
     font-size: 13px; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: all 0.2s;
 }
 .sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.sm-drawer-title { font-size: 14px; font-weight: 700; color: #3A3530; line-height: 1.35; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
 .sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
 @media (max-width: 768px) {
     .sm-menu-toggle { display: inline-flex; }
@@ -1961,7 +1729,239 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         height: 2px !important;
     }
 }
-</style>
+
+        /* ## CODEX-HERO-VIDEO START ## */
+        header {
+            background: #070707 !important;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+            }
+        }
+        /* ## CODEX-HERO-VIDEO END ## */
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-badge { position: relative; overflow: hidden; }
+        .step-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -2044,5 +2044,23 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 </script>
 <!-- ## SM-HAMBURGER END ## -->
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
 </body>
 </html>

@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="vercel-guide.html">
+    <meta property="og:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="vercel-guide.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta name="twitter:image" content="assets/thumbnails/thumbnail.png">
+    <title>Vercel 배포 가이드 | Codex</title>
+    <style>
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('assets/fonts/PretendardVariable.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
+            --nm-light: #FFFFFF;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --codex-accent: #5B62D8;
+            --ant-dark: #1A1917;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        /* ── Scroll Reveal Animations ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.45); }
+            50% { box-shadow: 0 0 0 14px rgba(99,102,241,0); }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+        .stagger-1 { transition-delay: 0.08s; }
+        .stagger-2 { transition-delay: 0.16s; }
+        .stagger-3 { transition-delay: 0.24s; }
+        .stagger-4 { transition-delay: 0.32s; }
+        .stagger-5 { transition-delay: 0.40s; }
+        .stagger-6 { transition-delay: 0.48s; }
+        .stagger-7 { transition-delay: 0.56s; }
+
+        /* ── Page Load Entrance ── */
+        .load-anim {
+            opacity: 0;
+            animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .load-d1 { animation-delay: 0.05s; }
+        .load-d2 { animation-delay: 0.15s; }
+        .load-d3 { animation-delay: 0.25s; }
+        .load-d4 { animation-delay: 0.35s; }
+        .load-d5 { animation-delay: 0.45s; }
+        .load-d6 { animation-delay: 0.55s; }
+
+        .hook-icon { animation: floatY 3s ease-in-out infinite; }
+        .journey-icon { animation: floatY 3.2s ease-in-out infinite; }
+        .journey-step:nth-child(3) .journey-icon { animation-delay: 0.4s; }
+        .journey-step:nth-child(5) .journey-icon { animation-delay: 0.8s; }
+        .journey-arrow { transition: transform 0.3s ease; }
+        .journey:hover .journey-arrow { transform: translateX(4px); }
+
+        .step:hover .step-number { animation: pulseGlow 1.6s ease-out infinite; }
+        .step-number { transition: transform 0.3s ease; }
+        .step:hover .step-number { transform: scale(1.08) rotate(-4deg); }
+
+        .pages-card, .error-card, .compare-item { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease; }
+        .pages-card:hover, .error-card:hover, .compare-item:hover { transform: translateY(-4px); }
+
+        .cta-btn { transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.2s ease; }
+        .cta-btn:hover { transform: translateY(-2px); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .reveal-left, .reveal-right, .reveal-scale,
+            .load-anim { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+            .hook-icon, .journey-icon, .step-badge { animation: none !important; }
+        }
+
+        body { word-break: keep-all;
+            font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif;
+            background: #FFFFFF;
+            color: #2C2F3A;
+            line-height: 1.6;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
+            padding: 28px 40px 40px;
+            border-radius: 0 0 32px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute; top: -80px; right: -40px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .back-link {
+            display: inline-block;
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 14px; font-weight: 600;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+            position: relative; z-index: 1;
+        }
+        .back-link:hover { color: #fff; }
+        header h1 {
+            font-size: 44px; font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.15); letter-spacing: -1px;
+            margin-bottom: 8px;
+            position: relative; z-index: 1;
+        }
+        header p { font-size: 16px; color: rgba(255,255,255,0.8); position: relative; z-index: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+        .header-badge {
+            display: inline-block;
+            font-size: 13px; font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 4px 16px; border-radius: 20px;
+            margin-top: 12px;
+            position: relative; z-index: 1;
+        }
+
+        /* ── Step Navigator ── */
+        .step-nav { display: flex; align-items: center; justify-content: center; margin: 26px 0 20px; gap: 0; max-width: 80%; margin-left: auto; margin-right: auto; }
+        .step-node {
+            width: 37px; height: 37px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.35);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7);
+            background: rgba(0,0,0,0.2);
+            text-decoration: none; flex-shrink: 0; transition: all 0.2s;
+        }
+        .step-node.sn-diag { font-size: 11px; letter-spacing: 0; }
+        .step-node:hover { border-color: rgba(255,255,255,0.7); color: rgba(255,255,255,0.9); background: rgba(0,0,0,0.3); }
+        .step-node.active { background: rgba(255,255,255,0.95); border-color: rgba(255,255,255,0.95); color: #1A1917; }
+        .step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.5); min-width: 13px; max-width: 34px; border-radius: 2px; }
+
+        /* ── Header Page Links ── */
+        .header-pages { max-width: 490px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex; justify-content: center; gap: 14px; margin-top: 22px; position: relative; z-index: 1; }
+        .header-page-link {
+            display: flex; align-items: center; gap: 8px;
+            text-decoration: none; color: rgba(255,255,255,0.7);
+            font-size: 14px; font-weight: 700;
+            padding: 12px 22px; border-radius: 16px;
+            background: rgba(255,255,255,0.07);
+            box-shadow: 5px 5px 12px rgba(0,0,0,0.35), -5px -5px 12px rgba(255,255,255,0.06);
+            transition: all 0.25s;
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: 280px;
+        justify-content: center;
+            white-space: nowrap;
+        }
+        .header-page-link:hover { background: rgba(255,255,255,0.13); color: #fff; transform: translateY(-1px); }
+        .header-page-link.active {
+            background: rgba(255,255,255,0.14);
+            box-shadow: inset 3px 3px 8px rgba(0,0,0,0.35), inset -3px -3px 8px rgba(255,255,255,0.06);
+            color: #fff;
+        }
+        .header-page-link .hpl-icon { font-size: 18px; display: inline-flex; align-items: center; }
+        .header-page-link .hpl-icon svg { width: 16px; height: 16px; fill: currentColor; }
+
+        /* ── Mode Tabs ── */
+        .mode-tabs {
+            display: inline-flex;
+            gap: 4px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px;
+            padding: 4px;
+            margin-top: 12px;
+            position: relative; z-index: 1;
+        }
+        .mode-tab {
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.55);
+            padding: 5px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .mode-tab.active {
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .mode-tab:hover:not(.active) { color: rgba(255,255,255,0.8); }
+
+        /* ── CONTAINER ── */
+        .container { max-width: 1080px; margin: 0 auto; padding: 32px 32px 80px; }
+
+        h2 {
+            font-size: 22px; font-weight: 700; color: #3A3530;
+            padding-left: 16px; border-left: 4px solid var(--codex-accent);
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            height: 2px; background: var(--nm-bg);
+            box-shadow: var(--nm-inset); margin: 48px 0; border-radius: 2px;
+        }
+
+        /* ── #1 오프닝 훅 배너 ── */
+        .hook-banner {
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+            left: 10px;
+            overflow: hidden;
+        }
+        .hook-banner::before {
+            content: '';
+            position: absolute; top: -40px; right: -20px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hook-icon {
+            font-size: 48px; flex-shrink: 0;
+        }
+        .hook-brand-stack {
+            display: flex; gap: 6px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .hook-brand-icon {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .hook-brand-icon svg { display: block; fill: #1A1917; }
+        .hook-brand-icon.brand-gh svg { width: 78%; height: 78%; }
+        .hook-brand-icon.brand-vc svg { width: 50%; height: 50%; }
+        .hook-plus {
+            color: var(--codex-accent);
+            font-size: 22px; font-weight: 800;
+        }
+        @media (max-width: 768px) {
+            .hook-brand-icon { width: 36px; height: 36px; }
+        }
+        .hook-text h3 {
+            font-size: 20px; font-weight: 800; color: #fff;
+            margin-bottom: 6px;
+        }
+        .hook-text p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .hook-url {
+            display: inline-block;
+            font-size: 13px; font-weight: 700;
+            color: var(--codex-accent);
+            background: rgba(99,102,241,0.1);
+            border: 1px solid rgba(99,102,241,0.3);
+            padding: 4px 14px; border-radius: 8px;
+            font-family: 'SF Mono', monospace;
+        }
+        .hook-urls {
+            display: flex; flex-wrap: wrap;
+            gap: 12px; margin-top: 14px;
+            margin-left: 10px;
+            align-items: center;
+        }
+        .hook-url-block {
+            display: flex; flex-direction: column; gap: 5px;
+        }
+        .hook-url-label {
+            font-size: 11px; font-weight: 700;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.5px;
+        }
+        .hook-url-arrow {
+            color: var(--codex-accent);
+            font-size: 20px; font-weight: 800;
+            padding-top: 16px;
+        }
+        @media (max-width: 768px) {
+            .hook-url-arrow { transform: rotate(90deg); padding-top: 0; }
+            .hook-urls { gap: 8px; }
+        }
+
+        /* ── #2 전체 여정 타임라인 ── */
+        .journey {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 32px;
+            flex-wrap: nowrap;
+        }
+        .journey-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 0;
+        }
+        .journey-icon {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; flex-shrink: 0;
+        }
+        .journey-label { font-size: 12px; font-weight: 700; color: #3A3530; text-align: center; }
+        .journey-sub { font-size: 11px; color: #999; text-align: center; }
+        .journey-arrow { font-size: 18px; color: var(--codex-accent); flex-shrink: 0; margin: 0 4px; padding-bottom: 24px; }
+
+        /* ── Concept Cards ── */
+        .concept-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+        .concept-card {
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-radius: 14px; padding: 20px; transition: box-shadow 0.25s;
+        }
+        .concept-card:hover { box-shadow: var(--nm-shadow); }
+        .concept-card h3 { font-size: 16px; font-weight: 700; color: #3A3530; margin-bottom: 4px; }
+        .concept-card .en { font-size: 12px; color: #999; margin-bottom: 8px; }
+        .concept-card p { font-size: 14px; color: #5C5650; margin-bottom: 8px; line-height: 1.5; }
+        .analogy {
+            font-size: 13px; color: #5C5650;
+            background: var(--nm-bg); box-shadow: var(--nm-inset);
+            border-left: 3px solid var(--codex-accent);
+            padding: 8px 12px; border-radius: 0 8px 8px 0;
+        }
+
+        /* ── Info Box ── */
+        .info-box {
+            background: var(--nm-bg); box-shadow: var(--nm-inset);
+            border-radius: 12px; padding: 24px; margin-bottom: 20px;
+        }
+        .info-box p { font-size: 15px; color: #5C5650; line-height: 1.7; }
+        .info-box .highlight { color: var(--codex-accent); font-weight: 700; }
+
+        /* ── Note Box ── */
+        .note-box {
+            font-size: 13px; color: #888;
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-radius: 10px; padding: 14px 18px;
+            margin-bottom: 20px; line-height: 1.7;
+        }
+        .note-box strong { color: #666; }
+
+        /* ── Compare Box ── */
+        .compare-box {
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            gap: 16px; align-items: center; margin-bottom: 24px;
+        }
+        .compare-item {
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-radius: 14px; padding: 24px; text-align: center; transition: box-shadow 0.25s;
+        }
+        .compare-item:hover { box-shadow: var(--nm-shadow); }
+        .compare-item h3 { font-size: 18px; font-weight: 700; color: #3A3530; margin-bottom: 4px; }
+        .compare-item .sub { font-size: 13px; color: #999; margin-bottom: 12px; }
+        .compare-item p { font-size: 14px; color: #5C5650; line-height: 1.5; }
+        .compare-arrow { font-size: 24px; color: var(--codex-accent); font-weight: 700; }
+
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { font-size: 14px; color: #5C5650; padding: 8px 0; padding-left: 20px; position: relative; }
+        .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--codex-accent); font-weight: 700; }
+
+        /* ── #4 배포 시각 카드 ── */
+        .pages-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 16px 0 20px;
+        }
+        .pages-card {
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            border-radius: 14px;
+            padding: 20px 16px;
+            text-align: center;
+            position: relative;
+        }
+        .pages-card-num {
+            width: 28px; height: 28px;
+            background: var(--codex-accent);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 13px; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 10px;
+            box-shadow: 2px 2px 8px rgba(99,102,241,0.4);
+        }
+        .pages-card-icon { font-size: 26px; margin-bottom: 8px; }
+        .pages-card h4 { font-size: 14px; font-weight: 700; color: #3A3530; margin-bottom: 4px; }
+        .pages-card p { font-size: 12px; color: #888; line-height: 1.5; }
+
+        /* ── #8 Steps 강화 ── */
+        .step {
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-radius: 16px; padding: 28px;
+            margin-bottom: 16px; transition: box-shadow 0.25s;
+            border-left: 4px solid transparent;
+        }
+        .step:hover { box-shadow: var(--nm-shadow); }
+        .step.step-1 { border-left-color: #6aab8e; }
+        .step.step-2 { border-left-color: var(--codex-accent); }
+        .step.step-3 { border-left-color: #5a8fbf; }
+
+        .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .step-number {
+            background: var(--codex-accent); color: #fff;
+            width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 800;
+            flex-shrink: 0;
+            box-shadow: 2px 2px 6px rgba(99,102,241,0.4);
+        }
+        .step.step-1 .step-number { background: #6aab8e; box-shadow: 2px 2px 6px rgba(106,171,142,0.4); }
+        .step.step-3 .step-number { background: #5a8fbf; box-shadow: 2px 2px 6px rgba(90,143,191,0.4); }
+        .step-header h3 { font-size: 18px; font-weight: 800; color: #3A3530; }
+        .step p { font-size: 14px; color: #5C5650; margin-bottom: 12px; line-height: 1.6; }
+        .step p:last-child { margin-bottom: 0; }
+
+        /* ── 통합 STEP 블록 (섹션 하나에 박스 하나) ── */
+        .step-block {
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            border-radius: 18px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            border-left: 4px solid var(--codex-accent);
+        }
+        .step-block > * {
+            margin: 0;
+            border-radius: 0;
+            border-bottom: 1px dashed rgba(206,202,195,0.7);
+        }
+        .step-block > *:last-child { border-bottom: none; }
+        .step-block > .step-goal {
+            background: rgba(99,102,241,0.07);
+            box-shadow: none;
+            border-left: none;
+            padding: 14px 26px;
+        }
+        .step-block > .step,
+        .step-block > .step.step-1,
+        .step-block > .step.step-2,
+        .step-block > .step.step-3 {
+            background: transparent;
+            box-shadow: none;
+            border-left: none;
+            padding: 22px 26px;
+        }
+        .step-block > .step:hover { box-shadow: none; transform: none; }
+        .step-block > .note-box {
+            background: transparent;
+            box-shadow: none;
+            padding: 16px 26px;
+        }
+        .step-block > .step-row {
+            padding: 22px 26px;
+            background: transparent;
+        }
+        .step-block > .step-row > h3 {
+            font-size: 16px; font-weight: 800; color: #3A3530;
+            margin: 0 0 14px;
+        }
+        .step-block > .step-row > .section-subhead {
+            margin: 0 0 12px;
+        }
+        .step-block > .step-row > .pages-cards { margin: 0; }
+        .step-block > .step-row > .info-box,
+        .step-block > .step-row > .error-grid { margin-bottom: 0; }
+        .step-block > .step-row > .info-box {
+            background: transparent;
+            box-shadow: var(--nm-inset);
+            padding: 18px;
+        }
+        .step-block > .step-row.troubleshoot {
+            background: rgba(224,92,92,0.05);
+            border-top: 1px solid rgba(224,92,92,0.18);
+        }
+        .step-block > .step-row.troubleshoot > h3 {
+            color: #b04040;
+        }
+        .step-block > .step-row.troubleshoot > h3::before {
+            content: '⚠️ ';
+            margin-right: 4px;
+        }
+        .step-block > .step-row > .table-wrapper {
+            margin: 0 0 12px;
+            box-shadow: var(--nm-inset);
+        }
+        .step-block > .step-row > .table-wrapper:last-child { margin-bottom: 0; }
+        .step-block > .step-row > .vocab-more-toggle { margin-top: 8px; }
+        /* step-block 내부 step-number는 색상 통일 (Codex 블루 바이올렛) */
+        .step-block .step-number {
+            background: var(--codex-accent) !important;
+            box-shadow: 2px 2px 6px rgba(99,102,241,0.4) !important;
+        }
+
+        /* ── #3 Code Block + 복사 버튼 ── */
+        .code-block-wrap { position: relative; margin-bottom: 12px; border-radius: 10px; overflow: hidden; background: #2d2d2d; }
+        .code-block {
+            background: #2d2d2d;
+            border-radius: 0;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            padding: 18px 24px;
+            padding-right: 72px;
+            overflow-x: auto;
+        }
+        .code-block code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: none; border: none; padding: 0; box-shadow: none;
+            color: #e0e0e0; font-size: 14px;
+            display: block; white-space: pre; line-height: 1.7;
+        }
+        .code-block .comment { color: #6a9955; }
+        .copy-btn {
+            position: absolute; top: 8px; right: 8px;
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.55);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 4px 10px; border-radius: 6px;
+            font-size: 11px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s;
+            font-family: 'Pretendard', sans-serif;
+        }
+        .copy-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+        .copy-btn.copied { background: rgba(100,200,100,0.2); color: #7fce7f; border-color: rgba(100,200,100,0.3); }
+
+        .code-note { font-size: 13px; color: #888; margin-bottom: 16px; }
+
+        /* ── Tables ── */
+        .table-wrapper {
+            overflow-x: auto; border-radius: 14px;
+            box-shadow: var(--nm-shadow-sm); margin-bottom: 16px;
+        }
+        table { width: 100%; border-collapse: collapse; background: var(--nm-bg); overflow: hidden; }
+        thead { background: var(--ant-dark); }
+        th { text-align: left; padding: 12px 16px; font-size: 13px; font-weight: 600; color: #fff; letter-spacing: 0.5px; }
+        td { padding: 14px 16px; font-size: 14px; color: #5C5650; border-bottom: 1px solid rgba(206,202,195,0.4); }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: rgba(206,202,195,0.25); }
+
+        code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            padding: 2px 8px; border-radius: 6px;
+            font-size: 13px; color: var(--codex-accent);
+        }
+
+        /* ── Key Point ── */
+        .key-point {
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-left: 4px solid var(--codex-accent); border-radius: 12px;
+            padding: 16px 20px; font-size: 15px; font-weight: 600; color: #3A3530;
+            margin-bottom: 20px;
+        }
+
+        /* ── #9 용어 접기/펼치기 ── */
+        .vocab-table td:first-child { font-weight: 700; white-space: nowrap; color: #3A3530; }
+        .vocab-more-toggle {
+            display: flex; align-items: center; gap: 8px;
+            cursor: pointer; margin-top: 12px; margin-bottom: 4px;
+            font-size: 13px; font-weight: 700; color: var(--codex-accent);
+            padding: 10px 16px;
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-radius: 10px; border: none; width: 100%;
+            transition: box-shadow 0.2s;
+            font-family: 'Pretendard', sans-serif;
+        }
+        .vocab-more-toggle:hover { box-shadow: var(--nm-shadow); }
+        .vocab-more-toggle.open { box-shadow: var(--nm-inset); color: #B85C3A; }
+        .vocab-more { display: none; }
+        .vocab-more.open { display: table-row-group; }
+
+        /* ── #5 실수 & 해결 섹션 ── */
+        .error-grid { display: flex; flex-direction: column; gap: 12px; }
+        .error-card {
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-radius: 14px; padding: 20px 24px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;
+        }
+        .error-situation { border-right: 1px solid rgba(206,202,195,0.6); padding-right: 16px; }
+        .error-label {
+            font-size: 10px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1.2px; margin-bottom: 6px;
+        }
+        .error-label.bad { color: #c0555a; }
+        .error-label.good { color: #6aab8e; }
+        .error-situation h4, .error-solution h4 {
+            font-size: 14px; font-weight: 700; color: #3A3530; margin-bottom: 6px;
+        }
+        .error-situation p, .error-solution p { font-size: 13px; color: #5C5650; line-height: 1.5; }
+        .error-solution .claude-say {
+            font-size: 13px; font-weight: 600;
+            background: #2d2d2d; color: #e0e0e0;
+            padding: 8px 14px; border-radius: 8px;
+            font-family: 'SF Mono', monospace;
+            margin-top: 6px; display: block;
+        }
+
+        /* ── #6 성공 체험 박스 ── */
+        .success-box {
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-radius: 20px; padding: 32px; margin-bottom: 20px;
+            text-align: center;
+        }
+        .success-box h3 { font-size: 20px; font-weight: 800; color: #3A3530; margin-bottom: 8px; }
+        .success-box .sub { font-size: 14px; color: #888; margin-bottom: 24px; }
+        .before-after {
+            display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center;
+        }
+        .ba-item {
+            background: var(--nm-bg); box-shadow: var(--nm-inset);
+            border-radius: 12px; padding: 20px;
+        }
+        .ba-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .ba-label.before { color: #999; }
+        .ba-label.after { color: #6aab8e; }
+        .ba-content { font-size: 14px; color: #5C5650; line-height: 1.6; }
+        .ba-url { font-size: 13px; font-weight: 700; color: var(--codex-accent); font-family: 'SF Mono', monospace; margin-top: 8px; display: block; }
+        .ba-arrow { font-size: 28px; color: var(--codex-accent); }
+
+        /* ── #7 CTA 섹션 ── */
+        .cta-section {
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%); border-radius: 20px;
+            padding: 28px 32px; text-align: center; margin-top: 40px;
+        }
+        .cta-section h3 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .cta-section p { font-size: 14px; color: rgba(255,255,255,0.75); margin-bottom: 24px; line-height: 1.6; }
+        .cta-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .cta-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            font-size: 14px; font-weight: 700;
+            padding: 12px 28px; border-radius: 10px;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .cta-btn.primary { background: #fff; color: #5B62D8; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+        .cta-btn.primary:hover { background: #f5f0ee; transform: translateY(-1px); }
+        .cta-btn.secondary { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.15); }
+        .cta-btn.secondary:hover { background: rgba(255,255,255,0.14); color: #fff; }
+
+        /* ── #10 체크리스트 ── */
+        .checklist-section {
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-radius: 20px; padding: 28px 32px; margin-top: 40px;
+        }
+        .checklist-title {
+            font-size: 16px; font-weight: 800; color: #3A3530;
+            margin-bottom: 16px; padding-left: 14px;
+            border-left: 4px solid var(--codex-accent);
+        }
+        .checklist { display: flex; flex-direction: column; gap: 10px; }
+        .check-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 18px; border-radius: 12px;
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            cursor: pointer; transition: all 0.2s; user-select: none;
+        }
+        .check-item:hover { box-shadow: var(--nm-shadow); }
+        .check-item.checked { box-shadow: var(--nm-inset); }
+        .check-box {
+            width: 24px; height: 24px; border-radius: 6px;
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-size: 14px; transition: all 0.2s;
+        }
+        .check-item.checked .check-box {
+            background: var(--codex-accent); box-shadow: 2px 2px 8px rgba(99,102,241,0.4);
+            color: #fff;
+        }
+        .check-text { font-size: 14px; font-weight: 600; color: #3A3530; }
+        .check-item.checked .check-text { color: #999; text-decoration: line-through; }
+        .checklist-progress {
+            margin-top: 16px;
+            font-size: 13px; color: #888; text-align: right;
+        }
+        .progress-bar {
+            height: 6px; background: var(--nm-bg);
+            box-shadow: var(--nm-inset); border-radius: 3px;
+            margin-top: 6px; overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%; background: var(--codex-accent);
+            border-radius: 3px; transition: width 0.4s ease;
+            box-shadow: 0 0 8px rgba(99,102,241,0.5);
+        }
+
+        /* ── Sub Menu ── */
+        .sub-menu {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #F0EDE8;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border-bottom: 1px solid #E0DDD7;
+            border-radius: 0 0 32px 32px;
+            padding: 14px 0;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .sub-menu::-webkit-scrollbar { display: none; }
+        .sub-menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            padding: 8px 18px;
+            transition: all 0.2s;
+            flex: 1;
+            max-width: 150px;
+        }
+        .sub-menu a:hover .sm-num { transform: scale(1.1); }
+        .sub-menu a:hover .sm-title { color: var(--ant-dark); }
+        .sub-menu a.active {
+            background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58));
+            border-radius: 14px;
+        }
+        .sub-menu a.active .sm-num {
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
+        }
+        .sub-menu a.active .sm-title { color: var(--ant-dark); font-weight: 800; }
+        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
+        .sm-num {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
+            font-size: 13px; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .sm-num.sm-num-emoji {
+            background: transparent;
+            font-size: 22px;
+            box-shadow: none;
+        }
+        .sub-menu a.active .sm-num.sm-num-emoji {
+            background: transparent;
+            box-shadow: none;
+        }
+        .sm-title { font-size: 13px; font-weight: 700; color: #3A3530; white-space: nowrap; }
+        .sm-sub { font-size: 11px; color: #999; white-space: nowrap; }
+        .content-section { scroll-margin-top: 155px; }
+        /* step-divider도 같은 오프셋으로 잡아두면 첫 클릭 시 배지가 가려지지 않음 */
+        .step-divider { scroll-margin-top: 155px; }
+
+        /* ── Step Divider + Badge ── */
+        .step-divider {
+            position: relative;
+            text-align: center;
+            margin: 40px 0 32px;
+        }
+        .step-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #CECAC3 20%, #CECAC3 80%, transparent);
+            transform: translateY(-50%);
+        }
+        .step-badge {
+            position: relative;
+            display: inline-block;
+            font-size: 15px; font-weight: 800; letter-spacing: 0.5px;
+            color: var(--codex-accent);
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            padding: 10px 28px;
+            border-radius: 50px;
+            z-index: 1;
+            margin: 0;
+        }
+        /* ── step-badge shimmer ── */
+        @keyframes shimmerScan {
+            0%   { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .step-badge {
+            background-image: linear-gradient(
+                105deg,
+                var(--nm-bg) 40%,
+                rgba(255,255,255,0.85) 50%,
+                var(--nm-bg) 60%
+            );
+            background-size: 200% auto;
+            animation: shimmerScan 2.8s linear infinite;
+        }
+        .step-goal {
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-left: 4px solid var(--codex-accent);
+            border-radius: 14px; padding: 16px 22px;
+            margin-bottom: 28px;
+        }
+        .goal-label {
+            font-size: 11px; font-weight: 800; color: var(--codex-accent);
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px;
+        }
+        .step-goal p { font-size: 15px; font-weight: 700; color: #3A3530; margin: 0; }
+
+        /* ── Section subheader ── */
+        .section-subhead { font-size: 16px; font-weight: 700; color: #3A3530; margin-bottom: 12px; }
+
+        /* ── Page Nav ── */
+        .page-nav { max-width: 960px; margin: 0 auto; padding: 0 32px 48px; display: flex; justify-content: space-between; }
+        .page-nav-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            text-decoration: none; color: #3A3530;
+            font-size: 13px; font-weight: 600;
+            padding: 10px 18px;
+            background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
+            border-radius: 12px; transition: all 0.2s;
+        }
+        .page-nav-btn:hover { box-shadow: var(--nm-inset); color: var(--codex-accent); }
+
+        /* ── Footer ── */
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
+        .footer-about-link {
+            display: inline-block; margin-top: 8px;
+            color: rgba(255,255,255,0.75); text-decoration: none;
+            font-size: 12px; font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 1px; transition: all 0.2s;
+        }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
+        .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
+        .footer-link-row .footer-about-link { margin-top: 0; }
+        .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
+
+        /* ── Brand Icons ── */
+        .brand-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.4em;
+            height: 1.4em;
+            border-radius: 50%;
+            background: #000;
+            margin-right: 6px;
+            vertical-align: -0.32em;
+            flex-shrink: 0;
+        }
+        .brand-icon svg { display: block; fill: #fff; }
+        .brand-icon.brand-gh svg { width: 78%; height: 78%; }
+        .brand-icon.brand-vc svg { width: 62%; height: 62%; }
+
+        /* ── 비교표 thead 배경 (브랜드 로고가 잘 보이도록 밝은 톤) ── */
+        .brand-cmp thead { background: #F0EDE8; }
+        .brand-cmp th { color: #3A3530; border-bottom: 1px solid #CECAC3; }
+        .brand-cmp tbody td:first-child,
+        .tech-cmp tbody td:first-child,
+        .tech-cmp tbody td:last-child,
+        .origin-cmp tbody td:first-child {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .brand-cmp .th-go {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--codex-accent);
+            background: rgba(99,102,241,0.12);
+            padding: 3px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+            vertical-align: middle;
+            letter-spacing: 0.3px;
+        }
+        .brand-cmp .th-go:hover {
+            background: var(--codex-accent);
+            color: #fff;
+        }
+
+        /* ── 본문 유틸 클래스 (인라인 스타일 정리) ── */
+        .step-tip {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+            line-height: 1.55;
+        }
+        .example-line {
+            font-size: 13px;
+            color: #5C5650;
+            margin-top: 12px;
+            line-height: 1.55;
+        }
+        .note-box.note-danger {
+            border-left: 4px solid #e05c5c;
+            padding-left: 14px;
+            margin-top: 12px;
+        }
+        .pat-warning {
+            display: inline-block;
+            font-size: 11px; font-weight: 800;
+            color: #fff; background: #e05c5c;
+            padding: 3px 9px; border-radius: 12px;
+            margin-left: 8px; vertical-align: 2px;
+            letter-spacing: 0.4px;
+        }
+
+        /* ── 셀 안 불릿 리스트 ── */
+        .cell-list { list-style: none; padding: 0; margin: 0; }
+        .cell-list li {
+            padding: 4px 0 4px 14px;
+            position: relative;
+            line-height: 1.55;
+        }
+        .cell-list li::before {
+            content: '·';
+            position: absolute;
+            left: 3px; top: 0;
+            color: var(--codex-accent);
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 1.55;
+        }
+
+        /* ── Guide Cards ── */
+        .why-both-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .why-card {
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            border-radius: 14px;
+            padding: 20px 22px;
+            border-top: 3px solid;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .why-card.gh { border-top-color: #6aab8e; }
+        .why-card.vc { border-top-color: #5a8fbf; }
+        .why-card:hover { box-shadow: var(--nm-shadow); transform: translateY(-3px); }
+        .why-card h4 {
+            font-size: 14px; font-weight: 800; color: #3A3530;
+            margin-bottom: 12px;
+        }
+        .why-card ul { list-style: none; padding: 0; margin: 0; }
+        .why-card li {
+            font-size: 13px; color: #5C5650; line-height: 1.6;
+            padding: 6px 0 6px 16px;
+            position: relative;
+        }
+        .why-card li::before {
+            content: '·'; position: absolute; left: 5px; top: 4px;
+            color: var(--codex-accent); font-weight: 800; font-size: 16px;
+        }
+
+        /* ── 콘텐츠 영역 글자 1pt(약 1px) 축소 ── */
+        .container h2 { font-size: 21px; }
+        .container .section-subhead { font-size: 15px; }
+        .container .step-goal p { font-size: 14px; }
+        .container .hook-text h3 { font-size: 17px; }
+        .container .hook-text p { font-size: 13px; }
+        .container .hook-url { font-size: 12px; }
+        .container .step-header h3 { font-size: 17px; }
+        .container .step p { font-size: 13px; }
+        .container .info-box p { font-size: 14px; }
+        .container .note-box { font-size: 12px; }
+        .container .code-note { font-size: 12px; }
+        .container .code-block code { font-size: 13px; }
+        .container td { font-size: 13px; }
+        .container th { font-size: 12px; }
+        .container code { font-size: 12px; }
+        .container .pages-card h4 { font-size: 13px; }
+        .container .pages-card p { font-size: 11px; }
+        .container .step-badge { font-size: 12px; }
+        .container .check-text { font-size: 13px; }
+        .container .checklist-title { font-size: 15px; }
+        .container .checklist-progress span { font-size: 12px; }
+        .container .error-card h4 { font-size: 13px; }
+        .container .error-situation p,
+        .container .error-solution p { font-size: 12px; }
+        .container .cta-section h3 { font-size: 21px; }
+        .container .cta-section p { font-size: 13px; }
+        .container .cta-btn { font-size: 13px; }
+        .container .vocab-more-toggle { font-size: 14px; }
+        .container .compare-item h3 { font-size: 17px; }
+        .container .compare-item .sub { font-size: 12px; }
+        .container .compare-item p { font-size: 13px; }
+        .container .journey-label { font-size: 11px; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            header { padding: 28px 20px 28px; }
+            header h1 { font-size: 28px; }
+            .container { padding: 32px 16px; }
+            .concept-grid { grid-template-columns: 1fr; }
+            .compare-box { grid-template-columns: 1fr; }
+            .compare-arrow { transform: rotate(90deg); text-align: center; }
+            .why-both-grid { grid-template-columns: 1fr; }
+            th, td { padding: 10px 12px; font-size: 12px; }
+            .brand-cmp td, .brand-cmp th { padding: 8px 10px; font-size: 11px; }
+            .brand-cmp .th-go { font-size: 10px; padding: 2px 7px; margin-left: 6px; }
+            .brand-cmp .brand-icon { width: 1.2em; height: 1.2em; margin-right: 4px; }
+            .header-pages { flex-wrap: wrap; gap: 8px; }
+            .header-page-link { font-size: 12px; padding: 8px 14px; border-radius: 12px; }
+            .page-nav { flex-direction: column; gap: 10px; }
+            .sub-menu { padding: 10px 8px; }
+            .sub-menu a { padding: 6px 10px; max-width: 100px; }
+            .sm-title { font-size: 12px; }
+            .sm-sub { font-size: 10px; }
+            .sm-num { width: 24px; height: 24px; font-size: 11px; }
+            .hook-banner { flex-direction: column; text-align: center; padding: 24px 20px; left: 0; }
+            .hook-urls { margin-left: 0; flex-direction: column; align-items: stretch; gap: 10px; }
+            .hook-url-block { align-items: center; }
+            .hook-url {
+                display: block;
+                max-width: 100%;
+                word-break: break-all;
+                white-space: normal;
+                line-height: 1.5;
+                padding: 6px 12px;
+                text-align: center;
+            }
+            .hook-url-arrow { padding: 0; }
+            .journey { flex-wrap: wrap; gap: 12px; }
+            .journey-arrow { display: none; }
+            .pages-cards { grid-template-columns: 1fr; }
+            .error-card { grid-template-columns: 1fr; }
+            .error-situation { border-right: none; border-bottom: 1px solid rgba(206,202,195,0.6); padding-right: 0; padding-bottom: 16px; }
+            .before-after { grid-template-columns: 1fr; }
+            .ba-arrow { transform: rotate(90deg); text-align: center; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+        }
+        @media (max-width: 480px) {
+            header h1 { font-size: 24px; }
+            .header-page-link { font-size: 11px; padding: 7px 12px; }
+            .hook-url { font-size: 11px; }
+            .hook-brand-stack { gap: 4px; }
+            .hook-text h3 { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
+    <nav class="step-nav load-anim load-d1">
+        <a class="step-node sn-diag" href="codex-orientation.html">진단</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="ai-fluency.html">1</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="excel-plugin.html">2</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="codex-101.html">3</a>
+        <div class="step-line"></div>
+        <a class="step-node active" href="vercel-guide.html">4</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="agents-md-templates.html">5</a>
+    </nav>
+    <a class="back-link load-anim load-d2" href="index.html">← 목록으로</a>
+    <h1 class="load-anim load-d3">Vercel 배포</h1>
+    <p class="load-anim load-d4">프로젝트를 배포하고 공개 주소로 확인합니다</p>
+    <div class="header-pages load-anim load-d6">
+        <a href="github-guide.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 16 16" aria-hidden="true" class="ic-fill"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span> GitHub 저장과 공유</a>
+        <a href="vercel-guide.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span> Vercel 배포</a>
+    </div>
+</header>
+
+<!-- ── SUB MENU ── -->
+<nav class="sub-menu load-anim load-d6" id="subMenu">
+    <a href="#sec-why" class="active" data-sec="sec-why">
+        <span class="sm-num">0</span>
+        <span class="sm-title">개념 설명</span>
+        <span class="sm-sub">개요</span>
+    </a>
+    <a href="#sec-step1" data-sec="sec-step1">
+        <span class="sm-num">1</span>
+        <span class="sm-title">가입하기</span>
+        <span class="sm-sub">STEP 1</span>
+    </a>
+    <a href="#sec-step2" data-sec="sec-step2">
+        <span class="sm-num">2</span>
+        <span class="sm-title">프로젝트</span>
+        <span class="sm-sub">STEP 2</span>
+    </a>
+    <a href="#sec-step3" data-sec="sec-step3">
+        <span class="sm-num">3</span>
+        <span class="sm-title">배포 URL</span>
+        <span class="sm-sub">STEP 3</span>
+    </a>
+    <a href="#sec-step4" data-sec="sec-step4">
+        <span class="sm-num">4</span>
+        <span class="sm-title">자동 갱신</span>
+        <span class="sm-sub">STEP 4</span>
+    </a>
+    <a href="#sec-ref" data-sec="sec-ref">
+        <span class="sm-num">5</span>
+        <span class="sm-title">참고</span>
+        <span class="sm-sub">도움말</span>
+    </a>
+</nav>
+
+<main class="container">
+
+    <section class="content-section" id="sec-why">
+        <div class="hook-banner reveal-scale">
+            <div class="hook-brand-stack">
+                <span class="hook-brand-icon brand-vc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L22 20H2L12 2z"/></svg></span>
+            </div>
+            <div class="hook-text">
+                <h3>Vercel은 프로젝트를 웹 주소로 배포하는 서비스입니다</h3>
+                <div class="hook-urls">
+                    <span class="hook-url-block">
+                        <span class="hook-url-label">기본 주소</span>
+                        <span class="hook-url">https://내프로젝트.vercel.app/</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <p class="section-subhead reveal" style="margin-top: 32px; margin-bottom: 12px;">Vercel에서 무엇을 하나요?</p>
+        <div class="info-box reveal" style="margin-bottom: 16px;">
+            <p>Vercel은 웹 프로젝트를 받아 빌드하고 공개 주소를 만들어줍니다. 서버를 직접 관리하지 않아도 정적 사이트, React 앱, Next.js 앱을 빠르게 띄울 수 있습니다.</p>
+        </div>
+
+        <div class="why-both-grid">
+            <div class="why-card vc reveal-left">
+                <h4>Vercel이 필요한 경우</h4>
+                <ul>
+                    <li>웹앱을 빠르게 공개 주소로 띄워야 할 때</li>
+                    <li>Next.js, React, Vite 프로젝트를 자동으로 빌드해야 할 때</li>
+                    <li>수정본마다 미리보기 주소가 필요할 때</li>
+                    <li>별도 서버 관리 없이 서비스를 운영하고 싶을 때</li>
+                </ul>
+            </div>
+            <div class="why-card vc reveal-right">
+                <h4>이 페이지에서 끝내는 일</h4>
+                <ul>
+                    <li>계정 만들기</li>
+                    <li>프로젝트 가져오기</li>
+                    <li>배포 주소 확인하기</li>
+                    <li>수정 후 자동 갱신 흐름 이해하기</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="step-divider reveal"><h2 class="step-badge">STEP 1: Vercel 가입하기</h2></div>
+    <section class="content-section" id="sec-step1">
+        <div class="step-block">
+            <div class="step-goal">
+                <div class="goal-label">이 단계의 목표</div>
+                <p>Vercel 계정을 만들고 대시보드에 들어갑니다</p>
+            </div>
+
+            <div class="step step-1 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3>vercel.com 접속 후 Sign Up</h3>
+                </div>
+                <p><a href="https://vercel.com" style="color: var(--codex-accent); font-weight: 600;">vercel.com</a>에 접속해서 <strong>Sign Up</strong>을 클릭합니다. 무료 Hobby 플랜으로 시작해도 충분합니다.</p>
+                <p class="step-tip">회사 계정으로 운영할 프로젝트라면 개인 메일보다 업무용 메일을 쓰는 편이 관리하기 쉽습니다.</p>
+            </div>
+
+            <div class="step step-2 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3>대시보드 확인</h3>
+                </div>
+                <p>가입 후 대시보드에 들어가면 새 프로젝트를 만들 수 있습니다. 처음에는 프로젝트 목록이 비어 있어도 정상입니다.</p>
+                <div class="note-box">
+                    <strong>확인할 것:</strong> 우측 상단의 <strong>Add New</strong> 버튼이 보이면 준비가 끝난 상태입니다.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="step-divider reveal"><h2 class="step-badge">STEP 2: 새 프로젝트 가져오기</h2></div>
+    <section class="content-section" id="sec-step2">
+        <div class="step-block">
+            <div class="step-goal">
+                <div class="goal-label">이 단계의 목표</div>
+                <p>Vercel에 배포할 프로젝트를 선택하고 빌드 설정을 확인합니다</p>
+            </div>
+
+            <div class="step step-1 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3>Add New에서 Project 선택</h3>
+                </div>
+                <p>대시보드 우측 상단 <strong>Add New</strong>를 누르고 <strong>Project</strong>를 선택합니다. 연결된 코드 저장소나 업로드된 프로젝트 중 배포할 대상을 고릅니다.</p>
+            </div>
+
+            <div class="step step-2 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3>빌드 설정 확인</h3>
+                </div>
+                <p>정적 HTML이면 기본값으로 두면 됩니다. 프레임워크 프로젝트라면 Vercel이 대부분 자동으로 감지합니다.</p>
+                <div class="code-block-wrap">
+                    <div class="code-block">
+                        <code><span class="comment"># Import 화면 설정</span>
+Project Name: my-project        <span class="comment">← 프로젝트 이름</span>
+Framework Preset: Other         <span class="comment">← 정적 HTML이면 그대로</span>
+Root Directory: ./              <span class="comment">← 보통 그대로 둠</span>
+[Deploy] 클릭</code>
+                    </div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="step-divider reveal"><h2 class="step-badge">STEP 3: 배포 URL 확인하기</h2></div>
+    <section class="content-section" id="sec-step3">
+        <div class="step-block">
+            <div class="step-goal">
+                <div class="goal-label">이 단계의 목표</div>
+                <p>배포가 끝난 뒤 공개 주소로 접속합니다</p>
+            </div>
+
+            <div class="step step-3 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3>1~2분 대기 후 URL 열기</h3>
+                </div>
+                <p>Deploy를 누르면 빌드가 시작됩니다. 완료되면 Vercel이 기본 도메인을 만들어줍니다.</p>
+                <div class="code-block-wrap">
+                    <div class="code-block">
+                        <code>https://<span style="color: #e8706a;">프로젝트이름</span>.vercel.app/</code>
+                    </div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                </div>
+                <p class="example-line">예) 프로젝트 <code>my-site</code> → <strong>https://my-site.vercel.app/</strong></p>
+            </div>
+
+            <div class="step step-1 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3>도메인 연결은 나중에 해도 됩니다</h3>
+                </div>
+                <p>처음에는 기본 주소로 충분합니다. 자체 도메인이 있으면 Settings → Domains에서 연결할 수 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="step-divider reveal"><h2 class="step-badge">STEP 4: 수정 후 자동 갱신 이해하기</h2></div>
+    <section class="content-section" id="sec-step4">
+        <div class="step-block">
+            <div class="step-goal">
+                <div class="goal-label">이 단계의 목표</div>
+                <p>새 버전이 들어올 때 Vercel이 다시 배포하는 흐름을 이해합니다</p>
+            </div>
+
+            <div class="step step-1 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3>새 버전이 들어오면 빌드가 다시 시작됩니다</h3>
+                </div>
+                <p>한 번 연결해두면 프로젝트에 새 변경사항이 들어올 때 Vercel이 빌드와 배포를 다시 실행합니다.</p>
+                <div class="note-box">
+                    <strong>확인할 것:</strong> Vercel 대시보드의 Deployments 탭에서 성공, 실패, 진행 중 상태를 볼 수 있습니다.
+                </div>
+            </div>
+
+            <div class="step step-2 reveal reveal-left">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3>문제가 생기면 로그를 봅니다</h3>
+                </div>
+                <p>배포가 실패하면 실패한 항목을 열고 로그를 확인합니다. 오류 메시지를 Codex에 붙여 넣으면 수정 방향을 빠르게 잡을 수 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="step-divider reveal"><h2 class="step-badge">STEP 5: 더 알고 싶다면</h2></div>
+    <section class="content-section" id="sec-ref">
+        <div class="step-block">
+            <div class="step-row">
+                <p class="section-subhead">Vercel에서 자주 보는 용어</p>
+                <div class="table-wrapper">
+                    <table class="vocab-table">
+                        <thead>
+                            <tr><th>용어</th><th>뜻</th><th>쉽게 말하면</th></tr>
+                        </thead>
+                        <tbody id="vocab-core">
+                            <tr><td>Deploy</td><td>프로젝트를 웹에 올리는 작업</td><td>사이트 공개</td></tr>
+                            <tr><td>Build</td><td>코드를 웹에서 실행할 형태로 만드는 과정</td><td>출시 전 포장</td></tr>
+                            <tr><td>Domain</td><td>사용자가 접속하는 주소</td><td>가게 간판</td></tr>
+                            <tr><td>Preview</td><td>정식 공개 전 미리 보는 주소</td><td>검토용 링크</td></tr>
+                            <tr><td>Environment Variable</td><td>외부에 보이면 안 되는 설정값</td><td>서비스용 비밀 메모</td></tr>
+                        </tbody>
+                        <tbody id="vocab-more" class="vocab-more">
+                            <tr><td>Rollback</td><td>이전 배포본으로 되돌리기</td><td>문제 생기기 전 버전으로 복구</td></tr>
+                            <tr><td>Serverless Function</td><td>작은 서버 기능을 파일 단위로 실행</td><td>필요할 때만 켜지는 작은 업무 창구</td></tr>
+                            <tr><td>Edge</td><td>사용자 가까운 지역에서 응답 처리</td><td>가까운 지점에서 바로 응대</td></tr>
+                            <tr><td>Framework Preset</td><td>프로젝트 종류에 맞춘 빌드 기본값</td><td>자동 설정 템플릿</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="vocab-more-toggle" id="vocab-toggle" onclick="toggleVocab()">
+                    <span id="vocab-toggle-icon">▼</span> 심화 용어 4개 더 보기
+                </button>
+            </div>
+
+            <div class="step-row">
+                <p class="section-subhead">React와 Next.js는 무엇인가요?</p>
+                <div class="table-wrapper">
+                    <table class="tech-cmp">
+                        <thead>
+                            <tr>
+                                <th style="width: 18%; text-align: center;">용어</th>
+                                <th style="text-align: center;">쉬운 설명</th>
+                                <th style="width: 22%; text-align: center;">대표 사용 사례</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>React<br>(리액트)</strong></td>
+                                <td>웹사이트 화면을 작은 부품으로 나눠 만들고 조립하는 자바스크립트 라이브러리입니다. 같은 화면 부품을 여러 곳에서 다시 쓸 수 있어 개발이 빨라집니다.</td>
+                                <td>대시보드, 서비스 화면, 인터랙티브 웹앱</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Next.js<br>(넥스트JS)</strong></td>
+                                <td>React 기반 프레임워크입니다. 서버 처리, 자동 라우팅, 이미지 최적화, 검색 노출 같은 기능을 함께 제공합니다.</td>
+                                <td>서비스 웹사이트, 커머스, 콘텐츠 사이트</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-section reveal-scale">
+        <h3>이제 프로젝트를 웹 주소로 띄워볼 차례입니다</h3>
+        <p>계정 생성, 프로젝트 가져오기, 배포 URL 확인, 자동 갱신 흐름까지 이 페이지 안에서 마무리합니다.</p>
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+            <a class="cta-btn secondary" style="min-width:200px; max-width:260px; flex:1; justify-content:center;" href="codex-tasks.html">← 실전 과제로 돌아가기</a>
+            <a class="cta-btn primary" style="min-width:200px; max-width:260px; flex:1;" href="agents-md-templates.html">다음: 자동화 규칙 만들기 →</a>
+        </div>
+        <p style="margin-top: 18px; font-size: 12px; color: rgba(255,255,255,0.55);">바로 시작하기 ·
+            <a href="https://vercel.com" target="_blank" rel="noopener" style="color: var(--codex-accent); text-decoration: none; font-weight: 700;">Vercel</a>
+        </p>
+    </div>
+
+
+</main>
+
+
+<footer>
+    <p class="footer-brand">AI ROASTING</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
+    <span class="footer-link-row">
+        <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
+        <span class="footer-link-sep" aria-hidden="true">·</span>
+        <a href="index.html?license=1" class="footer-about-link">라이선스</a>
+    </span>
+    <p class="footer-text" style="margin-top:10px;opacity:0.7;">© 2026 AI ROASTING. All rights reserved.</p>
+</footer>
+
+<script>
+    /* ── 스크롤 reveal 애니메이션 ── */
+    (function() {
+        const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => revealObserver.observe(el));
+    })();
+
+    /* ── 서브메뉴 스크롤 스파이 ── */
+    const sections = [
+        document.getElementById('sec-why'),
+        document.getElementById('sec-step1'),
+        document.getElementById('sec-step2'),
+        document.getElementById('sec-step3'),
+        document.getElementById('sec-step4'),
+        document.getElementById('sec-ref')
+    ];
+    const navLinks = document.querySelectorAll('.sub-menu a[data-sec]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.sec === id);
+                });
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(sec => { if (sec) observer.observe(sec); });
+
+    /* ── #3 코드블록 복사 버튼 ── */
+    function copyCode(btn) {
+        const code = btn.previousElementSibling.querySelector('code');
+        navigator.clipboard.writeText(code.textContent.trim()).then(() => {
+            btn.textContent = '✓ 복사됨';
+            btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = '복사'; btn.classList.remove('copied'); }, 2000);
+        });
+    }
+
+    /* ── #9 용어 접기/펼치기 ── */
+    function toggleVocab() {
+        const more = document.getElementById('vocab-more');
+        const toggle = document.getElementById('vocab-toggle');
+        const icon = document.getElementById('vocab-toggle-icon');
+        more.classList.toggle('open');
+        toggle.classList.toggle('open');
+        if (more.classList.contains('open')) {
+            icon.textContent = '▲';
+            toggle.innerHTML = '<span id="vocab-toggle-icon">▲</span> 심화 용어 접기';
+        } else {
+            icon.textContent = '▼';
+            toggle.innerHTML = '<span id="vocab-toggle-icon">▼</span> 심화 용어 4개 더 보기';
+        }
+    }
+
+    /* ── #10 체크리스트 ── */
+    function toggleCheck(item) {
+        item.classList.toggle('checked');
+        item.querySelector('.check-box').textContent = item.classList.contains('checked') ? '✓' : '';
+        updateProgress();
+    }
+
+    function updateProgress() {
+        const total = 4;
+        const done = document.querySelectorAll('.check-item.checked').length;
+        document.getElementById('progress-text').textContent = `${done} / ${total} 완료`;
+        document.getElementById('progress-fill').style.width = `${(done / total) * 100}%`;
+    }
+</script>
+<script>
+document.addEventListener('keydown', function(e) {
+    if (e.key === '5' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        window.location.href = 'agent-design.html';
+    }
+});
+</script>
+<!-- ## SM-HAMBURGER START ## -->
+<style>
+.sm-menu-toggle {
+    display: none;
+    position: fixed !important;
+    top: 14px !important;
+    right: 14px !important;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 1200 !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    border: none !important;
+    cursor: pointer;
+    background: rgba(255,255,255,0.92) !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    transition: all 0.2s;
+}
+.sm-menu-toggle:hover { background: #fff; transform: translateY(-1px); }
+.sm-menu-toggle svg { width: 22px; height: 22px; stroke: #2D3748; }
+.sm-menu-backdrop {
+    display: none;
+    position: fixed; inset: 0; z-index: 1150;
+    background: rgba(0,0,0,0.45);
+    opacity: 0; transition: opacity 0.25s;
+}
+body.sm-menu-open .sm-menu-backdrop { display: block; opacity: 1; }
+body.sm-menu-open { overflow: hidden; }
+.sm-drawer {
+    display: none;
+    position: fixed; top: 0; right: 0; z-index: 1160;
+    width: 78%; max-width: 320px; height: 100vh; height: 100dvh;
+    background: #EDE8DF;
+    box-shadow: -8px 0 28px rgba(0,0,0,0.25);
+    padding: 72px 18px 24px;
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+    transform: translateX(105%);
+    transition: transform 0.28s ease;
+    box-sizing: border-box;
+}
+body.sm-menu-open .sm-drawer { transform: translateX(0); }
+.sm-drawer-heading {
+    font-size: 17px; font-weight: 800; color: #1F1A17;
+    line-height: 1.35; letter-spacing: -0.3px;
+    padding: 0 4px 12px;
+    margin: 0 0 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    word-break: keep-all;
+}
+.sm-drawer-heading:empty { display: none; }
+.sm-drawer-back {
+    display: flex; align-items: center; gap: 10px;
+    margin: 0 0 16px;
+    padding: 14px 16px;
+    background: #F0F1F3;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    color: #38404F; text-decoration: none;
+    font-size: 14px; font-weight: 700;
+}
+.sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
+.sm-drawer-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 14px;
+    background: #F0F1F3;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    text-decoration: none;
+    color: #38404F;
+    transition: all 0.15s;
+}
+.sm-drawer-item:hover { box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1; }
+.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active);
+    color: var(--codex-pill-text);
+    box-shadow: var(--codex-pill-shadow);
+}
+.sm-drawer-item.active .sm-drawer-title { color: #14192E; font-weight: 800; }
+.sm-drawer-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
+    font-size: 13px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: all 0.2s;
+}
+.sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
+.sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
+@media (max-width: 768px) {
+    .sm-menu-toggle { display: inline-flex; }
+    .sm-menu-toggle .sm-icon-close { display: none; }
+    body.sm-menu-open .sm-menu-toggle .sm-icon-open { display: none; }
+    body.sm-menu-open .sm-menu-toggle .sm-icon-close { display: block; }
+    .sm-drawer { display: block; }
+    nav.sub-menu { display: none !important; }
+    /* 상단 헤더 페이지 버튼: 모바일에서 세로 배치로 깨짐 방지 */
+    .header-pages {
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        max-width: 100% !important;
+        gap: 8px !important;
+        align-items: stretch !important;
+    }
+    .header-page-link {
+        flex: none !important;
+        max-width: none !important;
+        width: 100% !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+        justify-content: center !important;
+        font-size: 13px !important;
+        padding: 11px 14px !important;
+        border-radius: 12px !important;
+    }
+    /* 헤더 상단 여백 통일 */
+    header { padding-top: 24px !important; }
+    /* 상단 스텝 네비: 모든 페이지에서 동일한 크기·폰트·위치 */
+    .step-nav {
+        margin: 8px auto 18px !important;
+        max-width: 92% !important;
+        gap: 0 !important;
+        padding: 0 !important;
+    }
+    .step-node {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        border-width: 2px !important;
+    }
+    .step-node.sn-diag,
+    .step-node.sn-final { font-size: 10px !important; }
+    .step-line {
+        min-width: 6px !important;
+        max-width: 18px !important;
+        height: 2px !important;
+    }
+}
+
+        /* ## CODEX-HERO-VIDEO START ## */
+        header {
+            background: #070707 !important;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+            }
+        }
+        /* ## CODEX-HERO-VIDEO END ## */
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-badge { position: relative; overflow: hidden; }
+        .step-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
+<button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+    <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+</button>
+<div class="sm-menu-backdrop" id="smMenuBackdrop"></div>
+<aside class="sm-drawer" id="smDrawer" aria-label="섹션 메뉴">
+    <div class="sm-drawer-heading" id="smDrawerHeading"></div>
+    <a href="index.html" class="sm-drawer-back">
+        <span aria-hidden="true">←</span><span>목록으로</span>
+    </a>
+    <nav class="sm-drawer-list" id="smDrawerList"></nav>
+</aside>
+<script>
+(function() {
+    var src = document.querySelector('nav.sub-menu');
+    var list = document.getElementById('smDrawerList');
+    var toggle = document.getElementById('smMenuToggle');
+    var backdrop = document.getElementById('smMenuBackdrop');
+    var heading = document.getElementById('smDrawerHeading');
+    // 페이지 제목 추출: 헤더의 active 페이지 링크 > h1 > document.title
+    if (heading) {
+        var pageTitle = '';
+        var activeLink = document.querySelector('.header-page-link.active');
+        if (activeLink) {
+            var clone = activeLink.cloneNode(true);
+            var icon = clone.querySelector('.hpl-icon');
+            if (icon) icon.remove();
+            pageTitle = clone.textContent.trim();
+        }
+        if (!pageTitle) {
+            var h1 = document.querySelector('header h1');
+            if (h1) pageTitle = h1.textContent.trim();
+        }
+        if (!pageTitle && document.title) {
+            pageTitle = document.title.split('|')[0].trim();
+        }
+        heading.textContent = pageTitle;
+    }
+    var srcLinks = src ? src.querySelectorAll('a') : [];
+    var drawerItems = [];
+    if (src && list) srcLinks.forEach(function(a) {
+        var num = a.querySelector('.sm-num');
+        var title = a.querySelector('.sm-title');
+        var sub = a.querySelector('.sm-sub');
+        var item = document.createElement('a');
+        item.href = a.getAttribute('href');
+        item.className = 'sm-drawer-item' + (a.classList.contains('active') ? ' active' : '');
+        var html = '<span class="sm-drawer-num">' + (num ? num.textContent : '') + '</span>' +
+            '<span class="sm-drawer-text">' +
+                '<span class="sm-drawer-title">' + (title ? title.textContent : a.textContent.trim()) + '</span>';
+        if (sub && sub.textContent.trim()) html += '<span class="sm-drawer-sub">' + sub.textContent + '</span>';
+        html += '</span>';
+        item.innerHTML = html;
+        item.addEventListener('click', function() { setOpen(false); });
+        list.appendChild(item);
+        drawerItems.push(item);
+    });
+    function setOpen(open) {
+        document.body.classList.toggle('sm-menu-open', open);
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+        }
+    }
+    if (toggle) toggle.addEventListener('click', function() {
+        setOpen(!document.body.classList.contains('sm-menu-open'));
+    });
+    if (backdrop) backdrop.addEventListener('click', function() { setOpen(false); });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && document.body.classList.contains('sm-menu-open')) setOpen(false);
+    });
+    if (src) {
+        var observer = new MutationObserver(function() {
+            srcLinks.forEach(function(a, i) {
+                if (drawerItems[i]) drawerItems[i].classList.toggle('active', a.classList.contains('active'));
+            });
+        });
+        observer.observe(src, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    }
+})();
+</script>
+<!-- ## SM-HAMBURGER END ## -->
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
+</body>
+</html>

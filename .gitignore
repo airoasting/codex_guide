@@ -2,3 +2,6 @@ node_modules/
 .DS_Store
 백업/
 backup/
+
+# transient lock
+.claude/scheduled_tasks.lock

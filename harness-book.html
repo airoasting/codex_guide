@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://airoasting.github.io/claude_guide/harness-book.html">
-    <meta property="og:title" content="AI ROASTING · Claude 완전 정복">
-    <meta property="og:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/harness-book.html">
+    <meta property="og:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <meta property="og:url" content="https://airoasting.github.io/claude_guide/harness-book.html">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/harness-book.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI ROASTING · Claude 완전 정복">
-    <meta name="twitter:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
-    <meta name="twitter:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
+    <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <title>하네스 엔지니어링으로 책 쓰기 | AI ROASTING</title>
-    <meta name="description" content="AI 에이전트 팀으로 책 한 권을 완성하는 하네스 엔지니어링 실전 가이드. CLAUDE.md, 스킬, 리뷰 파이프라인까지.">
+    <meta name="description" content="AI 에이전트 팀으로 책 한 권을 완성하는 하네스 엔지니어링 실전 가이드. AGENTS.md, 스킬, 리뷰 파이프라인까지.">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -25,29 +25,29 @@
         }
 
         :root {
-            --nm-bg: #EDEAE4;
-            --nm-dark: #CECAC3;
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
             --nm-light: #FFFFFF;
-            --nm-shadow: 6px 6px 14px #CECAC3, -6px -6px 14px #FFFFFF;
-            --nm-shadow-sm: 4px 4px 8px #CECAC3, -4px -4px 8px #FFFFFF;
-            --nm-inset: inset 4px 4px 10px #CECAC3, inset -4px -4px 10px #FFFFFF;
-            --gold: #A04828;
-            --gold-dark: #7A2E15;
-            --gold-light: #B35535;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --gold: #5B62D8;
+            --gold-dark: #070707;
+            --gold-light: #14192E;
             --ant-dark: #1A1917;
-            --book-teal: #A04828;
-            --book-teal-dark: #7A2E15;
-            --book-teal-light: #B35535;
+            --book-teal: #5B62D8;
+            --book-teal-dark: #070707;
+            --book-teal-light: #14192E;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        .step-divider[id] { scroll-margin-top: 160px; }
-        body { word-break: keep-all; font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif; background: var(--nm-bg); color: #3A3530; line-height: 1.6; }
+        .step-divider[id] { scroll-margin-top: 155px; }
+        body { word-break: keep-all; font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif; background: #FFFFFF; color: #2C2F3A; line-height: 1.6; }
 
         /* -- HEADER -- */
         header {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             padding: 28px 40px 40px;
             border-radius: 0 0 32px 32px;
             text-align: center;
@@ -58,7 +58,7 @@
             content: '';
             position: absolute; top: -80px; right: -40px;
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(196,98,63,0.18) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
             pointer-events: none;
         }
         .back-link {
@@ -95,7 +95,7 @@
         }
         .step-node.sn-diag { font-size: 11px; letter-spacing: 0; }
         .step-node:hover { border-color: rgba(255,255,255,0.7); color: rgba(255,255,255,0.9); background: rgba(0,0,0,0.3); }
-        .step-node.active { background: rgba(179,85,53,0.9); border-color: rgba(179,85,53,0.9); color: #fff; }
+        .step-node.active { background: rgba(56,65,61,0.9); border-color: rgba(56,65,61,0.9); color: #fff; }
         .step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.5); min-width: 13px; max-width: 34px; border-radius: 2px; }
 
         /* -- Mode Tabs -- */
@@ -135,7 +135,7 @@
             margin: 22px auto 0;
             position: relative;
             z-index: 1;
-            max-width: 940px;
+            max-width: 1080px;
             flex-wrap: wrap;
         }
         .header-page-link {
@@ -167,7 +167,29 @@
             box-shadow: inset 3px 3px 8px rgba(0,0,0,0.35), inset -3px -3px 8px rgba(255,255,255,0.06);
             color: #fff;
         }
+        /* ## EXAMPLE-TOGGLE-NAV START ## */
+        .ex-tabs {
+            display: inline-flex; gap: 4px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px; padding: 4px;
+            margin: 18px auto 0;
+            position: relative; z-index: 1;
+        }
+        .ex-tab {
+            font-size: 13px; font-weight: 700;
+            color: rgba(255,255,255,0.55);
+            padding: 6px 22px; border-radius: 20px;
+            cursor: pointer; transition: all 0.2s; user-select: none;
+        }
+        .ex-tab.active { background: rgba(255,255,255,0.18); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+        .ex-tab:hover:not(.active) { color: rgba(255,255,255,0.8); }
+        #pages-basic, #pages-mcp { margin-top: 16px; }
+        /* ## EXAMPLE-TOGGLE-NAV END ## */
         .header-page-link .hpl-icon { font-size: 18px; }
+        .header-page-link .hpl-icon { display: inline-flex; align-items: center; justify-content: center; }
+        .header-page-link .hpl-icon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .header-page-link .hpl-icon svg.ic-fill { fill: currentColor; stroke: none; }
 
         /* -- Sub Menu -- */
         .sub-menu {
@@ -188,7 +210,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 9px;
             text-decoration: none;
             padding: 8px 14px;
             transition: all 0.2s;
@@ -198,40 +220,40 @@
         .sub-menu a:hover .sm-num { transform: scale(1.1); }
         .sub-menu a:hover .sm-title { color: var(--ant-dark); }
         .sub-menu a.active {
-            background: rgba(160,72,40,0.10);
+            background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58));
             border-radius: 14px;
         }
         .sub-menu a.active .sm-num {
-            background: var(--gold);
-            box-shadow: 0 2px 8px rgba(160,72,40,0.4);
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
         }
         .sub-menu a.active .sm-title { color: var(--ant-dark); font-weight: 800; }
-        .sub-menu a.active .sm-sub { color: var(--gold); }
+        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
         .sm-num {
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            background: #A04828;
-            color: #fff;
+            background: var(--codex-pill-bg-muted);
+            color: var(--codex-pill-text);
             font-size: 13px;
             font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
-        }
+            transition: all 0.2s;}
         .sm-title {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             color: #3A3530;
             white-space: nowrap;
         }
         .sm-sub {
-            font-size: 11px;
+            font-size: 13px;
             color: #999;
             white-space: nowrap;
         }
-        .content-section { scroll-margin-top: 90px; }
+        .content-section { scroll-margin-top: 155px; }
 
         /* -- CONTAINER -- */
         .container { max-width: 1080px; margin: 0 auto; padding: 32px 32px 80px; }
@@ -312,8 +334,8 @@
 
         /* -- 강조 박스 -- */
         .highlight-box {
-            background: linear-gradient(135deg, rgba(160,72,40,0.08) 0%, rgba(160,72,40,0.03) 100%);
-            border: 1.5px solid rgba(160,72,40,0.25);
+            background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(99,102,241,0.03) 100%);
+            border: 1.5px solid rgba(99,102,241,0.25);
             border-radius: 16px;
             padding: 22px 26px;
             margin: 20px 0;
@@ -351,7 +373,7 @@
             border-bottom: 1px solid #E8E4DE;
         }
         .nm-table-wrap tbody tr:last-child td { border-bottom: none; }
-        .nm-table-wrap tbody tr:hover { background: rgba(160,72,40,0.04); }
+        .nm-table-wrap tbody tr:hover { background: rgba(99,102,241,0.04); }
 
         /* -- 3열 역할 카드 -- */
         .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0; }
@@ -388,7 +410,7 @@
         .wf-step-desc { font-size: 14px; color: #5C5650; line-height: 1.6; }
         .wf-connector {
             width: 2px; height: 20px;
-            background: linear-gradient(to bottom, var(--book-teal), rgba(160,72,40,0.3));
+            background: linear-gradient(to bottom, var(--book-teal), rgba(99,102,241,0.3));
             margin-left: 21px;
         }
 
@@ -429,7 +451,7 @@
         .prompt-collection {
             background: var(--nm-bg); border-radius: 16px;
             box-shadow: var(--nm-shadow-sm);
-            border: 2px dashed rgba(160,72,40,0.3);
+            border: 2px dashed rgba(99,102,241,0.3);
             padding: 24px; margin-bottom: 16px;
         }
         .prompt-collection h4 {
@@ -491,7 +513,7 @@
             text-transform: uppercase;
             letter-spacing: 0.6px;
             padding: 16px 4px 8px;
-            border-bottom: 1px dashed rgba(160,72,40,0.3);
+            border-bottom: 1px dashed rgba(99,102,241,0.3);
             margin-bottom: 8px;
             display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
         }
@@ -508,7 +530,7 @@
             border-radius: 10px;
             transition: background 0.2s;
         }
-        .pipeline-row:hover { background: rgba(160,72,40,0.04); }
+        .pipeline-row:hover { background: rgba(99,102,241,0.04); }
         .pipeline-row .pr-num {
             font-family: 'SF Mono', 'Fira Code', monospace;
             font-size: 13px; font-weight: 700;
@@ -535,8 +557,8 @@
         .pipeline-row .pr-persona::before {
             content: ''; width: 8px; height: 8px; border-radius: 50%; display: inline-block;
         }
-        .pr-p-human { background: rgba(160,72,40,0.12); color: #7A2E15; }
-        .pr-p-human::before { background: #B35535; }
+        .pr-p-human { background: rgba(99,102,241,0.12); color: #070707; }
+        .pr-p-human::before { background: #14192E; }
         .pr-p-black { background: rgba(58,53,48,0.1); color: #3A3530; }
         .pr-p-black::before { background: #3A3530; }
         .pr-p-red { background: rgba(239,68,68,0.1); color: #B91C1C; }
@@ -584,9 +606,9 @@
         }
         .flow-group-label.fgl-agent {
             grid-column: 2 / 6;
-            background: linear-gradient(90deg, rgba(21,128,61,0.08), rgba(160,72,40,0.08));
+            background: linear-gradient(90deg, rgba(75,86,237,0.08), rgba(99,102,241,0.08));
             color: #3A3530;
-            border: 1px dashed rgba(160,72,40,0.4);
+            border: 1px dashed rgba(99,102,241,0.4);
         }
         .flow-group-label .fgl-arrow { color: #888; font-weight: 600; }
         .flow-step { position: relative; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
@@ -622,7 +644,7 @@
         .flow-box.fb-research { background: #15803D; }
         .flow-box.fb-write { background: #028090; }
         .flow-box.fb-review { background: #BE185D; }
-        .flow-box.fb-publish { background: #A04828; }
+        .flow-box.fb-publish { background: #5B62D8; }
         .flow-caption {
             font-size: 12px;
             color: #5C5650;
@@ -675,7 +697,7 @@
         .skill-preview .sp-body { flex: 1; min-width: 0; }
         .skill-preview .sp-label {
             font-size: 11px; font-weight: 700;
-            color: #B35535;
+            color: #14192E;
             text-transform: uppercase;
             letter-spacing: 0.8px;
             margin-bottom: 2px;
@@ -695,7 +717,7 @@
         }
         .skill-preview .sp-arrow {
             font-size: 20px;
-            color: #B35535;
+            color: #14192E;
             flex-shrink: 0;
             transition: transform 0.25s;
         }
@@ -728,8 +750,8 @@
 
         /* -- 핵심 메시지 배너 -- */
         .key-message {
-            background: linear-gradient(135deg, rgba(160,72,40,0.12) 0%, rgba(160,72,40,0.04) 100%);
-            border: 2px solid rgba(160,72,40,0.3);
+            background: linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(99,102,241,0.04) 100%);
+            border: 2px solid rgba(99,102,241,0.3);
             border-radius: 20px;
             padding: 28px 32px;
             text-align: center;
@@ -748,7 +770,7 @@
 
         /* -- CTA 섹션 -- */
         .cta-section {
-            background: linear-gradient(150deg, #7A2E15 0%, #7A2E15 40%, #4A1508 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             border-radius: 20px;
             padding: 40px 32px;
             text-align: center;
@@ -762,7 +784,7 @@
             gap: 8px; padding: 13px 24px; border-radius: 14px;
             font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s;
         }
-        .cta-btn.primary { background: #fff; color: #7A2E15; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+        .cta-btn.primary { background: #fff; color: #070707; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
         .cta-btn.primary:hover { background: #f5f0ee; transform: translateY(-1px); }
         .cta-btn.secondary { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.15); }
         .cta-btn.secondary:hover { background: rgba(255,255,255,0.14); color: #fff; }
@@ -786,8 +808,8 @@
         .ref-link .ref-desc { font-size: 12px; font-weight: 400; color: #999; margin-left: auto; flex-shrink: 0; }
 
         /* -- 푸터 -- */
-        footer { background: var(--ant-dark); text-align: center; padding: 36px 32px 28px; }
-        .footer-brand { font-size: 13px; font-weight: 700; color: #D97757; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
         .footer-about-link {
             display: inline-block; margin-top: 8px;
@@ -796,7 +818,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 1px; transition: all 0.2s;
         }
-        .footer-about-link:hover { color: #fff; border-color: #fff; }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
         .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
         .footer-link-row .footer-about-link { margin-top: 0; }
         .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
@@ -806,10 +828,10 @@
         @keyframes fadeInLeft { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
         @keyframes slideDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
         @keyframes scaleIn { from { opacity:0; transform:scale(0.7); } to { opacity:1; transform:scale(1); } }
-        @keyframes pulse { 0%,100% { box-shadow:0 4px 16px rgba(160,72,40,0.3); } 50% { box-shadow:0 6px 28px rgba(160,72,40,0.55); } }
+        @keyframes pulse { 0%,100% { box-shadow:0 4px 16px rgba(99,102,241,0.3); } 50% { box-shadow:0 6px 28px rgba(99,102,241,0.55); } }
         @keyframes shimmer { 0% { background-position:-200% center; } 100% { background-position:200% center; } }
         @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
-        @keyframes borderGlow { 0%,100% { border-color:rgba(160,72,40,0.25); } 50% { border-color:rgba(160,72,40,0.6); } }
+        @keyframes borderGlow { 0%,100% { border-color:rgba(99,102,241,0.25); } 50% { border-color:rgba(99,102,241,0.6); } }
 
         /* -- Header entrance -- */
         .step-nav { animation: slideDown 0.6s 0.05s ease-out both; }
@@ -852,7 +874,7 @@
 
         /* Card hover float */
         .role-card:hover .role-icon { animation: float 1.5s ease-in-out infinite; }
-        .comp-card:hover { transform: translateY(-4px); box-shadow: 8px 8px 20px #CECAC3, -8px -8px 20px #FFFFFF; }
+        .comp-card:hover { transform: translateY(-4px); box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1; }
 
         /* Legacy reveal support */
         .reveal {
@@ -910,23 +932,32 @@
 <body>
 
 <header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
     <h1>하네스 엔지니어링으로 책 쓰기</h1>
     <p>AI 에이전트 팀으로 책 한 권을 완성하는 실전 가이드</p>
     <div class="header-pages" id="pages-design" style="display:none;">
-        <a href="harness-engineering.html" class="header-page-link"><span class="hpl-icon">🐴</span> 하네스 엔지니어링</a>
-        <a href="agent-design.html" class="header-page-link"><span class="hpl-icon">🎯</span> 팀 구조 설계</a>
+        <a href="harness-engineering.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="9" width="20" height="11" rx="2"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><line x1="2" y1="13" x2="22" y2="13"/><line x1="10" y1="13" x2="10" y2="15"/><line x1="14" y1="13" x2="14" y2="15"/></svg></span> 하네스 엔지니어링</a>
+        <a href="agent-design.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4.5a1.5 1.5 0 0 1 3 0V6h3a1 1 0 0 1 1 1v3h1.5a1.5 1.5 0 0 1 0 3H17v3a1 1 0 0 1-1 1h-3v1.5a1.5 1.5 0 0 1-3 0V17H7a1 1 0 0 1-1-1v-3H4.5a1.5 1.5 0 0 1 0-3H6V7a1 1 0 0 1 1-1h3z"/></svg></span> 팀 구조 설계</a>
     </div>
     <div class="header-pages" id="pages-skill" style="display:none;">
-        <a href="skills.html" class="header-page-link"><span class="hpl-icon">🌱</span> 스킬 입문</a>
-        <a href="skills-intermediate.html" class="header-page-link"><span class="hpl-icon">⚡</span> 스킬 중급</a>
-        <a href="skills-advanced.html" class="header-page-link"><span class="hpl-icon">🚀</span> 스킬 고급</a>
+        <a href="skills.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13.5" cy="6.5" r="1.3"/><circle cx="17.5" cy="10.5" r="1.3"/><circle cx="8.5" cy="7.5" r="1.3"/><circle cx="6.5" cy="12.5" r="1.3"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.7 0 2-1.5 1-2.5-.8-.8-.5-2.5 1-2.5h2c2.5 0 4-2 4-4.5C20 6 16.4 2 12 2z"/></svg></span> 스킬 입문</a>
     </div>
-    <div class="header-pages" id="pages-final">
-        <a href="google-sheets-dashboard.html" class="header-page-link"><span class="hpl-icon">&#x1F4CB;</span> 구글 시트 대시보드</a>
-        <a href="stock-messenger.html" class="header-page-link"><span class="hpl-icon">&#x1F4F1;</span> 종목 분석 &rarr; 텔레그램</a>
-        <a href="korean-law-mcp.html" class="header-page-link"><span class="hpl-icon">&#x2696;&#xFE0F;</span> 한국 법령 MCP</a>
-        <a href="harness-book.html" class="header-page-link active"><span class="hpl-icon">&#x1F4DA;</span> 책 쓰기</a>
+    <div class="ex-tabs">
+        <span class="ex-tab active" id="extab-basic" onclick="switchExampleTab('basic')">기본 예제</span>
+        <span class="ex-tab" id="extab-mcp" onclick="switchExampleTab('mcp')">MCP 연결</span>
+    </div>
+    <div class="header-pages" id="pages-basic">
+        <a href="google-sheets-dashboard.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span> 구글 시트 대시보드</a>
+        <a href="instagram-card-news.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span> 인스타 카드뉴스</a>
+        <a href="harness-book.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> 책 쓰기</a>
+    </div>
+    <div class="header-pages" id="pages-mcp" style="display:none;">
+        <a href="playmcp-kakao.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span> 카카오톡 PlayMCP</a>
+        <a href="korean-law-mcp.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></svg></span> 한국 법령 MCP</a>
+        <a href="stock-messenger.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></svg></span> 종목 분석 &rarr; 텔레그램</a>
     </div>
 </header>
 
@@ -955,7 +986,7 @@
     <a href="#step4" data-sec="step4">
         <span class="sm-num">4</span>
         <span class="sm-title">실행</span>
-        <span class="sm-sub">Claude Code</span>
+        <span class="sm-sub">Codex</span>
     </a>
     <a href="#step5" data-sec="step5">
         <span class="sm-num">5</span>
@@ -987,10 +1018,10 @@
             <!-- 선수 지식 안내 -->
             <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: var(--nm-bg); border-radius: 14px; box-shadow: var(--nm-shadow-sm); margin-bottom: 20px;">
                 <span style="font-size: 18px;">&#x1F4D6;</span>
-                <p style="font-size: 14px; color: #888; margin: 0;">이 페이지는 <a href="harness-engineering.html" style="color: var(--book-teal); font-weight: 600; text-decoration: none;">하네스 엔지니어링이란?</a>과 <a href="claude-code-101.html" style="color: var(--book-teal); font-weight: 600; text-decoration: none;">Claude Code 101</a>을 먼저 읽으면 더 잘 이해됩니다.</p>
+                <p style="font-size: 14px; color: #888; margin: 0;">이 페이지는 <a href="harness-engineering.html" style="color: var(--book-teal); font-weight: 600; text-decoration: none;">하네스 엔지니어링이란?</a>과 <a href="codex-101.html" style="color: var(--book-teal); font-weight: 600; text-decoration: none;">Codex 101</a>을 먼저 읽으면 더 잘 이해됩니다.</p>
             </div>
 
-            <p>출판사 조직을 한번 떠올려 보세요. 편집장이 큰 그림을 그리고, 리서처가 자료를 모으고, 작가가 글을 쓰고, 편집자가 다듬고, 교정자가 오탈자를 잡습니다. 이 실습에서는 그 출판사의 <strong>팀원을 스킬 4개</strong>(<code>research</code>·<code>write</code>·<code>review</code>·<code>publish</code>)로 만듭니다. 거기에 사장 역할을 하는 <strong>규칙서(<code>CLAUDE.md</code>)</strong>와 이번 책의 <strong>기획서(<code>user-book-toc.md</code>)</strong> 2개를 더하면, 총 6개 파일이 한 세트로 움직입니다.</p>
+            <p>출판사 조직을 한번 떠올려 보세요. 편집장이 큰 그림을 그리고, 리서처가 자료를 모으고, 작가가 글을 쓰고, 편집자가 다듬고, 교정자가 오탈자를 잡습니다. 이 실습에서는 그 출판사의 <strong>팀원을 스킬 4개</strong>(<code>research</code>·<code>write</code>·<code>review</code>·<code>publish</code>)로 만듭니다. 거기에 사장 역할을 하는 <strong>규칙서(<code>AGENTS.md</code>)</strong>와 이번 책의 <strong>기획서(<code>user-book-toc.md</code>)</strong> 2개를 더하면, 총 6개 파일이 한 세트로 움직입니다.</p>
 
             <p style="margin-top: 12px;">사람이 약 3시간을 쓰고, AI가 약 5시간을 일하면, 합쳐서 약 8시간 만에 한 권이 나옵니다. 그 8시간 동안 안에서 어떤 일이 일어나는지를, 지금부터 5단계로 나눠 살펴보겠습니다.</p>
 
@@ -1018,7 +1049,7 @@
                     <div class="flow-box fb-review">/review</div>
                     <div class="flow-caption">내부 6단계 + 외부 3단계<br>+ 최종 수정</div>
                 </div>
-                <div class="flow-step" style="color:#A04828;">
+                <div class="flow-step" style="color:#5B62D8;">
                     <span class="flow-num">4</span>
                     <div class="flow-box fb-publish">/publish</div>
                     <div class="flow-caption">자동 검증 + Word 변환<br>+ 출판 메타데이터</div>
@@ -1055,7 +1086,7 @@
             <div class="highlight-box anim-fade-up" style="margin-top: 18px;">
                 <div class="hl-title">실습 전 준비물</div>
                 <ul>
-                    <li><strong>Claude Code</strong>가 설치되어 있어야 합니다 (<a href="claude-code-101.html" style="color: var(--book-teal); font-weight: 600; text-decoration: none;">Claude Code 101</a> 참고)</li>
+                    <li><strong>Codex</strong>가 설치되어 있어야 합니다 (<a href="codex-101.html" style="color: var(--book-teal); font-weight: 600; text-decoration: none;">Codex 101</a> 참고)</li>
                     <li>터미널(맥) 또는 명령 프롬프트(윈도우)를 열 수 있어야 합니다</li>
                     <li>책의 주제를 미리 정해 두면 좋습니다 (예: "비개발자를 위한 AI 활용법")</li>
                 </ul>
@@ -1258,7 +1289,7 @@
 
             <div class="file-tree" style="margin-top: 16px;">
 <span class="ft-folder">book_publishing/</span>
-├── <span class="ft-file">CLAUDE.md</span>                 <span class="ft-comment">  # 편집장: 전체 규칙과 품질 기준</span>
+├── <span class="ft-file">AGENTS.md</span>                 <span class="ft-comment">  # 편집장: 전체 규칙과 품질 기준</span>
 ├── <span class="ft-file"><span class="ft-star">&#x2B50;</span> user-book-toc.md</span>      <span class="ft-comment">  # 기획서: 이 파일만 교체하면 다른 책 제작 가능</span>
 ├── <span class="ft-folder">.claude/skills/</span>           <span class="ft-comment">  # 팀원들의 업무 매뉴얼 (4개)</span>
 │   ├── <span class="ft-file">research.md</span>        <span class="ft-comment">  # 리서처</span>
@@ -1280,7 +1311,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>CLAUDE.md</strong></td>
+                            <td><strong>AGENTS.md</strong></td>
                             <td>범용 규칙·품질 기준·작업 흐름을 정의합니다</td>
                             <td style="color: #EF4444; font-weight: 700;">수정 불가 (고정)</td>
                         </tr>
@@ -1310,7 +1341,7 @@
 
             <div class="tip-box" style="margin-top: 16px;">
                 <div class="tip-label">왜 "수정 불가"와 "수정 가능"을 나누는가?</div>
-                <p>시험을 떠올려 보세요. <strong>시험 규칙과 채점 기준은 고정</strong>이고, <strong>답안지만 사람마다 다릅니다</strong>. 만약 시험을 보는 사람이 채점 기준까지 바꿀 수 있다면 그 시험은 의미가 없습니다. 여기서도 똑같습니다. <code>CLAUDE.md</code>와 스킬 파일은 <strong>채점 기준</strong>이라 그대로 두고, <code>user-book-toc.md</code>가 <strong>답안지</strong>라 매번 새로 씁니다. 그래서 같은 하네스로 다른 책을 찍어낼 수 있는 것입니다.</p>
+                <p>시험을 떠올려 보세요. <strong>시험 규칙과 채점 기준은 고정</strong>이고, <strong>답안지만 사람마다 다릅니다</strong>. 만약 시험을 보는 사람이 채점 기준까지 바꿀 수 있다면 그 시험은 의미가 없습니다. 여기서도 똑같습니다. <code>AGENTS.md</code>와 스킬 파일은 <strong>채점 기준</strong>이라 그대로 두고, <code>user-book-toc.md</code>가 <strong>답안지</strong>라 매번 새로 씁니다. 그래서 같은 하네스로 다른 책을 찍어낼 수 있는 것입니다.</p>
             </div>
 
             <!-- 6개 입력 섹션 -->
@@ -1363,11 +1394,11 @@
         </div>
     </section>
 
-    <!-- ====== 실습 4단계: Claude Code 실행 ====== -->
+    <!-- ====== 실습 4단계: Codex 실행 ====== -->
     <div class="step-divider" id="step4"><span class="step-badge">STEP 4</span></div>
     <section class="anim-fade-up">
         <div class="nm-card">
-            <h2>실습 4단계. Claude Code에게 실행을 맡긴다</h2>
+            <h2>실습 4단계. Codex에게 실행을 맡긴다</h2>
             <p class="card-subtitle">설계가 끝났으면, 이제 AI 에이전트 팀이 일하게 합니다</p>
 
             <!-- 4-A -->
@@ -1381,7 +1412,7 @@ cd book_publishing<button class="copy-btn" onclick="copyPrompt('promptA')">복�
             <!-- 4-B -->
             <div class="inset-box" style="margin-top: 18px;">
                 <div class="inset-label">4-B. 기획서(user-book-toc.md) 작성하기</div>
-                <p>Claude Code를 열고, 아래 프롬프트를 입력합니다. <strong>이 파일 하나가 "이번에 쓸 책"을 결정합니다.</strong> 3단계에서 본 6칸을 빠짐없이 채우는 것이 핵심입니다.</p>
+                <p>Codex를 열고, 아래 프롬프트를 입력합니다. <strong>이 파일 하나가 "이번에 쓸 책"을 결정합니다.</strong> 3단계에서 본 6칸을 빠짐없이 채우는 것이 핵심입니다.</p>
             </div>
             <div class="prompt-box" id="promptB">user-book-toc.md 파일을 새로 작성해줘.
 
@@ -1470,7 +1501,7 @@ cd book_publishing<button class="copy-btn" onclick="copyPrompt('promptA')">복�
                 <div class="pipeline-row">
                     <span class="pr-num">00</span>
                     <span class="pr-title">목표 및 평가 기준 설계</span>
-                    <span class="pr-file">CLAUDE.md / user-book-toc.md</span>
+                    <span class="pr-file">AGENTS.md / user-book-toc.md</span>
                     <span class="pr-persona pr-p-human">사람</span>
                 </div>
 
@@ -1604,7 +1635,7 @@ cd book_publishing<button class="copy-btn" onclick="copyPrompt('promptA')">복�
                 <div class="comp-item">
                     <div class="comp-icon">&#x2705;</div>
                     <h4>마크다운 기호 제거</h4>
-                    <p>최종 Word 문서에 <code>#</code>, <code>**</code>, <code>—</code>, <code>–</code> 같은 기호가 남아있지 않은가</p>
+                    <p>최종 Word 문서에 <code>#</code>, <code>**</code>, 긴 대시나 짧은 대시 같은 기호가 남아있지 않은가</p>
                 </div>
             </div>
 
@@ -1623,7 +1654,7 @@ cd book_publishing<button class="copy-btn" onclick="copyPrompt('promptA')">복�
 
             <div class="highlight-box" style="margin-top: 18px;">
                 <div class="hl-title">다음 책으로 넘어가는 법</div>
-                <p><code>CLAUDE.md</code>와 4개 스킬은 <strong>그대로 두고</strong>, <code>user-book-toc.md</code> 한 파일만 새 기획서로 교체합니다. 그다음 <code>/research</code>부터 다시 누르면 끝입니다. 이 실습이 결국 말하고 싶은 것은 한 가지입니다. <strong>AI 모델을 바꾸는 것이 아니라, AI가 일하는 환경을 한 번 잘 설계해 두고 그 환경을 계속 재사용하는 것</strong>입니다.</p>
+                <p><code>AGENTS.md</code>와 4개 스킬은 <strong>그대로 두고</strong>, <code>user-book-toc.md</code> 한 파일만 새 기획서로 교체합니다. 그다음 <code>/research</code>부터 다시 누르면 끝입니다. 이 실습이 결국 말하고 싶은 것은 한 가지입니다. <strong>AI 모델을 바꾸는 것이 아니라, AI가 일하는 환경을 한 번 잘 설계해 두고 그 환경을 계속 재사용하는 것</strong>입니다.</p>
             </div>
         </div>
     </section>
@@ -1642,11 +1673,6 @@ cd book_publishing<button class="copy-btn" onclick="copyPrompt('promptA')">복�
                 하네스 엔지니어링이란? (개념 가이드)
                 <span class="ref-desc">이전 페이지</span>
             </a>
-            <a class="ref-link" href="automation-master.html">
-                <span class="ref-icon">&#x1F3C6;</span>
-                자동화 마스터 코스
-                <span class="ref-desc">다음 페이지</span>
-            </a>
         </div>
     </div>
 
@@ -1664,7 +1690,7 @@ cd book_publishing<button class="copy-btn" onclick="copyPrompt('promptA')">복�
 
 <footer>
     <p class="footer-brand">AI ROASTING</p>
-    <p class="footer-text">비즈니스 리더를 위한 Claude 완전 정복</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
     <span class="footer-link-row">
         <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
         <span class="footer-link-sep" aria-hidden="true">·</span>
@@ -1812,36 +1838,40 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     display: flex; align-items: center; gap: 10px;
     margin: 0 0 16px;
     padding: 14px 16px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
-    color: #3A3530; text-decoration: none;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    color: #38404F; text-decoration: none;
     font-size: 14px; font-weight: 700;
 }
 .sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
 .sm-drawer-item {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 14px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
     text-decoration: none;
-    color: #3A3530;
+    color: #38404F;
     transition: all 0.15s;
 }
-.sm-drawer-item:hover { box-shadow: inset 3px 3px 7px #CECAC3, inset -3px -3px 7px #FFFFFF; }
-.sm-drawer-item.active { background: rgba(217,119,87,0.10); }
-.sm-drawer-item.active .sm-drawer-num { background: #D97757; box-shadow: 0 2px 8px rgba(217,119,87,0.4); }
-.sm-drawer-item.active .sm-drawer-title { color: #1A1917; font-weight: 800; }
+.sm-drawer-item:hover { box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1; }
+.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active);
+    color: var(--codex-pill-text);
+    box-shadow: var(--codex-pill-shadow);
+}
+.sm-drawer-item.active .sm-drawer-title { color: #14192E; font-weight: 800; }
 .sm-drawer-num {
     width: 28px; height: 28px; border-radius: 50%;
-    background: #B0544A; color: #fff;
+    background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
     font-size: 13px; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: all 0.2s;
 }
 .sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.sm-drawer-title { font-size: 14px; font-weight: 700; color: #3A3530; line-height: 1.35; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
 .sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
 @media (max-width: 768px) {
     .sm-menu-toggle { display: inline-flex; }
@@ -1893,7 +1923,239 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         height: 2px !important;
     }
 }
-</style>
+
+        /* ## CODEX-HERO-VIDEO START ## */
+        header {
+            background: #070707 !important;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+            }
+        }
+        /* ## CODEX-HERO-VIDEO END ## */
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-badge { position: relative; overflow: hidden; }
+        .step-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -1976,5 +2238,35 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 </script>
 <!-- ## SM-HAMBURGER END ## -->
+<script>
+// 실전 예제 헤더 토글 (기본 예제 / MCP 연결)
+function switchExampleTab(mode){
+    var b=document.getElementById('pages-basic'), m=document.getElementById('pages-mcp');
+    var tb=document.getElementById('extab-basic'), tm=document.getElementById('extab-mcp');
+    if(!b||!m) return;
+    b.style.display = mode==='basic' ? 'flex' : 'none';
+    m.style.display = mode==='mcp' ? 'flex' : 'none';
+    if(tb) tb.classList.toggle('active', mode==='basic');
+    if(tm) tm.classList.toggle('active', mode==='mcp');
+}
+</script>
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
 </body>
 </html>

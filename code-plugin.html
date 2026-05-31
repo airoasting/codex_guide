@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://airoasting.github.io/claude_guide/code-plugin.html">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/code-plugin.html">
     <meta property="og:title" content="스킬·MCP를 플러그인으로 묶기 | AI ROASTING">
     <meta property="og:description" content="흩어진 스킬과 자주 쓰는 MCP를 하나의 패키지로 묶어 팀에 배포합니다. 한 줄 설치 명령으로 모두가 같은 자동화를 씁니다.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <meta property="og:url" content="https://airoasting.github.io/claude_guide/code-plugin.html">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/code-plugin.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="스킬·MCP를 플러그인으로 묶기 | AI ROASTING">
     <meta name="twitter:description" content="흩어진 스킬과 자주 쓰는 MCP를 하나의 패키지로 묶어 팀에 배포합니다. 한 줄 설치 명령으로 모두가 같은 자동화를 씁니다.">
-    <meta name="twitter:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
+    <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <title>스킬·MCP를 플러그인으로 묶기 | AI ROASTING</title>
     <meta name="description" content="흩어진 스킬과 자주 쓰는 MCP를 하나의 패키지로 묶어 팀 전체가 같은 자동화를 쓰게 만드는 실전 가이드.">
     <style>
@@ -25,13 +25,13 @@
         }
 
         :root {
-            --nm-bg: #EDEAE4;
-            --nm-dark: #CECAC3;
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
             --nm-light: #FFFFFF;
-            --nm-shadow: 6px 6px 14px #CECAC3, -6px -6px 14px #FFFFFF;
-            --nm-shadow-sm: 4px 4px 8px #CECAC3, -4px -4px 8px #FFFFFF;
-            --nm-inset: inset 4px 4px 10px #CECAC3, inset -4px -4px 10px #FFFFFF;
-            --ant-orange: #D97757;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --codex-accent: #5B62D8;
             --ant-dark: #1A1917;
             --skill-blue: #3B82F6;
             --skill-green: #10B981;
@@ -43,11 +43,11 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { word-break: keep-all; font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif; background: var(--nm-bg); color: #3A3530; line-height: 1.6; }
+        body { word-break: keep-all; font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif; background: #FFFFFF; color: #2C2F3A; line-height: 1.6; }
 
         /* ── HEADER ── */
         header {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             padding: 28px 40px 40px;
             border-radius: 0 0 32px 32px;
             text-align: center;
@@ -58,7 +58,7 @@
             content: '';
             position: absolute; top: -80px; right: -40px;
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(196,98,63,0.18) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
             pointer-events: none;
         }
         .back-link {
@@ -174,6 +174,9 @@
             color: #fff;
         }
         .header-page-link .hpl-icon { font-size: 18px; }
+        .header-page-link .hpl-icon { display: inline-flex; align-items: center; justify-content: center; }
+        .header-page-link .hpl-icon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .header-page-link .hpl-icon svg.ic-fill { fill: currentColor; stroke: none; }
 
         /* ── Sub Menu ── */
         .sub-menu {
@@ -194,7 +197,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 9px;
             text-decoration: none;
             padding: 8px 14px;
             transition: all 0.2s;
@@ -204,21 +207,21 @@
         .sub-menu a:hover .sm-num { transform: scale(1.1); }
         .sub-menu a:hover .sm-title { color: var(--ant-dark); }
         .sub-menu a.active {
-            background: rgba(217,119,87,0.10);
+            background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58));
             border-radius: 14px;
         }
         .sub-menu a.active .sm-num {
-            background: var(--ant-orange);
-            box-shadow: 0 2px 8px rgba(217,119,87,0.4);
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
         }
         .sub-menu a.active .sm-title { color: var(--ant-dark); font-weight: 800; }
-        .sub-menu a.active .sm-sub { color: var(--ant-orange); }
+        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
         .sm-num {
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            background: #B0544A;
-            color: #fff;
+            background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
             font-size: 13px;
             font-weight: 800;
             display: flex;
@@ -227,17 +230,17 @@
             transition: all 0.2s;
         }
         .sm-title {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             color: #3A3530;
             white-space: nowrap;
         }
         .sm-sub {
-            font-size: 11px;
+            font-size: 13px;
             color: #999;
             white-space: nowrap;
         }
-        .content-section { scroll-margin-top: 140px; }
+        .content-section { scroll-margin-top: 155px; }
 
         /* ── CONTAINER ── */
         .container { max-width: 1080px; margin: 0 auto; padding: 32px 32px 80px; }
@@ -256,7 +259,7 @@
             color: #3A3530;
             margin-bottom: 6px;
             padding-left: 16px;
-            border-left: 4px solid var(--ant-orange);
+            border-left: 4px solid var(--codex-accent);
         }
         .nm-card p, .nm-card li {
             font-size: 14px;
@@ -274,7 +277,7 @@
         .step-badge {
             font-size: 11px; font-weight: 800;
             letter-spacing: 1.2px; text-transform: uppercase;
-            color: var(--ant-orange); background: var(--nm-bg);
+            color: var(--codex-accent); background: var(--nm-bg);
             box-shadow: var(--nm-shadow-sm);
             padding: 6px 20px; border-radius: 20px; white-space: nowrap;
         }
@@ -291,11 +294,11 @@
         .module-num {
             display: inline-flex; align-items: center; justify-content: center;
             width: 46px; height: 46px;
-            background: var(--ant-orange); color: #fff;
+            background: var(--codex-accent); color: #fff;
             border-radius: 50%;
             font-weight: 800; font-size: 18px;
             margin-bottom: 12px;
-            box-shadow: 0 6px 14px rgba(217,119,87,0.3);
+            box-shadow: 0 6px 14px rgba(99,102,241,0.3);
         }
         .module-title { font-size: 22px; font-weight: 800; color: #3A3530; margin-bottom: 6px; letter-spacing: -0.3px; }
         .module-subtitle { font-size: 13px; color: #888; }
@@ -307,9 +310,9 @@
             font-size: 11px; font-weight: 800;
             letter-spacing: 1.5px; text-transform: uppercase;
             color: #fff;
-            background: var(--ant-orange);
+            background: var(--codex-accent);
             padding: 5px 14px; border-radius: 12px;
-            box-shadow: 0 3px 8px rgba(217,119,87,0.25);
+            box-shadow: 0 3px 8px rgba(99,102,241,0.25);
         }
         .module-band-tag.practice { background: var(--skill-blue); box-shadow: 0 3px 8px rgba(59,130,246,0.25); }
         .module-band-tag.check { background: var(--skill-green); box-shadow: 0 3px 8px rgba(16,185,129,0.25); }
@@ -345,7 +348,7 @@
         .disclosure-card { background: var(--nm-bg); box-shadow: var(--nm-inset); border-radius: 14px; padding: 18px 16px; text-align: center; }
         .disclosure-card .dc-level {
             display: inline-block; font-size: 11px; font-weight: 800;
-            color: var(--ant-orange); background: rgba(217,119,87,0.1);
+            color: var(--codex-accent); background: rgba(99,102,241,0.1);
             padding: 3px 10px; border-radius: 10px; margin-bottom: 10px;
             letter-spacing: 1px;
         }
@@ -361,7 +364,7 @@
         }
         .vs-table .vs-head { padding: 14px 18px; font-size: 13px; font-weight: 800; color: #fff; text-align: center; }
         .vs-table .vs-head.mcp { background: linear-gradient(135deg, #5570B0, #3F4F87); }
-        .vs-table .vs-head.skill { background: linear-gradient(135deg, #D97757, #B35535); }
+        .vs-table .vs-head.skill { background: linear-gradient(135deg, #5B62D8, #14192E); }
         .vs-table .vs-row { padding: 12px 18px; font-size: 13.5px; color: #5C5650; line-height: 1.6; border-top: 1px solid rgba(0,0,0,0.06); }
 
         /* description 좋은/나쁜 비교 */
@@ -387,8 +390,8 @@
         .desc-formula {
             display: flex; align-items: center; justify-content: center;
             flex-wrap: wrap; gap: 10px;
-            background: linear-gradient(135deg, rgba(217,119,87,0.08), rgba(217,119,87,0.03));
-            border: 1.5px solid rgba(217,119,87,0.25);
+            background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(99,102,241,0.03));
+            border: 1.5px solid rgba(99,102,241,0.25);
             border-radius: 14px;
             padding: 18px;
             margin: 14px 0;
@@ -398,7 +401,7 @@
             border-radius: 10px; padding: 8px 16px;
             font-size: 13px; font-weight: 700; color: #3A3530;
         }
-        .desc-formula .df-plus { color: var(--ant-orange); font-weight: 800; font-size: 18px; }
+        .desc-formula .df-plus { color: var(--codex-accent); font-weight: 800; font-size: 18px; }
 
         /* 미니 점검 체크박스 */
         .mini-check { background: var(--nm-bg); box-shadow: var(--nm-inset); border-radius: 14px; padding: 18px 22px; }
@@ -408,7 +411,7 @@
             padding: 8px 0; cursor: pointer;
             font-size: 13.5px; color: #5C5650; line-height: 1.5;
         }
-        .mini-check-item input { margin-top: 3px; cursor: pointer; accent-color: var(--ant-orange); flex-shrink: 0; }
+        .mini-check-item input { margin-top: 3px; cursor: pointer; accent-color: var(--codex-accent); flex-shrink: 0; }
 
         /* 트리거 시그널 그리드 */
         .signal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
@@ -419,7 +422,7 @@
         .signal-card ul { padding-left: 18px; margin: 0; }
         .signal-card li { font-size: 13px; color: #5C5650; line-height: 1.7; margin-bottom: 4px; }
         .signal-card .sc-fix { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(0,0,0,0.1); font-size: 13px; color: #3A3530; }
-        .signal-card .sc-fix strong { color: var(--ant-orange); }
+        .signal-card .sc-fix strong { color: var(--codex-accent); }
 
         /* Critical Rules 카드 */
         .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
@@ -431,9 +434,9 @@
         /* Quick Checklist (4구간) */
         .quick-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
         .quick-checklist-group { background: var(--nm-bg); box-shadow: var(--nm-inset); border-radius: 14px; padding: 18px 20px; }
-        .quick-checklist-group h4 { font-size: 13px; font-weight: 800; color: var(--ant-orange); margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .quick-checklist-group h4 { font-size: 13px; font-weight: 800; color: var(--codex-accent); margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
         .qc-item { display: flex; align-items: flex-start; gap: 9px; padding: 5px 0; font-size: 13px; color: #5C5650; line-height: 1.5; cursor: pointer; }
-        .qc-item input { margin-top: 3px; cursor: pointer; accent-color: var(--ant-orange); flex-shrink: 0; }
+        .qc-item input { margin-top: 3px; cursor: pointer; accent-color: var(--codex-accent); flex-shrink: 0; }
 
         /* ── 인셋 박스 ── */
         .inset-box {
@@ -444,7 +447,7 @@
         .inset-box .inset-label {
             font-size: 11px; font-weight: 800;
             text-transform: uppercase; letter-spacing: 1.5px;
-            color: var(--ant-orange); margin-bottom: 10px;
+            color: var(--codex-accent); margin-bottom: 10px;
         }
         .inset-box p { font-size: 14px; color: #5C5650; line-height: 1.75; }
 
@@ -452,16 +455,16 @@
         .tip-box {
             background: var(--nm-bg); border-radius: 14px;
             box-shadow: var(--nm-shadow-sm);
-            border-left: 4px solid var(--ant-orange);
+            border-left: 4px solid var(--codex-accent);
             padding: 18px 22px; margin: 16px 0;
         }
-        .tip-box .tip-label { font-size: 11px; font-weight: 700; color: var(--ant-orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .tip-box .tip-label { font-size: 11px; font-weight: 700; color: var(--codex-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
         .tip-box p { font-size: 14px; color: #5C5650; line-height: 1.75; }
 
         /* ── 강조 박스 ── */
         .highlight-box {
-            background: linear-gradient(135deg, rgba(217,119,87,0.08) 0%, rgba(217,119,87,0.03) 100%);
-            border: 1.5px solid rgba(217,119,87,0.25);
+            background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(99,102,241,0.03) 100%);
+            border: 1.5px solid rgba(99,102,241,0.25);
             border-radius: 16px;
             padding: 22px 26px;
             margin: 20px 0;
@@ -484,7 +487,7 @@
 
         /* ── CTA 섹션 ── */
         .cta-section {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             border-radius: 20px;
             padding: 40px 32px;
             text-align: center;
@@ -498,14 +501,15 @@
             gap: 8px; padding: 13px 24px; border-radius: 14px;
             font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s;
         }
-        .cta-btn.primary { background: #fff; color: #7A1E0C; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+        .cta-btn.primary { background: #fff; color: #5B62D8; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
         .cta-btn.primary:hover { background: #f5f0ee; transform: translateY(-1px); }
         .cta-btn.secondary { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.15); }
         .cta-btn.secondary:hover { background: rgba(255,255,255,0.14); color: #fff; }
 
         /* ── 푸터 ── */
-        footer { background: var(--ant-dark); text-align: center; padding: 36px 32px 28px; }
-        .footer-brand { font-size: 13px; font-weight: 700; color: var(--ant-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        footer .footer-video { display: none; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
         .footer-about-link {
             display: inline-block; margin-top: 8px;
@@ -514,7 +518,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 1px; transition: all 0.2s;
         }
-        .footer-about-link:hover { color: #fff; border-color: #fff; }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
         .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
         .footer-link-row .footer-about-link { margin-top: 0; }
         .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
@@ -538,7 +542,7 @@
             border-bottom: 1px solid #E8E4DE;
         }
         .nm-table-wrap tbody tr:last-child td { border-bottom: none; }
-        .nm-table-wrap tbody tr:hover { background: rgba(217,119,87,0.04); }
+        .nm-table-wrap tbody tr:hover { background: rgba(99,102,241,0.04); }
 
         /* ══════════════════════════════════════════
            스킬 입문 전용 스타일
@@ -557,7 +561,7 @@
             display: inline-block;
             width: 3px;
             height: 32px;
-            background: var(--ant-orange);
+            background: var(--codex-accent);
             margin-left: 4px;
             vertical-align: middle;
             animation: blink 0.7s step-end infinite;
@@ -567,7 +571,7 @@
         .hero-badge {
             display: inline-block;
             font-size: 12px; font-weight: 700;
-            color: var(--ant-orange);
+            color: var(--codex-accent);
             background: var(--nm-bg);
             box-shadow: var(--nm-shadow-sm);
             padding: 6px 18px;
@@ -611,7 +615,7 @@
         .ba-card.after .ba-label { color: #2E7D32; }
         .ba-card .ba-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 14px; color: #5C5650; line-height: 1.65; }
         .ba-card .ba-item:last-child { margin-bottom: 0; }
-        .ba-arrow { font-size: 24px; color: var(--ant-orange); font-weight: 800; text-align: center; }
+        .ba-arrow { font-size: 24px; color: var(--codex-accent); font-weight: 800; text-align: center; }
 
         /* ── 실전 팁 카드의 요소 라벨 ── */
         .tip-principle {
@@ -626,7 +630,7 @@
         .pp-role     { color: var(--skill-green);  background: rgba(16, 185, 129, 0.10); }
         .pp-process  { color: var(--skill-amber);  background: rgba(245, 158, 11, 0.12); }
         .pp-format   { color: var(--skill-purple); background: rgba(139, 92, 246, 0.10); }
-        .pp-boundary { color: var(--ant-orange);   background: rgba(217, 119, 87, 0.12); }
+        .pp-boundary { color: var(--codex-accent);   background: rgba(99,102,241, 0.12); }
         .pp-ops      { color: #6A6A7A;             background: rgba(106, 106, 122, 0.10); }
         .tip-head {
             display: flex;
@@ -642,8 +646,8 @@
             display: inline-block;
             margin-top: 10px;
             padding: 4px 12px;
-            background: rgba(217, 119, 87, 0.12);
-            color: var(--ant-orange);
+            background: rgba(99,102,241, 0.12);
+            color: var(--codex-accent);
             border-radius: 999px;
             font-size: 12px;
             font-weight: 700;
@@ -661,17 +665,17 @@
         .practice-step-card:hover { box-shadow: var(--nm-shadow); transform: translateX(4px); }
         .ps-num {
             width: 24px; height: 24px; border-radius: 7px;
-            background: var(--ant-orange);
+            background: var(--codex-accent);
             display: flex; align-items: center; justify-content: center;
             font-size: 11px; font-weight: 900; color: #fff;
             flex-shrink: 0;
-            box-shadow: 0 2px 5px rgba(217,119,87,0.3);
+            box-shadow: 0 2px 5px rgba(99,102,241,0.3);
         }
         .ps-num.c-trigger  { background: var(--skill-blue);   box-shadow: 0 2px 5px rgba(59,130,246,0.30); }
         .ps-num.c-role     { background: var(--skill-green);  box-shadow: 0 2px 5px rgba(16,185,129,0.30); }
         .ps-num.c-process  { background: var(--skill-amber);  box-shadow: 0 2px 5px rgba(245,158,11,0.30); }
         .ps-num.c-format   { background: var(--skill-purple); box-shadow: 0 2px 5px rgba(139,92,246,0.30); }
-        .ps-num.c-boundary { background: var(--ant-orange);   box-shadow: 0 2px 5px rgba(217,119,87,0.30); }
+        .ps-num.c-boundary { background: var(--codex-accent);   box-shadow: 0 2px 5px rgba(99,102,241,0.30); }
         .ps-num.c-principle { background: #5A4A3D; box-shadow: 0 2px 5px rgba(90,74,61,0.35); font-size: 10px; }
 
         /* 4원칙 그리드 */
@@ -698,7 +702,7 @@
         .map-chip.c-role      { background: var(--skill-green); }
         .map-chip.c-process   { background: var(--skill-amber); }
         .map-chip.c-format    { background: var(--skill-purple); }
-        .map-chip.c-boundary  { background: var(--ant-orange); }
+        .map-chip.c-boundary  { background: var(--codex-accent); }
         .map-chip.c-principle { background: #5A4A3D; font-size: 10px; }
         .ps-body { word-break: keep-all; flex: 1; }
         .ps-body h4 { font-size: 16px; font-weight: 700; color: #3A3530; margin-bottom: 6px; }
@@ -711,11 +715,11 @@
             margin-top: 12px; white-space: pre-wrap;
             position: relative;
         }
-        .ps-code .highlight { color: var(--ant-orange); font-weight: 600; }
+        .ps-code .highlight { color: var(--codex-accent); font-weight: 600; }
         .copy-btn-nm {
             position: absolute; top: 10px; right: 10px;
             font-size: 11px; font-weight: 700;
-            color: #fff; background: var(--ant-orange);
+            color: #fff; background: var(--codex-accent);
             border: none; padding: 5px 14px; border-radius: 8px;
             cursor: pointer; transition: all 0.2s;
         }
@@ -730,10 +734,10 @@
             transition: all 0.3s;
         }
         .flow-node:hover { transform: translateY(-3px); box-shadow: var(--nm-shadow); }
-        .flow-node .fn-step { font-size: 11px; font-weight: 800; color: var(--ant-orange); letter-spacing: 1.5px; margin-bottom: 4px; }
+        .flow-node .fn-step { font-size: 11px; font-weight: 800; color: var(--codex-accent); letter-spacing: 1.5px; margin-bottom: 4px; }
         .flow-node .fn-title { font-size: 15px; font-weight: 700; color: #3A3530; margin-bottom: 2px; }
         .flow-node .fn-desc { font-size: 12px; color: #888; }
-        .flow-arrow { font-size: 22px; color: var(--ant-orange); font-weight: 800; padding: 0 10px; }
+        .flow-arrow { font-size: 22px; color: var(--codex-accent); font-weight: 800; padding: 0 10px; }
 
         /* ── 업로드 타임라인 ── */
         .upload-timeline { display: flex; flex-direction: column; gap: 0; margin: 18px 0; position: relative; }
@@ -748,7 +752,7 @@
             width: 24px; height: 24px; border-radius: 50%;
             background: var(--nm-bg); box-shadow: var(--nm-shadow-sm);
             display: flex; align-items: center; justify-content: center;
-            font-size: 11px; font-weight: 800; color: var(--ant-orange);
+            font-size: 11px; font-weight: 800; color: var(--codex-accent);
             flex-shrink: 0;
         }
         .ut-row h4 { font-size: 15px; font-weight: 700; color: #3A3530; line-height: 24px; margin: 0; }
@@ -760,7 +764,7 @@
             color: #3A3530;
             margin: 32px 0 4px;
             padding-left: 14px;
-            border-left: 3px solid var(--ant-orange);
+            border-left: 3px solid var(--codex-accent);
             line-height: 1.4;
         }
         .sub-h-desc {
@@ -782,7 +786,7 @@
         .usecase-nm .un-icon { font-size: 24px; margin-bottom: 8px; }
         .usecase-nm h4 { font-size: 15px; font-weight: 700; color: #3A3530; margin-bottom: 6px; }
         .usecase-nm .un-desc { font-size: 13px; color: #888; line-height: 1.5; margin-bottom: 8px; }
-        .usecase-nm .un-result { font-size: 13px; font-weight: 600; color: var(--ant-orange); line-height: 1.5; }
+        .usecase-nm .un-result { font-size: 13px; font-weight: 600; color: var(--codex-accent); line-height: 1.5; }
         .usecase-nm::after {
             content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
             border-radius: 16px 0 0 16px;
@@ -824,7 +828,7 @@
         .checklist-item.checked { background: rgba(76,175,80,0.06); }
         .checklist-item input[type="checkbox"] {
             width: 18px; height: 18px; margin-top: 1px;
-            accent-color: var(--ant-orange);
+            accent-color: var(--codex-accent);
             cursor: pointer; flex-shrink: 0;
         }
         .checklist-item label {
@@ -876,7 +880,7 @@
         }
         .trouble-item-nm.open .trouble-a { max-height: 300px; padding: 0 20px 16px; }
         .trouble-a p { font-size: 14px; color: #5C5650; line-height: 1.75; }
-        .trouble-a strong { color: var(--ant-orange); }
+        .trouble-a strong { color: var(--codex-accent); }
 
         /* ── 페이지 네비 ── */
         .page-nav {
@@ -885,7 +889,7 @@
         }
         .page-nav-link {
             display: inline-flex; align-items: center; gap: 6px;
-            text-decoration: none; color: var(--ant-orange);
+            text-decoration: none; color: var(--codex-accent);
             font-size: 14px; font-weight: 600;
             padding: 10px 16px;
             background: var(--nm-bg); border-radius: 12px;
@@ -957,14 +961,14 @@
         }
         .pc-black  { color: #2A2A2A; }
         .pc-red    { color: #C93030; }
-        .pc-gold   { color: #8F6809; }
+        .pc-gold   { color: #5B62D8; }
         .pc-purple { color: #7B3FA0; }
         .pc-white  { color: #6A6A7A; }
 
         .poem-quote { margin: 0 0 18px; }
         .poem-title {
             font-weight: 800;
-            color: var(--ant-orange);
+            color: var(--codex-accent);
             margin-bottom: 10px;
             font-size: 14px;
             letter-spacing: 0.02em;
@@ -998,7 +1002,7 @@
         .install-title {
             font-size: 13px;
             font-weight: 800;
-            color: var(--ant-orange);
+            color: var(--codex-accent);
             letter-spacing: 0.03em;
             margin-bottom: 12px;
         }
@@ -1040,8 +1044,8 @@
             font-size: 11px;
             font-weight: 700;
             color: #F0D8C8;
-            background: rgba(217, 119, 87, 0.18);
-            border: 1px solid rgba(217, 119, 87, 0.35);
+            background: rgba(99,102,241, 0.18);
+            border: 1px solid rgba(99,102,241, 0.35);
             border-radius: 999px;
             padding: 1px 9px;
             margin-left: 6px;
@@ -1059,7 +1063,7 @@
         .mock-title {
             font-size: 13px;
             font-weight: 800;
-            color: var(--ant-orange);
+            color: var(--codex-accent);
             letter-spacing: 0.03em;
             margin-bottom: 14px;
         }
@@ -1084,8 +1088,8 @@
         .mock-quote {
             margin: 0 0 12px;
             padding: 10px 14px;
-            border-left: 3px solid var(--ant-orange);
-            background: rgba(217, 119, 87, 0.06);
+            border-left: 3px solid var(--codex-accent);
+            background: rgba(99,102,241, 0.06);
             border-radius: 8px;
             font-style: italic;
             font-size: 13.5px;
@@ -1134,8 +1138,8 @@
             font-family: 'SF Mono', 'Fira Code', monospace;
             font-size: 12.5px;
             font-weight: 700;
-            color: var(--ant-orange);
-            background: rgba(217, 119, 87, 0.10);
+            color: var(--codex-accent);
+            background: rgba(99,102,241, 0.10);
             border-radius: 6px;
             padding: 2px 8px;
             margin: 0 2px;
@@ -1147,7 +1151,7 @@
             gap: 8px;
             margin-top: 18px;
             padding: 11px 20px;
-            background: var(--ant-orange);
+            background: var(--codex-accent);
             color: #fff;
             border-radius: 999px;
             font-weight: 700;
@@ -1171,18 +1175,21 @@
 <body>
 
 <header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <nav class="step-nav">
-        <a class="step-node sn-diag" href="claude-orientation.html">진단</a>
+        <a class="step-node sn-diag" href="codex-orientation.html">진단</a>
         <div class="step-line"></div>
         <a class="step-node" href="ai-fluency.html">1</a>
         <div class="step-line"></div>
-        <a class="step-node" href="claude-design.html">2</a>
+        <a class="step-node" href="excel-plugin.html">2</a>
         <div class="step-line"></div>
-        <a class="step-node" href="cowork-intro.html">3</a>
+        <a class="step-node" href="codex-101.html">3</a>
         <div class="step-line"></div>
-        <a class="step-node" href="claude-code-101.html">4</a>
+        <a class="step-node" href="github-guide.html">4</a>
         <div class="step-line"></div>
-        <a class="step-node active" href="claude-md-templates.html">5</a>
+        <a class="step-node active" href="agents-md-templates.html">5</a>
     </nav>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
     <h1>스킬·MCP를 플러그인으로 묶기</h1>
@@ -1192,17 +1199,16 @@
         <span class="mode-tab" id="tab-design" onclick="switchMode('design')">실전</span>
     </div>
     <div class="header-pages" id="pages-skill">
-        <a href="claude-md-templates.html" class="header-page-link"><span class="hpl-icon">📋</span> CLAUDE.md</a>
-        <a href="skills.html" class="header-page-link"><span class="hpl-icon">🎨</span> 나만의 Skill 만들기</a>
-        <a href="code-plugin.html" class="header-page-link active"><span class="hpl-icon">🧩</span> 스킬·MCP 플러그인</a>
+        <a href="agents-md-templates.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span> AGENTS.md</a>
+        <a href="skills.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13.5" cy="6.5" r="1.3"/><circle cx="17.5" cy="10.5" r="1.3"/><circle cx="8.5" cy="7.5" r="1.3"/><circle cx="6.5" cy="12.5" r="1.3"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.7 0 2-1.5 1-2.5-.8-.8-.5-2.5 1-2.5h2c2.5 0 4-2 4-4.5C20 6 16.4 2 12 2z"/></svg></span> 나만의 Skill 만들기</a>
+        <a href="code-plugin.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4.5a1.5 1.5 0 0 1 3 0V6h3a1 1 0 0 1 1 1v3h1.5a1.5 1.5 0 0 1 0 3H17v3a1 1 0 0 1-1 1h-3v1.5a1.5 1.5 0 0 1-3 0V17H7a1 1 0 0 1-1-1v-3H4.5a1.5 1.5 0 0 1 0-3H6V7a1 1 0 0 1 1-1h3z"/></svg></span> 스킬·MCP 플러그인</a>
     </div>
     <div class="header-pages" id="pages-design" style="display:none;">
-        <a href="harness-engineering.html" class="header-page-link"><span class="hpl-icon">🐴</span> 하네스 엔지니어링</a>
-        <a href="agent-design.html" class="header-page-link"><span class="hpl-icon">🎯</span> 팀 설계</a>
+        <a href="harness-engineering.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="9" width="20" height="11" rx="2"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><line x1="2" y1="13" x2="22" y2="13"/><line x1="10" y1="13" x2="10" y2="15"/><line x1="14" y1="13" x2="14" y2="15"/></svg></span> 하네스 엔지니어링</a>
+        <a href="agent-design.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4.5a1.5 1.5 0 0 1 3 0V6h3a1 1 0 0 1 1 1v3h1.5a1.5 1.5 0 0 1 0 3H17v3a1 1 0 0 1-1 1h-3v1.5a1.5 1.5 0 0 1-3 0V17H7a1 1 0 0 1-1-1v-3H4.5a1.5 1.5 0 0 1 0-3H6V7a1 1 0 0 1 1-1h3z"/></svg></span> 팀 설계</a>
     </div>
     <div class="header-pages" id="pages-final" style="display:none;">
-        <a href="harness-book.html" class="header-page-link"><span class="hpl-icon">&#x1F4DA;</span> 책 쓰기</a>
-        <a href="automation-master.html" class="header-page-link"><span class="hpl-icon">🏆</span> 자동화 실전 적용</a>
+        <a href="harness-book.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> 책 쓰기</a>
     </div>
 </header>
 
@@ -1247,8 +1253,8 @@
     <!-- ═══════════════════════════════════════
          이 페이지를 읽기 전에 (브릿지)
          ═══════════════════════════════════════ -->
-    <div class="nm-card reveal" style="background: rgba(217,119,87,0.06); border-left: 4px solid var(--ant-orange); margin-top: 4px;">
-        <p style="font-size: 14px; color: #5C5650; margin: 0;"><strong>이 페이지는 <a href="skills.html" style="color: var(--ant-orange); font-weight: 700;">나만의 Skill 만들기</a>를 먼저 읽고 오는 페이지입니다.</strong> 스킬을 한 번이라도 직접 만들어본 분에게, 여러 스킬과 도구를 한 묶음으로 만들어 팀에 뿌리는 방법을 설명합니다.</p>
+    <div class="nm-card reveal" style="background: rgba(99,102,241,0.06); border-left: 4px solid var(--codex-accent); margin-top: 4px;">
+        <p style="font-size: 14px; color: #5C5650; margin: 0;"><strong>이 페이지는 <a href="skills.html" style="color: var(--codex-accent); font-weight: 700;">나만의 Skill 만들기</a>를 먼저 읽고 오는 페이지입니다.</strong> 스킬을 한 번이라도 직접 만들어본 분에게, 여러 스킬과 도구를 한 묶음으로 만들어 팀에 뿌리는 방법을 설명합니다.</p>
     </div>
 
     <!-- ═══════════════════════════════════════
@@ -1282,9 +1288,9 @@
     <section>
         <div class="nm-card reveal">
             <h2>MCP가 뭔가요?</h2>
-            <p class="card-subtitle">Claude에게 "이 도구를 쓸 수 있어"라고 알려주는 통로</p>
+            <p class="card-subtitle">Codex에게 "이 도구를 쓸 수 있어"라고 알려주는 통로</p>
 
-            <p>스킬이 "이 일은 이렇게 해"라고 알려주는 매뉴얼이라면, MCP(Model Context Protocol)는 "이 도구를 쓸 수 있어"라고 연결해 주는 통로입니다. Claude가 DART에서 공시 데이터를 가져오거나, 구글 시트에 표를 쓰거나, 내 PC 폴더의 파일을 읽을 수 있게 만드는 길입니다.</p>
+            <p>스킬이 "이 일은 이렇게 해"라고 알려주는 매뉴얼이라면, MCP(Model Context Protocol)는 "이 도구를 쓸 수 있어"라고 연결해 주는 통로입니다. Codex가 DART에서 공시 데이터를 가져오거나, 구글 시트에 표를 쓰거나, 내 PC 폴더의 파일을 읽을 수 있게 만드는 길입니다.</p>
 
             <div class="ba-grid" style="margin-top: 24px;">
                 <div class="ba-card before reveal reveal-delay-1">
@@ -1326,7 +1332,7 @@
                 <p><strong>데이터 분야</strong>는 DART, OpenDart, Kensho(S&amp;P), BigQuery, Snowflake가 자주 쓰입니다.<br>
                 <strong>업무 도구 분야</strong>는 Google Sheets, Notion, Slack, Gmail, Calendar가 대표적입니다.<br>
                 <strong>개발·파일 분야</strong>는 GitHub, Filesystem, Postgres, Playwright(브라우저 자동화)가 있습니다.<br>
-                <span style="color: var(--ant-orange); font-weight: 700;">이 중 내가 자주 쓰는 두세 개를 골라 관련 스킬과 묶으면 그게 첫 플러그인입니다.</span></p>
+                <span style="color: var(--codex-accent); font-weight: 700;">이 중 내가 자주 쓰는 두세 개를 골라 관련 스킬과 묶으면 그게 첫 플러그인입니다.</span></p>
             </div>
         </div>
     </section>
@@ -1338,43 +1344,33 @@
     <div class="step-divider"><span class="step-badge">플러그인 해부</span></div>
     <section>
         <div class="nm-card reveal">
-            <h2>플러그인 폴더 구조</h2>
-            <p class="card-subtitle">필수는 plugin.json 하나. 나머지는 묶고 싶은 만큼만 넣습니다</p>
-<div class="folder-tree">my-plugin/
-├── <span class="ft-required">.claude-plugin/</span>
-│   └── <span class="ft-required">plugin.json</span>           <span class="ft-comment"># 이름·버전·MCP 설정</span>
-├── <span class="ft-optional">skills/</span>                   <span class="ft-comment"># 묶고 싶은 스킬들 (skills.html에서 만든 것)</span>
-│   ├── report-format/
-│   │   └── SKILL.md
-│   └── data-clean/
-│       └── SKILL.md
-├── <span class="ft-optional">agents/</span>                   <span class="ft-comment"># 선택: 역할별 서브에이전트</span>
-├── <span class="ft-optional">commands/</span>                 <span class="ft-comment"># 선택: 슬래시 커맨드</span>
-└── <span class="ft-optional">README.md</span>                 <span class="ft-comment"># 받는 사람을 위한 설치·사용 안내</span></div>
-            <p style="margin-top: 14px;">핵심은 스킬과 MCP가 한 폴더 안에 같이 들어간다는 점입니다. 스킬은 <code class="kbd">skills/</code> 하위에 폴더째 넣고, MCP는 <code class="kbd">.claude-plugin/plugin.json</code> 안에서 선언합니다.</p>
+            <h2>Codex 묶음 폴더 구조</h2>
+            <p class="card-subtitle">필수는 config.toml 하나. 나머지는 묶고 싶은 만큼만 넣습니다</p>
+<div class="folder-tree">my-codex-setup/
+├── <span class="ft-required">config.toml</span>              <span class="ft-comment"># MCP 서버 선언 (~/.codex/config.toml 에 병합)</span>
+├── <span class="ft-optional">AGENTS.md</span>                <span class="ft-comment"># 지침: 어떻게 일할지 (스킬 역할)</span>
+├── <span class="ft-optional">.codex/</span>
+│   └── <span class="ft-optional">prompts/</span>             <span class="ft-comment"># 선택: 슬래시 커맨드용 마크다운 프롬프트</span>
+│       ├── report-format.md
+│       └── data-clean.md
+└── <span class="ft-optional">README.md</span>               <span class="ft-comment"># 받는 사람을 위한 설치·사용 안내</span></div>
+            <p style="margin-top: 14px;">핵심은 지침과 MCP가 한 묶음 안에 같이 들어간다는 점입니다. 반복 작업 흐름은 <code class="kbd">AGENTS.md</code>와 <code class="kbd">.codex/prompts/</code>에 적고, MCP는 <code class="kbd">config.toml</code>의 <code class="kbd">[mcp_servers.*]</code>에서 선언합니다.</p>
         </div>
 
         <div class="nm-card reveal">
-            <h2>plugin.json, MCP를 같이 묶는 자리</h2>
-            <p class="card-subtitle">mcpServers 항목 하나가 플러그인의 핵심입니다</p>
-<div class="folder-tree">{
-  "name": "report-suite",
-  "version": "0.1.0",
-  "description": "분기 실적 보고서: DART 데이터 + 우리 회사 양식",
-  "author": "jade@linercorp.com",
-  <span class="ft-required">"mcpServers"</span>: {
-    "dart": {
-      "command": "npx",
-      "args": ["-y", "@opendart/mcp-server"],
-      "env": { "DART_API_KEY": "${DART_API_KEY}" }
-    },
-    "google-sheets": {
-      "command": "npx",
-      "args": ["-y", "@google/sheets-mcp"]
-    }
-  }
-}</div>
-            <p style="margin-top: 14px;">이 플러그인을 깔면 <strong>skills/ 안의 스킬 두 개와 DART MCP, 구글 시트 MCP가 한꺼번에 설정됩니다.</strong> API 키 같은 비밀은 반드시 <code class="kbd">${ENV_VAR}</code> 형태로 적어 설치하는 사람의 환경에서 읽도록 합니다. plugin.json에 직접 적으면 안 됩니다.</p>
+            <h2>config.toml, MCP를 같이 묶는 자리</h2>
+            <p class="card-subtitle">[mcp_servers.*] 블록 하나가 묶음의 핵심입니다</p>
+<div class="folder-tree"><span class="ft-comment"># report-suite — 분기 실적 보고서: DART 데이터 + 우리 회사 양식</span>
+
+<span class="ft-required">[mcp_servers.dart]</span>
+command = "npx"
+args = ["-y", "@opendart/mcp-server"]
+env = { DART_API_KEY = "${DART_API_KEY}" }
+
+<span class="ft-required">[mcp_servers.google-sheets]</span>
+command = "npx"
+args = ["-y", "@google/sheets-mcp"]</div>
+            <p style="margin-top: 14px;">이 묶음을 깔면 <strong>AGENTS.md 지침과 DART MCP, 구글 시트 MCP가 한꺼번에 설정됩니다.</strong> API 키 같은 비밀은 반드시 <code class="kbd">${ENV_VAR}</code> 형태로 적어 설치하는 사람의 환경에서 읽도록 합니다. config.toml에 직접 적으면 안 됩니다.</p>
         </div>
     </section>
 
@@ -1427,7 +1423,7 @@
                 <p>가장 흔한 실수는 본인 환경에 이미 깔려 있는 무언가에 의존하는 플러그인을 만드는 일입니다. 새 디렉토리에서 직접 깔아보면 누락된 환경 변수, 잘못된 경로가 바로 드러납니다.</p>
                 <ul>
                     <li>새 디렉토리로 이동해 <code class="kbd">/plugin install /path/to/my-plugin</code>을 실행합니다.</li>
-                    <li>Claude를 새로 띄워 묶음 안의 스킬이 자동으로 호출되는지 확인합니다.</li>
+                    <li>Codex를 새로 띄워 묶음 안의 스킬이 자동으로 호출되는지 확인합니다.</li>
                     <li>MCP가 붙었는지, 도구 목록에 노출되는지 확인합니다.</li>
                     <li>안 되는 게 있으면 plugin.json을 고치고 버전을 <code class="kbd">0.1.1</code>로 올립니다.</li>
                 </ul>
@@ -1532,7 +1528,7 @@
 
         <div class="cta-section reveal">
             <h3>플러그인 한 개를 출시했다면, 다음은 팀 설계입니다</h3>
-            <p>플러그인은 한 사람의 자동화를 묶는 단위였습니다. 다음은 여러 Claude를 역할별로 묶어 일하게 만드는 단계입니다.<br>솔로·파이프라인·팀·오케스트라 4가지 패턴으로 자동화 흐름을 설계해보세요.</p>
+            <p>플러그인은 한 사람의 자동화를 묶는 단위였습니다. 다음은 여러 Codex를 역할별로 묶어 일하게 만드는 단계입니다.<br>솔로·파이프라인·팀·오케스트라 4가지 패턴으로 자동화 흐름을 설계해보세요.</p>
             <div class="cta-buttons">
                 <a class="cta-btn primary" href="agent-design.html">🎯 팀 설계로 →</a>
             </div>
@@ -1544,7 +1540,7 @@
 
 <footer>
     <p class="footer-brand">AI ROASTING</p>
-    <p class="footer-text">비즈니스 리더를 위한 Claude 완전 정복</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
     <span class="footer-link-row">
         <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
         <span class="footer-link-sep" aria-hidden="true">·</span>
@@ -1695,7 +1691,7 @@ description: 사용자가 시·운문·자작시 초고를 보내거나 "퇴고"
 }
 
 function copyAutoPrompt() {
-    var prompt = '첨부한 파일은 우리 회사에서 실제로 사용하는 [보고서/제안서/이메일] 양식이야.\n\n이 양식의 구조, 형식, 톤앤매너를 분석해서\nClaude Skill용 SKILL.md 파일을 만들어줘.\n\n조건:\n- name과 description은 한국어로\n- description에는 이 스킬이 작동할 키워드를 3개 이상 포함\n- Instructions는 단계별로 구체적으로\n- Output Format은 첨부 파일의 구조를 그대로 반영\n- Examples는 실제 사용 상황 3가지 이상';
+    var prompt = '첨부한 파일은 우리 회사에서 실제로 사용하는 [보고서/제안서/이메일] 양식이야.\n\n이 양식의 구조, 형식, 톤앤매너를 분석해서\nCodex Skill용 SKILL.md 파일을 만들어줘.\n\n조건:\n- name과 description은 한국어로\n- description에는 이 스킬이 작동할 키워드를 3개 이상 포함\n- Instructions는 단계별로 구체적으로\n- Output Format은 첨부 파일의 구조를 그대로 반영\n- Examples는 실제 사용 상황 3가지 이상';
     navigator.clipboard.writeText(prompt).then(function(){
         var btns = document.querySelectorAll('.copy-btn-nm');
         btns[1].textContent = '완료!';
@@ -1825,36 +1821,40 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     display: flex; align-items: center; gap: 10px;
     margin: 0 0 16px;
     padding: 14px 16px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
-    color: #3A3530; text-decoration: none;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    color: #38404F; text-decoration: none;
     font-size: 14px; font-weight: 700;
 }
 .sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
 .sm-drawer-item {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 14px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
     text-decoration: none;
-    color: #3A3530;
+    color: #38404F;
     transition: all 0.15s;
 }
-.sm-drawer-item:hover { box-shadow: inset 3px 3px 7px #CECAC3, inset -3px -3px 7px #FFFFFF; }
-.sm-drawer-item.active { background: rgba(217,119,87,0.10); }
-.sm-drawer-item.active .sm-drawer-num { background: #D97757; box-shadow: 0 2px 8px rgba(217,119,87,0.4); }
-.sm-drawer-item.active .sm-drawer-title { color: #1A1917; font-weight: 800; }
+.sm-drawer-item:hover { box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1; }
+.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active);
+    color: var(--codex-pill-text);
+    box-shadow: var(--codex-pill-shadow);
+}
+.sm-drawer-item.active .sm-drawer-title { color: #14192E; font-weight: 800; }
 .sm-drawer-num {
     width: 28px; height: 28px; border-radius: 50%;
-    background: #B0544A; color: #fff;
+    background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
     font-size: 13px; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: all 0.2s;
 }
 .sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.sm-drawer-title { font-size: 14px; font-weight: 700; color: #3A3530; line-height: 1.35; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
 .sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
 @media (max-width: 768px) {
     .sm-menu-toggle { display: inline-flex; }
@@ -1906,7 +1906,239 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         height: 2px !important;
     }
 }
-</style>
+
+        /* ## CODEX-HERO-VIDEO START ## */
+        header {
+            background: #070707 !important;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+            }
+        }
+        /* ## CODEX-HERO-VIDEO END ## */
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-badge { position: relative; overflow: hidden; }
+        .step-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -1989,5 +2221,23 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 </script>
 <!-- ## SM-HAMBURGER END ## -->
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
 </body>
 </html>

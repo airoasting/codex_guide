@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://airoasting.github.io/claude_guide/korean-law-mcp.html">
-    <meta property="og:title" content="AI ROASTING · Claude 완전 정복">
-    <meta property="og:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/korean-law-mcp.html">
+    <meta property="og:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <meta property="og:url" content="https://airoasting.github.io/claude_guide/korean-law-mcp.html">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/korean-law-mcp.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI ROASTING · Claude 완전 정복">
-    <meta name="twitter:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
-    <meta name="twitter:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
+    <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <title>한국 법령 검색 MCP 연결하기 | AI ROASTING</title>
-    <meta name="description" content="Claude Desktop의 Customize 메뉴에서 한국 법령 검색 MCP 커넥터를 추가하고, 법령·판례·조례를 실시간으로 찾아보는 실전 가이드. OC 키 발급부터 환각 검증까지.">
+    <meta name="description" content="Codex의 Customize 메뉴에서 한국 법령 검색 MCP 커넥터를 추가하고, 법령·판례·조례를 실시간으로 찾아보는 실전 가이드. OC 키 발급부터 환각 검증까지.">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -25,27 +25,27 @@
         }
 
         :root {
-            --nm-bg: #EDEAE4;
-            --nm-dark: #CECAC3;
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
             --nm-light: #FFFFFF;
-            --nm-shadow: 6px 6px 14px #CECAC3, -6px -6px 14px #FFFFFF;
-            --nm-shadow-sm: 4px 4px 8px #CECAC3, -4px -4px 8px #FFFFFF;
-            --nm-inset: inset 4px 4px 10px #CECAC3, inset -4px -4px 10px #FFFFFF;
-            --gold: #B35535;
-            --gold-dark: #A04828;
-            --gold-light: #C4623F;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --gold: #5B62D8;
+            --gold-dark: #5B62D8;
+            --gold-light: #58A77D;
             --ant-dark: #1A1917;
-            --book-teal: #B35535;
-            --book-teal-dark: #A04828;
-            --book-teal-light: #C4623F;
+            --book-teal: #5B62D8;
+            --book-teal-dark: #5B62D8;
+            --book-teal-light: #58A77D;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { word-break: keep-all; font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif; background: var(--nm-bg); color: #3A3530; line-height: 1.6; }
+        body { word-break: keep-all; font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif; background: #FFFFFF; color: #2C2F3A; line-height: 1.6; }
 
         header {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             padding: 28px 40px 40px;
             border-radius: 0 0 32px 32px;
             text-align: center;
@@ -56,7 +56,7 @@
             content: '';
             position: absolute; top: -80px; right: -40px;
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(196,98,63,0.18) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
             pointer-events: none;
         }
         .back-link {
@@ -80,7 +80,7 @@
         header p { font-size: 16px; color: rgba(255,255,255,0.8); position: relative; z-index: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 
         .header-pages {
-            max-width: 940px;
+            max-width: 1080px;
             margin-left: auto; margin-right: auto;
             display: flex; justify-content: center;
             gap: 14px; margin-top: 22px;
@@ -109,7 +109,29 @@
             box-shadow: inset 3px 3px 8px rgba(0,0,0,0.35), inset -3px -3px 8px rgba(255,255,255,0.06);
             color: #fff;
         }
+        /* ## EXAMPLE-TOGGLE-NAV START ## */
+        .ex-tabs {
+            display: inline-flex; gap: 4px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px; padding: 4px;
+            margin: 18px auto 0;
+            position: relative; z-index: 1;
+        }
+        .ex-tab {
+            font-size: 13px; font-weight: 700;
+            color: rgba(255,255,255,0.55);
+            padding: 6px 22px; border-radius: 20px;
+            cursor: pointer; transition: all 0.2s; user-select: none;
+        }
+        .ex-tab.active { background: rgba(255,255,255,0.18); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+        .ex-tab:hover:not(.active) { color: rgba(255,255,255,0.8); }
+        #pages-basic, #pages-mcp { margin-top: 16px; }
+        /* ## EXAMPLE-TOGGLE-NAV END ## */
         .header-page-link .hpl-icon { font-size: 18px; }
+        .header-page-link .hpl-icon { display: inline-flex; align-items: center; justify-content: center; }
+        .header-page-link .hpl-icon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .header-page-link .hpl-icon svg.ic-fill { fill: currentColor; stroke: none; }
 
         .sub-menu {
             position: sticky; top: 0; z-index: 100;
@@ -122,27 +144,31 @@
             overflow-x: auto;
         }
         .sub-menu a {
-            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            display: flex; flex-direction: column; align-items: center; gap: 9px;
             text-decoration: none; padding: 8px 14px;
             transition: all 0.2s;
             flex: 1; max-width: 130px;
         }
         .sub-menu a:hover .sm-num { transform: scale(1.1); }
         .sub-menu a:hover .sm-title { color: var(--ant-dark); }
-        .sub-menu a.active { background: rgba(179,85,53,0.10); border-radius: 14px; }
-        .sub-menu a.active .sm-num { background: var(--gold); box-shadow: 0 2px 8px rgba(179,85,53,0.4); }
+        .sub-menu a.active { background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)); border-radius: 14px; }
+        .sub-menu a.active .sm-num {
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
+        }
         .sub-menu a.active .sm-title { color: var(--ant-dark); font-weight: 800; }
-        .sub-menu a.active .sm-sub { color: var(--gold); }
+        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
         .sm-num {
             width: 28px; height: 28px; border-radius: 50%;
-            background: #A06548; color: #fff;
+            background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
             font-size: 13px; font-weight: 800;
             display: flex; align-items: center; justify-content: center;
             transition: all 0.2s;
         }
-        .sm-title { font-size: 13px; font-weight: 700; color: #3A3530; white-space: nowrap; }
-        .sm-sub { font-size: 11px; color: #999; white-space: nowrap; }
-        .content-section { scroll-margin-top: 130px; }
+        .sm-title { font-size: 15px; font-weight: 700; color: #3A3530; white-space: nowrap; }
+        .sm-sub { font-size: 13px; color: #999; white-space: nowrap; }
+        .content-section { scroll-margin-top: 155px; }
 
         .roadmap-grid {
             display: flex; flex-direction: column; gap: 10px;
@@ -159,7 +185,7 @@
             transition: all 0.25s;
             position: relative;
         }
-        .roadmap-card:hover { transform: translateY(-2px); box-shadow: 6px 6px 16px #CECAC3, -6px -6px 16px #FFFFFF; }
+        .roadmap-card:hover { transform: translateY(-2px); box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1; }
         .roadmap-card:hover .roadmap-num { background: var(--book-teal-dark); transform: scale(1.06); }
         .roadmap-num {
             width: 30px; height: 30px; border-radius: 50%;
@@ -168,7 +194,7 @@
             font-size: 13px; font-weight: 800;
             flex-shrink: 0;
             transition: all 0.2s;
-            box-shadow: 0 2px 6px rgba(179,85,53,0.3);
+            box-shadow: 0 2px 6px rgba(56,65,61,0.3);
         }
         .roadmap-body { flex: 1; min-width: 0; }
         .roadmap-label {
@@ -238,8 +264,8 @@
         .tip-box p { font-size: 14px; color: #5C5650; line-height: 1.75; }
 
         .highlight-box {
-            background: linear-gradient(135deg, rgba(179,85,53,0.08) 0%, rgba(179,85,53,0.03) 100%);
-            border: 1.5px solid rgba(179,85,53,0.25);
+            background: linear-gradient(135deg, rgba(56,65,61,0.08) 0%, rgba(56,65,61,0.03) 100%);
+            border: 1.5px solid rgba(56,65,61,0.25);
             border-radius: 16px;
             padding: 22px 26px;
             margin: 20px 0;
@@ -276,7 +302,7 @@
             top: 38px;
             bottom: -6px;
             width: 2px;
-            background: rgba(179,85,53,0.55);
+            background: rgba(56,65,61,0.55);
             border-radius: 1px;
             z-index: 0;
         }
@@ -301,17 +327,17 @@
             text-decoration: none;
             color: #fff;
             box-shadow: var(--nm-shadow-sm);
-            border: 1px solid rgba(196,98,63,0.25);
+            border: 1px solid rgba(99,102,241,0.25);
             transition: all 0.25s;
             margin-bottom: 22px;
         }
-        .skill-preview:hover { transform: translateY(-2px); border-color: rgba(196,98,63,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
-        .skill-preview .sp-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(196,98,63,0.15); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+        .skill-preview:hover { transform: translateY(-2px); border-color: rgba(99,102,241,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+        .skill-preview .sp-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(99,102,241,0.15); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
         .skill-preview .sp-body { flex: 1; min-width: 0; }
-        .skill-preview .sp-label { font-size: 11px; font-weight: 700; color: #C4623F; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+        .skill-preview .sp-label { font-size: 11px; font-weight: 700; color: #58A77D; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
         .skill-preview .sp-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 2px; }
         .skill-preview .sp-url { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: rgba(255,255,255,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .skill-preview .sp-arrow { font-size: 20px; color: #C4623F; flex-shrink: 0; transition: transform 0.25s; }
+        .skill-preview .sp-arrow { font-size: 20px; color: #58A77D; flex-shrink: 0; transition: transform 0.25s; }
         .skill-preview:hover .sp-arrow { transform: translateX(3px); }
         @media (max-width: 768px) {
             .skill-preview { padding: 14px 16px; gap: 12px; }
@@ -351,7 +377,7 @@
         .flow-arrow { font-size: 20px; color: var(--book-teal); padding: 0 10px; font-weight: 700; }
 
         .cta-section {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             border-radius: 20px;
             padding: 40px 32px;
             text-align: center;
@@ -365,7 +391,7 @@
             gap: 8px; padding: 13px 24px; border-radius: 14px;
             font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s;
         }
-        .cta-btn.primary { background: #fff; color: #7A2E15; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+        .cta-btn.primary { background: #fff; color: #070707; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
         .cta-btn.primary:hover { background: #f5f0ee; transform: translateY(-1px); }
         .cta-btn.secondary { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.15); }
         .cta-btn.secondary:hover { background: rgba(255,255,255,0.14); color: #fff; }
@@ -387,11 +413,12 @@
         .ref-link .ref-icon { font-size: 18px; flex-shrink: 0; }
         .ref-link .ref-desc { font-size: 12px; font-weight: 400; color: #999; margin-left: auto; flex-shrink: 0; }
 
-        footer { background: var(--ant-dark); text-align: center; padding: 36px 32px 28px; }
-        .footer-brand { font-size: 13px; font-weight: 700; color: #D97757; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        footer .footer-video { display: none; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
         .footer-about-link { display: inline-block; margin-top: 8px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 1px; transition: all 0.2s; }
-        .footer-about-link:hover { color: #fff; border-color: #fff; }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
         .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
         .footer-link-row .footer-about-link { margin-top: 0; }
         .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
@@ -400,9 +427,9 @@
         @keyframes fadeInLeft { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
         @keyframes slideDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
         @keyframes scaleIn { from { opacity:0; transform:scale(0.7); } to { opacity:1; transform:scale(1); } }
-        @keyframes pulse { 0%,100% { box-shadow:0 4px 16px rgba(179,85,53,0.3); } 50% { box-shadow:0 6px 28px rgba(179,85,53,0.55); } }
+        @keyframes pulse { 0%,100% { box-shadow:0 4px 16px rgba(56,65,61,0.3); } 50% { box-shadow:0 6px 28px rgba(56,65,61,0.55); } }
         @keyframes shimmer { 0% { background-position:-200% center; } 100% { background-position:200% center; } }
-        @keyframes borderGlow { 0%,100% { border-color:rgba(179,85,53,0.25); } 50% { border-color:rgba(179,85,53,0.6); } }
+        @keyframes borderGlow { 0%,100% { border-color:rgba(56,65,61,0.25); } 50% { border-color:rgba(56,65,61,0.6); } }
 
         .back-link { animation: fadeInLeft 0.6s 0.1s ease-out both; }
         header h1 { animation: slideDown 0.8s ease-out both; }
@@ -448,7 +475,7 @@
         .faq-item[open] summary::after { content: '−'; }
         .faq-item summary:hover .faq-q { color: var(--book-teal); }
         .faq-q { font-size: 14.5px; font-weight: 700; color: #3A3530; line-height: 1.5; transition: color 0.2s; }
-        .faq-q code { background: rgba(179,85,53,0.10); color: var(--book-teal); padding: 1px 7px; border-radius: 5px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12.5px; }
+        .faq-q code { background: rgba(99,102,241,0.10); color: var(--book-teal); padding: 1px 7px; border-radius: 5px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12.5px; }
         .faq-a { padding: 4px 22px 20px; border-top: 1px dashed rgba(0,0,0,0.06); margin-top: 4px; padding-top: 16px; }
         .faq-a p { font-size: 14px; color: #5C5650; line-height: 1.7; margin-bottom: 8px; }
         .faq-a ul, .faq-a ol { padding-left: 22px; margin-top: 6px; }
@@ -479,14 +506,25 @@
 <body>
 
 <header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
     <h1>한국 법령 검색 MCP 연결하기</h1>
-    <p>Claude Desktop의 Customize 메뉴에서 커스텀 커넥터를 추가해 법령, 판례, 조례를 실시간으로 찾아보는 방법</p>
-    <div class="header-pages" id="pages-final">
-        <a href="google-sheets-dashboard.html" class="header-page-link"><span class="hpl-icon">&#x1F4CB;</span> 구글 시트 대시보드</a>
-        <a href="stock-messenger.html" class="header-page-link"><span class="hpl-icon">&#x1F4F1;</span> 종목 분석 &rarr; 텔레그램</a>
-        <a href="korean-law-mcp.html" class="header-page-link active"><span class="hpl-icon">&#x2696;&#xFE0F;</span> 한국 법령 MCP</a>
-        <a href="harness-book.html" class="header-page-link"><span class="hpl-icon">&#x1F4DA;</span> 책 쓰기</a>
+    <p>Codex의 Customize 메뉴에서 커스텀 커넥터를 추가해 법령, 판례, 조례를 실시간으로 찾아보는 방법</p>
+    <div class="ex-tabs">
+        <span class="ex-tab" id="extab-basic" onclick="switchExampleTab('basic')">기본 예제</span>
+        <span class="ex-tab active" id="extab-mcp" onclick="switchExampleTab('mcp')">MCP 연결</span>
+    </div>
+    <div class="header-pages" id="pages-basic" style="display:none;">
+        <a href="google-sheets-dashboard.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span> 구글 시트 대시보드</a>
+        <a href="instagram-card-news.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span> 인스타 카드뉴스</a>
+        <a href="harness-book.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> 책 쓰기</a>
+    </div>
+    <div class="header-pages" id="pages-mcp">
+        <a href="playmcp-kakao.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span> 카카오톡 PlayMCP</a>
+        <a href="korean-law-mcp.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></svg></span> 한국 법령 MCP</a>
+        <a href="stock-messenger.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></svg></span> 종목 분석 &rarr; 텔레그램</a>
     </div>
 </header>
 
@@ -536,14 +574,14 @@
     <section class="anim-fade-up">
         <div class="nm-card">
             <h2>이 실습에서 만들 것</h2>
-            <p class="card-subtitle">Claude Desktop에 한국 법령 검색 MCP를 커넥터로 붙여, 법령과 판례, 조례를 대화 중에 바로 찾아오게 만듭니다</p>
+            <p class="card-subtitle">Codex에 한국 법령 검색 MCP를 커넥터로 붙여, 법령과 판례, 조례를 대화 중에 바로 찾아오게 만듭니다</p>
 
-            <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: linear-gradient(135deg, rgba(179,85,53,0.12), rgba(179,85,53,0.04)); border: 1.5px solid rgba(179,85,53,0.3); border-radius: 14px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: linear-gradient(135deg, rgba(56,65,61,0.12), rgba(56,65,61,0.04)); border: 1.5px solid rgba(56,65,61,0.3); border-radius: 14px; margin-bottom: 20px;">
                 <span style="font-size: 24px;">&#x2696;&#xFE0F;</span>
-                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 Claude Desktop입니다.</strong> 별도 설치 없이 Customize 메뉴에서 커넥터 URL 하나만 입력하면 끝납니다. 법제처 Open API의 OC 키 한 줄을 발급받고, 그 키를 붙인 URL을 Claude Desktop에 등록하면 17개의 법령 검색 도구가 대화 안에서 동작합니다.</p>
+                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 Codex입니다.</strong> 별도 설치 없이 Customize 메뉴에서 커넥터 URL 하나만 입력하면 끝납니다. 법제처 Open API의 OC 키 한 줄을 발급받고, 그 키를 붙인 URL을 Codex에 등록하면 17개의 법령 검색 도구가 대화 안에서 동작합니다.</p>
             </div>
 
-            <p>한국 법령과 판례를 ChatGPT나 Claude에 물어보면 그럴듯한 조문을 지어내는 경우가 자주 있습니다. 존재하지 않는 조항 번호, 잘못된 항·호 인용, 폐지된 옛 조문을 현행처럼 답하는 식입니다. <strong>한국 법령 검색 MCP</strong>는 법제처 공식 Open API 42개를 묶어 17개의 도구로 노출해, 모델이 답하기 전에 실제 법령 데이터베이스를 조회하도록 만듭니다.</p>
+            <p>한국 법령과 판례를 ChatGPT나 Codex에 물어보면 그럴듯한 조문을 지어내는 경우가 자주 있습니다. 존재하지 않는 조항 번호, 잘못된 항·호 인용, 폐지된 옛 조문을 현행처럼 답하는 식입니다. <strong>한국 법령 검색 MCP</strong>는 법제처 공식 Open API 42개를 묶어 17개의 도구로 노출해, 모델이 답하기 전에 실제 법령 데이터베이스를 조회하도록 만듭니다.</p>
 
             <p style="margin-top: 12px;">완성하면 흐름은 이렇게 됩니다.</p>
 
@@ -587,7 +625,7 @@
                     <span class="roadmap-num">2</span>
                     <span class="roadmap-body">
                         <span class="roadmap-label">STEP 2</span>
-                        <span class="roadmap-title">Claude Desktop에서 Customize 메뉴 열기</span>
+                        <span class="roadmap-title">Codex에서 Customize 메뉴 열기</span>
                     </span>
                     <span class="roadmap-arrow">&rarr;</span>
                 </a>
@@ -700,19 +738,19 @@
 
     <!-- ====== STEP 2: Customize 메뉴 열기 ====== -->
     <div class="content-section" id="step2"></div>
-    <div class="step-divider"><span class="step-badge">STEP 2 &middot; Claude Desktop에서 Customize 메뉴 열기</span></div>
+    <div class="step-divider"><span class="step-badge">STEP 2 &middot; Codex에서 Customize 메뉴 열기</span></div>
     <section class="anim-fade-up">
         <div class="nm-card">
             <h2>왼쪽 사이드바의 Customize 메뉴 누르기</h2>
-            <p class="card-subtitle">Claude Desktop은 왼쪽 사이드바에 커스텀 커넥터 전용 진입점을 두고 있습니다</p>
+            <p class="card-subtitle">Codex은 왼쪽 사이드바에 커스텀 커넥터 전용 진입점을 두고 있습니다</p>
 
-            <p>커스텀 MCP를 붙이려면 Claude Desktop 최신 버전이 필요합니다. 무료 플랜에서도 커스텀 커넥터 추가는 가능합니다. 사내 정책으로 막아둔 환경이라면 관리자에게 문의해야 할 수 있습니다.</p>
+            <p>커스텀 MCP를 붙이려면 Codex 최신 버전이 필요합니다. 무료 플랜에서도 커스텀 커넥터 추가는 가능합니다. 사내 정책으로 막아둔 환경이라면 관리자에게 문의해야 할 수 있습니다.</p>
 
             <div class="wf-steps">
                 <div class="wf-step">
                     <div class="wf-step-num">1</div>
                     <div class="wf-step-content">
-                        <div class="wf-step-label">Claude Desktop 열기</div>
+                        <div class="wf-step-label">Codex 열기</div>
                         <div class="wf-step-desc">앱을 실행하면 화면 <strong>왼쪽 사이드바</strong>에 대화 목록과 함께 메뉴 항목들이 보입니다. 사이드바가 접혀 있다면 좌상단의 메뉴 아이콘을 눌러 펼칩니다.</div>
                     </div>
                 </div>
@@ -723,7 +761,7 @@
                         <div class="wf-step-label">왼쪽 메뉴에서 Customize 클릭</div>
                         <div class="wf-step-desc">왼쪽 사이드바 메뉴 중 <strong>Customize</strong> 항목을 누릅니다. 누르면 커스터마이즈 화면이 열리고, 그 안에 <strong>Connectors</strong>(커넥터) 영역이 보입니다.</div>
                         <figure style="margin: 14px 0 4px; text-align: left;">
-                            <img src="assets/customize.png" alt="Claude Desktop 왼쪽 사이드바의 Customize 메뉴" style="width: 30%; max-width: 554px; height: auto; border-radius: 12px; box-shadow: var(--nm-shadow-sm); border: 1px solid rgba(0,0,0,0.06); display: block;">
+                            <img src="assets/customize.png" alt="Codex 왼쪽 사이드바의 Customize 메뉴" style="width: 30%; max-width: 554px; height: auto; border-radius: 12px; box-shadow: var(--nm-shadow-sm); border: 1px solid rgba(0,0,0,0.06); display: block;">
                         </figure>
                     </div>
                 </div>
@@ -812,7 +850,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
 출처는 법제처 데이터로 검증해서.
             </div>
 
-            <p style="margin-top: 12px;">정상적으로 연결돼 있으면 Claude가 응답 도중에 <strong>search_law</strong>, <strong>get_law_text</strong> 같은 도구를 호출했다는 안내가 뜨고, 그 결과로 실제 조문이 인용됩니다. 도구를 사용하지 않고 답이 바로 나오면 커넥터가 비활성화 상태일 수 있습니다.</p>
+            <p style="margin-top: 12px;">정상적으로 연결돼 있으면 Codex가 응답 도중에 <strong>search_law</strong>, <strong>get_law_text</strong> 같은 도구를 호출했다는 안내가 뜨고, 그 결과로 실제 조문이 인용됩니다. 도구를 사용하지 않고 답이 바로 나오면 커넥터가 비활성화 상태일 수 있습니다.</p>
 
             <div class="highlight-box">
                 <div class="hl-title">&#x1F4CC; 동작 확인 체크리스트</div>
@@ -856,7 +894,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
             <p class="card-subtitle">단순 검색을 넘어서, AI가 법률 답변을 만들 때 가장 자주 사고를 치는 지점을 막아주는 세 가지 핵심 도구가 있습니다</p>
 
             <h3 style="font-size: 16px; font-weight: 700; margin-top: 18px; padding-left: 14px; border-left: 3px solid var(--book-teal); color: #3A3530;">&#x2705; verify_citations. AI 답변의 환각 검증</h3>
-            <p style="margin-top: 10px;">ChatGPT나 Claude가 작성한 법률 답변을 그대로 붙여 넣고 사실 여부만 검증할 수 있습니다.</p>
+            <p style="margin-top: 10px;">ChatGPT나 Codex가 작성한 법률 답변을 그대로 붙여 넣고 사실 여부만 검증할 수 있습니다.</p>
             <div class="prompt-box" id="prompt-verify">
                 <button class="copy-btn" onclick="copyPrompt('prompt-verify')">복사</button>
 다음 답변에 등장하는 모든 조문 인용을 verify_citations로 검증해줘.
@@ -885,7 +923,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
 
             <div class="tip-box" style="margin-top: 22px;">
                 <div class="tip-label">활용 팁</div>
-                <p>세 도구는 굳이 도구 이름을 외울 필요가 없습니다. <strong>"이 답변 환각 검증해줘"</strong>, <strong>"이 조문 파급효과 그려줘"</strong>, <strong>"내 상황에서 뭐부터 해야 하는지 단계로 정리해줘"</strong>처럼 자연어로 던지면 Claude가 알아서 도구를 골라 호출합니다.</p>
+                <p>세 도구는 굳이 도구 이름을 외울 필요가 없습니다. <strong>"이 답변 환각 검증해줘"</strong>, <strong>"이 조문 파급효과 그려줘"</strong>, <strong>"내 상황에서 뭐부터 해야 하는지 단계로 정리해줘"</strong>처럼 자연어로 던지면 Codex가 알아서 도구를 골라 호출합니다.</p>
             </div>
         </div>
     </section>
@@ -907,7 +945,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
                     <div class="faq-a">
                         <p><strong>원인 후보:</strong></p>
                         <ul>
-                            <li><strong>Claude Desktop 버전이 낮음.</strong> 메뉴에서 <strong>Claude &gt; Check for Updates</strong>로 최신 버전을 받습니다.</li>
+                            <li><strong>Codex 버전이 낮음.</strong> 메뉴에서 <strong>Codex &gt; Check for Updates</strong>로 최신 버전을 받습니다.</li>
                             <li><strong>개발자 옵션 비활성.</strong> <strong>Settings &gt; Advanced</strong>에서 <strong>Enable custom connectors</strong> 또는 <strong>Developer mode</strong>를 켭니다.</li>
                             <li><strong>관리자 계정으로 제한된 환경.</strong> 회사 SSO 계정이라면 관리자에게 커스텀 커넥터 허용을 요청해야 할 수 있습니다.</li>
                         </ul>
@@ -931,7 +969,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
 
                 <details class="faq-item">
                     <summary>
-                        <span class="faq-q">Q3. 커넥터는 추가됐는데 Claude가 도구를 호출하지 않습니다</span>
+                        <span class="faq-q">Q3. 커넥터는 추가됐는데 Codex가 도구를 호출하지 않습니다</span>
                     </summary>
                     <div class="faq-a">
                         <p><strong>원인 후보:</strong></p>
@@ -1020,7 +1058,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
     <!-- CTA -->
     <div class="cta-section anim-fade-up">
         <h3>지금 바로 연결해 보세요</h3>
-        <p>법제처에서 OC 키를 받고, Claude Desktop의 Customize 메뉴에서 커넥터 URL을 붙여 넣으면 끝납니다.<br>10분이면 환각 없는 법령 검색 환경이 완성됩니다.</p>
+        <p>법제처에서 OC 키를 받고, Codex의 Customize 메뉴에서 커넥터 URL을 붙여 넣으면 끝납니다.<br>10분이면 환각 없는 법령 검색 환경이 완성됩니다.</p>
         <div class="cta-buttons">
             <a class="cta-btn primary" href="https://open.law.go.kr" target="_blank" rel="noopener">법제처 OC 키 받기 &rarr;</a>
             <a class="cta-btn secondary" href="https://github.com/chrisryugj/korean-law-mcp" target="_blank" rel="noopener">MCP 레포지토리 보기</a>
@@ -1031,7 +1069,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
 
 <footer>
     <p class="footer-brand">AI ROASTING</p>
-    <p class="footer-text">비즈니스 리더를 위한 Claude 완전 정복</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
     <span class="footer-link-row">
         <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
         <span class="footer-link-sep" aria-hidden="true">&middot;</span>
@@ -1152,36 +1190,40 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     display: flex; align-items: center; gap: 10px;
     margin: 0 0 16px;
     padding: 14px 16px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
-    color: #3A3530; text-decoration: none;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    color: #38404F; text-decoration: none;
     font-size: 14px; font-weight: 700;
 }
 .sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
 .sm-drawer-item {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 14px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
     text-decoration: none;
-    color: #3A3530;
+    color: #38404F;
     transition: all 0.15s;
 }
-.sm-drawer-item:hover { box-shadow: inset 3px 3px 7px #CECAC3, inset -3px -3px 7px #FFFFFF; }
-.sm-drawer-item.active { background: rgba(217,119,87,0.10); }
-.sm-drawer-item.active .sm-drawer-num { background: #D97757; box-shadow: 0 2px 8px rgba(217,119,87,0.4); }
-.sm-drawer-item.active .sm-drawer-title { color: #1A1917; font-weight: 800; }
+.sm-drawer-item:hover { box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1; }
+.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active);
+    color: var(--codex-pill-text);
+    box-shadow: var(--codex-pill-shadow);
+}
+.sm-drawer-item.active .sm-drawer-title { color: #14192E; font-weight: 800; }
 .sm-drawer-num {
     width: 28px; height: 28px; border-radius: 50%;
-    background: #B0544A; color: #fff;
+    background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
     font-size: 13px; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: all 0.2s;
 }
 .sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.sm-drawer-title { font-size: 14px; font-weight: 700; color: #3A3530; line-height: 1.35; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
 .sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
 @media (max-width: 768px) {
     .sm-menu-toggle { display: inline-flex; }
@@ -1210,7 +1252,239 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     }
     header { padding-top: 24px !important; }
 }
-</style>
+
+        /* ## CODEX-HERO-VIDEO START ## */
+        header {
+            background: #070707 !important;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+            }
+        }
+        /* ## CODEX-HERO-VIDEO END ## */
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-badge { position: relative; overflow: hidden; }
+        .step-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -1292,5 +1566,35 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 </script>
 <!-- ## SM-HAMBURGER END ## -->
+<script>
+// 실전 예제 헤더 토글 (기본 예제 / MCP 연결)
+function switchExampleTab(mode){
+    var b=document.getElementById('pages-basic'), m=document.getElementById('pages-mcp');
+    var tb=document.getElementById('extab-basic'), tm=document.getElementById('extab-mcp');
+    if(!b||!m) return;
+    b.style.display = mode==='basic' ? 'flex' : 'none';
+    m.style.display = mode==='mcp' ? 'flex' : 'none';
+    if(tb) tb.classList.toggle('active', mode==='basic');
+    if(tm) tm.classList.toggle('active', mode==='mcp');
+}
+</script>
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
 </body>
 </html>

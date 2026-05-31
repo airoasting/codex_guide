@@ -1,4 +1,4 @@
-# AGENTS.md: AI ROASTING · Claude 완전 정복
+# AGENTS.md: AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복
 
 이 파일은 이 프로젝트에서 AI가 일할 때 따라야 할 모든 작업 지침을 담는다. 코드 규약, 디자인 시스템, 한국어 작성 원칙, 페이지 인벤토리가 모두 여기에 있다. 변경 이력은 [MEMORY.md](MEMORY.md)에 따로 둔다.
 
@@ -10,77 +10,79 @@
 
 이 한 줄이 모든 한국어 문장의 뿌리다. 이 문서, 콘텐츠 페이지의 본문, commit 메시지, AI 응답까지 모두 같은 기준으로 쓴다.
 
+**금지어**: "흐름"은 쓰지 않는다. 문맥에 따라 과정, 동선, 전개, 작업, 단계 등으로 바꾼다.
+
 ---
 
 ## 1. 프로젝트 정체성
 
-- **이름**: AI ROASTING · Claude 완전 정복
-- **URL**: https://airoasting.github.io/claude_guide/
+- **이름**: AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복
+- **URL**: https://airosting.github.io/codex_guide/
 - **타깃**: 비즈니스 리더와 지식 노동자 (비개발자 포함)
 - **포맷**: 단일 폴더 정적 HTML (Vanilla HTML + CSS + 약간의 JS), GitHub Pages 호스팅
-- **디자인**: 뉴모피즘(Neumorphism), Pretendard Variable, 오렌지 액센트(`--orange: #D97757`)
+- **디자인**: Pretendard Variable, Codex 블루 바이올렛 액센트(`--codex-accent: #3A32FF`). 인덱스는 클린 화이트 + 라벤더 블루 카드의 평면 스타일(뉴모피즘 제거)과 SVG 라인 아이콘 시스템으로 전환했고, 헤더는 로컬 자체 호스팅(`assets/media/hero-bg.mp4`) 배경 영상에 연한 라벤더 블루 톤. 개별 콘텐츠 페이지는 아직 뉴모피즘이며 순차 전환 중
 - **분류**: Core Asset (계속 키워야 할 대표 자산)
+- **전환 상태**: 기존 Claude 가이드를 Codex 가이드로 전환 중이다. `index.html`은 Codex 디자인 기준을 먼저 반영했다. 개별 콘텐츠 페이지는 파일명과 본문이 아직 Claude 기준일 수 있다.
 
 ## North Star
 
-진단 → 기본기 → 디자인/플러그인 → 코워크 → 클로드 코드 → 자동화. 이 5단계 학습 동선을 단일 사이트에서 완성한다. 각 페이지는 "다음 행동"이 선명해야 한다.
+진단 → 작업 환경 → 첫 작업 맡기기 → 코드베이스 협업 → GitHub 작업 → 자동화. 이 학습 동선을 단일 사이트에서 완성한다. 각 페이지는 "다음 행동"이 선명해야 한다.
 
 ---
 
-## 2. 페이지 인벤토리 (29개)
+## 2. 페이지 인벤토리 (활성 루트 HTML 29개)
 
 `index.html`이 라우팅 허브다. 콘텐츠 페이지는 모두 동일한 구조 골격을 공유한다(header → step-nav → header-pages → sticky sub-menu → container → SM-HAMBURGER).
 
 ### 진단 트랙 (header-pages: 2개)
 | 페이지 | 시간 | 난이도 | 특성 |
 |---|---|---|---|
-| `claude-orientation.html` | 5분 | 입문 | 2-menu 기준 페이지. `.hero-inner` 700px + `.header-pages` 70% (=490px) |
+| `codex-orientation.html` | 5분 | 입문 | 2-menu 기준 페이지. `.hero-inner` 700px + `.header-pages` 70% (=490px). `claude-orientation.html`은 호환용 이동 페이지다 |
 | `ai-levels.html` | 5분 | 입문 | 자율주행 1~5단계 비유. 헤더에 별도 배지 없이 h1과 p, header-pages만 있다 |
 
 ### 1단계 · 기본기 (header-pages: 3개)
 | 페이지 | 시간 | 난이도 | 특성 |
 |---|---|---|---|
-| `ai-fluency.html` | 10분 | 입문 | 3-menu 기준 페이지. Anthropic 9,830건 대화 분석. 데스크톱 h1과 모바일 h1이 다르다 (`.t-desktop` / `.t-mobile`) |
+| `ai-fluency.html` | 10분 | 입문 | 3-menu 기준 페이지. 제목은 "프롬프트 잘 쓰는 비결"이다. 이전의 가이드와 새로운 가이드 (v5.5)를 비교한다 |
 | `project-intro.html` | 20분 | 입문 | 프로젝트 셋업, 시스템 프롬프트 |
 | `multi-persona.html` | 10분 | 중급 | 5인 페르소나 토론 (5-Color Harness와 연결) |
 
-### 2단계 · 디자인·플러그인 (header-pages: 3개)
+### 2단계 · 플러그인 (header-pages: 2개)
 | 페이지 | 시간 | 난이도 | 특성 |
 |---|---|---|---|
-| `claude-design.html` | 10분 | 입문 | Anthropic Labs 디자인 도구. "공식 갤러리에서 실제 예시 보기" 버튼은 의도적으로 제거됐다 (commit 02e1329) |
-| `chrome-plugin.html` | 10분 | 입문 | 크롬에서 Claude 사용 |
-| `claude-plugin.html` | 10분 | 입문 | 엑셀, 파워포인트, 워드 3종 플러그인 |
+| `excel-plugin.html` | 12분 | 입문 | ChatGPT for Excel 설치, 워크북 분석, 수식 점검, 시나리오 작업 |
+| `pptx-plugin.html` | 12분 | 입문 | ChatGPT for PowerPoint 설치, 슬라이드 초안, 덱 수정, 발표 준비 |
 
-### 3단계 · 클로드 코워크 (header-pages: 2개)
+### 3단계 · Codex로 실행하기 (header-pages: 2개)
 | 페이지 | 시간 | 난이도 | 특성 |
 |---|---|---|---|
-| `cowork-intro.html` | 10분 | 입문 | 로컬 파일과 Gmail, Calendar, Drive 연결. `.hero-inner` 없음. `.header-pages`에 직접 max-width 490px 적용 |
-| `cowork.html` | 과제별 | 중급 | 실전 과제 8가지. `.hero-inner` 없음 동일 처리 |
+| `codex-101.html` | 10분 | 입문 | Codex 앱 시작 과정. `.header-pages` 490px 기준 |
+| `codex-tasks.html` | 과제별 | 중급 | Codex 실행 과제 7가지. `.header-pages` 490px 기준 |
 
-### 4단계 · 클로드 코드 (header-pages: 5개)
+### 4단계 · GitHub와 배포 (페이지: 2개, index 카드: 2개)
 | 페이지 | 시간 | 난이도 | 특성 |
 |---|---|---|---|
-| `claude-code-101.html` | 10분 | 입문 | 노코드 트랙 입구. Claude Desktop |
-| `claude-code-tasks.html` | 과제별 | 중급 | 바이브코딩 7단계 |
-| `github-guide.html` | 20분 | 중급 | GitHub과 Vercel 배포 |
-| `checklist.html` | 단계별 | 고급 | CLI 트랙 20단계 체크리스트 |
-| `cheatsheet.html` | 레퍼런스 | 참고 | 슬래시 명령어와 단축키 |
+| `github-guide.html` | 12분 | 중급 | GitHub 저장소 생성, 파일 업로드, GitHub Pages 공개 |
+| `vercel-guide.html` | 8분 | 중급 | Vercel 프로젝트 가져오기, 배포 URL 확인, 자동 갱신 |
 
 ### 5단계 · 자동화
 | 페이지 | 시간 | 난이도 | header-pages | 특성 |
 |---|---|---|---|---|
-| `claude-md-templates.html` | 10분 | 중급 | 5개 | 스킬 트랙 |
+| `agents-md-templates.html` | 10분 | 중급 | 5개 | AGENTS.md 운영 문서 |
 | `skills.html` | 20분 | 중급 | 7개 | 나만의 Skill 만들기 |
+| `code-plugin.html` | 15분 | 고급 | 7개 | 스킬과 MCP를 플러그인으로 묶기 |
 | `agent-design.html` | 20분 | 고급 | 5개 | 솔로 → 파이프라인 → 팀 → 오케스트라 |
 | `harness-engineering.html` | 15분 | 고급 | 7개 | 하네스 6가지 구성 요소 |
 
-### 실전 예제 (골드 액센트, 좌측 보더 `#B8860B`)
+### 실전 예제 (Codex 블루 바이올렛 액센트)
 | 페이지 | 시간 | 난이도 | header-pages | 특성 |
 |---|---|---|---|---|
-| `google-sheets-dashboard.html` | 12분 | 중급 | 4개 | 골드 액센트 카드 |
-| `stock-messenger.html` | 15분 | 고급 | 4개 | 골드 액센트 카드 |
-| `korean-law-mcp.html` | 10분 | 중급 | 4개 | Claude Desktop Customize 커넥터 추가. 법제처 Open API |
-| `harness-book.html` | 20분 | 고급 | 9개 | 책쓰기 실전, 최다 메뉴 |
+| `google-sheets-dashboard.html` | 12분 | 중급 | 6개 | Codex 블루 바이올렛 액센트 카드 |
+| `instagram-card-news.html` | 15분 | 중급 | 6개 | 카드뉴스 스토리라인과 1080×1350 PNG 다운로드 |
+| `stock-messenger.html` | 15분 | 고급 | 6개 | Codex 블루 바이올렛 액센트 카드 |
+| `korean-law-mcp.html` | 10분 | 중급 | 6개 | Claude Desktop Customize 커넥터 추가. 법제처 Open API |
+| `playmcp-kakao.html` | 12분 | 중급 | 6개 | Codex와 Kakao PlayMCP로 카카오톡 나와의 채팅방 연결 |
+| `harness-book.html` | 20분 | 고급 | 6개 | 책쓰기 실전 |
 
 ### 바이브코딩 백과사전 (header-pages: 3개)
 | 페이지 | 시간 | 난이도 | 특성 |
@@ -102,7 +104,7 @@
 
 ### 3.1 콘텐츠 영역 사이즈 (`.container`)
 
-모든 콘텐츠 페이지(29개)는 공통 규격을 따른다 (commit 97f4331에서 통일).
+모든 콘텐츠 페이지(28개)는 공통 규격을 따른다 (commit 97f4331에서 통일).
 
 ```css
 .container {
@@ -125,9 +127,11 @@
 
 | 메뉴 수 | 기준 페이지 | `.header-pages` max-width | 각 버튼 폭 | 총합 |
 |---|---|---|---|---|
-| 2개 | `claude-orientation.html` | 490px | 약 238px | 490px |
+| 1개 | `github-guide.html` | 490px | 최대 280px | 490px |
+| 2개 | `codex-orientation.html` | 490px | 약 238px | 490px |
 | 3개 | `ai-fluency.html` | 700px | 약 224px | 700px |
-| 5개 | 미정 | 미정 | 미정 | 미정 |
+| 5개 | `playmcp-kakao.html` | 1080px | 약 205px | 1080px |
+| 6개 | `instagram-card-news.html` | 1080px | 약 168px | 1080px |
 | 7개 | 미정 | 미정 | 미정 | 미정 |
 | 9개 | 미정 | 미정 | 미정 | 미정 |
 
@@ -168,7 +172,7 @@
 
 `.hero-inner` 유무에 따른 폭 적용:
 - `.hero-inner` (max-width: 700px)가 있는 페이지는 `.header-pages`에 `max-width: 100%` (상위 700px 상속) 또는 비율(`70%` 등)을 써도 된다.
-- `.hero-inner`가 없는 페이지(`cowork-intro.html`, `cowork.html` 같은 경우)는 `.header-pages`에 직접 절대값(`700px` 또는 `490px`)을 적용한다. 비율(`70%`)을 쓰면 헤더 전체 폭의 70%가 되어 다른 페이지와 어긋난다.
+- `.hero-inner`가 없는 페이지(`codex-101.html`, `codex-tasks.html`, `github-guide.html` 같은 경우)는 `.header-pages`에 직접 절대값(`700px` 또는 `490px`)을 적용한다. 비율(`70%`)을 쓰면 헤더 전체 폭의 70%가 되어 다른 페이지와 어긋난다.
 
 금지 사항:
 - 페이지별 임의 폭(`70%`, `64%`, `960px` 같은 값)을 그대로 두지 않는다.
@@ -180,7 +184,7 @@
 원칙: 햄버거는 사이트 공통의 단일 패턴이다. 페이지별로 다르게 만들지 않는다.
 
 적용 범위:
-- 29개 콘텐츠 페이지 전부에 동일한 코드가 들어 있다.
+- 30개 콘텐츠 페이지 전부에 동일한 코드가 들어 있다.
 - 마커 주석으로 구역을 명확히 한다. `<!-- ## SM-HAMBURGER START ## -->`와 `<!-- ## SM-HAMBURGER END ## -->` 사이만 수정하거나 교체한다.
 
 브레이크포인트와 동작 전환:
@@ -233,16 +237,89 @@ JS 동작 (단일 IIFE, 외부 의존 없음):
 유지보수 규칙:
 - 햄버거 블록은 사이트 공통 자산이다. 한 페이지에서 수정하면 전 페이지에 동일하게 반영해야 한다.
 - 페이지가 `nav.sub-menu`를 가지지 않으면(일부 레퍼런스 페이지) 드로어 리스트가 비어 보일 수 있다. 그 페이지에서도 sub-menu 골격은 유지하는 것을 권장한다.
-- 드로어 폭(320px), 버튼 위치(top 14, right 14), 브레이크포인트(768px)는 변경하지 않는다. 바꾸려면 29개 전체를 일괄 수정해야 한다.
+- 드로어 폭(320px), 버튼 위치(top 14, right 14), 브레이크포인트(768px)는 변경하지 않는다. 바꾸려면 30개 전체를 일괄 수정해야 한다.
 
 ### 3.4 중간 분기 (`≤1160px`, 비-모바일 축소)
 - `.header-page-link`의 폰트는 12px, padding은 8px 14px, border-radius는 12px로 줄어든다.
 - `flex: 1 1 0` 균등 분배는 유지된다 (햄버거로 전환되지 않는다).
 
 ### 3.5 색상 토큰
-- 메인 컬러: `--orange: #D97757`
-- 헤더 그라데이션: `linear-gradient(150deg, #B35535, #A04828, #7A2E15)`
-- 실전 예제 골드: `#B8860B` (좌측 보더 3px, index 카드 한정)
+- 메인 액센트: `--codex-accent: #3A32FF`
+- 보조 블루: `--codex-blue: var(--codex-accent)`
+- 그래파이트: `--codex-graphite: #070707`
+- 슬레이트: `--codex-slate: #14192E`
+- 패널 배경: `--codex-panel: #F0F1F3`
+- 인덱스와 콘텐츠 페이지 pill 텍스트: `--codex-pill-text: #283052`
+- 인덱스와 콘텐츠 페이지 pill 기본 배경: `--codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%)`
+- 인덱스와 콘텐츠 페이지 pill active 배경: `--codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%)`
+- 인덱스와 콘텐츠 페이지 pill 보조 배경: `--codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%)`
+- 진단·단계 필버튼과 섹션 번호 배지 색 토큰(인덱스): `--codex-num-bg: linear-gradient(135deg, #7E84EC 0%, #5762D6 100%)`, active `--codex-num-bg-active: linear-gradient(135deg, #6A73E6 0%, #444FCE 100%)`, 텍스트 `--codex-num-text: #fff`. 연한 라벤더 핑크 대신 이 진한 라벤더 블루를 쓴다.
+- **인덱스 기본 배경은 쿨 페리윙클 그레이 `--nm-bg: #E7E9F2`(그림자 `--nm-dark: #C5C8D8`, 라이트 `--nm-light: #FFFFFF`)를 쓴다.** 본문 텍스트는 쿨 뉴트럴 `#2C2F3A`, 제목·카드 제목 `#20242E`, 보조 텍스트 `#5A6072`로 통일한다. 이전 따뜻한 베이지 `#EDE8DF`와 웜 텍스트 `#3A3530`은 인덱스에서 더 쓰지 않는다(온도 정합).
+- Claude 시절의 주황 액센트(`#D97757`, `#B35535`, `#A04828`, `#7A2E15`)는 활성 HTML 전체에서 쓰지 않는다.
+- 전체 HTML 페이지의 주요 CTA, 좌측 보더, 강조 텍스트, 헤더 그라데이션은 Codex 블루 바이올렛과 그래파이트 계열을 쓴다.
+- 번호 배지, 섹션 배지, step badge, 작은 pill 버튼은 따뜻한 라벤더 블루 배경과 짙은 슬레이트 텍스트를 쓴다.
+- 실전 예제 카드도 골드가 아니라 Codex 블루 바이올렛을 쓴다.
+- 투명 액센트는 `rgba(58,50,255,...)`를 기본으로 쓴다. 부드러운 보조광은 `#4B56ED`, `#8D9CF5`, `#D8DFFA` 계열을 쓴다.
+- 인덱스와 콘텐츠 페이지의 pill 버튼, 작은 번호 배지, 섹션 배지는 진한 네이비 배경을 쓰지 않는다.
+- sticky `nav.sub-menu`와 모바일 `.sm-drawer` 버튼은 쿨 그레이 패널(`#F0F1F3`, `#E3E6F0`, `#D2D6E2`)과 라벤더 블루 pill 토큰을 함께 쓴다.
+- 서브 메뉴 active 배경은 따뜻한 크림과 라벤더 블루가 섞인 밝은 그라데이션으로 통일한다.
+- 서브 메뉴와 모바일 드로어의 버튼 배경, 그림자, 번호 배지에는 주황, 갈색, 골드 계열을 쓰지 않는다.
+- 서브 메뉴 색상과 콘텐츠 페이지의 작은 pill 배지는 `/* ## CODEX-SUBMENU-COLOR START ## */`와 `/* ## CODEX-SUBMENU-COLOR END ## */` 공통 CSS 블록에서 관리한다.
+
+### 3.6 상단 히어로 영상 디자인
+
+`index.html`과 실제 콘텐츠 HTML의 상단 헤더는 Codex 가이드 전환의 기준 화면이다. 이동용 HTML처럼 `http-equiv="refresh"`만 가진 파일은 제외한다. 다음 규칙을 따른다.
+
+- 상단 헤더에는 공식 ChatGPT Codex 페이지의 배경 영상(`https://persistent.oaistatic.com/codex/background-video-jan-28.mp4`)을 쓴다.
+- 영상 poster는 공식 히어로 이미지(`https://persistent.oaistatic.com/codex/landing-assets-v3/hero/desktop/hero.webp`)를 쓴다.
+- 영상은 `autoplay muted loop playsinline`으로 둔다. 접근성을 위해 `prefers-reduced-motion: reduce`에서는 정적 CSS 배경으로 대체한다.
+- 배경 위에는 어두운 오버레이를 얹어 흰색 헤드라인이 항상 먼저 읽히게 한다.
+- 영상 노출은 인덱스 기준 `opacity: 0.98`, `filter: saturate(1.20) contrast(1.03) brightness(1.20)`을 따른다(공식 Codex 색감 100% 기준).
+- 인덱스 히어로 오버레이는 왼쪽 텍스트 가독성을 지키되 오른쪽 파스텔이 보이게 둔다: `linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%)` + `linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%)`.
+- 히어로에는 canvas를 넣지 않는다. 배경 움직임은 공식 배경 영상 하나로 제한한다.
+- 인덱스 히어로에는 정의된 마이크로 인터랙션만 허용한다: ① 상태 알약(`.hero-status-pill`) hover 시 살짝 떠오르고 초록 점 글로우, ② 브랜드 로고(`.hero-brand`) hover 시 로고 이미지 360도 회전 + `scale(1.12)`. 그 외 배경 애니메이션은 넣지 않는다.
+- 콘텐츠 페이지에는 `/* ## CODEX-HERO-VIDEO START ## */`와 `/* ## CODEX-HERO-VIDEO END ## */` 공통 CSS 블록을 둔다.
+- 한 페이지에서 영상 헤더 규칙을 바꾸면 실제 헤더가 있는 루트 HTML 페이지와 공개 assets HTML 페이지에 같은 기준을 반영한다.
+- 상단 sticky 메뉴와 모바일 메뉴는 열린 상태만 즉시 전환한다. transition 기반 슬라이드나 fade 효과를 넣지 않는다.
+- 상단 sticky 메뉴가 `main.container`의 로드 애니메이션에 묶이지 않게 한다. 메뉴는 첫 화면에서 즉시 보여야 한다.
+- 상단 브랜드 로고는 흰색 로고 이미지(`assets/logos/logo1-white.png`)를 쓰고, 별도 배경 원이나 캡슐을 두지 않는다. 브랜드 영역은 `index.html`로 가는 링크(`<a href="index.html" class="hero-brand">`)로 두고, hover 시 위 마이크로 인터랙션(로고 360도 회전)을 적용한다.
+- 히어로 하단 빠른 진입 버튼은 현재 `ChatGPT`, `ChatGPT 플러그인`, `Codex 앱` 3개를 기준으로 한다.
+- 히어로 하단 빠른 진입 영역은 바깥 테두리 박스를 두지 않는다. 버튼 카드만 개별 프레임으로 둔다.
+- `.nav-wrapper` 배경은 하단 콘텐츠 영역과 같은 `var(--nm-bg)`를 쓴다.
+- 인덱스의 모바일 드로어는 `var(--codex-panel)`을 쓴다.
+
+### 3.7 인덱스 클린 라이트 카드 리디자인 (현행 기준)
+
+`index.html`은 공식 Codex 카드 스타일(라이트 클린 카드)을 기준으로 한다. 뉴모피즘은 폐기했다. 콘텐츠 페이지는 아직 이전 골격일 수 있으나, 인덱스를 전환 기준으로 삼는다.
+
+**카드 컴포넌트 (`.card`)**
+- 흰 표면 `#FFFFFF`, 라운드 `22px`, 보더는 기본 `1.5px solid transparent`(레이아웃 흔들림 방지).
+- 그림자 2단: `0 1px 3px rgba(20,25,46,0.05), 0 12px 30px rgba(20,25,46,0.06)`.
+- hover: `translateY(-4px)` + 그림자 강화 + **테두리 라벤더 블루 `#7E84EC`**.
+- 뉴모피즘 그림자(`--nm-shadow` 류)와 얇은 회색 보더, 난이도 좌측 컬러보더(`:has(.badge-level)`)는 쓰지 않는다. 난이도는 `.badge-level` 배지로만 표시한다.
+- 패딩 `26px 26px 28px`, `min-height: 172px`.
+
+**카드 아이콘 타일 (`.card-icon`)**
+- 이모지를 `46px` 라운드(`13px`) 타일에 담는다. 배경 `linear-gradient(150deg, #EEF0FB 0%, #DFE3F8 100%)` + 안쪽 1px 라벤더 링. 작은 인라인 이모지는 쓰지 않는다.
+- 단, 좁은 5열 `.newsletter-section .card-icon`은 타일을 리셋하고 인라인(`19px`)으로 둔다.
+
+**카드 높이 통일**
+- `.cards`는 `grid-auto-rows: 1fr`로 둔다. 한 단계(섹션) 안의 카드들은 모두 같은 세로 높이가 된다(단계 간 높이는 콘텐츠 양에 따라 다를 수 있다).
+
+**섹션 배경 밴드**
+- 본문 카드 섹션(진단·1~5단계·실전 예제·백과사전·갤러리)은 배경 밴드 없이 `var(--nm-bg)` 위에 흰 카드를 둔다.
+- **수강생 한마디(`#section-voices`)**: 은은한 라이트 패널 `linear-gradient(180deg, #FCFCFE 0%, #F1F2F8 100%)` + 미세 보더, 라운드 28px. 글자는 다크(`#20242E`/`#5A6072`), 캐로우절 인디케이터는 다크/액센트(점 `rgba(20,25,46,0.18)`, active `var(--codex-accent)`).
+- **다른 콘텐츠(뉴스레터)**: 위 가이드 영역과 구분되게 페리윙클 그라디언트 배경 `linear-gradient(165deg, #DEE2F3 0%, #C2C8E6 50%, #A7B0DA 100%)`을 쓴다. 뉴스레터 상단 라운드 28px, 흰 클린 카드.
+- **푸터**: 검정 계열 `#14161D`로 분리한다(뉴스레터 라이트 밴드와 강한 대비). 텍스트는 라이트: 브랜드 `#AEB6FF`, 본문 `rgba(255,255,255,0.6)`. 푸터 하단 링크(`.footer-about-link`) hover는 **라벤더 블루 `#AEB6FF`**. 인덱스 푸터 자체는 라운드 없음(위 뉴스레터 밴드가 라운드라서).
+- **콘텐츠 페이지(전 HTML)**: 인덱스 클린 스타일을 적용한다. 기본 배경 쿨 `#E7E9F2`(`--nm-bg`/`--bg` 등 페이지별 토큰), 본문 텍스트 쿨 `#2C2F3A`, 푸터는 인덱스와 동일한 다크 `#14161D` + 라이트 텍스트에 **상단 라운드 `border-radius: 32px 32px 0 0`**(위에 라이트 영역이 있어 라운드가 보임). 히어로 영상 톤은 `opacity: 0.98` + `filter: saturate(1.20) contrast(1.03) brightness(1.20)`로 통일.
+- 폭 정렬: 모든 카드 섹션과 뉴스레터는 `.container`와 같은 폭(좌측 57px, 콘텐츠 1192px)으로 맞춘다. `.lower-ambient-inner`는 중복 패딩 없이 통과시킨다.
+
+**진단·단계 필버튼 / 섹션 배지**
+- `.guide-btn`은 흰 클린 버튼(`#FFFFFF` + 미세 보더 + 작은 그림자), hover 시 라벤더 블루 보더.
+- `.guide-btn-num`과 `.section-num`은 위 `--codex-num-*` 토큰(진한 라벤더 블루 + 흰 글자)을 쓴다. 인라인 `var(--codex-pill-bg)` 덮어쓰기는 쓰지 않는다.
+
+**A급 진입 카드(미완)**
+- 레퍼런스 풀버전(상단 보라 제품 목업 패널 + 다크 알약 CTA)은 히어로 3개 진입점 전용으로 둔다. 실제 제품 목업 이미지를 받은 뒤 그 3개에만 적용한다. 30개 리스트 카드에는 적용하지 않는다.
 
 ---
 
@@ -252,7 +329,7 @@ JS 동작 (단일 IIFE, 외부 의존 없음):
 
 ### 4.1 em dash 절대 금지
 
-`—` 기호는 어디에도 쓰지 않는다. 본문, 표 안, 주석, 제목, 어디에서도 등장하지 않는다.
+em dash 기호(U+2014)는 어디에도 쓰지 않는다. 본문, 표 안, 주석, 제목, 어디에서도 등장하지 않는다.
 
 대체 수단:
 - 두 생각이 이어지면 마침표로 끊고 새 문장으로 쓴다.
@@ -260,7 +337,7 @@ JS 동작 (단일 IIFE, 외부 의존 없음):
 - 표의 빈 칸은 그냥 비우거나 '없음', '미정'으로 적는다.
 
 예시:
-- 잘못된 표기: 햄버거 메뉴는 공통 자산 (`—` 사용) 한 페이지만 수정 금지.
+- 잘못된 표기: 햄버거 메뉴는 공통 자산 (긴 대시 사용) 한 페이지만 수정 금지.
 - 올바른 표기: 햄버거 메뉴는 공통 자산이다. 한 페이지만 수정하면 안 된다.
 
 ### 4.2 주술 구조 맞추기
@@ -329,7 +406,7 @@ JS 동작 (단일 IIFE, 외부 의존 없음):
 - 잘못된 표기: 결국 좋은 글은 독자를 향한 배려에서 나온다.
 - 올바른 표기: (그냥 끝낸다.)
 
-### 4.9 글의 흐름
+### 4.9 글의 전개
 
 - 두 문장이 이어지면 접속사 없이도 자연스러운지 살핀다.
 - "그리고", "하지만", "따라서"를 남발하지 않는다.
@@ -356,8 +433,10 @@ JS 동작 (단일 IIFE, 외부 의존 없음):
 
 ### Rule 1. 사이즈 통일은 메뉴 개수별 기준 페이지를 따른다
 - 3-menu는 `ai-fluency.html`을 기준으로 한다.
-- 2-menu는 `claude-orientation.html`을 기준으로 한다.
-- 새 메뉴 카운트(5, 7, 9)는 별도 기준 페이지를 정의하기 전까지 손대지 않는다.
+- 2-menu는 `codex-orientation.html`을 기준으로 한다.
+- 5-menu는 `playmcp-kakao.html`을 기준으로 한다.
+- 6-menu는 `instagram-card-news.html`을 기준으로 한다.
+- 새 메뉴 카운트(7, 9)는 별도 기준 페이지를 정의하기 전까지 손대지 않는다.
 
 ### Rule 2. 헤더에서 중복되는 배지는 제거한다
 - 예시: `ai-levels.html`의 "5단계로 진단 · 10분 소요"는 본문과 index 메타데이터로 충분해서 헤더에서 뺐다.
@@ -365,7 +444,8 @@ JS 동작 (단일 IIFE, 외부 의존 없음):
 
 ### Rule 3. 기존 디자인 토큰을 깨지 않는다
 - 폰트, 색, 뉴모피즘 그림자는 페이지 간 일관성을 유지한다.
-- 페이지별 특수 액센트는 실전 예제 골드 보더 같은 명시적 신호일 때만 허용한다.
+- 활성 HTML의 액센트는 Codex 블루 바이올렛으로 통일한다.
+- 페이지별 특수 액센트는 기존 콘텐츠 페이지 안에서 명시적 사유가 있을 때만 허용한다.
 
 ### Rule 4. 변경은 데스크톱과 모바일 모두 확인하고 보고한다
 - `≤1160px` 분기와 모바일(`≤768px`) 분기에 같은 변경이 필요할 수 있다.
@@ -379,6 +459,13 @@ JS 동작 (단일 IIFE, 외부 의존 없음):
 ### Rule 6. 운영 문서는 AGENTS.md 한 곳에서 관리한다
 - 코드 규약, 디자인 시스템, 한국어 작성 원칙, 페이지 인벤토리는 모두 이 파일에 있다.
 - 새 규약은 이 파일에 추가하고, 변경 이력은 MEMORY.md에 남긴다.
+
+### Rule 7. Codex 전환 작업은 인덱스 기준을 따른다
+- 새 인덱스 디자인은 Codex 블루 바이올렛, 공식 배경 영상 히어로, ChatGPT와 Codex 빠른 진입 메뉴를 기준으로 한다.
+- 모든 활성 HTML 페이지의 색상 디자인은 인덱스와 같은 Codex 블루 바이올렛, 그래파이트, 뉴모피즘 배경 계열로 맞춘다.
+- 실제 상단 헤더가 있는 루트 HTML 페이지는 인덱스와 같은 공식 Codex 배경 영상 패턴을 공유한다.
+- Claude 문구를 Codex 문구로 바꿀 때는 기능 이름이 실제 사용 맥락과 맞는지 확인한다.
+- 파일명은 사용자가 별도 요청하기 전까지 한꺼번에 바꾸지 않는다. 기존 링크 안정성을 우선한다.
 
 ---
 
@@ -442,6 +529,12 @@ README.md의 버전 히스토리는 단일 표로 정리한다. 각 행은 다�
 - 햄버거 드로어 폭, 위치, 브레이크포인트(320px, top14·right14, 768px)를 페이지별로 다르게 두지 않는다.
 - 모바일에서 `.header-pages`를 가로로 유지하려고 `flex-direction: column`을 깨지 않는다.
 - 본문 메타데이터로 알 수 있는 정보를 헤더 배지에 중복으로 노출하지 않는다.
+- 활성 HTML에 Claude 주황, 실전 예제 골드, 주황 그라데이션을 다시 넣지 않는다.
+- 서브 메뉴와 모바일 드로어 버튼에 베이지, 갈색, 주황, 골드 계열 배경이나 그림자를 쓰지 않는다.
+- 상단 헤더에 공식 Codex 배경 영상 외 움직이는 canvas, video, 배경 애니메이션을 추가로 넣지 않는다.
+- `index.html` 헤더 버튼에 transition이나 transform 기반 hover 효과를 넣지 않는다.
+- `index.html`의 상단 sticky 메뉴와 모바일 메뉴에 transition 기반 슬라이드나 fade 효과를 넣지 않는다.
+- `index.html`의 상단 sticky 메뉴가 로드 fade에 묶이도록 `main.container`에 animation을 주지 않는다.
 - 새 페이지를 만들 때 기존 골격(`header → step-nav → header-pages → sticky sub-menu → container → SM-HAMBURGER`)을 따르지 않는 일이 없도록 한다.
 
 ---

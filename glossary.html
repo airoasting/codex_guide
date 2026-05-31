@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://airoasting.github.io/claude_guide/glossary.html">
-    <meta property="og:title" content="AI ROASTING · Claude 완전 정복">
-    <meta property="og:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/glossary.html">
+    <meta property="og:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <meta property="og:url" content="https://airoasting.github.io/claude_guide/glossary.html">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/glossary.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI ROASTING · Claude 완전 정복">
-    <meta name="twitter:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
-    <meta name="twitter:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
+    <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <title>AI 용어 사전 60선 | AI ROASTING</title>
     <style>
         @font-face {
@@ -24,18 +24,18 @@
         }
 
         :root {
-            --nm-bg: #EDEAE4;
-            --nm-dark: #CECAC3;
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
             --nm-light: #FFFFFF;
-            --nm-shadow: 6px 6px 14px #CECAC3, -6px -6px 14px #FFFFFF;
-            --nm-shadow-sm: 4px 4px 8px #CECAC3, -4px -4px 8px #FFFFFF;
-            --nm-inset: inset 4px 4px 10px #CECAC3, inset -4px -4px 10px #FFFFFF;
-            --ant-orange: #D97757;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --codex-accent: #5B62D8;
             --ant-dark: #1A1917;
             --c0: #9a958d;
             --c1: #e74c3c;
             --c2: #00b4d8;
-            --c3: #f59e0b;
+            --c3: #5B62D8;
             --c4: #10b981;
             --c5: #8b5cf6;
         }
@@ -44,15 +44,15 @@
         html { scroll-behavior: smooth; scroll-padding-top: 130px; }
         body { word-break: keep-all;
             font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, system-ui, sans-serif;
-            background: var(--nm-bg);
-            color: #3A3530;
+            background: #FFFFFF;
+            color: #2C2F3A;
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
         /* ── Header ── */
         header {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             padding: 28px 40px 40px;
             border-radius: 0 0 32px 32px;
             text-align: center;
@@ -63,7 +63,7 @@
             content: '';
             position: absolute; top: -80px; right: -40px;
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(196,98,63,0.18) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
             pointer-events: none;
         }
         .back-link {
@@ -99,18 +99,22 @@
 
         /* ── Sub Menu ── */
         .sub-menu { position: sticky; top: 0; z-index: 100; background: #F0EDE8; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-bottom: 1px solid #E0DDD7; border-radius: 0 0 32px 32px; padding: 14px 0; display: flex; justify-content: center; gap: 0; overflow-x: auto; }
-        .sub-menu a { display: flex; flex-direction: column; align-items: center; gap: 5px; text-decoration: none; padding: 8px 18px; transition: all 0.2s; flex: 1; max-width: 150px; }
+        .sub-menu a { display: flex; flex-direction: column; align-items: center; gap: 9px; text-decoration: none; padding: 8px 18px; transition: all 0.2s; flex: 1; max-width: 150px; }
         .sm-count { font-weight: 700; margin-left: 3px; }
         .sub-menu a:hover .sm-num { transform: scale(1.1); }
         .sub-menu a:hover .sm-title { color: var(--ant-dark); }
-        .sub-menu a.active { background: rgba(217,119,87,0.14); border-radius: 14px; box-shadow: 0 0 22px rgba(217,119,87,0.22), inset 0 0 0 1px rgba(217,119,87,0.28); }
-        .sub-menu a.active .sm-num { background: var(--ant-orange); box-shadow: 0 0 14px rgba(217,119,87,0.65), 0 0 0 4px rgba(217,119,87,0.14); }
+        .sub-menu a.active { background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)); border-radius: 14px; box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10); }
+        .sub-menu a.active .sm-num {
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
+        }
         .sub-menu a.active .sm-title { color: var(--ant-dark); font-weight: 800; }
-        .sub-menu a.active .sm-sub { color: var(--ant-orange); }
-        .sm-num { width: 28px; height: 28px; border-radius: 50%; background: #B0544A; color: #fff; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-        .sm-title { font-size: 13px; font-weight: 700; color: #3A3530; white-space: nowrap; }
-        .sm-sub { font-size: 12px; color: #999; white-space: nowrap; }
-        .content-section { scroll-margin-top: 100px; }
+        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
+        .sm-num { width: 28px; height: 28px; border-radius: 50%; background: var(--codex-pill-bg-muted); color: var(--codex-pill-text); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .sm-title { font-size: 15px; font-weight: 700; color: #3A3530; white-space: nowrap; }
+        .sm-sub { font-size: 14px; color: #999; white-space: nowrap; }
+        .content-section { scroll-margin-top: 155px; }
 
         /* ── Container ── */
         .container { max-width: 1080px; margin: 0 auto; padding: 32px 32px 80px; }
@@ -125,7 +129,7 @@
         .search-input-wrap .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #B0AAA0; pointer-events: none; }
         .search-input { width: 100%; padding: 14px 18px 14px 48px; border: none; border-radius: 16px; background: var(--nm-bg); box-shadow: var(--nm-inset); font-family: inherit; font-size: 15px; font-weight: 500; color: #3A3530; outline: none; transition: box-shadow 0.25s; }
         .search-input::placeholder { color: #B0AAA0; font-weight: 400; }
-        .search-input:focus { box-shadow: inset 5px 5px 12px #CECAC3, inset -5px -5px 12px #FFFFFF, 0 0 0 2px rgba(217,119,87,0.35); }
+        .search-input:focus { box-shadow: 0 0 0 2px rgba(99,102,241,0.35), 0 1px 3px rgba(20,25,46,0.06); }
         .search-clear { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; border: none; background: #D5D0C8; color: #7a756e; font-size: 14px; cursor: pointer; display: none; align-items: center; justify-content: center; transition: background 0.2s; }
         .search-clear:hover { background: #C5BFB6; }
         .search-clear.show { display: flex; }
@@ -137,7 +141,7 @@
         .search-no-result { text-align: center; padding: 40px 20px; font-size: 14px; color: #B0AAA0; display: none; }
         .search-no-result .no-result-icon { font-size: 32px; margin-bottom: 8px; }
         .term-card.search-hidden { display: none; }
-        .term-card.search-highlight { box-shadow: 0 0 0 2px rgba(217,119,87,0.5); background: #FFFFFF; }
+        .term-card.search-highlight { box-shadow: 0 0 0 2px rgba(99,102,241,0.5); background: #FFFFFF; }
         .glossary-section.search-section-hidden { display: none; }
 
         /* ── Intro ── */
@@ -160,10 +164,10 @@
         .history-term:hover { box-shadow: var(--nm-inset); color: #3A3530; }
 
         /* ── Step Divider ── */
-        .step-divider { display: flex; align-items: center; gap: 0; margin: 52px 0 20px; cursor: pointer; scroll-margin-top: 130px; }
+        .step-divider { display: flex; align-items: center; gap: 0; margin: 52px 0 20px; cursor: pointer; scroll-margin-top: 155px; }
         .step-divider:first-of-type { margin-top: 8px; }
         .step-divider-line { flex: 1; height: 1px; background: #DDD8D0; }
-        .step-divider-badge { padding: 11px 28px; border-radius: 28px; background: var(--nm-bg); box-shadow: var(--nm-shadow-sm); font-size: 13px; font-weight: 700; color: var(--ant-orange); letter-spacing: 0.5px; white-space: nowrap; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+        .step-divider-badge { padding: 11px 28px; border-radius: 28px; background: var(--nm-bg); box-shadow: var(--nm-shadow-sm); font-size: 13px; font-weight: 700; color: var(--codex-accent); letter-spacing: 0.5px; white-space: nowrap; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
         .step-divider:hover .step-divider-badge { box-shadow: var(--nm-shadow); transform: translateY(-1px); }
         .step-chevron { font-size: 10px; transition: transform 0.3s; }
         .step-chevron.collapsed { transform: rotate(-90deg); }
@@ -198,24 +202,24 @@
         .subgrid-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--sg-color, var(--c4)); flex-shrink: 0; }
         .term-card { background: #F4F1EC; border-radius: 14px; padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s ease; position: relative; }
         .term-card:hover { background: #FFFFFF; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
-        .term-card[data-level="3"] { background: #F8F5EE; box-shadow: 0 0 0 1px rgba(217,119,87,0.18); }
-        .term-card[data-level="3"]:hover { background: #FFFFFF; box-shadow: 0 8px 22px rgba(217,119,87,0.18); }
+        .term-card[data-level="3"] { background: #F8F5EE; box-shadow: 0 0 0 1px rgba(99,102,241,0.18); }
+        .term-card[data-level="3"]:hover { background: #FFFFFF; box-shadow: 0 8px 22px rgba(99,102,241,0.18); }
         .term-num { font-size: 11px; font-weight: 700; min-width: 26px; height: 26px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #fff; margin-top: 1px; }
         .term-body { flex: 1; min-width: 0; }
         .term-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .term-name { font-size: 15px; font-weight: 700; color: #3A3530; }
         .term-en { font-size: 11px; font-weight: 600; color: #999; }
-        .term-stars { margin-left: auto; font-size: 11px; font-weight: 800; letter-spacing: -0.5px; color: #D97757; white-space: nowrap; padding-left: 6px; }
+        .term-stars { margin-left: auto; font-size: 11px; font-weight: 800; letter-spacing: -0.5px; color: #5B62D8; white-space: nowrap; padding-left: 6px; }
         .term-stars[data-level="1"] { color: #B0AAA0; }
-        .term-stars[data-level="2"] { color: #D97757; opacity: 0.65; }
-        .term-stars[data-level="3"] { color: #D97757; opacity: 1; }
+        .term-stars[data-level="2"] { color: #5B62D8; opacity: 0.65; }
+        .term-stars[data-level="3"] { color: #5B62D8; opacity: 1; }
         .term-def { font-size: 13.5px; color: #7a756e; line-height: 1.75; margin-top: 4px; }
-        .term-easy { font-size: 12px; color: #B0544A; margin-top: 5px; font-weight: 500; }
+        .term-easy { font-size: 12px; color: #5B62D8; margin-top: 5px; font-weight: 500; }
         .term-easy::before { content: '💡 '; }
 
         /* ── Section Narrative: Head + Icon + Diagram ── */
         .narrative-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
-        .narrative-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #ffffff; border: 2px solid var(--c, var(--ant-orange)); box-shadow: 0 3px 10px rgba(0,0,0,0.08); color: var(--c, var(--ant-orange)); }
+        .narrative-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #ffffff; border: 2px solid var(--c, var(--codex-accent)); box-shadow: 0 3px 10px rgba(0,0,0,0.08); color: var(--c, var(--codex-accent)); }
         .narrative-icon svg { width: 22px; height: 22px; stroke-width: 2.2; }
         .section-narrative .narrative-q { margin-bottom: 0; flex: 1; }
         .section-diagram { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; margin-top: 12px; padding-top: 12px; border-top: 1px dashed rgba(0,0,0,0.08); }
@@ -226,23 +230,24 @@
 
         /* ── Section TOP 3 (인라인 필 스타일) ── */
         .section-top3 { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; padding: 4px 4px; background: transparent; box-shadow: none; }
-        .top3-label { font-size: 11px; font-weight: 800; color: var(--ant-orange); padding: 0 6px 0 4px; background: transparent; box-shadow: none; white-space: nowrap; letter-spacing: 0.5px; text-transform: uppercase; }
-        .top3-pick { background: transparent; padding: 5px 12px; border-radius: 14px; font-size: 12.5px; font-weight: 700; color: #5a554e; cursor: pointer; transition: all 0.15s; border: 1px solid rgba(217,119,87,0.3); font-family: inherit; outline: none; }
-        .top3-pick:hover { background: rgba(217,119,87,0.10); color: var(--ant-orange); border-color: rgba(217,119,87,0.55); }
-        .top3-pick:focus-visible { background: rgba(217,119,87,0.14); border-color: var(--ant-orange); }
-        .top3-pick::before { content: '★ '; color: var(--ant-orange); font-size: 10px; }
+        .top3-label { font-size: 11px; font-weight: 800; color: var(--codex-accent); padding: 0 6px 0 4px; background: transparent; box-shadow: none; white-space: nowrap; letter-spacing: 0.5px; text-transform: uppercase; }
+        .top3-pick { background: transparent; padding: 5px 12px; border-radius: 14px; font-size: 12.5px; font-weight: 700; color: #5a554e; cursor: pointer; transition: all 0.15s; border: 1px solid rgba(99,102,241,0.3); font-family: inherit; outline: none; }
+        .top3-pick:hover { background: rgba(99,102,241,0.10); color: var(--codex-accent); border-color: rgba(99,102,241,0.55); }
+        .top3-pick:focus-visible { background: rgba(99,102,241,0.14); border-color: var(--codex-accent); }
+        .top3-pick::before { content: '★ '; color: var(--codex-accent); font-size: 10px; }
 
         /* ── CTA Card ── */
-        .cta-card { background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%); border-radius: 24px; padding: 36px 32px; text-align: center; margin: 52px 0 48px; position: relative; overflow: hidden; }
-        .cta-card::before { content: ''; position: absolute; top: -60px; right: -30px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(196,98,63,0.15) 0%, transparent 60%); pointer-events: none; }
+        .cta-card { background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%); border-radius: 24px; padding: 36px 32px; text-align: center; margin: 52px 0 48px; position: relative; overflow: hidden; }
+        .cta-card::before { content: ''; position: absolute; top: -60px; right: -30px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 60%); pointer-events: none; }
         .cta-title { font-size: 24px; font-weight: 800; color: #ffffff; margin-bottom: 12px; position: relative; z-index: 1; }
         .cta-desc { font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.7; margin-bottom: 20px; position: relative; z-index: 1; }
         .cta-btn { display: inline-flex; align-items: center; gap: 6px; padding: 11px 30px; border-radius: 14px; background: #ffffff; color: #3A3530; font-family: inherit; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.25s; position: relative; z-index: 1; border: none; cursor: pointer; }
         .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 
         /* ── Footer ── */
-        footer { background: var(--ant-dark); text-align: center; padding: 36px 32px 28px; }
-        .footer-brand { font-size: 13px; font-weight: 700; color: var(--ant-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        footer .footer-video { display: none; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
         .footer-about-link {
             display: inline-block; margin-top: 8px;
@@ -251,7 +256,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 1px; transition: all 0.2s;
         }
-        .footer-about-link:hover { color: #fff; border-color: #fff; }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
         .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
         .footer-link-row .footer-about-link { margin-top: 0; }
         .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
@@ -351,7 +356,7 @@
         .pipe-node:nth-child(4) { animation-delay: 1.15s; }
         .pipe-node:nth-child(5) { animation-delay: 1.25s; }
 
-        /* Scroll reveal — stagger applied dynamically via JS (see IntersectionObserver) */
+        /* Scroll reveal. Stagger applied dynamically via JS (see IntersectionObserver) */
         .reveal-init { opacity: 0; transform: translateY(14px); }
         .reveal-in { animation: fadeUp 0.45s ease forwards; }
 
@@ -364,6 +369,9 @@
 <body>
 
 <header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
     <h1>60개 용어로 빠르게 이해하는 AI</h1>
     <p>AI 70년 역사를 6막으로 풀어낸 용어 사전</p>
@@ -552,7 +560,7 @@
             <div class="term-card" data-level="1" data-keywords="임베딩 embedding 벡터 변환 유사도"><div class="term-num" style="background:var(--c1)">16</div><div class="term-body"><div class="term-header"><span class="term-name">임베딩</span><span class="term-en">Embedding</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">텍스트의 의미를 숫자 벡터로 변환하는 과정입니다. 비슷한 내용끼리 가까운 좌표에 놓이기 때문에, RAG의 유사도 검색이 가능해집니다.</p><p class="term-easy">글의 의미를 숫자 좌표로 바꾸는 것</p></div></div>
             <div class="term-card" data-level="1" data-keywords="벡터 vector 다차원 숫자 배열 좌표 수치"><div class="term-num" style="background:var(--c1)">17</div><div class="term-body"><div class="term-header"><span class="term-name">벡터</span><span class="term-en">Vector</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">데이터의 의미를 다차원 숫자 배열로 표현한 결과물입니다. 벡터끼리의 거리를 비교하면 어떤 정보가 어떤 정보와 가까운지 알 수 있습니다.</p><p class="term-easy">의미를 표현하는 숫자 묶음, 가까우면 비슷한 뜻</p></div></div>
             <h4 class="subgrid-label" style="--sg-color: var(--c1)">모델·인프라</h4>
-            <div class="term-card" data-level="3" data-keywords="LLM large language model 대규모 언어 모델 GPT Claude Gemini"><div class="term-num" style="background:var(--c1)">18</div><div class="term-body"><div class="term-header"><span class="term-name">LLM</span><span class="term-en">Large Language Model</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">대량의 텍스트 데이터로 학습한 대규모 언어 모델입니다. GPT·Claude·Gemini가 모두 여기에 해당하며, 에이전트의 두뇌 역할을 합니다.</p><p class="term-easy">AI의 두뇌, 말을 이해하고 생성하는 엔진</p></div></div>
+            <div class="term-card" data-level="3" data-keywords="LLM large language model 대규모 언어 모델 GPT Codex Gemini"><div class="term-num" style="background:var(--c1)">18</div><div class="term-body"><div class="term-header"><span class="term-name">LLM</span><span class="term-en">Large Language Model</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">대량의 텍스트 데이터로 학습한 대규모 언어 모델입니다. GPT·Codex·Gemini가 모두 여기에 해당하며, 에이전트의 두뇌 역할을 합니다.</p><p class="term-easy">AI의 두뇌, 말을 이해하고 생성하는 엔진</p></div></div>
             <div class="term-card" data-level="3" data-keywords="컨텍스트 윈도우 context window 토큰 한도"><div class="term-num" style="background:var(--c1)">19</div><div class="term-body"><div class="term-header"><span class="term-name">컨텍스트 윈도우</span><span class="term-en">Context Window</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">AI가 한 번에 읽을 수 있는 정보의 총량입니다. 한도를 넘으면 오래된 정보부터 잘려나가기 때문에, 윈도우 크기는 모델 세대를 가르는 핵심 지표가 되었습니다.</p><p class="term-easy">AI의 작업 책상 크기, 넘치면 자료가 떨어진다</p></div></div>
             <div class="term-card" data-level="1" data-keywords="LSP language server protocol 코드 분석 에디터"><div class="term-num" style="background:var(--c1)">20</div><div class="term-body"><div class="term-header"><span class="term-name">LSP</span><span class="term-en">Language Server Protocol</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">에디터와 코드 분석 서버 사이의 표준 프로토콜입니다. 2016년 마이크로소프트가 공개했고, 훗날 AI 에이전트 표준인 ACP·MCP의 사고방식에 영향을 미쳤습니다.</p><p class="term-easy">에디터에게 코드 구조를 알려주는 번역기</p></div></div>
         </div>
@@ -632,7 +640,7 @@
             <div class="term-card" data-level="3" data-keywords="메모리 memory 기억 저장소"><div class="term-num" style="background:var(--c3)">27</div><div class="term-body"><div class="term-header"><span class="term-name">메모리</span><span class="term-en">Memory</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">AI가 이전 대화나 작업 상태를 기억하는 저장소입니다. 단발 대화에서 벗어나 며칠·몇 주에 걸친 협업을 가능하게 만드는 핵심 인프라입니다.</p><p class="term-easy">AI의 메모장</p></div></div>
             <div class="term-card" data-level="1" data-keywords="메모리 계층 memory hierarchy 단기 장기 캐시"><div class="term-num" style="background:var(--c3)">28</div><div class="term-body"><div class="term-header"><span class="term-name">메모리 계층</span><span class="term-en">Memory Hierarchy</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">즉시 접근하는 단기 기억과 검색이 필요한 장기 기억으로 나눈 구조입니다. CPU의 캐시·메모리·디스크 계층과 같은 원리로 작동합니다.</p><p class="term-easy">빠른 포스트잇 vs 서류 캐비닛</p></div></div>
             <div class="term-card" data-level="3" data-keywords="RAG retrieval augmented generation 검색 증강 생성"><div class="term-num" style="background:var(--c3)">29</div><div class="term-body"><div class="term-header"><span class="term-name">RAG</span><span class="term-en">Retrieval-Augmented Generation</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">외부 문서를 검색해서 AI의 컨텍스트에 실시간으로 주입하는 기법입니다. 임베딩으로 회사 자료에서 관련 부분만 골라 와서, 할루시네이션을 줄이는 표준 방법이 되었습니다.</p><p class="term-easy">시험 때 교과서 찾아보며 답 쓰는 것</p></div></div>
-            <div class="term-card" data-level="3" data-keywords="컨텍스트 엔지니어링 context engineering claude.md"><div class="term-num" style="background:var(--c3)">30</div><div class="term-body"><div class="term-header"><span class="term-name">컨텍스트 엔지니어링</span><span class="term-en">Context Engineering</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">어떤 정보를 어떤 순서로 AI에게 전달할지 짜는 방법론입니다. CLAUDE.md 같은 운영 문서 작성도 여기에 포함되며, 프롬프트 엔지니어링의 다음 세대로 자리 잡았습니다.</p><p class="term-easy">AI의 책상 위를 정리하는 법</p></div></div>
+            <div class="term-card" data-level="3" data-keywords="컨텍스트 엔지니어링 context engineering agents.md"><div class="term-num" style="background:var(--c3)">30</div><div class="term-body"><div class="term-header"><span class="term-name">컨텍스트 엔지니어링</span><span class="term-en">Context Engineering</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">어떤 정보를 어떤 순서로 AI에게 전달할지 짜는 방법론입니다. AGENTS.md 같은 운영 문서 작성도 여기에 포함되며, 프롬프트 엔지니어링의 다음 세대로 자리 잡았습니다.</p><p class="term-easy">AI의 책상 위를 정리하는 법</p></div></div>
             <div class="term-card" data-level="1" data-keywords="인텐트 intent 의도 목표"><div class="term-num" style="background:var(--c3)">31</div><div class="term-body"><div class="term-header"><span class="term-name">인텐트</span><span class="term-en">Intent</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">사용자가 진짜 달성하려는 목표입니다. 에이전트가 어떤 도구를 골라야 할지, 어떤 정보를 더 끌어와야 할지 판단하는 기준점이 됩니다.</p><p class="term-easy">'진짜로 원하는 게 뭔데?' AI가 읽는 속마음</p></div></div>
             <div class="term-card" data-level="1" data-keywords="프로그레시브 디스클로저 progressive disclosure 점진적 공개"><div class="term-num" style="background:var(--c3)">32</div><div class="term-body"><div class="term-header"><span class="term-name">프로그레시브 디스클로저</span><span class="term-en">Progressive Disclosure</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">모든 지시를 한 번에 주지 않고 상황에 맞춰 필요한 것만 꺼내 쓰는 패턴입니다. 컨텍스트 윈도우를 효율적으로 활용하는 핵심 전략으로 자리 잡았습니다.</p><p class="term-easy">필요한 정보만 그때그때 꺼내주는 것</p></div></div>
         </div>
@@ -671,9 +679,9 @@
         <div class="term-grid" id="grid-s5">
             <h4 class="subgrid-label">핵심 능력</h4>
             <div class="term-card" data-level="3" data-keywords="에이전트 agent 자율 AI 비서 도구 판단"><div class="term-num" style="background:var(--c4)">33</div><div class="term-body"><div class="term-header"><span class="term-name">에이전트</span><span class="term-en">Agent</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">목표를 부여받으면 스스로 판단하고, 도구를 선택하고, 결과를 검증하는 자율적 AI입니다. 단순 챗봇과 달리 여러 단계를 스스로 수행합니다.</p><p class="term-easy">시키면 알아서 해오는 AI 비서</p></div></div>
-            <div class="term-card" data-level="3" data-keywords="에이전틱 코딩 agentic coding 자율 코드 작성 개발"><div class="term-num" style="background:var(--c4)">34</div><div class="term-body"><div class="term-header"><span class="term-name">에이전틱 코딩</span><span class="term-en">Agentic Coding</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">사람이 코드를 한 줄씩 짜는 대신, 에이전트가 자율적으로 코드를 작성·수정·테스트하는 개발 방식입니다. Claude Code·Cursor와 함께 폭발적으로 확산되었습니다.</p><p class="term-easy">AI에게 '이거 만들어' 하면 코드가 나오는 것</p></div></div>
+            <div class="term-card" data-level="3" data-keywords="에이전틱 코딩 agentic coding 자율 코드 작성 개발"><div class="term-num" style="background:var(--c4)">34</div><div class="term-body"><div class="term-header"><span class="term-name">에이전틱 코딩</span><span class="term-en">Agentic Coding</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">사람이 코드를 한 줄씩 짜는 대신, 에이전트가 자율적으로 코드를 작성·수정·테스트하는 개발 방식입니다. Codex·Cursor와 함께 폭발적으로 확산되었습니다.</p><p class="term-easy">AI에게 '이거 만들어' 하면 코드가 나오는 것</p></div></div>
             <div class="term-card" data-level="2" data-keywords="도구 사용 tool use function calling 함수 호출 실행"><div class="term-num" style="background:var(--c4)">35</div><div class="term-body"><div class="term-header"><span class="term-name">도구 사용</span><span class="term-en">Tool Use</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">AI가 텍스트 생성을 넘어 함수 호출·파일 조작·웹 검색 같은 외부 도구를 직접 실행하는 능력입니다. 에이전트의 핵심 역량입니다.</p><p class="term-easy">AI가 직접 도구를 집어 들고 쓰는 것</p></div></div>
-            <div class="term-card" data-level="2" data-keywords="스킬 skill 슬래시 명령 능력"><div class="term-num" style="background:var(--c4)">36</div><div class="term-body"><div class="term-header"><span class="term-name">스킬</span><span class="term-en">Skill</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">반복 사용할 수 있는 전문 지시 묶음입니다. Claude Code에서는 슬래시 명령으로 호출하는 능력 단위가 됩니다.</p><p class="term-easy">AI에게 가르쳐둔 '특기' 하나</p></div></div>
+            <div class="term-card" data-level="2" data-keywords="스킬 skill 슬래시 명령 능력"><div class="term-num" style="background:var(--c4)">36</div><div class="term-body"><div class="term-header"><span class="term-name">스킬</span><span class="term-en">Skill</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">반복 사용할 수 있는 전문 지시 묶음입니다. Codex에서는 슬래시 명령으로 호출하는 능력 단위가 됩니다.</p><p class="term-easy">AI에게 가르쳐둔 '특기' 하나</p></div></div>
             <h4 class="subgrid-label">분업 구조</h4>
             <div class="term-card" data-level="2" data-keywords="오케스트레이터 orchestrator 조율자 지휘자 관리"><div class="term-num" style="background:var(--c4)">37</div><div class="term-body"><div class="term-header"><span class="term-name">오케스트레이터</span><span class="term-en">Orchestrator</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">여러 에이전트의 작업 순서를 정하고 결과를 통합하는 상위 조율자입니다. 오케스트라 지휘자처럼 누가 언제 무엇을 할지 결정합니다.</p><p class="term-easy">여러 AI를 지휘하는 지휘자</p></div></div>
             <div class="term-card" data-level="2" data-keywords="서브에이전트 subagent 하위 에이전트"><div class="term-num" style="background:var(--c4)">38</div><div class="term-body"><div class="term-header"><span class="term-name">서브에이전트</span><span class="term-en">Subagent</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">메인 에이전트가 복잡한 작업을 쪼개서 맡기는 하위 에이전트입니다. 팀장이 팀원에게 업무를 배분하는 구조와 같습니다.</p><p class="term-easy">팀장 AI가 부르는 팀원 AI</p></div></div>
@@ -681,7 +689,7 @@
             <h4 class="subgrid-label">실행 패턴</h4>
             <div class="term-card" data-level="3" data-keywords="워크플로우 workflow 자동화 절차 파이프라인"><div class="term-num" style="background:var(--c4)">40</div><div class="term-body"><div class="term-header"><span class="term-name">워크플로우</span><span class="term-en">Workflow</span><span class="term-stars" data-level="3">★★★</span></div><p class="term-def">작업의 순서와 조건을 미리 정의한 실행 절차입니다. 에이전트가 반복 작업을 자동으로 처리할 때의 청사진이 됩니다.</p><p class="term-easy">자동화 레시피, 순서대로 따라가면 완성</p></div></div>
             <div class="term-card" data-level="2" data-keywords="TDD test driven development 테스트 주도 개발 빨강 초록 리팩터링"><div class="term-num" style="background:var(--c4)">41</div><div class="term-body"><div class="term-header"><span class="term-name">TDD</span><span class="term-en">Test-Driven Development</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">테스트를 먼저 작성하고, 그 테스트를 통과시킬 만큼만 코드를 짜는 개발 방식입니다. 에이전트가 자기 결과를 검증하는 피드백 루프의 기본 패턴으로 자리 잡았습니다.</p><p class="term-easy">시험 문제를 먼저 만들고 답을 푸는 방식</p></div></div>
-            <div class="term-card" data-level="2" data-keywords="SDD spec driven development 스펙 사양 명세 주도 개발"><div class="term-num" style="background:var(--c4)">42</div><div class="term-body"><div class="term-header"><span class="term-name">SDD</span><span class="term-en">Spec-Driven Development</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">사양 문서를 먼저 명확히 한 뒤, 그에 맞춰 코드를 구현하는 개발 방식입니다. CLAUDE.md 같은 운영 문서를 출발점으로 두는 에이전틱 코딩의 표준 시작점이 되었습니다.</p><p class="term-easy">설계도 먼저 정리하고 짓기</p></div></div>
+            <div class="term-card" data-level="2" data-keywords="SDD spec driven development 스펙 사양 명세 주도 개발"><div class="term-num" style="background:var(--c4)">42</div><div class="term-body"><div class="term-header"><span class="term-name">SDD</span><span class="term-en">Spec-Driven Development</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">사양 문서를 먼저 명확히 한 뒤, 그에 맞춰 코드를 구현하는 개발 방식입니다. AGENTS.md 같은 운영 문서를 출발점으로 두는 에이전틱 코딩의 표준 시작점이 되었습니다.</p><p class="term-easy">설계도 먼저 정리하고 짓기</p></div></div>
             <div class="term-card" data-level="1" data-keywords="그래프 graph DAG 의존 관계 노드 엣지"><div class="term-num" style="background:var(--c4)">43</div><div class="term-body"><div class="term-header"><span class="term-name">그래프</span><span class="term-en">Graph / DAG</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">작업 사이의 의존 관계를 노드와 엣지로 표현한 구조입니다. 어떤 작업이 먼저 끝나야 다음으로 넘어갈 수 있는지를 정의합니다.</p><p class="term-easy">작업 순서를 화살표로 그린 지도</p></div></div>
             <div class="term-card" data-level="1" data-keywords="스웜 swarm 병렬 동시 실행"><div class="term-num" style="background:var(--c4)">44</div><div class="term-body"><div class="term-header"><span class="term-name">스웜</span><span class="term-en">Swarm</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">여러 에이전트가 각자의 독립된 컨텍스트에서 동시에 작업하는 병렬 실행 구조입니다.</p><p class="term-easy">여러 AI가 동시에 따로 일하는 것</p></div></div>
             <div class="term-card" data-level="1" data-keywords="플릿 fleet 에이전트 집합 모니터링"><div class="term-num" style="background:var(--c4)">45</div><div class="term-body"><div class="term-header"><span class="term-name">플릿</span><span class="term-en">Fleet</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">운영 중인 에이전트들의 집합입니다. 개별 에이전트가 아니라 전체를 묶어서 모니터링하고 관리할 때 쓰는 표현입니다.</p><p class="term-easy">운영 중인 AI 팀 전체 명단</p></div></div>
@@ -689,7 +697,7 @@
             <div class="term-card" data-level="2" data-keywords="백그라운드 에이전트 background agent 비동기 야간"><div class="term-num" style="background:var(--c4)">46</div><div class="term-body"><div class="term-header"><span class="term-name">백그라운드 에이전트</span><span class="term-en">Background Agent</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">사용자 개입 없이 백그라운드에서 비동기로 도는 에이전트입니다. 야간 코드 리뷰나 자동 테스트에서 진가가 드러납니다.</p><p class="term-easy">밤새 혼자 일하는 AI 야근러</p></div></div>
             <div class="term-card" data-level="2" data-keywords="장기 실행 에이전트 long running agent 세션"><div class="term-num" style="background:var(--c4)">47</div><div class="term-body"><div class="term-header"><span class="term-name">장기 실행 에이전트</span><span class="term-en">Long-Running Agent</span><span class="term-stars" data-level="2">★★</span></div><p class="term-def">한 번의 컨텍스트 윈도우를 넘어, 여러 세션에 걸쳐 작업을 이어가는 에이전트입니다.</p><p class="term-easy">며칠째 이어서 일하는 AI</p></div></div>
             <div class="term-card" data-level="1" data-keywords="REPL read eval print loop 대화형 실행"><div class="term-num" style="background:var(--c4)">48</div><div class="term-body"><div class="term-header"><span class="term-name">REPL</span><span class="term-en">Read-Eval-Print Loop</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">코드를 입력하면 즉시 결과를 보여주는 대화형 실행 환경입니다. 에이전트가 코드를 시험하고 검증하는 단계에서 핵심 도구로 다시 부각되었습니다.</p><p class="term-easy">코드를 치면 바로 결과가 나오는 대화창</p></div></div>
-            <div class="term-card" data-level="1" data-keywords="오픈클로 OpenClaw Clawdbot Moltbot 페터 슈타인베르거 손이 달린 클로드 PlayMCP"><div class="term-num" style="background:var(--c4)">49</div><div class="term-body"><div class="term-header"><span class="term-name">오픈클로</span><span class="term-en">OpenClaw</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">2025년 11월 오스트리아의 페터 슈타인베르거(Peter Steinberger)가 공개한 오픈소스 AI 에이전트입니다. 파일·터미널·브라우저를 자율적으로 제어해 '손이 달린 클로드'로 불리며, 카카오 PlayMCP가 연동을 지원합니다.</p><p class="term-easy">'손이 달린 클로드', 파일·터미널·브라우저를 직접 다룬다</p></div></div>
+            <div class="term-card" data-level="1" data-keywords="오픈클로 OpenClaw Clawdbot Moltbot 페터 슈타인베르거 손이 달린 Codex PlayMCP"><div class="term-num" style="background:var(--c4)">49</div><div class="term-body"><div class="term-header"><span class="term-name">오픈클로</span><span class="term-en">OpenClaw</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">2025년 11월 오스트리아의 페터 슈타인베르거(Peter Steinberger)가 공개한 오픈소스 AI 에이전트입니다. 파일·터미널·브라우저를 자율적으로 제어해 '손이 달린 Codex'로 불리며, 카카오 PlayMCP가 연동을 지원합니다.</p><p class="term-easy">'손이 달린 Codex', 파일·터미널·브라우저를 직접 다룬다</p></div></div>
             <div class="term-card" data-level="1" data-keywords="Hermes Agent 헤르메스 Nous Research 자기 개선 자기 학습 오픈소스 자율 에이전트 MIT"><div class="term-num" style="background:var(--c4)">50</div><div class="term-body"><div class="term-header"><span class="term-name">Hermes Agent</span><span class="term-en">Hermes Agent · Nous Research</span><span class="term-stars" data-level="1">★</span></div><p class="term-def">2026년 2월 Nous Research가 공개한 오픈소스 자율 에이전트입니다. 200개 이상 모델과 40개 이상 도구를 지원하며, 사용자 환경에서 스킬을 만들고 기억을 이어가는 자기 개선형 구조가 특징입니다.</p><p class="term-easy">Nous Research가 만든 자기 학습형 자율 AI 에이전트</p></div></div>
         </div>
         </div>
@@ -753,7 +761,7 @@
 
 <footer>
     <p class="footer-brand">AI ROASTING</p>
-    <p class="footer-text">비즈니스 리더를 위한 Claude 완전 정복</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
     <span class="footer-link-row">
         <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
         <span class="footer-link-sep" aria-hidden="true">·</span>
@@ -933,36 +941,40 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     display: flex; align-items: center; gap: 10px;
     margin: 0 0 16px;
     padding: 14px 16px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
-    color: #3A3530; text-decoration: none;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    color: #38404F; text-decoration: none;
     font-size: 14px; font-weight: 700;
 }
 .sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
 .sm-drawer-item {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 14px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
     text-decoration: none;
-    color: #3A3530;
+    color: #38404F;
     transition: all 0.15s;
 }
-.sm-drawer-item:hover { box-shadow: inset 3px 3px 7px #CECAC3, inset -3px -3px 7px #FFFFFF; }
-.sm-drawer-item.active { background: rgba(217,119,87,0.10); }
-.sm-drawer-item.active .sm-drawer-num { background: #D97757; box-shadow: 0 2px 8px rgba(217,119,87,0.4); }
-.sm-drawer-item.active .sm-drawer-title { color: #1A1917; font-weight: 800; }
+.sm-drawer-item:hover { box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1; }
+.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active);
+    color: var(--codex-pill-text);
+    box-shadow: var(--codex-pill-shadow);
+}
+.sm-drawer-item.active .sm-drawer-title { color: #14192E; font-weight: 800; }
 .sm-drawer-num {
     width: 28px; height: 28px; border-radius: 50%;
-    background: #B0544A; color: #fff;
+    background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
     font-size: 13px; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: all 0.2s;
 }
 .sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.sm-drawer-title { font-size: 14px; font-weight: 700; color: #3A3530; line-height: 1.35; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
 .sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
 @media (max-width: 768px) {
     .sm-menu-toggle { display: inline-flex; }
@@ -1014,7 +1026,239 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         height: 2px !important;
     }
 }
-</style>
+
+        /* ## CODEX-HERO-VIDEO START ## */
+        header {
+            background: #070707 !important;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+            }
+        }
+        /* ## CODEX-HERO-VIDEO END ## */
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-divider-badge { position: relative; overflow: hidden; }
+        .step-divider-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-divider-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -1097,5 +1341,23 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 </script>
 <!-- ## SM-HAMBURGER END ## -->
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
 </body>
 </html>

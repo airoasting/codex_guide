@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/playmcp-kakao.html">
+    <meta property="og:title" content="카카오톡 PlayMCP 연결하기 | AI ROASTING">
+    <meta property="og:description" content="Codex에서 Kakao PlayMCP를 MCP 서버로 연결하고, 카카오톡 나와의 채팅방에 업무 결과를 보내는 실전 가이드">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/playmcp-kakao.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="카카오톡 PlayMCP 연결하기 | AI ROASTING">
+    <meta name="twitter:description" content="Codex와 Kakao PlayMCP를 연결해 카카오톡 나와의 채팅방으로 업무 결과를 보내는 방법">
+    <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <title>카카오톡 PlayMCP 연결하기 | AI ROASTING</title>
+    <meta name="description" content="Kakao PlayMCP의 카카오톡 나와의 채팅방 도구를 Codex MCP 설정에 연결하고, 첫 테스트와 운영 기준까지 확인하는 실전 가이드.">
+    <style>
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('assets/fonts/PretendardVariable.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
+            --nm-light: #FFFFFF;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --codex-accent: #5B62D8;
+            --codex-blue: var(--codex-accent);
+            --codex-graphite: #070707;
+            --codex-slate: #14192E;
+            --codex-panel: #F0F1F3;
+            --ant-dark: #1A1917;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            word-break: keep-all;
+            font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif;
+            background: #FFFFFF;
+            color: #2C2F3A;
+            line-height: 1.6;
+        }
+        a { color: inherit; }
+
+        header {
+            background: #070707;
+            padding: 28px 40px 40px;
+            border-radius: 0 0 32px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        .back-link {
+            display: inline-block;
+            color: rgba(255,255,255,0.68);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .back-link:hover { color: #fff; }
+        header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            letter-spacing: 0;
+            margin-bottom: 8px;
+        }
+        header > p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.82);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .header-pages {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin: 22px auto 0;
+            max-width: 1080px;
+            position: relative;
+            z-index: 2;
+        }
+        .header-page-link {
+            flex: 1 1 0;
+            min-width: 0;
+            max-width: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.72);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 18px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.07);
+            box-shadow: 5px 5px 12px rgba(0,0,0,0.35), -5px -5px 12px rgba(255,255,255,0.06);
+            white-space: nowrap;
+        }
+        .header-page-link:hover {
+            background: rgba(255,255,255,0.13);
+            color: #fff;
+        }
+        .header-page-link.active {
+            background: rgba(255,255,255,0.14);
+            box-shadow: inset 3px 3px 8px rgba(0,0,0,0.35), inset -3px -3px 8px rgba(255,255,255,0.06);
+            color: #fff;
+        }
+        /* ## EXAMPLE-TOGGLE-NAV START ## */
+        .ex-tabs {
+            display: inline-flex; gap: 4px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px; padding: 4px;
+            margin: 18px auto 0;
+            position: relative; z-index: 1;
+        }
+        .ex-tab {
+            font-size: 13px; font-weight: 700;
+            color: rgba(255,255,255,0.55);
+            padding: 6px 22px; border-radius: 20px;
+            cursor: pointer; transition: all 0.2s; user-select: none;
+        }
+        .ex-tab.active { background: rgba(255,255,255,0.18); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+        .ex-tab:hover:not(.active) { color: rgba(255,255,255,0.8); }
+        #pages-basic, #pages-mcp { margin-top: 16px; }
+        /* ## EXAMPLE-TOGGLE-NAV END ## */
+        .header-page-link .hpl-icon { font-size: 18px; }
+        .header-page-link .hpl-icon { display: inline-flex; align-items: center; justify-content: center; }
+        .header-page-link .hpl-icon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .header-page-link .hpl-icon svg.ic-fill { fill: currentColor; stroke: none; }
+
+        .sub-menu {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(240, 241, 243, 0.92);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border-bottom: 1px solid #E0DDD7;
+            border-radius: 0 0 32px 32px;
+            padding: 14px 0;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+        .sub-menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 9px;
+            text-decoration: none;
+            padding: 8px 14px;
+            flex: 1;
+            max-width: 132px;
+            color: #596070;
+        }
+        .sub-menu a .sm-title { color: #38404F; }
+        .sub-menu a .sm-sub { color: #7B8498; }
+        .sub-menu a .sm-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--codex-pill-bg-muted);
+            color: var(--codex-pill-text);
+            font-size: 13px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--codex-pill-shadow);}
+        .sub-menu a:hover {
+            background: rgba(99,102,241,0.07);
+            border-radius: 14px;
+        }
+        .sub-menu a.active {
+            background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58));
+            border-radius: 14px;
+            box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10);
+        }
+        .sub-menu a.active .sm-num {
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
+        }
+        .sub-menu a.active .sm-title {
+            color: #14192E;
+            font-weight: 800;
+        }
+        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
+        .sm-title { font-size: 15px; font-weight: 700; white-space: nowrap; }
+        .sm-sub { font-size: 13px; white-space: nowrap; }
+        .content-section { scroll-margin-top: 155px; }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 32px 32px 80px;
+        }
+        .nm-card {
+            background: var(--nm-bg);
+            border-radius: 20px;
+            box-shadow: var(--nm-shadow);
+            padding: 30px 32px;
+            margin-bottom: 24px;
+        }
+        .nm-card h2 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #3A3530;
+            margin-bottom: 6px;
+            padding-left: 16px;
+            border-left: 4px solid var(--codex-accent);
+        }
+        .nm-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #3A3530;
+            margin-top: 22px;
+            padding-left: 14px;
+            border-left: 3px solid var(--codex-accent);
+        }
+        .nm-card p, .nm-card li {
+            font-size: 14px;
+            color: #5C5650;
+            line-height: 1.75;
+        }
+        .nm-card ul, .nm-card ol {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        .nm-card li { margin-bottom: 8px; }
+        .card-subtitle {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 18px;
+            padding-left: 20px;
+        }
+        .step-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 28px 0;
+        }
+        .step-divider::before,
+        .step-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #E8E4DE;
+        }
+        .step-badge {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--codex-accent);
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            padding: 6px 20px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .flow-row {
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            margin: 24px 0;
+        }
+        .flow-node {
+            flex: 1;
+            min-width: 0;
+            background: var(--nm-bg);
+            border-radius: 16px;
+            box-shadow: var(--nm-shadow-sm);
+            padding: 16px 14px;
+            text-align: center;
+        }
+        .fn-icon {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #14192E, var(--codex-accent));
+            color: #fff;
+            font-size: 19px;
+            box-shadow: 0 3px 10px rgba(99,102,241,0.30);
+        }
+        .fn-label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #3A3530;
+        }
+        .fn-sub {
+            font-size: 11px;
+            color: #7B8498;
+            margin-top: 3px;
+        }
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--codex-accent);
+            font-weight: 800;
+        }
+        .callout {
+            background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(216,223,250,0.30));
+            border: 1.5px solid rgba(99,102,241,0.22);
+            border-radius: 16px;
+            padding: 20px 22px;
+            margin: 18px 0;
+        }
+        .callout strong { color: #14192E; }
+        .tip-box {
+            background: var(--nm-bg);
+            border-radius: 14px;
+            box-shadow: var(--nm-shadow-sm);
+            border-left: 4px solid var(--codex-accent);
+            padding: 18px 22px;
+            margin: 16px 0;
+        }
+        .tip-box .tip-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--codex-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 18px 0;
+        }
+        .mini-card {
+            background: var(--nm-bg);
+            border-radius: 16px;
+            box-shadow: var(--nm-shadow-sm);
+            padding: 18px;
+        }
+        .mini-card .mini-icon { font-size: 22px; margin-bottom: 8px; }
+        .mini-card h4 {
+            font-size: 14px;
+            color: #3A3530;
+            margin-bottom: 6px;
+        }
+        .prompt-box {
+            background: var(--ant-dark);
+            color: #e8e8ee;
+            padding: 20px 24px;
+            border-radius: 14px;
+            font-family: 'SF Mono', 'Fira Code', ui-monospace, Menlo, Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-break: break-word;
+            margin: 12px 0;
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255,255,255,0.10);
+            color: rgba(255,255,255,0.68);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 4px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+        }
+        .wf-steps {
+            --wf-circle: 46px;
+            --wf-conn-w: 3px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 18px 0;
+        }
+        .wf-step {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 6px 0;
+        }
+        .wf-step-num {
+            width: var(--wf-circle);
+            height: var(--wf-circle);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #14192E, var(--codex-accent));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 800;
+            box-shadow: 0 6px 16px rgba(99,102,241,0.24);
+            flex-shrink: 0;
+        }
+        .wf-step-content {
+            flex: 1;
+            padding-top: 8px;
+        }
+        .wf-step-label {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--codex-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .wf-step-desc {
+            font-size: 14px;
+            color: #5C5650;
+            line-height: 1.7;
+        }
+        .wf-connector {
+            width: var(--wf-conn-w);
+            height: 28px;
+            background: linear-gradient(180deg, rgba(99,102,241,0.55), rgba(99,102,241,0.18));
+            margin: -6px 0 -6px calc((var(--wf-circle) - var(--wf-conn-w)) / 2);
+            border-radius: 2px;
+        }
+        .ref-section { margin-top: 6px; }
+        .ref-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #3A3530;
+            margin-bottom: 14px;
+        }
+        .ref-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .ref-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--nm-bg);
+            border-radius: 14px;
+            box-shadow: var(--nm-shadow-sm);
+            text-decoration: none;
+            color: #3A3530;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .ref-link:hover { color: var(--codex-accent); }
+        .ref-link .ref-icon { font-size: 18px; flex-shrink: 0; }
+        .ref-link .ref-desc {
+            font-size: 12px;
+            font-weight: 400;
+            color: #999;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        details.faq-item {
+            background: var(--nm-bg);
+            border-radius: 14px;
+            box-shadow: var(--nm-shadow-sm);
+            margin-bottom: 12px;
+            padding: 16px 18px;
+        }
+        details summary {
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 800;
+            color: #3A3530;
+        }
+        .faq-a {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        .cta-section {
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
+            color: #fff;
+            border-radius: 24px;
+            padding: 34px 32px;
+            text-align: center;
+            margin-top: 26px;
+            box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+        }
+        .cta-section h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+        .cta-section p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.78);
+            line-height: 1.7;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+        .cta-btn.primary {
+            background: #fff;
+            color: #070707;
+        }
+        .cta-btn.secondary {
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.82);
+            border: 1px solid rgba(255,255,255,0.16);
+        }
+        footer {
+            background: #14161D;
+            border-top: none;
+            text-align: center;
+            padding: 40px 32px 36px;
+            border-radius: 32px 32px 0 0;
+            position: relative;
+            isolation: isolate;
+        }
+        .footer-brand {
+            font-size: 13px;
+            font-weight: 700;
+            color: #AEB6FF;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .footer-text {
+            font-size: 12px;
+            color: rgba(255,255,255,0.60);
+        }
+        .footer-about-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.30);
+            padding-bottom: 1px;
+        }
+        .footer-about-link:hover {
+            color: #AEB6FF;
+            border-color: #AEB6FF;
+        }
+        .footer-link-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .footer-link-row .footer-about-link { margin-top: 0; }
+        .footer-link-sep {
+            color: rgba(255,255,255,0.35);
+            font-size: 12px;
+        }
+        @media (max-width: 1160px) {
+            .header-page-link {
+                font-size: 12px;
+                padding: 8px 14px;
+                border-radius: 12px;
+            }
+        }
+        @media (max-width: 768px) {
+            header { padding: 28px 20px 28px; }
+            header h1 { font-size: 28px; }
+            .container { padding: 24px 16px 60px; }
+            .header-pages {
+                flex-direction: column;
+                max-width: 100%;
+                gap: 8px;
+                align-items: stretch;
+                margin-top: 18px;
+            }
+            .header-page-link {
+                flex: none;
+                max-width: none;
+                width: 100%;
+                white-space: normal;
+                word-break: keep-all;
+                font-size: 13px;
+                padding: 11px 14px;
+                border-radius: 12px;
+            }
+            .compare-grid,
+            .flow-row {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+            .flow-arrow {
+                justify-content: center;
+                transform: rotate(90deg);
+                padding: 2px 0;
+            }
+            .nm-card { padding: 22px 18px; }
+            .ref-link .ref-desc { display: none; }
+            nav.sub-menu { display: none !important; }
+        }
+        @media (max-width: 480px) {
+            header h1 { font-size: 24px; }
+            .step-badge {
+                letter-spacing: 1px;
+                padding: 6px 14px;
+                font-size: 10px;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
+    <a href="index.html" class="back-link">&larr; 목록으로</a>
+    <h1>카카오톡 PlayMCP 연결하기</h1>
+    <p>Codex에서 Kakao PlayMCP를 MCP 서버로 연결하고, 작업 결과를 카카오톡 나와의 채팅방으로 보내는 실전 흐름</p>
+    <div class="ex-tabs">
+        <span class="ex-tab" id="extab-basic" onclick="switchExampleTab('basic')">기본 예제</span>
+        <span class="ex-tab active" id="extab-mcp" onclick="switchExampleTab('mcp')">MCP 연결</span>
+    </div>
+    <div class="header-pages" id="pages-basic" style="display:none;">
+        <a href="google-sheets-dashboard.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span> 구글 시트 대시보드</a>
+        <a href="instagram-card-news.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span> 인스타 카드뉴스</a>
+        <a href="harness-book.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> 책 쓰기</a>
+    </div>
+    <div class="header-pages" id="pages-mcp">
+        <a href="playmcp-kakao.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span> 카카오톡 PlayMCP</a>
+        <a href="korean-law-mcp.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></svg></span> 한국 법령 MCP</a>
+        <a href="stock-messenger.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></svg></span> 종목 분석 &rarr; 텔레그램</a>
+    </div>
+</header>
+
+<nav class="sub-menu" id="subMenu">
+    <a href="#intro" class="active" data-sec="intro">
+        <span class="sm-num">0</span>
+        <span class="sm-title">소개</span>
+        <span class="sm-sub">가능 범위</span>
+    </a>
+    <a href="#step1" data-sec="step1">
+        <span class="sm-num">1</span>
+        <span class="sm-title">준비</span>
+        <span class="sm-sub">계정 확인</span>
+    </a>
+    <a href="#step2" data-sec="step2">
+        <span class="sm-num">2</span>
+        <span class="sm-title">도구함</span>
+        <span class="sm-sub">PlayMCP</span>
+    </a>
+    <a href="#step3" data-sec="step3">
+        <span class="sm-num">3</span>
+        <span class="sm-title">Codex 연결</span>
+        <span class="sm-sub">MCP 설정</span>
+    </a>
+    <a href="#step4" data-sec="step4">
+        <span class="sm-num">4</span>
+        <span class="sm-title">첫 테스트</span>
+        <span class="sm-sub">메시지 보내기</span>
+    </a>
+    <a href="#step5" data-sec="step5">
+        <span class="sm-num">5</span>
+        <span class="sm-title">운영 기준</span>
+        <span class="sm-sub">안전 장치</span>
+    </a>
+    <a href="#faq" data-sec="faq">
+        <span class="sm-num">?</span>
+        <span class="sm-title">FAQ</span>
+        <span class="sm-sub">막힐 때</span>
+    </a>
+</nav>
+
+<main class="container">
+    <div class="content-section" id="intro"></div>
+    <div class="step-divider"><span class="step-badge">INTRO</span></div>
+    <section>
+        <div class="nm-card">
+            <h2>이 실습에서 만들 것</h2>
+            <p class="card-subtitle">Codex가 업무 결과를 정리한 뒤, PlayMCP 도구로 카카오톡 나와의 채팅방에 보내는 연결을 만듭니다</p>
+
+            <div class="callout">
+                <p><strong>2026년 5월 30일 기준으로 안전하게 설명할 수 있는 범위는 카카오톡 나와의 채팅방입니다.</strong> 친구 채팅방, 단체 채팅방 읽기, 기존 대화 자동 답장은 PlayMCP의 나와의 채팅방 도구와 다른 문제입니다. 그런 작업은 카카오 공식 API 권한, 비즈니스 채널, 상담톡, 알림톡 같은 별도 영역으로 봐야 합니다.</p>
+            </div>
+
+            <p>완성하면 Codex에게 “오늘 작업 요약을 카카오톡으로 보내 주세요”라고 말할 수 있습니다. Codex는 먼저 작업 내용을 정리하고, MCP 도구를 호출해 나와의 채팅방에 메시지를 남깁니다. 업무 리더 입장에서는 긴 결과물을 다시 복사하지 않아도 휴대폰에서 바로 확인할 수 있습니다.</p>
+
+            <div class="flow-row" aria-label="연결 흐름">
+                <div class="flow-node">
+                    <div class="fn-icon">&#x1F9F0;</div>
+                    <div class="fn-label">PlayMCP</div>
+                    <div class="fn-sub">도구함 만들기</div>
+                </div>
+                <span class="flow-arrow">&rarr;</span>
+                <div class="flow-node">
+                    <div class="fn-icon">&#x1F4AC;</div>
+                    <div class="fn-label">카카오톡</div>
+                    <div class="fn-sub">나와의 채팅방 추가</div>
+                </div>
+                <span class="flow-arrow">&rarr;</span>
+                <div class="flow-node">
+                    <div class="fn-icon">&#x2699;&#xFE0F;</div>
+                    <div class="fn-label">Codex</div>
+                    <div class="fn-sub">MCP 서버 등록</div>
+                </div>
+                <span class="flow-arrow">&rarr;</span>
+                <div class="flow-node">
+                    <div class="fn-icon">&#x2705;</div>
+                    <div class="fn-label">첫 테스트</div>
+                    <div class="fn-sub">메시지 확인</div>
+                </div>
+            </div>
+
+            <div class="compare-grid">
+                <div class="mini-card">
+                    <div class="mini-icon">&#x2705;</div>
+                    <h4>되는 일</h4>
+                    <p>Codex가 요약, 체크리스트, 회의 메모, 작업 결과를 나와의 채팅방으로 보낼 수 있습니다.</p>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-icon">&#x26A0;&#xFE0F;</div>
+                    <h4>조심할 일</h4>
+                    <p>민감한 고객 정보나 내부 문서는 보내기 전에 사람이 한 번 확인하는 절차를 둡니다.</p>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-icon">&#x1F6AB;</div>
+                    <h4>다른 영역</h4>
+                    <p>친구에게 보내기, 단톡방 읽기, 자동 답장은 이 페이지의 범위가 아닙니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section" id="step1"></div>
+    <div class="step-divider"><span class="step-badge">STEP 1 &middot; 준비할 것</span></div>
+    <section>
+        <div class="nm-card">
+            <h2>카카오 계정, PlayMCP, Codex MCP 지원 확인</h2>
+            <p class="card-subtitle">연결 전에 세 가지가 준비되어 있으면 설정이 빠르게 끝납니다</p>
+
+            <div class="wf-steps">
+                <div class="wf-step">
+                    <div class="wf-step-num">1</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">카카오 계정 로그인 준비</div>
+                        <div class="wf-step-desc">PlayMCP는 카카오 계정 권한을 씁니다. 업무 계정과 개인 계정이 나뉘어 있다면 어느 계정의 나와의 채팅방으로 보낼지 먼저 정합니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">2</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">PlayMCP 접속</div>
+                        <div class="wf-step-desc"><a href="https://playmcp.kakao.com" target="_blank" rel="noopener" style="color: var(--codex-accent); font-weight: 700;">playmcp.kakao.com</a>에 접속해 로그인합니다. 화면 안에서 도구함 또는 Toolbox 메뉴를 찾습니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">3</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">Codex MCP 확인</div>
+                        <div class="wf-step-desc">Codex CLI에서는 <code>/mcp</code>로 현재 연결된 MCP 서버를 확인할 수 있습니다. 새 서버는 <code>~/.codex/config.toml</code> 또는 Codex 앱의 MCP 설정에서 추가합니다.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">핵심 기준</div>
+                <p>PlayMCP가 Codex 전용 버튼을 따로 보여주지 않아도 괜찮습니다. Streamable HTTP 방식의 MCP 서버 URL을 제공하면 Codex 설정에 같은 URL을 넣어 연결할 수 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section" id="step2"></div>
+    <div class="step-divider"><span class="step-badge">STEP 2 &middot; PlayMCP 도구함 만들기</span></div>
+    <section>
+        <div class="nm-card">
+            <h2>카카오톡 나와의 채팅방 도구 추가</h2>
+            <p class="card-subtitle">PlayMCP에서 카카오톡 도구를 도구함에 넣고, 외부 AI 서비스 연결 정보를 확인합니다</p>
+
+            <div class="wf-steps">
+                <div class="wf-step">
+                    <div class="wf-step-num">1</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">도구함 생성</div>
+                        <div class="wf-step-desc">PlayMCP에서 새 도구함을 만들고 이름을 정합니다. 예: <code>codex-kakao-work</code>. 업무용으로 쓸 도구만 넣어두면 Codex가 호출할 수 있는 범위가 명확해집니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">2</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">카카오톡 나와의 채팅방 추가</div>
+                        <div class="wf-step-desc">도구 목록에서 카카오톡 나와의 채팅방을 찾아 추가합니다. 권한 확인 화면이 나오면 어떤 정보와 동작을 허용하는지 읽고 승인합니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">3</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">MCP 연결 정보 확인</div>
+                        <div class="wf-step-desc">도구함의 연결 또는 공유 메뉴에서 MCP 서버 URL, 일회용 연결 토큰, 인증 안내를 확인합니다. 화면에 표시된 값은 계정 권한과 연결되므로 공개 문서나 GitHub에 올리지 않습니다.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout">
+                <p><strong>화면 이름은 바뀔 수 있습니다.</strong> 카카오가 PlayMCP를 계속 확장하고 있으므로, 버튼 이름이 연결, Connect, Toolbox, 도구함처럼 다르게 보일 수 있습니다. 핵심은 카카오톡 나와의 채팅방 도구를 도구함에 넣고, MCP 서버 연결 정보를 받는 것입니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section" id="step3"></div>
+    <div class="step-divider"><span class="step-badge">STEP 3 &middot; Codex에 MCP 서버 등록</span></div>
+    <section>
+        <div class="nm-card">
+            <h2>config.toml에 PlayMCP 서버 추가</h2>
+            <p class="card-subtitle">Codex는 MCP 서버 설정을 앱, CLI, IDE 확장에서 공유합니다</p>
+
+            <p>PlayMCP가 서버 URL을 보여주면 Codex 설정 파일에 다음 형태로 추가합니다. 실제 URL은 PlayMCP 화면에서 복사한 값으로 바꿉니다.</p>
+
+            <div class="prompt-box" id="prompt-config">
+                <button class="copy-btn" onclick="copyPrompt('prompt-config')">복사</button>
+[mcp_servers.playmcp_kakao]
+url = "https://playmcp.kakao.com/your-mcp-url"
+            </div>
+
+            <p>인증이 필요한 서버라면 설정을 추가한 뒤 다음 명령으로 로그인합니다.</p>
+
+            <div class="prompt-box" id="prompt-login">
+                <button class="copy-btn" onclick="copyPrompt('prompt-login')">복사</button>
+codex mcp login playmcp_kakao
+            </div>
+
+            <div class="wf-steps">
+                <div class="wf-step">
+                    <div class="wf-step-num">1</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">설정 파일 열기</div>
+                        <div class="wf-step-desc"><code>~/.codex/config.toml</code>을 엽니다. 프로젝트 안에서만 쓰고 싶으면 신뢰한 프로젝트의 <code>.codex/config.toml</code>에 넣을 수도 있습니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">2</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">서버 추가</div>
+                        <div class="wf-step-desc"><code>[mcp_servers.playmcp_kakao]</code> 테이블을 만들고 PlayMCP URL을 넣습니다. 서버 이름은 나중에 <code>codex mcp login</code>과 <code>/mcp</code>에서 쓰입니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">3</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">연결 확인</div>
+                        <div class="wf-step-desc">Codex를 다시 열거나 새 세션에서 <code>/mcp</code>를 입력합니다. <code>playmcp_kakao</code>와 카카오톡 관련 도구가 보이면 연결된 상태입니다.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">보안 팁</div>
+                <p>토큰을 설정 파일에 직접 적어야 하는 방식이라면 환경 변수로 빼는 편이 낫습니다. PlayMCP가 OAuth 로그인을 지원하면 <code>codex mcp login</code>을 우선 사용합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section" id="step4"></div>
+    <div class="step-divider"><span class="step-badge">STEP 4 &middot; 첫 테스트</span></div>
+    <section>
+        <div class="nm-card">
+            <h2>나와의 채팅방에 짧은 메시지 보내기</h2>
+            <p class="card-subtitle">처음에는 민감한 정보가 없는 짧은 문장으로 도구 호출을 확인합니다</p>
+
+            <p>Codex에게 다음처럼 요청합니다. 도구 목록이 뜨면 카카오톡 나와의 채팅방 도구를 쓰도록 승인합니다.</p>
+
+            <div class="prompt-box" id="prompt-test">
+                <button class="copy-btn" onclick="copyPrompt('prompt-test')">복사</button>
+카카오톡 나와의 채팅방으로 테스트 메시지를 보내줘.
+메시지는 "Codex와 PlayMCP 연결 테스트 완료"라고 적어줘.
+            </div>
+
+            <div class="compare-grid">
+                <div class="mini-card">
+                    <div class="mini-icon">&#x1F50D;</div>
+                    <h4>Codex 화면</h4>
+                    <p>MCP 도구 호출 여부와 승인 요청을 확인합니다. 낯선 도구가 뜨면 중단합니다.</p>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-icon">&#x1F4F1;</div>
+                    <h4>카카오톡 화면</h4>
+                    <p>휴대폰 또는 데스크톱 카카오톡의 나와의 채팅방에 메시지가 왔는지 확인합니다.</p>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-icon">&#x1F4DD;</div>
+                    <h4>업무 테스트</h4>
+                    <p>테스트가 끝나면 회의 요약, 오늘 변경 파일, 다음 액션 같은 짧은 업무 메시지를 보내 봅니다.</p>
+                </div>
+            </div>
+
+            <h3>실무에서 바로 쓰는 요청 예시</h3>
+            <div class="prompt-box" id="prompt-work">
+                <button class="copy-btn" onclick="copyPrompt('prompt-work')">복사</button>
+오늘 이 프로젝트에서 바꾼 내용을 5줄로 요약하고,
+내가 내일 확인해야 할 항목 3개를 붙여서
+카카오톡 나와의 채팅방으로 보내줘.
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section" id="step5"></div>
+    <div class="step-divider"><span class="step-badge">STEP 5 &middot; 운영 기준</span></div>
+    <section>
+        <div class="nm-card">
+            <h2>업무용으로 쓸 때의 안전 장치</h2>
+            <p class="card-subtitle">메신저 연결은 편하지만, 한 번 보내면 되돌리기 어렵습니다</p>
+
+            <div class="wf-steps">
+                <div class="wf-step">
+                    <div class="wf-step-num">1</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">승인 후 전송</div>
+                        <div class="wf-step-desc">처음 운영할 때는 모든 카카오톡 전송 도구를 승인 후 실행으로 둡니다. 자동 승인으로 바꾸기 전에 메시지 형식과 민감 정보 필터를 충분히 확인합니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">2</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">보낼 수 없는 정보 정하기</div>
+                        <div class="wf-step-desc">주민등록번호, 고객 전화번호, 계약 금액, 내부 비밀번호, 비공개 링크처럼 메신저로 보내면 안 되는 항목을 AGENTS.md나 프로젝트 지침에 적어둡니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">3</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">짧은 보고 형식 고정</div>
+                        <div class="wf-step-desc">나와의 채팅방에는 긴 원문보다 제목, 핵심 요약, 다음 액션, 링크만 보내는 편이 좋습니다. 상세 내용은 GitHub, 문서, 대시보드 같은 원본 위치에 둡니다.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout">
+                <p><strong>권장 운영 문구:</strong> “카카오톡으로 보낼 때는 먼저 초안을 보여주고, 내가 승인한 뒤에만 전송합니다. 고객 개인정보, 계약 금액, 비공개 토큰은 보내지 않습니다.” 이 문장을 프로젝트 지침에 넣어두면 실수 가능성이 줄어듭니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section" id="faq"></div>
+    <div class="step-divider"><span class="step-badge">FAQ &middot; 자주 막히는 지점</span></div>
+    <section>
+        <div class="nm-card">
+            <h2>연결이 안 될 때 점검 순서</h2>
+            <p class="card-subtitle">PlayMCP, 카카오 권한, Codex MCP 설정을 차례대로 확인합니다</p>
+
+            <details class="faq-item">
+                <summary>Q1. PlayMCP 화면에 Codex 버튼이 보이지 않습니다</summary>
+                <div class="faq-a">
+                    <p>Codex 전용 버튼이 없어도 MCP 서버 URL이 있으면 연결할 수 있습니다. URL이 보이지 않으면 PlayMCP의 외부 AI 서비스 연결, 도구함 공유, MCP 연결 메뉴를 확인합니다.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Q2. Codex에서 MCP 서버가 보이지 않습니다</summary>
+                <div class="faq-a">
+                    <p><code>~/.codex/config.toml</code>의 서버 이름과 URL을 다시 확인합니다. 설정을 바꾼 뒤에는 새 Codex 세션에서 <code>/mcp</code>를 입력해 목록을 봅니다.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Q3. 메시지가 보내지지 않습니다</summary>
+                <div class="faq-a">
+                    <p>카카오 계정 권한이 만료됐거나 PlayMCP 도구함에서 카카오톡 도구가 빠졌을 수 있습니다. PlayMCP에서 다시 로그인하고, 카카오톡 나와의 채팅방 도구가 활성화되어 있는지 확인합니다.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Q4. 친구나 단톡방으로도 보낼 수 있나요?</summary>
+                <div class="faq-a">
+                    <p>이 페이지는 나와의 채팅방 기준입니다. 친구 발송, 단톡방 읽기, 자동 답장은 권한과 정책이 다른 영역입니다. 고객 알림은 알림톡이나 비즈메시지, 상담 자동화는 카카오톡 채널과 상담톡을 별도로 검토해야 합니다.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <div class="nm-card">
+        <div class="ref-section">
+            <h4 class="ref-title">참고 자료</h4>
+            <div class="ref-links">
+                <a class="ref-link" href="https://playmcp.kakao.com" target="_blank" rel="noopener">
+                    <span class="ref-icon">&#x1F9F0;</span>
+                    Kakao PlayMCP
+                    <span class="ref-desc">playmcp.kakao.com</span>
+                </a>
+                <a class="ref-link" href="https://www.kakaocorp.com/page/detail/12012" target="_blank" rel="noopener">
+                    <span class="ref-icon">&#x1F4F0;</span>
+                    카카오 PlayMCP 오픈클로 연동 발표
+                    <span class="ref-desc">Kakao</span>
+                </a>
+                <a class="ref-link" href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">
+                    <span class="ref-icon">&#x1F4D6;</span>
+                    OpenAI Codex MCP 문서
+                    <span class="ref-desc">OpenAI</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h3>먼저 나와의 채팅방으로 작게 시작하세요</h3>
+        <p>PlayMCP 도구함에 카카오톡 나와의 채팅방을 추가하고, Codex에 MCP 서버를 등록한 뒤 짧은 테스트 메시지부터 보내면 됩니다.</p>
+        <div class="cta-buttons">
+            <a class="cta-btn primary" href="https://playmcp.kakao.com" target="_blank" rel="noopener">PlayMCP 열기 &rarr;</a>
+            <a class="cta-btn secondary" href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">Codex MCP 문서 보기</a>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p class="footer-brand">AI ROASTING</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
+    <span class="footer-link-row">
+        <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
+        <span class="footer-link-sep" aria-hidden="true">&middot;</span>
+        <a href="index.html?license=1" class="footer-about-link">라이선스</a>
+    </span>
+    <p class="footer-text" style="margin-top:10px;opacity:0.7;">&copy; 2026 AI ROASTING. All rights reserved.</p>
+</footer>
+
+<script>
+(function(){
+    var links = document.querySelectorAll('.sub-menu a[data-sec]');
+    var sections = [];
+    links.forEach(function(link) {
+        var section = document.getElementById(link.dataset.sec);
+        if (section) sections.push({ id: link.dataset.sec, el: section, link: link });
+    });
+    function update() {
+        var nav = document.getElementById('subMenu');
+        var scrollY = window.scrollY + (nav ? nav.offsetHeight : 0) + 16;
+        var current = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+            if (sections[i].el.offsetTop <= scrollY) current = sections[i];
+        }
+        links.forEach(function(link) { link.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+})();
+
+function copyPrompt(id) {
+    var box = document.getElementById(id);
+    var text = box.textContent.replace('복사', '').trim();
+    navigator.clipboard.writeText(text).then(function(){
+        var btn = box.querySelector('.copy-btn');
+        btn.textContent = '완료!';
+        setTimeout(function(){ btn.textContent = '복사'; }, 1600);
+    });
+}
+</script>
+
+<!-- ## SM-HAMBURGER START ## -->
+<style>
+.sm-menu-toggle {
+    display: none;
+    position: fixed !important;
+    top: 14px !important;
+    right: 14px !important;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 1200 !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    border: none !important;
+    cursor: pointer;
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.sm-menu-toggle svg {
+    width: 23px;
+    height: 23px;
+    stroke: currentColor;
+}
+.sm-menu-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1150;
+    background: rgba(0,0,0,0.45);
+}
+body.sm-menu-open .sm-menu-backdrop { display: block; }
+body.sm-menu-open { overflow: hidden; }
+.sm-drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1160;
+    width: 78%;
+    max-width: 320px;
+    height: 100dvh;
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    padding: 74px 18px 22px;
+    box-shadow: -14px 0 34px rgba(0,0,0,0.22);
+    transform: translateX(104%);
+}
+body.sm-menu-open .sm-drawer { transform: translateX(0); }
+.sm-drawer-heading {
+    font-size: 18px;
+    font-weight: 800;
+    color: #14192E;
+    margin-bottom: 14px;
+    line-height: 1.35;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+.sm-drawer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sm-drawer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 54px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    text-decoration: none;
+}
+.sm-drawer-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #E3E6F0 !important;
+    color: #5B62D8 !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+.sm-drawer-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+.sm-drawer-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #38404F !important;
+    line-height: 1.35;
+}
+.sm-drawer-sub {
+    font-size: 11px;
+    color: #7B8498 !important;
+    line-height: 1.4;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+@media (max-width: 768px) {
+    .sm-menu-toggle { display: inline-flex; }
+    .sm-menu-toggle .sm-icon-close { display: none; }
+    body.sm-menu-open .sm-menu-toggle .sm-icon-open { display: none; }
+    body.sm-menu-open .sm-menu-toggle .sm-icon-close { display: block; }
+    .sm-drawer { display: block; }
+    nav.sub-menu { display: none !important; }
+    .header-pages {
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        max-width: 100% !important;
+        gap: 8px !important;
+        align-items: stretch !important;
+    }
+    .header-page-link {
+        flex: none !important;
+        max-width: none !important;
+        width: 100% !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+        justify-content: center !important;
+        font-size: 13px !important;
+        padding: 11px 14px !important;
+        border-radius: 12px !important;
+    }
+    header { padding-top: 24px !important; }
+}
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-badge { position: relative; overflow: hidden; }
+        .step-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
+<button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+    <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+</button>
+<div class="sm-menu-backdrop" id="smMenuBackdrop"></div>
+<aside class="sm-drawer" id="smDrawer" aria-label="섹션 메뉴">
+    <div class="sm-drawer-heading" id="smDrawerHeading"></div>
+    <a href="index.html" class="sm-drawer-back">
+        <span aria-hidden="true">&larr;</span><span>목록으로</span>
+    </a>
+    <nav class="sm-drawer-list" id="smDrawerList"></nav>
+</aside>
+<script>
+(function() {
+    var src = document.querySelector('nav.sub-menu');
+    var list = document.getElementById('smDrawerList');
+    var toggle = document.getElementById('smMenuToggle');
+    var backdrop = document.getElementById('smMenuBackdrop');
+    var heading = document.getElementById('smDrawerHeading');
+    if (heading) {
+        var pageTitle = '';
+        var activeLink = document.querySelector('.header-page-link.active');
+        if (activeLink) {
+            var clone = activeLink.cloneNode(true);
+            var icon = clone.querySelector('.hpl-icon');
+            if (icon) icon.remove();
+            pageTitle = clone.textContent.trim();
+        }
+        if (!pageTitle) {
+            var h1 = document.querySelector('header h1');
+            if (h1) pageTitle = h1.textContent.trim();
+        }
+        if (!pageTitle && document.title) {
+            pageTitle = document.title.split('|')[0].trim();
+        }
+        heading.textContent = pageTitle;
+    }
+    var srcLinks = src ? src.querySelectorAll('a') : [];
+    var drawerItems = [];
+    if (src && list) srcLinks.forEach(function(a) {
+        var num = a.querySelector('.sm-num');
+        var title = a.querySelector('.sm-title');
+        var sub = a.querySelector('.sm-sub');
+        var item = document.createElement('a');
+        item.href = a.getAttribute('href');
+        item.className = 'sm-drawer-item' + (a.classList.contains('active') ? ' active' : '');
+        var html = '<span class="sm-drawer-num">' + (num ? num.textContent : '') + '</span>' +
+            '<span class="sm-drawer-text">' +
+                '<span class="sm-drawer-title">' + (title ? title.textContent : a.textContent.trim()) + '</span>';
+        if (sub && sub.textContent.trim()) html += '<span class="sm-drawer-sub">' + sub.textContent + '</span>';
+        html += '</span>';
+        item.innerHTML = html;
+        item.addEventListener('click', function() { setOpen(false); });
+        list.appendChild(item);
+        drawerItems.push(item);
+    });
+    function setOpen(open) {
+        document.body.classList.toggle('sm-menu-open', open);
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+        }
+    }
+    if (toggle) toggle.addEventListener('click', function() {
+        setOpen(!document.body.classList.contains('sm-menu-open'));
+    });
+    if (backdrop) backdrop.addEventListener('click', function() { setOpen(false); });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && document.body.classList.contains('sm-menu-open')) setOpen(false);
+    });
+    if (src) {
+        var observer = new MutationObserver(function() {
+            srcLinks.forEach(function(a, i) {
+                if (drawerItems[i]) drawerItems[i].classList.toggle('active', a.classList.contains('active'));
+            });
+        });
+        observer.observe(src, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    }
+})();
+</script>
+<!-- ## SM-HAMBURGER END ## -->
+<script>
+// 실전 예제 헤더 토글 (기본 예제 / MCP 연결)
+function switchExampleTab(mode){
+    var b=document.getElementById('pages-basic'), m=document.getElementById('pages-mcp');
+    var tb=document.getElementById('extab-basic'), tm=document.getElementById('extab-mcp');
+    if(!b||!m) return;
+    b.style.display = mode==='basic' ? 'flex' : 'none';
+    m.style.display = mode==='mcp' ? 'flex' : 'none';
+    if(tb) tb.classList.toggle('active', mode==='basic');
+    if(tm) tm.classList.toggle('active', mode==='mcp');
+}
+</script>
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
+</body>
+</html>

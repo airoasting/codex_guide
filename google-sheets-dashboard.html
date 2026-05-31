@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://airoasting.github.io/claude_guide/google-sheets-dashboard.html">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/google-sheets-dashboard.html">
     <meta property="og:title" content="구글 시트 기반 대시보드 만들기 | AI ROASTING">
-    <meta property="og:description" content="Claude Cowork에 구글 워크스페이스를 연결하고, 시트 데이터를 탐색해 뉴모피즘 인터랙티브 대시보드를 만드는 5단계 실전 가이드. Google Sheets CSV를 직접 fetch.">
+    <meta property="og:description" content="ChatGPT 업무 워크스페이스에서 구글 시트 자료를 연결하고, 시트 데이터를 탐색해 뉴모피즘 인터랙티브 대시보드를 만드는 5단계 실전 가이드. Google Sheets CSV를 직접 fetch.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <meta property="og:url" content="https://airoasting.github.io/claude_guide/google-sheets-dashboard.html">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/google-sheets-dashboard.html">
     <meta name="twitter:card" content="summary_large_image">
     <title>구글 시트 기반 대시보드 만들기 | AI ROASTING</title>
-    <meta name="description" content="Claude Cowork + Google Workspace + 뉴모피즘. Google Sheets CSV를 직접 읽어 5개 탭 인터랙티브 대시보드를 자동으로 만드는 실전 가이드.">
+    <meta name="description" content="ChatGPT 업무 워크스페이스 + Google Sheets + 뉴모피즘. Google Sheets CSV를 직접 읽어 5개 탭 인터랙티브 대시보드를 자동으로 만드는 실전 가이드.">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -21,32 +21,32 @@
             font-display: swap;
         }
         :root {
-            --nm-bg: #EDEAE4;
-            --nm-dark: #CECAC3;
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
             --nm-light: #FFFFFF;
-            --nm-shadow: 6px 6px 14px #CECAC3, -6px -6px 14px #FFFFFF;
-            --nm-shadow-sm: 4px 4px 8px #CECAC3, -4px -4px 8px #FFFFFF;
-            --nm-inset: inset 4px 4px 10px #CECAC3, inset -4px -4px 10px #FFFFFF;
-            --gold: #B35535;
-            --gold-dark: #A04828;
-            --gold-light: #C4623F;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --gold: #5B62D8;
+            --gold-dark: #5B62D8;
+            --gold-light: #58A77D;
             --ant-dark: #1A1917;
-            --book-teal: #B35535;
-            --book-teal-dark: #A04828;
-            --book-teal-light: #C4623F;
+            --book-teal: #5B62D8;
+            --book-teal-dark: #5B62D8;
+            --book-teal-light: #58A77D;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             word-break: keep-all;
             font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif;
-            background: var(--nm-bg);
-            color: #3A3530;
+            background: #FFFFFF;
+            color: #2C2F3A;
             line-height: 1.6;
         }
 
         header {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             padding: 28px 40px 40px;
             border-radius: 0 0 32px 32px;
             text-align: center;
@@ -56,7 +56,7 @@
         header::before {
             content: ''; position: absolute; top: -80px; right: -40px;
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(196,98,63,0.18) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
             pointer-events: none;
         }
         .back-link {
@@ -78,7 +78,7 @@
         .header-pages {
             display: flex; justify-content: center; gap: 14px;
             margin: 22px auto 0; position: relative; z-index: 1;
-            max-width: 940px;
+            max-width: 1080px;
             flex-wrap: wrap;
         }
         .header-page-link {
@@ -99,7 +99,29 @@
             box-shadow: inset 3px 3px 8px rgba(0,0,0,0.35), inset -3px -3px 8px rgba(255,255,255,0.06);
             color: #fff;
         }
+        /* ## EXAMPLE-TOGGLE-NAV START ## */
+        .ex-tabs {
+            display: inline-flex; gap: 4px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px; padding: 4px;
+            margin: 18px auto 0;
+            position: relative; z-index: 1;
+        }
+        .ex-tab {
+            font-size: 13px; font-weight: 700;
+            color: rgba(255,255,255,0.55);
+            padding: 6px 22px; border-radius: 20px;
+            cursor: pointer; transition: all 0.2s; user-select: none;
+        }
+        .ex-tab.active { background: rgba(255,255,255,0.18); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+        .ex-tab:hover:not(.active) { color: rgba(255,255,255,0.8); }
+        #pages-basic, #pages-mcp { margin-top: 16px; }
+        /* ## EXAMPLE-TOGGLE-NAV END ## */
         .header-page-link .hpl-icon { font-size: 18px; }
+        .header-page-link .hpl-icon { display: inline-flex; align-items: center; justify-content: center; }
+        .header-page-link .hpl-icon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .header-page-link .hpl-icon svg.ic-fill { fill: currentColor; stroke: none; }
 
         .sub-menu {
             position: sticky; top: 0; z-index: 100;
@@ -111,24 +133,28 @@
             overflow-x: auto;
         }
         .sub-menu a {
-            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            display: flex; flex-direction: column; align-items: center; gap: 9px;
             text-decoration: none; padding: 8px 14px;
             transition: all 0.2s; flex: 1; max-width: 130px;
         }
-        .sub-menu a.active { background: rgba(179,85,53,0.10); border-radius: 14px; }
-        .sub-menu a.active .sm-num { background: var(--gold); box-shadow: 0 2px 8px rgba(179,85,53,0.4); }
+        .sub-menu a.active { background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)); border-radius: 14px; }
+        .sub-menu a.active .sm-num {
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
+        }
         .sub-menu a.active .sm-title { color: var(--ant-dark); font-weight: 800; }
-        .sub-menu a.active .sm-sub { color: var(--gold); }
+        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
         .sub-menu a:hover .sm-title { color: var(--ant-dark); }
         .sm-num {
             width: 28px; height: 28px; border-radius: 50%;
-            background: #A06548; color: #fff;
+            background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
             font-size: 13px; font-weight: 800;
             display: flex; align-items: center; justify-content: center;
             transition: all 0.2s;
         }
-        .sm-title { font-size: 13px; font-weight: 700; color: #3A3530; white-space: nowrap; }
-        .sm-sub { font-size: 11px; color: #999; white-space: nowrap; }
+        .sm-title { font-size: 15px; font-weight: 700; color: #3A3530; white-space: nowrap; }
+        .sm-sub { font-size: 13px; color: #999; white-space: nowrap; }
         .content-section { scroll-margin-top: 130px; }
 
         .container { max-width: 1080px; margin: 0 auto; padding: 32px 32px 80px; }
@@ -173,8 +199,8 @@
         .tip-box p { font-size: 14px; color: #5C5650; line-height: 1.75; }
 
         .highlight-box {
-            background: linear-gradient(135deg, rgba(179,85,53,0.08) 0%, rgba(179,85,53,0.03) 100%);
-            border: 1.5px solid rgba(179,85,53,0.25);
+            background: linear-gradient(135deg, rgba(56,65,61,0.08) 0%, rgba(56,65,61,0.03) 100%);
+            border: 1.5px solid rgba(56,65,61,0.25);
             border-radius: 16px;
             padding: 22px 26px; margin: 20px 0;
         }
@@ -227,10 +253,7 @@
             -webkit-backdrop-filter: blur(18px) saturate(180%);
             border: 1px solid rgba(255,255,255,0.9);
             box-shadow:
-                inset 0 1.5px 2px rgba(255,255,255,0.95),
-                inset 0 -1.5px 2px rgba(179,85,53,0.10),
-                0 10px 22px rgba(179,85,53,0.22),
-                0 3px 8px rgba(0,0,0,0.06);
+                inset 0 -1.5px 2px rgba(56,65,61,0.10), 0 10px 22px rgba(56,65,61,0.22), 0 3px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(20,25,46,0.06);
             display: flex; align-items: center; justify-content: center;
             font-size: 17px; font-weight: 800; color: var(--book-teal);
             text-shadow: 0 1px 0 rgba(255,255,255,0.7);
@@ -241,10 +264,10 @@
         .wf-step-content { flex: 1; padding-top: 12px; }
         .wf-step-label { font-size: 12px; font-weight: 700; color: var(--book-teal); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
         .wf-step-desc { font-size: 14px; color: #5C5650; line-height: 1.6; }
-        /* Connector — auto-centered under the circle via shared CSS variables */
+        /* Connector, auto-centered under the circle via shared CSS variables */
         .wf-connector {
             width: var(--wf-conn-w); height: 32px;
-            background: linear-gradient(180deg, rgba(179,85,53,0.55) 0%, rgba(179,85,53,0.20) 100%);
+            background: linear-gradient(180deg, rgba(56,65,61,0.55) 0%, rgba(56,65,61,0.20) 100%);
             margin: -8px 0 -8px calc((var(--wf-circle) - var(--wf-conn-w)) / 2);
             border-radius: 2px;
             position: relative; z-index: 1;
@@ -262,25 +285,22 @@
             border: 1px solid rgba(255,255,255,0.9);
             border-radius: 999px;
             box-shadow:
-                inset 0 1px 1.5px rgba(255,255,255,0.95),
-                inset 0 -1px 2px rgba(179,85,53,0.08),
-                0 8px 20px rgba(179,85,53,0.18),
-                0 2px 6px rgba(0,0,0,0.05);
+                inset 0 -1px 2px rgba(56,65,61,0.08), 0 8px 20px rgba(56,65,61,0.18), 0 2px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(20,25,46,0.06);
             color: var(--book-teal);
             text-decoration: none;
             font-size: 13px; font-weight: 700;
             letter-spacing: -0.2px;
             transition: all 0.25s ease;
         }
-        .eda-pill:hover { transform: translateY(-1px); box-shadow: inset 0 1px 1.5px rgba(255,255,255,0.95), inset 0 -1px 2px rgba(179,85,53,0.10), 0 12px 26px rgba(179,85,53,0.25), 0 3px 8px rgba(0,0,0,0.07); }
+        .eda-pill:hover { transform: translateY(-1px); box-shadow: inset 0 -1px 2px rgba(56,65,61,0.10), 0 12px 26px rgba(56,65,61,0.25), 0 3px 8px rgba(0,0,0,0.07), 0 1px 3px rgba(20,25,46,0.06); }
         .eda-pill .eda-icon {
             width: 22px; height: 22px; border-radius: 50%;
             background: linear-gradient(135deg, var(--book-teal), var(--book-teal-light));
             color: #fff; display: inline-flex; align-items: center; justify-content: center;
             font-size: 11px; font-weight: 800;
-            box-shadow: 0 2px 6px rgba(179,85,53,0.35);
+            box-shadow: 0 2px 6px rgba(56,65,61,0.35);
         }
-        .eda-pill .eda-arrow { color: rgba(179,85,53,0.65); font-size: 12px; transition: transform 0.25s ease; }
+        .eda-pill .eda-arrow { color: rgba(56,65,61,0.65); font-size: 12px; transition: transform 0.25s ease; }
         .eda-pill:hover .eda-arrow { transform: translateX(2px); color: var(--book-teal); }
 
         .ref-link {
@@ -297,26 +317,26 @@
         .ref-link .ref-icon { font-size: 18px; flex-shrink: 0; }
         .ref-link .ref-desc { font-size: 12px; font-weight: 400; color: #999; margin-left: auto; flex-shrink: 0; }
 
-        /* 검은색 박스 — 결과물 / 스킬 바로가기 */
+        /* 검은색 박스: 결과물 / 스킬 바로가기 */
         .skill-preview {
             display: flex; align-items: center; gap: 16px;
             padding: 18px 22px;
-            background: linear-gradient(135deg, #1A1917 0%, #2A2520 100%);
+            background: linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             border-radius: 16px;
             text-decoration: none; color: #fff;
             box-shadow: var(--nm-shadow-sm);
-            border: 1px solid rgba(218,165,32,0.25);
+            border: 1px solid rgba(99,102,241,0.3);
             transition: all 0.25s;
             margin: 18px 0 8px;
         }
         .skill-preview:hover {
             transform: translateY(-2px);
-            border-color: rgba(218,165,32,0.6);
+            border-color: rgba(99,102,241,0.6);
             box-shadow: 0 6px 20px rgba(0,0,0,0.18);
         }
         .skill-preview .sp-icon {
             width: 44px; height: 44px; border-radius: 12px;
-            background: rgba(218,165,32,0.15);
+            background: rgba(255,255,255,0.1);
             display: flex; align-items: center; justify-content: center;
             font-size: 22px; flex-shrink: 0;
         }
@@ -363,7 +383,7 @@
             text-decoration: none; color: #3A3530;
             transition: all 0.25s; position: relative;
         }
-        .roadmap-card:hover { transform: translateY(-2px); box-shadow: 6px 6px 16px #CECAC3, -6px -6px 16px #FFFFFF; }
+        .roadmap-card:hover { transform: translateY(-2px); box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1; }
         .roadmap-card:hover .roadmap-num { background: var(--book-teal-dark); transform: scale(1.06); }
         .roadmap-num {
             width: 30px; height: 30px; border-radius: 50%;
@@ -371,7 +391,7 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 13px; font-weight: 800;
             flex-shrink: 0; transition: all 0.2s;
-            box-shadow: 0 2px 6px rgba(179,85,53,0.3);
+            box-shadow: 0 2px 6px rgba(56,65,61,0.3);
         }
         .roadmap-body { flex: 1; min-width: 0; }
         .roadmap-label {
@@ -383,7 +403,7 @@
         .roadmap-arrow { color: #B8B0A6; font-size: 14px; flex-shrink: 0; transition: all 0.2s; }
         .roadmap-card:hover .roadmap-arrow { color: var(--book-teal); transform: translateX(2px); }
 
-        /* Neumorphism CTA preview — matches the pizza dashboard look */
+        /* Neumorphism CTA preview, matches the pizza dashboard look */
         .preview-card {
             position: relative;
             background: #e8edf2;
@@ -393,12 +413,12 @@
             text-decoration: none;
             display: block;
             overflow: hidden;
-            box-shadow: 8px 8px 24px #c5cad1, -8px -8px 24px #ffffff;
+            box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .preview-card:hover {
             transform: translateY(-3px);
-            box-shadow: 12px 12px 30px #c5cad1, -12px -12px 30px #ffffff;
+            box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
         }
         .preview-card::before {
             content: ''; position: absolute;
@@ -441,7 +461,7 @@
         .preview-card .pv-meta span {
             padding: 6px 12px;
             background: #e8edf2;
-            box-shadow: inset 3px 3px 7px #c5cad1, inset -3px -3px 7px #ffffff;
+            box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
             border-radius: 999px;
             font-weight: 700;
             color: #4a5568;
@@ -454,7 +474,7 @@
             border-radius: 12px;
             font-size: 13px; font-weight: 700;
             color: #fff;
-            box-shadow: 4px 4px 12px rgba(91,141,238,0.35), -2px -2px 6px rgba(255,255,255,0.6);
+            box-shadow: 4px 4px 12px rgba(91,141,238,0.35), 0 1px 3px rgba(20,25,46,0.06);
         }
 
         .data-grid {
@@ -472,12 +492,12 @@
 
         .table-wrap { overflow-x: auto; margin: 14px 0; border-radius: 12px; box-shadow: var(--nm-shadow-sm); }
         .data-table { width: 100%; border-collapse: collapse; background: var(--nm-bg); font-size: 12.5px; }
-        .data-table th { background: rgba(179,85,53,0.08); color: var(--book-teal); padding: 10px 12px; text-align: left; font-weight: 700; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .data-table th { background: rgba(56,65,61,0.08); color: var(--book-teal); padding: 10px 12px; text-align: left; font-weight: 700; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; }
         .data-table td { padding: 9px 12px; border-top: 1px solid rgba(0,0,0,0.05); color: #5C5650; }
-        .data-table tr:hover td { background: rgba(179,85,53,0.04); }
+        .data-table tr:hover td { background: rgba(56,65,61,0.04); }
 
-        footer { background: var(--ant-dark); text-align: center; padding: 36px 32px 28px; }
-        .footer-brand { font-size: 13px; font-weight: 700; color: #D97757; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
 
         @media (max-width: 768px) {
@@ -640,20 +660,31 @@
 <body>
 
 <header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
     <h1>구글 시트 기반 대시보드 만들기</h1>
-    <p>Claude Cowork에 구글 워크스페이스를 연결하고, 시트를 탐색해 Google Sheets CSV를 직접 읽는 뉴모피즘 대시보드를 자동 생성하는 실전 워크플로우</p>
-    <div class="header-pages">
-        <a href="google-sheets-dashboard.html" class="header-page-link active"><span class="hpl-icon">&#x1F4CB;</span> 구글 시트 대시보드</a>
-        <a href="stock-messenger.html" class="header-page-link"><span class="hpl-icon">&#x1F4F1;</span> 종목 분석 &rarr; 텔레그램</a>
-        <a href="korean-law-mcp.html" class="header-page-link"><span class="hpl-icon">&#x2696;&#xFE0F;</span> 한국 법령 MCP</a>
-        <a href="harness-book.html" class="header-page-link"><span class="hpl-icon">&#x1F4DA;</span> 책 쓰기</a>
+    <p>ChatGPT 업무 워크스페이스에서 구글 시트 자료를 연결하고, 시트를 탐색해 Google Sheets CSV를 직접 읽는 뉴모피즘 대시보드를 자동 생성하는 실전 워크플로우</p>
+    <div class="ex-tabs">
+        <span class="ex-tab active" id="extab-basic" onclick="switchExampleTab('basic')">기본 예제</span>
+        <span class="ex-tab" id="extab-mcp" onclick="switchExampleTab('mcp')">MCP 연결</span>
+    </div>
+    <div class="header-pages" id="pages-basic">
+        <a href="google-sheets-dashboard.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span> 구글 시트 대시보드</a>
+        <a href="instagram-card-news.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span> 인스타 카드뉴스</a>
+        <a href="harness-book.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> 책 쓰기</a>
+    </div>
+    <div class="header-pages" id="pages-mcp" style="display:none;">
+        <a href="playmcp-kakao.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span> 카카오톡 PlayMCP</a>
+        <a href="korean-law-mcp.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></svg></span> 한국 법령 MCP</a>
+        <a href="stock-messenger.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></svg></span> 종목 분석 &rarr; 텔레그램</a>
     </div>
 </header>
 
 <nav class="sub-menu">
     <a href="#intro" class="active"><span class="sm-num">0</span><span class="sm-title">소개</span><span class="sm-sub">전체 흐름</span></a>
-    <a href="#step1"><span class="sm-num">1</span><span class="sm-title">Workspace 연결</span><span class="sm-sub">Cowork 커넥터</span></a>
+    <a href="#step1"><span class="sm-num">1</span><span class="sm-title">Workspace 연결</span><span class="sm-sub">ChatGPT 앱</span></a>
     <a href="#step2"><span class="sm-num">2</span><span class="sm-title">시트 복사</span><span class="sm-sub">내 드라이브</span></a>
     <a href="#step3"><span class="sm-num">3</span><span class="sm-title">탐색 분석</span><span class="sm-sub">EDA 프롬프트</span></a>
     <a href="#step4"><span class="sm-num">4</span><span class="sm-title">대시보드</span><span class="sm-sub">뉴모피즘 5탭</span></a>
@@ -671,8 +702,8 @@
             <h2>이 실습에서 만들 것</h2>
             <p class="card-subtitle">구글 시트의 운영 데이터를 자동으로 탐색하고, 의사결정자가 한눈에 보는 인터랙티브 대시보드로 변환합니다</p>
 
-            <div style="padding: 16px 20px 18px; background: linear-gradient(135deg, rgba(179,85,53,0.12), rgba(179,85,53,0.04)); border: 1.5px solid rgba(179,85,53,0.3); border-radius: 14px; margin-bottom: 20px;">
-                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 Claude Cowork입니다.</strong> 구글 워크스페이스 커넥터로 시트를 끌어오고, EDA(Exploratory Data Analysis, 탐색적 데이터 분석)를 수행하고, HTML 대시보드까지 한 세션에서 완성합니다.</p>
+            <div style="padding: 16px 20px 18px; background: linear-gradient(135deg, rgba(56,65,61,0.12), rgba(56,65,61,0.04)); border: 1.5px solid rgba(56,65,61,0.3); border-radius: 14px; margin-bottom: 20px;">
+                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 ChatGPT 업무 워크스페이스입니다.</strong> 구글 시트 자료를 연결하고, EDA(Exploratory Data Analysis, 탐색적 데이터 분석)를 수행하고, HTML 대시보드까지 한 흐름에서 완성합니다.</p>
                 <a class="eda-pill" href="eda-gallery.html" target="_blank" rel="noopener" style="margin-top: 12px;">
                     <span class="eda-icon">?</span>
                     EDA가 무엇인가요?
@@ -680,7 +711,7 @@
                 </a>
             </div>
 
-            <p>매월 매출 데이터를 정리하면서 "이번 달 어느 매장이 빠졌지?", "배달 비중이 얼마나 늘었지?" 같은 질문을 사람이 매번 손으로 그려서 답하기는 비효율적입니다. 이 실습에서는 <strong>Claude Cowork</strong>에 <strong>Google Workspace</strong>를 연결하고, 한 번의 대화로 시트를 탐색해 <strong>Google Sheets에서 데이터를 바로 읽는 뉴모피즘 인터랙티브 대시보드</strong>까지 만들어 봅니다.</p>
+            <p>매월 매출 데이터를 정리하면서 "이번 달 어느 매장이 빠졌지?", "배달 비중이 얼마나 늘었지?" 같은 질문을 사람이 매번 손으로 그려서 답하기는 비효율적입니다. 이 실습에서는 <strong>ChatGPT 업무 워크스페이스</strong>에서 <strong>Google Sheets 자료</strong>를 연결하고, 한 번의 대화로 시트를 탐색해 <strong>Google Sheets에서 데이터를 바로 읽는 뉴모피즘 인터랙티브 대시보드</strong>까지 만들어 봅니다.</p>
 
             <p style="margin-top: 12px;">완성 후 흐름은 이렇습니다.</p>
 
@@ -693,7 +724,7 @@
                 <span class="flow-arrow">&rarr;</span>
                 <div class="flow-node">
                     <div class="fn-icon">&#x1F50C;</div>
-                    <div class="fn-label">Cowork 커넥터</div>
+                    <div class="fn-label">ChatGPT 앱</div>
                     <div class="fn-sub">Workspace 연결</div>
                 </div>
                 <span class="flow-arrow">&rarr;</span>
@@ -712,12 +743,11 @@
 
             <p style="margin-top: 24px; font-size: 14px; font-weight: 700; color: #3A3530;">실습 5단계를 한 눈에 보기 · 각 단계를 누르면 해당 섹션으로 이동합니다</p>
 
-            <a class="skill-preview" href="assets/cases/pizza-dashboard.html" target="_blank" rel="noopener">
+            <a class="skill-preview" href="assets/cases/09_pizza_dashboard/pizza-dashboard.html" target="_blank" rel="noopener">
                 <span class="sp-icon">&#x1F355;</span>
                 <span class="sp-body">
                     <span class="sp-label">OUTPUT &middot; 라이브 데모</span>
                     <span class="sp-title">피자 프랜차이즈 경영 대시보드</span>
-                    <span class="sp-url">airoasting.github.io/claude_guide/assets/cases/pizza-dashboard.html</span>
                 </span>
                 <span class="sp-arrow">&rarr;</span>
             </a>
@@ -727,7 +757,7 @@
                     <span class="roadmap-num">1</span>
                     <span class="roadmap-body">
                         <span class="roadmap-label">STEP 1</span>
-                        <span class="roadmap-title">Claude Cowork에 Google Workspace 연결</span>
+                        <span class="roadmap-title">ChatGPT에 Google Sheets 자료 연결</span>
                     </span>
                     <span class="roadmap-arrow">&rarr;</span>
                 </a>
@@ -805,28 +835,28 @@
 
     <!-- STEP 1 -->
     <div class="content-section" id="step1"></div>
-    <div class="step-divider"><span class="step-badge">STEP 1 &middot; Claude Cowork에 Google Workspace 연결</span></div>
+    <div class="step-divider"><span class="step-badge">STEP 1 &middot; ChatGPT에 Google Sheets 자료 연결</span></div>
     <section>
         <div class="nm-card">
-            <h2>Cowork의 Google Workspace 커넥터 활성화</h2>
-            <p class="card-subtitle">Claude Cowork는 Google Drive · Sheets · Calendar · Gmail을 별도 API 없이 한 번에 연결합니다</p>
+            <h2>ChatGPT에서 Google Sheets 자료 연결 확인</h2>
+            <p class="card-subtitle">조직 설정에 따라 Google Drive나 Google Workspace 앱이 보이면 시트 자료를 대화에 연결할 수 있습니다</p>
 
-            <p>Claude Cowork에는 Google Workspace 커넥터가 기본으로 준비되어 있습니다. 사용자의 구글 계정을 한 번만 인증하면 Cowork 세션 안에서 시트의 셀 데이터를 바로 읽을 수 있습니다. 별도의 API 키나 서비스 계정은 필요하지 않습니다.</p>
+            <p>ChatGPT에서는 파일 업로드, 앱 연결, 공유 링크를 조합해 구글 시트 자료를 분석할 수 있습니다. 회사 계정에서는 관리자가 허용한 앱과 권한 범위가 먼저 적용됩니다.</p>
 
             <div class="wf-steps">
                 <div class="wf-step">
                     <div class="wf-step-num">1</div>
                     <div class="wf-step-content">
-                        <div class="wf-step-label">Claude Desktop 실행 후 Cowork 선택</div>
-                        <div class="wf-step-desc"><strong>Claude Desktop</strong>(macOS/Windows 데스크톱 앱)을 실행하고, 새 대화의 모델/도구 선택 영역에서 <strong>Cowork</strong>를 켭니다.</div>
+                        <div class="wf-step-label">ChatGPT 열기</div>
+                        <div class="wf-step-desc"><strong>ChatGPT</strong>를 열고, 이 실습을 진행할 프로젝트나 새 대화를 준비합니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
                 <div class="wf-step">
                     <div class="wf-step-num">2</div>
                     <div class="wf-step-content">
-                        <div class="wf-step-label">커넥터 설정 열기</div>
-                        <div class="wf-step-desc">Claude Desktop의 <strong>Customize &gt; Connectors</strong>로 들어가면 사용 가능한 커넥터 목록이 보입니다. 거기에서 <strong>Google Workspace</strong> 항목을 찾습니다.</div>
+                        <div class="wf-step-label">앱 연결 확인</div>
+                        <div class="wf-step-desc">설정의 <strong>Apps</strong> 또는 <strong>Apps &amp; Connectors</strong>에서 Google Drive, SharePoint 같은 자료 앱이 허용되어 있는지 확인합니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
@@ -834,7 +864,7 @@
                     <div class="wf-step-num">3</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">Google 계정 인증</div>
-                        <div class="wf-step-desc"><strong>Connect</strong> 버튼을 누르면 구글 OAuth 화면이 열립니다. 분석할 시트가 있는 계정으로 로그인하고, <strong>Drive · Sheets 읽기 권한</strong>을 승인합니다.</div>
+                        <div class="wf-step-desc">앱 연결이 가능하면 분석할 시트가 있는 계정으로 로그인하고, 필요한 읽기 권한만 승인합니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
@@ -842,14 +872,14 @@
                     <div class="wf-step-num">4</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">연결 확인</div>
-                        <div class="wf-step-desc">커넥터 옆에 <strong>Connected</strong> 표시가 뜨면 완료입니다. 이제 Cowork 대화창에서 내 드라이브의 시트 URL을 그대로 붙여넣고 분석을 요청할 수 있습니다.</div>
+                        <div class="wf-step-desc">연결이 끝나면 ChatGPT 대화창에서 시트 URL이나 파일을 전달하고 분석을 요청할 수 있습니다.</div>
                     </div>
                 </div>
             </div>
 
             <div class="tip-box">
                 <div class="tip-label">TIP · 회사 계정과 개인 계정 분리</div>
-                <p>회사 워크스페이스 계정과 개인 구글 계정을 함께 쓰는 경우, Cowork 커넥터는 <strong>한 번에 한 계정만</strong> 인증할 수 있습니다. 분석 대상 시트가 있는 쪽 계정으로 연결하세요. 계정을 바꿀 때는 <strong>Disconnect를 누른 다음 다시 Connect</strong>하는 방식이 가장 안전합니다.</p>
+                <p>회사 워크스페이스 계정과 개인 구글 계정을 함께 쓰면 자료 권한이 섞이기 쉽습니다. 분석 대상 시트가 있는 계정과 ChatGPT에 연결한 계정이 같은지 확인하세요.</p>
             </div>
         </div>
     </section>
@@ -860,9 +890,9 @@
     <section>
         <div class="nm-card">
             <h2>예제 시트를 내 드라이브에 복사하기</h2>
-            <p class="card-subtitle">Cowork 커넥터는 내 드라이브 안의 파일을 읽습니다. 따라서 공용 예제 시트를 먼저 내 드라이브로 복사합니다</p>
+            <p class="card-subtitle">권한 문제를 줄이려면 공용 예제 시트를 먼저 내 드라이브로 복사합니다</p>
 
-            <p>Cowork 커넥터가 읽을 수 있는 시트는 <strong>커넥터에 연결한 구글 계정의 드라이브에 들어 있는 파일</strong>입니다. 공용 예제 시트를 그대로 쓰면 권한 문제가 생기기 쉽기 때문에, 먼저 내 드라이브로 사본을 만들어 둡니다. 사본을 한 번 만들어 두면 다음부터는 그 시트만 갱신하면 됩니다.</p>
+            <p>공용 예제 시트를 그대로 쓰면 권한 문제가 생기기 쉽습니다. 먼저 내 드라이브로 사본을 만들어 둡니다. 사본을 한 번 만들어 두면 다음부터는 그 시트만 갱신하면 됩니다.</p>
 
             <div class="wf-steps">
                 <div class="wf-step">
@@ -893,7 +923,7 @@
                     <div class="wf-step-num">4</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">계정 일치 확인</div>
-                        <div class="wf-step-desc">사본을 만든 계정과 STEP 1에서 Cowork에 연결한 구글 계정이 같아야 합니다. 다르면 Cowork가 시트를 찾지 못합니다.</div>
+                        <div class="wf-step-desc">사본을 만든 계정과 ChatGPT에 연결한 계정이 같아야 합니다. 다르면 자료를 찾지 못할 수 있습니다.</div>
                     </div>
                 </div>
             </div>
@@ -910,7 +940,7 @@
 
             <div class="tip-box">
                 <div class="tip-label">왜 내 드라이브로 복사부터 하나</div>
-                <p>Cowork가 "시트에 접근할 수 없습니다"라고 답하는 가장 흔한 이유가 권한 누락입니다. 내 드라이브의 사본은 처음부터 내 권한으로 만들어지기 때문에 권한 문제가 생기지 않습니다. 그 다음부터는 자연어 한 줄로 작업이 끝납니다.</p>
+                <p>ChatGPT가 "시트에 접근할 수 없습니다"라고 답하는 가장 흔한 이유가 권한 누락입니다. 내 드라이브의 사본은 처음부터 내 권한으로 만들어지기 때문에 권한 문제를 줄일 수 있습니다.</p>
             </div>
         </div>
     </section>
@@ -923,7 +953,7 @@
             <h2>한 줄 프롬프트로 EDA 시작하기</h2>
             <p class="card-subtitle">복잡한 지시는 필요하지 않습니다. 시트 주소와 한 문장만으로 충분합니다</p>
 
-            <p>EDA는 거창한 절차가 아닙니다. Cowork 대화창에 <strong>내 드라이브의 시트 주소</strong>를 붙여 넣고, "이 데이터를 살펴봐 줘" 정도로만 부탁해도 Claude가 알아서 컬럼을 정리하고 결측치와 이상치, 핵심 지표를 찾아 줍니다.</p>
+            <p>EDA는 거창한 절차가 아닙니다. ChatGPT 대화창에 <strong>내 드라이브의 시트 주소</strong>를 붙여 넣고, "이 데이터를 살펴봐 줘" 정도로만 부탁해도 컬럼을 정리하고 결측치와 이상치, 핵심 지표를 찾는 출발점을 만들 수 있습니다.</p>
 
             <div class="inset-box">
                 <div class="inset-label">EDA 프롬프트</div>
@@ -972,7 +1002,7 @@ https://docs.google.com/spreadsheets/d/내-시트-ID/edit
 
             <div class="inset-box" style="margin-top: 18px;">
                 <div class="inset-label">대시보드 생성 프롬프트</div>
-                <p>EDA를 마친 직후 같은 세션에서 이 한 줄을 던집니다. 디자인 톤과 인터랙션 방식 정도만 정해 주면 나머지는 Claude가 알아서 채워 줍니다.</p>
+                <p>EDA를 마친 직후 같은 세션에서 이 한 줄을 던집니다. 디자인 톤과 인터랙션 방식 정도만 정해 주면 나머지는 Codex가 알아서 채워 줍니다.</p>
             </div>
 
             <div class="prompt-box">
@@ -1013,7 +1043,7 @@ https://docs.google.com/spreadsheets/d/내-시트-ID/edit
     <section>
         <div class="nm-card">
             <h2>완성한 대시보드를 매달 꾸준히 쓰기</h2>
-            <p class="card-subtitle">시트만 갱신하면 대시보드가 같이 갱신되는 구조 — 운영 비용이 거의 0에 가깝습니다</p>
+            <p class="card-subtitle">시트만 갱신하면 대시보드가 같이 갱신되는 구조입니다. 운영 비용이 거의 0에 가깝습니다</p>
 
             <p>대시보드는 <strong>만든 순간보다 운영하는 동안 쌓이는 가치</strong>가 더 큽니다. 이번 구조는 데이터를 시트에서 직접 읽기 때문에, 매월 따로 갱신 스크립트를 돌릴 필요가 없습니다. <strong>시트 한 곳만 업데이트하면</strong> 다음 방문자에게 새 숫자가 그대로 보입니다.</p>
 
@@ -1046,7 +1076,7 @@ https://docs.google.com/spreadsheets/d/내-시트-ID/edit
                     <div class="wf-step-num">4</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">월간 갱신은 "시트만 업데이트"</div>
-                        <div class="wf-step-desc">이번 구조에서 매월 해야 할 일은 단 하나 — <strong>시트에 새 달 데이터를 한 줄 더 추가</strong>하는 것입니다. 사용자가 다음 번 페이지를 열면 새 숫자가 자동으로 반영됩니다. 별도 JSON 변환, 재배포, refresh 스킬 모두 필요하지 않습니다.</div>
+                        <div class="wf-step-desc">이번 구조에서 매월 해야 할 일은 하나입니다. <strong>시트에 새 달 데이터를 한 줄 더 추가</strong>하면 됩니다. 사용자가 다음 번 페이지를 열면 새 숫자가 자동으로 반영됩니다. 별도 JSON 변환, 재배포, refresh 스킬 모두 필요하지 않습니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
@@ -1076,7 +1106,7 @@ https://docs.google.com/spreadsheets/d/내-시트-ID/edit
 
             <p>아래 카드를 누르면 새 탭에서 인터랙티브 대시보드가 열립니다. <strong>5개 탭을 옮겨 다니며 연도 셀렉터와 매장 칩을 토글해 보세요.</strong> 모든 차트와 KPI가 즉시 다시 계산됩니다. 페이지를 열 때마다 시트의 최신 데이터를 가져오기 때문에, 시트만 갱신해도 같은 URL에 새 숫자가 떠 있습니다.</p>
 
-            <a class="preview-card" href="assets/cases/pizza-dashboard.html" target="_blank" rel="noopener">
+            <a class="preview-card" href="assets/cases/09_pizza_dashboard/pizza-dashboard.html" target="_blank" rel="noopener">
                 <div class="pv-body">
                     <span class="pv-label">LIVE DEMO</span>
                     <div class="pv-title">🍕 피자 프랜차이즈 경영 대시보드</div>
@@ -1103,7 +1133,7 @@ https://docs.google.com/spreadsheets/d/내-시트-ID/edit
             </div>
 
             <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
-                <a class="ref-link" href="assets/cases/pizza-dashboard.html" target="_blank" rel="noopener" style="flex: 1; min-width: 240px;">
+                <a class="ref-link" href="assets/cases/09_pizza_dashboard/pizza-dashboard.html" target="_blank" rel="noopener" style="flex: 1; min-width: 240px;">
                     <span class="ref-icon">&#x1F48E;</span>
                     완성 대시보드 열기
                     <span class="ref-desc">새 탭</span>
@@ -1134,7 +1164,7 @@ https://docs.google.com/spreadsheets/d/내-시트-ID/edit
 
 <footer>
     <div class="footer-brand">AI ROASTING</div>
-    <div class="footer-text">Claude Cowork × Google Workspace × Neumorphism · 2026</div>
+    <div class="footer-text">ChatGPT 업무 워크스페이스 × Google Sheets × Neumorphism · 2026</div>
 </footer>
 
 <script>
@@ -1266,36 +1296,40 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     display: flex; align-items: center; gap: 10px;
     margin: 0 0 16px;
     padding: 14px 16px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
-    color: #3A3530; text-decoration: none;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    color: #38404F; text-decoration: none;
     font-size: 14px; font-weight: 700;
 }
 .sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
 .sm-drawer-item {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 14px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
     text-decoration: none;
-    color: #3A3530;
+    color: #38404F;
     transition: all 0.15s;
 }
-.sm-drawer-item:hover { box-shadow: inset 3px 3px 7px #CECAC3, inset -3px -3px 7px #FFFFFF; }
-.sm-drawer-item.active { background: rgba(217,119,87,0.10); }
-.sm-drawer-item.active .sm-drawer-num { background: #D97757; box-shadow: 0 2px 8px rgba(217,119,87,0.4); }
-.sm-drawer-item.active .sm-drawer-title { color: #1A1917; font-weight: 800; }
+.sm-drawer-item:hover { box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1; }
+.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active);
+    color: var(--codex-pill-text);
+    box-shadow: var(--codex-pill-shadow);
+}
+.sm-drawer-item.active .sm-drawer-title { color: #14192E; font-weight: 800; }
 .sm-drawer-num {
     width: 28px; height: 28px; border-radius: 50%;
-    background: #B0544A; color: #fff;
+    background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
     font-size: 13px; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: all 0.2s;
 }
 .sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.sm-drawer-title { font-size: 14px; font-weight: 700; color: #3A3530; line-height: 1.35; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
 .sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
 @media (max-width: 768px) {
     .sm-menu-toggle { display: inline-flex; }
@@ -1347,7 +1381,239 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         height: 2px !important;
     }
 }
-</style>
+
+        /* ## CODEX-HERO-VIDEO START ## */
+        header {
+            background: #070707 !important;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+            }
+        }
+        /* ## CODEX-HERO-VIDEO END ## */
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 구분선 배지 빛 흐름(sheen): 선은 정적, 배지 박스에만 적용 (일관 표준) === */
+        .step-badge { position: relative; overflow: hidden; }
+        .step-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -120%;
+            width: 55%; height: 100%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+            animation: badgeSheen 4s ease-in-out infinite;
+        }
+        @keyframes badgeSheen {
+            0%   { left: -120%; }
+            60%, 100% { left: 170%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .step-badge::after { animation: none; }
+        }
+    
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -1430,5 +1696,35 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 </script>
 <!-- ## SM-HAMBURGER END ## -->
+<script>
+// 실전 예제 헤더 토글 (기본 예제 / MCP 연결)
+function switchExampleTab(mode){
+    var b=document.getElementById('pages-basic'), m=document.getElementById('pages-mcp');
+    var tb=document.getElementById('extab-basic'), tm=document.getElementById('extab-mcp');
+    if(!b||!m) return;
+    b.style.display = mode==='basic' ? 'flex' : 'none';
+    m.style.display = mode==='mcp' ? 'flex' : 'none';
+    if(tb) tb.classList.toggle('active', mode==='basic');
+    if(tm) tm.classList.toggle('active', mode==='mcp');
+}
+</script>
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
 </body>
 </html>

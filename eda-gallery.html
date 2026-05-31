@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://airoasting.github.io/claude_guide/eda-gallery.html">
-    <meta property="og:title" content="AI ROASTING · Claude 완전 정복">
-    <meta property="og:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/eda-gallery.html">
+    <meta property="og:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
-    <meta property="og:url" content="https://airoasting.github.io/claude_guide/eda-gallery.html">
+    <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/eda-gallery.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI ROASTING · Claude 완전 정복">
-    <meta name="twitter:description" content="비즈니스 리더를 위한 Claude 완전 정복 플러그인부터 클로드 코드까지 5단계 실전 가이드">
-    <meta name="twitter:image" content="https://airoasting.github.io/claude_guide/assets/thumbnails/thumbnail.png">
+    <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
+    <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <title>EDA 차트 갤러리 12 | AI ROASTING</title>
     <style>
         @font-face {
@@ -24,17 +24,17 @@
         }
 
         :root {
-            --nm-bg: #EDEAE4;
-            --nm-dark: #CECAC3;
+            --nm-bg: #F3F5FD;
+            --nm-dark: #ECECF1;
             --nm-light: #FFFFFF;
-            --nm-shadow: 6px 6px 14px #CECAC3, -6px -6px 14px #FFFFFF;
-            --nm-shadow-sm: 4px 4px 8px #CECAC3, -4px -4px 8px #FFFFFF;
-            --nm-inset: inset 4px 4px 10px #CECAC3, inset -4px -4px 10px #FFFFFF;
-            --ant-orange: #D97757;
+            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
+            --codex-accent: #5B62D8;
             --ant-dark: #1A1917;
             --c1: #3a7a5a;
             --c2: #2a6a9a;
-            --c3: #8a5a2a;
+            --c3: #5B62D8;
             --c4: #7a3a6a;
         }
 
@@ -42,15 +42,15 @@
         html { scroll-behavior: smooth; }
         body { word-break: keep-all;
             font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, system-ui, sans-serif;
-            background: var(--nm-bg);
-            color: #3A3530;
+            background: #FFFFFF;
+            color: #2C2F3A;
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
         /* ── Header ── */
         header {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             padding: 28px 40px 40px;
             border-radius: 0 0 32px 32px;
             text-align: center;
@@ -61,7 +61,7 @@
             content: '';
             position: absolute; top: -80px; right: -40px;
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(196,98,63,0.18) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
             pointer-events: none;
         }
         .back-link {
@@ -143,7 +143,7 @@
         .intro-card h2::before {
             content: '';
             width: 4px; height: 18px;
-            background: var(--ant-orange);
+            background: var(--codex-accent);
             border-radius: 2px;
         }
         .intro-card p {
@@ -172,7 +172,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 9px;
             text-decoration: none;
             padding: 8px 18px;
             transition: all 0.2s;
@@ -182,15 +182,16 @@
         .sub-menu a:hover .sm-num { transform: scale(1.1); }
         .sub-menu a:hover .sm-title { color: var(--ant-dark); }
         .sub-menu a.active {
-            background: rgba(217,119,87,0.10);
+            background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58));
             border-radius: 14px;
         }
         .sub-menu a.active .sm-num {
-            background: var(--ant-orange) !important;
-            box-shadow: 0 2px 8px rgba(217,119,87,0.4);
+            background: var(--codex-pill-bg-active);
+            color: var(--codex-pill-text);
+            box-shadow: var(--codex-pill-shadow);
         }
         .sub-menu a.active .sm-title { color: var(--ant-dark); font-weight: 800; }
-        .sub-menu a.active .sm-sub { color: var(--ant-orange); }
+        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
         .sm-num {
             width: 28px; height: 28px; border-radius: 50%;
             background: #C8C3BA;
@@ -198,8 +199,8 @@
             font-size: 13px; font-weight: 700; color: #fff;
             transition: all 0.2s;
         }
-        .sm-title { font-size: 14px; font-weight: 600; color: #7A756E; transition: color 0.2s; white-space: nowrap; }
-        .sm-sub { font-size: 12px; color: #aaa; transition: color 0.2s; white-space: nowrap; }
+        .sm-title { font-size: 16px; font-weight: 600; color: #7A756E; transition: color 0.2s; white-space: nowrap; }
+        .sm-sub { font-size: 14px; color: #aaa; transition: color 0.2s; white-space: nowrap; }
         .sm-count { font-weight: 700; }
 
         /* ── Category Label ── */
@@ -211,7 +212,7 @@
             position: relative;
         }
         .cat-label:first-of-type { margin-top: 8px; }
-        .cat-label { scroll-margin-top: 160px; }
+        .cat-label { scroll-margin-top: 155px; }
         .cat-label::before {
             content: '';
             position: absolute;
@@ -290,11 +291,11 @@
         .chart-en { font-size: 12px; font-weight: 500; color: #aaa; }
         .chart-desc { font-size: 14px; color: #7a756e; line-height: 1.65; }
         .chart-usage {
-            font-size: 12px; color: var(--ant-orange);
+            font-size: 12px; color: var(--codex-accent);
             font-weight: 600;
             margin-top: 10px;
             padding: 8px 12px;
-            background: rgba(217,119,87,0.08);
+            background: rgba(99,102,241,0.08);
             border-radius: 10px;
             line-height: 1.5;
         }
@@ -302,7 +303,7 @@
 
         /* ── CTA Card ── */
         .cta-card {
-            background: linear-gradient(150deg, #B35535 0%, #A04828 35%, #7A2E15 100%);
+            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
             border-radius: 24px;
             padding: 48px 32px;
             text-align: center;
@@ -331,14 +332,14 @@
             text-decoration: none; transition: all 0.25s;
             white-space: nowrap; flex: 1; max-width: 320px;
         }
-        .cta-btn.primary { background: #fff; color: #7A1E0C; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+        .cta-btn.primary { background: #fff; color: #5B62D8; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
         .cta-btn.primary:hover { background: #f5f0ee; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
         .cta-btn.secondary { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.78); border: 1px solid rgba(255,255,255,0.18); }
         .cta-btn.secondary:hover { background: rgba(255,255,255,0.15); color: #fff; transform: translateY(-2px); }
 
         /* ── Footer ── */
-        footer { background: var(--ant-dark); text-align: center; padding: 36px 32px 28px; }
-        .footer-brand { font-size: 13px; font-weight: 700; color: var(--ant-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
         .footer-about-link {
             display: inline-block; margin-top: 8px;
@@ -347,7 +348,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 1px; transition: all 0.2s;
         }
-        .footer-about-link:hover { color: #fff; border-color: #fff; }
+        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
         .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
         .footer-link-row .footer-about-link { margin-top: 0; }
         .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
@@ -436,6 +437,9 @@
 <body>
 
 <header>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
+        <source src="assets/media/hero-bg.mp4" type="video/mp4">
+    </video>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
     <h1>EDA 차트 갤러리 12</h1>
     <p>본격 분석 전에 데이터를 들여다보는 12가지 차트</p>
@@ -532,8 +536,8 @@
                     <line x1="110" y1="50" x2="110" y2="100" stroke="#1a4530" stroke-width="3"/>
                     <line x1="150" y1="75" x2="180" y2="75" stroke="#3a7a5a" stroke-width="2"/>
                     <line x1="165" y1="60" x2="165" y2="90" stroke="#3a7a5a" stroke-width="2"/>
-                    <circle cx="205" cy="75" r="3" fill="#D97757"/>
-                    <circle cx="218" cy="75" r="3" fill="#D97757"/>
+                    <circle cx="205" cy="75" r="3" fill="#5B62D8"/>
+                    <circle cx="218" cy="75" r="3" fill="#5B62D8"/>
                     <text x="55" y="140" font-size="9" fill="#9a9590" text-anchor="middle">Q1</text>
                     <text x="110" y="140" font-size="9" fill="#9a9590" text-anchor="middle">중앙값</text>
                     <text x="165" y="140" font-size="9" fill="#9a9590" text-anchor="middle">Q3</text>
@@ -688,9 +692,9 @@
                     <circle cx="190" cy="45" r="3" fill="#2a6a9a" opacity="0.6"/>
                     <circle cx="205" cy="50" r="3" fill="#2a6a9a" opacity="0.6"/>
                     <circle cx="220" cy="35" r="3" fill="#2a6a9a" opacity="0.6"/>
-                    <path d="M 30 122 L 225 32" stroke="#D97757" stroke-width="2.5"/>
-                    <path d="M 30 132 L 225 42" stroke="#D97757" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
-                    <path d="M 30 112 L 225 22" stroke="#D97757" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+                    <path d="M 30 122 L 225 32" stroke="#5B62D8" stroke-width="2.5"/>
+                    <path d="M 30 132 L 225 42" stroke="#5B62D8" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+                    <path d="M 30 112 L 225 22" stroke="#5B62D8" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
                 </svg>
             </div>
             <div class="chart-body">
@@ -933,10 +937,10 @@
                     <!-- ellipse around cluster -->
                     <ellipse cx="110" cy="95" rx="65" ry="22" fill="none" stroke="#7a3a6a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
                     <!-- outliers -->
-                    <circle cx="200" cy="35" r="5" fill="#D97757"/>
-                    <circle cx="215" cy="45" r="5" fill="#D97757"/>
-                    <circle cx="35" cy="40" r="5" fill="#D97757"/>
-                    <text x="195" y="28" font-size="9" font-weight="700" fill="#D97757">이상치</text>
+                    <circle cx="200" cy="35" r="5" fill="#5B62D8"/>
+                    <circle cx="215" cy="45" r="5" fill="#5B62D8"/>
+                    <circle cx="35" cy="40" r="5" fill="#5B62D8"/>
+                    <text x="195" y="28" font-size="9" font-weight="700" fill="#5B62D8">이상치</text>
                 </svg>
             </div>
             <div class="chart-body">
@@ -955,10 +959,10 @@
                     <line x1="20" y1="130" x2="230" y2="130" stroke="#7a756e" stroke-width="1"/>
                     <line x1="20" y1="20" x2="20" y2="130" stroke="#7a756e" stroke-width="1"/>
                     <rect x="50" y="32" width="60" height="98" fill="#7a3a6a"/>
-                    <rect x="135" y="105" width="60" height="25" fill="#D97757"/>
+                    <rect x="135" y="105" width="60" height="25" fill="#5B62D8"/>
                     <text x="80" y="25" font-size="11" font-weight="700" fill="#5a2050" text-anchor="middle">92%</text>
                     <text x="80" y="148" font-size="10" fill="#7a756e" text-anchor="middle">정상</text>
-                    <text x="165" y="98" font-size="11" font-weight="700" fill="#D97757" text-anchor="middle">8%</text>
+                    <text x="165" y="98" font-size="11" font-weight="700" fill="#5B62D8" text-anchor="middle">8%</text>
                     <text x="165" y="148" font-size="10" fill="#7a756e" text-anchor="middle">사기</text>
                 </svg>
             </div>
@@ -976,14 +980,14 @@
 
     <!-- CTA -->
     <div class="cta-card reveal">
-        <h3 class="cta-title">이제 Claude에게 직접 부탁해 보세요</h3>
+        <h3 class="cta-title">이제 Codex에게 직접 부탁해 보세요</h3>
         <p class="cta-desc">
             "이 CSV로 EDA 해줘"라고만 하지 말고, "히스토그램, 상관 히트맵, 결측치 매트릭스를 차례로 그려줘"처럼<br>
             <strong style="color:#fff;">필요한 차트를 이름으로 지정</strong>하면 훨씬 빠르고 정확한 결과를 받습니다.
         </p>
         <div class="cta-buttons">
-            <a class="cta-btn secondary" href="https://claude.ai/download" target="_blank" rel="noopener">💻 Claude Desktop 다운로드</a>
-            <a class="cta-btn primary" href="cowork-intro.html">🎯 Claude Cowork 시작하기 →</a>
+            <a class="cta-btn secondary" href="https://chatgpt.com/" target="_blank" rel="noopener">💬 ChatGPT 열기</a>
+            <a class="cta-btn primary" href="codex-101.html">🎯 Codex 앱 시작하기 →</a>
         </div>
     </div>
 
@@ -1066,7 +1070,7 @@
 
 <footer>
     <p class="footer-brand">AI ROASTING</p>
-    <p class="footer-text">비즈니스 리더를 위한 Claude 완전 정복</p>
+    <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
     <span class="footer-link-row">
         <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
         <span class="footer-link-sep" aria-hidden="true">·</span>
@@ -1134,36 +1138,40 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     display: flex; align-items: center; gap: 10px;
     margin: 0 0 16px;
     padding: 14px 16px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
-    color: #3A3530; text-decoration: none;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    color: #38404F; text-decoration: none;
     font-size: 14px; font-weight: 700;
 }
 .sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
 .sm-drawer-item {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 14px;
-    background: #EDEAE4;
+    background: #F0F1F3;
     border-radius: 12px;
-    box-shadow: 4px 4px 9px #CECAC3, -4px -4px 9px #FFFFFF;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
     text-decoration: none;
-    color: #3A3530;
+    color: #38404F;
     transition: all 0.15s;
 }
-.sm-drawer-item:hover { box-shadow: inset 3px 3px 7px #CECAC3, inset -3px -3px 7px #FFFFFF; }
-.sm-drawer-item.active { background: rgba(217,119,87,0.10); }
-.sm-drawer-item.active .sm-drawer-num { background: #D97757; box-shadow: 0 2px 8px rgba(217,119,87,0.4); }
-.sm-drawer-item.active .sm-drawer-title { color: #1A1917; font-weight: 800; }
+.sm-drawer-item:hover { box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1; }
+.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active);
+    color: var(--codex-pill-text);
+    box-shadow: var(--codex-pill-shadow);
+}
+.sm-drawer-item.active .sm-drawer-title { color: #14192E; font-weight: 800; }
 .sm-drawer-num {
     width: 28px; height: 28px; border-radius: 50%;
-    background: #B0544A; color: #fff;
+    background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
     font-size: 13px; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: all 0.2s;
 }
 .sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.sm-drawer-title { font-size: 14px; font-weight: 700; color: #3A3530; line-height: 1.35; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
 .sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
 @media (max-width: 768px) {
     .sm-menu-toggle { display: inline-flex; }
@@ -1215,7 +1223,218 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         height: 2px !important;
     }
 }
-</style>
+
+        /* ## CODEX-HERO-VIDEO START ## */
+        header {
+            background: #070707 !important;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.98;
+            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            background:
+                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
+                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+        /* ## CODEX-HERO-SIZE START ## */
+        header {
+            min-height: 430px !important;
+            padding: 56px 40px 48px !important;
+            background: #11142E !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
+        header .hero-video { border-radius: inherit !important; }
+        /* 인덱스와 동일한 스크림 그라데이션 */
+        header::before {
+            background:
+                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
+                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        /* ## CODEX-HERO-SIZE END ## */
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header .hero-video { display: none; }
+            header {
+                background:
+                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
+                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
+                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+            }
+        }
+        /* ## CODEX-HERO-VIDEO END ## */
+
+/* ## CODEX-SUBMENU-COLOR START ## */
+:root {
+    --codex-pill-text: #283052;
+    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
+    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
+    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
+    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
+}
+.nav-wrapper {
+    background: var(--codex-panel, #F0F1F3) !important;
+}
+.sub-menu {
+    background: rgba(240, 241, 243, 0.92) !important;
+}
+.sub-menu a {
+    color: #596070 !important;
+}
+.sub-menu a .sm-title {
+    color: #38404F !important;
+}
+.sub-menu a .sm-sub {
+    color: #7B8498 !important;
+}
+.sub-menu a .sm-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a:hover {
+    background: rgba(236, 232, 255, 0.46) !important;
+    border-radius: 14px;
+}
+.sub-menu a:hover .sm-title {
+    color: #14192E !important;
+}
+.sub-menu a:hover .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active {
+    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
+}
+.sub-menu a.active .sm-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sub-menu a.active .sm-title {
+    color: #14192E !important;
+    font-weight: 800;
+}
+.sub-menu a.active .sm-sub {
+    color: #5B62D8 !important;
+}
+.step-badge,
+.section-num,
+.hero-badge,
+.header-badge,
+.levelup-badge {
+    background: var(--codex-pill-bg) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.hero-badge .hb-dot {
+    background: #8D9CF5 !important;
+}
+.sm-menu-toggle {
+    background: rgba(240, 241, 243, 0.84) !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+}
+.sm-drawer-back,
+.sm-drawer-item {
+    background: #F0F1F3 !important;
+    color: #14192E !important;
+    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-back:hover,
+.sm-drawer-item:hover {
+    background: rgba(236, 232, 255, 0.50) !important;
+    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+}
+.sm-drawer-title {
+    color: #38404F !important;
+}
+.sm-drawer-sub {
+    color: #7B8498 !important;
+}
+.sm-drawer-num {
+    background: var(--codex-pill-bg-muted) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active {
+    background: rgba(236,232,255,0.50) !important;
+    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
+}
+.sm-drawer-item.active .sm-drawer-num {
+    background: var(--codex-pill-bg-active) !important;
+    color: var(--codex-pill-text) !important;
+    border: 1px solid rgba(255,255,255,0.66) !important;
+    box-shadow: var(--codex-pill-shadow) !important;
+}
+.sm-drawer-item.active .sm-drawer-title {
+    color: #14192E !important;
+}
+/* ## CODEX-SUBMENU-COLOR END ## */
+
+        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
+        .sub-menu,
+        .sub-menu-inner {
+            justify-content: center !important;
+            gap: 16px !important;
+        }
+        .sub-menu a {
+            flex: 0 0 auto !important;
+            width: 136px !important;
+            height: 104px !important;
+            box-sizing: border-box !important;
+            max-width: none !important;
+            padding: 10px 8px !important;
+            justify-content: center !important;
+            gap: 6px !important;
+        }
+        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -1298,5 +1517,23 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 </script>
 <!-- ## SM-HAMBURGER END ## -->
+<script>
+/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
+(function(){
+  var v = document.querySelector('.hero-video');
+  if(!v) return;
+  function sync(){
+    if(!v.duration || !isFinite(v.duration)) return;
+    var t = (Date.now()/1000) % v.duration;
+    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
+  }
+  if(v.readyState >= 1) sync();
+  v.addEventListener('loadedmetadata', sync);
+  v.addEventListener('play', sync);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
+  setInterval(sync, 3000);
+})();
+/* ## CODEX-HERO-SYNC END ## */
+</script>
 </body>
 </html>

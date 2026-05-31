@@ -14,7 +14,7 @@
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <title>종목 분석 후 텔레그램으로 보고 받기 | AI ROASTING</title>
-    <meta name="description" content="DART 스킬로 종목을 분석하고 텔레그램으로 자동 보고받는 Codex 실전 워크플로우. 봇 연결부터 스케줄링까지.">
+    <meta name="description" content="DART 스킬을 먼저 설치하고 테스트한 뒤 텔레그램으로 자동 보고받는 Codex 실전 워크플로우. 스킬 설치부터 봇 연결, 스케줄링까지.">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -716,7 +716,7 @@
     </video>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
     <h1>종목 분석 후 텔레그램으로 보고 받기</h1>
-    <p>Codex에서 텔레그램 봇과 DART 스킬을 연결해 매일 아침 종목 분석을 받아보는 실전 워크플로우</p>
+    <p>Codex에서 DART 스킬을 먼저 설치하고, 이후 텔레그램 봇을 연결해 매일 아침 종목 분석을 받아보는 실전 워크플로우</p>
     <div class="ex-tabs">
         <span class="ex-tab" id="extab-basic" onclick="switchExampleTab('basic')">기본 예제</span>
         <span class="ex-tab active" id="extab-mcp" onclick="switchExampleTab('mcp')">MCP 연결</span>
@@ -729,7 +729,7 @@
     <div class="header-pages" id="pages-mcp">
         <a href="playmcp-kakao.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span> 카카오톡 PlayMCP</a>
         <a href="korean-law-mcp.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></svg></span> 한국 법령 MCP</a>
-        <a href="stock-messenger.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></svg></span> 종목 분석 &rarr; 텔레그램</a>
+        <a href="stock-messenger.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></svg></span> DART 스킬 &rarr; 텔레그램</a>
     </div>
 </header>
 
@@ -742,23 +742,23 @@
     </a>
     <a href="#step1" data-sec="step1">
         <span class="sm-num">1</span>
-        <span class="sm-title">텔레그램 연결</span>
-        <span class="sm-sub">봇 + 토큰</span>
+        <span class="sm-title">DART 스킬</span>
+        <span class="sm-sub">설치</span>
     </a>
     <a href="#step2" data-sec="step2">
         <span class="sm-num">2</span>
-        <span class="sm-title">DART 스킬</span>
-        <span class="sm-sub">다운로드</span>
-    </a>
-    <a href="#step3" data-sec="step3">
-        <span class="sm-num">3</span>
         <span class="sm-title">DART API</span>
         <span class="sm-sub">키 발급</span>
     </a>
-    <a href="#step4" data-sec="step4">
-        <span class="sm-num">4</span>
+    <a href="#step3" data-sec="step3">
+        <span class="sm-num">3</span>
         <span class="sm-title">스킬 테스트</span>
         <span class="sm-sub">/dart 실행</span>
+    </a>
+    <a href="#step4" data-sec="step4">
+        <span class="sm-num">4</span>
+        <span class="sm-title">텔레그램 연결</span>
+        <span class="sm-sub">봇 + 토큰</span>
     </a>
     <a href="#step5" data-sec="step5">
         <span class="sm-num">5</span>
@@ -785,15 +785,15 @@
     <section class="anim-fade-up">
         <div class="nm-card">
             <h2>이 실습에서 만들 것</h2>
-            <p class="card-subtitle">Codex에서 텔레그램 봇과 DART 분석을 하나의 플러그인으로 묶고, 월~금 아침 9시에 자동으로 실행합니다</p>
+            <p class="card-subtitle">Codex에서 DART 스킬을 먼저 설치하고 테스트한 뒤, 텔레그램 봇과 하나의 플러그인으로 묶어 월~금 아침 9시에 자동 실행합니다</p>
 
             <!-- 실행 환경 강조 -->
             <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: linear-gradient(135deg, rgba(56,65,61,0.12), rgba(56,65,61,0.04)); border: 1.5px solid rgba(56,65,61,0.3); border-radius: 14px; margin-bottom: 20px;">
                 <span style="font-size: 24px;">&#x1F4BB;</span>
-                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 Codex입니다.</strong> 텔레그램 봇 연결, DART 스킬 설치, 플러그인 패키징, 스케줄 자동화 모두 Codex 한 곳에서 처리합니다.</p>
+                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 Codex입니다.</strong> DART 스킬 설치, API 키 등록, 스킬 테스트, 텔레그램 봇 연결, 플러그인 패키징, 스케줄 자동화 모두 Codex 한 곳에서 처리합니다.</p>
             </div>
 
-            <p>관심 종목 실적을 매일 확인하고 싶지만 DART 공시를 직접 뒤지기는 번거롭습니다. 이 실습은 <strong>Codex</strong>에 <strong>텔레그램 봇</strong>을 연결하고, <strong>DART 스킬</strong>을 설치해 한 번 돌려본 뒤, 둘을 <code>daily-stock-report</code> <strong>플러그인</strong>으로 묶어 <strong>월~금 아침 9시</strong>에 자동 실행되게 만듭니다.</p>
+            <p>관심 종목 실적을 매일 확인하고 싶지만 DART 공시를 직접 뒤지기는 번거롭습니다. 이 실습은 먼저 <strong>DART 스킬</strong>을 설치해 분석 흐름을 확인하고, 그 다음 <strong>텔레그램 봇</strong>을 연결한 뒤, 둘을 <code>daily-stock-report</code> <strong>플러그인</strong>으로 묶어 <strong>월~금 아침 9시</strong>에 자동 실행되게 만듭니다.</p>
 
             <p style="margin-top: 12px;">완성하면 흐름은 이렇게 됩니다.</p>
 
@@ -830,7 +830,7 @@
                     <span class="roadmap-num">1</span>
                     <span class="roadmap-body">
                         <span class="roadmap-label">STEP 1</span>
-                        <span class="roadmap-title">텔레그램 봇 만들고 Codex에 연결</span>
+                        <span class="roadmap-title">DART 스킬 다운로드 &amp; 설치</span>
                     </span>
                     <span class="roadmap-arrow">&rarr;</span>
                 </a>
@@ -838,7 +838,7 @@
                     <span class="roadmap-num">2</span>
                     <span class="roadmap-body">
                         <span class="roadmap-label">STEP 2</span>
-                        <span class="roadmap-title">DART 스킬 다운로드 &amp; 설치</span>
+                        <span class="roadmap-title">DART API 키 발급 &amp; .env 등록</span>
                     </span>
                     <span class="roadmap-arrow">&rarr;</span>
                 </a>
@@ -846,7 +846,7 @@
                     <span class="roadmap-num">3</span>
                     <span class="roadmap-body">
                         <span class="roadmap-label">STEP 3</span>
-                        <span class="roadmap-title">DART API 키 발급 &amp; .env 등록</span>
+                        <span class="roadmap-title">/dart 스킬 테스트 실행</span>
                     </span>
                     <span class="roadmap-arrow">&rarr;</span>
                 </a>
@@ -854,7 +854,7 @@
                     <span class="roadmap-num">4</span>
                     <span class="roadmap-body">
                         <span class="roadmap-label">STEP 4</span>
-                        <span class="roadmap-title">/dart 스킬 테스트 실행</span>
+                        <span class="roadmap-title">텔레그램 봇 만들고 Codex에 연결</span>
                     </span>
                     <span class="roadmap-arrow">&rarr;</span>
                 </a>
@@ -890,86 +890,9 @@
     </section>
 
 
-    <!-- ====== STEP 1: 텔레그램 연결 ====== -->
+    <!-- ====== STEP 1: DART 스킬 다운로드 ====== -->
     <div class="content-section" id="step1"></div>
-    <div class="step-divider"><span class="step-badge">STEP 1 &middot; 텔레그램 봇 만들고 Codex에 연결</span></div>
-    <section class="anim-fade-up">
-        <div class="nm-card">
-            <h2>BotFather로 봇을 만들고 Codex에 토큰 연결하기</h2>
-            <p class="card-subtitle">분석 결과를 보낼 통로를 먼저 만듭니다. 텔레그램 봇 생성부터 페어링까지 5분이면 끝납니다</p>
-
-            <p>텔레그램은 <strong>봇 API</strong>가 잘 정비돼 있어 전송 자동화가 쉽습니다. Codex의 <strong>telegram 플러그인</strong>은 봇 토큰만 등록하면 대화 안에서 바로 메시지를 보냅니다.</p>
-
-            <a class="ref-link" href="https://core.telegram.org/bots/features#botfather" target="_blank" rel="noopener" style="margin: 16px 0;">
-                <span class="ref-icon">&#x1F517;</span>
-                BotFather 공식 안내 (Telegram)
-                <span class="ref-desc">Telegram</span>
-            </a>
-
-            <div class="wf-steps">
-                <div class="wf-step">
-                    <div class="wf-step-num">1</div>
-                    <div class="wf-step-content">
-                        <div class="wf-step-label">텔레그램에서 BotFather 열기</div>
-                        <div class="wf-step-desc">텔레그램 앱에서 <code>@BotFather</code>(텔레그램 공식 봇 관리 봇)를 검색해 대화창을 엽니다.</div>
-                    </div>
-                </div>
-                <div class="wf-connector"></div>
-                <div class="wf-step">
-                    <div class="wf-step-num">2</div>
-                    <div class="wf-step-content">
-                        <div class="wf-step-label">/newbot 으로 봇 생성</div>
-                        <div class="wf-step-desc"><code>/newbot</code>을 입력하고 안내에 따라 <strong>봇 이름</strong>(자유)과 <strong>username</strong>(<code>_bot</code>으로 끝나야 함, 예: <code>my_stock_report_bot</code>)을 정합니다. 완료되면 나오는 <strong>HTTP API 토큰</strong>을 안전한 곳에 복사해 둡니다.</div>
-                    </div>
-                </div>
-                <div class="wf-connector"></div>
-                <div class="wf-step">
-                    <div class="wf-step-num">3</div>
-                    <div class="wf-step-content">
-                        <div class="wf-step-label">본인 채팅 시작 &amp; chat_id 확인</div>
-                        <div class="wf-step-desc">방금 만든 봇에 <code>/start</code>를 보냅니다. 이어 <code>@userinfobot</code>에 <code>/start</code>를 보내면 본인 <strong>chat_id</strong>(숫자)가 나옵니다. STEP 5에서 "누구에게 보낼지" 지정할 때 씁니다.</div>
-                    </div>
-                </div>
-                <div class="wf-connector"></div>
-                <div class="wf-step">
-                    <div class="wf-step-num">4</div>
-                    <div class="wf-step-content">
-                        <div class="wf-step-label">Codex에 토큰 등록</div>
-                        <div class="wf-step-desc">Codex를 켜고 <code>/telegram:configure</code>를 실행한 뒤 BotFather에서 받은 <strong>토큰</strong>을 붙여 넣습니다. 토큰은 로컬 설정 파일에만 저장됩니다.</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="prompt-box" id="prompt-tg-configure">/telegram:configure<button class="copy-btn" onclick="copyPrompt('prompt-tg-configure')">복사</button></div>
-
-            <div class="wf-steps" style="margin-top: 16px;">
-                <div class="wf-step">
-                    <div class="wf-step-num">5</div>
-                    <div class="wf-step-content">
-                        <div class="wf-step-label">접근 허용 (allowlist)</div>
-                        <div class="wf-step-desc">Codex가 텔레그램 메시지를 받게 하려면 <code>/telegram:access</code>로 본인 chat_id를 허용 목록에 추가합니다. 허용한 사람의 메시지만 Codex에 도달합니다.</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="prompt-box" id="prompt-tg-access">/telegram:access<button class="copy-btn" onclick="copyPrompt('prompt-tg-access')">복사</button></div>
-
-            <div class="tip-box" style="margin-top: 16px;">
-                <div class="tip-label">연결 확인</div>
-                <p>봇에게 아무 메시지나("ping") 보내 Codex 세션에 도착하면 양방향 연결이 끝난 것입니다. 이제 봇이 사용자에게 메시지를 보낼 수 있습니다.</p>
-            </div>
-
-            <div class="tip-box">
-                <div class="tip-label">보안</div>
-                <p>BotFather 토큰은 비밀번호와 같습니다. <strong>공개 저장소에 커밋하지 마세요.</strong> <code>/telegram:configure</code>가 토큰을 로컬 <code>~/.codex/</code>에 저장하므로 따로 옮기지 않아도 됩니다. 노출됐다면 BotFather에서 <code>/revoke</code> 또는 <code>/token</code>으로 즉시 재발급하세요.</p>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ====== STEP 2: DART 스킬 다운로드 ====== -->
-    <div class="content-section" id="step2"></div>
-    <div class="step-divider"><span class="step-badge">STEP 2 &middot; DART 스킬 다운로드 &amp; 설치</span></div>
+    <div class="step-divider"><span class="step-badge">STEP 1 &middot; DART 스킬 다운로드 &amp; 설치</span></div>
     <section class="anim-fade-up">
         <div class="nm-card">
             <h2>DART 공시 분석 스킬을 Codex에 설치하기</h2>
@@ -1014,22 +937,22 @@
                     <div class="wf-step-num">3</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">Codex에서 인식 확인</div>
-                        <div class="wf-step-desc"><code>/dart</code> 입력 시 자동완성에 스킬이 뜨면 설치 완료입니다. 실제 실행은 STEP 3에서 키를 등록한 뒤 STEP 4에서 합니다.</div>
+                        <div class="wf-step-desc"><code>/dart</code> 입력 시 자동완성에 스킬이 뜨면 설치 완료입니다. 실제 실행은 STEP 2에서 키를 등록한 뒤 STEP 3에서 합니다.</div>
                     </div>
                 </div>
             </div>
 
             <div class="tip-box" style="margin-top: 16px;">
                 <div class="tip-label">왜 지금은 키 없이 설치만 하나요?</div>
-                <p>스킬 파일과 키는 분리하는 편이 안전합니다. 스킬은 누구나 같게 받고, 키는 본인 환경에만 두면 실수로 공유될 위험이 줄어듭니다. 키는 STEP 3에서 <code>.env</code>에 따로 보관합니다.</p>
+                <p>스킬 파일과 키는 분리하는 편이 안전합니다. 스킬은 누구나 같게 받고, 키는 본인 환경에만 두면 실수로 공유될 위험이 줄어듭니다. 키는 STEP 2에서 <code>.env</code>에 따로 보관합니다.</p>
             </div>
         </div>
     </section>
 
 
-    <!-- ====== STEP 3: DART API 키 발급 ====== -->
-    <div class="content-section" id="step3"></div>
-    <div class="step-divider"><span class="step-badge">STEP 3 &middot; DART API 키 발급 &amp; .env 등록</span></div>
+    <!-- ====== STEP 2: DART API 키 발급 ====== -->
+    <div class="content-section" id="step2"></div>
+    <div class="step-divider"><span class="step-badge">STEP 2 &middot; DART API 키 발급 &amp; .env 등록</span></div>
     <section class="anim-fade-up">
         <div class="nm-card">
             <h2>OpenDART에서 API 키 받아 .env에 등록하기</h2>
@@ -1092,15 +1015,15 @@ DART_API_KEY=여기에_40자_API_키_붙여넣기<button class="copy-btn" onclic
     </section>
 
 
-    <!-- ====== STEP 4: 스킬 테스트 실행 ====== -->
-    <div class="content-section" id="step4"></div>
-    <div class="step-divider"><span class="step-badge">STEP 4 &middot; /dart 스킬 테스트 실행</span></div>
+    <!-- ====== STEP 3: 스킬 테스트 실행 ====== -->
+    <div class="content-section" id="step3"></div>
+    <div class="step-divider"><span class="step-badge">STEP 3 &middot; /dart 스킬 테스트 실행</span></div>
     <section class="anim-fade-up">
         <div class="nm-card">
             <h2>실제로 한 종목을 분석해 보기</h2>
             <p class="card-subtitle">플러그인을 만들기 전에 스킬 단독으로 한 번 돌려서 분석 흐름과 결과 포맷을 확인합니다</p>
 
-            <p>여기까지면 <strong>봇 연결 + 스킬 설치 + 키 등록</strong>이 모두 끝났습니다. STEP 5 플러그인을 만들기 전에 스킬을 한 번 돌려보면 어떤 출력으로 요약을 만들지 감이 잡힙니다.</p>
+            <p>여기까지면 <strong>스킬 설치 + 키 등록</strong>이 끝났습니다. 텔레그램을 연결하기 전에 스킬을 한 번 돌려보면 어떤 출력으로 요약을 만들지 감이 잡힙니다.</p>
 
             <p style="margin-top: 14px;">Codex에서 종목명만 붙여 호출합니다.</p>
 
@@ -1153,6 +1076,83 @@ DART_API_KEY=여기에_40자_API_키_붙여넣기<button class="copy-btn" onclic
     </section>
 
 
+    <!-- ====== STEP 4: 텔레그램 연결 ====== -->
+    <div class="content-section" id="step4"></div>
+    <div class="step-divider"><span class="step-badge">STEP 4 &middot; 텔레그램 봇 만들고 Codex에 연결</span></div>
+    <section class="anim-fade-up">
+        <div class="nm-card">
+            <h2>스킬 테스트 후, BotFather로 텔레그램 통로 만들기</h2>
+            <p class="card-subtitle">분석 스킬이 정상 동작하는 것을 먼저 확인한 뒤, 결과를 받을 텔레그램 봇을 연결합니다</p>
+
+            <p>텔레그램은 <strong>봇 API</strong>가 잘 정비돼 있어 전송 자동화가 쉽습니다. 이 단계에서는 STEP 3에서 확인한 DART 분석 결과를 받을 통로를 만듭니다. Codex의 <strong>telegram 플러그인</strong>은 봇 토큰만 등록하면 대화 안에서 바로 메시지를 보냅니다.</p>
+
+            <a class="ref-link" href="https://core.telegram.org/bots/features#botfather" target="_blank" rel="noopener" style="margin: 16px 0;">
+                <span class="ref-icon">&#x1F517;</span>
+                BotFather 공식 안내 (Telegram)
+                <span class="ref-desc">Telegram</span>
+            </a>
+
+            <div class="wf-steps">
+                <div class="wf-step">
+                    <div class="wf-step-num">1</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">텔레그램에서 BotFather 열기</div>
+                        <div class="wf-step-desc">텔레그램 앱에서 <code>@BotFather</code>(텔레그램 공식 봇 관리 봇)를 검색해 대화창을 엽니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">2</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">/newbot 으로 봇 생성</div>
+                        <div class="wf-step-desc"><code>/newbot</code>을 입력하고 안내에 따라 <strong>봇 이름</strong>(자유)과 <strong>username</strong>(<code>_bot</code>으로 끝나야 함, 예: <code>my_stock_report_bot</code>)을 정합니다. 완료되면 나오는 <strong>HTTP API 토큰</strong>을 안전한 곳에 복사해 둡니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">3</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">본인 채팅 시작 &amp; chat_id 확인</div>
+                        <div class="wf-step-desc">방금 만든 봇에 <code>/start</code>를 보냅니다. 이어 <code>@userinfobot</code>에 <code>/start</code>를 보내면 본인 <strong>chat_id</strong>(숫자)가 나옵니다. STEP 5에서 "누구에게 보낼지" 지정할 때 씁니다.</div>
+                    </div>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                    <div class="wf-step-num">4</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">Codex에 토큰 등록</div>
+                        <div class="wf-step-desc">Codex를 켜고 <code>/telegram:configure</code>를 실행한 뒤 BotFather에서 받은 <strong>토큰</strong>을 붙여 넣습니다. 토큰은 로컬 설정 파일에만 저장됩니다.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-box" id="prompt-tg-configure">/telegram:configure<button class="copy-btn" onclick="copyPrompt('prompt-tg-configure')">복사</button></div>
+
+            <div class="wf-steps" style="margin-top: 16px;">
+                <div class="wf-step">
+                    <div class="wf-step-num">5</div>
+                    <div class="wf-step-content">
+                        <div class="wf-step-label">접근 허용 (allowlist)</div>
+                        <div class="wf-step-desc">Codex가 텔레그램 메시지를 받게 하려면 <code>/telegram:access</code>로 본인 chat_id를 허용 목록에 추가합니다. 허용한 사람의 메시지만 Codex에 도달합니다.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-box" id="prompt-tg-access">/telegram:access<button class="copy-btn" onclick="copyPrompt('prompt-tg-access')">복사</button></div>
+
+            <div class="tip-box" style="margin-top: 16px;">
+                <div class="tip-label">연결 확인</div>
+                <p>봇에게 아무 메시지나("ping") 보내 Codex 세션에 도착하면 양방향 연결이 끝난 것입니다. 이제 STEP 5에서 DART 분석 결과를 텔레그램으로 보낼 수 있습니다.</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-label">보안</div>
+                <p>BotFather 토큰은 비밀번호와 같습니다. <strong>공개 저장소에 커밋하지 마세요.</strong> <code>/telegram:configure</code>가 토큰을 로컬 <code>~/.codex/</code>에 저장하므로 따로 옮기지 않아도 됩니다. 노출됐다면 BotFather에서 <code>/revoke</code> 또는 <code>/token</code>으로 즉시 재발급하세요.</p>
+            </div>
+        </div>
+    </section>
+
+
     <!-- ====== STEP 5: 텔레그램 전송 플러그인 ====== -->
     <div class="content-section" id="step5"></div>
     <div class="step-divider"><span class="step-badge">STEP 5 &middot; 텔레그램 전송 플러그인 만들기</span></div>
@@ -1161,7 +1161,7 @@ DART_API_KEY=여기에_40자_API_키_붙여넣기<button class="copy-btn" onclic
             <h2>분석과 텔레그램 전송을 <code>daily-stock-report</code> 플러그인으로 묶기</h2>
             <p class="card-subtitle">매번 두 번씩 명령하지 않고, 한 줄로 분석과 전송이 한꺼번에 일어나도록 패키징합니다</p>
 
-            <p>STEP 4에서 분석 명령을, STEP 1에서 전송 통로를 준비했습니다. 이제 둘을 한 <strong>플러그인</strong>으로 묶어 한 줄로 호출합니다. 동작은 두 가지입니다.</p>
+            <p>STEP 3에서 분석 명령을, STEP 4에서 전송 통로를 준비했습니다. 이제 둘을 한 <strong>플러그인</strong>으로 묶어 한 줄로 호출합니다. 동작은 두 가지입니다.</p>
             <ul style="margin: 8px 0 0 20px; color: #5C5650; font-size: 14px; line-height: 1.75;">
                 <li><code>/daily-stock-report</code>: 기본 종목 리스트 전체를 분석</li>
                 <li><code>/daily-stock-report 카카오</code>: 뒤에 종목명을 붙이면 그 종목만 분석</li>
@@ -1216,7 +1216,7 @@ description: 관심 종목을 DART로 분석하고 텔레그램으로 요약 전
 최저: {페르소나} (점수): 1줄 근거
 한 줄 코멘트<button class="copy-btn" onclick="copyPrompt('prompt-pluginmd')">복사</button></div>
 
-            <p style="margin-top: 16px;"><code>TELEGRAM_CHAT_ID</code>는 STEP 1에서 <code>@userinfobot</code>으로 확인한 본인 숫자 ID입니다. <code>.env</code>나 셸 환경 파일에 등록해 두세요.</p>
+            <p style="margin-top: 16px;"><code>TELEGRAM_CHAT_ID</code>는 STEP 4에서 <code>@userinfobot</code>으로 확인한 본인 숫자 ID입니다. <code>.env</code>나 셸 환경 파일에 등록해 두세요.</p>
 
             <div class="prompt-box" id="prompt-tg-chatid"># .env 또는 ~/.zshrc 에 추가
 TELEGRAM_CHAT_ID=숫자_chat_id_붙여넣기<button class="copy-btn" onclick="copyPrompt('prompt-tg-chatid')">복사</button></div>
@@ -1352,7 +1352,7 @@ cron: 0 9 * * 1-5
                     <div class="wf-step-num">&#x1F4F1;</div>
                     <div class="wf-step-content">
                         <div class="wf-step-label">텔레그램 전송</div>
-                        <div class="wf-step-desc">STEP 1에서 만든 봇이 요약 메시지를 본인 텔레그램으로 보냅니다. 9시 10분쯤 출근길에 확인할 수 있습니다.</div>
+                        <div class="wf-step-desc">STEP 4에서 만든 봇이 요약 메시지를 본인 텔레그램으로 보냅니다. 9시 10분쯤 출근길에 확인할 수 있습니다.</div>
                     </div>
                 </div>
             </div>
@@ -1428,7 +1428,7 @@ cron: 0 9 * * 1-5
                     <div class="faq-a">
                         <p><strong>원인 후보 4가지:</strong></p>
                         <ul>
-                            <li><strong>봇과 대화 시작 안 함</strong>: STEP 1에서 봇에 <code>/start</code>를 보내지 않으면 봇이 먼저 DM을 보낼 수 없습니다.</li>
+                            <li><strong>봇과 대화 시작 안 함</strong>: STEP 4에서 봇에 <code>/start</code>를 보내지 않으면 봇이 먼저 DM을 보낼 수 없습니다.</li>
                             <li><strong>chat_id 오타</strong>: <code>TELEGRAM_CHAT_ID</code>가 남의 ID이거나 마이너스 부호가 빠졌을 수 있습니다. <code>@userinfobot</code>으로 다시 확인합니다.</li>
                             <li><strong>토큰 재발급</strong>: BotFather에서 토큰을 재발급했다면 <code>/telegram:configure</code>를 다시 실행해 갱신합니다.</li>
                             <li><strong>allowlist 누락</strong>: <code>/telegram:access</code>에서 본인 chat_id가 허용 목록에 있는지 확인합니다.</li>
@@ -1514,7 +1514,7 @@ cron: 0 9 * * 1-5
     <!-- CTA -->
     <div class="cta-section anim-fade-up">
         <h3>지금 바로 시작해 보세요</h3>
-        <p>텔레그램에서 봇을 만들고, OpenDART에서 키를 받고, Codex에서 종목 하나로 시작해 보세요.<br>오늘 저녁에 첫 리포트를, 내일 아침 9시에 텔레그램 알림을 받아볼 수 있습니다.</p>
+        <p>DART 스킬을 설치하고 OpenDART 키로 첫 분석을 확인한 뒤, 텔레그램 봇을 연결해 보세요.<br>오늘 저녁에 첫 리포트를, 내일 아침 9시에 텔레그램 알림을 받아볼 수 있습니다.</p>
         <div class="cta-buttons">
             <a class="cta-btn primary" href="https://core.telegram.org/bots/features#botfather" target="_blank" rel="noopener">텔레그램 봇 만들기 &rarr;</a>
             <a class="cta-btn secondary" href="https://github.com/airoasting/dart" target="_blank" rel="noopener">DART 스킬 GitHub</a>

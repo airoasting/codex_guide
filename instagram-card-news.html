@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://airosting.github.io/codex_guide/instagram-card-news.html">
     <meta property="og:title" content="Codex 강의 홍보 카드뉴스 만들기 | AI ROASTING">
-    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복 강의를 실제로 판매하는 4장 인스타그램 카드뉴스를 기획하고, 1080×1350 PNG로 내려받는 실전 제작 과정.">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복 강의를 실제로 판매하는 4장 인스타그램 카드뉴스를 기획하고, 1080×1080 PNG로 내려받는 실전 제작 과정.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <meta property="og:url" content="https://airosting.github.io/codex_guide/instagram-card-news.html">
@@ -184,9 +184,9 @@
 
         .content-section { scroll-margin-top: 155px; }
         .sub-menu {
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: relative;
+            top: auto;
+            z-index: 5;
             background: rgba(240, 241, 243, 0.92);
             box-shadow: 0 4px 16px rgba(0,0,0,0.06);
             border-bottom: 1px solid rgba(210,216,226,0.76);
@@ -347,7 +347,7 @@
 
         .generator-shell {
             display: grid;
-            grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+            grid-template-columns: 300px minmax(0, 1fr);
             gap: 22px;
             align-items: start;
         }
@@ -419,253 +419,277 @@
         }
         .preview-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 18px;
         }
         .insta-card {
-            aspect-ratio: 4 / 5;
-            border-radius: 18px;
-            color: var(--card-ink, #14192E);
-            background:
-                linear-gradient(152deg, transparent 0%, transparent 64%, var(--card-band, #ECE8FF) 64%, var(--card-band, #ECE8FF) 100%),
-                var(--card-bg, #F8F4EE);
-            padding: 24px;
+            aspect-ratio: 1 / 1;
+            border-radius: 0;
+            color: var(--card-ink, #12304A);
+            background: var(--card-bg, #DFF3FF);
+            padding: 26px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             position: relative;
             overflow: hidden;
-            box-shadow: 8px 10px 24px rgba(20,25,46,0.10), 0 0 0 1px rgba(20,25,46,0.06);
-            min-height: 320px;
+            box-shadow: 0 12px 28px rgba(20,25,46,0.13), 0 0 0 1px rgba(20,25,46,0.08);
+            min-height: 280px;
         }
         .insta-card::before {
             content: '';
             position: absolute;
             inset: 14px;
-            border: 1px solid var(--card-line, rgba(20,25,46,0.12));
-            border-radius: 14px;
+            border: 1.5px solid var(--card-border, rgba(18,48,74,0.58));
             pointer-events: none;
+            z-index: 3;
         }
         .insta-card::after {
             content: '';
             position: absolute;
-            right: 24px;
-            top: 24px;
-            width: 58px;
-            height: 8px;
-            border-radius: 999px;
-            background: var(--card-accent, #5B62D8);
-            opacity: 0.92;
-        }
-        .insta-card .insta-art {
-            position: absolute;
-            right: 20px;
-            bottom: 78px;
-            width: 180px;
-            height: 180px;
+            inset: 0;
+            background: var(--card-pattern, transparent);
+            opacity: var(--card-pattern-opacity, 0.34);
             z-index: 0;
-            opacity: 0.42;
-            overflow: hidden;
+            pointer-events: none;
         }
-        .insta-art::before,
-        .insta-art::after {
+        .insta-bg-art {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .insta-bg-art::before,
+        .insta-bg-art::after {
             content: '';
             position: absolute;
-            border-radius: 14px;
         }
-        .art-stack::before {
-            width: 78px;
-            height: 96px;
-            right: 14px;
-            bottom: 2px;
-            background: var(--card-chip-bg, #ECE8FF);
-            transform: rotate(7deg);
+        .insta-card.style-dark {
+            --card-bg:
+                radial-gradient(circle at 78% 18%, rgba(105,231,255,0.28), transparent 24%),
+                linear-gradient(135deg, #10294C 0%, #183A68 52%, #10213E 100%);
+            --card-ink: #FFFFFF;
+            --card-copy: #E8F5FF;
+            --card-accent: #40E6F2;
+            --card-highlight: #40E6F2;
+            --card-border: rgba(255,255,255,0.0);
+            --card-pattern:
+                radial-gradient(circle at 90% 12%, rgba(255,255,255,0.55) 0 3px, transparent 4px),
+                radial-gradient(circle at 78% 40%, rgba(110,214,255,0.40) 0 18px, transparent 19px),
+                radial-gradient(circle at 90% 72%, rgba(110,214,255,0.32) 0 28px, transparent 29px),
+                radial-gradient(circle at 60% 84%, rgba(255,255,255,0.20) 0 14px, transparent 15px);
         }
-        .art-stack::after {
-            width: 74px;
-            height: 88px;
+        .style-dark .insta-bg-art::before {
+            width: 260px;
+            height: 260px;
+            right: -44px;
+            top: 80px;
+            border-radius: 50%;
+            border: 2px solid rgba(102,218,255,0.26);
+            box-shadow:
+                -64px 64px 0 -60px rgba(103,210,245,0.60),
+                -116px 116px 0 -112px rgba(255,255,255,0.42),
+                -168px 26px 0 -160px rgba(110,214,255,0.42);
+        }
+        .style-dark .insta-bg-art::after {
+            width: 190px;
+            height: 2px;
             right: 34px;
-            bottom: 18px;
-            background: var(--card-accent, #5B62D8);
-            opacity: 0.88;
-            transform: rotate(-8deg);
+            top: 238px;
+            background: rgba(111,217,255,0.45);
+            transform: rotate(-34deg);
+            box-shadow: -76px 62px 0 rgba(111,217,255,0.32), 58px 72px 0 rgba(111,217,255,0.28);
         }
-        .art-target::before {
-            width: 102px;
-            height: 102px;
-            right: 0;
-            bottom: 0;
-            border-radius: 50%;
-            border: 16px solid var(--card-accent, #5B62D8);
-            background: transparent;
+        .insta-card.style-light {
+            --card-bg: linear-gradient(180deg, #DDF4FF 0%, #F8FCFF 74%, #FFFFFF 100%);
+            --card-ink: #07385F;
+            --card-copy: #16324F;
+            --card-accent: #1498EE;
+            --card-highlight: #1498EE;
+            --card-border: rgba(7,56,95,0.76);
+            --card-pattern:
+                linear-gradient(30deg, transparent 0 44%, rgba(78,162,214,0.18) 44% 45%, transparent 45% 100%),
+                linear-gradient(150deg, transparent 0 44%, rgba(78,162,214,0.18) 44% 45%, transparent 45% 100%);
+            --card-pattern-opacity: 0.7;
         }
-        .art-target::after {
-            width: 28px;
-            height: 28px;
-            right: 37px;
-            bottom: 37px;
-            border-radius: 50%;
-            background: var(--card-accent, #5B62D8);
+        .style-light .insta-bg-art::before {
+            width: 72%;
+            height: 42%;
+            right: -18%;
+            top: -8%;
+            background: radial-gradient(circle, rgba(54,151,211,0.16) 0 4px, transparent 5px);
+            background-size: 54px 54px;
         }
-        .art-brief::before {
-            width: 106px;
-            height: 78px;
-            right: 0;
-            bottom: 16px;
-            background: var(--card-chip-bg, #DDECE8);
-            border-radius: 12px;
+        .insta-card.style-panel {
+            --card-bg: linear-gradient(180deg, #2C57A2 0%, #5C87CF 100%);
+            --card-ink: #FFFFFF;
+            --card-copy: #184069;
+            --card-accent: #FF7A45;
+            --card-highlight: #FFE348;
+            --card-border: rgba(255,255,255,0.0);
+            --card-panel-bg: #FFFFFF;
         }
-        .art-brief::after {
-            width: 64px;
-            height: 8px;
-            right: 22px;
-            bottom: 64px;
-            background: var(--card-accent, #27A6A6);
-            box-shadow: 0 18px 0 var(--card-accent, #27A6A6), 0 36px 0 var(--card-accent, #27A6A6);
+        .style-panel .insta-bg-art::before {
+            width: 100%;
+            height: 54%;
+            left: 0;
+            top: 0;
+            background: radial-gradient(circle at 40% 20%, rgba(255,255,255,0.14) 0 4px, transparent 5px);
+            background-size: 42px 42px;
         }
-        .art-window::before {
-            width: 112px;
-            height: 82px;
-            right: 0;
-            bottom: 10px;
-            background: var(--card-chip-bg, #FFE3DB);
-        }
-        .art-window::after {
-            width: 112px;
-            height: 18px;
-            right: 0;
-            bottom: 74px;
-            background: var(--card-accent, #D46A71);
-        }
-        .art-polish::before {
-            width: 92px;
-            height: 92px;
-            right: 10px;
-            bottom: 10px;
-            background: var(--card-accent, #5B62D8);
-            border-radius: 28px;
-            transform: rotate(45deg);
-        }
-        .art-polish::after {
-            width: 68px;
-            height: 68px;
-            right: 22px;
-            bottom: 22px;
-            background: var(--card-bg, #F8F4EE);
-            border-radius: 22px;
-            transform: rotate(45deg);
-        }
-        .art-system::before {
-            width: 92px;
-            height: 92px;
-            right: 10px;
-            bottom: 10px;
-            border-radius: 50%;
-            background:
-                radial-gradient(circle at center, var(--card-bg, #F8F4EE) 0 24px, transparent 25px),
-                conic-gradient(var(--card-accent, #5B62D8) 0 32%, transparent 32% 43%, var(--card-accent, #5B62D8) 43% 68%, transparent 68% 78%, var(--card-accent, #5B62D8) 78% 100%);
-        }
-        .art-system::after {
-            width: 28px;
-            height: 28px;
-            right: 42px;
-            bottom: 42px;
-            border-radius: 50%;
-            background: var(--card-accent, #5B62D8);
-        }
-        .art-cta::before {
-            width: 112px;
-            height: 64px;
-            right: 0;
-            bottom: 30px;
-            background: var(--card-accent, #5B62D8);
-            border-radius: 999px;
-        }
-        .art-cta::after {
-            width: 0;
-            height: 0;
-            right: 18px;
-            bottom: 45px;
-            border-top: 17px solid transparent;
-            border-bottom: 17px solid transparent;
-            border-left: 26px solid var(--card-accent-text, #FFFFFF);
-            border-radius: 4px;
-            background: transparent;
-            box-shadow: none;
-        }
-        .insta-card.denim {
-        }
-        .insta-card.red {
-        }
-        .insta-card.resort {
+        .insta-card.style-list {
+            --card-bg: #A7D840;
+            --card-ink: #FFFFFF;
+            --card-copy: #28362E;
+            --card-accent: #25A25A;
+            --card-highlight: #106A37;
+            --card-border: rgba(255,255,255,0.0);
+            --card-panel-bg: #FFFFFF;
         }
         .insta-head,
-        .insta-foot {
+        .insta-foot,
+        .insta-info-panel,
+        .insta-list {
             position: relative;
             z-index: 1;
         }
         .insta-kicker {
             display: inline-flex;
             align-items: center;
-            max-width: calc(100% - 76px);
-            min-height: 28px;
-            padding: 7px 11px;
-            border-radius: 999px;
-            background: var(--card-chip-bg, rgba(255,255,255,0.58));
-            color: var(--card-muted, #667085);
-            font-size: 10px;
-            font-weight: 850;
+            width: fit-content;
+            min-height: 24px;
+            padding: 5px 10px;
+            border-radius: 0;
+            background: var(--card-accent, #1498EE);
+            color: #FFFFFF;
+            font-size: 11px;
+            font-weight: 900;
             line-height: 1;
             letter-spacing: 1.2px;
             overflow-wrap: anywhere;
         }
+        .style-dark .insta-kicker,
+        .style-panel .insta-kicker {
+            background: transparent;
+            color: var(--card-accent, #40E6F2);
+            padding: 0;
+        }
         .insta-title {
             color: var(--card-ink, #14192E);
-            font-size: clamp(28px, 2.7vw, 38px);
+            font-size: clamp(30px, 3vw, 40px);
             font-weight: 900;
-            line-height: 1.04;
+            line-height: 1.1;
             letter-spacing: 0;
             text-wrap: balance;
             overflow-wrap: anywhere;
-            margin: 32px 0 0;
+            margin: 22px 0 0;
+            text-shadow: var(--card-title-shadow, none);
+        }
+        .insta-title .highlight {
+            color: var(--card-highlight, var(--card-accent, #1498EE));
         }
         .insta-copy {
             color: var(--card-copy, #4B5563);
-            font-size: 13px;
-            font-weight: 760;
-            line-height: 1.62;
+            font-size: 14px;
+            font-weight: 780;
+            line-height: 1.58;
             letter-spacing: 0;
             overflow-wrap: anywhere;
-            background: var(--card-copy-bg, rgba(255,255,255,0.58));
-            border-radius: 12px;
-            padding: 10px 12px;
-            box-shadow: 0 1px 0 rgba(255,255,255,0.34);
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
         }
-        .insta-num {
-            width: auto;
-            min-width: 46px;
-            height: 32px;
-            border-radius: 999px;
+        .style-dark .insta-copy {
+            max-width: 82%;
+            color: rgba(255,255,255,0.92);
+            margin-top: auto;
+            padding-bottom: 0;
+        }
+        .insta-info-panel {
+            margin-top: 28px;
+            background: var(--card-panel-bg, rgba(255,255,255,0.88));
+            border-radius: 0;
+            padding: 20px 22px;
+            box-shadow: 0 8px 18px rgba(25,54,90,0.12);
+        }
+        .style-light .insta-info-panel {
+            margin-top: 36px;
+            border-left: 4px solid var(--card-accent, #1498EE);
+            padding-left: 18px;
+            box-shadow: none;
+            background: rgba(255,255,255,0.72);
+        }
+        .style-panel .insta-info-panel {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            min-height: 42%;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.56);
+        }
+        .insta-list {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            display: grid;
+            gap: 10px;
+            background: var(--card-panel-bg, #FFFFFF);
+            border-radius: 12px;
+            padding: 18px 20px;
+        }
+        .insta-list-item {
+            display: grid;
+            grid-template-columns: 46px minmax(0, 1fr);
+            gap: 14px;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(40,54,46,0.36);
+        }
+        .insta-list-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .insta-list-badge {
+            width: 46px;
+            height: 46px;
+            border-radius: 8px;
+            background: var(--card-accent, #25A25A);
+            color: #FFFFFF;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--card-accent, #5B62D8);
-            color: var(--card-accent-text, #FFFFFF);
+            font-size: 20px;
+            font-weight: 900;
+        }
+        .insta-list-copy {
+            color: var(--card-copy, #28362E);
+            font-size: 13px;
+            line-height: 1.55;
+            font-weight: 760;
+        }
+        .insta-list-cta {
+            margin-top: 2px;
+            border-radius: 8px;
+            background: #FFF271;
+            color: #0E5E31;
             font-size: 13px;
             font-weight: 900;
-            margin-top: 18px;
-            padding: 0 12px;
+            line-height: 1.2;
+            text-align: center;
+            padding: 11px 12px;
+        }
+        .insta-num {
+            display: none;
         }
         .insta-foot {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0;
-        }
-        .insta-card.is-dark {
-            --card-line: rgba(255,255,255,0.18);
-            --card-chip-bg: rgba(255,255,255,0.12);
-            --card-copy-bg: rgba(255,255,255,0.12);
+            position: absolute;
+            left: 26px;
+            right: 26px;
+            bottom: 28px;
+            display: block;
         }
         .download-card-btn {
             width: 100%;
@@ -887,7 +911,7 @@
             <div class="flow-node">
                 <div class="fn-icon">&#x1F5BC;</div>
                 <div class="fn-label">4장 카드</div>
-                <div class="fn-sub">1080×1350 PNG</div>
+                <div class="fn-sub">1080×1080 PNG</div>
             </div>
             <div class="flow-node">
                 <div class="fn-icon">&#x1F517;</div>
@@ -932,7 +956,7 @@
                     <button class="action-btn" id="generateBtn" type="button">스토리라인 만들기</button>
                     <button class="action-btn secondary" id="downloadAllBtn" type="button">전체 PNG 다운로드</button>
                 </div>
-                <p class="mini-note">다운로드 파일은 카드별 PNG입니다. 크기는 인스타그램 피드 세로형에 맞춘 1080×1350이며, 파일명은 01부터 04까지 정렬됩니다.</p>
+                <p class="mini-note">다운로드 파일은 카드별 PNG입니다. 크기는 인스타그램 카드뉴스 정사각형에 맞춘 1080×1080이며, 파일명은 01부터 04까지 정렬됩니다.</p>
             </aside>
             <section class="preview-panel">
                 <div class="preview-grid" id="previewGrid" aria-live="polite"></div>
@@ -947,20 +971,20 @@
         <p class="card-subtitle">강의 판매 카드뉴스는 예쁜 장표보다 구매 이유가 먼저 필요합니다</p>
         <div class="story-grid">
             <div class="story-card">
-                <strong>1. 후킹: Codex를 개발팀 도구로만 보고 있다면</strong>
-                <p>첫 장은 강의명을 바로 외치지 않습니다. 리더가 가진 오해를 건드려 "내 얘기다"라는 멈춤을 만듭니다.</p>
+                <strong>1. 후킹: 아직도 Codex를 개발자 도구로만 보고 있다면?</strong>
+                <p>첫 장은 강의명을 바로 외치지 않습니다. 리더가 놓치고 있던 관점을 건드려 "이건 내 얘기다"라는 멈춤을 만듭니다.</p>
             </div>
             <div class="story-card">
-                <strong>2. 문제 인식: 지시보다 첫 버전이 빠르다</strong>
-                <p>회의와 설명이 길어지는 리더의 현실을 짚고, Codex가 의사결정 속도를 높이는 도구라는 점을 보여줍니다.</p>
+                <strong>2. 문제 인식: 회의 세 번 할 일을 첫 화면으로 줄인다</strong>
+                <p>설명과 조율이 길어지는 리더의 현실을 짚고, Codex가 의사결정 속도를 앞당기는 도구라는 점을 보여줍니다.</p>
             </div>
             <div class="story-card">
-                <strong>3. 강의 가치: 프롬프트가 아니라 업무 루틴을 배운다</strong>
-                <p>브리프, 제작, 검수, 개선까지 리더가 실제로 써먹는 Codex 운영 방식을 강의의 핵심 가치로 제시합니다.</p>
+                <strong>3. 강의 가치: AI 지식보다 리더의 운영법을 배운다</strong>
+                <p>브리프, 제작, 검수, 다음 지시까지 리더가 실제로 써먹는 Codex 운영 방식을 강의의 핵심 가치로 제시합니다.</p>
             </div>
             <div class="story-card">
-                <strong>4. CTA: 강의에서 첫 프로젝트를 완성한다</strong>
-                <p>마지막 장은 막연한 관심이 아니라 수강 행동으로 닫습니다. "듣는 강의"가 아니라 "완성하는 강의"로 포지셔닝합니다.</p>
+                <strong>4. CTA: 수강 후 달라지는 실행 장면을 약속한다</strong>
+                <p>마지막 장은 막연한 관심이 아니라 강의 상세 확인으로 닫습니다. "듣는 강의"가 아니라 "완성하는 강의"로 포지셔닝합니다.</p>
             </div>
         </div>
         <h3>메시지 기준</h3>
@@ -997,7 +1021,7 @@
 
 필수 요구사항:
 1. Vanilla HTML, CSS, JS만 쓴다.
-2. 외부 이미지 생성 API 없이 canvas로 1080×1350 PNG를 만든다.
+2. 외부 이미지 생성 API 없이 canvas로 1080×1080 PNG를 만든다.
 3. 카드뉴스 문구는 실제 홍보물처럼 간결하고 프로페셔널해야 한다.
 4. 타깃은 대표, 임원, 팀장, 사업개발과 마케팅 리더다.
 5. 강의의 핵심 약속은 개발자가 아니어도 Codex로 랜딩페이지, 제안서, 대시보드, 자동화를 직접 만들고 검수하는 능력을 익히는 것이다.
@@ -1083,30 +1107,15 @@
     var paletteMap = {
         denim: {
             cls: 'denim',
-            themes: [
-                { bg: '#F8F4EE', band: '#ECE8FF', ink: '#14192E', copy: '#1F2937', muted: '#4B5563', accent: '#5B62D8', accentText: '#FFFFFF', chipBg: '#ECE8FF', copyBg: 'rgba(255,255,255,0.72)' },
-                { bg: '#14192E', band: '#263257', ink: '#FFFFFF', copy: '#FFFFFF', muted: '#E6EAFF', accent: '#F2B8A2', accentText: '#14192E', chipBg: 'rgba(255,255,255,0.14)', copyBg: 'rgba(255,255,255,0.16)', dark: true },
-                { bg: '#EEF5F2', band: '#DDECE8', ink: '#17212B', copy: '#1F2937', muted: '#44524D', accent: '#27A6A6', accentText: '#FFFFFF', chipBg: '#DDECE8', copyBg: 'rgba(255,255,255,0.68)' },
-                { bg: '#FFF6F1', band: '#FFE3DB', ink: '#201A1D', copy: '#2F262A', muted: '#6E5158', accent: '#D46A71', accentText: '#FFFFFF', chipBg: '#FFE3DB', copyBg: 'rgba(255,255,255,0.68)' }
-            ]
+            accent: '#1498EE'
         },
         red: {
             cls: 'red',
-            themes: [
-                { bg: '#FFF6F1', band: '#FFE2E0', ink: '#211A20', copy: '#2F262A', muted: '#6E5158', accent: '#D94E67', accentText: '#FFFFFF', chipBg: '#FFE2E0', copyBg: 'rgba(255,255,255,0.70)' },
-                { bg: '#1F1C2B', band: '#3A2538', ink: '#FFFFFF', copy: '#FFFFFF', muted: '#FFE1E6', accent: '#F6C4A8', accentText: '#1F1C2B', chipBg: 'rgba(255,255,255,0.14)', copyBg: 'rgba(255,255,255,0.16)', dark: true },
-                { bg: '#F4F2FF', band: '#E4DEFF', ink: '#171331', copy: '#211D3A', muted: '#554B7C', accent: '#6C63DD', accentText: '#FFFFFF', chipBg: '#E4DEFF', copyBg: 'rgba(255,255,255,0.70)' },
-                { bg: '#F8F4EE', band: '#F3E2D6', ink: '#241F1C', copy: '#2F2924', muted: '#6B5748', accent: '#B8664D', accentText: '#FFFFFF', chipBg: '#F3E2D6', copyBg: 'rgba(255,255,255,0.70)' }
-            ]
+            accent: '#FF7A45'
         },
         resort: {
             cls: 'resort',
-            themes: [
-                { bg: '#F3F8F5', band: '#DDECE8', ink: '#14211F', copy: '#1F2937', muted: '#445A54', accent: '#2F9C8E', accentText: '#FFFFFF', chipBg: '#DDECE8', copyBg: 'rgba(255,255,255,0.68)' },
-                { bg: '#12243A', band: '#1F4352', ink: '#FFFFFF', copy: '#FFFFFF', muted: '#DAF7F3', accent: '#F1C58E', accentText: '#12243A', chipBg: 'rgba(255,255,255,0.14)', copyBg: 'rgba(255,255,255,0.16)', dark: true },
-                { bg: '#FFF7EA', band: '#F7E4C6', ink: '#252018', copy: '#2D281F', muted: '#695842', accent: '#C98639', accentText: '#FFFFFF', chipBg: '#F7E4C6', copyBg: 'rgba(255,255,255,0.68)' },
-                { bg: '#F1F4FF', band: '#DDE5FF', ink: '#12182E', copy: '#1F2937', muted: '#4B5876', accent: '#6073D7', accentText: '#FFFFFF', chipBg: '#DDE5FF', copyBg: 'rgba(255,255,255,0.70)' }
-            ]
+            accent: '#25A25A'
         }
     };
 
@@ -1129,52 +1138,58 @@
         var topic = cleanText(topicInput.value, '비즈니스 리더를 위한 Codex 완전 정복');
         var target = cleanText(targetInput.value, '대표, 임원, 팀장, 사업개발과 마케팅 리더');
         var promise = cleanText(brandInput.value, '개발자가 아니어도 Codex로 랜딩페이지, 제안서, 대시보드, 자동화를 직접 만들고 검수하는 리더용 실전 강의');
-        var courseLabel = topic.length > 28 ? 'Codex 완전 정복' : topic;
-        var audience = target.length > 24 ? '대표와 팀 리더' : target;
-        var promiseLabel = promise.length > 42 ? '랜딩페이지, 제안서, 대시보드, 자동화까지 직접 만들고 검수하는 법을 배웁니다.' : promise;
+        var courseLabel = topic.length > 18 ? 'Codex 완전 정복' : topic;
+        var audience = target.length > 20 ? '대표와 팀 리더' : target;
+        var promiseLabel = promise.length > 42 ? '랜딩페이지, 제안서, 대시보드, 자동화까지. 직접 만들고 검수하는 기준을 실습으로 익힙니다.' : promise;
         return [
             {
-                kicker: '01 | LEADER SHIFT',
-                title: 'Codex를 개발팀 도구로만 보고 있다면',
-                copy: audience + '에게 필요한 건 기술 설명보다 실행 속도를 바꾸는 감각입니다.',
-                art: 'stack'
+                style: 'dark',
+                kicker: '리더라면 꼭 봐야 할 질문',
+                titleTop: '아직도 Codex를',
+                title: '개발자 도구로만\n보고 있다면?',
+                copy: audience + '에게 필요한 건 AI 지식보다 실행 속도를 설계하는 감각입니다.'
             },
             {
-                kicker: '02 | WHY NOW',
-                title: '회의로 설명하던 일을 화면으로 보여주세요',
-                copy: '랜딩페이지, 제안서, 대시보드까지. 말보다 빠른 첫 버전이 의사결정을 바꿉니다.',
-                art: 'target'
+                style: 'light',
+                kicker: '리더의 실행 속도 #01',
+                titleTop: '회의 세 번 할 일',
+                title: '첫 화면 하나로\n줄일 수 있습니다',
+                copy: '말로 설명하는 시간을 줄이고, 랜딩페이지·제안서·대시보드 초안으로 의사결정을 앞당깁니다.'
             },
             {
-                kicker: '03 | COURSE VALUE',
-                title: '프롬프트가 아니라 리더의 업무 루틴을 배웁니다',
-                copy: promiseLabel,
-                art: 'brief'
+                style: 'panel',
+                kicker: '강의에서 배우는 것',
+                titleTop: 'AI 지식이 아니라',
+                title: '리더의 운영법',
+                copy: promiseLabel
             },
             {
-                kicker: '04 | ENROLL',
-                title: courseLabel,
-                copy: '강의에서 첫 프로젝트를 완성해보세요. 리더의 AI 활용은 결과물에서 증명됩니다.',
-                art: 'cta'
+                style: 'list',
+                kicker: '비즈니스 리더 전용 강의',
+                titleTop: courseLabel,
+                title: '수강 후,\n이렇게 달라집니다',
+                list: [
+                    { badge: '1', text: '좋은 브리프를 쓰고 Codex에게 정확히 맡깁니다' },
+                    { badge: '2', text: '첫 버전을 만들고 화면에서 바로 검수합니다' },
+                    { badge: '3', text: '내 업무에 쓸 결과물 하나를 완성합니다' }
+                ],
+                cta: '지금 커리큘럼 확인하기'
             }
         ];
     }
 
-    function getTheme(palette, index) {
-        var themes = palette.themes || paletteMap.denim.themes;
-        return themes[index % themes.length];
-    }
-
-    function applyThemeVars(element, theme) {
-        element.style.setProperty('--card-bg', theme.bg);
-        element.style.setProperty('--card-band', theme.band);
-        element.style.setProperty('--card-ink', theme.ink);
-        element.style.setProperty('--card-copy', theme.copy);
-        element.style.setProperty('--card-muted', theme.muted);
-        element.style.setProperty('--card-accent', theme.accent);
-        element.style.setProperty('--card-accent-text', theme.accentText);
-        element.style.setProperty('--card-chip-bg', theme.chipBg);
-        element.style.setProperty('--card-copy-bg', theme.copyBg || (theme.dark ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.68)'));
+    function appendTitle(titleEl, card) {
+        if (card.titleTop) {
+            var top = document.createElement('span');
+            top.className = 'highlight';
+            top.textContent = card.titleTop;
+            titleEl.appendChild(top);
+            titleEl.appendChild(document.createElement('br'));
+        }
+        String(card.title || '').split('\n').forEach(function(line, index) {
+            if (index) titleEl.appendChild(document.createElement('br'));
+            titleEl.appendChild(document.createTextNode(line));
+        });
     }
 
     function renderPreviews() {
@@ -1182,13 +1197,17 @@
         var palette = paletteMap[paletteInput.value] || paletteMap.denim;
         previewGrid.innerHTML = '';
         cards.forEach(function(card, index) {
-            var theme = getTheme(palette, index);
             var cell = document.createElement('div');
             cell.className = 'card-cell';
             var article = document.createElement('article');
-            article.className = 'insta-card ' + palette.cls + (theme.dark ? ' is-dark' : '');
-            applyThemeVars(article, theme);
+            article.className = 'insta-card style-' + card.style + ' ' + palette.cls;
+            if (card.style === 'light') {
+                article.style.setProperty('--card-accent', palette.accent);
+            }
 
+            var bg = document.createElement('div');
+            bg.className = 'insta-bg-art';
+            article.appendChild(bg);
             var top = document.createElement('div');
             top.className = 'insta-head';
             var kicker = document.createElement('div');
@@ -1196,26 +1215,44 @@
             kicker.textContent = card.kicker;
             var title = document.createElement('div');
             title.className = 'insta-title';
-            title.textContent = card.title;
+            appendTitle(title, card);
             top.appendChild(kicker);
             top.appendChild(title);
-
-            var bottom = document.createElement('div');
-            bottom.className = 'insta-foot';
-            var copy = document.createElement('p');
-            copy.className = 'insta-copy';
-            copy.textContent = card.copy;
-            var num = document.createElement('div');
-            num.className = 'insta-num';
-            num.textContent = String(index + 1).padStart(2, '0');
-            bottom.appendChild(copy);
-            bottom.appendChild(num);
-
             article.appendChild(top);
-            article.appendChild(bottom);
-            var art = document.createElement('div');
-            art.className = 'insta-art art-' + (card.art || 'stack');
-            article.appendChild(art);
+
+            if (card.list) {
+                var list = document.createElement('div');
+                list.className = 'insta-list';
+                card.list.forEach(function(item) {
+                    var row = document.createElement('div');
+                    row.className = 'insta-list-item';
+                    var badge = document.createElement('div');
+                    badge.className = 'insta-list-badge';
+                    badge.textContent = item.badge;
+                    var text = document.createElement('div');
+                    text.className = 'insta-list-copy';
+                    text.textContent = item.text;
+                    row.appendChild(badge);
+                    row.appendChild(text);
+                    list.appendChild(row);
+                });
+                if (card.cta) {
+                    var cta = document.createElement('div');
+                    cta.className = 'insta-list-cta';
+                    cta.textContent = card.cta;
+                    list.appendChild(cta);
+                }
+                article.appendChild(list);
+            } else {
+                var panel = document.createElement('div');
+                panel.className = card.style === 'dark' ? 'insta-foot' : 'insta-info-panel';
+                var copy = document.createElement('p');
+                copy.className = 'insta-copy';
+                copy.textContent = card.copy;
+                panel.appendChild(copy);
+                article.appendChild(panel);
+            }
+
             cell.appendChild(article);
 
             var btn = document.createElement('button');
@@ -1283,165 +1320,189 @@
         ctx.closePath();
     }
 
-    function drawCardArt(ctx, theme, type) {
+    function drawKicker(ctx, card, x, y, color, fill) {
         ctx.save();
-        ctx.globalAlpha = theme.dark ? 0.32 : 0.22;
-        ctx.fillStyle = theme.accent;
-        ctx.strokeStyle = theme.accent;
-        ctx.lineWidth = 22;
-        if (type === 'target') {
-            ctx.beginPath();
-            ctx.arc(810, 900, 122, 0, Math.PI * 2);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.arc(810, 900, 68, 0, Math.PI * 2);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.arc(810, 900, 24, 0, Math.PI * 2);
-            ctx.fill();
-        } else if (type === 'brief') {
-            roundRect(ctx, 700, 815, 250, 190, 26);
-            ctx.fill();
-            ctx.globalAlpha = theme.dark ? 0.58 : 0.44;
-            ctx.fillStyle = theme.bg;
-            roundRect(ctx, 736, 864, 168, 18, 9);
-            ctx.fill();
-            roundRect(ctx, 736, 912, 126, 18, 9);
-            ctx.fill();
-            roundRect(ctx, 736, 960, 184, 18, 9);
-            ctx.fill();
-        } else if (type === 'window') {
-            roundRect(ctx, 692, 820, 270, 180, 28);
-            ctx.fill();
-            ctx.globalAlpha = theme.dark ? 0.54 : 0.42;
-            ctx.fillStyle = theme.bg;
-            roundRect(ctx, 692, 820, 270, 48, 28);
-            ctx.fill();
-            ctx.fillStyle = theme.accent;
-            ctx.globalAlpha = theme.dark ? 0.40 : 0.28;
-            roundRect(ctx, 730, 904, 92, 28, 14);
-            ctx.fill();
-            roundRect(ctx, 730, 950, 164, 18, 9);
-            ctx.fill();
-        } else if (type === 'polish') {
-            ctx.translate(820, 910);
-            ctx.rotate(Math.PI / 4);
-            roundRect(ctx, -88, -88, 176, 176, 38);
-            ctx.fill();
-            ctx.globalAlpha = theme.dark ? 0.44 : 0.30;
-            ctx.fillStyle = theme.bg;
-            roundRect(ctx, -48, -48, 96, 96, 26);
-            ctx.fill();
-        } else if (type === 'system') {
-            ctx.beginPath();
-            ctx.arc(820, 910, 116, 0.15, Math.PI * 1.35);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.arc(820, 910, 68, Math.PI * 1.55, Math.PI * 2.76);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.arc(820, 910, 24, 0, Math.PI * 2);
-            ctx.fill();
-        } else if (type === 'cta') {
-            roundRect(ctx, 686, 858, 288, 132, 66);
-            ctx.fill();
-            ctx.globalAlpha = theme.dark ? 0.72 : 0.52;
-            ctx.fillStyle = theme.accentText;
-            ctx.beginPath();
-            ctx.moveTo(806, 892);
-            ctx.lineTo(806, 956);
-            ctx.lineTo(872, 924);
-            ctx.closePath();
-            ctx.fill();
-        } else {
-            ctx.translate(810, 910);
-            ctx.rotate(-0.16);
-            roundRect(ctx, -90, -110, 150, 190, 28);
-            ctx.fill();
-            ctx.rotate(0.34);
-            ctx.globalAlpha = theme.dark ? 0.25 : 0.18;
-            roundRect(ctx, -38, -96, 150, 190, 28);
-            ctx.fill();
+        ctx.textAlign = 'left';
+        ctx.font = '900 26px Pretendard, Arial, sans-serif';
+        if (fill) {
+            ctx.fillStyle = fill;
+            ctx.fillRect(x - 8, y - 30, ctx.measureText(card.kicker).width + 26, 42);
         }
+        ctx.fillStyle = color;
+        ctx.fillText(card.kicker, x, y);
+        ctx.restore();
+    }
+
+    function drawTitleBlock(ctx, card, x, y, width, size, lineHeight, color, highlight) {
+        ctx.font = '900 ' + size + 'px Pretendard, Arial, sans-serif';
+        ctx.fillStyle = highlight;
+        var cursor = drawWrapped(ctx, card.titleTop || '', x, y, width, lineHeight, 2);
+        ctx.fillStyle = color;
+        String(card.title || '').split('\n').forEach(function(line) {
+            cursor = drawWrapped(ctx, line, x, cursor, width, lineHeight, 2);
+        });
+        return cursor;
+    }
+
+    function drawHexPattern(ctx) {
+        ctx.save();
+        ctx.strokeStyle = 'rgba(54,151,211,0.18)';
+        ctx.lineWidth = 3;
+        for (var y = 20; y < 1080; y += 92) {
+            for (var x = -20; x < 1080; x += 108) {
+                ctx.beginPath();
+                for (var i = 0; i < 6; i++) {
+                    var a = Math.PI / 6 + i * Math.PI / 3;
+                    var px = x + Math.cos(a) * 44;
+                    var py = y + Math.sin(a) * 44;
+                    if (i === 0) ctx.moveTo(px, py);
+                    else ctx.lineTo(px, py);
+                }
+                ctx.closePath();
+                ctx.stroke();
+            }
+        }
+        ctx.restore();
+    }
+
+    function drawMoleculePattern(ctx) {
+        ctx.save();
+        ctx.strokeStyle = 'rgba(102,218,255,0.30)';
+        ctx.fillStyle = 'rgba(129,229,255,0.34)';
+        ctx.lineWidth = 5;
+        var pts = [[760,170,34],[900,290,54],[760,420,42],[950,570,50],[690,700,35]];
+        pts.forEach(function(p, i) {
+            ctx.beginPath();
+            ctx.arc(p[0], p[1], p[2], 0, Math.PI * 2);
+            ctx.fill();
+            if (i) {
+                ctx.beginPath();
+                ctx.moveTo(pts[i - 1][0], pts[i - 1][1]);
+                ctx.lineTo(p[0], p[1]);
+                ctx.stroke();
+            }
+        });
         ctx.restore();
     }
 
     function makeCanvas(index) {
         var card = cards[index];
         var palette = paletteMap[paletteInput.value] || paletteMap.denim;
-        var theme = getTheme(palette, index);
         var canvas = document.createElement('canvas');
         canvas.width = 1080;
-        canvas.height = 1350;
+        canvas.height = 1080;
         var ctx = canvas.getContext('2d');
 
-        ctx.fillStyle = theme.bg;
-        ctx.fillRect(0, 0, 1080, 1350);
+        if (card.style === 'dark') {
+            var dark = ctx.createLinearGradient(0, 0, 1080, 1080);
+            dark.addColorStop(0, '#10294C');
+            dark.addColorStop(0.55, '#183A68');
+            dark.addColorStop(1, '#10213E');
+            ctx.fillStyle = dark;
+            ctx.fillRect(0, 0, 1080, 1080);
+            drawMoleculePattern(ctx);
+            drawKicker(ctx, card, 96, 170, '#40E6F2');
+            drawTitleBlock(ctx, card, 96, 280, 780, 82, 96, '#FFFFFF', '#40E6F2');
+            ctx.fillStyle = 'rgba(255,255,255,0.92)';
+            ctx.font = '800 38px Pretendard, Arial, sans-serif';
+            drawWrapped(ctx, card.copy, 96, 760, 780, 58, 4);
+            return canvas;
+        }
 
-        ctx.fillStyle = theme.band;
+        if (card.style === 'light') {
+            var light = ctx.createLinearGradient(0, 0, 0, 1080);
+            light.addColorStop(0, '#DDF4FF');
+            light.addColorStop(0.72, '#F8FCFF');
+            light.addColorStop(1, '#FFFFFF');
+            ctx.fillStyle = light;
+            ctx.fillRect(0, 0, 1080, 1080);
+            drawHexPattern(ctx);
+            ctx.strokeStyle = '#07385F';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(36, 36, 1008, 1008);
+            drawKicker(ctx, card, 102, 132, '#FFFFFF', palette.accent);
+            ctx.textAlign = 'left';
+            drawTitleBlock(ctx, card, 226, 265, 650, 78, 92, '#07385F', '#1498EE');
+            ctx.fillStyle = palette.accent;
+            ctx.fillRect(132, 708, 6, 164);
+            ctx.fillStyle = '#16324F';
+            ctx.font = '800 42px Pretendard, Arial, sans-serif';
+            drawWrapped(ctx, card.copy, 180, 738, 760, 66, 4);
+            return canvas;
+        }
+
+        if (card.style === 'panel') {
+            var blue = ctx.createLinearGradient(0, 0, 0, 1080);
+            blue.addColorStop(0, '#284F9F');
+            blue.addColorStop(1, '#5F8ED6');
+            ctx.fillStyle = blue;
+            ctx.fillRect(0, 0, 1080, 1080);
+            drawKicker(ctx, card, 120, 122, '#FFFFFF', '#FF7A45');
+            ctx.textAlign = 'left';
+            drawTitleBlock(ctx, card, 150, 230, 780, 76, 90, '#FFFFFF', '#FFE348');
+            ctx.fillStyle = '#FFFFFF';
+            roundRect(ctx, 72, 430, 936, 520, 14);
+            ctx.fill();
+            ctx.fillStyle = '#184069';
+            ctx.font = '800 42px Pretendard, Arial, sans-serif';
+            drawWrapped(ctx, card.copy, 122, 515, 836, 66, 5);
+            ctx.fillStyle = '#FFE348';
+            ctx.fillRect(122, 855, 252, 46);
+            ctx.fillStyle = '#FFCCB6';
+            ctx.fillRect(392, 855, 252, 46);
+            ctx.fillStyle = '#184069';
+            ctx.font = '900 30px Pretendard, Arial, sans-serif';
+            ctx.fillText('브리프 작성', 144, 888);
+            ctx.fillText('결과물 검수', 414, 888);
+            return canvas;
+        }
+
+        ctx.fillStyle = '#A7D840';
+        ctx.fillRect(0, 0, 1080, 1080);
+        ctx.fillStyle = 'rgba(255,255,255,0.26)';
         ctx.beginPath();
-        ctx.moveTo(1080, 760);
-        ctx.lineTo(1080, 1350);
-        ctx.lineTo(470, 1350);
+        ctx.moveTo(760, 0);
+        ctx.lineTo(1080, 0);
+        ctx.lineTo(1080, 360);
         ctx.closePath();
         ctx.fill();
-
-        ctx.fillStyle = theme.accent;
-        roundRect(ctx, 82, 88, 92, 14, 7);
+        drawKicker(ctx, card, 78, 122, '#FFFFFF', '#25A25A');
+        drawTitleBlock(ctx, card, 78, 215, 900, 68, 82, '#FFFFFF', '#106A37');
+        ctx.fillStyle = '#FFFFFF';
+        roundRect(ctx, 54, 420, 972, 560, 22);
         ctx.fill();
-
-        ctx.strokeStyle = theme.dark ? 'rgba(255,255,255,0.20)' : 'rgba(20,25,46,0.13)';
-        ctx.lineWidth = 3;
-        roundRect(ctx, 54, 54, 972, 1242, 38);
-        ctx.stroke();
-
-        drawCardArt(ctx, theme, card.art);
-
-        ctx.fillStyle = theme.chipBg;
-        roundRect(ctx, 82, 132, 330, 62, 31);
-        ctx.fill();
-        ctx.fillStyle = theme.muted;
-        ctx.font = '800 28px Pretendard, Arial, sans-serif';
-        ctx.fillText(card.kicker, 112, 172);
-
-        ctx.fillStyle = theme.accent;
-        roundRect(ctx, 840, 118, 130, 82, 41);
-        ctx.fill();
-        ctx.fillStyle = theme.accentText;
-        ctx.font = '900 36px Pretendard, Arial, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(String(index + 1).padStart(2, '0'), 905, 170);
-        ctx.textAlign = 'left';
-
-        ctx.fillStyle = theme.ink;
-        ctx.font = '900 86px Pretendard, Arial, sans-serif';
-        var titleEnd = drawWrapped(ctx, card.title, 84, 392, 860, 92, 4);
-
-        ctx.fillStyle = theme.copy;
-        var copyY = Math.max(770, titleEnd + 78);
-        var copyBg = theme.copyBg || (theme.dark ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.68)');
-        ctx.fillStyle = copyBg;
-        roundRect(ctx, 72, copyY - 48, 884, 184, 26);
-        ctx.fill();
-        ctx.fillStyle = theme.copy;
-        ctx.font = '760 40px Pretendard, Arial, sans-serif';
-        drawWrapped(ctx, card.copy, 98, copyY, 830, 60, 3);
-
-        ctx.fillStyle = theme.accent;
-        roundRect(ctx, 82, 1118, 246, 76, 38);
-        ctx.fill();
-        ctx.fillStyle = theme.accentText;
-        ctx.font = '850 30px Pretendard, Arial, sans-serif';
-        ctx.fillText(index === cards.length - 1 ? 'START NOW' : 'SAVE FLOW', 112, 1166);
-
-        ctx.fillStyle = theme.muted;
-        ctx.font = '850 28px Pretendard, Arial, sans-serif';
-        ctx.fillText('AI ROASTING CODEX GUIDE', 82, 1254);
-
-        ctx.fillStyle = theme.accent;
-        ctx.globalAlpha = 0.82;
-        ctx.fillRect(0, 1328, 1080, 22);
-        ctx.globalAlpha = 1;
+        (card.list || []).forEach(function(item, i) {
+            var y = 500 + i * 128;
+            ctx.fillStyle = '#25A25A';
+            roundRect(ctx, 106, y - 44, 78, 78, 12);
+            ctx.fill();
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '900 38px Pretendard, Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(item.badge, 145, y + 4);
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#28362E';
+            ctx.font = '800 33px Pretendard, Arial, sans-serif';
+            drawWrapped(ctx, item.text, 224, y - 22, 740, 48, 2);
+            if (i < 2) {
+                ctx.strokeStyle = 'rgba(40,54,46,0.32)';
+                ctx.setLineDash([8, 8]);
+                ctx.beginPath();
+                ctx.moveTo(106, y + 64);
+                ctx.lineTo(974, y + 64);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+        });
+        if (card.cta) {
+            ctx.fillStyle = '#FFF271';
+            roundRect(ctx, 106, 870, 868, 62, 14);
+            ctx.fill();
+            ctx.fillStyle = '#0E5E31';
+            ctx.font = '900 34px Pretendard, Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(card.cta, 540, 911);
+        }
         return canvas;
     }
 

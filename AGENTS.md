@@ -80,7 +80,7 @@
 | `google-sheets-dashboard.html` | 12분 | 중급 | 6개 | Codex 블루 바이올렛 액센트 카드 |
 | `instagram-card-news.html` | 15분 | 중급 | 6개 | 카드뉴스 스토리라인과 1080×1350 PNG 다운로드 |
 | `stock-messenger.html` | 15분 | 고급 | 6개 | Codex 블루 바이올렛 액센트 카드 |
-| `korean-law-mcp.html` | 10분 | 중급 | 6개 | Claude Desktop Customize 커넥터 추가. 법제처 Open API |
+| `korean-law-mcp.html` | 10분 | 중급 | 6개 | Codex `config.toml`에 한국 법령 MCP 서버 등록. 법제처 Open API |
 | `playmcp-kakao.html` | 12분 | 중급 | 6개 | Codex와 Kakao PlayMCP로 카카오톡 나와의 채팅방 연결 |
 | `harness-book.html` | 20분 | 고급 | 6개 | 책쓰기 실전 |
 

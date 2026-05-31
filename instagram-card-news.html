@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://airosting.github.io/codex_guide/instagram-card-news.html">
-    <meta property="og:title" content="AI ROASTING 홍보 카드뉴스 만들기 | AI ROASTING">
-    <meta property="og:description" content="AI ROASTING Codex 가이드를 실제로 홍보하는 7장 인스타그램 카드뉴스를 기획하고, 1080×1350 PNG로 내려받는 실전 제작 과정.">
+    <meta property="og:title" content="Codex 강의 홍보 카드뉴스 만들기 | AI ROASTING">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복 강의를 실제로 판매하는 4장 인스타그램 카드뉴스를 기획하고, 1080×1350 PNG로 내려받는 실전 제작 과정.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <meta property="og:url" content="https://airosting.github.io/codex_guide/instagram-card-news.html">
     <meta name="twitter:card" content="summary_large_image">
-    <title>AI ROASTING 홍보 카드뉴스 만들기 | AI ROASTING</title>
-    <meta name="description" content="30대 여성 실무자 감성에 맞춘 AI ROASTING 홍보 카드뉴스 7장을 진단, 5단계, CTA 흐름으로 제작하는 Codex 실전 예제.">
+    <title>Codex 강의 홍보 카드뉴스 만들기 | AI ROASTING</title>
+    <meta name="description" content="비즈니스 리더를 위한 Codex 완전 정복 강의를 판매하는 4장 카드뉴스를 후킹, 문제 인식, 강의 가치, CTA 흐름으로 제작하는 Codex 실전 예제.">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -457,6 +457,142 @@
             background: var(--card-accent, #5B62D8);
             opacity: 0.92;
         }
+        .insta-card .insta-art {
+            position: absolute;
+            right: 20px;
+            bottom: 78px;
+            width: 180px;
+            height: 180px;
+            z-index: 0;
+            opacity: 0.42;
+            overflow: hidden;
+        }
+        .insta-art::before,
+        .insta-art::after {
+            content: '';
+            position: absolute;
+            border-radius: 14px;
+        }
+        .art-stack::before {
+            width: 78px;
+            height: 96px;
+            right: 14px;
+            bottom: 2px;
+            background: var(--card-chip-bg, #ECE8FF);
+            transform: rotate(7deg);
+        }
+        .art-stack::after {
+            width: 74px;
+            height: 88px;
+            right: 34px;
+            bottom: 18px;
+            background: var(--card-accent, #5B62D8);
+            opacity: 0.88;
+            transform: rotate(-8deg);
+        }
+        .art-target::before {
+            width: 102px;
+            height: 102px;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 16px solid var(--card-accent, #5B62D8);
+            background: transparent;
+        }
+        .art-target::after {
+            width: 28px;
+            height: 28px;
+            right: 37px;
+            bottom: 37px;
+            border-radius: 50%;
+            background: var(--card-accent, #5B62D8);
+        }
+        .art-brief::before {
+            width: 106px;
+            height: 78px;
+            right: 0;
+            bottom: 16px;
+            background: var(--card-chip-bg, #DDECE8);
+            border-radius: 12px;
+        }
+        .art-brief::after {
+            width: 64px;
+            height: 8px;
+            right: 22px;
+            bottom: 64px;
+            background: var(--card-accent, #27A6A6);
+            box-shadow: 0 18px 0 var(--card-accent, #27A6A6), 0 36px 0 var(--card-accent, #27A6A6);
+        }
+        .art-window::before {
+            width: 112px;
+            height: 82px;
+            right: 0;
+            bottom: 10px;
+            background: var(--card-chip-bg, #FFE3DB);
+        }
+        .art-window::after {
+            width: 112px;
+            height: 18px;
+            right: 0;
+            bottom: 74px;
+            background: var(--card-accent, #D46A71);
+        }
+        .art-polish::before {
+            width: 92px;
+            height: 92px;
+            right: 10px;
+            bottom: 10px;
+            background: var(--card-accent, #5B62D8);
+            border-radius: 28px;
+            transform: rotate(45deg);
+        }
+        .art-polish::after {
+            width: 68px;
+            height: 68px;
+            right: 22px;
+            bottom: 22px;
+            background: var(--card-bg, #F8F4EE);
+            border-radius: 22px;
+            transform: rotate(45deg);
+        }
+        .art-system::before {
+            width: 92px;
+            height: 92px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at center, var(--card-bg, #F8F4EE) 0 24px, transparent 25px),
+                conic-gradient(var(--card-accent, #5B62D8) 0 32%, transparent 32% 43%, var(--card-accent, #5B62D8) 43% 68%, transparent 68% 78%, var(--card-accent, #5B62D8) 78% 100%);
+        }
+        .art-system::after {
+            width: 28px;
+            height: 28px;
+            right: 42px;
+            bottom: 42px;
+            border-radius: 50%;
+            background: var(--card-accent, #5B62D8);
+        }
+        .art-cta::before {
+            width: 112px;
+            height: 64px;
+            right: 0;
+            bottom: 30px;
+            background: var(--card-accent, #5B62D8);
+            border-radius: 999px;
+        }
+        .art-cta::after {
+            width: 0;
+            height: 0;
+            right: 18px;
+            bottom: 45px;
+            border-top: 17px solid transparent;
+            border-bottom: 17px solid transparent;
+            border-left: 26px solid var(--card-accent-text, #FFFFFF);
+            border-radius: 4px;
+            background: transparent;
+            box-shadow: none;
+        }
         .insta-card.denim {
         }
         .insta-card.red {
@@ -496,10 +632,14 @@
         .insta-copy {
             color: var(--card-copy, #4B5563);
             font-size: 13px;
-            font-weight: 650;
+            font-weight: 760;
             line-height: 1.62;
             letter-spacing: 0;
             overflow-wrap: anywhere;
+            background: var(--card-copy-bg, rgba(255,255,255,0.58));
+            border-radius: 12px;
+            padding: 10px 12px;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.34);
         }
         .insta-num {
             width: auto;
@@ -525,6 +665,7 @@
         .insta-card.is-dark {
             --card-line: rgba(255,255,255,0.18);
             --card-chip-bg: rgba(255,255,255,0.12);
+            --card-copy-bg: rgba(255,255,255,0.12);
         }
         .download-card-btn {
             width: 100%;
@@ -698,8 +839,8 @@
         <source src="assets/media/hero-bg.mp4" type="video/mp4">
     </video>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
-    <h1>AI ROASTING 홍보 카드뉴스 만들기</h1>
-    <p>이 사이트를 실제로 홍보한다는 관점에서, 진단부터 5단계 실행법과 CTA까지 7장짜리 인스타그램 카드뉴스를 완성하는 실전 워크플로우</p>
+    <h1>Codex 강의 홍보 카드뉴스 만들기</h1>
+    <p>비즈니스 리더를 위한 Codex 완전 정복 강의를 실제로 판매한다는 관점에서, 후킹부터 강의 가치와 CTA까지 4장짜리 인스타그램 카드뉴스를 완성하는 실전 워크플로우</p>
     <div class="ex-tabs">
         <span class="ex-tab active" id="extab-basic" onclick="switchExampleTab('basic')">기본 예제</span>
         <span class="ex-tab" id="extab-mcp" onclick="switchExampleTab('mcp')">MCP 연결</span>
@@ -718,7 +859,7 @@
 
 <nav class="sub-menu" id="subMenu">
     <a href="#intro" class="active" data-sec="intro"><span class="sm-num">0</span><span class="sm-title">진단</span><span class="sm-sub">캠페인 목표</span></a>
-    <a href="#demo" data-sec="demo"><span class="sm-num">1</span><span class="sm-title">카드뉴스</span><span class="sm-sub">7장 생성</span></a>
+    <a href="#demo" data-sec="demo"><span class="sm-num">1</span><span class="sm-title">카드뉴스</span><span class="sm-sub">4장 생성</span></a>
     <a href="#story" data-sec="story"><span class="sm-num">2</span><span class="sm-title">구성</span><span class="sm-sub">진단→CTA</span></a>
     <a href="#prompt" data-sec="prompt"><span class="sm-num">3</span><span class="sm-title">프롬프트</span><span class="sm-sub">Codex 요청</span></a>
     <a href="#build" data-sec="build"><span class="sm-num">4</span><span class="sm-title">제작</span><span class="sm-sub">카피와 톤</span></a>
@@ -729,55 +870,55 @@
     <div class="content-section" id="intro"></div>
     <div class="step-divider"><span class="step-badge">INTRO</span></div>
     <section class="nm-card">
-        <h2>캠페인 진단: 이 사이트를 왜 저장하게 만들까</h2>
-        <p class="card-subtitle">AI ROASTING은 Codex를 읽는 강의가 아니라, 따라 하며 결과물을 완성하는 실전 가이드로 포지셔닝합니다</p>
-        <p>이번 카드뉴스는 이 사이트를 실제로 홍보하는 인스타그램 캠페인입니다. 타깃은 <strong>일과 사이드프로젝트를 동시에 키우는 30대 여성 실무자</strong>. 메시지는 과장된 AI 성공담이 아니라, 바쁜 사람이 오늘 바로 하나를 끝내게 해주는 조용하고 유능한 제작 루틴입니다.</p>
+        <h2>캠페인 진단: 이 강의를 왜 들어야 할까</h2>
+        <p class="card-subtitle">비즈니스 리더를 위한 Codex 완전 정복은 AI 지식 강의가 아니라, 리더가 결과물을 직접 검수하고 지휘하는 실행 강의입니다</p>
+        <p>이번 카드뉴스는 <strong>비즈니스 리더를 위한 Codex 완전 정복 강의</strong>를 실제로 판매하는 인스타그램 캠페인입니다. 타깃은 대표, 임원, 팀장, 사업개발/마케팅 리더처럼 <strong>개발자가 아니어도 실행 속도를 끌어올려야 하는 사람</strong>입니다. 메시지는 "AI를 배워야 한다"가 아니라, "리더가 직접 첫 버전을 만들고 팀의 속도를 바꿀 수 있다"입니다.</p>
         <div class="flow-row">
             <div class="flow-node">
                 <div class="fn-icon">&#x1F50E;</div>
                 <div class="fn-label">진단</div>
-                <div class="fn-sub">AI가 안 끝나는 이유</div>
+                <div class="fn-sub">리더의 오해</div>
             </div>
             <div class="flow-node">
                 <div class="fn-icon">&#x1F4DD;</div>
-                <div class="fn-label">5단계</div>
-                <div class="fn-sub">결과물 제작 흐름</div>
+                <div class="fn-label">4장 흐름</div>
+                <div class="fn-sub">공감에서 행동까지</div>
             </div>
             <div class="flow-node">
                 <div class="fn-icon">&#x1F5BC;</div>
-                <div class="fn-label">7장 카드</div>
+                <div class="fn-label">4장 카드</div>
                 <div class="fn-sub">1080×1350 PNG</div>
             </div>
             <div class="flow-node">
                 <div class="fn-icon">&#x1F517;</div>
                 <div class="fn-label">CTA</div>
-                <div class="fn-sub">사이트 방문 유도</div>
+                <div class="fn-sub">강의 수강 유도</div>
             </div>
         </div>
         <div class="tip-box">
             <div class="tip-label">캠페인 톤</div>
-            <p><strong>차분하지만 놓치기 아까운 실전감.</strong> 30대 여성 감성에 맞춰 지나친 테크 과시 대신, 일 잘하는 사람의 책상 위에 놓인 가이드처럼 정리합니다. 첫 장은 호기심을 만들고, 마지막 장은 저장과 방문을 자연스럽게 유도합니다.</p>
+            <p><strong>리더의 언어로 설득하는 실전감.</strong> 지나친 테크 과시 대신, 의사결정과 실행 속도를 높이는 강의라는 점을 또렷하게 보여줍니다. 첫 장은 오해를 깨고, 마지막 장은 강의 수강 행동으로 연결합니다.</p>
         </div>
     </section>
 
     <div class="content-section" id="demo"></div>
     <div class="step-divider"><span class="step-badge">STEP 1</span></div>
     <section class="nm-card">
-        <h2>7장 홍보 카드뉴스 생성 데모</h2>
-        <p class="card-subtitle">진단 1장, 실행 단계 5장, CTA 1장으로 구성된 실제 홍보용 카드뉴스입니다</p>
+        <h2>4장 홍보 카드뉴스 생성 데모</h2>
+        <p class="card-subtitle">후킹, 공감, 실행, CTA로 압축한 실제 홍보용 카드뉴스입니다</p>
         <div class="generator-shell">
             <aside class="control-panel">
                 <div class="field">
-                    <label for="topicInput">홍보할 사이트</label>
-                    <input id="topicInput" type="text" value="AI ROASTING Codex 완전 정복">
+                    <label for="topicInput">홍보할 강의</label>
+                    <input id="topicInput" type="text" value="비즈니스 리더를 위한 Codex 완전 정복">
                 </div>
                 <div class="field">
                     <label for="targetInput">타깃</label>
-                    <input id="targetInput" type="text" value="일과 사이드프로젝트를 동시에 키우는 30대 여성 실무자">
+                    <input id="targetInput" type="text" value="대표, 임원, 팀장, 사업개발과 마케팅 리더">
                 </div>
                 <div class="field">
                     <label for="brandInput">핵심 약속</label>
-                    <textarea id="brandInput">웹사이트, 카드뉴스, 문서, 자동화를 Codex로 끝까지 만들어보는 실전 가이드. 코딩 지식보다 좋은 브리프와 검수 루틴에 집중합니다.</textarea>
+                    <textarea id="brandInput">개발자가 아니어도 Codex로 랜딩페이지, 제안서, 대시보드, 자동화를 직접 만들고 검수하는 리더용 실전 강의입니다.</textarea>
                 </div>
                 <div class="field">
                     <label for="paletteInput">시각 톤</label>
@@ -791,7 +932,7 @@
                     <button class="action-btn" id="generateBtn" type="button">스토리라인 만들기</button>
                     <button class="action-btn secondary" id="downloadAllBtn" type="button">전체 PNG 다운로드</button>
                 </div>
-                <p class="mini-note">다운로드 파일은 카드별 PNG입니다. 크기는 인스타그램 피드 세로형에 맞춘 1080×1350이며, 파일명은 01부터 07까지 정렬됩니다.</p>
+                <p class="mini-note">다운로드 파일은 카드별 PNG입니다. 크기는 인스타그램 피드 세로형에 맞춘 1080×1350이며, 파일명은 01부터 04까지 정렬됩니다.</p>
             </aside>
             <section class="preview-panel">
                 <div class="preview-grid" id="previewGrid" aria-live="polite"></div>
@@ -802,50 +943,38 @@
     <div class="content-section" id="story"></div>
     <div class="step-divider"><span class="step-badge">STEP 2</span></div>
     <section class="nm-card">
-        <h2>진단부터 CTA까지 7장 구조</h2>
-        <p class="card-subtitle">카드뉴스는 예쁜 장표보다 넘길 이유가 먼저 필요합니다</p>
+        <h2>후킹부터 수강 CTA까지 4장 구조</h2>
+        <p class="card-subtitle">강의 판매 카드뉴스는 예쁜 장표보다 구매 이유가 먼저 필요합니다</p>
         <div class="story-grid">
             <div class="story-card">
-                <strong>1. 진단: 왜 AI를 써도 일이 그대로일까?</strong>
-                <p>첫 장은 사이트명을 바로 외치지 않습니다. 타깃이 이미 느끼는 답답함을 질문으로 열어 저장과 다음 장 넘김을 만듭니다.</p>
+                <strong>1. 후킹: Codex를 개발팀 도구로만 보고 있다면</strong>
+                <p>첫 장은 강의명을 바로 외치지 않습니다. 리더가 가진 오해를 건드려 "내 얘기다"라는 멈춤을 만듭니다.</p>
             </div>
             <div class="story-card">
-                <strong>2. STEP 1: 질문보다 결과물을 정한다</strong>
-                <p>대시보드, 카드뉴스, 문서, 자동화처럼 오늘 끝낼 결과물을 먼저 지정하게 합니다. 막연한 AI 활용을 실행 단위로 바꿉니다.</p>
+                <strong>2. 문제 인식: 지시보다 첫 버전이 빠르다</strong>
+                <p>회의와 설명이 길어지는 리더의 현실을 짚고, Codex가 의사결정 속도를 높이는 도구라는 점을 보여줍니다.</p>
             </div>
             <div class="story-card">
-                <strong>3. STEP 2: Codex에게 맥락을 준다</strong>
-                <p>목표, 타깃, 파일, 톤, 제약을 함께 주면 Codex는 단순 답변이 아니라 작업 파트너처럼 움직입니다.</p>
+                <strong>3. 강의 가치: 프롬프트가 아니라 업무 루틴을 배운다</strong>
+                <p>브리프, 제작, 검수, 개선까지 리더가 실제로 써먹는 Codex 운영 방식을 강의의 핵심 가치로 제시합니다.</p>
             </div>
             <div class="story-card">
-                <strong>4. STEP 3: 첫 버전을 만든다</strong>
-                <p>완벽한 프롬프트를 기다리지 않고 HTML, 문서, 카드뉴스 초안을 먼저 만듭니다. 결과물이 있어야 검수가 쉬워집니다.</p>
-            </div>
-            <div class="story-card">
-                <strong>5. STEP 4: 눈으로 확인하며 고친다</strong>
-                <p>브라우저에서 직접 보고 문구, 간격, 모바일 화면을 다듬습니다. 30대 여성 타깃에게는 차분한 신뢰감과 읽기 쉬움이 핵심입니다.</p>
-            </div>
-            <div class="story-card">
-                <strong>6. STEP 5: 내 업무 템플릿으로 남긴다</strong>
-                <p>한 번 만든 결과물을 다음 프로젝트의 출발점으로 남깁니다. AI ROASTING은 이 반복 가능한 제작 감각을 익히게 합니다.</p>
-            </div>
-            <div class="story-card">
-                <strong>7. CTA: 저장하고 사이트에서 따라 한다</strong>
-                <p>마지막 장은 구매 압박보다 낮은 행동을 둡니다. 저장, 링크 방문, 첫 예제 따라 하기로 자연스럽게 전환합니다.</p>
+                <strong>4. CTA: 강의에서 첫 프로젝트를 완성한다</strong>
+                <p>마지막 장은 막연한 관심이 아니라 수강 행동으로 닫습니다. "듣는 강의"가 아니라 "완성하는 강의"로 포지셔닝합니다.</p>
             </div>
         </div>
         <h3>메시지 기준</h3>
-        <p>이 캠페인은 AI ROASTING의 핵심 장점인 <strong>따라 하면 결과물이 남는 실전성</strong>을 전면에 둡니다. 기술 설명은 줄이고, 바쁜 실무자가 오늘 하나를 끝내는 장면을 더 선명하게 보여줍니다.</p>
+        <p>이 캠페인은 강의의 핵심 장점인 <strong>비즈니스 리더가 Codex로 직접 결과물을 만들고 검수하는 능력</strong>을 전면에 둡니다. 기술 설명은 줄이고, 리더의 의사결정과 실행 속도가 바뀌는 장면을 선명하게 보여줍니다.</p>
         <div class="source-grid">
             <div class="source-card">
-                <strong>사이트 약속</strong>
-                <p>비즈니스 리더와 실무자가 Codex로 실제 페이지, 문서, 자동화를 완성하도록 돕습니다.</p>
+                <strong>강의 약속</strong>
+                <p>리더가 Codex로 랜딩페이지, 문서, 대시보드, 자동화를 직접 만들고 검수하도록 돕습니다.</p>
                 <a href="index.html">AI ROASTING 홈 보기</a>
             </div>
             <div class="source-card">
                 <strong>전환 행동</strong>
-                <p>카드뉴스를 저장한 뒤, 예제 페이지 하나를 열고 같은 방식으로 따라 하게 만듭니다.</p>
-                <a href="google-sheets-dashboard.html">다른 실전 예제 보기</a>
+                <p>카드뉴스를 넘긴 뒤 강의 상세 페이지를 열고, 첫 실습을 시작하게 만듭니다.</p>
+                <a href="index.html">강의 상세 보기</a>
             </div>
         </div>
     </section>
@@ -857,21 +986,22 @@
         <p class="card-subtitle">이 요청을 프로젝트 폴더에서 실행하면 같은 흐름의 정적 HTML 카드뉴스 도구를 만들 수 있습니다</p>
         <div class="prompt-box" id="codexPrompt">너는 20년차 마케팅 홍보 캠페인 인스타그램 디자이너이자 프론트엔드 개발자야.
 
-AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 카드뉴스 페이지를 만들어줘.
-디자인 톤은 기존 페이지와 동일하게 유지하고, 내용은 30대 여성 실무자가 저장하고 싶어지는 감성으로 완전히 새로 구성해줘.
+비즈니스 리더를 위한 Codex 완전 정복 강의를 실제로 판매하는 인스타그램 카드뉴스 페이지를 만들어줘.
+디자인 톤은 기존 페이지와 동일하게 유지하고, 내용은 대표, 임원, 팀장, 사업개발/마케팅 리더가 수강하고 싶어지는 메시지로 완전히 새로 구성해줘.
 
-카드뉴스는 총 7장이다.
-1장은 호기심을 자극하는 진단 카드로 시작한다.
-2~6장은 STEP 1부터 STEP 5까지 실행 단계로 구성한다.
-7장은 사이트 방문을 유도하는 CTA 카드로 마무리한다.
+카드뉴스는 총 4장이다.
+1장은 호기심을 자극하는 후킹 카드로 시작한다.
+2장은 리더가 겪는 실행 병목을 짚는다.
+3장은 강의에서 배우는 Codex 업무 루틴을 보여준다.
+4장은 강의 수강과 첫 프로젝트 완성을 유도하는 CTA 카드로 마무리한다.
 
 필수 요구사항:
 1. Vanilla HTML, CSS, JS만 쓴다.
 2. 외부 이미지 생성 API 없이 canvas로 1080×1350 PNG를 만든다.
 3. 카드뉴스 문구는 실제 홍보물처럼 간결하고 프로페셔널해야 한다.
-4. 타깃은 일과 사이드프로젝트를 동시에 키우는 30대 여성 실무자다.
-5. 사이트의 핵심 약속은 Codex로 웹사이트, 카드뉴스, 문서, 자동화를 끝까지 만들어보는 실전 가이드다.
-6. 파일명은 instagram-card-01.png부터 instagram-card-07.png까지 정렬한다.
+4. 타깃은 대표, 임원, 팀장, 사업개발과 마케팅 리더다.
+5. 강의의 핵심 약속은 개발자가 아니어도 Codex로 랜딩페이지, 제안서, 대시보드, 자동화를 직접 만들고 검수하는 능력을 익히는 것이다.
+6. 파일명은 instagram-card-01.png부터 instagram-card-04.png까지 정렬한다.
 7. 모바일에서도 입력폼, 미리보기, 버튼 텍스트가 겹치지 않아야 한다.</div>
         <div class="button-row">
             <button class="action-btn" id="copyPromptBtn" type="button">프롬프트 복사</button>
@@ -882,15 +1012,15 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
     <div class="step-divider"><span class="step-badge">STEP 4</span></div>
     <section class="nm-card">
         <h2>카피와 디자인을 잡을 때의 핵심</h2>
-        <p class="card-subtitle">30대 여성 실무자에게 설득되는 홍보물로 보이려면 차분한 확신이 필요합니다</p>
+        <p class="card-subtitle">비즈니스 리더에게 설득되는 홍보물로 보이려면 실행 속도와 결과물의 언어가 필요합니다</p>
         <div class="prompt-grid">
             <div class="prompt-card">
                 <strong>첫 장은 질문으로 멈춰 세웁니다</strong>
-                <p>"AI를 잘 쓰고 싶은데 왜 결과물이 없을까?"처럼 타깃이 이미 가진 생각을 건드립니다. 호기심은 크게, 불안감은 과하게 키우지 않습니다.</p>
+                <p>"Codex를 개발팀 도구로만 보고 있다면"처럼 리더가 가진 오해를 건드립니다. 호기심은 크게, 불안감은 과하게 키우지 않습니다.</p>
             </div>
             <div class="prompt-card">
                 <strong>단계는 업무 언어로 번역합니다</strong>
-                <p>프롬프트, 개발, 배포 같은 말만 나열하지 않습니다. 결과물 정하기, 맥락 주기, 첫 버전 만들기처럼 바로 움직일 수 있는 동사로 바꿉니다.</p>
+                <p>프롬프트, 개발, 배포 같은 말만 나열하지 않습니다. 브리프 쓰기, 첫 버전 만들기, 검수하기처럼 리더의 행동으로 바꿉니다.</p>
             </div>
             <div class="prompt-card">
                 <strong>디자인은 과장보다 밀도를 선택합니다</strong>
@@ -898,7 +1028,7 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
             </div>
             <div class="prompt-card">
                 <strong>CTA는 하나만 남깁니다</strong>
-                <p>좋아요, 댓글, 공유, 구매를 한 번에 요구하지 않습니다. 이 캠페인의 행동은 저장 후 사이트 방문, 그리고 첫 예제 따라 하기입니다.</p>
+                <p>좋아요, 댓글, 공유, 구매를 한 번에 요구하지 않습니다. 이 캠페인의 행동은 강의 상세 확인과 첫 프로젝트 시작입니다.</p>
             </div>
         </div>
     </section>
@@ -911,11 +1041,11 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
         <div class="checklist">
             <div class="check-item">
                 <span>1</span>
-                <p><strong>첫 장이 멈추게 하는가.</strong> 사이트명보다 타깃의 고민이 먼저 읽혀야 합니다.</p>
+                <p><strong>첫 장이 멈추게 하는가.</strong> 강의명보다 리더의 오해와 고민이 먼저 읽혀야 합니다.</p>
             </div>
             <div class="check-item">
                 <span>2</span>
-                <p><strong>7장의 흐름이 선명한가.</strong> 진단, STEP 1~5, CTA 순서가 한눈에 이어져야 합니다.</p>
+                <p><strong>4장의 흐름이 선명한가.</strong> 후킹, 공감, 실행, CTA 순서가 한눈에 이어져야 합니다.</p>
             </div>
             <div class="check-item">
                 <span>3</span>
@@ -923,15 +1053,15 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
             </div>
             <div class="check-item">
                 <span>4</span>
-                <p><strong>저장할 이유가 있는가.</strong> 5단계 구조가 다시 볼 체크리스트처럼 느껴져야 합니다.</p>
+                <p><strong>수강할 이유가 있는가.</strong> 강의를 들으면 무엇을 직접 할 수 있는지 보여줘야 합니다.</p>
             </div>
             <div class="check-item">
                 <span>5</span>
-                <p><strong>CTA가 하나인가.</strong> 저장 후 사이트 방문이라는 행동만 남겨 전환을 분산시키지 않습니다.</p>
+                <p><strong>CTA가 하나인가.</strong> 강의 상세 확인과 수강 행동만 남겨 전환을 분산시키지 않습니다.</p>
             </div>
             <div class="check-item">
                 <span>6</span>
-                <p><strong>파일 순서가 맞는가.</strong> 업로드 전 파일명이 01부터 07까지 이어지는지 확인합니다.</p>
+                <p><strong>파일 순서가 맞는가.</strong> 업로드 전 파일명이 01부터 04까지 이어지는지 확인합니다.</p>
             </div>
         </div>
     </section>
@@ -954,28 +1084,28 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
         denim: {
             cls: 'denim',
             themes: [
-                { bg: '#F8F4EE', band: '#ECE8FF', ink: '#14192E', copy: '#4A5164', muted: '#6B7280', accent: '#5B62D8', accentText: '#FFFFFF', chipBg: '#ECE8FF' },
-                { bg: '#14192E', band: '#263257', ink: '#FFFFFF', copy: '#D7DBF0', muted: '#B8C5FF', accent: '#F2B8A2', accentText: '#14192E', chipBg: 'rgba(255,255,255,0.12)', dark: true },
-                { bg: '#EEF5F2', band: '#DDECE8', ink: '#17212B', copy: '#4E5B63', muted: '#667C75', accent: '#27A6A6', accentText: '#FFFFFF', chipBg: '#DDECE8' },
-                { bg: '#FFF6F1', band: '#FFE3DB', ink: '#201A1D', copy: '#62545B', muted: '#8A6B72', accent: '#D46A71', accentText: '#FFFFFF', chipBg: '#FFE3DB' }
+                { bg: '#F8F4EE', band: '#ECE8FF', ink: '#14192E', copy: '#1F2937', muted: '#4B5563', accent: '#5B62D8', accentText: '#FFFFFF', chipBg: '#ECE8FF', copyBg: 'rgba(255,255,255,0.72)' },
+                { bg: '#14192E', band: '#263257', ink: '#FFFFFF', copy: '#FFFFFF', muted: '#E6EAFF', accent: '#F2B8A2', accentText: '#14192E', chipBg: 'rgba(255,255,255,0.14)', copyBg: 'rgba(255,255,255,0.16)', dark: true },
+                { bg: '#EEF5F2', band: '#DDECE8', ink: '#17212B', copy: '#1F2937', muted: '#44524D', accent: '#27A6A6', accentText: '#FFFFFF', chipBg: '#DDECE8', copyBg: 'rgba(255,255,255,0.68)' },
+                { bg: '#FFF6F1', band: '#FFE3DB', ink: '#201A1D', copy: '#2F262A', muted: '#6E5158', accent: '#D46A71', accentText: '#FFFFFF', chipBg: '#FFE3DB', copyBg: 'rgba(255,255,255,0.68)' }
             ]
         },
         red: {
             cls: 'red',
             themes: [
-                { bg: '#FFF6F1', band: '#FFE2E0', ink: '#211A20', copy: '#60545A', muted: '#8A6871', accent: '#D94E67', accentText: '#FFFFFF', chipBg: '#FFE2E0' },
-                { bg: '#1F1C2B', band: '#3A2538', ink: '#FFFFFF', copy: '#F3D9DD', muted: '#F2B8C4', accent: '#F6C4A8', accentText: '#1F1C2B', chipBg: 'rgba(255,255,255,0.12)', dark: true },
-                { bg: '#F4F2FF', band: '#E4DEFF', ink: '#171331', copy: '#55506C', muted: '#746C98', accent: '#6C63DD', accentText: '#FFFFFF', chipBg: '#E4DEFF' },
-                { bg: '#F8F4EE', band: '#F3E2D6', ink: '#241F1C', copy: '#5D5650', muted: '#8B7565', accent: '#B8664D', accentText: '#FFFFFF', chipBg: '#F3E2D6' }
+                { bg: '#FFF6F1', band: '#FFE2E0', ink: '#211A20', copy: '#2F262A', muted: '#6E5158', accent: '#D94E67', accentText: '#FFFFFF', chipBg: '#FFE2E0', copyBg: 'rgba(255,255,255,0.70)' },
+                { bg: '#1F1C2B', band: '#3A2538', ink: '#FFFFFF', copy: '#FFFFFF', muted: '#FFE1E6', accent: '#F6C4A8', accentText: '#1F1C2B', chipBg: 'rgba(255,255,255,0.14)', copyBg: 'rgba(255,255,255,0.16)', dark: true },
+                { bg: '#F4F2FF', band: '#E4DEFF', ink: '#171331', copy: '#211D3A', muted: '#554B7C', accent: '#6C63DD', accentText: '#FFFFFF', chipBg: '#E4DEFF', copyBg: 'rgba(255,255,255,0.70)' },
+                { bg: '#F8F4EE', band: '#F3E2D6', ink: '#241F1C', copy: '#2F2924', muted: '#6B5748', accent: '#B8664D', accentText: '#FFFFFF', chipBg: '#F3E2D6', copyBg: 'rgba(255,255,255,0.70)' }
             ]
         },
         resort: {
             cls: 'resort',
             themes: [
-                { bg: '#F3F8F5', band: '#DDECE8', ink: '#14211F', copy: '#4D5D59', muted: '#647B73', accent: '#2F9C8E', accentText: '#FFFFFF', chipBg: '#DDECE8' },
-                { bg: '#12243A', band: '#1F4352', ink: '#FFFFFF', copy: '#D8ECEB', muted: '#BDE2DE', accent: '#F1C58E', accentText: '#12243A', chipBg: 'rgba(255,255,255,0.12)', dark: true },
-                { bg: '#FFF7EA', band: '#F7E4C6', ink: '#252018', copy: '#645A4D', muted: '#8A7658', accent: '#C98639', accentText: '#FFFFFF', chipBg: '#F7E4C6' },
-                { bg: '#F1F4FF', band: '#DDE5FF', ink: '#12182E', copy: '#4B5368', muted: '#687493', accent: '#6073D7', accentText: '#FFFFFF', chipBg: '#DDE5FF' }
+                { bg: '#F3F8F5', band: '#DDECE8', ink: '#14211F', copy: '#1F2937', muted: '#445A54', accent: '#2F9C8E', accentText: '#FFFFFF', chipBg: '#DDECE8', copyBg: 'rgba(255,255,255,0.68)' },
+                { bg: '#12243A', band: '#1F4352', ink: '#FFFFFF', copy: '#FFFFFF', muted: '#DAF7F3', accent: '#F1C58E', accentText: '#12243A', chipBg: 'rgba(255,255,255,0.14)', copyBg: 'rgba(255,255,255,0.16)', dark: true },
+                { bg: '#FFF7EA', band: '#F7E4C6', ink: '#252018', copy: '#2D281F', muted: '#695842', accent: '#C98639', accentText: '#FFFFFF', chipBg: '#F7E4C6', copyBg: 'rgba(255,255,255,0.68)' },
+                { bg: '#F1F4FF', band: '#DDE5FF', ink: '#12182E', copy: '#1F2937', muted: '#4B5876', accent: '#6073D7', accentText: '#FFFFFF', chipBg: '#DDE5FF', copyBg: 'rgba(255,255,255,0.70)' }
             ]
         }
     };
@@ -996,47 +1126,36 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
     }
 
     function buildCards() {
-        var topic = cleanText(topicInput.value, 'AI ROASTING Codex 완전 정복');
-        var target = cleanText(targetInput.value, '일과 사이드프로젝트를 동시에 키우는 30대 여성 실무자');
-        var promise = cleanText(brandInput.value, 'Codex로 웹사이트, 카드뉴스, 문서, 자동화를 끝까지 만들어보는 실전 가이드');
-        var siteLabel = topic.length > 24 ? 'AI ROASTING' : topic;
-        var targetLabel = target.length > 22 ? '바쁜 실무자' : target;
-        var promiseLabel = promise.length > 32 ? '오늘 하나가 실제 포트폴리오가 됩니다.' : promise;
+        var topic = cleanText(topicInput.value, '비즈니스 리더를 위한 Codex 완전 정복');
+        var target = cleanText(targetInput.value, '대표, 임원, 팀장, 사업개발과 마케팅 리더');
+        var promise = cleanText(brandInput.value, '개발자가 아니어도 Codex로 랜딩페이지, 제안서, 대시보드, 자동화를 직접 만들고 검수하는 리더용 실전 강의');
+        var courseLabel = topic.length > 28 ? 'Codex 완전 정복' : topic;
+        var audience = target.length > 24 ? '대표와 팀 리더' : target;
+        var promiseLabel = promise.length > 42 ? '랜딩페이지, 제안서, 대시보드, 자동화까지 직접 만들고 검수하는 법을 배웁니다.' : promise;
         return [
             {
-                kicker: '01 | DIAGNOSIS',
-                title: 'AI를 써도 결과물이 안 남는 이유',
-                copy: '답만 받는 흐름에서 벗어나, 브리프-제작-검수까지 한 번에 이어가세요.'
+                kicker: '01 | LEADER SHIFT',
+                title: 'Codex를 개발팀 도구로만 보고 있다면',
+                copy: audience + '에게 필요한 건 기술 설명보다 실행 속도를 바꾸는 감각입니다.',
+                art: 'stack'
             },
             {
-                kicker: '02 | STEP 1',
-                title: '오늘 끝낼 산출물 하나 고르기',
-                copy: targetLabel + '에게 필요한 건 더 많은 강의보다 오늘 끝낼 한 가지입니다.'
+                kicker: '02 | WHY NOW',
+                title: '회의로 설명하던 일을 화면으로 보여주세요',
+                copy: '랜딩페이지, 제안서, 대시보드까지. 말보다 빠른 첫 버전이 의사결정을 바꿉니다.',
+                art: 'target'
             },
             {
-                kicker: '03 | STEP 2',
-                title: '맥락을 브리프처럼 건네기',
-                copy: '목표, 타깃, 톤, 파일, 제약을 함께 주면 작업 속도가 달라집니다.'
+                kicker: '03 | COURSE VALUE',
+                title: '프롬프트가 아니라 리더의 업무 루틴을 배웁니다',
+                copy: promiseLabel,
+                art: 'brief'
             },
             {
-                kicker: '04 | STEP 3',
-                title: '첫 버전은 바로 화면에 꺼내기',
-                copy: '초안이 있어야 판단할 수 있습니다. 먼저 만들고, 화면에서 바로 고칩니다.'
-            },
-            {
-                kicker: '05 | STEP 4',
-                title: '눈으로 보며 다듬기',
-                copy: '모바일 화면, 문구 리듬, 간격을 확인하며 실제 게시물처럼 다듬습니다.'
-            },
-            {
-                kicker: '06 | STEP 5',
-                title: '내 업무 템플릿으로 저장하기',
-                copy: '잘 만든 흐름은 다음 프로젝트의 출발점입니다. 반복 가능한 템플릿으로 남기세요.'
-            },
-            {
-                kicker: '07 | CTA',
-                title: '저장해두고 오늘 하나 완성하기',
-                copy: siteLabel + '에서 첫 예제를 열어보세요. ' + promiseLabel
+                kicker: '04 | ENROLL',
+                title: courseLabel,
+                copy: '강의에서 첫 프로젝트를 완성해보세요. 리더의 AI 활용은 결과물에서 증명됩니다.',
+                art: 'cta'
             }
         ];
     }
@@ -1055,6 +1174,7 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
         element.style.setProperty('--card-accent', theme.accent);
         element.style.setProperty('--card-accent-text', theme.accentText);
         element.style.setProperty('--card-chip-bg', theme.chipBg);
+        element.style.setProperty('--card-copy-bg', theme.copyBg || (theme.dark ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.68)'));
     }
 
     function renderPreviews() {
@@ -1093,6 +1213,9 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
 
             article.appendChild(top);
             article.appendChild(bottom);
+            var art = document.createElement('div');
+            art.className = 'insta-art art-' + (card.art || 'stack');
+            article.appendChild(art);
             cell.appendChild(article);
 
             var btn = document.createElement('button');
@@ -1160,6 +1283,89 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
         ctx.closePath();
     }
 
+    function drawCardArt(ctx, theme, type) {
+        ctx.save();
+        ctx.globalAlpha = theme.dark ? 0.32 : 0.22;
+        ctx.fillStyle = theme.accent;
+        ctx.strokeStyle = theme.accent;
+        ctx.lineWidth = 22;
+        if (type === 'target') {
+            ctx.beginPath();
+            ctx.arc(810, 900, 122, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(810, 900, 68, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(810, 900, 24, 0, Math.PI * 2);
+            ctx.fill();
+        } else if (type === 'brief') {
+            roundRect(ctx, 700, 815, 250, 190, 26);
+            ctx.fill();
+            ctx.globalAlpha = theme.dark ? 0.58 : 0.44;
+            ctx.fillStyle = theme.bg;
+            roundRect(ctx, 736, 864, 168, 18, 9);
+            ctx.fill();
+            roundRect(ctx, 736, 912, 126, 18, 9);
+            ctx.fill();
+            roundRect(ctx, 736, 960, 184, 18, 9);
+            ctx.fill();
+        } else if (type === 'window') {
+            roundRect(ctx, 692, 820, 270, 180, 28);
+            ctx.fill();
+            ctx.globalAlpha = theme.dark ? 0.54 : 0.42;
+            ctx.fillStyle = theme.bg;
+            roundRect(ctx, 692, 820, 270, 48, 28);
+            ctx.fill();
+            ctx.fillStyle = theme.accent;
+            ctx.globalAlpha = theme.dark ? 0.40 : 0.28;
+            roundRect(ctx, 730, 904, 92, 28, 14);
+            ctx.fill();
+            roundRect(ctx, 730, 950, 164, 18, 9);
+            ctx.fill();
+        } else if (type === 'polish') {
+            ctx.translate(820, 910);
+            ctx.rotate(Math.PI / 4);
+            roundRect(ctx, -88, -88, 176, 176, 38);
+            ctx.fill();
+            ctx.globalAlpha = theme.dark ? 0.44 : 0.30;
+            ctx.fillStyle = theme.bg;
+            roundRect(ctx, -48, -48, 96, 96, 26);
+            ctx.fill();
+        } else if (type === 'system') {
+            ctx.beginPath();
+            ctx.arc(820, 910, 116, 0.15, Math.PI * 1.35);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(820, 910, 68, Math.PI * 1.55, Math.PI * 2.76);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(820, 910, 24, 0, Math.PI * 2);
+            ctx.fill();
+        } else if (type === 'cta') {
+            roundRect(ctx, 686, 858, 288, 132, 66);
+            ctx.fill();
+            ctx.globalAlpha = theme.dark ? 0.72 : 0.52;
+            ctx.fillStyle = theme.accentText;
+            ctx.beginPath();
+            ctx.moveTo(806, 892);
+            ctx.lineTo(806, 956);
+            ctx.lineTo(872, 924);
+            ctx.closePath();
+            ctx.fill();
+        } else {
+            ctx.translate(810, 910);
+            ctx.rotate(-0.16);
+            roundRect(ctx, -90, -110, 150, 190, 28);
+            ctx.fill();
+            ctx.rotate(0.34);
+            ctx.globalAlpha = theme.dark ? 0.25 : 0.18;
+            roundRect(ctx, -38, -96, 150, 190, 28);
+            ctx.fill();
+        }
+        ctx.restore();
+    }
+
     function makeCanvas(index) {
         var card = cards[index];
         var palette = paletteMap[paletteInput.value] || paletteMap.denim;
@@ -1189,6 +1395,8 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
         roundRect(ctx, 54, 54, 972, 1242, 38);
         ctx.stroke();
 
+        drawCardArt(ctx, theme, card.art);
+
         ctx.fillStyle = theme.chipBg;
         roundRect(ctx, 82, 132, 330, 62, 31);
         ctx.fill();
@@ -1210,8 +1418,14 @@ AI ROASTING Codex 가이드 사이트를 실제로 홍보하는 인스타그램 
         var titleEnd = drawWrapped(ctx, card.title, 84, 392, 860, 92, 4);
 
         ctx.fillStyle = theme.copy;
-        ctx.font = '650 40px Pretendard, Arial, sans-serif';
-        drawWrapped(ctx, card.copy, 88, Math.max(770, titleEnd + 78), 835, 60, 5);
+        var copyY = Math.max(770, titleEnd + 78);
+        var copyBg = theme.copyBg || (theme.dark ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.68)');
+        ctx.fillStyle = copyBg;
+        roundRect(ctx, 72, copyY - 48, 884, 184, 26);
+        ctx.fill();
+        ctx.fillStyle = theme.copy;
+        ctx.font = '760 40px Pretendard, Arial, sans-serif';
+        drawWrapped(ctx, card.copy, 98, copyY, 830, 60, 3);
 
         ctx.fillStyle = theme.accent;
         roundRect(ctx, 82, 1118, 246, 76, 38);

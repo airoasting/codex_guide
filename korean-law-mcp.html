@@ -14,7 +14,7 @@
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <title>한국 법령 검색 MCP 연결하기 | AI ROASTING</title>
-    <meta name="description" content="Codex의 Customize 메뉴에서 한국 법령 검색 MCP 커넥터를 추가하고, 법령·판례·조례를 실시간으로 찾아보는 실전 가이드. OC 키 발급부터 환각 검증까지.">
+    <meta name="description" content="Codex의 config.toml에 한국 법령 검색 MCP 서버를 등록하고, 법령·판례·조례를 실시간으로 찾아보는 실전 가이드. OC 키 발급부터 환각 검증까지.">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -511,7 +511,7 @@
     </video>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
     <h1>한국 법령 검색 MCP 연결하기</h1>
-    <p>Codex의 Customize 메뉴에서 커스텀 커넥터를 추가해 법령, 판례, 조례를 실시간으로 찾아보는 방법</p>
+    <p>Codex의 config.toml에 MCP 서버를 등록해 법령, 판례, 조례를 실시간으로 찾아보는 방법</p>
     <div class="ex-tabs">
         <span class="ex-tab" id="extab-basic" onclick="switchExampleTab('basic')">기본 예제</span>
         <span class="ex-tab active" id="extab-mcp" onclick="switchExampleTab('mcp')">MCP 연결</span>
@@ -541,12 +541,12 @@
     </a>
     <a href="#step2" data-sec="step2">
         <span class="sm-num">2</span>
-        <span class="sm-title">Customize 열기</span>
-        <span class="sm-sub">설정 진입</span>
+        <span class="sm-title">설정 준비</span>
+        <span class="sm-sub">config.toml</span>
     </a>
     <a href="#step3" data-sec="step3">
         <span class="sm-num">3</span>
-        <span class="sm-title">커넥터 추가</span>
+        <span class="sm-title">서버 등록</span>
         <span class="sm-sub">URL 입력</span>
     </a>
     <a href="#step4" data-sec="step4">
@@ -574,11 +574,11 @@
     <section class="anim-fade-up">
         <div class="nm-card">
             <h2>이 실습에서 만들 것</h2>
-            <p class="card-subtitle">Codex에 한국 법령 검색 MCP를 커넥터로 붙여, 법령과 판례, 조례를 대화 중에 바로 찾아오게 만듭니다</p>
+            <p class="card-subtitle">Codex에 한국 법령 검색 MCP 서버를 등록해, 법령과 판례, 조례를 대화 중에 바로 찾아오게 만듭니다</p>
 
             <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: linear-gradient(135deg, rgba(56,65,61,0.12), rgba(56,65,61,0.04)); border: 1.5px solid rgba(56,65,61,0.3); border-radius: 14px; margin-bottom: 20px;">
                 <span style="font-size: 24px;">&#x2696;&#xFE0F;</span>
-                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 Codex입니다.</strong> 별도 설치 없이 Customize 메뉴에서 커넥터 URL 하나만 입력하면 끝납니다. 법제처 Open API의 OC 키 한 줄을 발급받고, 그 키를 붙인 URL을 Codex에 등록하면 17개의 법령 검색 도구가 대화 안에서 동작합니다.</p>
+                <p style="font-size: 14px; color: #3A3530; margin: 0;"><strong>실행 환경은 Codex입니다.</strong> 설정 파일 <code>~/.codex/config.toml</code>에 서버 URL 한 줄만 적으면 끝납니다. 법제처 Open API의 OC 키 한 줄을 발급받고, 그 키를 붙인 URL을 <code>[mcp_servers.korean_law]</code> 항목에 넣으면 17개의 법령 검색 도구가 대화 안에서 동작합니다.</p>
             </div>
 
             <p>한국 법령과 판례를 ChatGPT나 Codex에 물어보면 그럴듯한 조문을 지어내는 경우가 자주 있습니다. 존재하지 않는 조항 번호, 잘못된 항·호 인용, 폐지된 옛 조문을 현행처럼 답하는 식입니다. <strong>한국 법령 검색 MCP</strong>는 법제처 공식 Open API 42개를 묶어 17개의 도구로 노출해, 모델이 답하기 전에 실제 법령 데이터베이스를 조회하도록 만듭니다.</p>
@@ -594,8 +594,8 @@
                 <span class="flow-arrow">&#x2192;</span>
                 <div class="flow-node">
                     <div class="fn-icon">&#x2699;&#xFE0F;</div>
-                    <div class="fn-label">Customize</div>
-                    <div class="fn-sub">커넥터 추가</div>
+                    <div class="fn-label">config.toml</div>
+                    <div class="fn-sub">서버 등록</div>
                 </div>
                 <span class="flow-arrow">&#x2192;</span>
                 <div class="flow-node">
@@ -625,7 +625,7 @@
                     <span class="roadmap-num">2</span>
                     <span class="roadmap-body">
                         <span class="roadmap-label">STEP 2</span>
-                        <span class="roadmap-title">Codex에서 Customize 메뉴 열기</span>
+                        <span class="roadmap-title">Codex MCP 설정 파일(config.toml) 준비</span>
                     </span>
                     <span class="roadmap-arrow">&rarr;</span>
                 </a>
@@ -633,7 +633,7 @@
                     <span class="roadmap-num">3</span>
                     <span class="roadmap-body">
                         <span class="roadmap-label">STEP 3</span>
-                        <span class="roadmap-title">커넥터에 한국 법령 MCP URL 등록</span>
+                        <span class="roadmap-title">config.toml에 한국 법령 MCP 서버 등록</span>
                     </span>
                     <span class="roadmap-arrow">&rarr;</span>
                 </a>
@@ -669,7 +669,7 @@
                 <div class="role-card">
                     <div class="role-icon">&#x1F4DA;</div>
                     <h4>17개 검색 도구</h4>
-                    <p>법령, 판례, 행정규칙, 자치법규, 조약, 해석례를 하나의 커넥터로 한 번에.</p>
+                    <p>법령, 판례, 행정규칙, 자치법규, 조약, 해석례를 하나의 MCP 서버로 한 번에.</p>
                 </div>
                 <div class="role-card">
                     <div class="role-icon">&#x1F6E1;&#xFE0F;</div>
@@ -692,7 +692,7 @@
     <section class="anim-fade-up">
         <div class="nm-card">
             <h2>open.law.go.kr에서 1분 안에 키 받기</h2>
-            <p class="card-subtitle">법제처가 운영하는 공식 Open API에 가입하면 OC라는 짧은 키 한 줄을 줍니다. 이 키가 MCP 커넥터의 신분증입니다</p>
+            <p class="card-subtitle">법제처가 운영하는 공식 Open API에 가입하면 OC라는 짧은 키 한 줄을 줍니다. 이 키가 MCP 서버의 신분증입니다</p>
 
             <p>한국 법령 MCP는 <strong>법제처 Open API</strong>를 그대로 호출합니다. 누구나 무료로 가입할 수 있고, 신청 즉시 OC 키가 발급됩니다. OC는 보통 본인 이메일 아이디(<code>@</code> 앞부분)와 같은 영문 짧은 문자열입니다.</p>
 
@@ -736,99 +736,97 @@
     </section>
 
 
-    <!-- ====== STEP 2: Customize 메뉴 열기 ====== -->
+    <!-- ====== STEP 2: config.toml 설정 준비 ====== -->
     <div class="content-section" id="step2"></div>
-    <div class="step-divider"><span class="step-badge">STEP 2 &middot; Codex에서 Customize 메뉴 열기</span></div>
+    <div class="step-divider"><span class="step-badge">STEP 2 &middot; Codex MCP 설정 파일 준비</span></div>
     <section class="anim-fade-up">
         <div class="nm-card">
-            <h2>왼쪽 사이드바의 Customize 메뉴 누르기</h2>
-            <p class="card-subtitle">Codex은 왼쪽 사이드바에 커스텀 커넥터 전용 진입점을 두고 있습니다</p>
+            <h2>config.toml 위치 확인하고 열기</h2>
+            <p class="card-subtitle">Codex은 MCP 서버 목록을 설정 파일 하나로 관리합니다. 앱, CLI, IDE 확장이 같은 파일을 공유합니다</p>
 
-            <p>커스텀 MCP를 붙이려면 Codex 최신 버전이 필요합니다. 무료 플랜에서도 커스텀 커넥터 추가는 가능합니다. 사내 정책으로 막아둔 환경이라면 관리자에게 문의해야 할 수 있습니다.</p>
+            <p>Codex에서 MCP 서버를 붙이는 곳은 별도 GUI 메뉴가 아니라 설정 파일 <code>~/.codex/config.toml</code>입니다. 사용자 홈 폴더 아래 숨김 폴더 <code>.codex</code> 안에 있고, 없으면 직접 만들면 됩니다. 특정 프로젝트에서만 쓰려면 신뢰한 프로젝트의 <code>.codex/config.toml</code>에 넣을 수도 있습니다.</p>
 
             <div class="wf-steps">
                 <div class="wf-step">
                     <div class="wf-step-num">1</div>
                     <div class="wf-step-content">
-                        <div class="wf-step-label">Codex 열기</div>
-                        <div class="wf-step-desc">앱을 실행하면 화면 <strong>왼쪽 사이드바</strong>에 대화 목록과 함께 메뉴 항목들이 보입니다. 사이드바가 접혀 있다면 좌상단의 메뉴 아이콘을 눌러 펼칩니다.</div>
+                        <div class="wf-step-label">현재 연결 상태 확인</div>
+                        <div class="wf-step-desc">Codex 세션에서 <code>/mcp</code>를 입력하면 지금 연결된 MCP 서버 목록이 나옵니다. 아직 아무것도 없으면 비어 있는 게 정상입니다. 이 명령은 STEP 4에서 연결을 확인할 때도 씁니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
                 <div class="wf-step">
                     <div class="wf-step-num">2</div>
                     <div class="wf-step-content">
-                        <div class="wf-step-label">왼쪽 메뉴에서 Customize 클릭</div>
-                        <div class="wf-step-desc">왼쪽 사이드바 메뉴 중 <strong>Customize</strong> 항목을 누릅니다. 누르면 커스터마이즈 화면이 열리고, 그 안에 <strong>Connectors</strong>(커넥터) 영역이 보입니다.</div>
-                        <figure style="margin: 14px 0 4px; text-align: left;">
-                            <img src="assets/customize.png" alt="Codex 왼쪽 사이드바의 Customize 메뉴" style="width: 30%; max-width: 554px; height: auto; border-radius: 12px; box-shadow: var(--nm-shadow-sm); border: 1px solid rgba(0,0,0,0.06); display: block;">
-                        </figure>
+                        <div class="wf-step-label">설정 파일 열기</div>
+                        <div class="wf-step-desc"><code>~/.codex/config.toml</code>을 편집기로 엽니다. 파일이 없으면 같은 경로에 새로 만듭니다. macOS와 Linux는 <code>~/.codex/</code>, Windows는 <code>%USERPROFILE%\.codex\</code> 아래에 둡니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
                 <div class="wf-step">
                     <div class="wf-step-num">3</div>
                     <div class="wf-step-content">
-                        <div class="wf-step-label">Connectors 영역에서 추가 버튼 찾기</div>
-                        <div class="wf-step-desc">Customize 화면 안 <strong>Connectors</strong> 섹션에 기존 연결 목록이 보입니다. 그 아래 또는 우측의 <strong>Add custom connector</strong>(커스텀 커넥터 추가) 버튼을 눌러 STEP 3으로 넘어갑니다.</div>
+                        <div class="wf-step-label">OC 키 다시 확인</div>
+                        <div class="wf-step-desc">STEP 1에서 메모한 OC 값을 손에 둡니다. STEP 3에서 서버 URL의 <code>oc=</code> 뒤에 그대로 붙입니다.</div>
                     </div>
                 </div>
             </div>
 
             <div class="highlight-box">
                 <div class="hl-title">&#x1F4CC; 진입 경로 요약</div>
-                <p>왼쪽 사이드바 <strong>Customize</strong> 클릭 &rarr; 화면 안의 <strong>Connectors</strong> 영역으로 이동 &rarr; <strong>Add custom connector</strong> 버튼 누르기. 이 순서만 기억하면 됩니다. 버전에 따라 메뉴 이름이 <strong>커스터마이즈</strong>, <strong>커넥터</strong>로 한글화돼 있을 수 있지만 위치는 같습니다.</p>
+                <p><code>/mcp</code>로 현재 상태 확인 &rarr; <code>~/.codex/config.toml</code> 열기 &rarr; STEP 3에서 <strong>[mcp_servers.korean_law]</strong> 항목 추가. Codex은 클릭으로 붙이는 GUI 화면이 아니라 설정 파일에 텍스트 한 줄을 직접 적는 방식입니다.</p>
             </div>
         </div>
     </section>
 
 
-    <!-- ====== STEP 3: 커넥터 URL 등록 ====== -->
+    <!-- ====== STEP 3: config.toml에 서버 등록 ====== -->
     <div class="content-section" id="step3"></div>
-    <div class="step-divider"><span class="step-badge">STEP 3 &middot; 커넥터에 한국 법령 MCP URL 등록</span></div>
+    <div class="step-divider"><span class="step-badge">STEP 3 &middot; config.toml에 한국 법령 MCP 서버 등록</span></div>
     <section class="anim-fade-up">
         <div class="nm-card">
-            <h2>URL 한 줄을 붙여 넣고 저장</h2>
+            <h2>설정 파일에 항목 한 덩어리 붙여 넣고 저장</h2>
             <p class="card-subtitle">레포지토리 운영자가 호스팅 중인 공개 엔드포인트가 있어, 별도 서버를 띄울 필요가 없습니다</p>
 
-            <p>커스텀 커넥터 추가 화면이 열리면 <strong>이름</strong>과 <strong>URL</strong>을 입력하는 칸이 보입니다. 이름은 알아보기 쉽게 적고, URL에는 다음 형식을 그대로 넣습니다.</p>
+            <p><code>~/.codex/config.toml</code>을 열고 아래 내용을 그대로 붙여 넣습니다. URL 맨 뒤 <code>YOUR_OC_KEY</code>만 본인 OC 값으로 바꾸면 됩니다.</p>
 
             <div class="prompt-box" id="prompt-mcp-url">
                 <button class="copy-btn" onclick="copyPrompt('prompt-mcp-url')">복사</button>
-https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
+[mcp_servers.korean_law]
+url = "https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY"
             </div>
 
-            <p style="margin-top: 12px;">맨 뒤 <code>YOUR_OC_KEY</code> 부분만 STEP 1에서 받은 본인 OC 값으로 바꿉니다. 예를 들어 OC가 <code>honggildong</code>이라면 최종 URL은 <code>https://korean-law-mcp.fly.dev/mcp?oc=honggildong</code>이 됩니다.</p>
+            <p style="margin-top: 12px;">예를 들어 OC가 <code>honggildong</code>이라면 <code>url</code> 값은 <code>"https://korean-law-mcp.fly.dev/mcp?oc=honggildong"</code>이 됩니다. <code>korean_law</code>는 서버 이름이라 원하는 대로 정해도 되지만, 영문 소문자와 밑줄로 짧게 적는 편이 좋습니다. 이 이름이 나중에 <code>/mcp</code> 목록에 그대로 보입니다.</p>
 
             <div class="wf-steps">
                 <div class="wf-step">
                     <div class="wf-step-num">1</div>
                     <div class="wf-step-content">
-                        <div class="wf-step-label">Name 입력</div>
-                        <div class="wf-step-desc">알아보기 쉬운 이름을 적습니다. 예: <code>Korean-Law</code>. 이 이름이 채팅창 도구 목록에 그대로 표시됩니다.</div>
+                        <div class="wf-step-label">항목 추가</div>
+                        <div class="wf-step-desc"><code>[mcp_servers.korean_law]</code> 테이블을 만들고 그 아래 줄에 <code>url</code> 값을 적습니다. 큰따옴표 안에 URL을 넣고, 프로토콜은 반드시 <code>https</code>여야 합니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
                 <div class="wf-step">
                     <div class="wf-step-num">2</div>
                     <div class="wf-step-content">
-                        <div class="wf-step-label">URL 입력</div>
-                        <div class="wf-step-desc">위 URL을 그대로 붙여 넣고 <code>YOUR_OC_KEY</code>를 본인 OC 값으로 교체합니다. 프로토콜은 반드시 <code>https</code>이어야 합니다.</div>
+                        <div class="wf-step-label">OC 키 교체</div>
+                        <div class="wf-step-desc"><code>YOUR_OC_KEY</code>를 본인 OC 값으로 바꿉니다. 공백이나 줄바꿈이 섞이지 않도록 한 줄로 붙여 넣습니다.</div>
                     </div>
                 </div>
                 <div class="wf-connector"></div>
                 <div class="wf-step">
                     <div class="wf-step-num">3</div>
                     <div class="wf-step-content">
-                        <div class="wf-step-label">Add 또는 저장</div>
-                        <div class="wf-step-desc"><strong>Add</strong> 또는 <strong>저장</strong>을 누르면 연결 시도를 합니다. 몇 초 안에 도구 목록(<strong>search_law</strong>, <strong>verify_citations</strong>, <strong>impact_map</strong> 등)이 화면에 펼쳐지면 성공입니다.</div>
+                        <div class="wf-step-label">저장 후 다시 열기</div>
+                        <div class="wf-step-desc">파일을 저장하고 Codex를 새 세션으로 다시 엽니다. <code>/mcp</code>를 입력해 <strong>korean_law</strong>와 도구 목록(<strong>search_law</strong>, <strong>verify_citations</strong>, <strong>impact_map</strong> 등)이 보이면 성공입니다.</div>
                     </div>
                 </div>
             </div>
 
             <div class="tip-box">
                 <div class="tip-label">로컬로 띄우고 싶다면</div>
-                <p>회사 정책 때문에 외부 호스팅을 못 쓰는 경우, 같은 레포지토리를 <code>npm install -g korean-law-mcp</code>로 직접 설치한 뒤 로컬 stdio 방식으로 등록할 수 있습니다. 이 경우 Customize 화면 대신 <code>claude_desktop_config.json</code>을 편집합니다. 자세한 절차는 레포지토리 README의 <strong>Installation</strong> 섹션을 참고합니다.</p>
+                <p>회사 정책 때문에 외부 호스팅을 못 쓰는 경우, 같은 패키지를 <code>npm install -g korean-law-mcp</code>로 직접 설치한 뒤 <code>config.toml</code>에 stdio 방식으로 등록할 수 있습니다. 이때는 <code>url</code> 대신 <code>command</code>와 <code>args</code>를 쓰고, OC 키는 환경 변수로 넘깁니다. 정확한 환경 변수 이름과 실행 명령은 레포지토리 README의 <strong>Installation</strong> 섹션을 따릅니다.</p>
             </div>
         </div>
     </section>
@@ -842,7 +840,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
             <h2>대화창에서 자연어로 한 번 물어보기</h2>
             <p class="card-subtitle">연결이 잘 됐는지 가장 빠르게 확인하는 방법은 평소처럼 한국어로 질문하는 것입니다</p>
 
-            <p>Settings를 닫고 새 대화를 열어 다음 질문을 그대로 붙여 넣습니다.</p>
+            <p>설정 파일을 저장한 뒤 새 Codex 세션을 열어 다음 질문을 그대로 붙여 넣습니다.</p>
 
             <div class="prompt-box" id="prompt-first-search">
                 <button class="copy-btn" onclick="copyPrompt('prompt-first-search')">복사</button>
@@ -850,7 +848,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
 출처는 법제처 데이터로 검증해서.
             </div>
 
-            <p style="margin-top: 12px;">정상적으로 연결돼 있으면 Codex가 응답 도중에 <strong>search_law</strong>, <strong>get_law_text</strong> 같은 도구를 호출했다는 안내가 뜨고, 그 결과로 실제 조문이 인용됩니다. 도구를 사용하지 않고 답이 바로 나오면 커넥터가 비활성화 상태일 수 있습니다.</p>
+            <p style="margin-top: 12px;">정상적으로 연결돼 있으면 Codex가 응답 도중에 <strong>search_law</strong>, <strong>get_law_text</strong> 같은 도구를 호출했다는 안내가 뜨고, 그 결과로 실제 조문이 인용됩니다. 도구를 사용하지 않고 답이 바로 나오면 <code>/mcp</code>로 서버가 연결돼 있는지 먼저 확인합니다.</p>
 
             <div class="highlight-box">
                 <div class="hl-title">&#x1F4CC; 동작 확인 체크리스트</div>
@@ -911,7 +909,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
                 <button class="copy-btn" onclick="copyPrompt('prompt-impact')">복사</button>
 민법 제103조를 인용한 대법원 판례와 헌재 결정을 impact_map으로 그려줘.
             </div>
-            <p style="margin-top: 10px;">결과 끝에 mermaid 코드가 붙어 나오므로, claude.ai에서 그대로 시각화해 볼 수 있습니다. 법 개정이나 조례 영향 분석을 할 때 한 번에 전체 영향 범위를 잡아낼 수 있습니다.</p>
+            <p style="margin-top: 10px;">결과 끝에 mermaid 코드가 붙어 나오므로, ChatGPT에서 그대로 시각화해 볼 수 있습니다. 법 개정이나 조례 영향 분석을 할 때 한 번에 전체 영향 범위를 잡아낼 수 있습니다.</p>
 
             <h3 style="font-size: 16px; font-weight: 700; margin-top: 24px; padding-left: 14px; border-left: 3px solid var(--book-teal); color: #3A3530;">&#x1F4CB; action_plan. 평소 말투를 5단계 실행안으로</h3>
             <p style="margin-top: 10px;">법률 용어를 모르는 상태에서 평소 말투로 던져도, 관련 법령과 절차를 5단계로 정리해줍니다.</p>
@@ -940,14 +938,14 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
             <div class="faq-list">
                 <details class="faq-item">
                     <summary>
-                        <span class="faq-q">Q1. Customize 또는 Connectors 메뉴가 보이지 않습니다</span>
+                        <span class="faq-q">Q1. <code>config.toml</code> 파일이 어디 있는지 모르겠습니다</span>
                     </summary>
                     <div class="faq-a">
                         <p><strong>원인 후보:</strong></p>
                         <ul>
-                            <li><strong>Codex 버전이 낮음.</strong> 메뉴에서 <strong>Codex &gt; Check for Updates</strong>로 최신 버전을 받습니다.</li>
-                            <li><strong>개발자 옵션 비활성.</strong> <strong>Settings &gt; Advanced</strong>에서 <strong>Enable custom connectors</strong> 또는 <strong>Developer mode</strong>를 켭니다.</li>
-                            <li><strong>관리자 계정으로 제한된 환경.</strong> 회사 SSO 계정이라면 관리자에게 커스텀 커넥터 허용을 요청해야 할 수 있습니다.</li>
+                            <li><strong>파일이 아직 없음.</strong> Codex를 처음 쓰면 <code>~/.codex/config.toml</code>이 없을 수 있습니다. 같은 경로에 직접 만들면 됩니다.</li>
+                            <li><strong>숨김 폴더라 안 보임.</strong> <code>.codex</code>는 점으로 시작하는 숨김 폴더입니다. macOS Finder는 <code>Cmd+Shift+.</code>로 숨김 파일을 켜고, 터미널에서는 <code>open ~/.codex</code>로 바로 엽니다.</li>
+                            <li><strong>Codex 버전이 낮음.</strong> MCP 지원이 들어간 최신 버전인지 확인합니다. CLI는 <code>codex --version</code>으로 보고, 필요하면 다시 설치합니다.</li>
                         </ul>
                     </div>
                 </details>
@@ -969,14 +967,14 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
 
                 <details class="faq-item">
                     <summary>
-                        <span class="faq-q">Q3. 커넥터는 추가됐는데 Codex가 도구를 호출하지 않습니다</span>
+                        <span class="faq-q">Q3. 서버는 등록됐는데 Codex가 도구를 호출하지 않습니다</span>
                     </summary>
                     <div class="faq-a">
                         <p><strong>원인 후보:</strong></p>
                         <ul>
-                            <li><strong>도구 활성화 토글이 꺼져 있음.</strong> 새 대화 좌하단의 도구 아이콘을 눌러 <strong>Korean Law MCP</strong>가 켜져 있는지 확인합니다.</li>
+                            <li><strong>서버가 안 잡힘.</strong> <code>/mcp</code>를 입력해 <strong>korean_law</strong>와 도구 목록이 보이는지 먼저 확인합니다. 안 보이면 설정을 저장한 뒤 Codex를 새 세션으로 다시 엽니다.</li>
                             <li><strong>질문이 너무 일반적임.</strong> "근로기준법 알려줘"보다 "근로기준법 제60조 조문 보여줘"처럼 구체적인 법령명과 조항을 짚어주는 게 도구 호출 확률이 올라갑니다.</li>
-                            <li><strong>모델 선택 문제.</strong> Sonnet 또는 Opus 계열에서 안정적으로 동작합니다. Haiku는 도구 호출 빈도가 낮을 수 있습니다.</li>
+                            <li><strong>도구 승인 단계에서 멈춤.</strong> 처음 도구를 호출할 때 승인 요청이 뜰 수 있습니다. 요청 내용을 확인하고 허용하면 그 다음부터 정상 호출됩니다.</li>
                         </ul>
                     </div>
                 </details>
@@ -1035,6 +1033,11 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
                     법제처 Open API 가입과 OC 키 발급
                     <span class="ref-desc">법제처</span>
                 </a>
+                <a class="ref-link" href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">
+                    <span class="ref-icon">&#x2699;&#xFE0F;</span>
+                    OpenAI Codex MCP 설정 문서
+                    <span class="ref-desc">OpenAI</span>
+                </a>
                 <a class="ref-link" href="https://modelcontextprotocol.io" target="_blank" rel="noopener">
                     <span class="ref-icon">&#x1F4D6;</span>
                     Model Context Protocol 공식 문서
@@ -1058,7 +1061,7 @@ https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY
     <!-- CTA -->
     <div class="cta-section anim-fade-up">
         <h3>지금 바로 연결해 보세요</h3>
-        <p>법제처에서 OC 키를 받고, Codex의 Customize 메뉴에서 커넥터 URL을 붙여 넣으면 끝납니다.<br>10분이면 환각 없는 법령 검색 환경이 완성됩니다.</p>
+        <p>법제처에서 OC 키를 받고, Codex의 <code>config.toml</code>에 서버 URL 한 줄을 적으면 끝납니다.<br>10분이면 환각 없는 법령 검색 환경이 완성됩니다.</p>
         <div class="cta-buttons">
             <a class="cta-btn primary" href="https://open.law.go.kr" target="_blank" rel="noopener">법제처 OC 키 받기 &rarr;</a>
             <a class="cta-btn secondary" href="https://github.com/chrisryugj/korean-law-mcp" target="_blank" rel="noopener">MCP 레포지토리 보기</a>

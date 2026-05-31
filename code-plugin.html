@@ -1227,7 +1227,7 @@
     <a href="#anatomy" data-sec="anatomy">
         <span class="sm-num">3</span>
         <span class="sm-title">플러그인 해부</span>
-        <span class="sm-sub">폴더와 plugin.json</span>
+        <span class="sm-sub">폴더와 config.toml</span>
     </a>
     <a href="#build" data-sec="build">
         <span class="sm-num">4</span>
@@ -1268,7 +1268,7 @@
             <p class="card-subtitle">스킬 만드는 법은 익혔습니다. 그 다음에 막히는 자리들입니다</p>
 
             <ul>
-                <li><strong>벽 ① 나만 씁니다.</strong> 내 claude.ai 계정에만 깔려 있어서, 팀원에게 알려주려면 SKILL.md 본문을 일일이 복사해 붙여넣게 해야 합니다.</li>
+                <li><strong>벽 ① 나만 씁니다.</strong> 내 <code class="kbd">~/.codex</code> 환경에만 들어 있어서, 팀원에게 알려주려면 SKILL.md 본문을 일일이 복사해 붙여넣게 해야 합니다.</li>
                 <li><strong>벽 ② 손발이 없습니다.</strong> 스킬은 "어떻게 일할지"를 알지만, DART에서 데이터를 가져오거나 구글 시트에 결과를 쓰는 일은 못 합니다.</li>
                 <li><strong>벽 ③ 흩어져 있습니다.</strong> 하나의 시나리오에 스킬 두세 개가 같이 쓰여도, 깔 때는 하나씩 따로 깝니다. 누가 어떤 버전을 갖고 있는지 알기 어렵습니다.</li>
             </ul>
@@ -1338,7 +1338,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════
-         ③ 플러그인 해부 (폴더 + plugin.json)
+         ③ 플러그인 해부 (폴더 + config.toml)
          ═══════════════════════════════════════ -->
     <div class="content-section" id="anatomy"></div>
     <div class="step-divider"><span class="step-badge">플러그인 해부</span></div>
@@ -1346,15 +1346,16 @@
         <div class="nm-card reveal">
             <h2>Codex 묶음 폴더 구조</h2>
             <p class="card-subtitle">필수는 config.toml 하나. 나머지는 묶고 싶은 만큼만 넣습니다</p>
-<div class="folder-tree">my-codex-setup/
-├── <span class="ft-required">config.toml</span>              <span class="ft-comment"># MCP 서버 선언 (~/.codex/config.toml 에 병합)</span>
-├── <span class="ft-optional">AGENTS.md</span>                <span class="ft-comment"># 지침: 어떻게 일할지 (스킬 역할)</span>
-├── <span class="ft-optional">.codex/</span>
-│   └── <span class="ft-optional">prompts/</span>             <span class="ft-comment"># 선택: 슬래시 커맨드용 마크다운 프롬프트</span>
-│       ├── report-format.md
-│       └── data-clean.md
-└── <span class="ft-optional">README.md</span>               <span class="ft-comment"># 받는 사람을 위한 설치·사용 안내</span></div>
-            <p style="margin-top: 14px;">핵심은 지침과 MCP가 한 묶음 안에 같이 들어간다는 점입니다. 반복 작업 흐름은 <code class="kbd">AGENTS.md</code>와 <code class="kbd">.codex/prompts/</code>에 적고, MCP는 <code class="kbd">config.toml</code>의 <code class="kbd">[mcp_servers.*]</code>에서 선언합니다.</p>
+<div class="folder-tree">my-codex-bundle/
+├── <span class="ft-required">config.toml</span>              <span class="ft-comment"># MCP 서버 선언 ([mcp_servers.*])</span>
+├── <span class="ft-optional">AGENTS.md</span>                <span class="ft-comment"># 묶음 공통 지침 (어떻게 일할지)</span>
+├── <span class="ft-optional">skills/</span>                   <span class="ft-comment"># 묶고 싶은 스킬들 (skills.html에서 만든 SKILL.md)</span>
+│   ├── report-format/
+│   │   └── SKILL.md
+│   └── data-clean/
+│       └── SKILL.md
+└── <span class="ft-optional">README.md</span>                 <span class="ft-comment"># 받는 사람을 위한 설치·사용 안내</span></div>
+            <p style="margin-top: 14px;">핵심은 스킬과 MCP가 한 묶음 안에 같이 들어간다는 점입니다. 스킬은 <code class="kbd">skills/</code> 하위에 폴더째 넣고, 묶음 공통 지침은 <code class="kbd">AGENTS.md</code>에, MCP는 <code class="kbd">config.toml</code>의 <code class="kbd">[mcp_servers.*]</code>에서 선언합니다.</p>
         </div>
 
         <div class="nm-card reveal">
@@ -1370,7 +1371,7 @@ env = { DART_API_KEY = "${DART_API_KEY}" }
 <span class="ft-required">[mcp_servers.google-sheets]</span>
 command = "npx"
 args = ["-y", "@google/sheets-mcp"]</div>
-            <p style="margin-top: 14px;">이 묶음을 깔면 <strong>AGENTS.md 지침과 DART MCP, 구글 시트 MCP가 한꺼번에 설정됩니다.</strong> API 키 같은 비밀은 반드시 <code class="kbd">${ENV_VAR}</code> 형태로 적어 설치하는 사람의 환경에서 읽도록 합니다. config.toml에 직접 적으면 안 됩니다.</p>
+            <p style="margin-top: 14px;">이 묶음을 깔면 <strong>skills/ 안의 스킬 두 개와 DART MCP, 구글 시트 MCP가 한꺼번에 설정됩니다.</strong> API 키 같은 비밀은 반드시 <code class="kbd">${ENV_VAR}</code> 형태로 적어 설치하는 사람의 환경에서 읽도록 합니다. config.toml에 직접 적으면 안 됩니다.</p>
         </div>
     </section>
 
@@ -1391,7 +1392,7 @@ args = ["-y", "@google/sheets-mcp"]</div>
                 <ul>
                     <li><strong>한 문장 정의 예시.</strong> "DART 데이터로 분기 실적 보고서를 만든다"</li>
                     <li>이 문장에 직접 쓰는 스킬만 <code class="kbd">skills/</code>에 모읍니다.</li>
-                    <li>이 문장에 필요한 MCP만 <code class="kbd">mcpServers</code>에 적습니다.</li>
+                    <li>이 문장에 필요한 MCP만 <code class="kbd">config.toml</code>의 <code class="kbd">[mcp_servers.*]</code>에 적습니다.</li>
                     <li>"있으면 좋을 것 같은" 자산은 다음 버전(0.2.0)으로 미룹니다.</li>
                 </ul>
             </div>
@@ -1400,15 +1401,15 @@ args = ["-y", "@google/sheets-mcp"]</div>
         <div class="module-box reveal">
             <div class="module-header">
                 <div class="module-num">2</div>
-                <div class="module-title">plugin.json을 짠다</div>
-                <div class="module-subtitle">name · version · mcpServers 세 줄이 핵심</div>
+                <div class="module-title">config.toml을 짠다</div>
+                <div class="module-subtitle">[mcp_servers.*] 블록이 핵심. 이름·버전은 폴더와 git이 맡는다</div>
             </div>
             <div class="nm-card">
-                <p>위 예시를 그대로 복사해 세 칸만 바꿉니다.</p>
+                <p>위 예시를 그대로 복사해 세 가지만 챙깁니다.</p>
                 <ul>
-                    <li><strong>name.</strong> 영문 소문자와 하이픈으로 짓습니다. 설치할 때 식별자가 됩니다.</li>
-                    <li><strong>version.</strong> 처음에는 <code class="kbd">0.1.0</code>으로 시작합니다. 스킬 본문이 바뀌면 끝자리(0.1.1), MCP 구성이 바뀌면 가운데(0.2.0), 사용법이 바뀌면 앞자리(1.0.0)를 올립니다.</li>
-                    <li><strong>mcpServers.</strong> 묶을 MCP들의 실행 명령을 적습니다. 환경 변수는 <code class="kbd">${...}</code> 형태로 빼둡니다.</li>
+                    <li><strong>묶음 이름.</strong> 폴더명을 영문 소문자와 하이픈으로 짓습니다(<code class="kbd">report-suite</code>). 받는 사람이 보는 식별자가 됩니다.</li>
+                    <li><strong>버전.</strong> Codex <code class="kbd">config.toml</code>에는 버전 칸이 없으니 <code class="kbd">README</code> 맨 윗줄이나 <code class="kbd">git</code> 태그로 관리합니다. 스킬 본문이 바뀌면 <code class="kbd">0.1.1</code>, MCP 구성이 바뀌면 <code class="kbd">0.2.0</code>, 사용법이 바뀌면 <code class="kbd">1.0.0</code>을 올립니다.</li>
+                    <li><strong>[mcp_servers.*].</strong> 묶을 MCP마다 블록을 하나씩 두고 실행 명령을 적습니다. 환경 변수는 <code class="kbd">${...}</code> 형태로 빼둡니다.</li>
                 </ul>
             </div>
         </div>
@@ -1417,15 +1418,15 @@ args = ["-y", "@google/sheets-mcp"]</div>
             <div class="module-header">
                 <div class="module-num">3</div>
                 <div class="module-title">깨끗한 환경에서 직접 깐다</div>
-                <div class="module-subtitle">"내 노트북에서만 동작하는 플러그인"을 거른다</div>
+                <div class="module-subtitle">"내 노트북에서만 동작하는 묶음"을 거른다</div>
             </div>
             <div class="nm-card">
-                <p>가장 흔한 실수는 본인 환경에 이미 깔려 있는 무언가에 의존하는 플러그인을 만드는 일입니다. 새 디렉토리에서 직접 깔아보면 누락된 환경 변수, 잘못된 경로가 바로 드러납니다.</p>
+                <p>가장 흔한 실수는 본인 환경에 이미 깔려 있는 무언가에 의존하는 묶음을 만드는 일입니다. 깨끗한 디렉토리에서 직접 깔아보면 누락된 환경 변수, 잘못된 경로가 바로 드러납니다.</p>
                 <ul>
-                    <li>새 디렉토리로 이동해 <code class="kbd">/plugin install /path/to/my-plugin</code>을 실행합니다.</li>
+                    <li>깨끗한 디렉토리에서 <code class="kbd">git clone</code> 후, <code class="kbd">config.toml</code>의 <code class="kbd">[mcp_servers.*]</code> 블록을 <code class="kbd">~/.codex/config.toml</code>에 붙이고 <code class="kbd">skills/</code>를 등록합니다.</li>
                     <li>Codex를 새로 띄워 묶음 안의 스킬이 자동으로 호출되는지 확인합니다.</li>
                     <li>MCP가 붙었는지, 도구 목록에 노출되는지 확인합니다.</li>
-                    <li>안 되는 게 있으면 plugin.json을 고치고 버전을 <code class="kbd">0.1.1</code>로 올립니다.</li>
+                    <li>안 되는 게 있으면 <code class="kbd">config.toml</code>을 고치고 버전을 <code class="kbd">0.1.1</code>로 올립니다.</li>
                 </ul>
             </div>
         </div>
@@ -1442,8 +1443,8 @@ args = ["-y", "@google/sheets-mcp"]</div>
             <p class="card-subtitle">팀 규모와 공개 범위에 따라 고릅니다</p>
             <ul>
                 <li><strong>① 로컬 폴더 공유.</strong> 사내 공유 드라이브에 폴더째 올려둡니다. 한두 명 작은 팀이거나 비공개 자산일 때 적합합니다.</li>
-                <li><strong>② GitHub 저장소.</strong> <code class="kbd">git clone</code> 후 <code class="kbd">/plugin install</code>을 칩니다. 팀 단위 배포의 표준이고, 버전 관리와 이슈 추적이 같이 따라옵니다.</li>
-                <li><strong>③ 플러그인 마켓플레이스.</strong> 외부 공개 자산입니다. 다른 사람도 검색해서 깔 수 있는 형태로 풀립니다.</li>
+                <li><strong>② GitHub 저장소.</strong> <code class="kbd">git clone</code> 후 README의 설정 안내를 따라 <code class="kbd">config.toml</code>을 병합합니다. 팀 단위 배포의 표준이고, 버전 관리와 이슈 추적이 같이 따라옵니다.</li>
+                <li><strong>③ 공개 템플릿 저장소.</strong> 외부 공개 자산입니다. 누구나 저장소를 검색해 <code class="kbd">clone</code> 후 똑같이 설정할 수 있게 풀립니다.</li>
             </ul>
         </div>
 
@@ -1451,8 +1452,8 @@ args = ["-y", "@google/sheets-mcp"]</div>
             <h2>받는 사람을 위한 README 5줄</h2>
             <p class="card-subtitle">5줄짜리 README가 30분의 설치 안내를 대체합니다</p>
             <ul>
-                <li><strong>한 줄 정의.</strong> 이 플러그인이 무엇을 자동화하는지</li>
-                <li><strong>설치 명령.</strong> <code class="kbd">/plugin install ...</code> 한 줄</li>
+                <li><strong>한 줄 정의.</strong> 이 묶음이 무엇을 자동화하는지</li>
+                <li><strong>설치 안내.</strong> <code class="kbd">git clone</code> + <code class="kbd">config.toml</code> 병합 두 줄</li>
                 <li><strong>필요한 환경 변수.</strong> API 키 등 사용자가 미리 준비할 것</li>
                 <li><strong>첫 사용 예시.</strong> 깐 직후 바로 칠 수 있는 한 마디</li>
                 <li><strong>업데이트 방법.</strong> 새 버전을 받는 한 줄</li>
@@ -1501,7 +1502,7 @@ args = ["-y", "@google/sheets-mcp"]</div>
                 </div>
                 <div class="checklist-item" onclick="toggleCheck(this)">
                     <input type="checkbox" tabindex="-1">
-                    <label><code class="kbd">.claude-plugin/plugin.json</code>이 있고 <code class="kbd">name</code>, <code class="kbd">version</code>, <code class="kbd">mcpServers</code>가 채워져 있다</label>
+                    <label><code class="kbd">config.toml</code>이 있고 <code class="kbd">[mcp_servers.*]</code> 블록이 채워져 있다 (버전은 README/git 태그로 관리)</label>
                 </div>
                 <div class="checklist-item" onclick="toggleCheck(this)">
                     <input type="checkbox" tabindex="-1">
@@ -1509,7 +1510,7 @@ args = ["-y", "@google/sheets-mcp"]</div>
                 </div>
                 <div class="checklist-item" onclick="toggleCheck(this)">
                     <input type="checkbox" tabindex="-1">
-                    <label>API 키 같은 비밀은 plugin.json에 직접 적지 않고 환경 변수로 빼두었다</label>
+                    <label>API 키 같은 비밀은 config.toml에 직접 적지 않고 환경 변수로 빼두었다</label>
                 </div>
                 <div class="checklist-item" onclick="toggleCheck(this)">
                     <input type="checkbox" tabindex="-1">

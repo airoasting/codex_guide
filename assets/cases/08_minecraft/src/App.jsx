@@ -468,9 +468,12 @@ function buildWorld(scene) {
   });
   ground.material.color.set(palette.grass);
 
+  const edgeGrassOptions = { solid: false, castShadow: false, receiveShadow: true };
   for (let i = -58; i <= 58; i += 4) {
-    addVoxelBox(scene, [4, 0.4, 4], [i, -0.2, 54], palette.grassDark, { solid: false, receiveShadow: true });
-    addVoxelBox(scene, [4, 0.4, 4], [54, -0.2, i], palette.grassDark, { solid: false, receiveShadow: true });
+    addVoxelBox(scene, [4, 0.08, 4], [i, 0.04, 54], palette.grassDark, edgeGrassOptions);
+    if (i !== 54) {
+      addVoxelBox(scene, [4, 0.08, 4], [54, 0.04, i], palette.grassDark, edgeGrassOptions);
+    }
   }
 
   createTemple(scene);
@@ -659,7 +662,7 @@ function App() {
     scene.background = new THREE.Color(palette.skyTop);
     scene.fog = new THREE.Fog(palette.fog, 36, 110);
 
-    const camera = new THREE.PerspectiveCamera(72, mount.clientWidth / mount.clientHeight, 0.1, 220);
+    const camera = new THREE.PerspectiveCamera(72, mount.clientWidth / mount.clientHeight, 0.5, 150);
     camera.position.set(0, 8, 30);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });

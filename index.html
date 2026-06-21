@@ -251,7 +251,7 @@
             margin-top: 12px; margin-bottom: 24px;
         }
         .nav-wrapper.scrolled { box-shadow: 0 8px 24px rgba(56,65,61,0.18), 0 -2px 8px var(--nm-light); }
-        .guide-btn-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; position: relative; }
+        .guide-btn-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; position: relative; }
         .guide-btn-row::before {
             content: '';
             position: absolute;
@@ -304,6 +304,9 @@
         /* ── 섹션 ── */
         .card-section { margin-bottom: 52px; scroll-margin-top: 80px; }
         .section-header { display: flex; align-items: center; gap: 12px; padding-top: 48px; margin-bottom: 6px; }
+        .card-subsection{display:flex;align-items:baseline;gap:10px;margin:28px 0 12px;padding-left:2px}
+        .card-subsection .sub-name{font-weight:700;color:var(--codex-accent);font-size:1.02rem}
+        .card-subsection .sub-desc{font-size:.9rem;color:#5A6072}
         #section-1 .section-header { padding-top: 24px; }
         .section-num { font-size: 12px; font-weight: 700; color: var(--codex-num-text); background: var(--codex-num-bg); padding: 5px 14px; border-radius: 100px; line-height: 1; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.30); box-shadow: var(--codex-num-shadow); }
         .section-title { font-size: 24px; font-weight: 700; color: #181B24; letter-spacing: -0.015em; }
@@ -1206,7 +1209,7 @@
     </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polygon points="16 8 13.5 13.5 8 16 10.5 10.5 16 8"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></symbol><symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol><symbol id="i-presentation" viewBox="0 0 24 24"><path d="M2 3h20v12H2z"/><path d="M12 15v4"/><path d="M8 21l4-2 4 2"/></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol><symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="1.3"/><circle cx="17.5" cy="10.5" r="1.3"/><circle cx="8.5" cy="7.5" r="1.3"/><circle cx="6.5" cy="12.5" r="1.3"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.7 0 2-1.5 1-2.5-.8-.8-.5-2.5 1-2.5h2c2.5 0 4-2 4-4.5C20 6 16.4 2 12 2z"/></symbol><symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4.5a1.5 1.5 0 0 1 3 0V6h3a1 1 0 0 1 1 1v3h1.5a1.5 1.5 0 0 1 0 3H17v3a1 1 0 0 1-1 1h-3v1.5a1.5 1.5 0 0 1-3 0V17H7a1 1 0 0 1-1-1v-3H4.5a1.5 1.5 0 0 1 0-3H6V7a1 1 0 0 1 1-1h3z"/></symbol><symbol id="i-toolbox" viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="11" rx="2"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><line x1="2" y1="13" x2="22" y2="13"/><line x1="10" y1="13" x2="10" y2="15"/><line x1="14" y1="13" x2="14" y2="15"/></symbol><symbol id="i-trending" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol><symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol><symbol id="i-bookopen" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22 6 12 13 2 6"/></symbol><symbol id="i-coffee" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></symbol><symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polygon points="16 8 13.5 13.5 8 16 10.5 10.5 16 8"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></symbol><symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol><symbol id="i-presentation" viewBox="0 0 24 24"><path d="M2 3h20v12H2z"/><path d="M12 15v4"/><path d="M8 21l4-2 4 2"/></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol><symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="1.3"/><circle cx="17.5" cy="10.5" r="1.3"/><circle cx="8.5" cy="7.5" r="1.3"/><circle cx="6.5" cy="12.5" r="1.3"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.7 0 2-1.5 1-2.5-.8-.8-.5-2.5 1-2.5h2c2.5 0 4-2 4-4.5C20 6 16.4 2 12 2z"/></symbol><symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4.5a1.5 1.5 0 0 1 3 0V6h3a1 1 0 0 1 1 1v3h1.5a1.5 1.5 0 0 1 0 3H17v3a1 1 0 0 1-1 1h-3v1.5a1.5 1.5 0 0 1-3 0V17H7a1 1 0 0 1-1-1v-3H4.5a1.5 1.5 0 0 1 0-3H6V7a1 1 0 0 1 1-1h3z"/></symbol><symbol id="i-toolbox" viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="11" rx="2"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><line x1="2" y1="13" x2="22" y2="13"/><line x1="10" y1="13" x2="10" y2="15"/><line x1="14" y1="13" x2="14" y2="15"/></symbol><symbol id="i-trending" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol><symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol><symbol id="i-bookopen" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22 6 12 13 2 6"/></symbol><symbol id="i-coffee" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></symbol><symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol><symbol id="i-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol><symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol><symbol id="i-repeat" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></symbol><symbol id="i-news" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2V9c0-1.1.9-2 2-2h2"/><path d="M18 14H10"/><path d="M15 10H10"/><rect x="10" y="6" width="8" height="4"/></symbol><symbol id="i-brain" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.14"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.14"/></symbol></svg>
 
 <!-- ── HERO ── -->
 <header class="hero">
@@ -1270,10 +1273,11 @@
         <div class="guide-btn-row">
             <a class="guide-btn" href="#section-1" data-section="section-1"><span class="guide-btn-num">진단</span> 내 수준 파악<span class="done-mark"></span></a>
             <a class="guide-btn" href="#section-project" data-section="section-project"><span class="guide-btn-num">1단계</span> 기본기부터<span class="done-mark"></span></a>
-            <a class="guide-btn" href="#section-plugin" data-section="section-plugin"><span class="guide-btn-num">2단계</span> 플러그인<span class="done-mark"></span></a>
-            <a class="guide-btn" href="#section-code" data-section="section-code"><span class="guide-btn-num">3단계</span> Codex 실행<span class="done-mark"></span></a>
-            <a class="guide-btn" href="#section-deploy" data-section="section-deploy"><span class="guide-btn-num">4단계</span> 저장·배포<span class="done-mark"></span></a>
-            <a class="guide-btn" href="#section-skills" data-section="section-skills"><span class="guide-btn-num">5단계</span> 자동화<span class="done-mark"></span></a>
+            <a class="guide-btn" href="#section-plugin" data-section="section-plugin"><span class="guide-btn-num">2단계</span> 확장<span class="done-mark"></span></a>
+            <a class="guide-btn" href="#section-code" data-section="section-code"><span class="guide-btn-num">3단계</span> Codex 코드<span class="done-mark"></span></a>
+            <a class="guide-btn" href="#section-skills" data-section="section-skills"><span class="guide-btn-num">4단계</span> 에이전트 설계<span class="done-mark"></span></a>
+            <a class="guide-btn" href="#section-loop" data-section="section-loop"><span class="guide-btn-num">5단계</span> 루프 자동화<span class="done-mark"></span></a>
+            <a class="guide-btn" href="#section-examples" data-section="section-examples"><span class="guide-btn-num">예제</span> 실전 예제<span class="done-mark"></span></a>
         </div>
     </div>
 
@@ -1312,6 +1316,7 @@
             <span class="section-title">기본기부터</span>
         </div>
         <p class="section-subtitle">프롬프트 원칙, 프로젝트 설정, 멀티 페르소나 토론까지 ChatGPT와 Codex를 전략적으로 활용하는 방법을 배웁니다</p>
+        <div class="card-subsection"><span class="sub-name">기본기</span><span class="sub-desc">프롬프트부터 멀티 페르소나까지</span></div>
         <section class="cards">
             <a class="card" href="ai-fluency.html">
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-pencil"/></svg></span><h2>프롬프트 잘 쓰는 비결</h2></div>
@@ -1329,16 +1334,34 @@
                 <p>AI 한 명에게 묻지 말고, 5인 전문가 팀을 구성해 토론시키세요. 같은 질문, 완전히 다른 퀄리티의 답이 나옵니다.</p>
             </a>
         </section>
+        <div class="card-subsection"><span class="sub-name">검증</span><span class="sub-desc">답을 그대로 믿지 않기</span></div>
+        <section class="cards">
+            <a class="card" href="ai-sycophancy.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span><h2>AI의 동조를 줄이는 법</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 8분</span><span class="badge-level beginner">입문</span></div>
+                <p>AI는 내 말에 쉽게 동의합니다. 동조를 걷어내고 비판적 피드백을 끌어내는 질문법을 정리합니다.</p>
+            </a>
+            <a class="card" href="ai-hallucination.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-search"/></svg></span><h2>AI의 환각을 벗어나는 법</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
+                <p>그럴듯한 거짓을 걸러내는 검증 절차. 출처 확인과 교차 검증으로 환각을 줄이는 방법을 다룹니다.</p>
+            </a>
+        </section>
     </div>
 
-    <!--2단계: 플러그인 -->
+    <!--2단계: 확장 -->
     <div class="card-section" id="section-plugin">
         <div class="section-header">
             <span class="section-num">2단계</span>
-            <span class="section-title">플러그인</span>
+            <span class="section-title">확장</span>
         </div>
-        <p class="section-subtitle">Excel과 PowerPoint 안에서 ChatGPT를 바로 연결합니다</p>
-        <section class="cards" style="grid-template-columns: 1fr 1fr;">
+        <p class="section-subtitle">지금 쓰는 브라우저와 오피스에서 ChatGPT를 바로 불러 씁니다</p>
+        <section class="cards">
+            <a class="card" href="chrome-plugin.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span><h2>브라우저에서 ChatGPT 사용</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
+                <p>ChatGPT Atlas와 브라우저 확장으로, 보고 있는 웹페이지 위에서 바로 요약하고 작성합니다.</p>
+            </a>
             <a class="card" href="excel-plugin.html">
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span><h2>Excel에서 ChatGPT 사용</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
@@ -1352,14 +1375,15 @@
         </section>
     </div>
 
-    <!--3단계: Codex 실행 -->
+    <!--3단계: Codex 코드 -->
     <div class="card-section" id="section-code">
         <div class="section-header">
             <span class="section-num">3단계</span>
-            <span class="section-title">Codex로 실행하기</span>
+            <span class="section-title">Codex 코드</span>
         </div>
-        <p class="section-subtitle">작은 작업부터 맡기고, 결과를 확인하며 실행 감각을 익힙니다</p>
-        <section class="cards" style="grid-template-columns: 1fr 1fr;">
+        <p class="section-subtitle">설치 없이 브라우저에서 시작하고, 터미널 CLI까지 단계별로 익힙니다</p>
+        <div class="card-subsection"><span class="sub-name">노코드</span><span class="sub-desc">설치 없이 브라우저에서</span></div>
+        <section class="cards">
             <a class="card featured" href="codex-101.html">
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-monitor"/></svg></span><h2>Codex 앱 시작하기</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
@@ -1370,52 +1394,64 @@
                 <div class="card-meta"><span class="badge-time">⏱ 과제별 상이</span><span class="badge-level intermediate">중급</span></div>
                 <p>스탑워치부터 3D 게임 월드까지. 직접 만들며 Codex에게 일을 맡기는 감각을 익힙니다.</p>
             </a>
+            <a class="card" href="github-guide.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg></span><h2>GitHub·Vercel·Netlify로 저장·배포</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
+                <p>저장소를 만들고 파일을 올립니다. GitHub Pages, Vercel, Netlify로 웹 주소를 바로 만드는 과정을 익힙니다.</p>
+            </a>
+        </section>
+        <div class="card-subsection"><span class="sub-name">CLI</span><span class="sub-desc">터미널에서 직접</span></div>
+        <section class="cards">
+            <a class="card" href="checklist.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-terminal"/></svg></span><h2>Codex CLI 20단계로 따라하기</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 단계별</span><span class="badge-level advanced">고급</span></div>
+                <p>설치부터 첫 작업까지 20단계 체크리스트로 따라합니다.</p>
+            </a>
+            <a class="card" href="cheatsheet.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-list"/></svg></span><h2>Codex 명령어 모음</h2></div>
+                <div class="card-meta"><span class="badge-level reference">참고</span></div>
+                <p>자주 쓰는 명령어와 옵션을 한 장으로 정리했습니다.</p>
+            </a>
+        </section>
+        <div class="card-subsection"><span class="sub-name">비법</span><span class="sub-desc">노코드·CLI 공통 원칙</span></div>
+        <section class="cards">
+            <a class="card" href="codex-best-practices.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg></span><h2>고수처럼 쓰는 9가지 원칙</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
+                <p>작업을 맡기는 사람이 지키는 9가지 원칙을 정리합니다.</p>
+            </a>
         </section>
     </div>
 
-    <!--4단계: GitHub와 배포 -->
-    <div class="card-section" id="section-deploy">
-        <div class="section-header">
-            <span class="section-num">4단계</span>
-            <span class="section-title">GitHub와 배포</span>
-        </div>
-        <p class="section-subtitle">작업 결과를 저장하고, 공유하고, 웹 주소로 배포합니다</p>
-        <div class="deploy-split" aria-label="저장과 배포 분리 카드">
-            <div class="deploy-track">
-                <section class="cards">
-                    <a class="card" href="github-guide.html">
-                        <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 16 16" aria-hidden="true" class="ic-fill"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span><h2>GitHub 저장과 공유</h2></div>
-                        <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
-                        <p>저장소를 만들고 파일을 올립니다. GitHub Pages로 정적 사이트를 공개하는 기본 과정까지 익힙니다.</p>
-                    </a>
-                </section>
-            </div>
-            <div class="deploy-track">
-                <section class="cards">
-                    <a class="card" href="vercel-guide.html">
-                        <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-rocket"/></svg></span><h2>Vercel 배포</h2></div>
-                        <div class="card-meta"><span class="badge-time">⏱ 8분</span><span class="badge-level intermediate">중급</span></div>
-                        <p>프로젝트를 Vercel에 올립니다. 수정할 때마다 자동으로 다시 배포되는 과정을 익힙니다.</p>
-                    </a>
-                </section>
-            </div>
-        </div>
-    </div>
-
-    <!--5단계: 자동화 -->
+    <!--4단계: 에이전트 설계 -->
     <div class="card-section" id="section-skills">
         <div class="section-header">
-            <span class="section-num">5단계</span>
-            <span class="section-title">자동화</span>
+            <span class="section-num">4단계</span>
+            <span class="section-title">에이전트 설계</span>
         </div>
-        <p class="section-subtitle">에이전트 설계를 이해하고 나만의 스킬로 자동화합니다</p>
+        <p class="section-subtitle">하네스와 스킬로 AI 에이전트가 일하는 환경을 설계합니다</p>
 
-        <!-- 스킬 -->
-        <div class="track-label">
-            <span class="track-label-badge skill">⚡ 스킬</span>
-            <span class="track-label-text">나만의 자동화 만들기</span>
-        </div>
-        <section class="cards" style="grid-template-columns: 1fr 1fr 1fr;">
+        <div class="card-subsection"><span class="sub-name">하네스</span><span class="sub-desc">AI 에이전트 설계</span></div>
+        <section class="cards">
+            <a class="card" href="harness-engineering.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-toolbox"/></svg></span><h2>하네스 엔지니어링이란?</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
+                <p>같은 AI 모델도 하네스에 따라 결과가 달라집니다. AI가 일하는 환경을 설계하는 6가지 구성 요소를 배웁니다.</p>
+            </a>
+            <a class="card" href="codex-tools.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-wrench"/></svg></span><h2>Codex의 도구란?</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
+                <p>에이전트가 손발로 쓰는 도구의 개념과 종류를 정리합니다.</p>
+            </a>
+            <a class="card" href="agent-design.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><h2>멀티 에이전트 소환</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
+                <p>솔로에서 오케스트라까지, 여러 에이전트를 동시에 부리는 설계를 다룹니다.</p>
+            </a>
+        </section>
+
+        <div class="card-subsection"><span class="sub-name">스킬</span><span class="sub-desc">나만의 스킬 만들기</span></div>
+        <section class="cards">
             <a class="card" href="agents-md-templates.html">
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-clipboard"/></svg></span><h2>AGENTS.md로 내 규칙 알려주기</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level intermediate">중급</span></div>
@@ -1433,24 +1469,24 @@
             </a>
         </section>
 
-        <!-- 실전 -->
-        <div class="track-label" style="margin-top: 32px;">
-            <span class="track-label-badge concept">🎯 실전</span>
-            <span class="track-label-text">AI 에이전트 설계</span>
-        </div>
-        <section class="cards" style="grid-template-columns: 1fr 1fr;">
-            <a class="card" href="harness-engineering.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-toolbox"/></svg></span><h2>하네스 엔지니어링이란?</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
-                <p>같은 AI 모델도 하네스에 따라 결과가 달라집니다. AI가 일하는 환경을 설계하는 6가지 구성 요소를 배웁니다.</p>
+    </div>
+
+    <!--5단계: 루프 자동화 -->
+    <div class="card-section" id="section-loop">
+        <div class="section-header"><span class="section-num">5단계</span><span class="section-title">루프 자동화</span></div>
+        <p class="section-subtitle">반복 작업을 루프로 묶고 예약 작업으로 자동 실행합니다</p>
+        <section class="cards">
+            <a class="card" href="loop-engineering.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-repeat"/></svg></span><h2>루프 엔지니어링이란?</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 14분</span><span class="badge-level advanced">고급</span></div>
+                <p>같은 작업을 반복 가능한 루프로 설계하는 개념을 다룹니다.</p>
             </a>
-            <a class="card" href="agent-design.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-puzzle"/></svg></span><h2>팀 설계: 솔로에서 오케스트라까지</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 20분</span><span class="badge-level advanced">고급</span></div>
-                <p>솔로 · 파이프라인 · 팀 · 오케스트라. AI에게 일을 맡기는 4가지 설계 패턴을 실전 가이드로 익힙니다.</p>
+            <a class="card" href="routines.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></span><h2>예약 작업으로 자동 실행</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
+                <p>ChatGPT 예약 작업(Scheduled tasks)으로 정해진 시각에 자동 실행합니다.</p>
             </a>
         </section>
-
     </div>
 
     <section class="lower-ambient" aria-label="인덱스 하단 콘텐츠">
@@ -1460,80 +1496,132 @@
         <div class="lower-ambient-inner">
 
     <!-- 실전 예제 -->
-    <div class="card-section" id="section-final" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
+    <div class="card-section" id="section-examples" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
         <div class="section-header" style="padding-top: 0;">
             <span class="section-num">예제</span>
             <span class="section-title">실전 예제</span>
         </div>
         <p class="section-subtitle">실제 업무에 Codex와 자동화 작업을 붙이는 사례</p>
 
-        <!-- 기본 예제 -->
-        <div class="track-label">
-            <span class="track-label-badge concept">🎯 기본 예제</span>
-            <span class="track-label-text">바로 써먹는 실무 자동화</span>
-        </div>
+        <div class="card-subsection"><span class="sub-name">기본</span><span class="sub-desc">바로 써먹는 실무 자동화</span></div>
         <section class="cards">
+            <a class="card" href="ai-writing.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-pencil"/></svg></span><h2>AI가 쓴 티를 지우는 법</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
+                <p>번역투와 AI 특유의 패턴을 걷어내 사람이 쓴 글로 다듬습니다.</p>
+            </a>
+            <a class="card" href="news-clipping.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span><h2>뉴스 클리핑 자동화</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level intermediate">중급</span></div>
+                <p>관심 주제 뉴스를 모아 요약하는 작업을 자동화합니다.</p>
+            </a>
             <a class="card" href="google-sheets-dashboard.html">
                 <div class="card-title-row">
                     <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-trending"/></svg></span>
                     <h2>구글 시트 기반 대시보드 만들기</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
                 </div>
-                <div class="card-meta"><span class="badge-time">&#x23F1; 12분</span><span class="badge-level intermediate">중급</span></div>
+                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
                 <p>구글 시트에 있는 데이터를 분석하여 인터랙티브 대시보드 만들기.</p>
-            </a>
-            <a class="card" href="instagram-card-news.html">
-                <div class="card-title-row">
-                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-image"/></svg></span>
-                    <h2>인스타그램 카드뉴스 만들기</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
-                </div>
-                <div class="card-meta"><span class="badge-time">&#x23F1; 15분</span><span class="badge-level intermediate">중급</span></div>
-                <p>주제와 타깃을 입력해 카드뉴스 스토리라인을 만들고, 1080×1350 PNG로 바로 내려받는 마케팅 자동화 예제.</p>
-            </a>
-            <a class="card" href="harness-book.html">
-                <div class="card-title-row">
-                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-book"/></svg></span>
-                    <h2>하네스 엔지니어링으로 책 쓰기</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
-                </div>
-                <div class="card-meta"><span class="badge-time">&#x23F1; 20분</span><span class="badge-level advanced">고급</span></div>
-                <p>AI 에이전트 팀으로 책 한 권을 완성하는 하네스 엔지니어링 실전 가이드.</p>
             </a>
         </section>
 
-        <!-- MCP 연결 -->
-        <div class="track-label" style="margin-top: 32px;">
-            <span class="track-label-badge concept">🔌 MCP 연결</span>
-            <span class="track-label-text">외부 도구와 연동하는 워크플로우</span>
-        </div>
+        <div class="card-subsection"><span class="sub-name">MCP연결</span><span class="sub-desc">외부 도구와 연동</span></div>
         <section class="cards">
             <a class="card" href="playmcp-kakao.html">
                 <div class="card-title-row">
                     <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chat"/></svg></span>
                     <h2>카카오톡 PlayMCP 연결하기</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
                 </div>
-                <div class="card-meta"><span class="badge-time">&#x23F1; 12분</span><span class="badge-level intermediate">중급</span></div>
+                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
                 <p>Codex와 Kakao PlayMCP를 MCP로 연결해, 작업 요약을 카카오톡 나와의 채팅방으로 보내는 실전 과정.</p>
             </a>
             <a class="card" href="korean-law-mcp.html">
                 <div class="card-title-row">
                     <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span>
                     <h2>한국 법령 검색 MCP 연결하기</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
                 </div>
-                <div class="card-meta"><span class="badge-time">&#x23F1; 10분</span><span class="badge-level intermediate">중급</span></div>
+                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level intermediate">중급</span></div>
                 <p>Codex의 Customize 메뉴에서 커스텀 MCP를 붙여, 법령·판례·조례를 실시간으로 검색하고 환각까지 검증하는 실전 사례.</p>
             </a>
             <a class="card" href="stock-messenger.html">
                 <div class="card-title-row">
                     <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span>
                     <h2>기업 공시 데이터 분석</h2>
-                    <span style="font-size: 11px; font-weight: 700; color: var(--codex-pill-text); background: var(--codex-pill-bg-muted); padding: 3px 10px; border-radius: 20px; margin-left: auto; box-shadow: var(--codex-pill-shadow);">실전</span>
                 </div>
-                <div class="card-meta"><span class="badge-time">&#x23F1; 15분</span><span class="badge-level advanced">고급</span></div>
+                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
                 <p>DART 스킬을 먼저 설치하고 테스트한 뒤, 텔레그램 봇으로 리포트를 받아보는 MCP 연동 워크플로우.</p>
+            </a>
+        </section>
+
+        <div class="card-subsection"><span class="sub-name">심화</span><span class="sub-desc">계속 자라는 지식 자산</span></div>
+        <section class="cards">
+            <a class="card" href="harness-book.html">
+                <div class="card-title-row">
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-book"/></svg></span>
+                    <h2>하네스 엔지니어링으로 책 쓰기</h2>
+                </div>
+                <div class="card-meta"><span class="badge-time">⏱ 20분</span><span class="badge-level advanced">고급</span></div>
+                <p>AI 에이전트 팀으로 책 한 권을 완성하는 하네스 엔지니어링 실전 가이드.</p>
+            </a>
+            <a class="card" href="company-brain.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-brain"/></svg></span><h2>컴퍼니 브레인 축적하기</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 18분</span><span class="badge-level advanced">고급</span></div>
+                <p>조직의 지식을 에이전트가 계속 쌓아가는 자산으로 만듭니다.</p>
+            </a>
+            <a class="card" href="instagram-card-news.html">
+                <div class="card-title-row">
+                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-image"/></svg></span>
+                    <h2>인스타그램 카드뉴스 만들기</h2>
+                </div>
+                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level intermediate">중급</span></div>
+                <p>주제와 타깃을 입력해 카드뉴스 스토리라인을 만들고, 1080×1350 PNG로 바로 내려받는 마케팅 자동화 예제.</p>
+            </a>
+        </section>
+    </div>
+
+    <!-- 쇼케이스 -->
+    <div class="card-section" id="section-showcase" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
+        <div class="section-header" style="padding-top: 0;">
+            <span class="section-num">쇼케이스</span>
+            <span class="section-title">쇼케이스</span>
+        </div>
+        <p class="section-subtitle">Codex로 만든 대표 결과물 모음</p>
+        <section class="cards">
+            <a class="card" href="showcase-poems.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-pencil"/></svg></span><h2>멀티 페르소나로 시 쓰기</h2></div>
+                <div class="card-meta"><span class="badge-level reference">참고</span></div>
+                <p>5인 페르소나가 같은 주제로 시를 씁니다. 관점이 달라지면 언어도 달라집니다.</p>
+            </a>
+            <a class="card" href="showcase.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-monitor"/></svg></span><h2>스탑워치 쇼케이스</h2></div>
+                <div class="card-meta"><span class="badge-level reference">참고</span></div>
+                <p>Codex가 만든 인터랙티브 스탑워치 앱 실제 결과물입니다.</p>
+            </a>
+            <a class="card" href="hackathon.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-rocket"/></svg></span><h2>Codex 해커톤 쇼케이스</h2></div>
+                <div class="card-meta"><span class="badge-level reference">참고</span></div>
+                <p>해커톤에서 탄생한 Codex 프로젝트 결과물을 한눈에 봅니다.</p>
+            </a>
+        </section>
+    </div>
+
+    <!-- 안전·법률 참고 -->
+    <div class="card-section" id="section-ref" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
+        <div class="section-header" style="padding-top: 0;">
+            <span class="section-num">참고</span>
+            <span class="section-title">안전·법률</span>
+        </div>
+        <p class="section-subtitle">AI와 함께 일할 때 알아야 할 안전과 법률 기초</p>
+        <section class="cards">
+            <a class="card" href="security-guide.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span><h2>AI와 안전하게 일하는 법</h2></div>
+                <div class="card-meta"><span class="badge-level reference">참고</span></div>
+                <p>개인정보, 기밀 데이터, 프롬프트 인젝션. AI와 함께 일할 때 지켜야 할 보안 원칙을 정리합니다.</p>
+            </a>
+            <a class="card" href="ai-basic-law.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span><h2>인공지능기본법 한눈에</h2></div>
+                <div class="card-meta"><span class="badge-level reference">참고</span></div>
+                <p>2026년 시행 인공지능기본법의 핵심 조항을 비즈니스 관점으로 정리합니다.</p>
             </a>
         </section>
     </div>
@@ -1939,7 +2027,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (new URLSearchParams(window.location.search).has('license')) {
         scrollToLicense();
     }
-    var sectionIds = ['section-1','section-project','section-plugin','section-code','section-deploy','section-skills','section-final'];
+    var sectionIds = ['section-1','section-project','section-plugin','section-code','section-skills','section-loop','section-examples','section-showcase','section-ref'];
     var sections = sectionIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
 
     // 방문 기록

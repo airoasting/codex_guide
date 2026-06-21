@@ -1748,6 +1748,10 @@
         <span class="sm-num">3</span>
         <span class="sm-title">실전 템플릿</span>
     </a>
+    <a href="#reading" data-secs="reading">
+        <span class="sm-num">4</span>
+        <span class="sm-title">참고 문헌</span>
+    </a>
 </nav>
 
 <main class="container">
@@ -2001,6 +2005,23 @@
             이 페이지는 위 두 공식 문서를 바탕으로, 이전 가이드와 새로운 가이드 (v5.5)의 차이를 비즈니스 리더 관점에서 다시 정리한 것입니다.
         </p>
     </div>
+
+<style>/* RD-INJECT 참고문헌 컴포넌트 */ .reading{margin-top:48px;padding-top:8px} .reading>h2{font-size:1.4rem;font-weight:800;margin:0 0 18px} .reading-group{background:#fff;border:1px solid rgba(91,98,216,.14);border-radius:16px;padding:20px 22px;margin-bottom:16px;box-shadow:0 4px 18px rgba(40,40,90,.05)} .reading-group h3{margin:0 0 12px;font-size:1.02rem;font-weight:700;color:var(--codex-accent)} .reading-group ul{margin:0;padding-left:18px} .reading-group li{margin:7px 0;line-height:1.6;color:#3a3f55} .reading-group a{color:var(--codex-accent);text-decoration:none;font-weight:600} .reading-group a:hover{text-decoration:underline}</style>
+<section class="reading" id="reading">
+  <h2>참고 문헌·더 읽을거리</h2>
+  <div class="reading-group"><h3>핵심 논문</h3><ul>
+    <li>Wei et al. (2022): <a href="https://scholar.google.com/scholar?q=Chain-of-Thought+Prompting+Elicits+Reasoning+in+Large+Language+Models" target="_blank" rel="noopener">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a> · 단계별 추론 유도로 복잡한 과제 성능을 높이는 방법론 제시</li>
+    <li>Kojima et al. (2022): <a href="https://scholar.google.com/scholar?q=Large+Language+Models+are+Zero-Shot+Reasoners" target="_blank" rel="noopener">Large Language Models are Zero-Shot Reasoners</a> · "Let's think step by step" 단 한 문장으로 추론 정확도가 크게 오른다는 실험 결과</li>
+  </ul></div>
+  <div class="reading-group"><h3>공식 문서</h3><ul>
+    <li>OpenAI: <a href="https://platform.openai.com/docs" target="_blank" rel="noopener">Prompt engineering</a> · 모델 응답 품질을 높이는 공식 프롬프트 작성 지침</li>
+    <li>Anthropic: <a href="https://docs.anthropic.com" target="_blank" rel="noopener">Prompt engineering</a> · Claude 모델을 위한 Anthropic 공식 프롬프트 엔지니어링 가이드</li>
+  </ul></div>
+  <div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul>
+    <li><a href="project-intro.html">프로젝트 만들기</a> · ChatGPT 프로젝트로 맥락을 반복 재사용하는 방법</li>
+    <li><a href="multi-persona.html">멀티 페르소나 토론</a> · 5인 전문가 역할을 동시에 부여해 답변 품질을 높이는 기법</li>
+  </ul></div>
+</section>
 </main>
 
 <nav class="page-nav">

@@ -1420,7 +1420,9 @@
             .back-link { font-size: 12px; margin-bottom: 14px; }
             .prompt-block pre { font-size: 11px; line-height: 1.55; padding: 14px; }
         }
-    </style>
+    
+/* RD-INJECT 참고문헌 컴포넌트 */ .reading{margin-top:48px;padding-top:8px} .reading>h2{font-size:1.4rem;font-weight:800;margin:0 0 18px} .reading-group{background:#fff;border:1px solid rgba(91,98,216,.14);border-radius:16px;padding:20px 22px;margin-bottom:16px;box-shadow:0 4px 18px rgba(40,40,90,.05)} .reading-group h3{margin:0 0 12px;font-size:1.02rem;font-weight:700;color:var(--codex-accent)} .reading-group ul{margin:0;padding-left:18px} .reading-group li{margin:7px 0;line-height:1.6;color:#3a3f55} .reading-group a{color:var(--codex-accent);text-decoration:none;font-weight:600} .reading-group a:hover{text-decoration:underline}
+</style>
 </head>
 <body>
 
@@ -1485,6 +1487,11 @@
         <span class="sm-num">4</span>
         <span class="sm-title">사례 2</span>
         <span class="sm-sub">DAW</span>
+    </a>
+    <a href="#reading" data-sec="reading">
+        <span class="sm-num">5</span>
+        <span class="sm-title">참고 문헌</span>
+        <span class="sm-sub">더 읽을거리</span>
     </a>
 </nav>
 
@@ -2107,6 +2114,19 @@ Codex의 Task 도구로 <span class="val">Planner</span> / <span class="val">Gen
             <a class="cta-btn secondary" href="index.html">&larr; 목록으로</a>
         </div>
     </div>
+<section class="reading" id="reading">
+  <h2>참고 문헌·더 읽을거리</h2>
+  <div class="reading-group"><h3>핵심 논문</h3><ul>
+    <li>Yao et al. (2022): <a href="https://scholar.google.com/scholar?q=ReAct%3A+Synergizing+Reasoning+and+Acting+in+Language+Models" target="_blank" rel="noopener">ReAct: Synergizing Reasoning and Acting in Language Models</a> · 추론과 행동을 교대로 수행하는 에이전트 프레임워크</li>
+  </ul></div>
+  <div class="reading-group"><h3>공식 문서</h3><ul>
+    <li><a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic "Building effective agents"</a>: 효과적인 에이전트 설계를 위한 Anthropic 공식 가이드</li>
+  </ul></div>
+  <div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul>
+    <li><a href="codex-tools.html">Codex의 도구란?</a>: Codex가 사용하는 도구 개념과 종류 정리</li>
+    <li><a href="agent-design.html">멀티 에이전트 소환</a>: 솔로·파이프라인·팀·오케스트라 설계 패턴</li>
+  </ul></div>
+</section>
 </main>
 
 

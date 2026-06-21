@@ -17,6 +17,28 @@
 - 신설 페이지는 기존 골격 `header → step-nav → header-pages → sub-menu → container → footer + SM-HAMBURGER`를 그대로 따른다.
 - 커밋은 Task마다. 메시지 한국어, 말미에 `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`.
 - 깨진 링크 0 유지. 각 구조 Task는 아래 링크체크를 통과해야 한다.
+- **참고 문헌·더 읽을거리 컴포넌트(필수):** 모든 학습 콘텐츠 페이지(진단·1~5단계·예제)는 본문 끝, 푸터 앞에 `참고 문헌·더 읽을거리` 섹션을 둔다. 구성은 ① 핵심 논문(저자·연도·제목, 링크) ② 공식 문서 ③ 사이트 내부 연결 페이지. 쇼케이스·갤러리·사전 등 참고 등급 페이지는 선택. 표준 마크업:
+
+```html
+<section class="reading" id="reading">
+  <h2>참고 문헌·더 읽을거리</h2>
+  <div class="reading-group">
+    <h3>핵심 논문</h3>
+    <ul>
+      <li><a href="https://…" target="_blank" rel="noopener">저자 (연도) — 제목</a> · 한 줄 설명</li>
+    </ul>
+  </div>
+  <div class="reading-group">
+    <h3>공식 문서</h3>
+    <ul><li><a href="https://…" target="_blank" rel="noopener">문서명</a></li></ul>
+  </div>
+  <div class="reading-group">
+    <h3>이 사이트에서 이어 읽기</h3>
+    <ul><li><a href="해당-페이지.html">제목</a></li></ul>
+  </div>
+</section>
+```
+> `.reading` 스타일은 `index.html`/콘텐츠 페이지 공통 `<style>`에 1회 정의(카드 톤 재사용). 외부 링크는 게시 전 실제 접속 확인. 자료는 **실재하는 것만** 싣고, 불확실하면 공식 문서로 대체한다(없는 논문 지어내지 않는다).
 
 ## File Structure
 - `index.html` — 라우팅 허브. step-nav 라벨, 섹션·서브섹션·카드 전면 교체(Phase 1).
@@ -519,9 +541,10 @@ git add -A && git commit -m "fix(index): IA 정합 점검 반영"
 **Files:** Modify: `<해당 .html>`
 
 - [ ] **Step 1:** 해당 페이지의 콘텐츠 개요(아래)대로 H2 섹션을 실제 본문으로 작성. AGENTS.md 글쓰기 규약 적용. 기존 동급 페이지(예: project-intro)의 본문 컴포넌트(콜아웃·코드블록·체크리스트·표)를 재사용.
-- [ ] **Step 2:** sub-menu 앵커를 본문 H2와 동기화.
-- [ ] **Step 3:** 검증 — `./tools/check-links.sh` OK + preview로 렌더·목차 동작 확인 + "흐름"/em dash 0건(`grep -c '—' <file>` → 0).
-- [ ] **Step 4:** 커밋 `content(<slug>): 본문 9.5점 심화`.
+- [ ] **Step 2:** 본문 끝에 `참고 문헌·더 읽을거리` 섹션(표준 마크업)을 넣고, 아래 "회차별 참고 문헌" 표의 해당 항목을 채운다. 외부 링크는 실제 접속 확인, 불확실한 논문은 공식 문서로 대체.
+- [ ] **Step 3:** sub-menu 앵커를 본문 H2 + `#reading`과 동기화.
+- [ ] **Step 4:** 검증 — `./tools/check-links.sh` OK + preview로 렌더·목차·외부 링크 동작 확인 + "흐름"/em dash 0건(`grep -c '—' <file>` → 0).
+- [ ] **Step 5:** 커밋 `content(<slug>): 본문 9.5점 심화 + 참고 문헌`.
 
 ### 페이지별 콘텐츠 개요 (작성 지침)
 
@@ -560,10 +583,81 @@ git add -A && git commit -m "fix(index): IA 정합 점검 반영"
 
 > 단계 순서: 검증 → 확장 → CLI → 비법 → 하네스 → 루프 → 예제 → 쇼케이스 → 참고. 한 단계 묶음 완료 시 preview 점검 + 링크체크.
 
+### Task 3.R: 기존 핵심 페이지에 참고 문헌 소급 적용
+
+신설 페이지와 같은 `참고 문헌·더 읽을거리` 컴포넌트를 기존 학습 페이지에도 넣는다. 대상: `ai-fluency`, `project-intro`, `multi-persona`, `harness-engineering`, `agent-design`, `agents-md-templates`, `skills`, `code-plugin`, `github-guide`, `codex-101`, `codex-tasks`, `harness-book`, `google-sheets-dashboard`, `stock-messenger`, `korean-law-mcp`, `playmcp-kakao`, `instagram-card-news`, `codex-orientation`, `ai-levels`. 페이지당: 표준 섹션 삽입 → 아래 표의 자료 채움 → 링크체크 → 커밋 `content(<slug>): 참고 문헌 추가`.
+
+---
+
+## 회차별 참고 문헌·읽을거리
+
+> 모두 실재 자료다. 게시 전 URL 확인. "공식 문서"는 OpenAI/Anthropic/표준화 기구 등 1차 출처, "내부"는 사이트 내 연결 페이지.
+
+### 진단·기초
+| 페이지 | 핵심 논문 | 공식 문서 | 내부 |
+|---|---|---|---|
+| codex-orientation | Anthropic (2024) — Building effective agents | OpenAI Codex 문서 | ai-levels, codex-101 |
+| ai-levels | — (비유: SAE J3016 자율주행 단계) | SAE J3016 개요 | codex-orientation |
+| ai-fluency | Wei et al. (2022) — Chain-of-Thought Prompting Elicits Reasoning in LLMs; Kojima et al. (2022) — Large Language Models are Zero-Shot Reasoners | OpenAI/Anthropic Prompt engineering 가이드 | project-intro, multi-persona |
+| project-intro | — | Anthropic Prompt engineering 문서; OpenAI Best practices for prompt engineering | ai-fluency |
+| multi-persona | Du et al. (2023) — Improving Factuality and Reasoning via Multiagent Debate; Chan et al. (2023) — ChatEval | — | ai-sycophancy, agent-design |
+
+### 검증
+| 페이지 | 핵심 논문 | 공식 문서 | 내부 |
+|---|---|---|---|
+| ai-sycophancy | Sharma et al. (2023, Anthropic) — Towards Understanding Sycophancy in Language Models; Perez et al. (2022) — Discovering Language Model Behaviors with Model-Written Evaluations | — | multi-persona, ai-hallucination |
+| ai-hallucination | Ji et al. (2022) — Survey of Hallucination in NLG (ACM Computing Surveys); Huang et al. (2023) — A Survey on Hallucination in LLMs; Lewis et al. (2020) — Retrieval-Augmented Generation | — | korean-law-mcp, company-brain |
+
+### 확장
+| 페이지 | 핵심 논문 | 공식 문서 | 내부 |
+|---|---|---|---|
+| chrome-plugin | — | OpenAI ChatGPT Atlas / 브라우저 사용 문서 | excel-plugin, pptx-plugin |
+
+### 코드 (노코드/CLI/비법)
+| 페이지 | 핵심 논문 | 공식 문서 | 내부 |
+|---|---|---|---|
+| codex-101 / codex-tasks | — | OpenAI Codex 문서 | github-guide, checklist |
+| github-guide | — | GitHub Docs; Vercel Docs; Netlify Docs | codex-tasks |
+| checklist / cheatsheet | — | OpenAI Codex CLI 문서 | codex-best-practices |
+| codex-best-practices | — | Anthropic — Claude Code: Best practices for agentic coding (2025); OpenAI Codex 프롬프트 가이드 | harness-engineering |
+
+### 에이전트 설계
+| 페이지 | 핵심 논문 | 공식 문서 | 내부 |
+|---|---|---|---|
+| harness-engineering | Yao et al. (2022) — ReAct; Anthropic (2024) — Building effective agents | Anthropic Agents 문서 | codex-tools, agent-design |
+| codex-tools | Schick et al. (2023) — Toolformer; Patil et al. (2023) — Gorilla; Yao et al. (2022) — ReAct | Anthropic — Model Context Protocol 소개 (2024) | harness-engineering, code-plugin |
+| agent-design (멀티 에이전트) | Wu et al. (2023) — AutoGen; Hong et al. (2023) — MetaGPT | Anthropic — Multi-agent research system 블로그 | multi-persona, harness-engineering |
+| agents-md-templates / skills / code-plugin | — | Anthropic Claude Code(Skills) 문서; Anthropic — Model Context Protocol | codex-tools |
+
+### 루프 자동화
+| 페이지 | 핵심 논문 | 공식 문서 | 내부 |
+|---|---|---|---|
+| loop-engineering | Shinn et al. (2023) — Reflexion; Madaan et al. (2023) — Self-Refine; Wang et al. (2023) — Voyager | — | routines, harness-engineering |
+| routines | — | OpenAI — ChatGPT Scheduled tasks 문서 | loop-engineering, news-clipping |
+
+### 예제
+| 페이지 | 핵심 논문 | 공식 문서 | 내부 |
+|---|---|---|---|
+| ai-writing | Mitchell et al. (2023) — DetectGPT | — | multi-persona |
+| news-clipping | Lewis et al. (2020) — Retrieval-Augmented Generation | — | routines |
+| google-sheets-dashboard | — | Google Sheets API 문서 | news-clipping |
+| company-brain | Lewis et al. (2020) — RAG; Asai et al. (2023) — Self-RAG; Gao et al. (2023) — RAG for LLMs: A Survey | — | harness-book, ai-hallucination |
+| harness-book | — | Anthropic — Building effective agents | company-brain |
+| playmcp-kakao / korean-law-mcp / stock-messenger | — | Anthropic — Model Context Protocol 사양; 각 서비스 API 문서 | codex-tools |
+
+### 참고
+| 페이지 | 핵심 자료 | 공식 문서 | 내부 |
+|---|---|---|---|
+| security-guide | — | OWASP — Top 10 for LLM Applications; NIST — AI Risk Management Framework (AI RMF 1.0, 2023) | ai-basic-law |
+| ai-basic-law | — | 인공지능 발전과 신뢰 기반 조성 등에 관한 기본법(인공지능기본법, 2024 제정); EU AI Act (2024) | security-guide, korean-law-mcp |
+
+> 위 목록은 시작점이다. 작성 중 더 적합한 1차 자료를 찾으면 교체하되, 검증 가능한 출처만 싣는다.
+
 ---
 
 ## Self-Review (작성자 체크 결과)
 - **스펙 커버리지:** 신설 18개 전부 Phase 2(골격)+Phase 3(본문) 매핑됨. agent-design 재사용(harness-workflows) 반영. Cowork 제외 반영. 저장·배포→3단계 흡수 반영.
 - **플레이스홀더:** Phase 3 각 페이지에 구체 H2 개요 제공(=작성 지침), "TBD" 없음. 구조 Task는 실제 마크업 포함.
 - **타입/명명 정합:** section id(section-1/project/plugin/code/skills/loop/examples/showcase/ref)와 step-nav data-section 일치. 매니페스트 파일명과 index 링크 일치.
+- **참고 문헌:** 모든 학습 페이지에 표준 `참고 문헌·더 읽을거리` 컴포넌트 필수화. 회차별 실재 자료 표 제공(신설+기존, Task 3.R로 소급). 없는 논문 금지·게시 전 URL 확인 명시.
 - **주의 사항:** Task 1.2 CSS 색값은 기존 팔레트 16진값으로 확정해 입력(오타 금지). Phase 2 자동 치환이 어긋나면 페이지별 수동 보정.

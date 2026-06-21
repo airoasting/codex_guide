@@ -1848,7 +1848,11 @@
             outline: 3px solid var(--codex-accent); outline-offset: 2px;
         }
         .real-cl-item label { min-height: 44px; align-items: center; }
-    </style>
+    
+{RDCSS}
+
+/* RD-INJECT 참고문헌 컴포넌트 */ .reading{margin-top:48px;padding-top:8px} .reading>h2{font-size:1.4rem;font-weight:800;margin:0 0 18px} .reading-group{background:#fff;border:1px solid rgba(91,98,216,.14);border-radius:16px;padding:20px 22px;margin-bottom:16px;box-shadow:0 4px 18px rgba(40,40,90,.05)} .reading-group h3{margin:0 0 12px;font-size:1.02rem;font-weight:700;color:var(--codex-accent)} .reading-group ul{margin:0;padding-left:18px} .reading-group li{margin:7px 0;line-height:1.6;color:#3a3f55} .reading-group a{color:var(--codex-accent);text-decoration:none;font-weight:600} .reading-group a:hover{text-decoration:underline}
+</style>
 </head>
 <body>
 
@@ -1915,50 +1919,326 @@
 
     <div class="content-section" id="sec-1">
         <div class="section-hd">
+            <div class="section-num">1</div>
             <div>
                 <h2>ChatGPT Atlas와 브라우저 확장</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">ChatGPT를 브라우저에 연결하는 방식 두 가지와 각각의 쓰임새</div>
             </div>
+        </div>
+
+        <div class="nm-card">
+            <p>브라우저에서 ChatGPT를 쓰는 방법은 크게 두 가지입니다. 하나는 <strong>ChatGPT.com을 직접 여는 것</strong>이고, 다른 하나는 <strong>ChatGPT Atlas 브라우저 확장 프로그램을 설치해 현재 탭 위에서 바로 실행하는 것</strong>입니다. 둘 다 같은 계정과 모델을 씁니다. 차이는 컨텍스트입니다.</p>
+            <p>ChatGPT.com에서는 탭을 전환해 가며 자료와 대화를 번갈아 봐야 합니다. Atlas는 지금 보고 있는 웹페이지 텍스트를 자동으로 가져오기 때문에 기사·보고서·이메일 초안을 직접 붙여 넣는 과정이 사라집니다.</p>
+        </div>
+
+        <div class="element-grid">
+            <div class="element-item">
+                <span class="e-icon">🌐</span>
+                <strong>ChatGPT.com (웹)</strong>
+                <span>계정만 있으면 즉시 사용. 탭을 따로 열어 대화하며, 자료 복사·붙여넣기가 필요합니다.</span>
+            </div>
+            <div class="element-item">
+                <span class="e-icon">🔌</span>
+                <strong>ChatGPT Atlas (확장)</strong>
+                <span>현재 탭의 텍스트를 자동 수집. 페이지를 떠나지 않고 요약·번역·작성을 바로 실행합니다.</span>
+            </div>
+            <div class="element-item">
+                <span class="e-icon">📋</span>
+                <strong>공통: 같은 계정·모델</strong>
+                <span>Plus·Team·Enterprise 구독이 그대로 적용됩니다. 별도 비용 없이 두 방식을 혼용할 수 있습니다.</span>
+            </div>
+            <div class="element-item">
+                <span class="e-icon">🔒</span>
+                <strong>공통: 개인정보 주의</strong>
+                <span>페이지 텍스트가 OpenAI 서버로 전송됩니다. 사내 기밀 페이지에서 사용 전 정책을 확인하세요.</span>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-label">핵심 요약</div>
+            <p>Atlas는 "지금 보고 있는 페이지 내용을 곧바로 AI에 넘기는 브리지"입니다. <span>탭 전환과 복사·붙여넣기를 없애는 것이 핵심 가치입니다.</span></p>
         </div>
     </div>
 
     <div class="content-section" id="sec-2">
         <div class="section-hd">
+            <div class="section-num">2</div>
             <div>
                 <h2>설치</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">Chrome 웹스토어에서 Atlas를 찾아 고정하기까지 3분이면 충분합니다</div>
+            </div>
+        </div>
+
+        <ul class="step-list">
+            <li class="step-item">
+                <div class="step-bubble">1</div>
+                <div class="step-content">
+                    <strong>Chrome 웹스토어 접속</strong>
+                    <span>주소창에 <code>chrome.google.com/webstore</code>를 입력하거나, Chrome 우상단 점 세 개 메뉴에서 "확장 프로그램 &rarr; Chrome 웹스토어 방문"을 선택합니다. Edge를 쓰는 경우 Microsoft Edge 확장 스토어에서도 동일하게 설치할 수 있습니다.</span>
+                    <span class="step-key-tag">chrome.google.com/webstore</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">2</div>
+                <div class="step-content">
+                    <strong>"ChatGPT" 검색 후 공식 확장 선택</strong>
+                    <span>검색 결과에서 <strong>개발자: openai.com</strong>으로 표시된 "ChatGPT" 확장을 선택합니다. 유사한 이름의 비공식 확장이 많으니 개발자 도메인을 반드시 확인하세요.</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">3</div>
+                <div class="step-content">
+                    <strong>"Chrome에 추가" 클릭 후 권한 허용</strong>
+                    <span>팝업에서 요청하는 권한(현재 탭 읽기, 저장소 접근)을 확인하고 "확장 프로그램 추가"를 누릅니다. 권한은 사용자가 활성화한 탭에서만 적용됩니다.</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">4</div>
+                <div class="step-content">
+                    <strong>퍼즐 조각 아이콘에서 고정</strong>
+                    <span>설치 후 주소창 오른쪽 퍼즐 아이콘을 눌러 ChatGPT 확장 옆 핀 아이콘을 클릭합니다. 툴바에 고정하면 어느 페이지에서든 한 번에 열 수 있습니다.</span>
+                    <span class="step-key-tag">매번 퍼즐 메뉴를 찾지 않아도 됩니다</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">5</div>
+                <div class="step-content">
+                    <strong>ChatGPT 계정으로 로그인</strong>
+                    <span>확장 아이콘을 눌렀을 때 로그인 화면이 뜨면 ChatGPT.com 계정으로 인증합니다. 이미 ChatGPT.com에 로그인된 상태라면 자동으로 연결됩니다.</span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="tip-box">
+            <div class="tip-icon-wrap">💡</div>
+            <div>
+                <div class="tip-label">설치 확인</div>
+                <p>뉴스 기사나 블로그 글을 열고 확장 아이콘을 클릭했을 때 페이지 텍스트가 자동으로 입력창에 나타나면 정상입니다. 텍스트가 비어 있다면 해당 사이트의 콘텐츠 보안 정책(CSP) 때문에 읽기가 차단된 것입니다.</p>
             </div>
         </div>
     </div>
 
     <div class="content-section" id="sec-3">
         <div class="section-hd">
+            <div class="section-num">3</div>
             <div>
                 <h2>웹페이지 위에서 작업</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">기사 요약, 이메일 작성, 번역 등 실무에서 가장 많이 쓰는 패턴</div>
+            </div>
+        </div>
+
+        <div class="nm-card">
+            <p>Atlas를 활성화하면 오른쪽에 사이드 패널이 열립니다. 상단에 현재 페이지 제목이 표시되고, 아래 입력창에 질문이나 지시를 입력하면 됩니다. 별도 복사 없이 "이 페이지를 3줄로 요약해줘"라고 입력하면 페이지 전체를 컨텍스트로 읽어 답합니다.</p>
+        </div>
+
+        <div class="ba-grid">
+            <div class="ba-item before">
+                <div class="ba-label">이전 방식</div>
+                <div class="ba-bubble">
+                    <div class="ba-sender">사용자</div>
+                    기사 전체를 드래그해서 복사, ChatGPT.com 새 탭으로 전환, 붙여넣기, "요약해줘" 입력.
+                </div>
+                <div class="ba-bubble">
+                    탭 4개 이상, 클릭 10회 이상 필요. 긴 기사는 토큰 한도 초과로 잘리기도 합니다.
+                </div>
+            </div>
+            <div class="ba-item after">
+                <div class="ba-label">Atlas 사용 후</div>
+                <div class="ba-bubble ai">
+                    <div class="ba-sender">ChatGPT Atlas</div>
+                    아이콘 클릭 하나로 패널 열기, "3줄 요약해줘" 입력. 페이지를 벗어나지 않습니다.
+                </div>
+                <div class="ba-bubble ai">
+                    클릭 2회, 이동 0회. 읽던 페이지는 그대로 유지됩니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="usecase-list">
+            <div class="usecase-item">
+                <div class="usecase-icon">📰</div>
+                <div>
+                    <strong>뉴스 기사 요약</strong>
+                    <span class="usecase-sub">가장 빈번한 사용 패턴</span>
+                    <span class="desc">기사를 연 채로 "핵심 주장 3가지와 출처 기관을 표로 정리해줘"라고 입력합니다. 스크롤 없이 전체를 파악할 수 있습니다.</span>
+                </div>
+            </div>
+            <div class="usecase-item">
+                <div class="usecase-icon">✉️</div>
+                <div>
+                    <strong>이메일·답변 초안 작성</strong>
+                    <span class="usecase-sub">Gmail·Outlook 웹 버전에서 동작</span>
+                    <span class="desc">받은 이메일을 열고 "이 내용에 정중하게 거절하는 답장을 한국어로 써줘"를 입력합니다. 받은 메일 원문을 컨텍스트로 자동 참조합니다.</span>
+                </div>
+            </div>
+            <div class="usecase-item">
+                <div class="usecase-icon">🌏</div>
+                <div>
+                    <strong>영문 보고서 번역·해석</strong>
+                    <span class="usecase-sub">전문 용어가 많은 문서에 유용</span>
+                    <span class="desc">영어 PDF 뷰어나 보고서 페이지를 열고 "전문 용어를 살려서 한국어로 번역해줘"를 입력합니다. 단, PDF 리더가 텍스트 복사를 허용해야 합니다.</span>
+                </div>
+            </div>
+            <div class="usecase-item">
+                <div class="usecase-icon">🔍</div>
+                <div>
+                    <strong>검색 결과 정제</strong>
+                    <span class="usecase-sub">복수의 결과를 비교할 때</span>
+                    <span class="desc">Google 검색 결과 페이지에서 "결과 중 신뢰할 수 있는 출처 3개를 골라 차이점을 설명해줘"라고 요청합니다. 각 링크 미리보기 텍스트를 기반으로 답합니다.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box" style="margin-top:16px;">
+            <div class="tip-icon-wrap">⌨️</div>
+            <div>
+                <div class="tip-label">단축키</div>
+                <p>설치 후 <strong>Ctrl+Shift+G</strong> (macOS: Cmd+Shift+G)로 패널을 토글할 수 있습니다. 확장 설정 페이지에서 단축키를 변경할 수도 있습니다.</p>
             </div>
         </div>
     </div>
 
     <div class="content-section" id="sec-4">
         <div class="section-hd">
+            <div class="section-num">4</div>
             <div>
                 <h2>한계와 주의</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">Atlas가 동작하지 않거나 써서는 안 되는 상황</div>
+            </div>
+        </div>
+
+        <div class="compare-grid">
+            <div class="compare-item">
+                <div class="compare-tag bad">동작하지 않는 경우</div>
+                <p><strong>콘텐츠 보안 정책(CSP) 차단:</strong> 일부 기업 인트라넷, 금융 서비스, SPA 구조 사이트는 확장의 스크립트 실행 자체를 막습니다. 패널이 열려도 텍스트가 비어 있거나 오류가 표시됩니다.</p>
+            </div>
+            <div class="compare-item">
+                <div class="compare-tag bad">읽기가 불완전한 경우</div>
+                <p><strong>동적 렌더링·무한 스크롤:</strong> JavaScript로 지연 로드되는 콘텐츠는 화면에 렌더링됐더라도 Atlas가 DOM에서 읽지 못할 수 있습니다. 보이는 내용과 AI가 본 내용이 다를 수 있습니다.</p>
+            </div>
+            <div class="compare-item">
+                <div class="compare-tag bad">보안 위험 구간</div>
+                <p><strong>사내 기밀 문서:</strong> 현재 탭 텍스트 전체가 OpenAI 서버로 전송됩니다. 영업 비밀, 미공개 재무 정보, 개인정보가 담긴 페이지에서는 사용 전 회사 AI 사용 정책을 확인하세요.</p>
+            </div>
+            <div class="compare-item">
+                <div class="compare-tag bad">주의가 필요한 경우</div>
+                <p><strong>긴 페이지의 잘림:</strong> 컨텍스트 창보다 긴 페이지는 앞부분만 전달됩니다. 중요한 내용이 페이지 하단에 있다면 해당 구간을 직접 선택해 붙여 넣는 방법이 더 정확합니다.</p>
+            </div>
+        </div>
+
+        <div class="insight-grid">
+            <div class="insight-card ic-red">
+                <div class="insight-badge"><span class="dot-badge"></span>개인정보 처리 방침</div>
+                <p>Atlas를 통해 전송된 텍스트는 OpenAI의 데이터 처리 정책을 따릅니다. 비즈니스 플랜(Team, Enterprise) 사용자는 학습 데이터 제외가 기본 적용되지만, 무료·Plus 플랜은 설정에서 직접 확인이 필요합니다.</p>
+            </div>
+            <div class="insight-card ic-gold">
+                <div class="insight-badge"><span class="dot-badge"></span>환각(Hallucination) 위험</div>
+                <p>Atlas가 페이지를 읽더라도 ChatGPT가 페이지에 없는 정보를 덧붙일 수 있습니다. "이 페이지에 있는 내용만 근거로 답해줘"라는 문구를 프롬프트에 추가하면 이탈을 줄일 수 있습니다.</p>
             </div>
         </div>
     </div>
 
     <div class="content-section" id="sec-5">
         <div class="section-hd">
+            <div class="section-num">5</div>
             <div>
                 <h2>다음 단계</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">브라우저 사용에 익숙해졌다면 Office 플러그인과 프로젝트 구조로 넘어가세요</div>
             </div>
         </div>
+
+        <div class="nm-card">
+            <p>브라우저 확장은 웹 기반 정보를 빠르게 소비하고 가공하는 데 강합니다. 그러나 반복적인 보고서 작성, 데이터 분석, 슬라이드 제작 작업은 Excel·PowerPoint 플러그인이 더 적합합니다. 각 도구의 강점을 파악하고 상황에 맞게 조합하는 것이 핵심입니다.</p>
+        </div>
+
+        <div class="flow-diagram">
+            <div class="flow-box">
+                <span class="fb-icon">🌐</span>
+                <strong>웹 정보 수집</strong>
+                <span>Atlas로 기사·보고서 요약</span>
+            </div>
+            <div class="flow-arrow">›</div>
+            <div class="flow-box">
+                <span class="fb-icon">📊</span>
+                <strong>Excel 분석</strong>
+                <span>수집 내용을 표·수식으로 정리</span>
+            </div>
+            <div class="flow-arrow">›</div>
+            <div class="flow-box">
+                <span class="fb-icon">📑</span>
+                <strong>PPT 정리</strong>
+                <span>분석 결과를 슬라이드로 압축</span>
+            </div>
+            <div class="flow-arrow">›</div>
+            <div class="flow-box">
+                <span class="fb-icon">🤝</span>
+                <strong>보고·공유</strong>
+                <span>완성 파일을 팀에 배포</span>
+            </div>
+        </div>
+
+        <div class="next-card">
+            <strong>Excel에서 ChatGPT 사용하기 →</strong>
+            <p>스프레드시트 데이터를 AI로 분석하고 수식·요약을 자동 생성하는 방법을 단계별로 설명합니다.</p>
+            <a href="excel-plugin.html" class="next-btn">Excel 플러그인 보기</a>
+        </div>
+
+        <ul class="real-checklist" style="margin-top:24px;">
+            <li class="real-cl-item">
+                <label>
+                    <input type="checkbox" id="cb1">
+                    <span class="nm-cb-visual"></span>
+                    <span class="cl-text">Chrome 웹스토어에서 공식 ChatGPT 확장을 설치하고 툴바에 고정했다</span>
+                </label>
+            </li>
+            <li class="real-cl-item">
+                <label>
+                    <input type="checkbox" id="cb2">
+                    <span class="nm-cb-visual"></span>
+                    <span class="cl-text">뉴스 기사나 블로그 글을 열고 3줄 요약 요청을 직접 해봤다</span>
+                </label>
+            </li>
+            <li class="real-cl-item">
+                <label>
+                    <input type="checkbox" id="cb3">
+                    <span class="nm-cb-visual"></span>
+                    <span class="cl-text">받은 이메일 초안 작성 또는 영문 보고서 번역을 시도해봤다</span>
+                </label>
+            </li>
+            <li class="real-cl-item">
+                <label>
+                    <input type="checkbox" id="cb4">
+                    <span class="nm-cb-visual"></span>
+                    <span class="cl-text">회사 인트라넷이나 기밀 문서에서는 사용 정책을 확인했다</span>
+                </label>
+            </li>
+            <li class="real-cl-item">
+                <label>
+                    <input type="checkbox" id="cb5">
+                    <span class="nm-cb-visual"></span>
+                    <span class="cl-text">다음 단계로 Excel 또는 PowerPoint 플러그인 페이지를 열어봤다</span>
+                </label>
+            </li>
+        </ul>
     </div>
 
-    <section class="reading" id="reading"><h2>참고 문헌·더 읽을거리</h2><div class="reading-group"><h3>핵심 논문</h3><ul><li>준비 중</li></ul></div><div class="reading-group"><h3>공식 문서</h3><ul><li>준비 중</li></ul></div><div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul><li>준비 중</li></ul></div></section>
+    <section class="reading" id="reading">
+        <h2>참고 문헌·더 읽을거리</h2>
+        <div class="reading-group">
+            <h3>공식 문서</h3>
+            <ul>
+                <li><a href="https://openai.com" target="_blank" rel="noopener">OpenAI 공식 사이트</a> - ChatGPT 제품 안내 및 플랜 비교 (openai.com)</li>
+                <li><a href="https://help.openai.com" target="_blank" rel="noopener">OpenAI Help Center</a> - 확장 프로그램 사용법, 데이터 처리 정책, 계정 설정 (help.openai.com)</li>
+            </ul>
+        </div>
+        <div class="reading-group">
+            <h3>이 사이트에서 이어 읽기</h3>
+            <ul>
+                <li><a href="excel-plugin.html">Excel에서 ChatGPT 사용</a> - 스프레드시트 데이터 분석과 수식 자동 생성</li>
+                <li><a href="pptx-plugin.html">PowerPoint에서 ChatGPT 사용</a> - 슬라이드 초안 작성과 콘텐츠 압축</li>
+            </ul>
+        </div>
+    </section>
 </main>
 
 <footer>

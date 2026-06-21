@@ -1921,7 +1921,33 @@
         <div class="section-hd">
             <div>
                 <h2>목표</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">무엇을 자동화하고, 무엇을 직접 판단할지 먼저 정한다</div>
+            </div>
+        </div>
+        <div class="nm-card">
+            <p>뉴스 클리핑 자동화의 목표는 시간을 줄이는 것이 아니라 <strong>매일 놓치는 정보를 없애는 것</strong>이다. 사람이 직접 검색하면 관심 있는 키워드 중심으로만 탐색하게 된다. 자동화를 설계하면 사전에 정의한 소스와 키워드를 빠짐없이 커버할 수 있다.</p>
+            <p>단, 최종 판단은 사람이 한다. 자동화가 가져온 기사를 요약하고 분류하는 것까지는 AI에게 맡기되, 어떤 정보를 실제 의사결정에 쓸지는 직접 선택해야 한다.</p>
+        </div>
+        <div class="element-grid">
+            <div class="element-item">
+                <span class="e-icon">🤖</span>
+                <strong>AI가 맡는 것</strong>
+                <span>소스 접근, 기사 수집, 제목·본문 요약, 중복 제거, 분류 태깅</span>
+            </div>
+            <div class="element-item">
+                <span class="e-icon">🧠</span>
+                <strong>사람이 맡는 것</strong>
+                <span>소스 선정, 키워드 기준 수립, 중요도 판단, 보고서 활용 여부 결정</span>
+            </div>
+            <div class="element-item">
+                <span class="e-icon">📅</span>
+                <strong>주기 설정</strong>
+                <span>매일 오전 7시, 주 3회 등 고정 주기를 설정하면 뉴스가 축적되지 않는다</span>
+            </div>
+            <div class="element-item">
+                <span class="e-icon">📤</span>
+                <strong>산출물 정의</strong>
+                <span>슬랙 알림, 이메일 요약, 구글 시트 저장 등 수신 방식을 미리 정한다</span>
             </div>
         </div>
     </div>
@@ -1930,25 +1956,131 @@
         <div class="section-hd">
             <div>
                 <h2>소스 정하기</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">어디서 가져올지 기준이 없으면 잡음만 늘어난다</div>
             </div>
         </div>
+        <div class="summary-card">
+            <div class="summary-label">선정 원칙</div>
+            <p>소스는 많을수록 좋지 않다. <span>3~5개의 신뢰도 높은 소스를 정의하고, 나머지는 키워드 검색으로 보완하는 구조가 운영하기 쉽다.</span></p>
+        </div>
+        <ul class="step-list">
+            <li class="step-item">
+                <div class="step-bubble">A</div>
+                <div class="step-content">
+                    <strong>RSS 피드가 있는 매체 목록화</strong>
+                    <span>조선일보, 한겨레, 매일경제, 한국경제, 뉴스1 등 주요 매체는 RSS 피드를 제공한다. RSS URL을 정리하면 Codex나 Make.com 같은 자동화 도구에서 바로 연결할 수 있다.</span>
+                    <span class="step-key-tag">정기 구독 소스</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">B</div>
+                <div class="step-content">
+                    <strong>키워드 검색 소스 지정</strong>
+                    <span>네이버 뉴스 검색 API, Google News RSS를 활용하면 특정 키워드가 담긴 기사를 실시간으로 가져올 수 있다. 키워드는 "회사명 OR 경쟁사명 OR 산업 이슈" 형태로 조합한다.</span>
+                    <span class="step-key-tag">키워드 기반 수집</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">C</div>
+                <div class="step-content">
+                    <strong>노이즈 필터 사전 정의</strong>
+                    <span>광고성 보도자료, 연예·스포츠 섹션 등은 수집 단계에서 제외한다. 제외 키워드 목록을 따로 만들어두면 AI가 요약할 기사 수가 줄어들고 품질이 높아진다.</span>
+                    <span class="step-key-tag">필터링</span>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <div class="content-section" id="sec-3">
         <div class="section-hd">
             <div>
                 <h2>수집과 요약 자동화</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">Codex 태스크와 외부 도구를 연결하는 구조</div>
             </div>
         </div>
+        <div class="nm-card">
+            <p>수집부터 요약까지를 하나의 파이프라인으로 연결한다. 단계별로 끊어서 설계하면 중간에 오류가 생겨도 어디가 문제인지 빠르게 찾을 수 있다.</p>
+        </div>
+        <div class="flow-diagram">
+            <div class="flow-box">
+                <span class="fb-icon">📡</span>
+                <strong>소스 수집</strong>
+                <span>RSS · 검색 API</span>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">
+                <span class="fb-icon">🧹</span>
+                <strong>필터링</strong>
+                <span>중복 제거 · 노이즈 제외</span>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">
+                <span class="fb-icon">🤖</span>
+                <strong>AI 요약</strong>
+                <span>제목 · 3줄 요약 · 태그</span>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">
+                <span class="fb-icon">📤</span>
+                <strong>산출물 전송</strong>
+                <span>슬랙 · 시트 · 이메일</span>
+            </div>
+        </div>
+        <ul class="step-list">
+            <li class="step-item">
+                <div class="step-bubble">1</div>
+                <div class="step-content">
+                    <strong>Codex 태스크로 수집 스크립트 작성</strong>
+                    <span>Codex에 "RSS URL 목록에서 오늘 날짜 기사만 가져와 JSON으로 저장하는 스크립트를 작성해줘"라고 요청한다. Python requests + feedparser 조합이 가장 간단하다.</span>
+                    <span class="step-key-tag">Codex 활용</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">2</div>
+                <div class="step-content">
+                    <strong>AI 요약 프롬프트 설계</strong>
+                    <span>각 기사 본문을 AI에 넘길 때 "제목, 매체명, 날짜, 3줄 요약, 분류 태그(정책/시장/기술/경쟁사)를 JSON 형태로 반환해줘"라고 구조를 지정한다. 구조화 출력을 받으면 이후 정렬·필터링이 쉬워진다.</span>
+                    <span class="step-key-tag">프롬프트 설계</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">3</div>
+                <div class="step-content">
+                    <strong>정기 실행 설정</strong>
+                    <span>GitHub Actions, Make.com, 또는 Claude Code Routines를 사용해 매일 정해진 시간에 자동 실행되도록 한다. 실행 결과는 로그 파일로 남겨 오류 발생 시 추적할 수 있게 한다.</span>
+                    <span class="step-key-tag">스케줄링</span>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <div class="content-section" id="sec-4">
         <div class="section-hd">
             <div>
                 <h2>산출물 포맷</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">읽는 사람이 30초 안에 핵심을 파악할 수 있게</div>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-label">포맷 원칙</div>
+            <p>산출물은 읽는 데 걸리는 시간으로 평가한다. <span>30초 안에 오늘의 핵심을 파악할 수 없다면 포맷을 다시 설계해야 한다.</span></p>
+        </div>
+        <div class="insight-grid">
+            <div class="insight-card ic-gold">
+                <div class="insight-badge"><span class="dot-badge"></span>일일 브리핑</div>
+                <p><strong>헤드라인 5건 + 3줄 요약.</strong> 매일 아침 슬랙이나 이메일로 발송한다. 분류 태그(정책·시장·기술·경쟁사)를 제목 앞에 붙이면 관심 영역만 빠르게 스캔할 수 있다.</p>
+            </div>
+            <div class="insight-card ic-black">
+                <div class="insight-badge"><span class="dot-badge"></span>주간 아카이브</div>
+                <p><strong>구글 시트 누적 저장.</strong> 날짜, 매체, 제목, 요약, 태그, 원문 URL을 컬럼으로 정의한다. 월말에 트렌드 분석을 할 때 이 시트를 AI에 넘기면 패턴을 추출할 수 있다.</p>
+            </div>
+            <div class="insight-card ic-purple">
+                <div class="insight-badge"><span class="dot-badge"></span>이슈 경보</div>
+                <p><strong>특정 키워드 즉시 알림.</strong> 경쟁사 이름, 규제 기관 이름 등 민감한 키워드가 등장하면 즉시 슬랙 멘션으로 알린다. 일반 클리핑과 별도 채널을 사용하는 것이 좋다.</p>
+            </div>
+            <div class="insight-card ic-white">
+                <div class="insight-badge"><span class="dot-badge"></span>월간 리포트</div>
+                <p><strong>AI로 트렌드 요약.</strong> 한 달치 클리핑을 AI에게 넘기고 "이번 달 가장 많이 언급된 이슈 5개와 흐름의 변화를 정리해줘"라고 요청하면 월간 인사이트 보고서가 나온다.</p>
             </div>
         </div>
     </div>
@@ -1957,12 +2089,60 @@
         <div class="section-hd">
             <div>
                 <h2>확장</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">기본 클리핑이 안정되면 붙일 수 있는 기능</div>
+            </div>
+        </div>
+        <div class="nm-card">
+            <p>기본 파이프라인이 일주일 동안 오류 없이 작동하면 그 다음 단계를 붙인다. 확장은 기본이 안정된 후에 한 번에 하나씩만 추가한다.</p>
+        </div>
+        <ul class="step-list">
+            <li class="step-item">
+                <div class="step-bubble">+1</div>
+                <div class="step-content">
+                    <strong>감성 분석 추가</strong>
+                    <span>각 기사에 "우리 회사·제품에 대한 톤이 긍정인지 부정인지 중립인지"를 AI가 태깅하게 한다. 언론 모니터링의 기본 지표가 된다.</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">+2</div>
+                <div class="step-content">
+                    <strong>영문 소스 추가</strong>
+                    <span>TechCrunch, Reuters, FT 등 영문 소스를 포함하고 요약을 한국어로 번역하도록 프롬프트를 수정한다. 글로벌 트렌드를 국내 팀에 전달할 때 유용하다.</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">+3</div>
+                <div class="step-content">
+                    <strong>법령·공시 모니터링 연결</strong>
+                    <span>규제 이슈가 중요한 산업이라면 법제처 법령 정보 또는 DART 공시 시스템을 소스에 추가한다. 클리핑과 같은 형식으로 통합하면 뉴스와 공시를 한 곳에서 볼 수 있다.</span>
+                </div>
+            </li>
+        </ul>
+        <div class="tip-box">
+            <div class="tip-icon-wrap">🔁</div>
+            <div>
+                <div class="tip-label">운영 팁</div>
+                <p>한 달에 한 번 소스 목록과 키워드 목록을 검토한다. <strong>지난 한 달 동안 실제로 참고한 기사가 많은 소스는 유지하고, 한 번도 참고하지 않은 소스는 제거한다.</strong> 클리핑의 품질은 소스의 정확성에서 결정된다.</p>
             </div>
         </div>
     </div>
 
-    <section class="reading" id="reading"><h2>참고 문헌·더 읽을거리</h2><div class="reading-group"><h3>핵심 논문</h3><ul><li>준비 중</li></ul></div><div class="reading-group"><h3>공식 문서</h3><ul><li>준비 중</li></ul></div><div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul><li>준비 중</li></ul></div></section>
+    <section class="reading" id="reading">
+        <h2>참고 문헌·더 읽을거리</h2>
+        <div class="reading-group">
+            <h3>핵심 논문</h3>
+            <ul>
+                <li>Lewis et al. (2020): <a href="https://scholar.google.com/scholar?q=Retrieval-Augmented+Generation+for+Knowledge-Intensive+NLP+Tasks" target="_blank" rel="noopener">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</a></li>
+            </ul>
+        </div>
+        <div class="reading-group">
+            <h3>이 사이트에서 이어 읽기</h3>
+            <ul>
+                <li><a href="routines.html">예약 작업으로 자동 실행</a> &middot; 클리핑 파이프라인을 정기적으로 돌리는 방법</li>
+                <li><a href="korean-law-mcp.html">한국 법령 검색 MCP</a> &middot; 법령·규제 이슈를 소스에 연결하는 방법</li>
+            </ul>
+        </div>
+    </section>
 </main>
 
 <footer>

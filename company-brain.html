@@ -1917,7 +1917,33 @@
         <div class="section-hd">
             <div>
                 <h2>컴퍼니 브레인이란</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">조직의 지식을 AI가 활용할 수 있는 형태로 구조화한 저장소</div>
+            </div>
+        </div>
+        <div class="nm-card">
+            <p>컴퍼니 브레인은 조직의 노하우, 의사결정 기록, 고객 이해, 산업 맥락을 <strong>AI 에이전트가 참조할 수 있는 형태로 누적한 저장소</strong>다. ChatGPT의 프로젝트 지시문이나 Claude의 CLAUDE.md 파일이 그 가장 단순한 형태다.</p>
+            <p>컴퍼니 브레인이 없으면 AI는 매번 일반 지식으로 대답한다. 컴퍼니 브레인이 있으면 AI는 우리 회사의 언어, 기준, 맥락으로 대답한다. 이 차이가 산출물의 재사용 가능성을 결정한다.</p>
+        </div>
+        <div class="element-grid">
+            <div class="element-item">
+                <span class="e-icon">📖</span>
+                <strong>지식 기반</strong>
+                <span>제품 사양, 서비스 정책, FAQ, 업계 용어 정의 등 반복적으로 참조되는 정보</span>
+            </div>
+            <div class="element-item">
+                <span class="e-icon">🗺️</span>
+                <strong>의사결정 기록</strong>
+                <span>왜 그 선택을 했는지에 대한 근거와 당시 맥락. 숫자만 남기면 안 되고 이유를 함께 기록한다</span>
+            </div>
+            <div class="element-item">
+                <span class="e-icon">🎯</span>
+                <strong>기준과 원칙</strong>
+                <span>글쓰기 스타일, 고객 응대 기준, 보안 정책처럼 매번 지시하지 않아도 AI가 기본값으로 따라야 할 규칙</span>
+            </div>
+            <div class="element-item">
+                <span class="e-icon">🔄</span>
+                <strong>학습 루프</strong>
+                <span>AI 산출물 중 재사용 가치가 있는 것을 다시 저장소로 넣어 다음 작업에 반영한다</span>
             </div>
         </div>
     </div>
@@ -1926,7 +1952,46 @@
         <div class="section-hd">
             <div>
                 <h2>축적 구조</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">레이어별로 나눠 관리하면 충돌과 중복이 줄어든다</div>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-label">설계 원칙</div>
+            <p>컴퍼니 브레인은 하나의 거대한 문서가 아니다. <span>역할별·주제별로 분리된 여러 파일이 서로를 참조하는 구조가 유지 보수하기 쉽다.</span></p>
+        </div>
+        <ul class="step-list">
+            <li class="step-item">
+                <div class="step-bubble">L1</div>
+                <div class="step-content">
+                    <strong>회사 정체성 레이어</strong>
+                    <span>우리 회사가 무엇을 하는 곳인지, 어떤 고객을 위해 일하는지, 어떤 언어를 쓰는지를 담는다. 변경 빈도가 낮고 모든 AI 작업의 기본값이 된다. SOUL.md나 회사 소개 문서가 이에 해당한다.</span>
+                    <span class="step-key-tag">변경 빈도: 낮음</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">L2</div>
+                <div class="step-content">
+                    <strong>프로젝트·도메인 레이어</strong>
+                    <span>특정 프로젝트나 업무 영역(영업, 마케팅, 개발)에 필요한 지식을 담는다. 프로젝트가 시작될 때 생성하고 종료 후에는 아카이브로 이동시킨다. ChatGPT 프로젝트의 지시문이 이 레이어다.</span>
+                    <span class="step-key-tag">변경 빈도: 중간</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">L3</div>
+                <div class="step-content">
+                    <strong>작업 맥락 레이어</strong>
+                    <span>특정 대화나 작업에만 적용되는 임시 정보를 담는다. "오늘 미팅에서 고객이 말한 요구사항", "이번 주 작업 범위" 같은 것이다. 작업이 끝나면 L2에 요약해 올리거나 폐기한다.</span>
+                    <span class="step-key-tag">변경 빈도: 높음</span>
+                </div>
+            </li>
+        </ul>
+        <div class="tip-box">
+            <div class="tip-icon-wrap">📁</div>
+            <div>
+                <div class="tip-label">파일 구조 예시</div>
+                <p><strong>COMPANY.md (L1)</strong>: 회사 소개, 고객 정의, 글쓰기 기준.<br>
+                <strong>PROJECT-{이름}.md (L2)</strong>: 해당 프로젝트 배경, 관계자, 결정 사항.<br>
+                <strong>CONTEXT.md (L3)</strong>: 오늘 작업 범위, 임시 제약 조건, 참고 파일 목록.</p>
             </div>
         </div>
     </div>
@@ -1935,7 +2000,28 @@
         <div class="section-hd">
             <div>
                 <h2>에이전트 연결</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">저장된 지식을 AI가 실제로 참조하게 만드는 방법</div>
+            </div>
+        </div>
+        <div class="nm-card">
+            <p>컴퍼니 브레인을 만들었다고 AI가 자동으로 참조하지 않는다. 에이전트가 어느 시점에 어떤 레이어를 가져오는지를 명시적으로 설계해야 한다.</p>
+        </div>
+        <div class="insight-grid">
+            <div class="insight-card ic-gold">
+                <div class="insight-badge"><span class="dot-badge"></span>시스템 프롬프트 주입</div>
+                <p><strong>L1을 항상 포함.</strong> ChatGPT 프로젝트 지시문, Claude의 CLAUDE.md처럼 시스템 레벨에서 L1 정체성 레이어를 주입한다. 매번 설명하지 않아도 AI가 기본값으로 따른다.</p>
+            </div>
+            <div class="insight-card ic-black">
+                <div class="insight-badge"><span class="dot-badge"></span>작업 시작 시 컨텍스트 로드</div>
+                <p><strong>L2를 선택적 첨부.</strong> 관련 프로젝트 문서를 대화 시작 시 첨부파일로 넣거나 "@파일명"으로 참조한다. Codex에서는 AGENTS.md나 특정 파일을 명시적으로 읽도록 지시한다.</p>
+            </div>
+            <div class="insight-card ic-purple">
+                <div class="insight-badge"><span class="dot-badge"></span>RAG 구조 연결</div>
+                <p><strong>대규모 지식 베이스일 때.</strong> 저장된 문서가 많아지면 모두 컨텍스트에 넣을 수 없다. 질문과 관련된 문서만 검색해 가져오는 RAG(검색 증강 생성) 구조를 붙인다.</p>
+            </div>
+            <div class="insight-card ic-white">
+                <div class="insight-badge"><span class="dot-badge"></span>자가 점검 루프</div>
+                <p><strong>Self-RAG 방식 적용.</strong> AI가 답변을 생성하면서 스스로 "내가 가진 지식으로 답할 수 있는가, 아니면 더 검색해야 하는가"를 판단하게 설계하면 환각이 줄어든다.</p>
             </div>
         </div>
     </div>
@@ -1944,12 +2030,63 @@
         <div class="section-hd">
             <div>
                 <h2>운영과 갱신 기준</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">컴퍼니 브레인이 낡아지지 않게 유지하는 방법</div>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-label">갱신 원칙</div>
+            <p>6개월 이상 업데이트되지 않은 문서는 현실을 반영하지 못할 가능성이 높다. <span>문서마다 마지막 수정일과 다음 검토 예정일을 기록한다.</span></p>
+        </div>
+        <ul class="step-list">
+            <li class="step-item">
+                <div class="step-bubble">✓</div>
+                <div class="step-content">
+                    <strong>입력 기준: 재사용 가능성으로 판단</strong>
+                    <span>새 정보를 컴퍼니 브레인에 추가하기 전에 "이 정보를 다음 작업에도 쓸 수 있는가?"를 먼저 묻는다. 일회성 맥락은 L3에서 처리하고 브레인에 넣지 않는다.</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">✓</div>
+                <div class="step-content">
+                    <strong>삭제 기준: 3번 참조되지 않으면 폐기 후보</strong>
+                    <span>분기마다 각 문서의 참조 빈도를 확인한다. 3개월 동안 한 번도 AI 작업에 사용되지 않은 문서는 폐기하거나 아카이브로 이동한다. 양보다 신뢰도가 중요하다.</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">✓</div>
+                <div class="step-content">
+                    <strong>갱신 트리거: 의사결정이 바뀔 때마다</strong>
+                    <span>정책이 바뀌거나 새 제품이 출시되거나 목표 고객이 달라지면 즉시 L1 또는 L2 문서를 업데이트한다. 변경 이유와 날짜를 문서 맨 위에 짧게 기록해두면 나중에 추적할 수 있다.</span>
+                </div>
+            </li>
+        </ul>
+        <div class="tip-box">
+            <div class="tip-icon-wrap">🔔</div>
+            <div>
+                <div class="tip-label">운영 팁</div>
+                <p>컴퍼니 브레인의 현재 상태를 주기적으로 AI에게 보여주고 <strong>"이 내용 중 현실과 맞지 않아 보이는 부분을 찾아줘"</strong>라고 요청하면, AI가 내부 모순이나 중복을 찾아주는 경우가 있다.</p>
             </div>
         </div>
     </div>
 
-    <section class="reading" id="reading"><h2>참고 문헌·더 읽을거리</h2><div class="reading-group"><h3>핵심 논문</h3><ul><li>준비 중</li></ul></div><div class="reading-group"><h3>공식 문서</h3><ul><li>준비 중</li></ul></div><div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul><li>준비 중</li></ul></div></section>
+    <section class="reading" id="reading">
+        <h2>참고 문헌·더 읽을거리</h2>
+        <div class="reading-group">
+            <h3>핵심 논문</h3>
+            <ul>
+                <li>Lewis et al. (2020): <a href="https://scholar.google.com/scholar?q=Retrieval-Augmented+Generation+for+Knowledge-Intensive+NLP+Tasks" target="_blank" rel="noopener">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</a></li>
+                <li>Asai et al. (2023): <a href="https://scholar.google.com/scholar?q=Self-RAG%3A+Learning+to+Retrieve%2C+Generate%2C+and+Critique+through+Self-Reflection" target="_blank" rel="noopener">Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection</a></li>
+                <li>Gao et al. (2023): <a href="https://scholar.google.com/scholar?q=Retrieval-Augmented+Generation+for+Large+Language+Models%3A+A+Survey" target="_blank" rel="noopener">Retrieval-Augmented Generation for Large Language Models: A Survey</a></li>
+            </ul>
+        </div>
+        <div class="reading-group">
+            <h3>이 사이트에서 이어 읽기</h3>
+            <ul>
+                <li><a href="harness-book.html">하네스로 책 쓰기</a> &middot; 컴퍼니 브레인을 책 집필에 연결하는 방법</li>
+                <li><a href="ai-hallucination.html">AI의 환각을 벗어나는 법</a> &middot; 저장된 지식을 근거로 환각을 줄이는 방법</li>
+            </ul>
+        </div>
+    </section>
 </main>
 
 <footer>

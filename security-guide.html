@@ -1916,53 +1916,356 @@
 <main class="container">
     <p>AI와 협업할 때 데이터 보안과 정보 취급에 대한 기본 원칙을 지키지 않으면 의도치 않은 유출이나 규정 위반이 생길 수 있습니다. 실무에서 바로 적용할 수 있는 원칙을 정리합니다.</p>
 
+    <!-- SEC-1: 데이터 취급 원칙 -->
     <div class="content-section" id="sec-1">
         <div class="section-hd">
+            <div class="section-num">1</div>
             <div>
                 <h2>데이터 취급 원칙</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">AI에 무엇을 넣어도 되는지 판단하는 기준</div>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-label">핵심 원칙</div>
+            <p>AI 도구에 입력하는 순간, 해당 정보는 외부 서버를 거친다고 간주하라. <span>이 전제 하나만 지켜도 대부분의 유출 위험을 차단할 수 있습니다.</span></p>
+        </div>
+
+        <div class="nm-card">
+            <p>AI 서비스는 클라우드 기반으로 운영됩니다. 대화 내용이 모델 개선에 활용되거나 일정 기간 저장될 수 있으며, 이는 서비스마다 정책이 다릅니다. 따라서 <strong>어떤 정보를 AI에 입력할 것인지 사전에 분류하는 습관</strong>이 중요합니다.</p>
+            <p>데이터를 세 등급으로 나눠 생각하면 판단이 쉬워집니다. 공개 정보(제품 설명, 공개 보도자료, 일반 업무 문서)는 자유롭게 활용할 수 있습니다. 내부 정보(미발표 실적, 조직도, 계약 조건)는 AI 입력 전 승인을 받거나 익명화가 필요합니다. 기밀 정보(개인식별정보, 금융 계좌, 법적 분쟁 내용)는 원칙적으로 외부 AI에 입력하지 않습니다.</p>
+        </div>
+
+        <div class="compare-grid">
+            <div class="compare-item">
+                <div class="compare-tag good">입력 가능</div>
+                <p>공개된 업계 동향 요약 요청, 일반적인 문서 구조 초안 작성, 오탈자 교정, 마케팅 문구 아이디어 생성, 영문 번역(민감 내용 제외)</p>
+            </div>
+            <div class="compare-item">
+                <div class="compare-tag bad">입력 금지</div>
+                <p>고객 이름·연락처·주민등록번호 포함 문서, 미발표 재무 수치, 계약 당사자가 특정되는 협상 내용, 인사 평가 자료, 회사 내부 보안 구성 정보</p>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-icon-wrap">&#128161;</div>
+            <div>
+                <div class="tip-label">실무 팁</div>
+                <p>판단이 애매할 때는 <strong>"이 내용이 외부 언론에 노출되어도 괜찮은가?"</strong>라고 자문해 보세요. 아니라면 입력하지 않거나, 핵심 식별자를 제거한 뒤 사용합니다.</p>
             </div>
         </div>
     </div>
 
+    <!-- SEC-2: 권한과 승인 -->
     <div class="content-section" id="sec-2">
         <div class="section-hd">
+            <div class="section-num">2</div>
             <div>
                 <h2>권한과 승인</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">AI 도구 도입과 활용 범위를 결정하는 방법</div>
             </div>
         </div>
+
+        <div class="nm-card">
+            <p>AI 도구를 업무에 활용하기 전에 조직 내 승인 절차를 확인하는 것이 먼저입니다. 개인이 편의상 선택한 AI 서비스가 회사의 데이터 보호 정책이나 법적 요건을 충족하지 못할 수 있습니다.</p>
+            <p>특히 외부 SaaS 형태의 AI 서비스를 업무에 연결하려면, <strong>IT 보안팀 또는 DPO(개인정보보호책임자)의 사전 검토</strong>를 받는 것이 바람직합니다. 서비스 약관에서 반드시 확인해야 할 항목은 데이터 저장 기간, 제3자 공유 여부, 모델 학습 활용 여부, 데이터 처리 국가입니다.</p>
+        </div>
+
+        <ul class="step-list">
+            <li class="step-item">
+                <div class="step-bubble">1</div>
+                <div class="step-content">
+                    <strong>사용 목적 명확화</strong>
+                    <span>어떤 업무에, 어떤 데이터를 활용할 것인지 사전에 기술합니다. "AI로 보고서 초안 작성"처럼 구체적일수록 리스크 판단이 쉬워집니다.</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">2</div>
+                <div class="step-content">
+                    <strong>도구 선정 및 약관 검토</strong>
+                    <span>기업 전용 플랜(엔터프라이즈)을 제공하는 서비스는 대체로 데이터 격리와 학습 제외 옵션을 보장합니다. 개인 플랜과 기업 플랜의 조건을 비교합니다.</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">3</div>
+                <div class="step-content">
+                    <strong>보안팀·법무팀 검토 요청</strong>
+                    <span>개인정보 처리가 포함되거나 업무 핵심 데이터를 다루는 경우, 내부 승인 없이 도입을 진행하지 않습니다.</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">4</div>
+                <div class="step-content">
+                    <strong>승인 범위 기록 및 공유</strong>
+                    <span>어떤 AI 도구를, 어떤 데이터 유형에, 어느 팀이 사용할 수 있는지를 문서화하고 팀원과 공유합니다. 이것이 이후 분쟁이나 감사에서 조직을 보호하는 근거가 됩니다.</span>
+                </div>
+            </li>
+        </ul>
     </div>
 
+    <!-- SEC-3: 민감정보 다루기 -->
     <div class="content-section" id="sec-3">
         <div class="section-hd">
+            <div class="section-num">3</div>
             <div>
                 <h2>민감정보 다루기</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">개인정보·영업비밀·법적 보호 정보를 안전하게 처리하는 방법</div>
+            </div>
+        </div>
+
+        <div class="nm-card">
+            <p>민감정보는 크게 세 범주로 나뉩니다. 첫째는 <strong>개인정보</strong>로, 특정 개인을 식별할 수 있는 모든 정보(이름, 이메일, 생년월일, 주소, 전화번호 등)입니다. 둘째는 <strong>영업비밀</strong>로, 미발표 제품 계획, 가격 전략, 협력사와 계약 조건처럼 공개 시 경쟁상 불이익이 생기는 정보입니다. 셋째는 <strong>법적 특권 정보</strong>로, 변호사 자문 내용, 진행 중인 소송 관련 문서가 해당합니다.</p>
+        </div>
+
+        <div class="insight-grid">
+            <div class="insight-card ic-red">
+                <div class="insight-badge"><span class="dot-badge"></span>개인정보 처리 원칙</div>
+                <p>AI에 개인정보를 입력해야 하는 경우, 이름을 "고객 A"로, 이메일을 "이메일 주소"로 대체하는 익명화 처리를 먼저 수행합니다. 처리 후 AI의 응답에서도 해당 식별자가 재현되지 않았는지 확인합니다.</p>
+            </div>
+            <div class="insight-card ic-gold">
+                <div class="insight-badge"><span class="dot-badge"></span>영업비밀 보호 원칙</div>
+                <p>미발표 수치나 전략 문서는 입력 전 핵심 수치를 범위 표현("약 30억 규모")으로 바꾸거나 문서의 목적만 설명하고 세부 내용은 제외합니다. 요약 요청이라면 AI에 전달하기 전 내부에서 먼저 검토합니다.</p>
+            </div>
+            <div class="insight-card ic-purple">
+                <div class="insight-badge"><span class="dot-badge"></span>법적 보호 정보</div>
+                <p>소송 관련 문서나 변호사 자문 내용은 외부 AI에 절대 입력하지 않습니다. 법적 특권이 훼손될 수 있습니다. 내부 온프레미스 AI 환경이 구축된 경우에만 제한적으로 활용을 검토합니다.</p>
+            </div>
+            <div class="insight-card ic-black">
+                <div class="insight-badge"><span class="dot-badge"></span>사후 관리</div>
+                <p>AI가 생성한 결과물에 민감정보가 노출된 경우, 해당 대화를 즉시 삭제하고 서비스의 데이터 삭제 요청 절차를 따릅니다. 내부 보안팀에도 경위를 보고합니다.</p>
             </div>
         </div>
     </div>
 
+    <!-- SEC-4: 안전한 작업 습관 -->
     <div class="content-section" id="sec-4">
         <div class="section-hd">
+            <div class="section-num">4</div>
             <div>
                 <h2>안전한 작업 습관</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">매일 반복할 수 있는 보안 루틴</div>
+            </div>
+        </div>
+
+        <div class="nm-card">
+            <p>기술적 보안 조치만큼 중요한 것이 일상적인 작업 습관입니다. 한 번의 실수가 데이터 유출로 이어지는 것을 막으려면, 보안을 별도의 절차가 아니라 <strong>작업 과정 자체에 녹아 있는 루틴</strong>으로 만들어야 합니다.</p>
+        </div>
+
+        <ul class="step-list">
+            <li class="step-item">
+                <div class="step-bubble">A</div>
+                <div class="step-content">
+                    <strong>프롬프트 작성 전 데이터 등급 확인</strong>
+                    <span>AI에 요청을 보내기 전 30초만 투자해 "이 내용에 민감정보가 포함되어 있는가?"를 확인합니다. 의심스러우면 입력하지 않거나 익명화합니다.</span>
+                    <span class="step-key-tag">Before 루틴</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">B</div>
+                <div class="step-content">
+                    <strong>공용 기기·공개 네트워크 사용 주의</strong>
+                    <span>카페, 공항, 호텔 등 공개 Wi-Fi에서 업무용 AI 도구를 사용할 때는 VPN을 반드시 켜고, 화면이 타인에게 보이지 않는지 확인합니다. 공용 컴퓨터에서는 로그인 상태를 반드시 종료합니다.</span>
+                    <span class="step-key-tag">During 루틴</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">C</div>
+                <div class="step-content">
+                    <strong>AI 출력 결과 검증 후 사용</strong>
+                    <span>AI가 생성한 내용을 그대로 외부에 발신하거나 시스템에 적용하지 않습니다. 사실 여부와 민감정보 포함 여부를 확인한 뒤 사용합니다. 특히 코드 실행이나 이메일 발송에 주의합니다.</span>
+                    <span class="step-key-tag">After 루틴</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">D</div>
+                <div class="step-content">
+                    <strong>대화 이력 정기 삭제</strong>
+                    <span>AI 서비스의 대화 이력에는 이전에 입력한 정보가 남아 있습니다. 업무 프로젝트가 끝나거나 민감한 내용을 다룬 세션이 완료되면 대화를 삭제합니다.</span>
+                    <span class="step-key-tag">주기 루틴</span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="step-bubble">E</div>
+                <div class="step-content">
+                    <strong>AI 도구 권한 정기 검토</strong>
+                    <span>연결된 AI 플러그인이나 통합 앱이 실제로 필요한 권한만 갖고 있는지 분기별로 검토합니다. 사용하지 않는 연동은 해제합니다.</span>
+                    <span class="step-key-tag">분기 루틴</span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="compare-good-bad">
+            <div class="compare-good-bad-item bad">
+                <div class="cgb-label">위험한 습관</div>
+                <p>보고서 파일 전체를 AI에 붙여넣고 "요약해줘"라고 요청한다. 파일 안에 고객 연락처, 미발표 매출, 협상 조건이 섞여 있어도 확인하지 않는다.</p>
+            </div>
+            <div class="compare-good-bad-item good">
+                <div class="cgb-label">안전한 습관</div>
+                <p>먼저 파일을 열어 민감 정보를 제거하거나 익명화한 뒤 붙여넣는다. 또는 "이런 구조의 문서를 요약하는 방법"을 먼저 물어보고, AI 출력을 참고해 직접 작성한다.</p>
             </div>
         </div>
     </div>
 
+    <!-- SEC-5: 체크리스트 -->
     <div class="content-section" id="sec-5">
         <div class="section-hd">
+            <div class="section-num">5</div>
             <div>
                 <h2>체크리스트</h2>
-                <div class="section-desc">준비 중입니다. 이 절에서 다룰 내용을 곧 채웁니다.</div>
+                <div class="section-desc">팀에서 바로 쓸 수 있는 AI 보안 점검 목록</div>
+            </div>
+        </div>
+
+        <div class="nm-card">
+            <p>아래 체크리스트는 AI를 업무에 처음 도입할 때, 또는 새로운 AI 도구를 추가할 때마다 점검하는 용도로 사용합니다. 항목을 클릭하면 완료 처리됩니다.</p>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-icon-wrap" id="cl-tip-icon" style="font-size:22px">&#128221;</div>
+            <div style="flex:1">
+                <div class="tip-label" id="cl-tip-label">AI 보안 체크리스트</div>
+                <ul class="real-checklist" id="securityChecklist">
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc1">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">사용하려는 AI 서비스의 데이터 처리 약관을 확인했다.</span>
+                        </label>
+                    </li>
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc2">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">조직 내 보안팀 또는 IT 담당자의 사전 승인을 받았거나 받을 예정이다.</span>
+                        </label>
+                    </li>
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc3">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">입력할 데이터에 개인정보, 영업비밀, 법적 보호 정보가 포함되지 않았음을 확인했다.</span>
+                        </label>
+                    </li>
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc4">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">민감 내용은 익명화하거나 일반화한 뒤 입력한다.</span>
+                        </label>
+                    </li>
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc5">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">AI 출력 결과를 사실 확인 없이 그대로 외부에 발신하지 않는다.</span>
+                        </label>
+                    </li>
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc6">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">업무용 AI 계정과 개인 계정을 분리해 사용한다.</span>
+                        </label>
+                    </li>
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc7">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">공개 네트워크 사용 시 VPN을 활성화한다.</span>
+                        </label>
+                    </li>
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc8">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">민감한 세션이 끝난 뒤 대화 이력을 삭제한다.</span>
+                        </label>
+                    </li>
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc9">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">팀원들과 AI 사용 원칙과 허용 데이터 범위를 공유했다.</span>
+                        </label>
+                    </li>
+                    <li class="real-cl-item">
+                        <label>
+                            <input type="checkbox" id="sc10">
+                            <span class="nm-cb-visual"></span>
+                            <span class="cl-text">연동된 AI 플러그인의 권한을 분기별로 점검하는 일정을 잡았다.</span>
+                        </label>
+                    </li>
+                </ul>
+                <div class="cl-progress-wrap">
+                    <div class="cl-progress-label">
+                        <span>완료 항목</span>
+                        <span id="sc-progress-text">0 / 10</span>
+                    </div>
+                    <div class="cl-progress-track">
+                        <div class="cl-progress-fill" id="sc-progress-fill"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <section class="reading" id="reading"><h2>참고 문헌·더 읽을거리</h2><div class="reading-group"><h3>핵심 논문</h3><ul><li>준비 중</li></ul></div><div class="reading-group"><h3>공식 문서</h3><ul><li>준비 중</li></ul></div><div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul><li>준비 중</li></ul></div></section>
+    <section class="reading" id="reading">
+        <h2>참고 문헌 · 더 읽을거리</h2>
+        <div class="reading-group">
+            <h3>공식 문서</h3>
+            <ul>
+                <li><a href="https://owasp.org" target="_blank" rel="noopener">OWASP</a> &mdash; "OWASP Top 10 for Large Language Model Applications": LLM 보안 위협 10가지와 대응책을 정리한 업계 표준 가이드</li>
+                <li><a href="https://www.nist.gov" target="_blank" rel="noopener">NIST</a> &mdash; "AI Risk Management Framework (AI RMF 1.0)": AI 리스크를 조직 관점에서 체계적으로 관리하는 프레임워크</li>
+            </ul>
+        </div>
+        <div class="reading-group">
+            <h3>이 사이트에서 이어 읽기</h3>
+            <ul>
+                <li><a href="ai-basic-law.html">인공지능기본법 한눈에</a> &mdash; 2026년 시행된 국내 AI 법률의 핵심 조항과 실무 영향</li>
+            </ul>
+        </div>
+    </section>
 </main>
+
+<script>
+/* ── Security Checklist with localStorage ── */
+(function() {
+    var SC_KEY = 'security_guide_cl_v1';
+    var SC_IDS = ['sc1','sc2','sc3','sc4','sc5','sc6','sc7','sc8','sc9','sc10'];
+    function scLoad() { try { return JSON.parse(localStorage.getItem(SC_KEY) || '{}'); } catch(e) { return {}; } }
+    function scSave(s) { try { localStorage.setItem(SC_KEY, JSON.stringify(s)); } catch(e) {} }
+    function scUpdate(state) {
+        var count = SC_IDS.filter(function(id) { return state[id]; }).length;
+        var fill = document.getElementById('sc-progress-fill');
+        var text = document.getElementById('sc-progress-text');
+        var icon = document.getElementById('cl-tip-icon');
+        var label = document.getElementById('cl-tip-label');
+        if (fill) fill.style.width = (count / SC_IDS.length * 100) + '%';
+        if (text) text.textContent = count + ' / ' + SC_IDS.length;
+        if (count === SC_IDS.length) {
+            if (icon) icon.textContent = '🎉';
+            if (label) label.textContent = '모든 항목 완료!';
+        } else {
+            if (icon) icon.textContent = '📋';
+            if (label) label.textContent = 'AI 보안 체크리스트';
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        var state = scLoad();
+        SC_IDS.forEach(function(id) {
+            var cb = document.getElementById(id);
+            if (!cb) return;
+            if (state[id]) cb.checked = true;
+            cb.addEventListener('change', function() {
+                state[id] = cb.checked;
+                scSave(state);
+                scUpdate(state);
+            });
+        });
+        scUpdate(state);
+    });
+})();
+</script>
 
 <footer>
     <p class="footer-brand">AI ROASTING</p>

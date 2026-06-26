@@ -348,7 +348,7 @@
             line-height: 1.35;
             font-weight: 800;
             color: var(--text);
-            border-left: 4px solid var(--codex-accent);
+            border-left: 4px solid transparent;
             padding-left: 16px;
             margin-bottom: 8px;
         }
@@ -1007,15 +1007,6 @@
                 <span class="sm-title">권장 과제</span>
                 <span class="sm-sub">실행 순서</span>
             </a>
-            <a href="#sec-sources">
-                <span class="sm-num">5</span>
-                <span class="sm-title">운영 기준</span>
-                <span class="sm-sub">확인 항목</span>
-            </a>
-            <a href="#reading">
-                <span class="sm-num">6</span>
-                <span class="sm-title">참고 문헌</span>
-            </a>
         </div>
     </nav>
 
@@ -1356,60 +1347,8 @@
             </div>
         </section>
 
-        <section id="sec-sources">
-            <div class="step-divider">
-                <span class="step-badge">운영 기준</span>
-            </div>
-            <div class="section-header-block reveal">
-                <h2>위임 범위가 커질수록 검수 체계도 함께 설계해야 합니다</h2>
-                <p class="section-subtitle">Codex에게 더 많은 일을 맡길수록 사람의 역할은 실행에서 의사결정과 승인으로 이동합니다. 목표, 권한, 확인 기준이 더 중요해집니다.</p>
-            </div>
+        
 
-            <div class="check-grid reveal stagger-1">
-                <article class="check-card">
-                    <h3>위임 전</h3>
-                    <ul>
-                        <li>목표, 제외 범위, 기대 결과를 함께 정의합니다.</li>
-                        <li>중요한 파일은 복사본이나 브랜치에서 다룹니다.</li>
-                        <li>확인 기준을 화면, 테스트, 문서 중 하나로 정합니다.</li>
-                    </ul>
-                </article>
-                <article class="check-card">
-                    <h3>수행 중</h3>
-                    <ul>
-                        <li>작업 단위를 검수 가능한 크기로 나눕니다.</li>
-                        <li>Codex가 바꾼 파일과 변경 이유를 확인합니다.</li>
-                        <li>예상과 다르면 중단하고 조건을 다시 정의합니다.</li>
-                    </ul>
-                </article>
-                <article class="check-card">
-                    <h3>운영 전환</h3>
-                    <ul>
-                        <li><code>AGENTS.md</code>에 프로젝트 규칙과 금지 사항을 남깁니다.</li>
-                        <li>반복 요청은 Skill이나 템플릿으로 전환합니다.</li>
-                        <li>외부 시스템 연결은 권한과 승인 절차를 먼저 정합니다.</li>
-                    </ul>
-                </article>
-            </div>
-
-            <div class="source-grid with-gap reveal stagger-2">
-                <article class="source-card">
-                    <h3>Codex 문서</h3>
-                    <p>Codex의 사용 환경, 설정, 앱, CLI, 웹, 통합 항목을 확인할 수 있습니다.</p>
-                    <a href="https://developers.openai.com/codex/" target="_blank" rel="noopener">공식 문서 보기</a>
-                </article>
-                <article class="source-card">
-                    <h3>Customization</h3>
-                    <p>AGENTS.md, 플러그인, MCP, 서브 에이전트 순서를 확인할 수 있습니다.</p>
-                    <a href="https://developers.openai.com/codex/concepts/customization#next-step" target="_blank" rel="noopener">커스터마이징 기준 보기</a>
-                </article>
-                <article class="source-card">
-                    <h3>Plugins</h3>
-                    <p>Skill, 앱 연결, MCP 서버를 묶어 재사용 워크플로우로 만드는 기준을 확인할 수 있습니다.</p>
-                    <a href="https://developers.openai.com/codex/plugins#overview" target="_blank" rel="noopener">플러그인 문서 보기</a>
-                </article>
-            </div>
-        </section>
 
         <div class="final-cta reveal">
             <div>
@@ -1420,15 +1359,8 @@
         </div>
 
     <style>/* RD-INJECT 참고문헌 컴포넌트 */ .reading{margin-top:48px;padding-top:8px} .reading>h2{font-size:1.4rem;font-weight:800;margin:0 0 18px} .reading-group{background:#fff;border:1px solid rgba(91,98,216,.14);border-radius:16px;padding:20px 22px;margin-bottom:16px;box-shadow:0 4px 18px rgba(40,40,90,.05)} .reading-group h3{margin:0 0 12px;font-size:1.02rem;font-weight:700;color:var(--codex-accent)} .reading-group ul{margin:0;padding-left:18px} .reading-group li{margin:7px 0;line-height:1.6;color:#3a3f55} .reading-group a{color:var(--codex-accent);text-decoration:none;font-weight:600} .reading-group a:hover{text-decoration:underline}</style>
-    <section class="reading" id="reading">
-      <h2>참고 문헌·더 읽을거리</h2>
-      <div class="reading-group"><h3>공식 문서</h3><ul>
-        <li>SAE International: <a href="https://www.sae.org" target="_blank" rel="noopener">SAE J3016 자율주행 단계 개요</a> · 자율주행 레벨 0-5 정의 표준 문서</li>
-      </ul></div>
-      <div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul>
-        <li><a href="codex-orientation.html">5분 오리엔테이션</a> · Codex의 개념과 ChatGPT와의 차이</li>
-      </ul></div>
-    </section>
+    
+
     </main>
 
     <footer>
@@ -1800,6 +1732,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         }
         .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
         .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    
+        /* ## SM-UNIFY (모든 페이지 서브메뉴 글자/포맷 통일) ## */
+        nav.sub-menu a { gap: 5px !important; padding: 8px 14px !important; }
+        nav.sub-menu a .sm-num { width: 28px !important; height: 28px !important; min-width: 28px !important; font-size: 13px !important; }
+        nav.sub-menu a .sm-title { font-size: 13px !important; }
+        nav.sub-menu a .sm-sub { font-size: 11px !important; }
     </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -1900,5 +1838,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 /* ## CODEX-HERO-SYNC END ## */
 </script>
+<style id="hero-subnav-fix">
+/* hero와 sub-menu 사이 흰 여백 제거: 회색 패널을 hero 하단에 자연스럽게 끼워 넣는다 (데스크톱 한정, 모바일은 sub-menu 숨김이라 원형 유지) */
+@media (min-width: 769px){
+  header, .hero { clip-path: none !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+  nav.sub-menu { margin-top: -26px !important; border-top-left-radius: 26px !important; border-top-right-radius: 26px !important; }
+}
+</style>
 </body>
 </html>

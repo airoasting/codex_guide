@@ -342,7 +342,7 @@
             color: #3A3530;
             margin-bottom: 6px;
             padding-left: 16px;
-            border-left: 4px solid var(--codex-accent);
+            border-left: 4px solid transparent;
         }
         .nm-card p, .nm-card li {
             font-size: 14px;
@@ -389,7 +389,7 @@
         .tip-box {
             background: var(--nm-bg); border-radius: 14px;
             box-shadow: var(--nm-shadow-sm);
-            border-left: 4px solid var(--codex-accent);
+            border-left: 4px solid transparent;
             padding: 18px 22px; margin: 16px 0;
         }
         .tip-box .tip-label { font-size: 11px; font-weight: 700; color: var(--codex-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
@@ -1235,7 +1235,7 @@
             box-shadow: var(--nm-inset);
             padding: 28px 32px;
             margin: 20px 0;
-            border-left: 4px solid var(--skill-purple);
+            border-left: 4px solid transparent;
             position: relative;
         }
         .quote-box::before {
@@ -1245,7 +1245,7 @@
             position: absolute;
             top: 4px;
             left: 18px;
-            font-family: Georgia, serif;
+            font-family: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
             line-height: 1;
         }
         .quote-box p {
@@ -1487,11 +1487,6 @@
         <span class="sm-num">4</span>
         <span class="sm-title">사례 2</span>
         <span class="sm-sub">DAW</span>
-    </a>
-    <a href="#reading" data-sec="reading">
-        <span class="sm-num">5</span>
-        <span class="sm-title">참고 문헌</span>
-        <span class="sm-sub">더 읽을거리</span>
     </a>
 </nav>
 
@@ -2114,19 +2109,8 @@ Codex의 Task 도구로 <span class="val">Planner</span> / <span class="val">Gen
             <a class="cta-btn secondary" href="index.html">&larr; 목록으로</a>
         </div>
     </div>
-<section class="reading" id="reading">
-  <h2>참고 문헌·더 읽을거리</h2>
-  <div class="reading-group"><h3>핵심 논문</h3><ul>
-    <li>Yao et al. (2022): <a href="https://scholar.google.com/scholar?q=ReAct%3A+Synergizing+Reasoning+and+Acting+in+Language+Models" target="_blank" rel="noopener">ReAct: Synergizing Reasoning and Acting in Language Models</a> · 추론과 행동을 교대로 수행하는 에이전트 프레임워크</li>
-  </ul></div>
-  <div class="reading-group"><h3>공식 문서</h3><ul>
-    <li><a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic "Building effective agents"</a>: 효과적인 에이전트 설계를 위한 Anthropic 공식 가이드</li>
-  </ul></div>
-  <div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul>
-    <li><a href="codex-tools.html">Codex의 도구란?</a>: Codex가 사용하는 도구 개념과 종류 정리</li>
-    <li><a href="agent-design.html">멀티 에이전트 소환</a>: 솔로·파이프라인·팀·오케스트라 설계 패턴</li>
-  </ul></div>
-</section>
+
+
 </main>
 
 
@@ -2639,6 +2623,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         }
         .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
         .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    
+        /* ## SM-UNIFY (모든 페이지 서브메뉴 글자/포맷 통일) ## */
+        nav.sub-menu a { gap: 5px !important; padding: 8px 14px !important; }
+        nav.sub-menu a .sm-num { width: 28px !important; height: 28px !important; min-width: 28px !important; font-size: 13px !important; }
+        nav.sub-menu a .sm-title { font-size: 13px !important; }
+        nav.sub-menu a .sm-sub { font-size: 11px !important; }
     </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -2740,5 +2730,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 /* ## CODEX-HERO-SYNC END ## */
 </script>
+<style id="hero-subnav-fix">
+/* hero와 sub-menu 사이 흰 여백 제거: 회색 패널을 hero 하단에 자연스럽게 끼워 넣는다 (데스크톱 한정, 모바일은 sub-menu 숨김이라 원형 유지) */
+@media (min-width: 769px){
+  header, .hero { clip-path: none !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+  nav.sub-menu { margin-top: -26px !important; border-top-left-radius: 26px !important; border-top-right-radius: 26px !important; }
+}
+</style>
 </body>
 </html>

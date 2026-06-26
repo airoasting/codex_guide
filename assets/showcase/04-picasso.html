@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>피카소 타이머</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>" />
+<style>
+  @font-face{font-family:'Pretendard';src:url('../fonts/PretendardVariable.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap;}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{font-family:Georgia,"Times New Roman",'Pretendard',serif;
+    background:#E3D6B6;
+    display:flex;align-items:center;justify-content:center;color:#241c14;padding:14px}
+  .wrap{display:flex;flex-direction:column;align-items:center;gap:13px;width:100%;max-width:288px}
+  .art{width:200px;height:208px;filter:drop-shadow(0 9px 16px rgba(80,60,30,.26))}
+  .art svg{width:100%;height:100%;display:block}
+  .time{font-family:Georgia,serif;font-weight:700;font-size:40px;color:#241c14;letter-spacing:1px}
+  .time .cs{font-size:18px;color:#9E3526}
+  .row{display:flex;gap:8px}
+  button{font-family:Georgia,'Pretendard',serif;font-weight:700;font-size:14px;cursor:pointer;padding:11px 0;width:80px;
+    border:2px solid #1B1510;background:#E3D6B6;color:#1B1510;border-radius:2px;transition:transform .07s,background .15s;
+    box-shadow:3px 3px 0 rgba(27,21,16,.9)}
+  button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 rgba(27,21,16,.9)}
+  #b1{background:#C79A4C;border-color:#7a5a16}#b1.run{background:#9E3526;color:#fff;border-color:#6e2016}
+  #b2{background:#6E8294;color:#fff}#b3{background:#E3D6B6}
+  button:disabled{opacity:.42;cursor:default}
+  .lp{font-size:12px;color:#7a6a4c;min-height:15px;font-style:italic}
+  button:focus-visible{outline:3px solid #9E3526;outline-offset:2px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 200 212">
+        <!-- 배경 면 (차분한 흙빛) -->
+        <rect x="0" y="0" width="200" height="212" fill="#D9CBA6"/>
+        <path d="M0,0 H96 L74,212 H0 Z" fill="#AEB79C"/>
+        <path d="M150,0 H200 V72 H150 Z" fill="#71808B"/>
+        <path d="M150,150 H200 V212 H150 Z" fill="#9A7B5E"/>
+        <line x1="120" y1="0" x2="120" y2="212" stroke="#1B1510" stroke-width="1" opacity=".25"/>
+
+        <!-- 머리카락 (각진 검은 덩어리 + 흙빛 갈래) -->
+        <path d="M44,58 L78,12 L126,8 L166,40 L150,38 L116,18 L84,22 L56,52 Z" fill="#26221C"/>
+        <path d="M150,38 L166,40 L162,84 L138,52 Z" fill="#6E4A30"/>
+
+        <!-- 얼굴 외곽(각진) -->
+        <path d="M84,22 L116,18 L150,38 L164,92 L150,150 L112,198 L66,158 L50,100 L58,46 Z" fill="#C9B07A"/>
+        <!-- 측면(프로필) 면: 코 능선 오른쪽 = 테라코타 -->
+        <path d="M108,40 L116,18 L150,38 L164,92 L150,150 L112,198 L112,150 L106,118 L128,106 L98,94 L102,72 Z" fill="#AE6A4C"/>
+        <!-- 이마 밝은 면 (양쪽 통합) -->
+        <path d="M58,46 L116,18 L150,38 L150,62 L62,70 Z" fill="#E0CF9E"/>
+        <!-- 왼뺨 면 -->
+        <path d="M50,100 L96,96 L82,150 L66,158 Z" fill="#BBA06A"/>
+        <!-- 오른 턱 그림자 면 -->
+        <path d="M126,120 L150,150 L112,198 L110,150 Z" fill="#7E6B4E"/>
+        <!-- 슬레이트 악센트 면 (큐비즘 색 대비) -->
+        <path d="M50,100 L58,46 L62,70 L60,104 Z" fill="#5E7180"/>
+
+        <!-- 목 -->
+        <path d="M92,198 L120,198 L116,212 L96,212 Z" fill="#AE6A4C" stroke="#1B1510" stroke-width="2.4"/>
+
+        <!-- 얼굴 외곽선 -->
+        <path d="M84,22 L116,18 L150,38 L164,92 L150,150 L112,198 L66,158 L50,100 L58,46 Z"
+              fill="none" stroke="#1B1510" stroke-width="3.4" stroke-linejoin="round"/>
+        <!-- 코 능선(측면) 선 -->
+        <path d="M108,40 L102,72 L98,94 L128,106 L106,118 L112,150"
+              fill="none" stroke="#1B1510" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M118,102 q9,3 7,11" fill="none" stroke="#1B1510" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- 눈썹 (각진, 서로 다른 각도) -->
+        <path d="M56,82 L80,75 L94,82" fill="none" stroke="#1B1510" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M116,68 L138,61 L156,72" fill="none" stroke="#1B1510" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- 왼 눈 (아몬드, 하이라이트 없음) -->
+        <path d="M58,95 Q78,84 98,93 Q80,103 58,95 Z" fill="#EFE6CE" stroke="#1B1510" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M58,95 Q78,83 98,93" fill="none" stroke="#1B1510" stroke-width="3.2" stroke-linecap="round"/>
+        <ellipse cx="79" cy="94" rx="6.5" ry="7" fill="#43381F"/>
+        <!-- 오른 눈 (더 높게, 다른 홍채색) -->
+        <path d="M116,80 Q136,71 156,81 Q137,90 116,80 Z" fill="#EFE6CE" stroke="#1B1510" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M116,80 Q136,70 156,81" fill="none" stroke="#1B1510" stroke-width="3.2" stroke-linecap="round"/>
+        <ellipse cx="136" cy="80" rx="6.5" ry="7" fill="#3F5663"/>
+
+        <!-- 입술 (풍성, 비대칭, 2톤) -->
+        <path d="M82,152 Q104,159 136,148 Q118,151 104,152 Q92,152 82,152 Z" fill="#9E3526"/>
+        <path d="M82,152 Q104,170 136,148 Q116,162 100,162 Q90,158 82,152 Z" fill="#C2674A"/>
+        <path d="M82,152 Q104,154 136,148" fill="none" stroke="#1B1510" stroke-width="2.2" stroke-linecap="round"/>
+
+        <!-- 볼 면 자국 + 작은 점 -->
+        <path d="M64,124 L86,130 L78,146 Z" fill="#9A7B5E" opacity=".4"/>
+        <circle cx="150" cy="116" r="2.6" fill="#1B1510"/>
+      </svg>
+    </div>
+    <div class="time"><span id="t">00:00<span class="cs">.00</span></span></div>
+    <div class="row">
+      <button id="b2" disabled>랩</button>
+      <button id="b1">시작</button>
+      <button id="b3" disabled>초기화</button>
+    </div>
+    <div class="lp" id="lp"></div>
+  </div>
+<script>
+(function(){
+  var t=document.getElementById('t'),b1=document.getElementById('b1'),b2=document.getElementById('b2'),b3=document.getElementById('b3'),lp=document.getElementById('lp');
+  var run=false,st=0,acc=0,iv=null,laps=[],last=0;
+  function el(){return acc+(run?performance.now()-st:0);}
+  function f(ms){if(ms<0)ms=0;var c=Math.floor(ms/10),cc=c%100,s=Math.floor(c/100),ss=s%60,mm=Math.floor(s/60);
+    return String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0')+'<span class="cs">.'+String(cc).padStart(2,'0')+'</span>';}
+  function plain(ms){if(ms<0)ms=0;var c=Math.floor(ms/10),cc=c%100,s=Math.floor(c/100),ss=s%60,mm=Math.floor(s/60);
+    return String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0')+'.'+String(cc).padStart(2,'0');}
+  function draw(){t.innerHTML=f(el());}
+  function ui(){b1.textContent=run?'정지':(el()>0?'재개':'시작');b1.classList.toggle('run',run);b2.disabled=!run;b3.disabled=run||el()===0;}
+  function start(){run=true;st=performance.now();if(!iv)iv=setInterval(draw,31);draw();ui();}
+  function stop(){if(!run)return;acc=el();run=false;clearInterval(iv);iv=null;draw();ui();}
+  function reset(){run=false;clearInterval(iv);iv=null;acc=0;st=0;laps=[];last=0;draw();ui();lp.textContent='';}
+  function lap(){if(!run)return;var e=el(),sp=e-last;last=e;laps.push(sp);lp.textContent='구간 '+laps.length+'  +'+plain(sp);}
+  b1.onclick=function(){run?stop():start();};b2.onclick=lap;b3.onclick=reset;
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&run)draw();});
+  draw();ui();
+})();
+</script>
+</body>
+</html>

@@ -40,12 +40,22 @@
 | `codex-orientation.html` | 5분 | 입문 | 2-menu 기준 페이지. `.hero-inner` 700px + `.header-pages` 70% (=490px). `claude-orientation.html`은 호환용 이동 페이지다 |
 | `ai-levels.html` | 5분 | 입문 | 자율주행 1~5단계 비유. 헤더에 별도 배지 없이 h1과 p, header-pages만 있다 |
 
-### 1단계 · 기본기 (header-pages: 3개)
+### 1단계 · 기본기·검증 (mode-tabs 토글)
+
+1단계는 상단에 `기본기`·`검증` 토글(`.mode-tabs` + `switchMode`)을 둔다. 토글로 두 링크 그룹을 전환한다. 기본기 그룹은 3개, 검증 그룹은 2개다. 5개 페이지 모두 같은 토글을 공유하며, 현재 페이지가 속한 탭과 링크가 활성으로 표시된다.
+
+**기본기 그룹 (pages-basic)**
 | 페이지 | 시간 | 난이도 | 특성 |
 |---|---|---|---|
-| `ai-fluency.html` | 10분 | 입문 | 3-menu 기준 페이지. 제목은 "프롬프트 잘 쓰는 비결"이다. 이전의 가이드와 새로운 가이드 (v5.5)를 비교한다 |
+| `ai-fluency.html` | 10분 | 입문 | 제목은 "프롬프트 잘 쓰는 비결"이다. 이전의 가이드와 새로운 가이드 (v5.5)를 비교한다 |
 | `project-intro.html` | 20분 | 입문 | 프로젝트 셋업, 시스템 프롬프트 |
-| `multi-persona.html` | 10분 | 중급 | 5인 페르소나 토론 (5-Color Harness와 연결) |
+| `multi-persona.html` | 10분 | 중급 | 5인 페르소나 토론 (5-Color Harness와 연결). airoasting 원본 동기화 |
+
+**검증 그룹 (pages-verify)**
+| 페이지 | 시간 | 난이도 | 특성 |
+|---|---|---|---|
+| `ai-sycophancy.html` | 8분 | 입문 | AI 동조를 줄이는 질문법. airoasting 원본 동기화 |
+| `ai-hallucination.html` | 12분 | 중급 | 환각을 거르는 검증 절차. airoasting 원본 동기화 |
 
 ### 2단계 · 플러그인 (header-pages: 2개)
 | 페이지 | 시간 | 난이도 | 특성 |
@@ -77,12 +87,22 @@
 ### 실전 예제 (Codex 블루 바이올렛 액센트)
 | 페이지 | 시간 | 난이도 | header-pages | 특성 |
 |---|---|---|---|---|
-| `google-sheets-dashboard.html` | 12분 | 중급 | 6개 | Codex 블루 바이올렛 액센트 카드 |
-| `instagram-card-news.html` | 15분 | 중급 | 6개 | 카드뉴스 스토리라인과 1080×1350 PNG 다운로드 |
-| `stock-messenger.html` | 15분 | 고급 | 6개 | Codex 블루 바이올렛 액센트 카드 |
-| `korean-law-mcp.html` | 10분 | 중급 | 6개 | Codex `config.toml`에 한국 법령 MCP 서버 등록. 법제처 Open API |
-| `playmcp-kakao.html` | 12분 | 중급 | 6개 | Codex와 Kakao PlayMCP로 카카오톡 나와의 채팅방 연결 |
-| `harness-book.html` | 20분 | 고급 | 6개 | 책쓰기 실전 |
+| `google-sheets-dashboard.html` | 12분 | 중급 | 5개 | Codex 블루 바이올렛 액센트 카드 |
+| `stock-messenger.html` | 15분 | 고급 | 5개 | Codex 블루 바이올렛 액센트 카드 |
+| `korean-law-mcp.html` | 10분 | 중급 | 5개 | Codex `config.toml`에 한국 법령 MCP 서버 등록. 법제처 Open API |
+| `playmcp-kakao.html` | 12분 | 중급 | 5개 | Codex와 Kakao PlayMCP로 카카오톡 나와의 채팅방 연결 |
+| `harness-book.html` | 20분 | 고급 | 5개 | 책쓰기 실전 |
+
+`instagram-card-news.html`은 삭제했다(페이지와 인덱스 카드 모두 제거). `chrome-plugin.html`도 삭제했고, chrome-plugin 링크는 전 페이지에서 `excel-plugin.html`로 재지정했다.
+
+### 쇼케이스 (header-pages: 4개)
+| 페이지 | 난이도 | header-pages | 특성 |
+|---|---|---|---|
+| `showcase-poems.html` | 참고 | 3개 | 멀티 페르소나로 쓴 시 모음. airoasting 원본 동기화 |
+| `showcase.html` | 참고 | 3개 | Codex로 만든 스탑워치 18선 갤러리. airoasting 원본 동기화 |
+| `showcase-skills.html` | 참고 | 3개 | 수강생이 만든 Codex 스킬 실전 자동화 모음. airoasting 원본 동기화 |
+
+쇼케이스 3개 페이지는 공통 header-pages 내비(시로 쓴 자화상, 스탑워치 쇼케이스, 스킬 쇼케이스)를 공유한다. `hackathon.html`은 삭제했다.
 
 ### 바이브코딩 백과사전 (header-pages: 3개)
 | 페이지 | 시간 | 난이도 | 특성 |
@@ -130,10 +150,12 @@
 | 1개 | `github-guide.html` | 490px | 최대 280px | 490px |
 | 2개 | `codex-orientation.html` | 490px | 약 238px | 490px |
 | 3개 | `ai-fluency.html` | 700px | 약 224px | 700px |
+| 4개 | `showcase.html` | 1080px | 약 250px | 1080px |
 | 5개 | `playmcp-kakao.html` | 1080px | 약 205px | 1080px |
-| 6개 | `instagram-card-news.html` | 1080px | 약 168px | 1080px |
 | 7개 | 미정 | 미정 | 미정 | 미정 |
 | 9개 | 미정 | 미정 | 미정 | 미정 |
+
+6-menu 기준 페이지였던 `instagram-card-news.html`은 삭제했다. 현재 6-menu 페이지는 없다.
 
 버튼(`.header-page-link`) 공통 토큰:
 ```css
@@ -321,6 +343,33 @@ JS 동작 (단일 IIFE, 외부 의존 없음):
 **A급 진입 카드(미완)**
 - 레퍼런스 풀버전(상단 보라 제품 목업 패널 + 다크 알약 CTA)은 히어로 3개 진입점 전용으로 둔다. 실제 제품 목업 이미지를 받은 뒤 그 3개에만 적용한다. 30개 리스트 카드에는 적용하지 않는다.
 
+### 3.8 콘텐츠 페이지 공통 표준 (2026-06-26 정리)
+
+콘텐츠 페이지는 다음 공통 규약을 따른다. 한 페이지에서 바꾸면 같은 종류의 전 페이지에 같이 반영한다.
+
+**참고자료 섹션 금지**
+- 본문 하단의 참고문헌, 더 읽을거리, 근거가 된 연구, 출처 모음 같은 참고자료 섹션은 두지 않는다.
+- `class="reading"`, `id="reading"`, `id="refs"`, `id="sec-sources"` 같은 참고자료 블록과 그에 연결된 서브 메뉴 항목은 만들지 않는다.
+
+**왼쪽 컬러 띠지 금지**
+- 카드나 콜아웃 블록의 왼쪽 컬러 띠지는 쓰지 않는다.
+- `border-left: Npx solid <컬러>` 형태의 좌측 보더, `::before`로 만든 좌측 세로 바(`left:0; width:Npx; background:<컬러>`)는 모두 쓰지 않는다. 폭을 유지해야 하면 `transparent`로 둔다.
+
+**폰트**
+- 본문과 UI 텍스트는 Pretendard로 통일한다. serif(Georgia, Times)는 쓰지 않는다.
+- 코드블록은 monospace를 유지한다.
+
+**서브 메뉴 크기·포맷 통일 (SM-UNIFY)**
+- sticky 서브 메뉴는 전 페이지가 같은 크기를 쓴다. 페이지별로 글자 크기를 다르게 잡지 않는다.
+- 기준값: `.sm-num` 28×28px, font-size 13px. `.sm-title` 13px. `.sm-sub` 11px. 항목 `gap: 5px`, `padding: 8px 14px`.
+- 각 페이지 `</style>` 직전의 `/* ## SM-UNIFY ## */` 공통 블록에서 이 크기를 강제한다. 색, 활성 상태, 폰트 두께는 페이지 CSS를 그대로 둔다(크기와 간격만 통일).
+
+**카드 그리드 폭**
+- 인덱스 `.cards`는 `grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))`를 쓴다. 카드 개수에 맞춰 콘텐츠 폭을 꽉 채운다. 카드가 2개면 2단, 1개면 전체 폭, 3개면 3단이 된다.
+
+**1단계 토글**
+- 1단계 5개 페이지는 상단에 `기본기`·`검증` 토글을 둔다. 3.2의 header-pages 규칙 위에 토글이 두 그룹(`pages-basic` 3개, `pages-verify` 2개)을 전환하는 구조다.
+
 ---
 
 ## 4. 한국어 작성 원칙
@@ -434,8 +483,9 @@ em dash 기호(U+2014)는 어디에도 쓰지 않는다. 본문, 표 안, 주석
 ### Rule 1. 사이즈 통일은 메뉴 개수별 기준 페이지를 따른다
 - 3-menu는 `ai-fluency.html`을 기준으로 한다.
 - 2-menu는 `codex-orientation.html`을 기준으로 한다.
+- 4-menu는 `showcase.html`을 기준으로 한다(쇼케이스 4개 페이지).
 - 5-menu는 `playmcp-kakao.html`을 기준으로 한다.
-- 6-menu는 `instagram-card-news.html`을 기준으로 한다.
+- 6-menu 기준이던 `instagram-card-news.html`은 삭제했다. 6-menu 페이지는 현재 없다.
 - 새 메뉴 카운트(7, 9)는 별도 기준 페이지를 정의하기 전까지 손대지 않는다.
 
 ### Rule 2. 헤더에서 중복되는 배지는 제거한다

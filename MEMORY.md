@@ -6,6 +6,27 @@
 
 ## 최근 세션 변경 로그
 
+### 2026-06-26
+
+| # | 요청 | 범위 | 결과 |
+|---|---|---|---|
+| 1 | airoasting.vercel.app 기반으로 1단계와 쇼케이스 페이지 콘텐츠 복사 | `ai-sycophancy.html`, `ai-hallucination.html`, `routines.html`, `showcase.html`, `showcase-poems.html` | airoasting 원본 본문을 Codex 디자인으로 포팅. Claude를 Codex로, 주황 팔레트를 Codex 블루로 일괄 치환. `routines.html`은 ChatGPT 예약 작업(자동화) 기준으로 재구성 |
+| 2 | `chrome-plugin.html` 삭제 | `chrome-plugin.html`, `index.html`, 링크 보유 14개 페이지 | 페이지 파일과 인덱스 카드를 삭제하고, 전 페이지의 chrome-plugin 링크(스텝 내비, 다음 버튼)를 `excel-plugin.html`로 재지정 |
+| 3 | 인덱스 CLI 카드 2개 삭제 | `index.html` | `Codex CLI 20단계로 따라하기`, `Codex 명령어 모음` 카드와 빈 CLI 소제목을 제거. `checklist.html`, `cheatsheet.html` 파일은 유지 |
+| 4 | 섹션 상단 인트로 한 줄 제거 | 인트로 문장이 있던 전 콘텐츠 페이지 | `main` 바로 다음의 인트로 `<p>` 한 줄을 삭제 |
+| 5 | 참고문헌·더 읽을거리 섹션 전면 삭제 | 전 콘텐츠 페이지 | `reading`, `refs`, `근거가 된 연구`, `sec-sources` 등 모든 참고자료 섹션과 해당 서브 메뉴 링크를 제거. 끊긴 앵커 없음 |
+| 6 | 카드 왼쪽 컬러 띠지 제거 | 전 페이지 | `border-left` 컬러와 `::before` 좌측 바를 transparent로 중화 |
+| 7 | 폰트 Pretendard 통일, 카드 폭을 콘텐츠 영역에 맞춤 | 전 페이지, `index.html` | serif(Georgia, Times)를 Pretendard로 바꾸고 코드블록 monospace는 유지. `.cards` 그리드를 `auto-fit`으로 바꿔 카드가 콘텐츠 폭을 채우도록 변경 |
+| 8 | 인덱스 해커톤 카드 삭제 | `index.html` | 쇼케이스 섹션의 해커톤 카드 제거. `hackathon.html` 파일은 유지 |
+| 9 | `instagram-card-news.html` 삭제 | `instagram-card-news.html`, `index.html`, 링크 보유 6개 페이지 | 페이지, 인덱스 카드, 실전 예제 내비 링크를 모두 제거 |
+| 10 | 스킬 쇼케이스 추가 | `showcase-skills.html`, `index.html`, `showcase.html`, `showcase-poems.html` | airoasting `showcase-skills.html`를 Codex로 복사 포팅(신규). 인덱스 쇼케이스 카드와 쇼케이스 페이지 내비 링크 추가 |
+| 11 | 안전·법률 섹션을 맨 하단으로 이동 | `index.html` | 안전·법률 카드 섹션을 디자인 갤러리 다음, 뉴스레터 앞으로 이동 |
+| 12 | 노코드 설명 문구 변경 | `index.html` | "설치 없이 브라우저에서"를 "Codex 앱에서"로 변경(섹션 부제와 소제목 2곳) |
+| 13 | 1단계 기본기·검증 토글 추가 | `ai-fluency.html`, `project-intro.html`, `multi-persona.html`, `ai-sycophancy.html`, `ai-hallucination.html` | 5개 1단계 페이지 상단에 `기본기`·`검증` mode-tabs 토글과 두 링크 그룹, `switchMode` 스크립트를 추가. 기본기 3개, 검증 2개 |
+| 14 | 모든 서브 메뉴 글자 크기와 포맷 통일 | 서브 메뉴가 있는 44개 페이지 | `SM-UNIFY` 공통 블록으로 `sm-num` 28px·13px, `sm-title` 13px, `sm-sub` 11px, 항목 간격과 패딩을 통일. 활성·호버 상태와 색은 보존 |
+| 15 | `ai-fluency.html` 좌측 띠지 제거 | `ai-fluency.html` | `insight-box`, `shift-card`의 `::before` 좌측 바 배경을 transparent로 변경 |
+| 16 | 작업 내용을 모든 md 문서에 반영 | `AGENTS.md`, `MEMORY.md`, `README.md` | 페이지 인벤토리, 디자인 규약, 버전 히스토리(v1.1.0)를 이번 세션 기준으로 갱신 |
+
 ### 2026-05-30
 
 | # | 요청 | 범위 | 결과 |
@@ -69,3 +90,8 @@
 | 52 | 카카오톡 PlayMCP 실전 페이지와 인덱스 카드 추가 | `playmcp-kakao.html`, `index.html`, 실전 예제 HTML 4개, `README.md`, `AGENTS.md`, `MEMORY.md` | Codex와 Kakao PlayMCP를 연결해 카카오톡 나와의 채팅방으로 작업 요약을 보내는 실전 페이지 추가. 인덱스 실전 예제 카드와 실전 예제 상단 메뉴를 5개 기준으로 정렬 |
 | 53 | 인스타그램 카드뉴스 실전 페이지와 인덱스 카드 추가 | `instagram-card-news.html`, `index.html`, 실전 예제 HTML 5개, `README.md`, `AGENTS.md`, `MEMORY.md` | 2030 여성 패션 타깃 예시로 카드뉴스 스토리라인을 만들고 1080×1350 PNG를 내려받는 실전 페이지 추가. 인덱스 실전 예제 카드와 실전 예제 상단 메뉴를 6개 기준으로 정렬 |
 | 54 | `codex-orientation.html`에 ChatGPT와 Codex 앱 연표 추가 | `codex-orientation.html`, `MEMORY.md` | OpenAI 공식 발표 기준으로 2022년부터 2026년까지 ChatGPT 주요 업그레이드와 Codex 앱 출시일을 연도별 섹션으로 추가. 서브 메뉴와 모바일 드로어 섹션 목록도 함께 갱신 |
+| 55 | `ai-fluency.html` 키워드 세트 비교 카드 추가 | `ai-fluency.html`, `README.md`, `MEMORY.md` | Section 1에 기본 세트(Role·Context·Task·Example·Output)와 결과 세트(Goal·Success·Constraints·Stop·Check)를 각 5개씩 세로 리스트로 비교하는 카드 2장 추가. 결과 세트에 `지금 기준` 배지와 한 줄 설명, 카드 아래 한 문장 규칙 요약 박스를 둠. 가로 `+` 연결 기호와 화살표 글리프는 쓰지 않고 데스크톱 2열, 모바일 1열로 정렬 |
+| 56 | 해커톤 수상작 페이지 삭제 | `hackathon.html`, `showcase.html`, `showcase-poems.html`, `showcase-skills.html`, `AGENTS.md`, `MEMORY.md` | `hackathon.html`을 삭제하고, 쇼케이스 3개 페이지 header-pages 내비에서 `해커톤 수상작` 링크를 제거. 메뉴가 4개에서 3개로 줄었고 max-width 700px가 3-menu 표준과 일치해 CSS 변경 없음. AGENTS 페이지 인벤토리에서 hackathon 행과 4개 내비 설명을 3개 기준으로 갱신 |
+| 57 | `ai-fluency.html` 비즈니스 리더 관점 보강과 중복 정리 | `ai-fluency.html` | 키워드 세트를 기본 5(Role·Context·Task·Example·Output)와 결과 5(Goal·Success·Constraints·Stop·Check) 세로 리스트로 정리. OpenAI 공식 v5.5 가이드 기반 `For Leaders` 섹션(권장 7요소 뼈대 Role·Personality·Goal·Success·Constraints·Output·Stop rules + 리더 액션 3장) 추가. 비교표와 겹치던 COMPARISON 1 섹션을 제거하고 고유 항목 2개(규칙 표현·진행 공유)를 비교표 행으로 흡수해 8행으로 통합. 카드·표 행에 마우스 오버 애니메이션 추가, 카드 좌측 띠지와 하단 페이지 네비게이션 제거 |
+| 58 | `routines.html` 제목을 자동화로 변경 | `routines.html`, `loop-engineering.html` | 히어로 제목, 헤더 메뉴 라벨, `title`·og·twitter 메타를 `Routines 예약 실행`에서 `자동화`로 변경. 같은 2-메뉴를 공유하는 loop-engineering의 routines 링크 라벨도 `자동화`로 통일 |
+| 59 | 전체 서브메뉴 소제목 통일 | 서브메뉴가 있는 루트 HTML 14개(`ai-fluency`, `project-intro`, `multi-persona`, `loop-engineering`, `security-guide`, `news-clipping`, `company-brain`, `ai-basic-law`, `ai-writing`, `cheatsheet`, `checklist`, `codex-best-practices`, `codex-tools`, `harness-engineering`), `AGENTS.md`, `MEMORY.md` | 제목만 있던 서브메뉴에 `sm-sub` 소제목을 추가해 39개 페이지 전부를 번호·제목·소제목 형식으로 통일. 소제목은 짧은 명사구 또는 `A · B · C` 가운뎃점 열거, 문장·종결부호·em dash·금지어 `흐름` 배제. 기존 sm-sub의 `흐름` 4건도 과정·단계 표현으로 치환. 모바일 드로어는 JS 자동 복제 |

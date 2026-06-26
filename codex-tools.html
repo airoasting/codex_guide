@@ -268,7 +268,7 @@
             box-shadow: var(--nm);
             padding: 26px 32px;
             margin-bottom: 16px;
-            border-left: 4px solid var(--codex-accent);
+            border-left: 4px solid transparent;
         }
         .summary-label {
             font-size: 11px; font-weight: 700; letter-spacing: 1px;
@@ -1863,7 +1863,7 @@
             <div class="step-line"></div>
             <a class="step-node" href="ai-fluency.html">1</a>
             <div class="step-line"></div>
-            <a class="step-node" href="chrome-plugin.html">2</a>
+            <a class="step-node" href="excel-plugin.html">2</a>
             <div class="step-line"></div>
             <a class="step-node" href="codex-101.html">3</a>
             <div class="step-line"></div>
@@ -1887,32 +1887,31 @@
     <a href="#sec-1" class="active" data-secs="sec-1">
         <span class="sm-num">1</span>
         <span class="sm-title">도구의 개념</span>
+        <span class="sm-sub">왜 필요한가</span>
     </a>
     <a href="#sec-2" data-secs="sec-2">
         <span class="sm-num">2</span>
         <span class="sm-title">도구의 종류</span>
+        <span class="sm-sub">파일 · 명령 · 검색 · API</span>
     </a>
     <a href="#sec-3" data-secs="sec-3">
         <span class="sm-num">3</span>
         <span class="sm-title">권한과 안전</span>
+        <span class="sm-sub">승인 · 샌드박싱</span>
     </a>
     <a href="#sec-4" data-secs="sec-4">
         <span class="sm-num">4</span>
         <span class="sm-title">도구 선택 기준</span>
+        <span class="sm-sub">네 가지 질문</span>
     </a>
     <a href="#sec-5" data-secs="sec-5">
         <span class="sm-num">5</span>
         <span class="sm-title">예시</span>
-    </a>
-    <a href="#reading" data-secs="reading">
-        <span class="sm-num">6</span>
-        <span class="sm-title">참고 문헌</span>
+        <span class="sm-sub">버그 수정 시나리오</span>
     </a>
 </nav>
 
 <main class="container">
-    <p>Codex 에이전트는 코드를 쓰고 실행하고, 파일을 읽고, 외부 API를 호출하는 여러 도구를 사용합니다. 도구의 종류와 작동 방식을 이해하면 에이전트에 더 정확한 지시를 내릴 수 있습니다.</p>
-
     <!-- ── SEC-1: 도구의 개념 ── -->
     <div class="content-section" id="sec-1">
         <div class="section-hd">
@@ -2152,77 +2151,6 @@
         </ul>
     </div>
 
-    <!-- ── READING ── -->
-    <section id="reading">
-        <div class="chapter-divider">
-            <span class="chapter-badge">참고 문헌 · 더 읽을거리</span>
-        </div>
-
-        <div class="nm-card">
-            <h2>핵심 논문</h2>
-            <p class="card-subtitle">도구 사용 에이전트의 이론적 기반</p>
-
-            <ul class="step-list">
-                <li class="step-item">
-                    <div class="step-bubble">📄</div>
-                    <div class="step-content">
-                        <strong>Schick et al. (2023): <a href="https://scholar.google.com/scholar?q=Toolformer%3A+Language+Models+Can+Teach+Themselves+to+Use+Tools" target="_blank" rel="noopener" style="color:var(--codex-accent);text-decoration:none;font-weight:700;">Toolformer: Language Models Can Teach Themselves to Use Tools</a></strong>
-                        <span>언어 모델이 API 호출을 스스로 학습하는 방법을 제시합니다. 모델이 도구를 언제, 어떻게 사용할지 판단하는 원리를 이해하는 데 필수적인 논문입니다.</span>
-                    </div>
-                </li>
-                <li class="step-item">
-                    <div class="step-bubble">📄</div>
-                    <div class="step-content">
-                        <strong>Patil et al. (2023): <a href="https://scholar.google.com/scholar?q=Gorilla%3A+Large+Language+Model+Connected+with+Massive+APIs" target="_blank" rel="noopener" style="color:var(--codex-accent);text-decoration:none;font-weight:700;">Gorilla: Large Language Model Connected with Massive APIs</a></strong>
-                        <span>수천 개의 실제 API를 정확히 호출하도록 훈련된 모델을 다룹니다. 모델이 API 문서를 이해하고 올바른 파라미터를 생성하는 방식을 보여줍니다.</span>
-                    </div>
-                </li>
-                <li class="step-item">
-                    <div class="step-bubble">📄</div>
-                    <div class="step-content">
-                        <strong>Yao et al. (2022): <a href="https://scholar.google.com/scholar?q=ReAct%3A+Synergizing+Reasoning+and+Acting+in+Language+Models" target="_blank" rel="noopener" style="color:var(--codex-accent);text-decoration:none;font-weight:700;">ReAct: Synergizing Reasoning and Acting in Language Models</a></strong>
-                        <span>추론(Reasoning)과 행동(Acting)을 교차 반복하는 ReAct 패턴을 정립한 논문입니다. 도구 호출과 생각 과정을 번갈아 기록하는 방식으로 에이전트 신뢰성을 높입니다.</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="nm-card">
-            <h2>공식 문서</h2>
-            <p class="card-subtitle">Anthropic 정식 문서에서 확인하는 MCP</p>
-
-            <ul class="step-list">
-                <li class="step-item">
-                    <div class="step-bubble">🔗</div>
-                    <div class="step-content">
-                        <strong><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" style="color:var(--codex-accent);text-decoration:none;font-weight:700;">Anthropic: Model Context Protocol (modelcontextprotocol.io)</a></strong>
-                        <span>MCP의 공식 사양과 SDK, 서버 구현 예제를 제공합니다. 외부 도구를 에이전트에 연결하는 표준 방식을 설명합니다.</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="nm-card">
-            <h2>이 사이트에서 이어 읽기</h2>
-
-            <ul class="step-list">
-                <li class="step-item">
-                    <div class="step-bubble">→</div>
-                    <div class="step-content">
-                        <strong><a href="harness-engineering.html" style="color:var(--codex-accent);text-decoration:none;font-weight:700;">하네스 엔지니어링</a></strong>
-                        <span>도구를 감싸는 실행 환경, 즉 하네스를 설계하는 방법을 다룹니다. Generator-Evaluator 패턴, 오류 처리, 롤백 전략을 실제 사례와 함께 설명합니다.</span>
-                    </div>
-                </li>
-                <li class="step-item">
-                    <div class="step-bubble">→</div>
-                    <div class="step-content">
-                        <strong><a href="code-plugin.html" style="color:var(--codex-accent);text-decoration:none;font-weight:700;">스킬·MCP 플러그인</a></strong>
-                        <span>MCP 서버를 직접 구현하고 에이전트에 연결하는 실전 가이드입니다. 기존 도구를 플러그인 형태로 패키징하는 방법을 배웁니다.</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
 </main>
 
 <footer>
@@ -2799,6 +2727,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         }
         .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
         .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    
+        /* ## SM-UNIFY (모든 페이지 서브메뉴 글자/포맷 통일) ## */
+        nav.sub-menu a { gap: 5px !important; padding: 8px 14px !important; }
+        nav.sub-menu a .sm-num { width: 28px !important; height: 28px !important; min-width: 28px !important; font-size: 13px !important; }
+        nav.sub-menu a .sm-title { font-size: 13px !important; }
+        nav.sub-menu a .sm-sub { font-size: 11px !important; }
     </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -2900,5 +2834,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 /* ## CODEX-HERO-SYNC END ## */
 </script>
+<style id="hero-subnav-fix">
+/* hero와 sub-menu 사이 흰 여백 제거: 회색 패널을 hero 하단에 자연스럽게 끼워 넣는다 (데스크톱 한정, 모바일은 sub-menu 숨김이라 원형 유지) */
+@media (min-width: 769px){
+  header, .hero { clip-path: none !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+  nav.sub-menu { margin-top: -26px !important; border-top-left-radius: 26px !important; border-top-right-radius: 26px !important; }
+}
+</style>
 </body>
 </html>

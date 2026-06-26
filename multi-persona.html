@@ -215,7 +215,7 @@
         .section-hd { margin-bottom: 22px; }
         .section-hd h2 {
             font-size: 20px; font-weight: 800; color: var(--t1);
-            padding-left: 16px; border-left: 4px solid var(--codex-accent);
+            padding-left: 16px; border-left: 4px solid transparent;
             margin-bottom: 6px;
         }
         .section-sub { font-size: 13px; color: var(--t2); padding-left: 20px; }
@@ -468,7 +468,7 @@
         .tips-title {
             font-size: 14px; font-weight: 800; color: var(--t1);
             margin-bottom: 16px; padding-left: 14px;
-            border-left: 3px solid var(--codex-accent);
+            border-left: 3px solid transparent;
         }
         .tips-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
         .tips-list li {
@@ -572,7 +572,7 @@
         .research-quote::before {
             content: '"'; font-size: 53px; color: var(--codex-accent); opacity: 0.22;
             position: absolute; top: -4px; left: 10px;
-            font-family: Georgia, serif; line-height: 1; pointer-events: none;
+            font-family: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif; line-height: 1; pointer-events: none;
         }
         .research-points { display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; }
         .rp-item { display: flex; gap: 14px; align-items: flex-start; }
@@ -1007,7 +1007,13 @@
         }
     
 /* MP-FIX */ .prompt-wrap{position:relative;margin:14px 0} .d-blue{background:rgba(45,108,223,0.10);color:#2D6CDF}
-</style>
+
+        /* ## MODE-TABS (1단계 기본기/검증 토글) ## */
+        .mode-tabs { display: inline-flex; gap: 4px; background: rgba(0,0,0,0.22); border: 1px solid rgba(255,255,255,0.14); border-radius: 24px; padding: 4px; margin: 14px auto 0; position: relative; z-index: 1; }
+        .mode-tab { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.6); padding: 6px 22px; border-radius: 20px; cursor: pointer; transition: background 0.2s, color 0.2s; user-select: none; }
+        .mode-tab.active { background: rgba(255,255,255,0.2); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+        .mode-tab:hover:not(.active) { color: rgba(255,255,255,0.85); }
+    </style>
 </head>
 <body>
 
@@ -1033,11 +1039,19 @@
         <a class="back-link" href="index.html">← 목록으로</a>
         <h1>멀티 페르소나 토론</h1>
         <p class="hero-sub">그냥 물으면 일반 답변,<br>전문가 팀에게 물어보면 검증된 결론이 나옵니다</p>
-        <div class="header-pages">
-            <a href="ai-fluency.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span> 프롬프트 잘 쓰는 법</a>
-            <a href="project-intro.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span> 프로젝트 만들기</a>
-            <a href="multi-persona.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> 멀티 페르소나</a>
-        </div>
+            <div class="mode-tabs">
+        <span class="mode-tab active" id="tab-basic" onclick="switchMode('basic')">기본기</span>
+        <span class="mode-tab" id="tab-verify" onclick="switchMode('verify')">검증</span>
+    </div>
+    <div class="header-pages" id="pages-basic">
+        <a href="ai-fluency.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span> 프롬프트 잘 쓰는 비결</a>
+        <a href="project-intro.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span> 프로젝트 만들기</a>
+        <a href="multi-persona.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> 멀티 페르소나</a>
+    </div>
+    <div class="header-pages" id="pages-verify" style="display:none;">
+        <a href="ai-sycophancy.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span> 동조 줄이기</a>
+        <a href="ai-hallucination.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span> 환각 줄이기</a>
+    </div>
     </div>
 </header>
 
@@ -1046,38 +1060,42 @@
     <a href="#cd-2" class="active" data-sec="sec-ref" data-secs="cd-2,sec-ref">
         <span class="sm-num">1</span>
         <span class="sm-title">원리</span>
+        <span class="sm-sub">왜 효과적인가</span>
     </a>
     <a href="#cd-1" data-sec="sec-0" data-secs="cd-1,sec-0,sec-1">
         <span class="sm-num">2</span>
         <span class="sm-title">비교 & 실전</span>
+        <span class="sm-sub">단독 vs 팀</span>
     </a>
     <a href="#cd-poem" data-sec="sec-poem" data-secs="cd-poem,sec-poem">
         <span class="sm-num">3</span>
         <span class="sm-title">시 쓰기 실습</span>
+        <span class="sm-sub">5인 팀 예시</span>
     </a>
     <a href="#cd-eval" data-sec="sec-eval" data-secs="cd-eval,sec-eval">
         <span class="sm-num">4</span>
         <span class="sm-title">평가하기</span>
+        <span class="sm-sub">9.5점 합격선</span>
     </a>
     <a href="#cd-3b" data-sec="sec-2" data-secs="cd-3b,sec-2,sec-3">
         <span class="sm-num">5</span>
         <span class="sm-title">토론 설계</span>
+        <span class="sm-sub">3단계 · 프로세스</span>
     </a>
     <a href="#cd-3" data-sec="sec-5" data-secs="cd-3,sec-5">
         <span class="sm-num">6</span>
         <span class="sm-title">팀 구성</span>
+        <span class="sm-sub">상황별 예시</span>
     </a>
     <a href="#cd-4" data-sec="sec-6" data-secs="cd-4,sec-6">
         <span class="sm-num">7</span>
         <span class="sm-title">프로젝트 지침</span>
+        <span class="sm-sub">저장해 재사용</span>
     </a>
     <a href="#cd-5" data-sec="sec-7" data-secs="cd-5,sec-7">
         <span class="sm-num">8</span>
         <span class="sm-title">활용 팁</span>
-    </a>
-    <a href="#reading" data-secs="reading">
-        <span class="sm-num">9</span>
-        <span class="sm-title">참고 문헌</span>
+        <span class="sm-sub">더 좋은 결과</span>
     </a>
 </nav>
 
@@ -1714,23 +1732,14 @@
             <strong>2단계: 브라우저에서 ChatGPT 사용</strong>
             <p>탭을 왔다 갔다 하지 마세요. 지금 보고 있는 바로 그 페이지 위에서 AI가 일합니다</p>
             <div class="next-btns">
-                <a href="chrome-plugin.html" class="next-btn">브라우저에서 ChatGPT 사용 →</a>
+                <a href="excel-plugin.html" class="next-btn">Excel에서 ChatGPT 사용 →</a>
             </div>
         </div>
     </div>
 
 <style>/* RD-INJECT 참고문헌 컴포넌트 */ .reading{margin-top:48px;padding-top:8px} .reading>h2{font-size:1.4rem;font-weight:800;margin:0 0 18px} .reading-group{background:#fff;border:1px solid rgba(91,98,216,.14);border-radius:16px;padding:20px 22px;margin-bottom:16px;box-shadow:0 4px 18px rgba(40,40,90,.05)} .reading-group h3{margin:0 0 12px;font-size:1.02rem;font-weight:700;color:var(--codex-accent)} .reading-group ul{margin:0;padding-left:18px} .reading-group li{margin:7px 0;line-height:1.6;color:#3a3f55} .reading-group a{color:var(--codex-accent);text-decoration:none;font-weight:600} .reading-group a:hover{text-decoration:underline}</style>
-<section class="reading" id="reading">
-  <h2>참고 문헌·더 읽을거리</h2>
-  <div class="reading-group"><h3>핵심 논문</h3><ul>
-    <li>Du et al. (2023): <a href="https://scholar.google.com/scholar?q=Improving+Factuality+and+Reasoning+in+Language+Models+through+Multiagent+Debate" target="_blank" rel="noopener">Improving Factuality and Reasoning in Language Models through Multiagent Debate</a> · 복수 모델이 토론할 때 사실 정확도와 추론 품질이 높아진다는 실험 결과</li>
-    <li>Chan et al. (2023): <a href="https://scholar.google.com/scholar?q=ChatEval%3A+Towards+Better+LLM-based+Evaluators+through+Multi-Agent+Debate" target="_blank" rel="noopener">ChatEval: Towards Better LLM-based Evaluators through Multi-Agent Debate</a> · 멀티 에이전트 토론 구조가 단일 모델 평가보다 인간 판단에 더 가깝다는 연구</li>
-  </ul></div>
-  <div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul>
-    <li><a href="ai-sycophancy.html">AI의 동조를 줄이는 법</a> · AI가 사용자 의견에 무조건 동의하는 현상과 대응 전략</li>
-    <li><a href="agent-design.html">멀티 에이전트 소환</a> · 역할 분리된 에이전트 팀을 설계하는 실전 방법</li>
-  </ul></div>
-</section>
+
+
 </main>
 
 <!-- ═══ FOOTER (same as ai-levels.html) ═══ -->
@@ -2324,6 +2333,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         }
         .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
         .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    
+        /* ## SM-UNIFY (모든 페이지 서브메뉴 글자/포맷 통일) ## */
+        nav.sub-menu a { gap: 5px !important; padding: 8px 14px !important; }
+        nav.sub-menu a .sm-num { width: 28px !important; height: 28px !important; min-width: 28px !important; font-size: 13px !important; }
+        nav.sub-menu a .sm-title { font-size: 13px !important; }
+        nav.sub-menu a .sm-sub { font-size: 11px !important; }
     </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -2425,5 +2440,25 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 /* ## CODEX-HERO-SYNC END ## */
 </script>
+
+<script>
+/* ## MODE-TABS toggle ## */
+function switchMode(m){
+  var tb=document.getElementById('tab-basic'), tv=document.getElementById('tab-verify');
+  var pb=document.getElementById('pages-basic'), pv=document.getElementById('pages-verify');
+  if(!tb||!tv||!pb||!pv) return;
+  tb.classList.toggle('active', m==='basic');
+  tv.classList.toggle('active', m==='verify');
+  pb.style.display = (m==='basic')?'':'none';
+  pv.style.display = (m==='verify')?'':'none';
+}
+</script>
+<style id="hero-subnav-fix">
+/* hero와 sub-menu 사이 흰 여백 제거: 회색 패널을 hero 하단에 자연스럽게 끼워 넣는다 (데스크톱 한정, 모바일은 sub-menu 숨김이라 원형 유지) */
+@media (min-width: 769px){
+  header, .hero { clip-path: none !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+  nav.sub-menu { margin-top: -26px !important; border-top-left-radius: 26px !important; border-top-right-radius: 26px !important; }
+}
+</style>
 </body>
 </html>

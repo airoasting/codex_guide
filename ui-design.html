@@ -2529,6 +2529,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         }
         .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
         .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    
+        /* ## SM-UNIFY (모든 페이지 서브메뉴 글자/포맷 통일) ## */
+        nav.sub-menu a { gap: 5px !important; padding: 8px 14px !important; }
+        nav.sub-menu a .sm-num { width: 28px !important; height: 28px !important; min-width: 28px !important; font-size: 13px !important; }
+        nav.sub-menu a .sm-title { font-size: 13px !important; }
+        nav.sub-menu a .sm-sub { font-size: 11px !important; }
     </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>

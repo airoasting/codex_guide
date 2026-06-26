@@ -219,7 +219,7 @@
         .section-hd { margin-bottom: 22px; }
         .section-hd h2 {
             font-size: 21px; font-weight: 800; color: var(--t1);
-            padding-left: 16px; border-left: 4px solid var(--codex-accent);
+            padding-left: 16px; border-left: 4px solid transparent;
             margin-bottom: 6px;
         }
         .section-sub { font-size: 14px; color: var(--t2); padding-left: 20px; }
@@ -626,11 +626,6 @@
             position: relative;
             overflow: hidden;
         }
-        .insight-box::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-            background: var(--codex-accent); border-radius: 18px 0 0 18px;
-        }
-
         .insight-box h3 {
             font-size: 16px;
             font-weight: 700;
@@ -1473,16 +1468,6 @@
             overflow: hidden;
         }
 
-        .shift-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--codex-accent);
-        }
-
         .shift-tag {
             display: inline-flex;
             align-items: center;
@@ -1659,6 +1644,142 @@
             line-height: 1.65;
         }
 
+        /* ── 키워드 공식 (Role·Context·Task·Output vs Goal…) ── */
+        .formula-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 28px;
+            align-items: stretch;
+        }
+        .formula-card {
+            background: var(--bg);
+            box-shadow: var(--nm-sm);
+            border-radius: 18px;
+            padding: 24px 22px 22px;
+            position: relative;
+            overflow: hidden;
+        }
+        .formula-label {
+            display: inline-block;
+            font-size: 11px; font-weight: 800; letter-spacing: 0.5px;
+            border-radius: 999px; padding: 4px 12px; margin-bottom: 12px;
+        }
+        .formula-card.old .formula-label { color: var(--t2); background: rgba(20,25,46,0.07); }
+        .formula-card.new .formula-label { color: var(--codex-accent); background: rgba(99,102,241,0.12); }
+        .formula-card h3 {
+            font-size: 17px; font-weight: 800; color: var(--t1);
+            margin-bottom: 16px; line-height: 1.35;
+        }
+        .formula-list {
+            list-style: none;
+            display: flex; flex-direction: column; gap: 8px;
+            margin-bottom: 16px;
+        }
+        .formula-item {
+            display: grid;
+            grid-template-columns: 108px 1fr;
+            align-items: center; gap: 12px;
+            background: var(--bg); box-shadow: var(--nm-in-sm);
+            border-radius: 12px; padding: 11px 14px;
+        }
+        .formula-card.new .formula-item {
+            box-shadow: inset 2px 2px 5px rgba(99,102,241,0.14), inset -2px -2px 5px rgba(255,255,255,0.7);
+        }
+        .fi-head { display: flex; flex-direction: column; gap: 1px; }
+        .fi-key { font-size: 13px; font-weight: 800; color: var(--t1); letter-spacing: -0.2px; }
+        .formula-card.new .fi-key { color: var(--codex-accent); }
+        .fi-ko { font-size: 11px; color: var(--t2); }
+        .fi-desc { font-size: 12.5px; color: var(--t2); line-height: 1.5; }
+        .formula-note { font-size: 13px; color: var(--t2); line-height: 1.75; }
+        .formula-note strong { color: var(--t1); }
+        .formula-flag {
+            position: absolute; top: 16px; right: 16px;
+            font-size: 10px; font-weight: 800; letter-spacing: 0.3px;
+            color: #fff; background: var(--codex-accent);
+            border-radius: 999px; padding: 4px 11px;
+            box-shadow: 3px 3px 8px rgba(99,102,241,0.34);
+        }
+        .formula-takeaway {
+            display: flex; align-items: flex-start; gap: 12px;
+            background: linear-gradient(135deg, #EEF1FF 0%, #F6F7FB 100%);
+            border: 1px solid rgba(99,102,241,0.22);
+            border-radius: 14px; padding: 16px 20px; margin-bottom: 32px;
+            box-shadow: var(--nm-sm);
+        }
+        .formula-takeaway .ft-key {
+            flex-shrink: 0;
+            font-size: 11px; font-weight: 800; letter-spacing: 0.3px;
+            color: var(--codex-accent); background: rgba(99,102,241,0.14);
+            border-radius: 999px; padding: 5px 12px; white-space: nowrap;
+        }
+        .formula-takeaway p { font-size: 13px; color: var(--t1); line-height: 1.7; }
+        .formula-takeaway strong { color: var(--codex-accent); font-weight: 800; }
+
+        /* ── OpenAI 공식 권장 뼈대 스트립 ── */
+        .leader-skeleton {
+            background: linear-gradient(135deg, #EEF1FF 0%, #F6F7FB 100%);
+            border: 1px solid rgba(99,102,241,0.22);
+            border-radius: 14px; padding: 18px 22px 20px; margin-bottom: 20px;
+            box-shadow: var(--nm-sm);
+        }
+        .ls-label {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 11px; font-weight: 800; letter-spacing: 0.3px;
+            color: var(--codex-accent); background: rgba(99,102,241,0.14);
+            border-radius: 999px; padding: 5px 12px; margin-bottom: 12px;
+        }
+        .ls-steps {
+            list-style: none;
+            display: grid; grid-template-columns: repeat(7, 1fr);
+            gap: 8px; margin-bottom: 12px;
+        }
+        .ls-step {
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            text-align: center;
+            background: #fff; border: 1px solid rgba(99,102,241,0.18);
+            border-radius: 12px; padding: 11px 8px 12px;
+        }
+        .ls-step .ls-n {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 13px; font-weight: 700; font-style: italic;
+            letter-spacing: 0.5px;
+            color: var(--codex-accent);
+            background: rgba(99,102,241,0.12);
+            border-radius: 7px; padding: 2px 9px; min-width: 30px;
+        }
+        .ls-step .ls-en { font-size: 12.5px; font-weight: 800; color: var(--t1); line-height: 1.2; }
+        .ls-step .ls-ko { font-size: 11px; color: var(--t2); }
+        .ls-note { font-size: 12.5px; color: var(--t2); line-height: 1.65; }
+        .ls-note strong { color: var(--t1); }
+
+        /* ── 마우스 오버 애니메이션 ── */
+        .formula-card, .prompt-card, .action-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .formula-card:hover, .prompt-card:hover, .action-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 26px rgba(20,25,46,0.12), 0 0 0 1px #E4E4EC;
+        }
+        .formula-item {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+        .formula-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 5px 14px rgba(20,25,46,0.10);
+        }
+        .formula-card.new .formula-item:hover {
+            box-shadow: 0 5px 14px rgba(99,102,241,0.18);
+        }
+        .guide-row { transition: background 0.2s ease; }
+        .guide-row:hover .guide-cell { background: rgba(99,102,241,0.06); }
+        .guide-row:hover .guide-cell.topic { background: rgba(99,102,241,0.13); }
+        @media (prefers-reduced-motion: reduce) {
+            .formula-card, .prompt-card, .action-card, .formula-item { transition: none; }
+            .formula-card:hover, .prompt-card:hover, .action-card:hover,
+            .formula-item:hover { transform: none; }
+        }
+
         /* 모바일에서 h1 단축 */
         .t-mobile { display: none; }
         @media (max-width: 768px) {
@@ -1666,7 +1787,10 @@
             .t-mobile { display: inline; }
             .shift-grid,
             .prompt-pair,
+            .formula-pair,
             .action-grid { grid-template-columns: 1fr; }
+            .formula-takeaway { flex-direction: column; gap: 8px; }
+            .ls-steps { grid-template-columns: repeat(2, 1fr); }
             .guide-table {
                 box-shadow: var(--nm-sm);
                 background: transparent;
@@ -1700,6 +1824,12 @@
             .guide-cell:nth-child(2)::before { content: '이전 가이드'; }
             .guide-cell:nth-child(3)::before { content: '새로운 가이드 (v5.5)'; }
         }
+    
+        /* ## MODE-TABS (1단계 기본기/검증 토글) ## */
+        .mode-tabs { display: inline-flex; gap: 4px; background: rgba(0,0,0,0.22); border: 1px solid rgba(255,255,255,0.14); border-radius: 24px; padding: 4px; margin: 14px auto 0; position: relative; z-index: 1; }
+        .mode-tab { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.6); padding: 6px 22px; border-radius: 20px; cursor: pointer; transition: background 0.2s, color 0.2s; user-select: none; }
+        .mode-tab.active { background: rgba(255,255,255,0.2); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+        .mode-tab:hover:not(.active) { color: rgba(255,255,255,0.85); }
     </style>
 </head>
 <body>
@@ -1726,11 +1856,19 @@
         <a class="back-link" href="index.html">&larr; 목록으로</a>
         <h1><span class="t-desktop">프롬프트 잘 쓰는 비결</span><span class="t-mobile">프롬프트 잘 쓰는 비결</span></h1>
         <p class="hero-sub">이전 가이드와 새로운 가이드 (v5.5)를 비교하면서<br>무엇을 덜 쓰고 무엇을 더 분명히 써야 하는지 정리합니다</p>
-        <div class="header-pages">
-            <a href="ai-fluency.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span> 프롬프트 잘 쓰는 비결</a>
-            <a href="project-intro.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span> 프로젝트 만들기</a>
-            <a href="multi-persona.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> 멀티 페르소나</a>
-        </div>
+            <div class="mode-tabs">
+        <span class="mode-tab active" id="tab-basic" onclick="switchMode('basic')">기본기</span>
+        <span class="mode-tab" id="tab-verify" onclick="switchMode('verify')">검증</span>
+    </div>
+    <div class="header-pages" id="pages-basic">
+        <a href="ai-fluency.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span> 프롬프트 잘 쓰는 비결</a>
+        <a href="project-intro.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span> 프로젝트 만들기</a>
+        <a href="multi-persona.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> 멀티 페르소나</a>
+    </div>
+    <div class="header-pages" id="pages-verify" style="display:none;">
+        <a href="ai-sycophancy.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span> 동조 줄이기</a>
+        <a href="ai-hallucination.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span> 환각 줄이기</a>
+    </div>
     </div>
 </header>
 
@@ -1739,18 +1877,17 @@
     <a href="#cd-1" class="active" data-sec="sec-overview" data-secs="cd-1,sec-overview,sec-shift">
         <span class="sm-num">1</span>
         <span class="sm-title">큰 변화</span>
+        <span class="sm-sub">절차에서 결과로</span>
     </a>
     <a href="#cd-2" data-sec="sec-table" data-secs="cd-2,sec-table">
         <span class="sm-num">2</span>
         <span class="sm-title">비교 표</span>
+        <span class="sm-sub">이전 vs 새 가이드</span>
     </a>
     <a href="#cd-3" data-sec="sec-template" data-secs="cd-3,sec-template,sec-action">
         <span class="sm-num">3</span>
         <span class="sm-title">실전 템플릿</span>
-    </a>
-    <a href="#reading" data-secs="reading">
-        <span class="sm-num">4</span>
-        <span class="sm-title">참고 문헌</span>
+        <span class="sm-sub">전환 · 점검</span>
     </a>
 </nav>
 
@@ -1797,49 +1934,45 @@
                 <p class="bridge-desc">예전에는 "AI가 길을 잃지 않게 절차를 많이 써주는 사람"이 잘 썼습니다. GPT-5.5에서는 <strong>목적지와 판단 기준을 또렷하게 주고, 길은 모델이 고르게 두는 사람</strong>이 더 잘 씁니다.</p>
             </div>
         </div>
-    </div>
 
-    <div class="chapter-divider" id="sec-shift">
-        <span class="chapter-badge">COMPARISON 1</span>
-    </div>
-
-    <div class="section-block">
-        <div class="section-hd">
-            <h2>무엇을 덜 쓰고, 무엇을 더 써야 할까?</h2>
-            <p class="section-sub">이전 가이드를 버리는 것이 아니라, 새로운 가이드 (v5.5)에 맞게 무게중심을 옮기는 것입니다</p>
+        <div class="section-hd" style="margin-top: 36px;">
+            <h2>프롬프트 키워드: 이전 5개에서 v5.5의 7개로</h2>
+            <p class="section-sub">이전 방식은 다섯 키워드로 모델을 안내했습니다. v5.5에서는 성격과 결과·중단 기준을 더해 공식 7요소로 씁니다</p>
         </div>
 
-        <div class="shift-grid">
-            <div class="shift-card">
-                <span class="shift-tag">변화 1</span>
-                <h3>절차 나열보다 성공 기준</h3>
-                <p>기존 프롬프트는 "먼저 A를 하고, 다음에 B를 하고"처럼 과정을 길게 적었습니다. GPT-5.5에서는 목표, 성공 기준, 제약을 먼저 적고 모델이 효율적인 경로를 고르게 두는 편이 낫습니다.</p>
+        <div class="formula-pair">
+            <div class="formula-card old">
+                <span class="formula-label">이전 방식 · 5요소</span>
+                <h3>역할부터 출력 형식까지 채운다</h3>
+                <ul class="formula-list">
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Role</span><span class="fi-ko">역할</span></span><span class="fi-desc">누구처럼 답할지 정합니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Context</span><span class="fi-ko">맥락</span></span><span class="fi-desc">어떤 배경과 자료가 있는지 줍니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Task</span><span class="fi-ko">작업</span></span><span class="fi-desc">무엇을 시킬지 말합니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Example</span><span class="fi-ko">예시</span></span><span class="fi-desc">원하는 답의 예시를 보여줍니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Output</span><span class="fi-ko">출력</span></span><span class="fi-desc">어떤 형식으로 답할지 정합니다</span></li>
+                </ul>
+                <p class="formula-note">이전 방식은 이 다섯 가지로 모델을 처음부터 끝까지 안내했습니다.</p>
             </div>
-            <div class="shift-card">
-                <span class="shift-tag">변화 2</span>
-                <h3>절대 규칙보다 판단 규칙</h3>
-                <p><code>항상</code>, <code>절대</code>, <code>반드시</code> 같은 표현은 안전, 필수 출력 필드, 금지 행동처럼 진짜 불변인 곳에만 씁니다. 검색, 질문, 반복 같은 판단은 조건문으로 정리합니다.</p>
+            <div class="formula-card new">
+                <span class="formula-flag">지금 기준</span>
+                <span class="formula-label">새로운 방식 · 공식 7요소 (v5.5)</span>
+                <h3>역할부터 중단 규칙까지 일곱 가지로 쓴다</h3>
+                <ul class="formula-list">
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Role</span><span class="fi-ko">역할</span></span><span class="fi-desc">누구처럼, 어떤 입장에서 답할지 정합니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Personality</span><span class="fi-ko">성격</span></span><span class="fi-desc">말투와 협업 방식을 정합니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Goal</span><span class="fi-ko">목표</span></span><span class="fi-desc">어떤 결과가 나오면 성공인지 정합니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Success</span><span class="fi-ko">성공 기준</span></span><span class="fi-desc">무엇이 포함되어야 완료인지 적습니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Constraints</span><span class="fi-ko">제약</span></span><span class="fi-desc">하지 말 것과 분량을 정합니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Output</span><span class="fi-ko">출력</span></span><span class="fi-desc">답변의 구성, 길이, 톤을 정합니다</span></li>
+                    <li class="formula-item"><span class="fi-head"><span class="fi-key">Stop rules</span><span class="fi-ko">중단 규칙</span></span><span class="fi-desc">언제 멈추고 어떻게 확인할지 정합니다</span></li>
+                </ul>
+                <p class="formula-note">이 일곱 가지가 v5.5 공식 권장 뼈대입니다. 목표와 판단 기준을 먼저 고정하고 <strong>절차 지시는 줄입니다</strong>.</p>
             </div>
-            <div class="shift-card">
-                <span class="shift-tag">변화 3</span>
-                <h3>톤 지시보다 협업 방식</h3>
-                <p>역할과 말투만 지정하는 방식에서 더 나아가, 언제 질문하고 언제 가정하며 어디까지 주도적으로 진행할지 정합니다. 고객 응대나 코칭형 제품에서는 성격과 협업 방식을 나누어 쓰는 편이 좋습니다.</p>
-            </div>
-            <div class="shift-card">
-                <span class="shift-tag">변화 4</span>
-                <h3>근거 요구보다 검색 예산</h3>
-                <p>"출처를 달라"에서 멈추지 않습니다. 어떤 주장에 근거가 필요한지, 몇 번까지 검색할지, 근거가 부족할 때 어떻게 멈출지까지 정하면 답변이 더 안정됩니다.</p>
-            </div>
-            <div class="shift-card">
-                <span class="shift-tag">변화 5</span>
-                <h3>검토 요청보다 검증 명령</h3>
-                <p>"확인해줘"보다 "변경 후 관련 테스트를 실행하고, 실행하지 못하면 이유와 다음 확인 방법을 적어라"가 낫습니다. 시각 자료라면 렌더링 후 잘림, 간격, 누락을 직접 확인하게 합니다.</p>
-            </div>
-            <div class="shift-card">
-                <span class="shift-tag">변화 6</span>
-                <h3>긴 침묵보다 짧은 중간 보고</h3>
-                <p>긴 작업이나 도구 호출이 필요한 작업에서는 짧은 중간 업데이트를 먼저 보내게 합니다. 사용자는 일이 멈춘 것이 아니라 진행 중이라는 신호를 받습니다.</p>
-            </div>
+        </div>
+
+        <div class="formula-takeaway">
+            <span class="ft-key">한 문장 규칙</span>
+            <p><strong>역할·성격·목표·성공 기준·제약·출력·중단 규칙</strong>, 이 일곱 가지 순서로 적으세요. 프롬프트는 짧아지되 판단 기준은 더 분명해집니다.</p>
         </div>
     </div>
 
@@ -1875,6 +2008,11 @@
                 <div class="guide-cell"><strong>경로 선택 여지</strong>성공 기준을 만족하는 한 모델이 효율적인 방법을 고르게 둡니다.</div>
             </div>
             <div class="guide-row">
+                <div class="guide-cell topic">규칙 표현</div>
+                <div class="guide-cell"><strong>절대 규칙 위주</strong>항상, 절대, 반드시로 대부분의 행동을 묶습니다.</div>
+                <div class="guide-cell"><strong>판단 규칙 위주</strong>안전과 필수 항목에만 절대 규칙을 쓰고, 나머지는 조건문으로 정리합니다.</div>
+            </div>
+            <div class="guide-row">
                 <div class="guide-cell topic">근거와 검색</div>
                 <div class="guide-cell"><strong>참고 자료 제공</strong>문서, 링크, 내부 자료를 프롬프트에 넣습니다.</div>
                 <div class="guide-cell"><strong>검색 예산과 부족한 근거 처리</strong>몇 번 검색할지, 근거가 없으면 어떻게 표시할지 정합니다.</div>
@@ -1889,6 +2027,11 @@
                 <div class="guide-cell"><strong>결과 검토 요청</strong>마지막에 빠진 부분이 없는지 확인하라고 시킵니다.</div>
                 <div class="guide-cell"><strong>검증 가능한 작업 지정</strong>테스트, 빌드, 렌더링, 링크 확인처럼 실제 확인 방법을 적습니다.</div>
             </div>
+            <div class="guide-row">
+                <div class="guide-cell topic">진행 공유</div>
+                <div class="guide-cell"><strong>완료 후 보고</strong>작업이 끝난 뒤에 결과만 전달합니다.</div>
+                <div class="guide-cell"><strong>짧은 중간 보고</strong>긴 작업에서는 진행 중이라는 신호를 먼저 보냅니다.</div>
+            </div>
         </div>
 
         <div class="insight-box">
@@ -1901,14 +2044,57 @@
         </div>
     </div>
 
+    <div class="chapter-divider">
+        <span class="chapter-badge">For Leaders</span>
+    </div>
+
+    <div class="section-block">
+        <div class="section-hd">
+            <h2>비즈니스 리더가 v5.5에서 챙길 세 가지</h2>
+            <p class="section-sub">OpenAI 공식 v5.5 프롬프트 가이드를 팀 운영 관점으로 정리했습니다</p>
+        </div>
+
+        <div class="leader-skeleton">
+            <span class="ls-label">OpenAI 공식 권장 프롬프트 뼈대</span>
+            <ul class="ls-steps">
+                <li class="ls-step"><span class="ls-n">I</span><span class="ls-en">Role</span><span class="ls-ko">역할</span></li>
+                <li class="ls-step"><span class="ls-n">II</span><span class="ls-en">Personality</span><span class="ls-ko">성격</span></li>
+                <li class="ls-step"><span class="ls-n">III</span><span class="ls-en">Goal</span><span class="ls-ko">목표</span></li>
+                <li class="ls-step"><span class="ls-n">IV</span><span class="ls-en">Success</span><span class="ls-ko">성공 기준</span></li>
+                <li class="ls-step"><span class="ls-n">V</span><span class="ls-en">Constraints</span><span class="ls-ko">제약</span></li>
+                <li class="ls-step"><span class="ls-n">VI</span><span class="ls-en">Output</span><span class="ls-ko">출력</span></li>
+                <li class="ls-step"><span class="ls-n">VII</span><span class="ls-en">Stop rules</span><span class="ls-ko">중단 규칙</span></li>
+            </ul>
+            <p class="ls-note">OpenAI가 v5.5용으로 권장하는 작성 순서입니다. 앞의 키워드 세트에 없던 <strong>Personality(성격)</strong>가 공식 뼈대에 들어갑니다. 팀 프롬프트와 AGENTS.md를 이 일곱 항목으로 통일하면 누가 써도 결과가 고르게 나옵니다.</p>
+        </div>
+
+        <div class="action-grid">
+            <div class="action-card">
+                <span class="action-num">1</span>
+                <strong>표준 뼈대를 정하라</strong>
+                <span>위 일곱 항목을 팀 공통 양식으로 고정합니다. 사람마다 프롬프트 구조가 다르면 품질이 들쭉날쭉합니다. 표준 양식이 있으면 누구나 유사한 수준으로 사용할 수 있습니다.</span>
+            </div>
+            <div class="action-card">
+                <span class="action-num">2</span>
+                <strong>성격과 협업 방식을 나눠라</strong>
+                <span>성격은 "어떻게 들리는가"(말투, 온도, 격식)이고, 협업 방식은 "어떻게 일하는가"(언제 묻고, 언제 가정하고, 어디까지 주도할지)입니다.</span>
+            </div>
+            <div class="action-card">
+                <span class="action-num">3</span>
+                <strong>비용과 리스크를 기본값으로 통제하라</strong>
+                <span>추론 강도는 low, medium부터 시작해 복잡한 일만 올려 비용을 줄입니다. 검색 예산과 검증 명령을 넣어 근거 없는 주장과 미검증 산출물을 막습니다.</span>
+            </div>
+        </div>
+    </div>
+
     <div class="chapter-divider" id="cd-3">
         <span class="chapter-badge">Section 3: 실전 템플릿</span>
     </div>
 
     <div class="section-block" id="sec-template">
         <div class="section-hd">
-            <h2>기존 프롬프트를 GPT-5.5식으로 바꾸기</h2>
-            <p class="section-sub">업무 요청 하나를 비교해 보면 차이가 바로 보입니다</p>
+            <h2>GPT-5.5에 맞게 프롬프트 쓰는 법</h2>
+            <p class="section-sub">같은 업무 요청을 이전 방식과 비교하면 차이가 바로 보입니다</p>
         </div>
 
         <div class="prompt-pair">
@@ -1924,17 +2110,21 @@
             <div class="prompt-card">
                 <span class="prompt-card-label">GPT-5.5 방식</span>
                 <h3>결과와 성공 기준을 먼저 정하는 프롬프트</h3>
-                <p>목표와 완료 조건을 고정합니다. 방법은 모델에게 맡기되, 근거와 멈출 기준은 분명히 둡니다.</p>
-                <pre>목표: 회의록을 바탕으로 임원용 실행 요약을 만듭니다.
+                <p>위 For Leaders의 공식 권장 7요소 뼈대(역할·성격·목표·성공 기준·제약·출력·중단 규칙)를 그대로 채운 예시입니다.</p>
+                <pre>역할: 임원 회의를 보좌하는 전략 애널리스트입니다.
+
+성격: 간결하고 단정한 보고체로 씁니다.
+
+목표: 회의록을 바탕으로 임원용 실행 요약을 만듭니다.
 
 성공 기준:
 - 다음 회의에서 바로 결정할 수 있는 선택지 3개를 제시합니다.
 - 회의록에 근거가 없는 내용은 "확인 필요"로 표시합니다.
-- 최종 답변은 핵심 결론, 선택지, 리스크, 필요한 확인 사항으로 구성합니다.
 
 제약:
 - 회의록 밖의 숫자, 고객 반응, 일정을 만들지 않습니다.
-- 500자 안으로 씁니다.
+
+출력: 핵심 결론, 선택지, 리스크, 필요한 확인 사항 순서로 500자 안에서 씁니다.
 
 중단 규칙:
 - 핵심 결정을 돕는 근거가 충분하면 추가 분석을 멈추고 답합니다.</pre>
@@ -1944,40 +2134,59 @@
 
     <div class="section-block" id="sec-action">
         <div class="section-hd">
-            <h2>팀 프롬프트를 고칠 때 보는 6가지 질문</h2>
-            <p class="section-sub">기존 지침을 GPT-5.5 기준으로 정리할 때 이 순서로 보면 됩니다</p>
+            <h2>팀 프롬프트를 고칠 때 보는 7가지 질문</h2>
+            <p class="section-sub">공식 권장 7요소(역할·성격·목표·성공 기준·제약·출력·중단 규칙) 순서로 점검하세요. 항목을 누르면 체크됩니다</p>
         </div>
 
-        <div class="action-grid">
-            <div class="action-card">
-                <span class="action-num">1</span>
-                <strong>최종 결과가 보이는가?</strong>
-                <span>프롬프트 첫 부분에서 산출물, 독자, 사용 장면이 바로 읽혀야 합니다.</span>
+        <div class="checklist">
+            <div class="check-item" onclick="this.classList.toggle('checked')">
+                <div class="check-box"></div>
+                <div class="check-text">
+                    <strong>1. 역할이 분명한가?</strong>
+                    <span>누구처럼, 어떤 입장에서 답할지 정합니다.</span>
+                </div>
             </div>
-            <div class="action-card">
-                <span class="action-num">2</span>
-                <strong>성공 기준이 있는가?</strong>
-                <span>무엇이 포함되어야 완료인지, 무엇이 빠지면 실패인지 적습니다.</span>
+            <div class="check-item" onclick="this.classList.toggle('checked')">
+                <div class="check-box"></div>
+                <div class="check-text">
+                    <strong>2. 성격과 협업 방식을 정했는가?</strong>
+                    <span>말투와, 언제 묻고 어디까지 주도할지 나눠서 적습니다.</span>
+                </div>
             </div>
-            <div class="action-card">
-                <span class="action-num">3</span>
-                <strong>절대 규칙이 과하지 않은가?</strong>
-                <span>항상, 절대, 반드시 같은 표현은 진짜 불변 조건에만 남깁니다.</span>
+            <div class="check-item" onclick="this.classList.toggle('checked')">
+                <div class="check-box"></div>
+                <div class="check-text">
+                    <strong>3. 최종 결과(목표)가 보이는가?</strong>
+                    <span>첫 부분에서 산출물, 독자, 사용 장면이 바로 읽히게 합니다.</span>
+                </div>
             </div>
-            <div class="action-card">
-                <span class="action-num">4</span>
-                <strong>근거 부족 처리가 있는가?</strong>
-                <span>자료가 없을 때 추측할지, 질문할지, 확인 필요로 남길지 정합니다.</span>
+            <div class="check-item" onclick="this.classList.toggle('checked')">
+                <div class="check-box"></div>
+                <div class="check-text">
+                    <strong>4. 성공 기준이 있는가?</strong>
+                    <span>무엇이 포함되어야 완료인지, 무엇이 빠지면 실패인지 적습니다.</span>
+                </div>
             </div>
-            <div class="action-card">
-                <span class="action-num">5</span>
-                <strong>검색과 검증의 한계가 있는가?</strong>
-                <span>검색 횟수, 테스트 명령, 렌더링 확인처럼 검증 가능한 행동을 정합니다.</span>
+            <div class="check-item" onclick="this.classList.toggle('checked')">
+                <div class="check-box"></div>
+                <div class="check-text">
+                    <strong>5. 제약이 적절한가?</strong>
+                    <span>하지 말 것을 정하고, 항상·절대·반드시는 진짜 불변 조건에만 씁니다.</span>
+                </div>
             </div>
-            <div class="action-card">
-                <span class="action-num">6</span>
-                <strong>최종 보고 형식이 있는가?</strong>
-                <span>완료한 일, 막힌 일, 다음 확인 사항을 마지막에 남기게 합니다.</span>
+            <div class="check-item" onclick="this.classList.toggle('checked')">
+                <div class="check-box"></div>
+                <div class="check-text">
+                    <strong>6. 출력 형식이 정해졌는가?</strong>
+                    <span>답변의 구성, 길이, 톤을 정합니다.</span>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('checked')">
+                <div class="check-box"></div>
+                <div class="check-text">
+                    <strong>7. 중단·검증 기준이 있는가?</strong>
+                    <span>언제 멈출지, 무엇으로 확인(테스트·렌더링·근거)할지 정합니다.</span>
+                </div>
             </div>
         </div>
 
@@ -1985,12 +2194,14 @@
             <div class="leader-playbook-header">
                 <span class="leader-playbook-tag">For Leaders</span>
             </div>
-            <h3>바로 쓰는 한 문장 템플릿</h3>
+            <h3>바로 쓰는 7요소 템플릿</h3>
             <div class="info-box" style="margin-bottom: 0;">
-                <strong>[목표]</strong>를 위해 <strong>[독자]</strong>가 바로 쓸 수 있는 <strong>[산출물]</strong>을 만듭니다.
+                당신은 <strong>[역할]</strong>입니다. <strong>[성격]</strong> 태도로 답합니다.
+                <strong>[목표]</strong>를 위해 <strong>[독자]</strong>가 바로 쓸 수 있는 산출물을 만듭니다.
                 성공 기준은 <strong>[필수 포함 항목]</strong>입니다.
-                <strong>[금지 사항]</strong>은 하지 말고, 근거가 없으면 <strong>[부족한 근거 처리 방식]</strong>으로 표시합니다.
-                답변은 <strong>[형식과 길이]</strong>로 작성합니다.
+                <strong>[금지 사항]</strong>은 하지 않습니다.
+                답변은 <strong>[출력 형식과 길이]</strong>로 작성합니다.
+                <strong>[중단 조건]</strong>이면 멈추고 답합니다.
             </div>
         </div>
     </div>
@@ -2007,27 +2218,9 @@
     </div>
 
 <style>/* RD-INJECT 참고문헌 컴포넌트 */ .reading{margin-top:48px;padding-top:8px} .reading>h2{font-size:1.4rem;font-weight:800;margin:0 0 18px} .reading-group{background:#fff;border:1px solid rgba(91,98,216,.14);border-radius:16px;padding:20px 22px;margin-bottom:16px;box-shadow:0 4px 18px rgba(40,40,90,.05)} .reading-group h3{margin:0 0 12px;font-size:1.02rem;font-weight:700;color:var(--codex-accent)} .reading-group ul{margin:0;padding-left:18px} .reading-group li{margin:7px 0;line-height:1.6;color:#3a3f55} .reading-group a{color:var(--codex-accent);text-decoration:none;font-weight:600} .reading-group a:hover{text-decoration:underline}</style>
-<section class="reading" id="reading">
-  <h2>참고 문헌·더 읽을거리</h2>
-  <div class="reading-group"><h3>핵심 논문</h3><ul>
-    <li>Wei et al. (2022): <a href="https://scholar.google.com/scholar?q=Chain-of-Thought+Prompting+Elicits+Reasoning+in+Large+Language+Models" target="_blank" rel="noopener">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a> · 단계별 추론 유도로 복잡한 과제 성능을 높이는 방법론 제시</li>
-    <li>Kojima et al. (2022): <a href="https://scholar.google.com/scholar?q=Large+Language+Models+are+Zero-Shot+Reasoners" target="_blank" rel="noopener">Large Language Models are Zero-Shot Reasoners</a> · "Let's think step by step" 단 한 문장으로 추론 정확도가 크게 오른다는 실험 결과</li>
-  </ul></div>
-  <div class="reading-group"><h3>공식 문서</h3><ul>
-    <li>OpenAI: <a href="https://platform.openai.com/docs" target="_blank" rel="noopener">Prompt engineering</a> · 모델 응답 품질을 높이는 공식 프롬프트 작성 지침</li>
-    <li>Anthropic: <a href="https://docs.anthropic.com" target="_blank" rel="noopener">Prompt engineering</a> · Claude 모델을 위한 Anthropic 공식 프롬프트 엔지니어링 가이드</li>
-  </ul></div>
-  <div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul>
-    <li><a href="project-intro.html">프로젝트 만들기</a> · ChatGPT 프로젝트로 맥락을 반복 재사용하는 방법</li>
-    <li><a href="multi-persona.html">멀티 페르소나 토론</a> · 5인 전문가 역할을 동시에 부여해 답변 품질을 높이는 기법</li>
-  </ul></div>
-</section>
-</main>
 
-<nav class="page-nav">
-    <a href="ai-levels.html" class="page-nav-link">← 이전: 나는 지금 몇 단계일까?</a>
-    <a href="project-intro.html" class="page-nav-link" style="margin-left: auto;">다음: 프로젝트 만들기 →</a>
-</nav>
+
+</main>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
@@ -2652,6 +2845,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         }
         .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
         .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    
+        /* ## SM-UNIFY (모든 페이지 서브메뉴 글자/포맷 통일) ## */
+        nav.sub-menu a { gap: 5px !important; padding: 8px 14px !important; }
+        nav.sub-menu a .sm-num { width: 28px !important; height: 28px !important; min-width: 28px !important; font-size: 13px !important; }
+        nav.sub-menu a .sm-title { font-size: 13px !important; }
+        nav.sub-menu a .sm-sub { font-size: 11px !important; }
     </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -2753,5 +2952,25 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 /* ## CODEX-HERO-SYNC END ## */
 </script>
+
+<script>
+/* ## MODE-TABS toggle ## */
+function switchMode(m){
+  var tb=document.getElementById('tab-basic'), tv=document.getElementById('tab-verify');
+  var pb=document.getElementById('pages-basic'), pv=document.getElementById('pages-verify');
+  if(!tb||!tv||!pb||!pv) return;
+  tb.classList.toggle('active', m==='basic');
+  tv.classList.toggle('active', m==='verify');
+  pb.style.display = (m==='basic')?'':'none';
+  pv.style.display = (m==='verify')?'':'none';
+}
+</script>
+<style id="hero-subnav-fix">
+/* hero와 sub-menu 사이 흰 여백 제거: 회색 패널을 hero 하단에 자연스럽게 끼워 넣는다 (데스크톱 한정, 모바일은 sub-menu 숨김이라 원형 유지) */
+@media (min-width: 769px){
+  header, .hero { clip-path: none !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+  nav.sub-menu { margin-top: -26px !important; border-top-left-radius: 26px !important; border-top-right-radius: 26px !important; }
+}
+</style>
 </body>
 </html>

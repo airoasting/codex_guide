@@ -314,7 +314,7 @@
         .nm-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--nm-dark) 20%, var(--nm-dark) 80%, transparent); opacity: 0.4; margin: 4px 0; box-shadow: 0 1px 0 var(--nm-light); }
 
         /* ── 카드 ── */
-        .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; grid-auto-rows: 1fr; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; grid-auto-rows: 1fr; }
         .card {
             display: flex; flex-direction: column; text-decoration: none; color: inherit;
             background: var(--card-bg); border-radius: 22px;
@@ -436,7 +436,7 @@
         .voice-card::before {
             content: '\201C';
             position: absolute; top: 8px; left: 18px;
-            font-family: Georgia, 'Times New Roman', serif;
+            font-family: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
             font-size: 56px; line-height: 1; color: var(--codex-accent); opacity: 0.22;
             pointer-events: none;
         }
@@ -573,7 +573,7 @@
             margin-top: 16px; padding: 14px 18px;
             background: var(--nm-bg); border-radius: 10px;
             box-shadow: var(--nm-shadow-sm);
-            border-left: 3px solid var(--codex-accent);
+            border-left: 3px solid transparent;
         }
         .track-upgrade-text { font-size: 13px; color: #888; }
         .track-upgrade-text strong { color: #3A3530; }
@@ -751,7 +751,7 @@
             margin-bottom: 10px;
         }
         .about-quote {
-            border-left: 4px solid var(--codex-blue);
+            border-left: 4px solid transparent;
             padding: 6px 0 6px 20px;
             margin-bottom: 18px;
         }
@@ -778,7 +778,7 @@
             background: #FFFFFF;
             border-radius: 16px;
             padding: 18px 22px;
-            border-left: 4px solid var(--codex-blue);
+            border-left: 4px solid transparent;
             box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 18px rgba(74,53,7,0.05);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             cursor: default;
@@ -826,7 +826,7 @@
             width: 26px; height: 26px; border-radius: 50%;
             border: 1.5px solid var(--codex-blue); color: var(--codex-blue);
             font-size: 12px; font-weight: 800;
-            flex-shrink: 0; font-family: 'Times New Roman', serif;
+            flex-shrink: 0; font-family: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
             font-style: normal;
         }
         .about-byline-name {
@@ -1355,13 +1355,8 @@
             <span class="section-num">2단계</span>
             <span class="section-title">확장</span>
         </div>
-        <p class="section-subtitle">지금 쓰는 브라우저와 오피스에서 ChatGPT를 바로 불러 씁니다</p>
+        <p class="section-subtitle">지금 쓰는 오피스에서 ChatGPT를 바로 불러 씁니다</p>
         <section class="cards">
-            <a class="card" href="chrome-plugin.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span><h2>브라우저에서 ChatGPT 사용</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
-                <p>ChatGPT Atlas와 브라우저 확장으로, 보고 있는 웹페이지 위에서 바로 요약하고 작성합니다.</p>
-            </a>
             <a class="card" href="excel-plugin.html">
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span><h2>Excel에서 ChatGPT 사용</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
@@ -1381,8 +1376,8 @@
             <span class="section-num">3단계</span>
             <span class="section-title">Codex 코드</span>
         </div>
-        <p class="section-subtitle">설치 없이 브라우저에서 시작하고, 터미널 CLI까지 단계별로 익힙니다</p>
-        <div class="card-subsection"><span class="sub-name">노코드</span><span class="sub-desc">설치 없이 브라우저에서</span></div>
+        <p class="section-subtitle">Codex 앱에서 시작하고, 터미널 CLI까지 단계별로 익힙니다</p>
+        <div class="card-subsection"><span class="sub-name">노코드</span><span class="sub-desc">Codex 앱에서</span></div>
         <section class="cards">
             <a class="card featured" href="codex-101.html">
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-monitor"/></svg></span><h2>Codex 앱 시작하기</h2></div>
@@ -1398,19 +1393,6 @@
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg></span><h2>GitHub·Vercel·Netlify로 저장·배포</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
                 <p>저장소를 만들고 파일을 올립니다. GitHub Pages, Vercel, Netlify로 웹 주소를 바로 만드는 과정을 익힙니다.</p>
-            </a>
-        </section>
-        <div class="card-subsection"><span class="sub-name">CLI</span><span class="sub-desc">터미널에서 직접</span></div>
-        <section class="cards">
-            <a class="card" href="checklist.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-terminal"/></svg></span><h2>Codex CLI 20단계로 따라하기</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 단계별</span><span class="badge-level advanced">고급</span></div>
-                <p>설치부터 첫 작업까지 20단계 체크리스트로 따라합니다.</p>
-            </a>
-            <a class="card" href="cheatsheet.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-list"/></svg></span><h2>Codex 명령어 모음</h2></div>
-                <div class="card-meta"><span class="badge-level reference">참고</span></div>
-                <p>자주 쓰는 명령어와 옵션을 한 장으로 정리했습니다.</p>
             </a>
         </section>
         <div class="card-subsection"><span class="sub-name">비법</span><span class="sub-desc">노코드·CLI 공통 원칙</span></div>
@@ -1568,14 +1550,6 @@
                 <div class="card-meta"><span class="badge-time">⏱ 18분</span><span class="badge-level advanced">고급</span></div>
                 <p>조직의 지식을 에이전트가 계속 쌓아가는 자산으로 만듭니다.</p>
             </a>
-            <a class="card" href="instagram-card-news.html">
-                <div class="card-title-row">
-                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-image"/></svg></span>
-                    <h2>인스타그램 카드뉴스 만들기</h2>
-                </div>
-                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level intermediate">중급</span></div>
-                <p>주제와 타깃을 입력해 카드뉴스 스토리라인을 만들고, 1080×1350 PNG로 바로 내려받는 마케팅 자동화 예제.</p>
-            </a>
         </section>
     </div>
 
@@ -1597,34 +1571,14 @@
                 <div class="card-meta"><span class="badge-level reference">참고</span></div>
                 <p>Codex가 만든 인터랙티브 스탑워치 앱 실제 결과물입니다.</p>
             </a>
-            <a class="card" href="hackathon.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-rocket"/></svg></span><h2>Codex 해커톤 쇼케이스</h2></div>
+            <a class="card" href="showcase-skills.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-puzzle"/></svg></span><h2>스킬 쇼케이스</h2></div>
                 <div class="card-meta"><span class="badge-level reference">참고</span></div>
-                <p>해커톤에서 탄생한 Codex 프로젝트 결과물을 한눈에 봅니다.</p>
+                <p>투자 리서치부터 견적서까지, 수강생들이 자기 업무를 Codex 스킬로 만든 실전 자동화 11선입니다.</p>
             </a>
         </section>
     </div>
 
-    <!-- 안전·법률 참고 -->
-    <div class="card-section" id="section-ref" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
-        <div class="section-header" style="padding-top: 0;">
-            <span class="section-num">참고</span>
-            <span class="section-title">안전·법률</span>
-        </div>
-        <p class="section-subtitle">AI와 함께 일할 때 알아야 할 안전과 법률 기초</p>
-        <section class="cards">
-            <a class="card" href="security-guide.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span><h2>AI와 안전하게 일하는 법</h2></div>
-                <div class="card-meta"><span class="badge-level reference">참고</span></div>
-                <p>개인정보, 기밀 데이터, 프롬프트 인젝션. AI와 함께 일할 때 지켜야 할 보안 원칙을 정리합니다.</p>
-            </a>
-            <a class="card" href="ai-basic-law.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span><h2>인공지능기본법 한눈에</h2></div>
-                <div class="card-meta"><span class="badge-level reference">참고</span></div>
-                <p>2026년 시행 인공지능기본법의 핵심 조항을 비즈니스 관점으로 정리합니다.</p>
-            </a>
-        </section>
-    </div>
 
     <!-- 수강생 한 마디 -->
     <div class="card-section" id="section-voices">
@@ -1730,6 +1684,26 @@
         </div>
     </section>
 
+    <!-- 안전·법률 참고 -->
+    <div class="card-section" id="section-ref" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
+        <div class="section-header" style="padding-top: 0;">
+            <span class="section-num">참고</span>
+            <span class="section-title">안전·법률</span>
+        </div>
+        <p class="section-subtitle">AI와 함께 일할 때 알아야 할 안전과 법률 기초</p>
+        <section class="cards">
+            <a class="card" href="security-guide.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span><h2>AI와 안전하게 일하는 법</h2></div>
+                <div class="card-meta"><span class="badge-level reference">참고</span></div>
+                <p>개인정보, 기밀 데이터, 프롬프트 인젝션. AI와 함께 일할 때 지켜야 할 보안 원칙을 정리합니다.</p>
+            </a>
+            <a class="card" href="ai-basic-law.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span><h2>인공지능기본법 한눈에</h2></div>
+                <div class="card-meta"><span class="badge-level reference">참고</span></div>
+                <p>2026년 시행 인공지능기본법의 핵심 조항을 비즈니스 관점으로 정리합니다.</p>
+            </a>
+        </section>
+    </div>
 </main>
 
 <!-- ── 뉴스레터 ── -->

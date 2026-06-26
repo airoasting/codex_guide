@@ -259,7 +259,7 @@
             color: #3A3530;
             margin-bottom: 6px;
             padding-left: 16px;
-            border-left: 4px solid var(--codex-accent);
+            border-left: 4px solid transparent;
         }
         .nm-card p, .nm-card li {
             font-size: 14px;
@@ -416,8 +416,8 @@
         /* 트리거 시그널 그리드 */
         .signal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
         .signal-card { background: var(--nm-bg); box-shadow: var(--nm-inset); border-radius: 14px; padding: 18px 20px; }
-        .signal-card.under { border-left: 4px solid #C04848; }
-        .signal-card.over { border-left: 4px solid #B58A2E; }
+        .signal-card.under { border-left: 4px solid transparent; }
+        .signal-card.over { border-left: 4px solid transparent; }
         .signal-card h4 { font-size: 14px; font-weight: 700; color: #3A3530; margin-bottom: 10px; }
         .signal-card ul { padding-left: 18px; margin: 0; }
         .signal-card li { font-size: 13px; color: #5C5650; line-height: 1.7; margin-bottom: 4px; }
@@ -455,7 +455,7 @@
         .tip-box {
             background: var(--nm-bg); border-radius: 14px;
             box-shadow: var(--nm-shadow-sm);
-            border-left: 4px solid var(--codex-accent);
+            border-left: 4px solid transparent;
             padding: 18px 22px; margin: 16px 0;
         }
         .tip-box .tip-label { font-size: 11px; font-weight: 700; color: var(--codex-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
@@ -764,7 +764,7 @@
             color: #3A3530;
             margin: 32px 0 4px;
             padding-left: 14px;
-            border-left: 3px solid var(--codex-accent);
+            border-left: 3px solid transparent;
             line-height: 1.4;
         }
         .sub-h-desc {
@@ -1088,7 +1088,7 @@
         .mock-quote {
             margin: 0 0 12px;
             padding: 10px 14px;
-            border-left: 3px solid var(--codex-accent);
+            border-left: 3px solid transparent;
             background: rgba(99,102,241, 0.06);
             border-radius: 8px;
             font-style: italic;
@@ -1246,11 +1246,6 @@
         <span class="sm-title">체크리스트</span>
         <span class="sm-sub">출시 전 점검</span>
     </a>
-    <a href="#reading" data-sec="reading">
-        <span class="sm-num">7</span>
-        <span class="sm-title">참고 문헌</span>
-        <span class="sm-sub">더 읽을거리</span>
-    </a>
 </nav>
 
 <main class="container">
@@ -1260,7 +1255,7 @@
     <!-- ═══════════════════════════════════════
          이 페이지를 읽기 전에 (브릿지)
          ═══════════════════════════════════════ -->
-    <div class="nm-card reveal" style="background: rgba(99,102,241,0.06); border-left: 4px solid var(--codex-accent); margin-top: 4px;">
+    <div class="nm-card reveal" style="background: rgba(99,102,241,0.06); border-left: 4px solid transparent; margin-top: 4px;">
         <p style="font-size: 14px; color: #5C5650; margin: 0;"><strong>이 페이지는 <a href="skills.html" style="color: var(--codex-accent); font-weight: 700;">나만의 Skill 만들기</a>를 먼저 읽고 오는 페이지입니다.</strong> 스킬을 한 번이라도 직접 만들어본 분에게, 여러 스킬과 도구를 한 묶음으로 만들어 팀에 뿌리는 방법을 설명합니다.</p>
     </div>
 
@@ -1543,16 +1538,8 @@ args = ["-y", "@google/sheets-mcp"]</div>
         </div>
     </section>
 
-<section class="reading" id="reading">
-  <h2>참고 문헌·더 읽을거리</h2>
-  <div class="reading-group"><h3>공식 문서</h3><ul>
-    <li><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">Anthropic "Model Context Protocol"</a>: MCP 공식 명세와 서버·클라이언트 구현 가이드</li>
-  </ul></div>
-  <div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul>
-    <li><a href="codex-tools.html">Codex의 도구란?</a>: Codex가 사용하는 도구 개념과 종류 정리</li>
-    <li><a href="skills.html">나만의 Skill 만들기</a>: 반복 작업을 자동화하는 스킬 제작 방법</li>
-  </ul></div>
-</section>
+
+
 
 </main>
 
@@ -2157,6 +2144,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         }
         .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
         .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    
+        /* ## SM-UNIFY (모든 페이지 서브메뉴 글자/포맷 통일) ## */
+        nav.sub-menu a { gap: 5px !important; padding: 8px 14px !important; }
+        nav.sub-menu a .sm-num { width: 28px !important; height: 28px !important; min-width: 28px !important; font-size: 13px !important; }
+        nav.sub-menu a .sm-title { font-size: 13px !important; }
+        nav.sub-menu a .sm-sub { font-size: 11px !important; }
     </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -2258,5 +2251,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 /* ## CODEX-HERO-SYNC END ## */
 </script>
+<style id="hero-subnav-fix">
+/* hero와 sub-menu 사이 흰 여백 제거: 회색 패널을 hero 하단에 자연스럽게 끼워 넣는다 (데스크톱 한정, 모바일은 sub-menu 숨김이라 원형 유지) */
+@media (min-width: 769px){
+  header, .hero { clip-path: none !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+  nav.sub-menu { margin-top: -26px !important; border-top-left-radius: 26px !important; border-top-right-radius: 26px !important; }
+}
+</style>
 </body>
 </html>

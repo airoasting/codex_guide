@@ -220,7 +220,7 @@
             font-size: 18px; font-weight: 700; color: #3A3530;
             margin-bottom: 6px;
             padding-left: 16px;
-            border-left: 4px solid var(--book-teal);
+            border-left: 4px solid transparent;
         }
         .nm-card p, .nm-card li { font-size: 14px; color: #5C5650; line-height: 1.75; }
         .nm-card ul, .nm-card ol { padding-left: 20px; margin-top: 10px; }
@@ -257,7 +257,7 @@
         .tip-box {
             background: var(--nm-bg); border-radius: 14px;
             box-shadow: var(--nm-shadow-sm);
-            border-left: 4px solid var(--book-teal);
+            border-left: 4px solid transparent;
             padding: 18px 22px; margin: 16px 0;
         }
         .tip-box .tip-label { font-size: 11px; font-weight: 700; color: var(--book-teal); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
@@ -520,7 +520,6 @@
     </div>
     <div class="header-pages" id="pages-basic" style="display:none;">
         <a href="google-sheets-dashboard.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span> 구글 시트 대시보드</a>
-        <a href="instagram-card-news.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span> 인스타 카드뉴스</a>
         <a href="harness-book.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> 책 쓰기</a>
     </div>
     <div class="header-pages" id="pages-mcp">
@@ -534,7 +533,7 @@
     <a href="#intro" class="active" data-sec="intro">
         <span class="sm-num">0</span>
         <span class="sm-title">소개</span>
-        <span class="sm-sub">전체 흐름</span>
+        <span class="sm-sub">전체 과정</span>
     </a>
     <a href="#step1" data-sec="step1">
         <span class="sm-num">1</span>
@@ -565,11 +564,6 @@
         <span class="sm-num">?</span>
         <span class="sm-title">트러블슈팅</span>
         <span class="sm-sub">막힐 때</span>
-    </a>
-    <a href="#reading" data-sec="reading">
-        <span class="sm-num">+</span>
-        <span class="sm-title">참고 문헌</span>
-        <span class="sm-sub">더 읽을거리</span>
     </a>
 </nav>
 
@@ -898,7 +892,7 @@ url = "https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY"
             <h2>이 MCP가 특별한 이유</h2>
             <p class="card-subtitle">단순 검색을 넘어서, AI가 법률 답변을 만들 때 가장 자주 사고를 치는 지점을 막아주는 세 가지 핵심 도구가 있습니다</p>
 
-            <h3 style="font-size: 16px; font-weight: 700; margin-top: 18px; padding-left: 14px; border-left: 3px solid var(--book-teal); color: #3A3530;">&#x2705; verify_citations. AI 답변의 환각 검증</h3>
+            <h3 style="font-size: 16px; font-weight: 700; margin-top: 18px; padding-left: 14px; border-left: 3px solid transparent; color: #3A3530;">&#x2705; verify_citations. AI 답변의 환각 검증</h3>
             <p style="margin-top: 10px;">ChatGPT나 Codex가 작성한 법률 답변을 그대로 붙여 넣고 사실 여부만 검증할 수 있습니다.</p>
             <div class="prompt-box" id="prompt-verify">
                 <button class="copy-btn" onclick="copyPrompt('prompt-verify')">복사</button>
@@ -910,7 +904,7 @@ url = "https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY"
             </div>
             <p style="margin-top: 10px;">실존 조항은 <strong>✓</strong>, 존재하지 않는 항 번호는 <strong>✗</strong>로 표시되고, 어디까지 실제 조항이 있는지(예: "최대 제2항까지 존재")까지 알려줍니다. 법률 AI 답변을 다른 사람에게 전달하기 전에 마지막 안전망으로 쓰면 좋습니다.</p>
 
-            <h3 style="font-size: 16px; font-weight: 700; margin-top: 24px; padding-left: 14px; border-left: 3px solid var(--book-teal); color: #3A3530;">&#x1F5FA;&#xFE0F; impact_map. 조문 한 줄의 파급효과</h3>
+            <h3 style="font-size: 16px; font-weight: 700; margin-top: 24px; padding-left: 14px; border-left: 3px solid transparent; color: #3A3530;">&#x1F5FA;&#xFE0F; impact_map. 조문 한 줄의 파급효과</h3>
             <p style="margin-top: 10px;">어떤 조문 하나를 인용한 판례, 헌재 결정, 자치법규, 행정심판을 한 번에 끌어와 그래프로 그립니다.</p>
             <div class="prompt-box" id="prompt-impact">
                 <button class="copy-btn" onclick="copyPrompt('prompt-impact')">복사</button>
@@ -918,7 +912,7 @@ url = "https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY"
             </div>
             <p style="margin-top: 10px;">결과 끝에 mermaid 코드가 붙어 나오므로, ChatGPT에서 그대로 시각화해 볼 수 있습니다. 법 개정이나 조례 영향 분석을 할 때 한 번에 전체 영향 범위를 잡아낼 수 있습니다.</p>
 
-            <h3 style="font-size: 16px; font-weight: 700; margin-top: 24px; padding-left: 14px; border-left: 3px solid var(--book-teal); color: #3A3530;">&#x1F4CB; action_plan. 평소 말투를 5단계 실행안으로</h3>
+            <h3 style="font-size: 16px; font-weight: 700; margin-top: 24px; padding-left: 14px; border-left: 3px solid transparent; color: #3A3530;">&#x1F4CB; action_plan. 평소 말투를 5단계 실행안으로</h3>
             <p style="margin-top: 10px;">법률 용어를 모르는 상태에서 평소 말투로 던져도, 관련 법령과 절차를 5단계로 정리해줍니다.</p>
             <div class="prompt-box" id="prompt-action">
                 <button class="copy-btn" onclick="copyPrompt('prompt-action')">복사</button>
@@ -1075,17 +1069,8 @@ url = "https://korean-law-mcp.fly.dev/mcp?oc=YOUR_OC_KEY"
         </div>
     </div>
 
-<section class="reading" id="reading">
-  <h2>참고 문헌&#183;더 읽을거리</h2>
-  <div class="reading-group"><h3>공식 문서</h3><ul>
-    <li><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">Anthropic · Model Context Protocol</a></li>
-    <li><a href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터</a></li>
-  </ul></div>
-  <div class="reading-group"><h3>이 사이트에서 이어 읽기</h3><ul>
-    <li><a href="stock-messenger.html">기업 공시 데이터 분석</a></li>
-    <li><a href="ai-basic-law.html">인공지능기본법 한눈에</a></li>
-  </ul></div>
-</section>
+
+
 
 </main>
 
@@ -1506,6 +1491,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         }
         .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
         .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
+    
+        /* ## SM-UNIFY (모든 페이지 서브메뉴 글자/포맷 통일) ## */
+        nav.sub-menu a { gap: 5px !important; padding: 8px 14px !important; }
+        nav.sub-menu a .sm-num { width: 28px !important; height: 28px !important; min-width: 28px !important; font-size: 13px !important; }
+        nav.sub-menu a .sm-title { font-size: 13px !important; }
+        nav.sub-menu a .sm-sub { font-size: 11px !important; }
     </style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -1618,5 +1609,12 @@ function switchExampleTab(mode){
 })();
 /* ## CODEX-HERO-SYNC END ## */
 </script>
+<style id="hero-subnav-fix">
+/* hero와 sub-menu 사이 흰 여백 제거: 회색 패널을 hero 하단에 자연스럽게 끼워 넣는다 (데스크톱 한정, 모바일은 sub-menu 숨김이라 원형 유지) */
+@media (min-width: 769px){
+  header, .hero { clip-path: none !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+  nav.sub-menu { margin-top: -26px !important; border-top-left-radius: 26px !important; border-top-right-radius: 26px !important; }
+}
+</style>
 </body>
 </html>

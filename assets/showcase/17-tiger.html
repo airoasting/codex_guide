@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>푸른 호랑이 스탑워치</title>
+<title>푸른 요괴 호랑이 스탑워치</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐯</text></svg>" />
 <style>
   @font-face{font-family:'Pretendard';src:url('../fonts/PretendardVariable.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap;}
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{height:100%}
   body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-    background:radial-gradient(circle at 50% 40%,#1A4650 0%,#0E2C3C 52%,#06141F 100%);
-    display:flex;align-items:center;justify-content:center;color:#EAF1FB;padding:14px}
-  .wrap{display:flex;flex-direction:column;align-items:center;gap:13px;width:100%;max-width:300px}
-  .tiger{width:212px;height:194px;position:relative;filter:drop-shadow(0 6px 22px rgba(0,0,0,.45))}
+    background:radial-gradient(circle at 50% 34%,#1B5060 0%,#0E2C3C 50%,#06131D 100%);
+    display:flex;align-items:center;justify-content:center;color:#EAF1FB;padding:12px;line-height:1.2}
+  .wrap{display:flex;flex-direction:column;align-items:center;gap:11px;width:100%;max-width:304px}
+  .tiger{width:220px;height:196px;position:relative;filter:drop-shadow(0 6px 22px rgba(0,0,0,.45))}
   .tiger svg{width:100%;height:100%;display:block;overflow:visible}
 
   /* 눈빛 발광 */
@@ -44,17 +44,17 @@
 </head>
 <body>
   <div class="wrap">
-    <div class="tiger" id="tiger" aria-label="푸른 호랑이">
+    <div class="tiger" id="tiger" aria-label="푸른 요괴 호랑이">
       <svg viewBox="0 0 212 196" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <radialGradient id="fur" cx="44%" cy="26%" r="82%">
-            <stop offset="0%" stop-color="#6699D8"/><stop offset="52%" stop-color="#3E6FB4"/><stop offset="100%" stop-color="#234E8C"/>
+          <radialGradient id="fur" cx="42%" cy="24%" r="82%">
+            <stop offset="0%" stop-color="#79AAEA"/><stop offset="48%" stop-color="#4779C6"/><stop offset="100%" stop-color="#244F92"/>
           </radialGradient>
           <radialGradient id="cheek" cx="50%" cy="35%" r="70%">
-            <stop offset="0%" stop-color="#79A6DF"/><stop offset="100%" stop-color="#4D7BBA"/>
+            <stop offset="0%" stop-color="#8DB8EA"/><stop offset="100%" stop-color="#5486C8"/>
           </radialGradient>
           <radialGradient id="chest" cx="50%" cy="30%" r="75%">
-            <stop offset="0%" stop-color="#8FB6E6"/><stop offset="100%" stop-color="#4E7CB8"/>
+            <stop offset="0%" stop-color="#A8C8F0"/><stop offset="100%" stop-color="#5F8DCA"/>
           </radialGradient>
           <radialGradient id="iris" cx="44%" cy="40%" r="62%">
             <stop offset="0%" stop-color="#FFEC6A"/><stop offset="34%" stop-color="#FFB02A"/>
@@ -73,95 +73,105 @@
         <!-- 바닥 그림자 -->
         <ellipse cx="106" cy="184" rx="70" ry="11" fill="#04101A" opacity=".6"/>
 
-        <!-- 어두운 정글 잎 (배경) -->
-        <g opacity=".5" filter="url(#softer)" fill="#0A2A2E">
-          <path d="M6 30 q26 -16 40 8 q-24 10 -40 -8 z"/>
-          <path d="M206 24 q-26 -14 -42 8 q24 12 42 -8 z"/>
-          <path d="M2 92 q22 -6 30 16 q-22 4 -30 -16 z"/>
+        <!-- 어두운 배경 식물 -->
+        <g opacity=".52" filter="url(#softer)" fill="#0A2A2E">
+          <path d="M6 29 q28 -18 43 8 q-25 12 -43 -8 z"/>
+          <path d="M206 24 q-27 -15 -43 8 q24 13 43 -8 z"/>
+          <path d="M2 94 q23 -8 32 15 q-23 5 -32 -15 z"/>
+          <path d="M181 102 q17 -10 28 5 q-16 9 -28 -5 z"/>
         </g>
-        <!-- 작은 화분 (오른쪽 아래, 영화 속 소품) -->
-        <g transform="translate(176,158)">
+
+        <!-- 작은 화분 -->
+        <g transform="translate(177,157)">
           <path d="M0 8 q9 9 18 0 l-3 14 q-6 4 -12 0 z" fill="#9C5A3C"/>
           <ellipse cx="9" cy="8" rx="9" ry="3.5" fill="#7C4226"/>
           <circle cx="3" cy="3" r="4" fill="#2F6B3A"/><circle cx="10" cy="0" r="4.5" fill="#3C8049"/><circle cx="16" cy="4" r="4" fill="#2A5F35"/><circle cx="9" cy="6" r="4" fill="#357040"/>
         </g>
 
         <g class="body">
-          <!-- 몸통/엉덩이 -->
-          <ellipse cx="106" cy="150" rx="64" ry="42" fill="url(#fur)"/>
+          <!-- 꼬리 -->
+          <path d="M52 151 q-20 -13 -29 2 q9 18 33 13" fill="#254F8E" opacity=".95"/>
+          <path d="M36 151 q11 3 15 13" stroke="#183A73" stroke-width="5" fill="none" stroke-linecap="round" opacity=".8"/>
+
+          <!-- 몸통 -->
+          <ellipse cx="106" cy="151" rx="62" ry="42" fill="url(#fur)"/>
           <!-- 앞다리 -->
-          <path d="M70 128 q-12 22 -8 44 q0 6 14 6 q10 0 10 -8 q-2 -24 6 -42 z" fill="url(#fur)"/>
-          <path d="M142 128 q12 22 8 44 q0 6 -14 6 q-10 0 -10 -8 q2 -24 -6 -42 z" fill="url(#fur)"/>
+          <path d="M70 128 q-13 23 -8 44 q0 7 15 7 q10 0 10 -8 q-2 -25 6 -43 z" fill="url(#fur)"/>
+          <path d="M142 128 q13 23 8 44 q0 7 -15 7 q-10 0 -10 -8 q2 -25 -6 -43 z" fill="url(#fur)"/>
           <!-- 앞발 -->
           <ellipse cx="76" cy="176" rx="18" ry="12" fill="#2C548C"/>
           <ellipse cx="136" cy="176" rx="18" ry="12" fill="#2C548C"/>
           <path d="M68 180 v5 M76 182 v5 M84 180 v5 M128 180 v5 M136 182 v5 M144 180 v5" stroke="#19366A" stroke-width="2.2" stroke-linecap="round"/>
           <!-- 가슴 -->
-          <ellipse cx="106" cy="150" rx="34" ry="36" fill="url(#chest)"/>
+          <ellipse cx="106" cy="150" rx="36" ry="37" fill="url(#chest)"/>
           <!-- 몸통 줄무늬 -->
-          <path d="M48 140 q14 -5 17 6 M52 162 q14 -4 15 7 M164 140 q-14 -5 -17 6 M160 162 q-14 -4 -15 7"
-                stroke="#1B3D72" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M48 139 q15 -5 18 7 M52 162 q15 -4 16 8 M164 139 q-15 -5 -18 7 M160 162 q-15 -4 -16 8"
+                stroke="#1B3D72" stroke-width="6.2" fill="none" stroke-linecap="round"/>
 
           <!-- 머리 -->
-          <ellipse cx="106" cy="78" rx="62" ry="56" fill="url(#fur)"/>
-          <!-- 볼(jowl) -->
-          <ellipse cx="64" cy="98" rx="24" ry="22" fill="url(#cheek)"/>
-          <ellipse cx="148" cy="98" rx="24" ry="22" fill="url(#cheek)"/>
+          <path d="M43 80 C43 43 69 18 106 18 C143 18 169 43 169 80 C169 119 143 139 106 139 C69 139 43 119 43 80 Z" fill="url(#fur)"/>
+          <!-- 볼 -->
+          <ellipse cx="62" cy="101" rx="25" ry="23" fill="url(#cheek)"/>
+          <ellipse cx="150" cy="101" rx="25" ry="23" fill="url(#cheek)"/>
+          <!-- 볼 솜털 -->
+          <path d="M46 95 q-12 5 -21 -2 q8 12 22 13 M166 95 q12 5 21 -2 q-8 12 -22 13" fill="#5E91D4" opacity=".78"/>
           <!-- 귀 -->
-          <path d="M58 30 q-14 -16 2 -26 q18 6 22 28 q-14 6 -24 -2 z" fill="url(#fur)"/>
-          <path d="M154 30 q14 -16 -2 -26 q-18 6 -22 28 q14 6 24 -2 z" fill="url(#fur)"/>
-          <path d="M60 22 q-6 -8 4 -13 q9 5 11 18 q-9 2 -15 -5 z" fill="#1E4079"/>
-          <path d="M152 22 q6 -8 -4 -13 q-9 5 -11 18 q9 2 15 -5 z" fill="#1E4079"/>
+          <path d="M58 34 q-19 -18 -1 -32 q21 8 27 31 q-14 9 -26 1 z" fill="url(#fur)"/>
+          <path d="M154 34 q19 -18 1 -32 q-21 8 -27 31 q14 9 26 1 z" fill="url(#fur)"/>
+          <path d="M60 25 q-8 -9 4 -16 q11 6 14 20 q-10 4 -18 -4 z" fill="#1E4079"/>
+          <path d="M152 25 q8 -9 -4 -16 q-11 6 -14 20 q10 4 18 -4 z" fill="#1E4079"/>
           <!-- 정수리 림라이트 -->
-          <path d="M62 38 Q106 8 150 38" stroke="#9CCBF5" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".55"/>
+          <path d="M61 39 Q106 8 151 39" stroke="#AAD4FA" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".58"/>
 
           <!-- 정수리 줄무늬 + 이마 점 -->
-          <path d="M92 30 q4 10 -1 20 M106 26 v22 M120 30 q-4 10 1 20" stroke="#1B3D72" stroke-width="5" fill="none" stroke-linecap="round"/>
-          <circle cx="106" cy="58" r="2.6" fill="#1B3D72"/><circle cx="98" cy="62" r="2.2" fill="#1B3D72"/><circle cx="114" cy="62" r="2.2" fill="#1B3D72"/>
+          <path d="M91 31 q5 10 0 21 M106 27 v23 M121 31 q-5 10 0 21" stroke="#1B3D72" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M100 58 q6 -7 12 0 q-6 6 -12 0 z" fill="#1B3D72" opacity=".92"/>
+          <circle cx="97" cy="64" r="2.1" fill="#1B3D72"/><circle cx="115" cy="64" r="2.1" fill="#1B3D72"/>
           <!-- 볼 줄무늬 -->
-          <path d="M44 84 q14 1 20 -5 M44 100 q15 1 22 -4 M168 84 q-14 1 -20 -5 M168 100 q-15 1 -22 -4"
-                stroke="#1B3D72" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M41 84 q15 2 22 -5 M41 100 q16 1 24 -4 M171 84 q-15 2 -22 -5 M171 100 q-16 1 -24 -4"
+                stroke="#1B3D72" stroke-width="5.2" fill="none" stroke-linecap="round"/>
 
           <!-- 눈두덩 브로우 능선 (밝은 림) -->
-          <path d="M58 70 Q76 52 96 64" stroke="#84B6EE" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
-          <path d="M154 70 Q136 52 116 64" stroke="#84B6EE" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+          <path d="M56 70 Q76 51 98 64" stroke="#8CC3F4" stroke-width="4.2" fill="none" stroke-linecap="round" opacity=".72"/>
+          <path d="M156 70 Q136 51 114 64" stroke="#8CC3F4" stroke-width="4.2" fill="none" stroke-linecap="round" opacity=".72"/>
           <!-- 미간 주름 -->
-          <path d="M102 60 q4 8 0 16 M110 60 q-4 8 0 16" stroke="#1B3D72" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
+          <path d="M101 61 q4 8 0 16 M111 61 q-4 8 0 16" stroke="#1B3D72" stroke-width="3" fill="none" stroke-linecap="round" opacity=".78"/>
 
-          <!-- ── 큰 발광 눈 ── -->
+          <!-- 큰 발광 눈 -->
           <g class="eyeglow">
-            <circle cx="78" cy="84" r="30" fill="url(#halo)" filter="url(#soft)"/>
-            <circle cx="134" cy="84" r="30" fill="url(#halo)" filter="url(#soft)"/>
+            <circle cx="78" cy="84" r="32" fill="url(#halo)" filter="url(#soft)"/>
+            <circle cx="134" cy="84" r="32" fill="url(#halo)" filter="url(#soft)"/>
           </g>
-          <!-- 눈알 (동심원: 노랑→주황→빨강) -->
-          <circle cx="78" cy="84" r="23" fill="url(#iris)"/>
-          <circle cx="134" cy="84" r="23" fill="url(#iris)"/>
-          <circle cx="78" cy="84" r="23" fill="none" stroke="#B81C0C" stroke-width="2.5"/>
-          <circle cx="134" cy="84" r="23" fill="none" stroke="#B81C0C" stroke-width="2.5"/>
+          <!-- 눈알 -->
+          <ellipse cx="78" cy="84" rx="25.5" ry="23.5" fill="url(#iris)"/>
+          <ellipse cx="134" cy="84" rx="25.5" ry="23.5" fill="url(#iris)"/>
+          <ellipse cx="78" cy="84" rx="25.5" ry="23.5" fill="none" stroke="#B81C0C" stroke-width="3"/>
+          <ellipse cx="134" cy="84" rx="25.5" ry="23.5" fill="none" stroke="#B81C0C" stroke-width="3"/>
           <!-- 초록빛 세로 동공 (정면 응시) -->
-          <ellipse class="pupil" cx="78" cy="85" rx="5.2" ry="18" fill="#0A2410"/>
-          <ellipse class="pupil" cx="134" cy="85" rx="5.2" ry="18" fill="#0A2410"/>
-          <ellipse cx="78" cy="85" rx="5.2" ry="18" fill="none" stroke="#43C873" stroke-width="1.4" opacity=".7"/>
-          <ellipse cx="134" cy="85" rx="5.2" ry="18" fill="none" stroke="#43C873" stroke-width="1.4" opacity=".7"/>
+          <ellipse class="pupil" cx="78" cy="85" rx="5.6" ry="18.5" fill="#0A2410"/>
+          <ellipse class="pupil" cx="134" cy="85" rx="5.6" ry="18.5" fill="#0A2410"/>
+          <ellipse cx="78" cy="85" rx="5.6" ry="18.5" fill="none" stroke="#44D57E" stroke-width="1.4" opacity=".75"/>
+          <ellipse cx="134" cy="85" rx="5.6" ry="18.5" fill="none" stroke="#44D57E" stroke-width="1.4" opacity=".75"/>
           <!-- 캐치라이트 -->
-          <circle cx="72" cy="74" r="4" fill="#FFF7E6" opacity=".95"/>
-          <circle cx="128" cy="74" r="4" fill="#FFF7E6" opacity=".95"/>
+          <circle cx="72" cy="74" r="4.2" fill="#FFF7E6" opacity=".95"/>
+          <circle cx="128" cy="74" r="4.2" fill="#FFF7E6" opacity=".95"/>
           <!-- 아래 눈꺼풀 -->
-          <path d="M58 92 Q78 104 98 92" stroke="#2C548C" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>
-          <path d="M154 92 Q134 104 114 92" stroke="#2C548C" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>
+          <path d="M56 94 Q78 106 100 94" stroke="#2C548C" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".72"/>
+          <path d="M156 94 Q134 106 112 94" stroke="#2C548C" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".72"/>
 
           <!-- 코 -->
-          <path d="M99 104 q-7 -1 -7 5 q0 4 14 4 q14 0 14 -4 q0 -6 -7 -5 z" fill="url(#nose)"/>
-          <path d="M106 113 v5" stroke="#9C2E58" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M98 105 q-7 -1 -7 5 q0 5 15 5 q15 0 15 -5 q0 -6 -7 -5 z" fill="url(#nose)"/>
+          <path d="M106 115 v5" stroke="#9C2E58" stroke-width="2.2" stroke-linecap="round"/>
 
-          <!-- 다문 입 (카리스마 있는 고양이 입매, 이빨 없음) -->
-          <path d="M106 118 Q106 128 94 128 Q86 128 83 121" stroke="#16315C" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <path d="M106 118 Q106 128 118 128 Q126 128 129 121" stroke="#16315C" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- 입 -->
+          <path d="M106 120 Q105 130 94 130 Q87 130 84 123" stroke="#16315C" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+          <path d="M106 120 Q107 130 118 130 Q125 130 128 123" stroke="#16315C" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+          <path d="M94 131 q12 7 24 0" stroke="#16315C" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".45"/>
 
           <!-- 수염 -->
-          <path d="M62 106 q-22 -3 -34 -10 M62 112 q-22 1 -35 1 M62 118 q-21 5 -32 12
-                   M150 106 q22 -3 34 -10 M150 112 q22 1 35 1 M150 118 q21 5 32 12"
-                stroke="#D6E6FA" stroke-width="1.7" fill="none" stroke-linecap="round" opacity=".85"/>
+          <path d="M62 107 q-24 -3 -36 -10 M62 113 q-24 1 -37 1 M62 119 q-22 6 -33 13
+                   M150 107 q24 -3 36 -10 M150 113 q24 1 37 1 M150 119 q22 6 33 13"
+                stroke="#D6E6FA" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".88"/>
         </g>
       </svg>
     </div>

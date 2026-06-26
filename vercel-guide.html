@@ -2005,10 +2005,17 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 /* ## CODEX-HERO-SYNC END ## */
 </script>
 <style id="hero-subnav-fix">
-/* hero와 sub-menu 사이 흰 여백 제거: 회색 패널을 hero 하단에 자연스럽게 끼워 넣는다 (데스크톱 한정, 모바일은 sub-menu 숨김이라 원형 유지) */
+/* hero의 둥근 하단 모서리는 유지하고, 회색 sub-menu를 hero 뒤로 깔아 모서리 바깥 흰 여백만 회색으로 메운다.
+   sub-menu 자체의 padding은 건드리지 않으므로 스크롤 고정(sticky) 시 상단 여백이 원래대로 유지된다. (데스크톱 한정) */
 @media (min-width: 769px){
-  header, .hero { clip-path: none !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
-  nav.sub-menu { margin-top: -26px !important; border-top-left-radius: 26px !important; border-top-right-radius: 26px !important; }
+  header{ position: relative !important; z-index: 101 !important; }
+  nav.sub-menu{ margin-top: 0 !important; overflow: visible !important; }
+  nav.sub-menu::before{
+    content: '' !important; position: absolute !important;
+    left: 0 !important; right: 0 !important; bottom: 100% !important;
+    height: 40px !important; background: inherit !important;
+    z-index: -1 !important; pointer-events: none !important;
+  }
 }
 </style>
 </body>

@@ -50,20 +50,27 @@
 
         /* ── Header ── */
         header {
-            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
+            background: #6F7FF0;
             padding: 28px 40px 40px;
             border-radius: 0 0 32px 32px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            isolation: isolate;
         }
         header::before {
             content: '';
-            position: absolute; top: -80px; right: -40px;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 36% 39%, rgba(7,7,7,0.24) 0%, rgba(20,25,46,0.14) 38%, rgba(20,25,46,0) 70%),
+                linear-gradient(90deg, rgba(7,7,7,0.36) 0%, rgba(20,25,46,0.18) 48%, rgba(20,25,46,0.08) 100%),
+                linear-gradient(115deg, rgba(92,108,232,0.58) 0%, rgba(147,196,248,0.32) 32%, rgba(237,244,255,0.26) 54%, rgba(152,133,246,0.48) 100%),
+                linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%);
             pointer-events: none;
+            z-index: 1;
         }
+        header > :not(.hero-video) { position: relative; z-index: 2; }
         .back-link {
             display: inline-block;
             color: rgba(255,255,255,0.65);
@@ -407,17 +414,17 @@
         @media (max-width: 600px) { .work-list { grid-template-columns: 1fr; } .work-stage { height: 132px; } }
         @media (max-width: 480px) { header h1 { font-size: 24px; } }
 
-        /* ── 헤더 배경 루프 영상 (원래 색 위에 빛의 움직임만 얹는다) ── */
+        /* 헤더 배경 루프 영상 */
         header { isolation: isolate; }
         .hero-video {
             position: absolute; inset: 0;
             width: 100%; height: 100%;
             object-fit: cover; object-position: center;
-            z-index: -1;
-            opacity: 0.6;
-            filter: grayscale(1) contrast(1.05) brightness(1.08);
-            mix-blend-mode: soft-light;
+            z-index: 0;
+            opacity: 0.92;
+            filter: saturate(1.14) contrast(1.02) brightness(1.02);
             pointer-events: none;
+            animation: none !important;
             border-radius: inherit;
         }
         @media (prefers-reduced-motion: reduce) { .hero-video { display: none; } }

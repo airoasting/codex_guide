@@ -457,9 +457,9 @@
             .cat-label { scroll-margin-top: 130px; }
         }
         @media (max-width: 480px) { header h1 { font-size: 24px; } }
-
         /* ## CODEX-HERO-VIDEO START ## */
         header {
+            background: #6F7FF0 !important;
             position: relative;
             overflow: hidden;
             isolation: isolate;
@@ -471,25 +471,65 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            opacity: 0.98;
-            filter: saturate(1.20) contrast(1.03) brightness(1.20);
+            opacity: 0.92;
+            filter: saturate(1.14) contrast(1.02) brightness(1.02);
             z-index: 0;
             pointer-events: none;
-            border-radius: inherit;
+            animation: none !important;
+            border-radius: inherit !important;
         }
-        header::after {
-            content: '';
-            position: absolute;
-            inset: 0;
+        header::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
             background:
-                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
-                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%);
-            pointer-events: none;
-            z-index: 1;
+                radial-gradient(ellipse at 36% 39%, rgba(7,7,7,0.24) 0%, rgba(20,25,46,0.14) 38%, rgba(20,25,46,0) 70%),
+                linear-gradient(90deg, rgba(7,7,7,0.36) 0%, rgba(20,25,46,0.18) 48%, rgba(20,25,46,0.08) 100%),
+                linear-gradient(115deg, rgba(92,108,232,0.58) 0%, rgba(147,196,248,0.32) 32%, rgba(237,244,255,0.26) 54%, rgba(152,133,246,0.48) 100%),
+                linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
         }
-        header > :not(.hero-video) { position: relative; z-index: 2; }
+        header {
+            padding: 56px 40px 48px !important;
+            border-radius: 0 0 32px 32px !important;
+            clip-path: inset(0 round 0 0 32px 32px) !important;
+        }
+        @media (max-width: 768px) {
+            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
+        }
+        header > :not(.hero-video) {
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            color: #fff !important;
+            text-shadow: 0 2px 8px rgba(7,7,7,0.32), 0 10px 30px rgba(20,25,46,0.28) !important;
+        }
+        header p,
+        header .hero-sub {
+            color: rgba(255,255,255,0.96) !important;
+            text-shadow: 0 2px 8px rgba(7,7,7,0.30), 0 8px 22px rgba(20,25,46,0.22) !important;
+        }
+        header .back-link {
+            color: rgba(255,255,255,0.72) !important;
+        }
         @media (prefers-reduced-motion: reduce) {
             header .hero-video { display: none; }
+            header {
+                background:
+                    linear-gradient(115deg, #5C6CE8 0%, #93C4F8 32%, #AFA7F6 100%),
+                    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%) !important;
+            }
         }
         /* ## CODEX-HERO-VIDEO END ## */
     </style>

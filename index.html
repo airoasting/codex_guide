@@ -54,13 +54,12 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: clip; }
         body { word-break: keep-all; font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, sans-serif; background: var(--nm-bg); color: #2C2F3A; line-height: 1.6; overflow-x: clip; }
 
         /* ── HERO ── */
         .hero {
-            background: #11142E;
-            min-height: 430px;
+            background: #6F7FF0;
             padding: 56px 40px 48px;
             position: relative;
             overflow: hidden;
@@ -77,9 +76,10 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            opacity: 0.98;
-            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            opacity: 0.92;
+            filter: saturate(1.14) contrast(1.02) brightness(1.02);
             z-index: 0;
+            animation: none !important;
             /* 합성 레이어(video)는 부모 overflow:hidden 라운딩을 무시하므로 직접 라운딩 */
             border-radius: inherit;
         }
@@ -87,10 +87,11 @@
             content: '';
             position: absolute;
             inset: 0;
-            /* codex-orientation.html 헤더와 동일한 스크림 그라데이션 */
             background:
-                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
-                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%);
+                radial-gradient(ellipse at 36% 39%, rgba(7,7,7,0.24) 0%, rgba(20,25,46,0.14) 38%, rgba(20,25,46,0) 70%),
+                linear-gradient(90deg, rgba(7,7,7,0.36) 0%, rgba(20,25,46,0.18) 48%, rgba(20,25,46,0.08) 100%),
+                linear-gradient(115deg, rgba(92,108,232,0.58) 0%, rgba(147,196,248,0.32) 32%, rgba(237,244,255,0.26) 54%, rgba(152,133,246,0.48) 100%),
+                linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%);
             pointer-events: none;
             z-index: 1;
         }
@@ -109,7 +110,7 @@
         .hero-brand {
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
-            text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 14px;
+            text-transform: uppercase; color: rgba(255,255,255,0.90); margin-bottom: 14px;
             text-shadow: 0 1px 4px rgba(0,0,0,0.30);
             text-decoration: none; cursor: pointer;
             transition: color 0.25s ease;
@@ -124,6 +125,7 @@
         }
         .hero-brand-logo img {
             width: 18px; height: 18px; display: block; border-radius: 50%;
+            filter: none;
             transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .hero-brand:hover .hero-brand-logo img {
@@ -132,7 +134,7 @@
         .hero h1 {
             font-size: 52px; font-weight: 800; color: #fff;
             letter-spacing: 0; line-height: 1.16; margin-bottom: 8px;
-            text-shadow: 0 1px 2px rgba(34,30,78,0.55), 0 4px 20px rgba(34,30,78,0.42);
+            text-shadow: 0 2px 8px rgba(7,7,7,0.32), 0 10px 30px rgba(20,25,46,0.28);
         }
         .hero-status-row {
             display: flex;
@@ -148,12 +150,12 @@
             min-height: 25px;
             padding: 4.5px 11px;
             border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.22);
             background: rgba(14,16,38,0.30);
             -webkit-backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
-            box-shadow: inset 1px 1px 0 rgba(255,255,255,0.10), 0 6px 16px rgba(6,8,24,0.22);
-            color: rgba(255,255,255,0.82);
+            box-shadow: inset 1px 1px 0 rgba(255,255,255,0.12), 0 6px 16px rgba(6,8,24,0.22);
+            color: rgba(255,255,255,0.84);
             font-size: 11.7px;
             font-weight: 700;
             line-height: 1.2;
@@ -184,7 +186,7 @@
         }
         .hero-sub {
             font-size: 15px; color: rgba(255,255,255,0.96); margin-bottom: 32px;
-            text-shadow: 0 1px 3px rgba(34,30,78,0.52);
+            text-shadow: 0 2px 8px rgba(7,7,7,0.30), 0 8px 22px rgba(20,25,46,0.22);
         }
 
         /* 히어로 내 Codex 소개 */
@@ -194,7 +196,7 @@
         }
         .hero-intro-header {
             display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
-            text-shadow: 0 1px 4px rgba(34,30,78,0.55);
+            text-shadow: 0 2px 8px rgba(7,7,7,0.30), 0 8px 22px rgba(20,25,46,0.20);
         }
         .hero-intro-header strong { font-size: 14px; font-weight: 700; color: #fff; }
         .hero-intro-header span  { font-size: 13px; color: rgba(255,255,255,0.92); }
@@ -206,7 +208,7 @@
             background: rgba(14,16,38,0.34);
             -webkit-backdrop-filter: blur(10px) saturate(1.1);
             backdrop-filter: blur(10px) saturate(1.1);
-            border: 1px solid rgba(255,255,255,0.14); border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.16); border-radius: 14px;
             box-shadow: 0 8px 24px rgba(6,8,24,0.28), inset 0 1px 0 rgba(255,255,255,0.10);
             text-decoration: none; gap: 3px;
             transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
@@ -214,7 +216,7 @@
         .hero-btn:hover {
             transform: translateY(-2px);
             background: rgba(20,23,52,0.46);
-            border-color: rgba(143,150,255,0.55);
+            border-color: rgba(255,255,255,0.44);
             box-shadow: 0 12px 30px rgba(6,8,24,0.38), inset 0 1px 0 rgba(255,255,255,0.14);
         }
         .hero-btn-name { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: 0.2px; }
@@ -229,9 +231,8 @@
             .hero-video { display: none; }
             .hero {
                 background:
-                    radial-gradient(circle at 72% 18%, rgba(216,223,250,0.52) 0%, rgba(141,156,245,0.28) 38%, transparent 60%),
-                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.36) 0%, transparent 42%),
-                    linear-gradient(135deg, #11142E 0%, #25306A 56%, #4B56ED 100%);
+                    linear-gradient(115deg, #5C6CE8 0%, #93C4F8 32%, #AFA7F6 100%),
+                    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%);
             }
         }
 
@@ -240,6 +241,154 @@
 
         /* ── MAIN ── */
         .container { max-width: 1280px; margin: 0 auto; padding: 20px 44px 0; }
+
+        /* 가이드 정보 카드 */
+        .bio-strip {
+            background: linear-gradient(180deg, #F7F8FF 0%, #EEF1FD 100%);
+            border-bottom: 1px solid #E1E6F7;
+            padding: 48px calc(50vw - 50%) 30px;
+            margin: -20px calc(-50vw + 50%) 8px;
+            position: relative;
+        }
+        .bio-wrap { position: relative; max-width: 1180px; margin: 0 auto; }
+        .bio-stage { display: flex; align-items: center; gap: 24px; }
+        .bio-track {
+            flex: 1 1 auto;
+            min-width: 0;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: auto;
+            padding: 30px 6px 42px;
+            margin: -12px 0 -24px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .bio-track::-webkit-scrollbar { display: none; }
+        .bio-card {
+            flex: 0 0 calc((100% - 40px) / 3);
+            min-height: 204px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+            background: #FFFFFF;
+            border-radius: 22px;
+            border: 1.5px solid transparent;
+            box-shadow: 0 1px 3px rgba(20,25,46,0.05), 0 14px 32px rgba(20,25,46,0.07);
+            padding: 26px 26px 24px;
+            transform: scale(0.9);
+            opacity: 0.58;
+            filter: saturate(0.92);
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                        filter 0.35s ease,
+                        border-color 0.24s ease,
+                        box-shadow 0.24s ease;
+            will-change: transform, opacity;
+        }
+        .bio-card.is-active {
+            transform: scale(1.06);
+            opacity: 1;
+            filter: saturate(1);
+            border-color: transparent;
+            z-index: 1;
+            box-shadow: 0 10px 28px rgba(91,98,216,0.16), 0 24px 54px rgba(20,25,46,0.10);
+        }
+        .bio-card:hover {
+            border-color: transparent;
+            box-shadow: 0 10px 28px rgba(91,98,216,0.16), 0 24px 54px rgba(20,25,46,0.10);
+        }
+        .bio-card-tag {
+            align-self: flex-start;
+            font-size: 12px;
+            font-weight: 800;
+            color: #313A78;
+            background: var(--codex-pill-bg-muted);
+            border: 1px solid rgba(126,132,236,0.20);
+            padding: 5px 12px;
+            border-radius: 999px;
+            line-height: 1;
+            margin: 0 0 16px;
+        }
+        .bio-card-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #20242E;
+            letter-spacing: 0;
+            line-height: 1.35;
+            margin: 0 0 10px;
+        }
+        .bio-card-desc {
+            font-size: 13.5px;
+            line-height: 1.62;
+            color: #5A6072;
+            margin: 0 0 18px;
+            flex: 1 1 auto;
+        }
+        .bio-card-more {
+            font-size: 12.5px;
+            font-weight: 800;
+            color: var(--codex-accent);
+        }
+        .bio-nav {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 1px solid #E3E7F6;
+            box-shadow: 0 4px 14px rgba(20,25,46,0.10);
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #313A78;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+        }
+        .bio-nav:hover {
+            background: #F7F8FF;
+            color: var(--codex-accent);
+            border-color: #AEB6FF;
+        }
+        .bio-nav:active { transform: scale(0.94); }
+        .bio-nav svg { width: 16px; height: 16px; }
+        .bio-dots { display: flex; justify-content: center; gap: 7px; margin-top: 18px; }
+        .bio-dots button {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(20,25,46,0.18);
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.25s ease, width 0.25s ease;
+        }
+        .bio-dots button.active {
+            width: 22px;
+            border-radius: 4px;
+            background: var(--codex-accent);
+        }
+        .bio-progress {
+            width: 100%;
+            max-width: 280px;
+            height: 2px;
+            margin: 14px auto 0;
+            background: rgba(20,25,46,0.12);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .bio-progress-fill {
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #8F96FF 0%, #5B62D8 100%);
+            border-radius: 2px;
+            transform-origin: left center;
+        }
 
         /* ── 스티키 네비 ── */
         .nav-wrapper {
@@ -275,15 +424,13 @@
             color: #20242E; background: #FFFFFF;
         }
         .guide-btn.active {
-            border-color: rgba(99,102,241,0.45);
-            box-shadow: 0 6px 16px rgba(99,102,241,0.16);
+            border-color: rgba(99,102,241,0.52);
+            box-shadow: 0 8px 18px rgba(99,102,241,0.18), inset 0 1px 0 rgba(255,255,255,0.88);
             color: #1B1F2B;
-            background: linear-gradient(180deg, #FFFFFF 0%, #F4F3FF 100%);
+            background: linear-gradient(180deg, #FFFFFF 0%, #F1F2FF 100%);
         }
         .guide-btn.active::after {
-            content: ''; position: absolute; left: 16px; right: 16px; bottom: -1px; height: 2px;
-            background: linear-gradient(90deg, #8F96FF, #6B74FF);
-            border-radius: 2px;
+            content: none;
         }
         .guide-btn-num {
             color: var(--codex-num-text); background: var(--codex-num-bg); font-weight: 700;
@@ -324,7 +471,7 @@
             position: relative; overflow: hidden; min-height: 172px;
         }
         .card:hover { box-shadow: 0 6px 16px rgba(99,102,241,0.10), 0 22px 44px rgba(99,102,241,0.14); transform: translateY(-4px); border-color: var(--codex-accent); }
-        /* 브랜드 액센트: 호버 시 아이콘이 브랜드 컬러로 — 콘텐츠 영역에 정체성 부여 */
+        /* 브랜드 액센트: 호버 시 아이콘이 브랜드 컬러로 바뀌며 콘텐츠 영역에 정체성을 더한다 */
         .card:hover .card-icon { box-shadow: 0 3px 10px rgba(99,102,241,0.20), inset 0 0 0 1px #B6BBF5; }
         .card:hover .card-icon svg { stroke: var(--codex-accent); }
         .card:hover .card-icon svg.ic-fill { fill: var(--codex-accent); }
@@ -551,7 +698,7 @@
         .deploy-track .card {
             height: 100%;
         }
-        /* 카드·헤더 등장 애니메이션 — 섹션 진입 시 헤더 → 카드 순서로 떠오른다 */
+        /* 카드·헤더 등장 애니메이션: 섹션 진입 시 헤더와 카드가 차례로 떠오른다 */
         .card-section .section-header,
         .card-section .section-subtitle {
             opacity: 0; transform: translateY(14px);
@@ -667,15 +814,22 @@
             display: inline-flex; align-items: center; gap: 4px;
             color: #fff; text-decoration: none;
             font-size: 13px; font-weight: 600;
-            background: rgba(14,16,38,0.34);
+            background: rgba(38,46,126,0.42);
             -webkit-backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
             padding: 6px 14px; border-radius: 100px;
-            border: 1px solid rgba(255,255,255,0.16);
+            border: 1px solid rgba(255,255,255,0.24);
+            box-shadow: 0 8px 22px rgba(38,46,126,0.22), inset 0 1px 0 rgba(255,255,255,0.12);
             white-space: nowrap;
-            transition: background 0.25s ease, border-color 0.25s ease;
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .about-link:hover { background: rgba(24,27,58,0.5); border-color: rgba(143,150,255,0.5); color: #fff; }
+        .about-link:hover {
+            transform: translateY(-1px);
+            background: rgba(52,62,148,0.54);
+            border-color: rgba(255,255,255,0.36);
+            box-shadow: 0 10px 26px rgba(38,46,126,0.26), inset 0 1px 0 rgba(255,255,255,0.16);
+            color: #fff;
+        }
         .footer-about-link {
             display: inline-block; margin-top: 8px;
             color: rgba(255,255,255,0.75); text-decoration: none;
@@ -857,6 +1011,124 @@
             padding-top: 28px;
             border-top: 1px solid rgba(0,0,0,0.08);
         }
+        .about-maker-section,
+        .about-changelog-section {
+            margin-top: 24px;
+        }
+        .about-maker-card {
+            background: #FFFFFF;
+            border-radius: 14px;
+            padding: 18px 22px;
+            border: 1px solid rgba(91,98,216,0.12);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 18px rgba(20,25,46,0.05);
+        }
+        .about-maker-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .about-maker-logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            flex: 0 0 auto;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 1px rgba(106,115,230,0.24), 0 3px 10px rgba(20,25,46,0.08);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .about-maker-logo img {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+        .about-maker-role {
+            margin: 0;
+            font-size: 13px;
+            color: #5A6072;
+            line-height: 1.5;
+        }
+        .about-maker-desc {
+            margin: 0 0 14px;
+            font-size: 13.5px;
+            color: #4A4F5E;
+            line-height: 1.65;
+        }
+        .about-maker-list {
+            list-style: none;
+            margin: 0;
+            padding: 14px 0 0;
+            border-top: 1px solid rgba(20,25,46,0.08);
+        }
+        .about-maker-list li {
+            position: relative;
+            padding: 5px 0 5px 16px;
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: #5A6072;
+        }
+        .about-maker-list li::before {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 14px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--codex-accent);
+        }
+        .about-maker-list strong { color: #20242E; font-weight: 800; }
+        .about-maker-list .muted { color: #7A8193; font-weight: 700; }
+        .changelog-list {
+            margin: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            background: #FFFFFF;
+            border-radius: 14px;
+            padding: 4px 22px;
+            border: 1px solid rgba(91,98,216,0.12);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 18px rgba(20,25,46,0.05);
+        }
+        .changelog-item {
+            display: grid;
+            grid-template-columns: 96px 1fr;
+            gap: 16px;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(20,25,46,0.08);
+        }
+        .changelog-item:last-child { border-bottom: none; }
+        .changelog-meta { display: flex; flex-direction: column; gap: 4px; }
+        .changelog-ver {
+            align-self: flex-start;
+            font-size: 12px;
+            font-weight: 800;
+            color: #313A78;
+            background: var(--codex-pill-bg-muted);
+            border: 1px solid rgba(126,132,236,0.20);
+            border-radius: 7px;
+            padding: 2px 8px;
+            letter-spacing: 0;
+        }
+        .changelog-date { font-size: 11.5px; color: #7A8193; }
+        .changelog-title {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #20242E;
+            margin: 0 0 3px;
+            line-height: 1.4;
+        }
+        .changelog-desc {
+            font-size: 12.5px;
+            color: #5A6072;
+            margin: 0;
+            line-height: 1.55;
+            word-break: keep-all;
+        }
         .about-cta-bar {
             flex-shrink: 0;
             padding: 12px 32px;
@@ -871,14 +1143,16 @@
         .about-byline-logo {
             display: inline-flex; align-items: center; justify-content: center;
             width: 20px; height: 20px; border-radius: 50%;
-            background: var(--codex-num-bg);
-            box-shadow: 0 0 0 0.5px rgba(91,98,216,0.30);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 0.5px rgba(106,115,230,0.34);
             flex-shrink: 0;
+            overflow: hidden;
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .about-byline-logo:hover { transform: rotate(360deg); }
         .about-byline-logo img {
             width: 20px; height: 20px; display: block; border-radius: 50%;
+            object-fit: cover;
         }
         .about-cta-btn {
             display: inline-flex; align-items: center; gap: 8px;
@@ -954,6 +1228,13 @@
             .about-quote h1 { font-size: 21px; }
             .about-cards-grid { grid-template-columns: 1fr; gap: 10px; }
             .about-card { padding: 16px 18px; border-radius: 14px; }
+            .about-maker-card { padding: 16px 18px; }
+            .about-maker-head { align-items: flex-start; }
+            .about-maker-logo,
+            .about-maker-logo img { width: 40px; height: 40px; }
+            .changelog-list { padding: 4px 18px; }
+            .changelog-item { grid-template-columns: 1fr; gap: 6px; padding: 12px 0; }
+            .changelog-meta { flex-direction: row; align-items: center; gap: 8px; }
             .about-intro p { font-size: 14px; }
             .about-cta-bar { padding: 10px 16px; justify-content: center; }
             .about-cta-left { display: none; }
@@ -1023,6 +1304,37 @@
             /* 모바일에서 햄버거 메뉴가 열렸을 때, main 컨테이너를 스택 위로 올려 드로어가 히어로 위에 보이도록 보장 */
             body.menu-open .container { position: relative; z-index: 200; }
 
+            .bio-strip {
+                margin: -16px -16px 10px;
+                padding: 38px 0 24px;
+            }
+            .bio-wrap { max-width: none; }
+            .bio-stage { display: block; }
+            .bio-nav { display: none; }
+            .bio-track {
+                gap: 12px;
+                padding: 24px 8% 34px;
+                margin: -10px 0 -20px;
+                scroll-snap-type: x proximity;
+            }
+            .bio-card {
+                flex: 0 0 84%;
+                min-height: 190px;
+                padding: 22px 20px 20px;
+                border-radius: 16px;
+                transform: scale(0.94);
+                opacity: 0.56;
+                scroll-snap-align: center;
+            }
+            .bio-card.is-active {
+                transform: scale(1);
+                opacity: 1;
+            }
+            .bio-card-title { font-size: 16px; }
+            .bio-card-desc { font-size: 13px; }
+            .bio-dots { margin-top: 12px; }
+            .bio-progress { margin-top: 10px; max-width: 220px; }
+
             /* 스티키 네비 → 모바일에서는 햄버거 슬라이드 패널로 전환 */
             .nav-wrapper {
                 position: fixed; top: 0; right: 0; z-index: 170;
@@ -1081,7 +1393,6 @@
             }
             .lower-ambient-inner { padding: 0; }
             .lower-ambient .card-section { margin-bottom: 38px; }
-            .lower-ambient #section-glossary,
             .lower-ambient #section-gallery {
                 margin-top: 40px !important;
                 padding-top: 28px !important;
@@ -1159,7 +1470,7 @@
         }
         .card-section.in-view { opacity: 1; transform: none; }
 
-        /* 히어로(헤더) 등장 — 위 콘텐츠가 부드럽게 떠오른다 */
+        /* 히어로(헤더) 등장: 위 콘텐츠가 부드럽게 떠오른다 */
         @keyframes hero-rise {
             from { opacity: 0; transform: translate3d(0, 18px, 0); }
             to   { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -1263,6 +1574,55 @@
 
 <!-- ── MAIN ── -->
 <main class="container">
+
+    <section class="bio-strip" aria-label="가이드 소개">
+        <div class="bio-wrap" id="bioWrap">
+            <div class="bio-stage">
+                <button class="bio-nav prev" id="bioPrev" type="button" aria-label="이전 소개">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="bio-track" id="bioTrack">
+                    <a class="bio-card" href="?about=1" data-about-target="aboutIntro">
+                        <span class="bio-card-tag">소개</span>
+                        <h3 class="bio-card-title">Codex를 업무에 붙이는 지도</h3>
+                        <p class="bio-card-desc">ChatGPT로 생각을 정리하고 Codex 앱으로 실제 파일 작업까지 이어 가는 5단계 실전 가이드입니다.</p>
+                        <span class="bio-card-more">자세히 →</span>
+                    </a>
+                    <a class="bio-card" href="?about=1" data-about-target="aboutWhy">
+                        <span class="bio-card-tag">왜 만들었나</span>
+                        <h3 class="bio-card-title">개발자의 도구에서, 리더의 무기로</h3>
+                        <p class="bio-card-desc">시중 Codex 자료는 대부분 개발자를 위한 것입니다. 같은 도구를 의사결정·보고·자동화 관점으로 다시 썼습니다.</p>
+                        <span class="bio-card-more">자세히 →</span>
+                    </a>
+                    <a class="bio-card" href="?about=1" data-about-target="aboutMaker">
+                        <span class="bio-card-tag">만든 사람</span>
+                        <h3 class="bio-card-title">강정구 · Jayden Kang</h3>
+                        <p class="bio-card-desc">Bain·Kearney와 라인·카카오엔터테인먼트를 거쳐, 현재 LINER에서 AI 전략을 총괄하며 국민경제자문회의 AI경제 정책자문단으로 활동하고 있습니다.</p>
+                        <span class="bio-card-more">자세히 →</span>
+                    </a>
+                    <a class="bio-card" href="?about=1" data-about-target="aboutChangelog">
+                        <span class="bio-card-tag">업데이트 내역</span>
+                        <h3 class="bio-card-title">지속적인 개정</h3>
+                        <p class="bio-card-desc">2026년 5월 처음 공개한 뒤로 계속 업데이트하고 있습니다. 모델 변화와 새 기능을 바로 반영합니다.</p>
+                        <span class="bio-card-more">자세히 →</span>
+                    </a>
+                    <a class="bio-card" href="?about=1" data-about-target="aboutLicense">
+                        <span class="bio-card-tag">라이선스</span>
+                        <h3 class="bio-card-title">이용 범위 안내</h3>
+                        <p class="bio-card-desc">개인 학습은 자유롭게 보실 수 있고, 강의·사내 교육 등 상업적 활용은 사전 협의가 필요합니다.</p>
+                        <span class="bio-card-more">자세히 →</span>
+                    </a>
+                </div>
+                <button class="bio-nav next" id="bioNext" type="button" aria-label="다음 소개">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+            <div class="bio-progress" aria-hidden="true">
+                <span class="bio-progress-fill" id="bioProgressFill"></span>
+            </div>
+            <div class="bio-dots" id="bioDots" role="tablist" aria-label="소개 카드"></div>
+        </div>
+    </section>
 
     <!-- 스티키 네비 -->
     <div class="nav-wrapper" id="navWrapper">
@@ -1463,10 +1823,10 @@
                 <div class="card-meta"><span class="badge-time">⏱ 14분</span><span class="badge-level advanced">고급</span></div>
                 <p>같은 작업을 반복 가능한 루프로 설계하는 개념을 다룹니다.</p>
             </a>
-            <a class="card" href="routines.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></span><h2>예약 작업으로 자동 실행</h2></div>
+            <a class="card" href="automation.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></span><h2>예약됨으로 자동 실행</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
-                <p>ChatGPT 예약 작업(Scheduled tasks)으로 정해진 시각에 자동 실행합니다.</p>
+                <p>Codex 예약됨(Automations)으로 정해진 주기에 같은 작업을 자동 실행합니다.</p>
             </a>
         </section>
     </div>
@@ -1628,33 +1988,7 @@
         </section>
     </div>
 
-    <!-- 참고 1: 바이브코딩 백과사전 -->
-    <div class="card-section" id="section-glossary" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
-        <div class="section-header" style="padding-top: 0;">
-            <span class="section-num">참고</span>
-            <span class="section-title">바이브코딩 백과사전</span>
-        </div>
-        <p class="section-subtitle">낯선 단어가 나올 때마다 펼쳐보는 비개발자 전용 사전</p>
-        <section class="cards" style="grid-template-columns: 1fr 1fr 1fr;">
-            <a class="card" href="file-types.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span><h2>파일 유형 한눈에 보기</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
-                <p>.md부터 .py까지, Codex에서 자주 만나는 파일 8종을 예제 코드와 함께 비교합니다.</p>
-            </a>
-            <a class="card" href="license-compare.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span><h2>라이선스 가이드</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
-                <p>MIT, Apache, GPL… 스킬을 배포할 때 꼭 알아야 할 오픈소스 라이선스를 비교합니다.</p>
-            </a>
-            <a class="card" href="glossary.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-bookopen"/></svg></span><h2>모르는 용어, 바로 찾기</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
-                <p>터미널, 커밋, 브랜치… 낯선 단어가 나올 때마다 펼쳐보는 비개발자 전용 사전입니다.</p>
-            </a>
-        </section>
-    </div>
-
-    <!-- 참고 2: 디자인·시각화 갤러리 -->
+    <!-- 참고: 디자인·시각화 갤러리 -->
     <div class="card-section" id="section-gallery" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
         <div class="section-header" style="padding-top: 0;">
             <span class="section-num">참고</span>
@@ -1700,6 +2034,32 @@
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span><h2>인공지능기본법 한눈에</h2></div>
                 <div class="card-meta"><span class="badge-level reference">참고</span></div>
                 <p>2026년 시행 인공지능기본법의 핵심 조항을 비즈니스 관점으로 정리합니다.</p>
+            </a>
+        </section>
+    </div>
+
+    <!-- 참고: 바이브코딩 백과사전 -->
+    <div class="card-section" id="section-glossary" style="margin-top: 64px; padding-top: 40px; border-top: 2px solid rgba(0,0,0,0.06);">
+        <div class="section-header" style="padding-top: 0;">
+            <span class="section-num">참고</span>
+            <span class="section-title">바이브코딩 백과사전</span>
+        </div>
+        <p class="section-subtitle">낯선 단어가 나올 때마다 펼쳐보는 비개발자 전용 사전</p>
+        <section class="cards" style="grid-template-columns: 1fr 1fr 1fr;">
+            <a class="card" href="file-types.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span><h2>파일 유형 한눈에 보기</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
+                <p>.md부터 .py까지, Codex에서 자주 만나는 파일 8종을 예제 코드와 함께 비교합니다.</p>
+            </a>
+            <a class="card" href="license-compare.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span><h2>라이선스 가이드</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
+                <p>MIT, Apache, GPL… 스킬을 배포할 때 꼭 알아야 할 오픈소스 라이선스를 비교합니다.</p>
+            </a>
+            <a class="card" href="glossary.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-bookopen"/></svg></span><h2>모르는 용어, 바로 찾기</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
+                <p>터미널, 커밋, 브랜치… 낯선 단어가 나올 때마다 펼쳐보는 비개발자 전용 사전입니다.</p>
             </a>
         </section>
     </div>
@@ -1751,7 +2111,7 @@
         <div class="about-modal-body">
             <p class="about-eyebrow">ABOUT</p>
 
-            <div class="about-quote">
+            <div class="about-quote" id="aboutIntro">
                 <h1 id="aboutTitle">"개발 말고, 비즈니스용으로는 Codex를 어떻게 써야 하나요?"</h1>
                 <p>AI 이야기를 나누면서 가장 자주 받는 질문입니다.</p>
             </div>
@@ -1762,7 +2122,7 @@
             </div>
 
             <div class="about-cards-grid">
-                <section class="about-card">
+                <section class="about-card" id="aboutWhy">
                     <div class="about-card-head">
                         <span class="about-card-num">01</span>
                         <span class="about-card-title">왜 만들었나요</span>
@@ -1784,12 +2144,84 @@
                 </section>
             </div>
 
+            <div class="about-maker-section" id="aboutMaker">
+                <p class="about-eyebrow" style="margin-top:0;">BUILDER</p>
+                <h2 class="license-title">만든 사람</h2>
+                <div class="about-maker-card">
+                    <div class="about-maker-head">
+                        <span class="about-maker-logo"><img src="assets/logos/logo1-lavender.png" alt="AI ROASTING 로고"></span>
+                        <div style="flex:1; min-width:0;">
+                            <p class="about-byline-name" style="font-size:16px; margin:0 0 3px;">강정구 <span>·</span> Jayden Kang</p>
+                            <p class="about-maker-role">LINER AI 전략 총괄</p>
+                        </div>
+                        <div class="about-byline-icons" style="align-self:flex-start;">
+                            <a href="https://www.linkedin.com/in/jayden-kang/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a class="fb" href="https://www.facebook.com/jayden.kang" target="_blank" rel="noopener" aria-label="Facebook">
+                                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="about-maker-desc">전략 컨설팅과 글로벌 사업 현장을 거치며 쌓은 경험을 바탕으로, 비즈니스 리더가 AI를 실무에 바로 적용하도록 이 가이드를 직접 만들고 매주 업데이트합니다.</p>
+                    <ul class="about-maker-list">
+                        <li><strong>LINER</strong> · AI 전략 총괄</li>
+                        <li><strong>국민경제자문회의</strong> · AI경제 정책자문단</li>
+                        <li><span class="muted">전)</span> <strong>카카오엔터테인먼트</strong> · 글로벌사업 본부장</li>
+                        <li><span class="muted">전)</span> <strong>미국 타파스엔터테인먼트</strong> · 최고운영책임(COO)</li>
+                        <li><span class="muted">전)</span> <strong>라인(LINE)</strong> · 태국 사업 최고전략책임(CSO)</li>
+                        <li><span class="muted">전)</span> <strong>Bain &amp; Company</strong> · 이사</li>
+                        <li><span class="muted">전)</span> <strong>Kearney</strong> · 팀장</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="about-changelog-section" id="aboutChangelog">
+                <p class="about-eyebrow" style="margin-top:0;">CHANGELOG</p>
+                <h2 class="license-title">업데이트 내역</h2>
+                <div class="changelog-list">
+                    <div class="changelog-item">
+                        <div class="changelog-meta"><span class="changelog-ver">v1.7</span><span class="changelog-date">2026-06-21</span></div>
+                        <div class="changelog-body"><p class="changelog-title">실전 예제와 쇼케이스 동기화</p><p class="changelog-desc">구글 시트 대시보드, 공시 분석, 한국 법령 검색, 카카오톡 PlayMCP, 하네스 기반 책쓰기 예제를 한데 묶었습니다. 쇼케이스와 백과사전, 디자인 갤러리 링크를 정리하고 전반적인 문구와 페이지 설명을 Codex 중심으로 맞췄습니다.</p></div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-meta"><span class="changelog-ver">v1.6</span><span class="changelog-date">2026-06-14</span></div>
+                        <div class="changelog-body"><p class="changelog-title">자동화와 에이전트 설계 강화</p><p class="changelog-desc">AGENTS.md, 스킬, MCP, 에이전트 팀 설계를 중심으로 자동화 파트를 재정리했습니다. 각 도구를 하나의 실행 체계로 연결해 반복 업무를 맡기는 방법을 더 분명히 했습니다.</p></div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-meta"><span class="changelog-ver">v1.5</span><span class="changelog-date">2026-06-07</span></div>
+                        <div class="changelog-body"><p class="changelog-title">배포 과정 연결</p><p class="changelog-desc">웹 공개와 Vercel 배포 가이드를 보강했습니다. 공개 URL 확인부터 자동 배포까지 이어지는 전체 과정을 한 번에 따라갈 수 있도록 단계와 확인 포인트를 정리했습니다.</p></div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-meta"><span class="changelog-ver">v1.4</span><span class="changelog-date">2026-05-31</span></div>
+                        <div class="changelog-body"><p class="changelog-title">Codex 실행 파트 공개</p><p class="changelog-desc">Codex 앱 시작하기와 실전 과제 페이지를 추가했습니다. 말로 요청한 작업이 실제 파일 수정으로 이어지는 과정을 보여주고, 스탑워치와 대시보드, CEO 브리핑 등 난이도별 과제를 배치했습니다.</p></div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-meta"><span class="changelog-ver">v1.3</span><span class="changelog-date">2026-05-24</span></div>
+                        <div class="changelog-body"><p class="changelog-title">플러그인 실습 확장</p><p class="changelog-desc">Excel과 PowerPoint 플러그인 페이지를 별도 실습으로 정리했습니다. 사이드바에서 파일을 열고 수식과 슬라이드를 생성한 뒤, 결과물을 다시 검토하는 과정을 비개발자 기준으로 풀어 썼습니다.</p></div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-meta"><span class="changelog-ver">v1.2</span><span class="changelog-date">2026-05-17</span></div>
+                        <div class="changelog-body"><p class="changelog-title">프로젝트와 협업 방식 보강</p><p class="changelog-desc">프로젝트 만들기와 멀티 페르소나 토론의 실습 과정을 보강했습니다. ChatGPT 프로젝트 설정, 역할 기반 토론, 결과 검증 루틴을 한 묶음으로 설명하고 팀에서 바로 쓸 업무 예시를 추가했습니다.</p></div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-meta"><span class="changelog-ver">v1.1</span><span class="changelog-date">2026-05-10</span></div>
+                        <div class="changelog-body"><p class="changelog-title">진단과 기본기 정리</p><p class="changelog-desc">Codex 오리엔테이션, AI 활용 수준 진단, 프롬프트 기본기 페이지를 중심으로 첫 진입 동선을 다듬었습니다. 사용자가 현재 수준을 확인하고 다음 실습으로 넘어갈 수 있도록 설명 순서를 재배치했습니다.</p></div>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-meta"><span class="changelog-ver">v1.0</span><span class="changelog-date">2026-05-03</span></div>
+                        <div class="changelog-body"><p class="changelog-title">Codex 가이드 출발점</p><p class="changelog-desc">비즈니스 리더가 Codex를 단계적으로 익힐 수 있도록 5단계 커리큘럼의 뼈대를 세웠습니다. 진단, 기본기, 플러그인, Codex 실행, 공유와 배포, 자동화로 단계를 나누고 웹 공개 기준을 정했습니다.</p></div>
+                    </div>
+                </div>
+                <p class="license-footnote">Codex 가이드는 2026년 5월 v1.0을 기준선으로 삼고, 매주 일요일 개선 사항을 묶어 버전을 0.1씩 올립니다.</p>
+            </div>
+
             <div class="about-license-section" id="aboutLicense">
                 <p class="about-eyebrow" style="margin-top:0;">LICENSE</p>
                 <h2 class="license-title" id="licenseTitle">저작권 안내 (Copyright Notice)</h2>
                 <div class="license-text">
-                    <p class="lic-meta">Copyright (c) 2026 AI ROASTING <span class="lic-author">(강정구 / jaydenjkang@gmail.com<button type="button" class="lic-copy" data-copy-text="jaydenjkang@gmail.com" aria-label="이메일 복사" title="이메일 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>)</span><br>v1.0 · 2026-05-31</p>
-                    <p class="lic-meta">본 가이드의 저작권은 작성자에게 있습니다. 인용된 Anthropic 콘텐츠와 사용된 외부 자산(Pretendard Variable, MIT/Apache 2.0 등 오픈소스 라이브러리)은 각 권리자에게 귀속되며 해당 라이선스가 적용됩니다.</p>
+                    <p class="lic-meta">Copyright (c) 2026 AI ROASTING <span class="lic-author">(강정구 / jaydenjkang@gmail.com<button type="button" class="lic-copy" data-copy-text="jaydenjkang@gmail.com" aria-label="이메일 복사" title="이메일 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>)</span><br>v1.0 · 2026-05-03</p>
+                    <p class="lic-meta">본 가이드의 저작권은 작성자에게 있습니다. 인용된 OpenAI 콘텐츠와 사용된 외부 자산(Pretendard Variable, MIT/Apache 2.0 등 오픈소스 라이브러리)은 각 권리자에게 귀속되며 해당 라이선스가 적용됩니다.</p>
 
                     <h3>1. 금지되는 행위</h3>
                     <ul>
@@ -1816,7 +2248,7 @@
 
         <div class="about-cta-bar">
             <div class="about-cta-left">
-                <span class="about-byline-logo"><img src="assets/logos/logo1-white.png" alt="AI ROASTING 로고"></span>
+                <span class="about-byline-logo"><img src="assets/logos/logo1-lavender.png" alt="AI ROASTING 로고"></span>
                 <span class="about-byline-name">강정구 <span>·</span> Jayden Kang</span>
                 <div class="about-byline-icons">
                     <a href="https://www.linkedin.com/in/jayden-kang/" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -1918,10 +2350,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+    function scrollAboutTarget(tgt, delay) {
+        var body = aboutOverlay ? aboutOverlay.querySelector('.about-modal-body') : null;
+        if (!body) return;
+        if (!tgt) {
+            body.scrollTop = 0;
+            return;
+        }
+        setTimeout(function() {
+            var node = document.getElementById(tgt);
+            if (!node) return;
+            var top = node.getBoundingClientRect().top - body.getBoundingClientRect().top + body.scrollTop;
+            body.scrollTo({ top: top, behavior: 'auto' });
+        }, delay || 120);
+    }
     document.querySelectorAll('[data-about-open]').forEach(function(el) {
         el.addEventListener('click', function(e) {
             e.preventDefault();
+            var tgt = el.getAttribute('data-about-target');
             setAboutOpen(true);
+            scrollAboutTarget(tgt, tgt ? 360 : 0);
         });
     });
     if (aboutClose) aboutClose.addEventListener('click', function() { setAboutOpen(false); });
@@ -1947,13 +2395,244 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape' && document.body.classList.contains('about-open')) setAboutOpen(false);
     });
 
+    // 가이드 정보 카드
+    (function() {
+        var track = document.getElementById('bioTrack');
+        var dotsBox = document.getElementById('bioDots');
+        var prevBtn = document.getElementById('bioPrev');
+        var nextBtn = document.getElementById('bioNext');
+        var wrap = document.getElementById('bioWrap');
+        if (!track || !dotsBox || !prevBtn || !nextBtn || !wrap) return;
+
+        var originals = Array.prototype.slice.call(track.querySelectorAll('.bio-card'));
+        if (!originals.length) return;
+        var origCount = originals.length;
+
+        originals.forEach(function(card) {
+            var clone = card.cloneNode(true);
+            clone.classList.add('is-clone');
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+        });
+
+        var allCards = Array.prototype.slice.call(track.querySelectorAll('.bio-card'));
+        var physicalIdx = 0;
+        var animFrame = null;
+        var manualTimer = null;
+
+        function cardStep() {
+            if (allCards.length < 2) return track.clientWidth;
+            return allCards[1].offsetLeft - allCards[0].offsetLeft;
+        }
+        function centerOffset() {
+            if (window.matchMedia('(max-width: 768px)').matches) return 0;
+            if (!allCards.length) return 0;
+            var trackW = track.clientWidth;
+            var cardW = allCards[0].offsetWidth;
+            var gap = 20;
+            var threeCardsW = 3 * cardW + 2 * gap;
+            var overflow = threeCardsW - trackW;
+            return overflow > 0 ? overflow / 2 : 0;
+        }
+        function targetFor(idx) {
+            return idx * cardStep() + centerOffset();
+        }
+        function logicalOf(idx) {
+            var i = idx % origCount;
+            return i < 0 ? i + origCount : i;
+        }
+        function ease(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+        function cancelAnim() {
+            if (animFrame !== null) {
+                cancelAnimationFrame(animFrame);
+                animFrame = null;
+            }
+        }
+        function updateDots() {
+            var i = logicalOf(physicalIdx);
+            Array.prototype.forEach.call(dotsBox.children, function(dot, k) {
+                dot.classList.toggle('active', k === i);
+            });
+        }
+        function updateActive() {
+            var trackRect = track.getBoundingClientRect();
+            var center = trackRect.left + trackRect.width / 2;
+            var bestIdx = 0;
+            var bestDist = Infinity;
+            allCards.forEach(function(card, idx) {
+                var rect = card.getBoundingClientRect();
+                var cardCenter = rect.left + rect.width / 2;
+                var dist = Math.abs(cardCenter - center);
+                if (dist < bestDist) {
+                    bestDist = dist;
+                    bestIdx = idx;
+                }
+            });
+            allCards.forEach(function(card, idx) {
+                card.classList.toggle('is-active', idx === bestIdx);
+            });
+        }
+        function animateTo(target, duration, done) {
+            cancelAnim();
+            var start = track.scrollLeft;
+            var change = target - start;
+            if (Math.abs(change) < 0.5) {
+                updateActive();
+                if (done) done();
+                return;
+            }
+            var t0 = performance.now();
+            function stepFn(now) {
+                var p = Math.min(1, (now - t0) / duration);
+                track.scrollLeft = start + change * ease(p);
+                updateActive();
+                if (p < 1) {
+                    animFrame = requestAnimationFrame(stepFn);
+                } else {
+                    animFrame = null;
+                    if (done) done();
+                }
+            }
+            animFrame = requestAnimationFrame(stepFn);
+        }
+        function rebaseIfNeeded() {
+            if (physicalIdx >= origCount) {
+                physicalIdx -= origCount;
+                track.scrollLeft = targetFor(physicalIdx);
+                updateActive();
+                updateDots();
+            }
+        }
+        function go(delta) {
+            var nextIdx = physicalIdx + delta;
+            if (nextIdx < 0) {
+                physicalIdx = origCount;
+                track.scrollLeft = targetFor(physicalIdx);
+                nextIdx = physicalIdx - 1;
+            }
+            physicalIdx = nextIdx;
+            updateDots();
+            animateTo(targetFor(physicalIdx), 620, rebaseIfNeeded);
+        }
+        function goTo(logical) {
+            physicalIdx = logical;
+            updateDots();
+            animateTo(targetFor(physicalIdx), 620);
+        }
+        function buildDots() {
+            dotsBox.innerHTML = '';
+            for (var i = 0; i < origCount; i++) {
+                (function(idx) {
+                    var dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.setAttribute('aria-label', (idx + 1) + '번 소개로 이동');
+                    dot.addEventListener('click', function() {
+                        goTo(idx);
+                        restartAuto();
+                    });
+                    dotsBox.appendChild(dot);
+                })(i);
+            }
+            updateDots();
+        }
+        track.addEventListener('scroll', function() {
+            if (animFrame !== null) return;
+            updateActive();
+            clearTimeout(manualTimer);
+            manualTimer = setTimeout(function() {
+                var step = cardStep();
+                if (step <= 0) return;
+                physicalIdx = Math.round(track.scrollLeft / step);
+                rebaseIfNeeded();
+                updateDots();
+            }, 140);
+        });
+        track.addEventListener('click', function(e) {
+            var card = e.target.closest('.bio-card');
+            if (!card) return;
+            e.preventDefault();
+            setAboutOpen(true);
+            scrollAboutTarget(card.getAttribute('data-about-target'), 360);
+        });
+        prevBtn.addEventListener('click', function() {
+            go(-1);
+            restartAuto();
+        });
+        nextBtn.addEventListener('click', function() {
+            go(1);
+            restartAuto();
+        });
+
+        var AUTO_MS = 4200;
+        var autoRaf = null;
+        var autoStartTs = 0;
+        var autoElapsedOnPause = 0;
+        var progressFill = document.getElementById('bioProgressFill');
+        function setProgress(pct) {
+            if (progressFill) progressFill.style.width = pct + '%';
+        }
+        function stopAuto() {
+            if (autoRaf !== null) {
+                autoElapsedOnPause = performance.now() - autoStartTs;
+                cancelAnimationFrame(autoRaf);
+                autoRaf = null;
+            }
+        }
+        function autoTick(now) {
+            var elapsed = now - autoStartTs;
+            if (elapsed >= AUTO_MS) {
+                setProgress(100);
+                autoElapsedOnPause = 0;
+                autoRaf = null;
+                go(1);
+                autoStartTs = performance.now();
+                setProgress(0);
+                autoRaf = requestAnimationFrame(autoTick);
+            } else {
+                setProgress((elapsed / AUTO_MS) * 100);
+                autoRaf = requestAnimationFrame(autoTick);
+            }
+        }
+        function startAuto() {
+            if (document.body.classList.contains('about-open')) return;
+            stopAuto();
+            autoStartTs = performance.now() - autoElapsedOnPause;
+            autoRaf = requestAnimationFrame(autoTick);
+        }
+        function restartAuto() {
+            autoElapsedOnPause = 0;
+            setProgress(0);
+            startAuto();
+        }
+        function recenter() {
+            cancelAnim();
+            track.scrollLeft = targetFor(physicalIdx);
+            updateActive();
+        }
+
+        wrap.addEventListener('mouseenter', stopAuto);
+        wrap.addEventListener('mouseleave', startAuto);
+        wrap.addEventListener('touchstart', stopAuto, { passive: true });
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) stopAuto();
+            else startAuto();
+        });
+        window.addEventListener('resize', recenter);
+
+        buildDots();
+        recenter();
+        startAuto();
+        setTimeout(recenter, 120);
+        window.addEventListener('load', recenter);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(recenter);
+    })();
+
     // ── 라이선스 (About 모달 내 스크롤) ──
     function scrollToLicense() {
         setAboutOpen(true);
-        setTimeout(function() {
-            var lic = document.getElementById('aboutLicense');
-            if (lic) lic.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 120);
+        scrollAboutTarget('aboutLicense', 120);
     }
     document.querySelectorAll('[data-license-open]').forEach(function(el) {
         el.addEventListener('click', function(e) {
@@ -2000,8 +2679,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (new URLSearchParams(window.location.search).has('license')) {
         scrollToLicense();
     }
-    var sectionIds = ['section-1','section-project','section-plugin','section-code','section-skills','section-loop','section-examples','section-showcase','section-ref'];
-    var sections = sectionIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+    var navSectionIds = ['section-1','section-project','section-plugin','section-code','section-skills','section-loop','section-examples'];
+    var navSectionIdSet = navSectionIds.reduce(function(acc, id) {
+        acc[id] = true;
+        return acc;
+    }, {});
+    var boundarySectionIds = navSectionIds.concat(['section-voices','section-showcase','section-gallery','section-ref','section-glossary']);
+    var sections = boundarySectionIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
 
     // 방문 기록
     var VISITED_KEY = 'ai_roasting_visited';
@@ -2026,28 +2710,52 @@ document.addEventListener('DOMContentLoaded', function() {
         navWrapper.classList.toggle('scrolled', !entries[0].isIntersecting);
     }, { threshold: 0 }).observe(sentinel);
 
-    // 활성 섹션 (scroll 기반)
+    // 활성 섹션
     var isMobile = function() { return window.matchMedia('(max-width: 768px)').matches; };
-    var navH = isMobile() ? 60 : (navWrapper.offsetHeight + 40);
-    window.addEventListener('scroll', function() {
-        var scrollTop = window.scrollY;
-        // 히어로 영역에서는 활성 없음
-        if (scrollTop < sections[0].offsetTop - navH - 60) {
-            navBtns.forEach(function(btn) { btn.classList.remove('active'); });
-            return;
-        }
+    function getProbeScrollY() {
+        var viewportProbe = Math.min(window.innerHeight * (isMobile() ? 0.42 : 0.48), isMobile() ? 300 : 360);
+        var stickyOffset = isMobile() ? 0 : navWrapper.offsetHeight;
+        return window.scrollY + stickyOffset + viewportProbe;
+    }
+    function getSectionTop(section) {
+        return section.getBoundingClientRect().top + window.scrollY;
+    }
+    function getActiveSectionId() {
+        if (!sections.length) return null;
+        var orderedSections = sections.slice().sort(function(a, b) {
+            return getSectionTop(a) - getSectionTop(b);
+        });
+        var probeY = getProbeScrollY();
+        if (probeY < getSectionTop(orderedSections[0])) return null;
         var activeId = null;
-        for (var i = sections.length - 1; i >= 0; i--) {
-            if (scrollTop >= sections[i].offsetTop - navH - 20) {
-                activeId = sections[i].id;
-                markVisited(activeId);
-                break;
+        for (var i = 0; i < orderedSections.length; i++) {
+            if (probeY >= getSectionTop(orderedSections[i])) {
+                activeId = orderedSections[i].id;
             }
         }
+        return navSectionIdSet[activeId] ? activeId : null;
+    }
+    function setActiveSection(activeId) {
         navBtns.forEach(function(btn) {
-            btn.classList.toggle('active', btn.getAttribute('href') === '#' + activeId);
+            var isActive = btn.getAttribute('data-section') === activeId;
+            btn.classList.toggle('active', isActive);
+            if (isActive) btn.setAttribute('aria-current', 'true');
+            else btn.removeAttribute('aria-current');
         });
-    });
+        if (activeId) markVisited(activeId);
+    }
+    var activeFrame = null;
+    function updateActiveSection() {
+        activeFrame = null;
+        setActiveSection(getActiveSectionId());
+    }
+    function scheduleActiveSection() {
+        if (activeFrame) return;
+        activeFrame = window.requestAnimationFrame(updateActiveSection);
+    }
+    window.addEventListener('scroll', scheduleActiveSection, { passive: true });
+    window.addEventListener('resize', scheduleActiveSection);
+    updateActiveSection();
 
     // 카드 등장 애니메이션
     document.querySelectorAll('.card-section').forEach(function(sec) {

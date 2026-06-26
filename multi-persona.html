@@ -1035,6 +1035,8 @@
             <a class="step-node" href="github-guide.html">4</a>
             <div class="step-line"></div>
             <a class="step-node" href="agents-md-templates.html">5</a>
+            <div class="step-line"></div>
+            <a class="step-node sn-final" href="ai-writing.html">예제</a>
         </nav>
         <a class="back-link" href="index.html">← 목록으로</a>
         <h1>멀티 페르소나 토론</h1>
@@ -1106,56 +1108,59 @@
         <span class="chapter-badge">원리</span>
     </div>
 
-    <!-- ─── Anthropic 연구 ─── -->
+    <!-- ─── OpenAI 연구 ─── -->
     <div class="section-block" id="sec-ref">
         <div class="section-hd">
-            <h2>왜 역할 부여가 효과적인가: Anthropic 연구</h2>
+            <h2>왜 역할 부여가 효과적인가: OpenAI 연구</h2>
         </div>
 
         <div class="research-card">
             <div class="research-badge">
                 <span class="rb-dot"></span>
-                Anthropic Research · Persona Selection Model (PSM)
+                OpenAI Research · InstructGPT / RLHF
             </div>
             <div class="research-quote">
-                AI는 사전학습 단계에서 수많은 인간 캐릭터와 페르소나를 시뮬레이션하며 텍스트를 예측하는 방식으로 훈련됐습니다. 우리가 AI와 나누는 대화는 AI 그 자체가 아닌, AI가 만들어내는 스토리 속 캐릭터 '어시스턴트'와의 대화입니다.
+                OpenAI의 InstructGPT 연구는 모델을 크게 만드는 것만으로는 사용자의 의도를 잘 따르게 만들 수 없고, 인간 피드백을 통해 "무엇을 원하는 답변으로 볼 것인가"를 학습시켜야 한다는 점을 보여줍니다. 역할 부여는 이 원리를 실전 프롬프트로 쓰는 방식입니다.
             </div>
             <div class="research-points">
                 <div class="rp-item">
                     <div class="rp-num">01</div>
                     <div class="rp-text">
-                        <strong>AI는 텍스트 생성기가 아니라 캐릭터 시뮬레이터입니다</strong><br>
-                        사전학습 과정에서 AI는 수많은 인간 캐릭터의 사고방식, 언어 패턴, 전문 지식을 내재화했습니다. 지금 우리가 대화하는 상대는 AI 그 자체가 아니라, AI가 시뮬레이션하는 '특정 캐릭터'입니다.
+                        <strong>크기보다 중요한 것은 사용자 의도에 맞추는 능력입니다</strong><br>
+                        OpenAI는 InstructGPT 논문에서 사람이 쓴 예시와 선호도 평가로 모델을 조정했을 때, 지시를 더 잘 따르고 더 유용한 답변을 만들 수 있음을 보였습니다. 좋은 역할 프롬프트는 모델에게 "이번 답변에서 무엇이 중요한가"를 먼저 알려줍니다.
                     </div>
                 </div>
                 <div class="rp-item">
                     <div class="rp-num">02</div>
                     <div class="rp-text">
-                        <strong>역할 부여는 새로운 능력을 주는 게 아니라 특정 캐릭터를 호출하는 것입니다</strong><br>
-                        "전략기획 팀장"이라는 역할을 부여하면 AI는 학습 데이터에서 해당 전문가의 사고 회로를 불러냅니다. 역할이 구체적일수록 그 캐릭터의 논리 방식이 일관되고 정밀하게 작동합니다.
+                        <strong>역할은 목표, 관점, 책임을 한 번에 묶은 지시입니다</strong><br>
+                        "전략기획 팀장"이라고만 쓰는 것보다, "성장성, 실행 가능성, 리스크를 기준으로 판단하는 전략기획 팀장"이라고 쓰면 답변의 기준이 선명해집니다. 역할은 마법 주문이 아니라 답변의 평가 기준을 압축한 문장입니다.
                     </div>
                 </div>
                 <div class="rp-item">
                     <div class="rp-num">03</div>
                     <div class="rp-text">
-                        <strong>서로 다른 역할은 독립적인 관점을 동시에 활성화합니다</strong><br>
-                        같은 질문이라도 3가지 역할을 부여하면 3개의 독립된 전문가 사고 회로가 작동합니다. 단순히 같은 질문을 반복하는 것과 근본적으로 다른 이유가 바로 이것입니다.
+                        <strong>멀티 페르소나는 평가 기준을 분리하는 방법입니다</strong><br>
+                        같은 보고서라도 CEO는 방향성, CFO는 수익성, 고객 담당자는 체감 가치, 리스크 담당자는 실패 가능성을 봅니다. 역할을 나누면 하나의 평균적인 답변 대신 서로 다른 기준으로 검토한 결과를 모을 수 있습니다.
                     </div>
                 </div>
                 <div class="rp-item">
                     <div class="rp-num">04</div>
                     <div class="rp-text">
-                        <strong>그 캐릭터들은 수백만 권의 책에서 왔습니다</strong><br>
-                        2025년 저작권 소송(Bartz v. Anthropic)에서, Anthropic이 학습을 위해 수백만 권의 종이책을 사들여 한 권씩 스캔·디지털화했고 해적 사이트에서도 700만 권 이상(LibGen 500만, Pirate Library Mirror 200만 이상)을 내려받았다는 사실이 드러났습니다. 법원은 합법 구매·스캔은 정당한 이용, 해적본 복제는 침해로 보았고 15억 달러 합의로 종결됐습니다. AI가 호출하는 '전문가 캐릭터'의 사고 회로는 바로 이 방대한 책 속 인물들에서 나옵니다.
+                        <strong>역할만 주지 말고 맥락과 출력 형식까지 함께 줘야 합니다</strong><br>
+                        OpenAI 프롬프트 가이드는 원하는 맥락, 결과, 길이, 형식, 스타일을 구체적으로 적고 예시를 제공하라고 안내합니다. 그래서 좋은 멀티 페르소나 프롬프트는 역할 이름보다 "무엇을 보고, 어떤 기준으로, 어떤 형식으로 말할지"가 더 중요합니다.
                     </div>
                 </div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
-                <a href="https://www.anthropic.com/research/persona-selection-model" target="_blank" class="research-link">
-                    Anthropic 연구 원문 보기 →
+                <a href="https://openai.com/index/instruction-following/" target="_blank" class="research-link">
+                    OpenAI 연구 해설 보기 →
                 </a>
-                <a href="https://www.npr.org/2025/09/05/nx-s1-5529404/anthropic-settlement-authors-copyright-ai" target="_blank" class="research-link" style="color:var(--t2);">
-                    출처: NPR 보도 →
+                <a href="https://cdn.openai.com/papers/Training_language_models_to_follow_instructions_with_human_feedback.pdf" target="_blank" class="research-link" style="color:var(--t2);">
+                    InstructGPT 논문 PDF →
+                </a>
+                <a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api" target="_blank" class="research-link" style="color:var(--t2);">
+                    OpenAI 프롬프트 가이드 →
                 </a>
             </div>
         </div>
@@ -2122,10 +2127,9 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         height: 2px !important;
     }
 }
-
         /* ## CODEX-HERO-VIDEO START ## */
         header {
-            background: #070707 !important;
+            background: #6F7FF0 !important;
             position: relative;
             overflow: hidden;
             isolation: isolate;
@@ -2137,10 +2141,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
             height: 100%;
             object-fit: cover;
             object-position: center;
-            opacity: 0.98;
-            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            opacity: 0.92;
+            filter: saturate(1.14) contrast(1.02) brightness(1.02);
             z-index: 0;
             pointer-events: none;
+            animation: none !important;
+            border-radius: inherit !important;
         }
         header::before {
             content: '' !important;
@@ -2156,42 +2162,43 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
             border-radius: 0 !important;
             opacity: 1 !important;
             background:
-                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
-                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+                radial-gradient(ellipse at 36% 39%, rgba(7,7,7,0.24) 0%, rgba(20,25,46,0.14) 38%, rgba(20,25,46,0) 70%),
+                linear-gradient(90deg, rgba(7,7,7,0.36) 0%, rgba(20,25,46,0.18) 48%, rgba(20,25,46,0.08) 100%),
+                linear-gradient(115deg, rgba(92,108,232,0.58) 0%, rgba(147,196,248,0.32) 32%, rgba(237,244,255,0.26) 54%, rgba(152,133,246,0.48) 100%),
+                linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%) !important;
             pointer-events: none !important;
             z-index: 1 !important;
         }
-        /* ## CODEX-HERO-SIZE START ## */
         header {
-            min-height: 430px !important;
             padding: 56px 40px 48px !important;
-            background: #11142E !important;
             border-radius: 0 0 32px 32px !important;
             clip-path: inset(0 round 0 0 32px 32px) !important;
-        }
-        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
-        header .hero-video { border-radius: inherit !important; }
-        /* 인덱스와 동일한 스크림 그라데이션 */
-        header::before {
-            background:
-                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
-                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
         }
         @media (max-width: 768px) {
             header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
         }
-        /* ## CODEX-HERO-SIZE END ## */
         header > :not(.hero-video) {
             position: relative;
             z-index: 2;
+        }
+        header h1 {
+            color: #fff !important;
+            text-shadow: 0 2px 8px rgba(7,7,7,0.32), 0 10px 30px rgba(20,25,46,0.28) !important;
+        }
+        header p,
+        header .hero-sub {
+            color: rgba(255,255,255,0.96) !important;
+            text-shadow: 0 2px 8px rgba(7,7,7,0.30), 0 8px 22px rgba(20,25,46,0.22) !important;
+        }
+        header .back-link {
+            color: rgba(255,255,255,0.72) !important;
         }
         @media (prefers-reduced-motion: reduce) {
             header .hero-video { display: none; }
             header {
                 background:
-                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
-                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
-                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+                    linear-gradient(115deg, #5C6CE8 0%, #93C4F8 32%, #AFA7F6 100%),
+                    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%) !important;
             }
         }
         /* ## CODEX-HERO-VIDEO END ## */

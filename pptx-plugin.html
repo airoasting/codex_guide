@@ -400,6 +400,8 @@
         <a class="step-node" href="github-guide.html">4</a>
         <div class="step-line"></div>
         <a class="step-node" href="agents-md-templates.html">5</a>
+        <div class="step-line"></div>
+        <a class="step-node sn-final" href="ai-writing.html">예제</a>
     </nav>
     <a class="back-link" href="index.html">← 목록으로</a>
     <h1>PowerPoint에서 ChatGPT 사용</h1>
@@ -701,10 +703,9 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         border-radius: 12px !important;
     }
 }
-
         /* ## CODEX-HERO-VIDEO START ## */
         header {
-            background: #070707 !important;
+            background: #6F7FF0 !important;
             position: relative;
             overflow: hidden;
             isolation: isolate;
@@ -716,10 +717,12 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
             height: 100%;
             object-fit: cover;
             object-position: center;
-            opacity: 0.98;
-            filter: saturate(0.86) contrast(0.96) brightness(1.08);
+            opacity: 0.92;
+            filter: saturate(1.14) contrast(1.02) brightness(1.02);
             z-index: 0;
             pointer-events: none;
+            animation: none !important;
+            border-radius: inherit !important;
         }
         header::before {
             content: '' !important;
@@ -735,42 +738,43 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
             border-radius: 0 !important;
             opacity: 1 !important;
             background:
-                linear-gradient(90deg, rgba(7,7,7,0.56) 0%, rgba(20,25,46,0.24) 42%, rgba(216,223,250,0.06) 100%),
-                linear-gradient(180deg, rgba(216,223,250,0.06) 0%, rgba(7,7,7,0.18) 100%) !important;
+                radial-gradient(ellipse at 36% 39%, rgba(7,7,7,0.24) 0%, rgba(20,25,46,0.14) 38%, rgba(20,25,46,0) 70%),
+                linear-gradient(90deg, rgba(7,7,7,0.36) 0%, rgba(20,25,46,0.18) 48%, rgba(20,25,46,0.08) 100%),
+                linear-gradient(115deg, rgba(92,108,232,0.58) 0%, rgba(147,196,248,0.32) 32%, rgba(237,244,255,0.26) 54%, rgba(152,133,246,0.48) 100%),
+                linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%) !important;
             pointer-events: none !important;
             z-index: 1 !important;
         }
-        /* ## CODEX-HERO-SIZE START ## */
         header {
-            min-height: 430px !important;
             padding: 56px 40px 48px !important;
-            background: #11142E !important;
             border-radius: 0 0 32px 32px !important;
             clip-path: inset(0 round 0 0 32px 32px) !important;
-        }
-        /* 합성 레이어(video/blend)는 부모 라운딩을 무시 → 직접 상속 */
-        header .hero-video { border-radius: inherit !important; }
-        /* 인덱스와 동일한 스크림 그라데이션 */
-        header::before {
-            background:
-                linear-gradient(180deg, rgba(18,22,52,0.20) 0%, rgba(20,24,58,0.06) 45%, rgba(14,17,44,0.24) 100%),
-                linear-gradient(90deg, rgba(10,12,34,0.34) 0%, rgba(20,24,54,0.10) 46%, rgba(40,46,96,0.04) 100%) !important;
         }
         @media (max-width: 768px) {
             header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
         }
-        /* ## CODEX-HERO-SIZE END ## */
         header > :not(.hero-video) {
             position: relative;
             z-index: 2;
+        }
+        header h1 {
+            color: #fff !important;
+            text-shadow: 0 2px 8px rgba(7,7,7,0.32), 0 10px 30px rgba(20,25,46,0.28) !important;
+        }
+        header p,
+        header .hero-sub {
+            color: rgba(255,255,255,0.96) !important;
+            text-shadow: 0 2px 8px rgba(7,7,7,0.30), 0 8px 22px rgba(20,25,46,0.22) !important;
+        }
+        header .back-link {
+            color: rgba(255,255,255,0.72) !important;
         }
         @media (prefers-reduced-motion: reduce) {
             header .hero-video { display: none; }
             header {
                 background:
-                    radial-gradient(circle at 72% 18%, rgba(141,156,245,0.42) 0%, rgba(75,86,237,0.20) 36%, transparent 58%),
-                    radial-gradient(circle at 26% 20%, rgba(216,223,250,0.34) 0%, transparent 38%),
-                    linear-gradient(135deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%) !important;
+                    linear-gradient(115deg, #5C6CE8 0%, #93C4F8 32%, #AFA7F6 100%),
+                    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%) !important;
             }
         }
         /* ## CODEX-HERO-VIDEO END ## */

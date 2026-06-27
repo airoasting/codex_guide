@@ -788,6 +788,27 @@
             font-weight: 800;
             margin-bottom: 12px;
         }
+        .note-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+        .note-head .eyebrow {
+            margin-bottom: 0;
+        }
+        .note-num {
+            display: inline-flex;
+            flex: 0 0 auto;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            background: var(--codex-accent);
+            color: #fff;
+            font-weight: 800;
+        }
 
         .flow-list {
             display: grid;
@@ -1148,7 +1169,7 @@
                 <h3>스탠퍼드 중퇴생에서, OpenAI의 얼굴로</h3>
                 <p>이 이야기의 주인공을 잠깐 보겠습니다. 샘 알트만은 스탠퍼드에서 컴퓨터과학을 공부하다 중퇴하고, 스무 살 무렵 위치 기반 스타트업 Loopt를 공동 창업했습니다. 이 회사는 2012년 약 4,300만 달러에 팔렸습니다. 이후 2014년부터 2019년까지 스타트업 액셀러레이터 Y Combinator를 이끌며 수많은 창업팀을 길러 냈고, 2015년 OpenAI를 공동 창업해 2019년 CEO에 올랐습니다. 곧 보게 될 2023년 11월의 닷새는, 바로 이 사람의 자리를 둘러싼 사건입니다.</p>
                 <div class="cite-row">
-                    <a class="cite-link" href="https://en.wikipedia.org/wiki/Sam_Altman" target="_blank" rel="noopener">샘 알트만 ↗</a>
+                    <a class="cite-link" href="https://www.newyorker.com/magazine/2016/10/10/sam-altmans-manifest-destiny" target="_blank" rel="noopener">The New Yorker ↗</a>
                 </div>
             </div>
         </div>
@@ -1170,7 +1191,7 @@
                 <h4>10억 달러의 약속</h4>
                 <p>창립 때 약정된 후원금은 10억 달러였습니다. 그러나 2021년까지 실제로 들어온 돈은 약 1억 3천만 달러에 그쳤습니다. 거대한 선언과 현실의 간극에서 출발한 셈입니다.</p>
                 <div class="cite-row">
-                    <a class="cite-link" href="https://en.wikipedia.org/wiki/OpenAI" target="_blank" rel="noopener">출처 ↗</a>
+                    <a class="cite-link" href="https://openai.com/index/openai-lp/" target="_blank" rel="noopener">OpenAI LP ↗</a>
                 </div>
             </article>
             <article class="meaning-point">
@@ -1185,11 +1206,14 @@
 
         <div class="safety-grid reveal stagger-2" style="grid-template-columns: 1fr; margin-top: 18px;">
             <article class="note-card">
-                <span class="eyebrow">2023년 11월 · 닷새의 반란</span>
+                <div class="note-head">
+                    <span class="note-num">3</span>
+                    <span class="eyebrow">2023년 11월 · 닷새의 반란</span>
+                </div>
                 <h3>해임, 그리고 닷새</h3>
                 <p>2023년 11월 17일 금요일, 이사회는 샘 알트만을 전격 해임했습니다. 주말 사이 직원 약 800명이 그의 복귀와 이사회 사퇴를 요구하는 서한에 줄지어 이름을 올렸습니다. 그리고 닷새 만에, 알트만은 CEO로 돌아왔습니다. 한 사람의 거취를 둘러싼 소동처럼 보였지만 그 닷새가 드러낸 것은 따로 있었습니다. 이 조직이 미션과 그것을 실행할 팀을 얼마나 한가운데 두는가, 였습니다.</p>
                 <div class="cite-row">
-                    <a class="cite-link" href="https://en.wikipedia.org/wiki/Removal_of_Sam_Altman_from_OpenAI" target="_blank" rel="noopener">사건 개요 ↗</a>
+                    <a class="cite-link" href="https://openai.com/index/openai-announces-leadership-transition/" target="_blank" rel="noopener">OpenAI 공식 발표 ↗</a>
                     <a class="cite-link" href="https://www.axios.com/2023/11/22/openai-microsoft-sam-altman-ceo-chaos-timeline" target="_blank" rel="noopener">Axios 타임라인 ↗</a>
                 </div>
             </article>
@@ -1204,7 +1228,7 @@
         </div>
         <div class="section-header-block reveal">
             <h2>죽었던 이름이, 직접 일하는 에이전트로 돌아왔습니다</h2>
-            <p class="section-subtitle">2021년 코파일럿의 엔진으로 태어나 2023년 조용히 사라졌던 그 이름이, 2025년 전혀 다른 무게로 돌아왔습니다. 왜 하필 이 이름이었을까요. <a class="cite-link" href="https://en.wikipedia.org/wiki/OpenAI_Codex_(language_model)" target="_blank" rel="noopener">Codex 모델 ↗</a></p>
+            <p class="section-subtitle">2021년 코파일럿의 엔진으로 태어나 2023년 조용히 사라졌던 그 이름이, 2025년 전혀 다른 무게로 돌아왔습니다. 왜 하필 이 이름이었을까요. <a class="cite-link" href="https://openai.com/blog/openai-codex/" target="_blank" rel="noopener">OpenAI Codex ↗</a></p>
         </div>
 
         <div class="lead-card reveal stagger-1">
@@ -1494,7 +1518,7 @@
             <span class="step-badge">ChatGPT · Codex의 역사</span>
         </div>
         <div class="section-header-block reveal">
-            <h2>대화가 노동이 되기까지</h2>
+            <h2>챗봇이 동료가 되기까지</h2>
             <p class="section-subtitle">ChatGPT가 세상에 나온 2022년부터 Codex 앱이 선 2026년까지, 답하던 도구가 일하는 동료가 된 길입니다.</p>
         </div>
 
@@ -1518,7 +1542,7 @@
                     <ul>
                         <li><span class="history-date">2015년 12월</span> 머스크와 알트만 등 11명이 OpenAI를 비영리로 설립했습니다. <a class="li-src" href="https://openai.com/index/introducing-openai/" target="_blank" rel="noopener">창립 발표 ↗</a></li>
                         <li><span class="history-date">2019년</span> 이익 상한(capped-profit) 구조로 전환하고, 마이크로소프트가 10억 달러를 투자했습니다. <a class="li-src" href="https://openai.com/our-structure/" target="_blank" rel="noopener">구조 설명 ↗</a></li>
-                        <li><span class="history-date">2021년 8월</span> 첫 Codex 모델이 공개돼 깃허브 코파일럿의 엔진이 됐습니다. <a class="li-src" href="https://en.wikipedia.org/wiki/OpenAI_Codex_(language_model)" target="_blank" rel="noopener">Codex 모델 ↗</a></li>
+                        <li><span class="history-date">2021년 8월</span> 첫 Codex 모델이 공개돼 깃허브 코파일럿의 엔진이 됐습니다. <a class="li-src" href="https://openai.com/blog/openai-codex/" target="_blank" rel="noopener">OpenAI Codex ↗</a></li>
                     </ul>
                 </div>
                 <p class="history-takeaway">미션을 지키기 위한 구조 실험과 첫 코드 도구가 모두 이 시기에 나왔습니다. 지금의 Codex는 갑자기 등장한 게 아닙니다.</p>

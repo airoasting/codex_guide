@@ -136,6 +136,7 @@
             letter-spacing: 0; line-height: 1.16; margin-bottom: 8px;
             text-shadow: 0 2px 8px rgba(7,7,7,0.32), 0 10px 30px rgba(20,25,46,0.28);
         }
+        .hero h1 .hero-h1-br { display: none; }
         .hero-status-row {
             display: flex;
             flex-wrap: wrap;
@@ -941,7 +942,7 @@
             transform: translateY(-4px);
             box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 12px 28px rgba(74,53,7,0.12);
         }
-        .about-card.accent-2 { border-left-color: var(--codex-accent); }
+        .about-card.accent-2 { border-left-color: transparent; }
         .about-card-head {
             display: flex; align-items: center; gap: 12px;
             margin-bottom: 10px;
@@ -1275,6 +1276,7 @@
             body.menu-open .menu-toggle .icon-close { display: block; }
             .hero { min-height: 0; padding: 32px 20px 28px; border-radius: 0 0 32px 32px; background-position: center right; }
             .hero h1 { font-size: 25px; letter-spacing: 0; }
+            .hero h1 .hero-h1-br { display: inline; }
             .hero-brand { font-size: 11px; margin-bottom: 10px; }
             .hero-status-row { display: none; }
             .hero-status-pill {
@@ -1530,7 +1532,7 @@
     <img class="hero-watermark" src="assets/logos/logo1-white.png" alt="" aria-hidden="true">
     <div class="hero-inner">
         <a href="index.html" class="hero-brand" aria-label="AI ROASTING 홈으로"><span class="hero-brand-logo"><img src="assets/logos/logo1-white.png" alt="AI ROASTING 로고"></span>AI ROASTING</a>
-        <h1>비즈니스 리더를 위한 Codex 완전 정복</h1>
+        <h1>비즈니스 리더를 위한 <br class="hero-h1-br" aria-hidden="true">Codex 완전 정복</h1>
         <div class="hero-sub-row">
             <p class="hero-sub">AI와 함께 일하는 5단계 실전 가이드 · 진단부터 자동화까지</p>
             <a href="?about=1" class="about-link" data-about-open>이 가이드는 어떤 목적으로 만들어졌나요? <span aria-hidden="true">↗</span></a>
@@ -1582,12 +1584,6 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
                 </button>
                 <div class="bio-track" id="bioTrack">
-                    <a class="bio-card" href="?about=1" data-about-target="aboutIntro">
-                        <span class="bio-card-tag">소개</span>
-                        <h3 class="bio-card-title">Codex를 업무에 붙이는 지도</h3>
-                        <p class="bio-card-desc">ChatGPT로 생각을 정리하고 Codex 앱으로 실제 파일 작업까지 이어 가는 5단계 실전 가이드입니다.</p>
-                        <span class="bio-card-more">자세히 →</span>
-                    </a>
                     <a class="bio-card" href="?about=1" data-about-target="aboutWhy">
                         <span class="bio-card-tag">왜 만들었나</span>
                         <h3 class="bio-card-title">개발자의 도구에서, 리더의 무기로</h3>
@@ -1634,7 +1630,7 @@
             <a class="guide-btn" href="#section-1" data-section="section-1"><span class="guide-btn-num">진단</span> 내 수준 파악<span class="done-mark"></span></a>
             <a class="guide-btn" href="#section-project" data-section="section-project"><span class="guide-btn-num">1단계</span> 기본기부터<span class="done-mark"></span></a>
             <a class="guide-btn" href="#section-plugin" data-section="section-plugin"><span class="guide-btn-num">2단계</span> 확장<span class="done-mark"></span></a>
-            <a class="guide-btn" href="#section-code" data-section="section-code"><span class="guide-btn-num">3단계</span> Codex 코드<span class="done-mark"></span></a>
+            <a class="guide-btn" href="#section-code" data-section="section-code"><span class="guide-btn-num">3단계</span> Codex<span class="done-mark"></span></a>
             <a class="guide-btn" href="#section-skills" data-section="section-skills"><span class="guide-btn-num">4단계</span> 에이전트 설계<span class="done-mark"></span></a>
             <a class="guide-btn" href="#section-loop" data-section="section-loop"><span class="guide-btn-num">5단계</span> 루프 자동화<span class="done-mark"></span></a>
             <a class="guide-btn" href="#section-examples" data-section="section-examples"><span class="guide-btn-num">예제</span> 실전 예제<span class="done-mark"></span></a>

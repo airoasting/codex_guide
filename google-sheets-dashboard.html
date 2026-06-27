@@ -67,6 +67,26 @@
             position: relative; z-index: 1;
         }
         .back-link:hover { color: #fff; }
+
+        /* Step Navigator */
+        .step-nav {
+            display: flex; align-items: center; justify-content: center;
+            margin: 26px 0 20px; gap: 0;
+            max-width: 80%; margin-left: auto; margin-right: auto;
+        }
+        .step-node {
+            width: 37px; height: 37px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.35);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7);
+            background: rgba(0,0,0,0.2);
+            text-decoration: none; flex-shrink: 0; transition: all 0.2s;
+        }
+        .step-node.sn-diag { font-size: 11px; letter-spacing: 0; }
+        .step-node.sn-final { font-size: 12px; }
+        .step-node:hover { border-color: rgba(255,255,255,0.7); color: rgba(255,255,255,0.9); background: rgba(0,0,0,0.3); }
+        .step-node.active { background: rgba(255,255,255,0.95); border-color: rgba(255,255,255,0.95); color: #20242E; }
+        .step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.5); min-width: 13px; max-width: 34px; border-radius: 2px; }
         header h1 {
             font-size: 40px; font-weight: 800; color: #fff;
             text-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -667,6 +687,21 @@
     <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
         <source src="assets/media/hero-bg.mp4" type="video/mp4">
     </video>
+    <nav class="step-nav">
+        <a class="step-node sn-diag" href="codex-orientation.html">진단</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="ai-fluency.html">1</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="excel-plugin.html">2</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="codex-101.html">3</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="harness-engineering.html">4</a>
+        <div class="step-line"></div>
+        <a class="step-node" href="loop-engineering.html">5</a>
+        <div class="step-line"></div>
+        <a class="step-node sn-final active" href="ai-writing.html">예제</a>
+    </nav>
     <a href="index.html" class="back-link">&larr; 목록으로</a>
     <h1>구글 시트 기반 대시보드 만들기</h1>
     <p>ChatGPT 업무 워크스페이스에서 구글 시트 자료를 연결하고, 시트를 탐색해 Google Sheets CSV를 직접 읽는 뉴모피즘 대시보드를 자동 생성하는 실전 워크플로우</p>
@@ -1758,6 +1793,40 @@ function switchMode(mode) {
     z-index: -1 !important; pointer-events: none !important;
   }
 }
+</style>
+<style id="codex-load-anim">
+/* ## CODEX-LOAD-ANIM START ## github-guide.html과 동일한 화면 로딩 애니메이션 통일 */
+@keyframes codexLoadFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+header .back-link,
+header h1,
+header > p,
+.header-pages,
+nav.sub-menu {
+    opacity: 0;
+    animation: codexLoadFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+header .back-link { animation-delay: 0.15s !important; }
+header h1         { animation-delay: 0.25s !important; }
+header > p        { animation-delay: 0.35s !important; }
+.header-pages     { animation-delay: 0.55s !important; }
+nav.sub-menu      { animation-delay: 0.55s !important; }
+/* 서브메뉴 항목 개별 등장(좌우 이동/스태거) 제거: 메뉴 전체가 한 번에 떠오른다 */
+nav.sub-menu a {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+    header .back-link, header h1, header > p, .header-pages, nav.sub-menu {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+}
+/* ## CODEX-LOAD-ANIM END ## */
 </style>
 </body>
 </html>

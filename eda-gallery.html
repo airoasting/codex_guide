@@ -366,17 +366,31 @@
         }
         .chart-card.reveal { transition-delay: calc(var(--i, 0) * 90ms); }
 
-        /* Header entrance */
-        header h1, header > p, .header-pages {
-            opacity: 0;
-            transform: translateY(-12px);
-            animation: headerFadeIn 0.8s cubic-bezier(.22,.61,.36,1) forwards;
+        /* ── Page Load (상단 순차 등장, 섹션 페이지 공통) ── */
+        @keyframes load-fade-down {
+            from { opacity: 0; transform: translateY(-16px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        header > p { animation-delay: 0.12s; }
-        .header-pages { animation-delay: 0.24s; }
-        @keyframes headerFadeIn {
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes load-fade-up {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
+        header .back-link { animation: load-fade-down 0.5s ease-out 0.1s both; }
+        header h1         { animation: load-fade-down 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
+        header > p        { animation: load-fade-down 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
+        .header-pages     { animation: load-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
+        .header-page-link { opacity: 0; animation: load-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+        .header-page-link:nth-child(1) { animation-delay: 0.55s; }
+        .header-page-link:nth-child(2) { animation-delay: 0.65s; }
+        .header-page-link:nth-child(3) { animation-delay: 0.75s; }
+
+        .sub-menu   { animation: load-fade-down 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both; }
+        .sub-menu a { opacity: 0; animation: load-fade-down 0.4s ease-out both; }
+        .sub-menu a:nth-child(1) { animation-delay: 0.80s; }
+        .sub-menu a:nth-child(2) { animation-delay: 0.86s; }
+        .sub-menu a:nth-child(3) { animation-delay: 0.92s; }
+        .sub-menu a:nth-child(4) { animation-delay: 0.98s; }
+        .sub-menu a:nth-child(5) { animation-delay: 1.04s; }
 
         /* Chart preview SVG: gentle entrance on card reveal */
         .chart-card .chart-preview svg {
@@ -398,7 +412,9 @@
         /* Respect reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
             .reveal, .chart-card .chart-preview svg,
-            header h1, header > p, .header-pages {
+            header .back-link, header h1, header > p,
+            .header-pages, .header-page-link,
+            .sub-menu, .sub-menu a {
                 opacity: 1 !important;
                 transform: none !important;
                 animation: none !important;
@@ -1556,6 +1572,40 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     z-index: -1 !important; pointer-events: none !important;
   }
 }
+</style>
+<style id="codex-load-anim">
+/* ## CODEX-LOAD-ANIM START ## github-guide.html과 동일한 화면 로딩 애니메이션 통일 */
+@keyframes codexLoadFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+header .back-link,
+header h1,
+header > p,
+.header-pages,
+nav.sub-menu {
+    opacity: 0;
+    animation: codexLoadFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+header .back-link { animation-delay: 0.15s !important; }
+header h1         { animation-delay: 0.25s !important; }
+header > p        { animation-delay: 0.35s !important; }
+.header-pages     { animation-delay: 0.55s !important; }
+nav.sub-menu      { animation-delay: 0.55s !important; }
+/* 서브메뉴 항목 개별 등장(좌우 이동/스태거) 제거: 메뉴 전체가 한 번에 떠오른다 */
+nav.sub-menu a {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+    header .back-link, header h1, header > p, .header-pages, nav.sub-menu {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+}
+/* ## CODEX-LOAD-ANIM END ## */
 </style>
 </body>
 </html>

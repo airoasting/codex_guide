@@ -2834,5 +2834,39 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
   }
 }
 </style>
+<style id="codex-load-anim">
+/* ## CODEX-LOAD-ANIM START ## github-guide.html과 동일한 화면 로딩 애니메이션 통일 */
+@keyframes codexLoadFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+header .back-link,
+header h1,
+header > p,
+.header-pages,
+nav.sub-menu {
+    opacity: 0;
+    animation: codexLoadFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+header .back-link { animation-delay: 0.15s !important; }
+header h1         { animation-delay: 0.25s !important; }
+header > p        { animation-delay: 0.35s !important; }
+.header-pages     { animation-delay: 0.55s !important; }
+nav.sub-menu      { animation-delay: 0.55s !important; }
+/* 서브메뉴 항목 개별 등장(좌우 이동/스태거) 제거: 메뉴 전체가 한 번에 떠오른다 */
+nav.sub-menu a {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+    header .back-link, header h1, header > p, .header-pages, nav.sub-menu {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+}
+/* ## CODEX-LOAD-ANIM END ## */
+</style>
 </body>
 </html>

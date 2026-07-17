@@ -2687,5 +2687,62 @@ nav.sub-menu a {
 }
 /* ## CODEX-LOAD-ANIM END ## */
 </style>
+<style id="orientation-choice-nav">
+/* ## ORIENTATION-CHOICE-NAV START ## Excel 플러그인 헤더 메뉴 규격 */
+@media (min-width: 769px) {
+    .header-pages {
+        width: auto;
+        max-width: 490px;
+        margin: 22px auto 0;
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        translate: none;
+    }
+    .header-page-link {
+        width: auto;
+        min-height: 0;
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: 280px;
+        padding: 12px 22px;
+        gap: 8px;
+        border: 0;
+        border-radius: 16px;
+        color: rgba(255,255,255,.7);
+        background: rgba(255,255,255,.07);
+        box-shadow: 5px 5px 12px rgba(0,0,0,.35), -5px -5px 12px rgba(255,255,255,.06);
+        backdrop-filter: none;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0;
+    }
+    .header-page-link:hover { color: rgba(255,255,255,.92); }
+    .header-page-link.active {
+        color: #fff;
+        background: rgba(255,255,255,.14);
+        border: 0;
+        box-shadow: inset 3px 3px 8px rgba(0,0,0,.35), inset -3px -3px 8px rgba(255,255,255,.06);
+    }
+    .hpl-icon {
+        display: inline-flex;
+        width: 16px;
+        height: 16px;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 16px;
+    }
+    .hpl-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+}
+/* ## ORIENTATION-CHOICE-NAV END ## */
+</style>
 </body>
 </html>

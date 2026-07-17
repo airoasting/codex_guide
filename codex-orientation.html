@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://airosting.github.io/codex_guide/codex-orientation.html">
     <meta property="og:title" content="ChatGPT 데스크톱 앱, 5분 오리엔테이션 | AI ROASTING">
-    <meta property="og:description" content="하나의 ChatGPT 앱 안에 있는 Chat, Work, Codex의 관계와 업무별 선택 기준을 5분에 정리한 오리엔테이션">
+    <meta property="og:description" content="대화는 ChatGPT, 업무 결과물은 Work, 소프트웨어는 Codex. 세 가지 선택 기준을 비즈니스 리더의 관점에서 5분에 정리한 오리엔테이션">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <meta property="og:url" content="https://airosting.github.io/codex_guide/codex-orientation.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ChatGPT 데스크톱 앱, 5분 오리엔테이션 | AI ROASTING">
-    <meta name="twitter:description" content="하나의 ChatGPT 앱 안에 있는 Chat, Work, Codex의 관계와 업무별 선택 기준을 5분에 정리한 오리엔테이션">
+    <meta name="twitter:description" content="대화는 ChatGPT, 업무 결과물은 Work, 소프트웨어는 Codex. 세 가지 선택 기준을 비즈니스 리더의 관점에서 5분에 정리한 오리엔테이션">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <title>ChatGPT 데스크톱 앱, 5분 오리엔테이션 | AI ROASTING</title>
-    <meta name="description" content="하나의 ChatGPT 앱 안에 있는 Chat, Work, Codex의 관계와 업무별 선택 기준을 5분에 정리한 오리엔테이션.">
+    <meta name="description" content="대화는 ChatGPT, 업무 결과물은 Work, 소프트웨어는 Codex. 세 가지 선택 기준을 비즈니스 리더의 관점에서 5분에 정리한 오리엔테이션.">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -235,7 +235,7 @@
             color: #8D867D;
             white-space: nowrap;
         }
-        #sec-why, #sec-codex, #sec-history, #sec-usage, #sec-safety, #sec-first, #sec-sources { scroll-margin-top: 155px; }
+        #sec-why, #sec-codex, #sec-history, #sec-safety, #sec-first, #sec-sources { scroll-margin-top: 155px; }
 
         .container {
             max-width: 1080px;
@@ -322,6 +322,85 @@
             line-height: 1.35;
         }
         .lead-copy p { font-size: 15.5px; color: var(--text); }
+        .choice-card {
+            padding: 30px;
+            border-radius: var(--card-radius);
+            background: var(--card-surface);
+            box-shadow: var(--card-shadow);
+            border: 1.5px solid var(--card-border);
+        }
+        .choice-rule {
+            margin: 0 0 20px;
+            text-align: center;
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        .choice-rule strong { color: var(--card-title); }
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .choice-item {
+            min-width: 0;
+            padding: 22px;
+            border: 1px solid #E5E7EE;
+            border-radius: 16px;
+            background: #FBFCFD;
+        }
+        .choice-item.work { background: #FAFAF6; }
+        .choice-item.codex { background: #F4F6FF; border-color: #DFE3FA; }
+        .choice-name {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .choice-name strong {
+            color: var(--card-title);
+            font-size: 20px;
+            letter-spacing: -.025em;
+        }
+        .choice-name span {
+            display: inline-flex;
+            min-height: 26px;
+            padding: 5px 10px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #E0E4F8;
+            border-radius: 999px;
+            background: #F3F4FC;
+            color: #3D4DB2;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .04em;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .choice-item h3 {
+            min-height: 2.8em;
+            margin-bottom: 12px;
+            color: var(--card-title);
+            font-size: 17px;
+            line-height: 1.4;
+        }
+        .choice-item p {
+            color: var(--text-soft);
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+        .choice-output {
+            display: block;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(56,65,61,.1);
+            color: var(--card-title);
+            font-size: 13px;
+            font-weight: 750;
+            line-height: 1.5;
+        }
         .codex-word {
             min-height: 280px;
             border-radius: 18px;
@@ -412,6 +491,29 @@
             color: #fff;
             font-weight: 800;
             margin-bottom: 12px;
+        }
+        .meaning-points.milestone-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .meaning-point .note-head {
+            margin-bottom: 4px;
+        }
+        .meaning-point .note-head .note-num {
+            margin-bottom: 0;
+        }
+        .meaning-point .note-head .eyebrow {
+            width: auto;
+            height: auto;
+            padding: 5px 11px;
+            border: 1px solid #E0E4F8;
+            border-radius: 999px;
+            background: #F3F4FC;
+            color: #3D4DB2;
+            font-size: 11px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0;
+            white-space: nowrap;
         }
         .meaning-point h4,
         .info-card h3,
@@ -958,12 +1060,15 @@
             .lead-card,
             .history-callout,
             .safety-grid { grid-template-columns: 1fr; }
+            .choice-grid { grid-template-columns: 1fr; }
+            .choice-item h3 { min-height: 0; }
             .history-row { grid-template-columns: 86px minmax(0, 1fr); }
             .history-takeaway { grid-column: 1 / -1; }
             .surface-grid,
             .source-grid,
             .work-grid { grid-template-columns: repeat(2, 1fr); }
-            .meaning-points { grid-template-columns: 1fr; }
+            .meaning-points,
+            .meaning-points.milestone-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             header { padding: 22px 20px 30px; border-radius: 0 0 24px 24px; }
@@ -973,6 +1078,7 @@
             section { margin-bottom: 58px; }
             .section-header-block h2 { font-size: 23px; }
             .lead-card,
+            .choice-card,
             .definition-panel,
             .history-callout,
             .history-row,
@@ -1038,9 +1144,8 @@
         </nav>
 
         <a class="back-link" href="index.html">&larr; 목록으로</a>
-        <div class="hero-kicker">CHATGPT DESKTOP · EXECUTIVE ORIENTATION</div>
-        <h1>하나의 ChatGPT에서, 대화하고 일하고 만듭니다</h1>
-        <p>앱 이름은 ChatGPT입니다. 그 안에서 Chat은 빠르게 답하고, Work는 긴 지식 업무를 완성하며, Codex는 소프트웨어를 만듭니다.</p>
+        <h1>Codex 완전 정복, 5분 오리엔테이션</h1>
+        <p>ChatGPT에서 대화는 Chat, 지식 업무는 Work, 소프트웨어 개발은 Codex가 맡습니다.</p>
 
         <div class="header-pages">
             <a href="codex-orientation.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polygon points="16 8 13.5 13.5 8 16 10.5 10.5 16 8"/></svg></span> 5분 오리엔테이션</a>
@@ -1053,33 +1158,28 @@
     <div class="sub-menu-inner">
         <a href="#sec-why" class="active">
             <span class="sm-num">1</span>
-            <span class="sm-title">왜 만들었나</span>
-            <span class="sm-sub">질문 하나의 10년</span>
+            <span class="sm-title">OpenAI 소개</span>
+            <span class="sm-sub">설립 · 주요 변화</span>
+        </a>
+        <a href="#sec-history">
+            <span class="sm-num">2</span>
+            <span class="sm-title">업데이트</span>
+            <span class="sm-sub">주요 출시 · 변화</span>
         </a>
         <a href="#sec-codex">
-            <span class="sm-num">2</span>
+            <span class="sm-num">3</span>
             <span class="sm-title">앱 구조</span>
             <span class="sm-sub">Chat · Work · Codex</span>
-        </a>
-        <a href="#sec-usage">
-            <span class="sm-num">3</span>
-            <span class="sm-title">활용법</span>
-            <span class="sm-sub">어디서 · 무엇을</span>
         </a>
         <a href="#sec-safety">
             <span class="sm-num">4</span>
             <span class="sm-title">안전한 위임</span>
-            <span class="sm-sub">규칙이 먼저</span>
+            <span class="sm-sub">성공 · 접근 · 검토</span>
         </a>
         <a href="#sec-first">
             <span class="sm-num">5</span>
             <span class="sm-title">첫 30분</span>
             <span class="sm-sub">작게 맡겨 보기</span>
-        </a>
-        <a href="#sec-history">
-            <span class="sm-num">6</span>
-            <span class="sm-title">역사</span>
-            <span class="sm-sub">ChatGPT · Work · Codex</span>
         </a>
     </div>
 </nav>
@@ -1141,8 +1241,8 @@
             <span class="step-badge">왜 만들었나</span>
         </div>
         <div class="section-header-block reveal">
-            <h2>시작은 코드가 아니라, 질문 하나였습니다</h2>
-            <p class="section-subtitle">"<strong>가장 강력해질 기술을, 누가 어떻게 가져야 하는가.</strong>" 2015년 한 비영리 연구소가 이 질문을 던졌습니다. 10년 뒤, 그 질문은 리더의 책상 위에서 일하는 도구가 됩니다. 어떻게 거기까지 왔을까요.</p>
+            <h2>시작은 질문 하나였습니다</h2>
+            <p class="section-subtitle">"<strong>가장 강력해질 기술을, 누가 어떻게 가져야 하는가.</strong>" OpenAI는 이 질문을 바탕으로 설립되었습니다.</p>
         </div>
 
         <div class="history-callout reveal stagger-1">
@@ -1153,7 +1253,7 @@
             </div>
             <div>
                 <h3>"재정적 수익에 구속되지 않고, 인류 전체에 이롭게"</h3>
-                <p>2015년 12월, 일론 머스크와 샘 알트만을 비롯한 11명이 OpenAI를 세웠습니다. 목표는 한 문장이었습니다. 인공지능을 가장 인류에 이로운 방향으로 발전시키되, 주주가 아니라 모두를 위한 가치를 만든다는 것. 약정된 후원금은 10억 달러였습니다.</p>
+                <p>2015년 12월, 일론 머스크와 샘 알트만을 비롯한 11명이 OpenAI를 설립했습니다. 창립 목표는 인공지능을 인류에 이로운 방향으로 발전시키고 모두를 위한 가치를 만드는 것이었습니다. 약정된 후원금은 10억 달러였습니다.</p>
                 <div class="cite-row">
                     <a class="cite-link" href="https://openai.com/index/introducing-openai/" target="_blank" rel="noopener">OpenAI 창립 발표 ↗</a>
                 </div>
@@ -1162,13 +1262,13 @@
 
         <div class="history-callout reveal stagger-1">
             <div class="history-date-chip" aria-label="샘 알트만 약력">
-                <span>인물</span>
+                <span>창업자</span>
                 <strong>샘 알트만</strong>
                 <span>OpenAI CEO</span>
             </div>
             <div>
-                <h3>스탠퍼드 중퇴생에서, OpenAI의 얼굴로</h3>
-                <p>이 이야기의 주인공을 잠깐 보겠습니다. 샘 알트만은 스탠퍼드에서 컴퓨터과학을 공부하다 중퇴하고, 스무 살 무렵 위치 기반 스타트업 Loopt를 공동 창업했습니다. 이 회사는 2012년 약 4,300만 달러에 팔렸습니다. 이후 2014년부터 2019년까지 스타트업 액셀러레이터 Y Combinator를 이끌며 수많은 창업팀을 길러 냈고, 2015년 OpenAI를 공동 창업해 2019년 CEO에 올랐습니다. 곧 보게 될 2023년 11월의 닷새는, 바로 이 사람의 자리를 둘러싼 사건입니다.</p>
+                <h3>샘 알트만의 주요 경력</h3>
+                <p>샘 알트만은 스탠퍼드에서 컴퓨터과학을 공부하다 중퇴하고 스무 살 무렵 위치 기반 스타트업 Loopt를 공동 창업했습니다. 이 회사는 2012년 약 4,300만 달러에 매각되었습니다. 이후 2014년부터 2019년까지 스타트업 액셀러레이터 Y Combinator를 이끌었고 2015년 OpenAI를 공동 창업해 2019년 CEO로 취임했습니다. 2023년 11월에는 이사회에서 해임된 뒤 닷새 만에 CEO로 복귀했습니다.</p>
                 <div class="cite-row">
                     <a class="cite-link" href="https://www.newyorker.com/magazine/2016/10/10/sam-altmans-manifest-destiny" target="_blank" rel="noopener">The New Yorker ↗</a>
                 </div>
@@ -1182,24 +1282,30 @@
         </div>
 
         <div class="section-header-block reveal" style="margin-top: 52px;">
-            <h2 style="font-size: 22px;">약속은 컸고, 길은 순탄하지 않았습니다</h2>
-            <p class="section-subtitle">미션은 또렷했습니다. 그러나 그 길에는 두 번의 아이러니가 있었고, 가장 큰 시험은 따로 남아 있었습니다.</p>
+            <h2 style="font-size: 22px;">OpenAI의 주요 전환점과 쟁점</h2>
         </div>
 
-        <div class="meaning-points reveal stagger-1" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="meaning-points milestone-grid reveal stagger-1">
             <article class="meaning-point">
-                <span>1</span>
-                <h4>10억 달러의 약속</h4>
-                <p>창립 때 약정된 후원금은 10억 달러였습니다. 그러나 2021년까지 실제로 들어온 돈은 약 1억 3천만 달러에 그쳤습니다. 거대한 선언과 현실의 간극에서 출발한 셈입니다.</p>
+                <div class="note-head">
+                    <span class="note-num">1</span>
+                    <span class="eyebrow">2015년 12월 · 자금 조달</span>
+                </div>
+                <h4>약정 후원금과 실제 조달액</h4>
+                <p>창립 당시 약정된 후원금은 10억 달러였습니다. 2021년까지 실제 후원금은 약 1억 3천만 달러였습니다. 약정액과 실제 후원금 사이에는 큰 차이가 있었습니다.</p>
                 <div class="cite-row">
                     <a class="cite-link" href="https://openai.com/index/openai-lp/" target="_blank" rel="noopener">OpenAI LP ↗</a>
                 </div>
             </article>
             <article class="meaning-point">
-                <span>2</span>
-                <h4>함께 세우고, 갈라서다</h4>
-                <p>AI의 위험을 함께 막자며 출발했지만, 2018년 머스크는 테슬라의 AI 개발과 이해상충을 이유로 이사회를 떠났습니다. 안전을 위해 모인 사람들이 가장 먼저 갈라섰습니다.</p>
+                <div class="note-head">
+                    <span class="note-num">2</span>
+                    <span class="eyebrow">2018년 2월 · 이사회 사임</span>
+                </div>
+                <h4>일론 머스크의 이사회 사임</h4>
+                <p>2018년 테슬라가 자율주행 등 자체 AI 개발을 확대하자, 테슬라 CEO인 머스크가 OpenAI 이사로서 두 조직의 AI 전략과 의사결정에 동시에 관여하는 상황이 잠재적 이해상충으로 지적되었습니다. 머스크는 이를 이유로 OpenAI 이사회에서 사임했습니다.</p>
                 <div class="cite-row">
+                    <a class="cite-link" href="https://openai.com/index/openai-supporters/" target="_blank" rel="noopener">OpenAI 공식 발표 ↗</a>
                     <a class="cite-link" href="https://www.cnbc.com/2018/02/21/elon-musk-is-leaving-the-board-of-openai.html" target="_blank" rel="noopener">CNBC ↗</a>
                 </div>
             </article>
@@ -1209,10 +1315,10 @@
             <article class="note-card">
                 <div class="note-head">
                     <span class="note-num">3</span>
-                    <span class="eyebrow">2023년 11월 · 닷새의 반란</span>
+                    <span class="eyebrow">2023년 11월 · 경영진 교체</span>
                 </div>
-                <h3>해임, 그리고 닷새</h3>
-                <p>2023년 11월 17일 금요일, 이사회는 샘 알트만을 전격 해임했습니다. 주말 사이 직원 약 800명이 그의 복귀와 이사회 사퇴를 요구하는 서한에 줄지어 이름을 올렸습니다. 그리고 닷새 만에, 알트만은 CEO로 돌아왔습니다. 한 사람의 거취를 둘러싼 소동처럼 보였지만 그 닷새가 드러낸 것은 따로 있었습니다. 이 조직이 미션과 그것을 실행할 팀을 얼마나 한가운데 두는가, 였습니다.</p>
+                <h3>샘 알트만 해임과 복귀</h3>
+                <p>2023년 11월 17일 금요일, 이사회는 샘 알트만을 해임했습니다. 주말 사이 직원 약 800명이 그의 복귀와 이사회 사퇴를 요구하는 서한에 서명했습니다. 알트만은 닷새 만에 CEO로 복귀했습니다.</p>
                 <div class="cite-row">
                     <a class="cite-link" href="https://openai.com/index/openai-announces-leadership-transition/" target="_blank" rel="noopener">OpenAI 공식 발표 ↗</a>
                     <a class="cite-link" href="https://www.axios.com/2023/11/22/openai-microsoft-sam-altman-ceo-chaos-timeline" target="_blank" rel="noopener">Axios 타임라인 ↗</a>
@@ -1220,7 +1326,74 @@
             </article>
         </div>
 
-        <p class="compare-note reveal">알트만은 2025년을 "첫 AI 에이전트들이 인력에 합류해 기업의 산출물을 실질적으로 바꿀 수 있는 해"라고 불렀습니다. 2026년 ChatGPT는 하나의 앱 안에 빠른 대화, 긴 지식 업무, 소프트웨어 개발을 나란히 담았습니다. 이름은 ChatGPT로 넓어졌지만, Codex는 개발 작업을 맡는 핵심 모드로 그대로 남아 있습니다. <a class="cite-link" href="https://learn.chatgpt.com/docs/app" target="_blank" rel="noopener">ChatGPT 데스크톱 앱 ↗</a></p>
+        <div class="safety-grid reveal stagger-2" style="margin-top: 18px;">
+            <article class="note-card">
+                <div class="note-head">
+                    <span class="note-num">4</span>
+                    <span class="eyebrow">2023년 12월 · 저작권</span>
+                </div>
+                <h3>뉴욕타임스 저작권 소송</h3>
+                <p>뉴욕타임스는 2023년 12월 27일 OpenAI와 Microsoft가 자사 기사 수백만 건을 허가 없이 AI 모델 학습에 사용했다며 뉴욕 남부연방법원에 소송을 제기했습니다. 법원은 2025년 주요 저작권 청구를 계속 심리하기로 했으며, 사건은 OpenAI 저작권 통합소송 절차에서 진행되고 있습니다.</p>
+                <div class="cite-row">
+                    <a class="cite-link" href="https://nytco-assets.nytimes.com/2023/12/NYT_Complaint_Dec2023.pdf" target="_blank" rel="noopener">뉴욕타임스 소장 ↗</a>
+                    <a class="cite-link" href="https://www.nysd.uscourts.gov/sites/default/files/2025-04/yf%2023cv11195%20OpenAI%20MTD%20opinion%20april%204%202025.pdf" target="_blank" rel="noopener">법원 결정문 ↗</a>
+                </div>
+            </article>
+            <article class="note-card">
+                <div class="note-head">
+                    <span class="note-num">5</span>
+                    <span class="eyebrow">2024년 8월 · 설립 목적</span>
+                </div>
+                <h3>일론 머스크의 OpenAI 소송</h3>
+                <p>머스크는 2024년 8월 OpenAI가 비영리 창립 취지에서 벗어나 영리 구조로 전환했다며 연방법원에 소송을 제기했습니다. 2026년 5월 배심은 청구의 소멸시효가 지났다고 판단했고, 법원은 이를 받아들여 머스크의 청구를 기각했습니다.</p>
+                <div class="cite-row">
+                    <a class="cite-link" href="https://cand.uscourts.gov/cases-e-filing/cases/424-cv-04722-ygr/musk-v-altman-et-al" target="_blank" rel="noopener">미 연방법원 사건 기록 ↗</a>
+                    <a class="cite-link" href="https://news.bloomberglaw.com/litigation/musk-v-altman-fight-heads-to-appeal-with-core-claims-untested" target="_blank" rel="noopener">판결 결과 ↗</a>
+                </div>
+            </article>
+        </div>
+
+        <div class="safety-grid reveal stagger-2" style="grid-template-columns: 1fr; margin-top: 18px;">
+            <article class="note-card">
+                <div class="note-head">
+                    <span class="note-num">6</span>
+                    <span class="eyebrow">2025년 10월 · 지배구조 개편</span>
+                </div>
+                <h3>비영리 재단이 통제하는 PBC 구조</h3>
+                <p>OpenAI는 2025년 10월 28일 영리 부문을 공익법인인 OpenAI Group PBC로 재편했습니다. 비영리 OpenAI Foundation이 PBC를 통제하면서 지분 26%를 보유하며, 당시 평가액은 약 1,300억 달러였습니다. Microsoft는 27%, 직원과 기타 투자자는 나머지 47%를 보유합니다.</p>
+                <div class="cite-row">
+                    <a class="cite-link" href="https://openai.com/our-structure/" target="_blank" rel="noopener">OpenAI 지배구조 ↗</a>
+                </div>
+            </article>
+        </div>
+
+        <div class="safety-grid reveal stagger-2" style="margin-top: 18px;">
+            <article class="note-card">
+                <div class="note-head">
+                    <span class="note-num">7</span>
+                    <span class="eyebrow">2026년 6월 · 상장 준비</span>
+                </div>
+                <h3>S-1 초안 비공개 제출</h3>
+                <p>OpenAI는 2026년 6월 8일 미국 증권거래위원회에 S-1 증권신고서 초안을 비공개로 제출했습니다. SEC의 검토를 먼저 받기 위한 절차로, 기업공개가 확정되거나 상장 일정이 정해졌다는 의미는 아닙니다. OpenAI도 상장 시기를 결정하지 않았다고 밝혔습니다.</p>
+                <div class="cite-row">
+                    <a class="cite-link" href="https://openai.com/ko-KR/index/openai-submits-confidential-s-1/" target="_blank" rel="noopener">OpenAI 공식 발표 ↗</a>
+                    <a class="cite-link" href="https://apnews.com/article/c7583994426b1b097120786d6a0b8308" target="_blank" rel="noopener">AP 보도 ↗</a>
+                </div>
+            </article>
+            <article class="note-card">
+                <div class="note-head">
+                    <span class="note-num">8</span>
+                    <span class="eyebrow">2026년 7월 · 제안 단계</span>
+                </div>
+                <h3>미국 정부 5% 지분 제공안</h3>
+                <p>2026년 7월 보도에 따르면 OpenAI는 회사 지분 5%를 미국 정부가 지원하는 공공 자산 펀드에 제공하는 방안을 논의했습니다. 2026년 3월 기업가치 8,520억 달러를 기준으로 약 426억 달러 규모입니다. 미국 시민이 AI 성장의 경제적 이익을 공유하도록 하자는 구상이지만, 현재는 초기 논의 단계이며 지분 이전은 확정되지 않았습니다.</p>
+                <div class="cite-row">
+                    <a class="cite-link" href="https://www.investing.com/news/stock-market-news/openai-proposes-handing-trump-administration-5-stake-ft-reports-4772283" target="_blank" rel="noopener">Reuters 보도 ↗</a>
+                    <a class="cite-link" href="https://cdn.openai.com/pdf/561e7512-253e-424b-9734-ef4098440601/Industrial%20Policy%20for%20the%20Intelligence%20Age.pdf" target="_blank" rel="noopener">공공 자산 펀드 제안서 ↗</a>
+                </div>
+            </article>
+        </div>
+
     </section>
 
     <section id="sec-codex">
@@ -1228,55 +1401,49 @@
             <span class="step-badge">ChatGPT 앱 구조</span>
         </div>
         <div class="section-header-block reveal">
-            <h2>앱은 ChatGPT, 개발 작업은 Codex입니다</h2>
-            <p class="section-subtitle">Codex 앱이 Work로 이름만 바뀐 것이 아닙니다. 데스크톱 앱의 이름이 ChatGPT로 확장됐고, 그 안에서 Chat, Work, Codex를 맡길 일에 따라 선택합니다. <a class="cite-link" href="https://learn.chatgpt.com/docs/environments/git-worktrees" target="_blank" rel="noopener">데스크톱 앱의 Codex ↗</a></p>
+            <h2>ChatGPT, Work, Codex 비교</h2>
+            <p class="section-subtitle">ChatGPT는 전체 앱 이름이자 빠른 대화 기능입니다. 보고서·표·슬라이드 같은 업무 산출물은 Work, 웹사이트와 소프트웨어 개발은 Codex를 선택합니다. <a class="cite-link" href="https://learn.chatgpt.com/docs/glossary" target="_blank" rel="noopener">OpenAI 공식 용어 설명 ↗</a></p>
         </div>
 
-        <div class="lead-card reveal stagger-1">
-            <div class="lead-copy">
-                <h3>Codex는 ChatGPT 안의 소프트웨어 개발 모드입니다.</h3>
-                <p>Chat은 빠른 질문과 아이디어 구상, Work는 조사와 분석부터 문서·표·슬라이드까지 이어지는 긴 지식 업무에 맞습니다.</p>
-                <p>Codex를 선택하면 프로젝트 폴더와 Git 저장소를 읽고, 코드를 고치고, 명령과 테스트를 실행합니다. 데스크톱 앱 밖에서도 <strong>Codex CLI와 IDE 확장</strong>으로 같은 개발 작업을 이어 갈 수 있습니다.</p>
+        <div class="choice-card reveal stagger-1">
+            <p class="choice-rule"><strong>최종 산출물을 기준으로 선택합니다.</strong></p>
+            <div class="choice-grid">
+                <article class="choice-item chat">
+                    <div class="choice-name"><strong>ChatGPT</strong><span>대화</span></div>
+                    <h3>빠른 질의응답</h3>
+                    <p>질문, 검색, 요약, 아이디어 구상에 필요한 답변을 대화로 확인합니다.</p>
+                    <span class="choice-output">결과: 답변 · 아이디어 · 짧은 초안</span>
+                </article>
+                <article class="choice-item work">
+                    <div class="choice-name"><strong>Work</strong><span>업무 결과물</span></div>
+                    <h3>업무 산출물 작성</h3>
+                    <p>자료를 조사하고 분석해 문서, 표, 슬라이드 등의 산출물을 작성합니다.</p>
+                    <span class="choice-output">결과: 보고서 · 표 · 슬라이드</span>
+                </article>
+                <article class="choice-item codex">
+                    <div class="choice-name"><strong>Codex</strong><span>소프트웨어</span></div>
+                    <h3>소프트웨어 개발 및 수정</h3>
+                    <p>프로젝트 파일을 읽고 코드를 수정한 뒤 명령과 테스트로 결과를 확인합니다.</p>
+                    <span class="choice-output">결과: 웹사이트 · 자동화 · 코드 변경</span>
+                </article>
             </div>
-            <div class="codex-word" aria-label="ChatGPT 안의 Codex 역할 카드">
-                <div class="codex-word-top">
-                    <div class="label">INSIDE CHATGPT</div>
-                    <div class="codex-mark" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 6.6C10.4 5.4 8.4 4.9 6 5.1c-.9.07-1.6.18-2.1.33v12.9c.5-.15 1.2-.26 2.1-.33 2.4-.2 4.4.3 6 1.5"/>
-                            <path d="M12 6.6c1.6-1.2 3.6-1.7 6-1.5.9.07 1.6.18 2.1.33v12.9c-.5-.15-1.2-.26-2.1-.33-2.4-.2-4.4.3-6 1.5"/>
-                            <line x1="12" y1="6.6" x2="12" y2="19.5"/>
-                        </svg>
-                    </div>
-                </div>
-                <div>
-                    <div class="word">Codex</div>
-                    <div class="meaning">코드를 만들고 검증하는 소프트웨어 개발 에이전트</div>
-                </div>
-                <div class="meaning">프로젝트 · 코드 · 터미널 · 테스트 · Git · Worktree</div>
-            </div>
-        </div>
-
-        <div class="section-header-block reveal" style="margin-top: 52px;">
-            <h2 style="font-size: 22px;">Chat, Work, Codex 중 무엇을 고를까</h2>
-            <p class="section-subtitle">앱 이름이 아니라 <strong>완성하려는 결과</strong>를 기준으로 고르면 됩니다.</p>
         </div>
 
         <div class="compare-card reveal stagger-1">
             <div class="compare-row compare-head">
                 <div class="compare-axis">기준</div>
-                <div class="compare-cell chat"><span class="compare-tag">Chat</span></div>
-                <div class="compare-cell ch"><span class="compare-tag">ChatGPT Work</span></div>
-                <div class="compare-cell cx"><span class="compare-tag cx">Codex</span></div>
+                <div class="compare-cell chat"><span class="compare-tag">ChatGPT · 대화</span></div>
+                <div class="compare-cell ch"><span class="compare-tag">Work · 업무</span></div>
+                <div class="compare-cell cx"><span class="compare-tag cx">Codex · 개발</span></div>
             </div>
             <div class="compare-row">
                 <div class="compare-axis">핵심 역할</div>
-                <div class="compare-cell chat">빠르게 묻고 답하는 대화 파트너</div>
+                <div class="compare-cell chat">질문하고 답변을 확인하는 대화 기능</div>
                 <div class="compare-cell ch">조사하고 산출물을 완성하는 지식 업무 에이전트</div>
                 <div class="compare-cell cx">코드를 만들고 검증하는 소프트웨어 개발 에이전트</div>
             </div>
             <div class="compare-row">
-                <div class="compare-axis">내놓는 결과</div>
+                <div class="compare-axis">주요 산출물</div>
                 <div class="compare-cell chat">답변·아이디어·짧은 초안</div>
                 <div class="compare-cell ch">문서·표·슬라이드·보고서·Site</div>
                 <div class="compare-cell cx">코드 변경·테스트 결과·리뷰·커밋</div>
@@ -1300,132 +1467,13 @@
                 <div class="compare-cell cx">테스트와 변경 내역을 확인한 뒤 사람이 승인</div>
             </div>
             <div class="compare-row">
-                <div class="compare-axis">쓰는 곳</div>
+                <div class="compare-axis">사용 환경</div>
                 <div class="compare-cell chat">웹 · 모바일 · 데스크톱 앱</div>
-                <div class="compare-cell ch">웹 · 모바일 · 데스크톱 앱</div>
+                <div class="compare-cell ch">웹 · 데스크톱 앱</div>
                 <div class="compare-cell cx">데스크톱 앱 · 터미널 · 편집기</div>
             </div>
         </div>
 
-        <p class="compare-note reveal">보고서, 시장 조사, 재무 분석, 발표 자료는 <strong>Work</strong>에 맡기고, 웹사이트 수정, 코드 작성, 테스트, 저장소 작업은 <strong>Codex</strong>에 맡깁니다. 빠른 질문과 아이디어 구상은 Chat이 가장 가볍습니다. 세 모드 모두 결과를 검토하고 사람이 승인하는 과정은 그대로 남습니다.</p>
-
-        <div class="section-header-block reveal" style="margin-top: 52px;">
-            <h2 style="font-size: 22px;">Claude를 썼다면 이렇게 구분하면 됩니다</h2>
-            <p class="section-subtitle">ChatGPT Work는 긴 지식 업무를 맡는다는 점에서 Claude의 에이전트형 작업 환경과 닮았고, Codex는 Claude Code와 같은 코딩 에이전트에 가깝습니다.</p>
-        </div>
-
-        <div class="safety-grid reveal stagger-1">
-            <article class="note-card">
-                <span class="eyebrow">Work</span>
-                <h3>지식 업무를 끝까지 이어 갑니다</h3>
-                <ul>
-                    <li>대화와 파일, 연결된 업무 자료에서 맥락을 모읍니다.</li>
-                    <li>조사, 분석, 작성처럼 여러 단계가 필요한 일을 이어 갑니다.</li>
-                    <li>문서, 표, 슬라이드, 보고서처럼 검토할 수 있는 결과를 만듭니다.</li>
-                    <li>외부 발송과 중요한 변경은 사람의 승인을 받습니다.</li>
-                </ul>
-            </article>
-            <article class="note-card">
-                <span class="eyebrow">Codex</span>
-                <h3>소프트웨어 작업에 집중합니다</h3>
-                <ul>
-                    <li>저장소 전체를 읽고 코드와 설정 파일을 직접 고칩니다.</li>
-                    <li>명령과 테스트를 실행해 변경 결과를 확인합니다.</li>
-                    <li><code>AGENTS.md</code>에 프로젝트 원칙과 검증 방법을 적어 둘 수 있습니다.</li>
-                    <li>Claude Code를 써 봤다면 작업 방식이 익숙합니다.</li>
-                </ul>
-            </article>
-        </div>
-    </section>
-
-    <section id="sec-usage">
-        <div class="step-divider">
-            <span class="step-badge">활용법</span>
-        </div>
-        <div class="section-header-block reveal">
-            <h2>이제 질문은 하나, 무엇을 맡길 것인가</h2>
-            <p class="section-subtitle">빠른 대화는 Chat, 긴 지식 업무는 Work, 소프트웨어 작업은 Codex에 맡깁니다. 리더에게 필요한 판단은 <strong>어떤 결과를 어디에서 완성할 것인가</strong>입니다.</p>
-        </div>
-
-        <div class="surface-grid reveal stagger-1">
-            <article class="info-card">
-                <span class="tag">Work · Web</span>
-                <h3>연결된 자료로 긴 업무 맡기기</h3>
-                <p>대화와 업로드한 파일, 허용된 업무 시스템의 자료를 모아 조사와 분석, 산출물 작성을 맡깁니다.</p>
-                <ul>
-                    <li>시장·고객 조사</li>
-                    <li>보고서와 발표 자료</li>
-                    <li>연결된 자료 종합</li>
-                </ul>
-            </article>
-            <article class="info-card">
-                <span class="tag">Work · Mobile</span>
-                <h3>밖에서도 진행 확인하기</h3>
-                <p>이동 중에 일을 맡기고, 진행 과정에서 필요한 확인에 답하고, 돌아온 결과를 검토합니다.</p>
-                <ul>
-                    <li>작업 시작과 확인</li>
-                    <li>중간 질문에 답하기</li>
-                    <li>완성본 빠른 검토</li>
-                </ul>
-            </article>
-            <article class="info-card">
-                <span class="tag">Codex · Desktop</span>
-                <h3>프로젝트 폴더에서 개발하기</h3>
-                <p>ChatGPT 데스크톱 앱에서 Codex를 선택하면 허용한 로컬 폴더와 저장소 안에서 개발 작업을 수행합니다.</p>
-                <ul>
-                    <li>로컬 코드 수정</li>
-                    <li>명령과 테스트 실행</li>
-                    <li>Git worktree 병렬 작업</li>
-                </ul>
-            </article>
-            <article class="info-card">
-                <span class="tag">Codex · CLI / IDE</span>
-                <h3>개발팀 환경에서 이어서 작업하기</h3>
-                <p>터미널과 코드 편집기에서도 Codex를 사용해 코드 수정, 테스트, 리뷰, 자동화를 맡깁니다.</p>
-                <ul>
-                    <li>웹사이트와 사내 도구</li>
-                    <li>코드 수정과 테스트</li>
-                    <li>저장소와 PR 단위 협업</li>
-                </ul>
-            </article>
-        </div>
-
-        <div class="section-header-block reveal" style="margin-top: 52px;">
-            <h2>맡길 일은, 결과를 눈으로 확인할 수 있는 일이어야 합니다</h2>
-        </div>
-
-        <div class="work-grid reveal stagger-1">
-            <article class="work-card">
-                <div class="num">WORK 01</div>
-                <h3>현황 이해</h3>
-                <p>낯선 자료나 시스템을 읽고 핵심 내용과 중요한 부분, 손대면 위험한 지점을 짚어 설명합니다.</p>
-            </article>
-            <article class="work-card">
-                <div class="num">WORK 02</div>
-                <h3>조사와 분석</h3>
-                <p>여러 출처와 내부 자료를 모아 비교하고, 근거와 불확실성을 구분한 분석 결과를 만듭니다.</p>
-            </article>
-            <article class="work-card">
-                <div class="num">WORK 03</div>
-                <h3>보고서와 발표 자료</h3>
-                <p>회의 목적과 독자를 기준으로 문서, 표, 슬라이드를 만들고 검토할 수 있는 완성본으로 정리합니다.</p>
-            </article>
-            <article class="work-card">
-                <div class="num">WORK 04</div>
-                <h3>반복 업무 자동화</h3>
-                <p>스프레드시트와 이메일, 자료 정리처럼 매번 반복되는 업무를 하나의 작업으로 묶습니다.</p>
-            </article>
-            <article class="work-card">
-                <div class="num">WORK 05</div>
-                <h3>자료·문서 정비</h3>
-                <p>안내서와 보고용 요약, 운영 체크리스트를 실제 상태에 맞게 만들고 최신으로 갱신합니다.</p>
-            </article>
-            <article class="work-card">
-                <div class="num">WORK 06</div>
-                <h3>코드와 Site 제작</h3>
-                <p>웹사이트와 사내 도구처럼 소프트웨어 결과가 필요하면 Codex로 이어서 만들고 검증합니다.</p>
-            </article>
-        </div>
     </section>
 
     <section id="sec-safety">
@@ -1433,8 +1481,8 @@
             <span class="step-badge">안전한 위임</span>
         </div>
         <div class="section-header-block reveal">
-            <h2>맡기기 전에, 규칙부터</h2>
-            <p class="section-subtitle">미션을 앞세워 세운 회사가 통제 장치부터 설계했듯, 위임에도 <strong>규칙이 먼저</strong>입니다.</p>
+            <h2>위임 전에 운영 기준을 설정합니다</h2>
+            <p class="section-subtitle">성공 기준, 접근 범위, 결과 검토 절차를 먼저 정의합니다.</p>
         </div>
 
         <div class="safety-grid reveal stagger-1">
@@ -1443,7 +1491,7 @@
                 <h3>일을 맡기기 전에 정할 기준</h3>
                 <ul>
                     <li>이 작업의 성공 기준을 한 문장으로 씁니다.</li>
-                    <li>건드리면 안 되는 자료와 데이터 범위를 분리합니다.</li>
+                    <li>접근을 제한할 자료와 데이터 범위를 분리합니다.</li>
                     <li>연결할 파일과 앱은 업무에 필요한 범위로 좁힙니다.</li>
                     <li>결과 확인 기준을 화면, 표, 문서 중 하나로 정합니다.</li>
                     <li>최종 배포와 외부 발송은 사람이 승인합니다.</li>
@@ -1451,12 +1499,12 @@
             </article>
             <article class="note-card">
                 <span class="eyebrow">팀 운영 기준</span>
-                <h3>반복할수록 좋아지는 규칙</h3>
+                <h3>반복 업무의 운영 기준</h3>
                 <ul>
                     <li>반복 업무는 프로젝트 지침이나 템플릿에 원칙과 금지 사항을 적습니다.</li>
-                    <li>일은 작게 나누고, 단계마다 바뀐 부분을 확인합니다.</li>
+                    <li>일은 작게 나누고 단계마다 바뀐 부분을 확인합니다.</li>
                     <li>확인 방법과 필요한 근거를 선택한 모드에 미리 알려줍니다.</li>
-                    <li>잘 통한 요청문은 템플릿으로 저장해 다시 씁니다.</li>
+                    <li>검증된 요청문은 템플릿으로 저장해 다시 사용합니다.</li>
                     <li>실패한 작업은 원인과 다음 시도를 기록합니다.</li>
                 </ul>
             </article>
@@ -1468,8 +1516,8 @@
             <span class="step-badge">첫 30분</span>
         </div>
         <div class="section-header-block reveal">
-            <h2>거창한 설치보다, 30분의 실험</h2>
-            <p class="section-subtitle">거창한 준비보다, 작은 일 하나를 맡겨 결과를 확인하는 <strong>30분</strong>이 더 많은 것을 알려줍니다.</p>
+            <h2>첫 30분 실행 가이드</h2>
+            <p class="section-subtitle">첫 30분에는 검토하기 쉬운 업무를 맡기고 결과와 검토 절차를 확인합니다.</p>
         </div>
 
         <div class="flow-list reveal stagger-1">
@@ -1477,28 +1525,28 @@
                 <div class="flow-num">01</div>
                 <div>
                     <h3>ChatGPT 데스크톱 앱을 엽니다</h3>
-                    <p>빠른 질문은 Chat, 문서와 분석은 Work, 코드와 웹사이트 작업은 Codex를 선택합니다. 회사 계정에서는 관리자가 일부 모드의 권한을 열어야 할 수 있습니다.</p>
+                    <p>빠른 질문은 Chat, 문서와 분석은 Work, 코드와 웹사이트 작업은 Codex를 선택합니다. 회사 계정에서는 일부 모드에 관리자 승인이 필요할 수 있습니다.</p>
                 </div>
             </article>
             <article class="flow-card">
                 <div class="flow-num">02</div>
                 <div>
-                    <h3>모드에 맞는 작은 업무를 고릅니다</h3>
-                    <p>Work라면 회의 자료 요약이나 문서 초안, Codex라면 문구 수정이나 링크 변경처럼 결과를 바로 검토할 수 있는 일이 좋습니다.</p>
+                    <h3>검토하기 쉬운 업무를 선택합니다</h3>
+                    <p>Work는 회의 자료 요약이나 문서 초안, Codex는 문구 수정이나 링크 변경처럼 결과를 즉시 검토할 수 있는 업무로 시작합니다.</p>
                 </div>
             </article>
             <article class="flow-card">
                 <div class="flow-num">03</div>
                 <div>
-                    <h3>필요한 자료만 건넵니다</h3>
-                    <p>Work에는 필요한 대화와 파일만 건넵니다. Codex에는 연습용 프로젝트나 복사본을 열고 관계없는 폴더는 접근 범위에서 뺍니다.</p>
+                    <h3>필요한 자료만 제공합니다</h3>
+                    <p>Work에는 필요한 대화와 파일만 제공합니다. Codex에는 연습용 프로젝트나 복사본을 열고 관계없는 폴더는 접근 범위에서 제외합니다.</p>
                 </div>
             </article>
             <article class="flow-card">
                 <div class="flow-num">04</div>
                 <div>
-                    <h3>첫 요청은 작고 검토하기 쉽게 씁니다</h3>
-                    <p>요청 하나에 목표와 제한, 확인 기준을 함께 담아 두는 편이 좋습니다.</p>
+                    <h3>목표·제한·검토 기준을 명시합니다</h3>
+                    <p>요청 하나에 목표와 제한, 확인 기준을 함께 담습니다.</p>
                     <div class="prompt-box"><code>첨부한 회의 자료를 바탕으로 임원용 1쪽 요약을 만들어 주세요.
 핵심 결정 3개, 근거, 남은 위험, 다음 행동을 넣어 주세요.
 자료에 없는 내용은 추정하지 말고 확인이 필요한 항목으로 구분해 주세요.</code></div>
@@ -1507,9 +1555,9 @@
             <article class="flow-card">
                 <div class="flow-num">05</div>
                 <div>
-                    <h3>결과를 보고 다음 작업을 맡깁니다</h3>
-                    <p>첫 결과가 정확하면 표나 발표 자료처럼 한 단계 더 큰 산출물로 이어 갑니다. 중요한 사실과 외부 공유 여부는 사람이 마지막에 확인합니다.</p>
-                    <div class="prompt-box"><code>좋습니다. 이 요약을 바탕으로 5장 발표 자료를 만들어 주세요.
+                    <h3>검토 후 작업 범위를 확대합니다</h3>
+                    <p>첫 결과가 정확하면 표나 발표 자료 등 다음 산출물을 요청합니다. 중요한 사실과 외부 공유 여부는 사람이 최종 확인합니다.</p>
+                    <div class="prompt-box"><code>이 요약을 바탕으로 5장 발표 자료를 만들어 주세요.
 각 장에는 제목, 핵심 메시지 하나, 근거를 넣고 마지막 장은 다음 행동으로 끝내 주세요.
 완성 후 빠진 근거와 사람이 확인할 항목을 따로 알려주세요.</code></div>
                 </div>
@@ -1526,34 +1574,22 @@
             <span class="step-badge">ChatGPT · Work · Codex의 역사</span>
         </div>
         <div class="section-header-block reveal">
-            <h2>챗봇이 동료가 되기까지</h2>
-            <p class="section-subtitle">ChatGPT가 세상에 나온 2022년부터 Chat, Work, Codex가 한 앱에 모인 2026년까지, 답하던 도구가 일을 완성하는 동료가 된 길입니다.</p>
-        </div>
-
-        <div class="history-callout reveal stagger-1">
-            <div class="history-date-chip" aria-label="ChatGPT 데스크톱 앱의 세 모드">
-                <span>ChatGPT desktop</span>
-                <strong>3 modes</strong>
-                <span>Chat · Work · Codex</span>
-            </div>
-            <div>
-                <h3>Codex가 사라진 것이 아니라, ChatGPT 안으로 들어왔습니다</h3>
-                <p>데스크톱 앱의 이름은 ChatGPT로 확장됐습니다. 그 안에서 Work는 조사와 문서 같은 지식 업무를, Codex는 코드와 저장소 같은 소프트웨어 업무를 맡습니다. Codex CLI와 IDE 확장도 그대로 이어집니다.</p>
-            </div>
+            <h2>ChatGPT, Work, Codex 주요 연혁</h2>
+            <p class="section-subtitle">2022년 ChatGPT 공개부터 2026년 Work와 Codex 통합까지 주요 제품 변화를 정리했습니다.</p>
         </div>
 
         <div class="history-list reveal stagger-2">
             <article class="history-row">
                 <div class="history-year">2015</div>
                 <div class="history-main">
-                    <h3>비영리로 시작해, 첫 Codex까지</h3>
+                    <h3>OpenAI 설립과 Codex 공개</h3>
                     <ul>
                         <li><span class="history-date">2015년 12월</span> 머스크와 알트만 등 11명이 OpenAI를 비영리로 설립했습니다. <a class="li-src" href="https://openai.com/index/introducing-openai/" target="_blank" rel="noopener">창립 발표 ↗</a></li>
-                        <li><span class="history-date">2019년</span> 이익 상한(capped-profit) 구조로 전환하고, 마이크로소프트가 10억 달러를 투자했습니다. <a class="li-src" href="https://openai.com/our-structure/" target="_blank" rel="noopener">구조 설명 ↗</a></li>
-                        <li><span class="history-date">2021년 8월</span> 첫 Codex 모델이 공개돼 깃허브 코파일럿의 엔진이 됐습니다. <a class="li-src" href="https://openai.com/blog/openai-codex/" target="_blank" rel="noopener">OpenAI Codex ↗</a></li>
+                        <li><span class="history-date">2019년</span> 이익 상한(capped-profit) 구조로 전환하고 마이크로소프트가 10억 달러를 투자했습니다. <a class="li-src" href="https://openai.com/our-structure/" target="_blank" rel="noopener">구조 설명 ↗</a></li>
+                        <li><span class="history-date">2021년 8월</span> 첫 Codex 모델이 공개되어 깃허브 코파일럿의 기반 기술로 적용되었습니다. <a class="li-src" href="https://openai.com/blog/openai-codex/" target="_blank" rel="noopener">OpenAI Codex ↗</a></li>
                     </ul>
                 </div>
-                <p class="history-takeaway">미션을 지키기 위한 구조 실험과 첫 코드 도구가 모두 이 시기에 나왔습니다. 지금의 Codex는 갑자기 등장한 게 아닙니다.</p>
+                <p class="history-takeaway">OpenAI는 조직 구조를 개편하고 2021년 첫 Codex 모델을 공개했습니다.</p>
             </article>
 
             <article class="history-row">
@@ -1561,22 +1597,22 @@
                 <div class="history-main">
                     <h3>ChatGPT 공개</h3>
                     <ul>
-                        <li><span class="history-date">11월 30일</span> GPT-3.5 기반 연구 프리뷰로 ChatGPT가 공개됐습니다. <a class="li-src" href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener">ChatGPT 발표 ↗</a></li>
+                        <li><span class="history-date">11월 30일</span> GPT-3.5 기반 연구 프리뷰로 ChatGPT가 공개되었습니다. <a class="li-src" href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener">ChatGPT 발표 ↗</a></li>
                     </ul>
                 </div>
-                <p class="history-takeaway">자연어로 지시하고 그 결과를 검토하는 업무 방식이 이때부터 널리 퍼지기 시작했습니다.</p>
+                <p class="history-takeaway">ChatGPT는 자연어로 질문하고 응답을 검토하는 대화형 인터페이스를 제공했습니다.</p>
             </article>
 
             <article class="history-row">
                 <div class="history-year">2023</div>
                 <div class="history-main">
-                    <h3>GPT-4와 긴 문맥의 시작</h3>
+                    <h3>GPT-4와 문맥 확장</h3>
                     <ul>
-                        <li><span class="history-date">3월 14일</span> GPT-4가 공개되며 더 어려운 추론과 이미지 입력이 ChatGPT Plus에 들어왔습니다. <a class="li-src" href="https://openai.com/index/gpt-4-research/" target="_blank" rel="noopener">GPT-4 발표 ↗</a></li>
-                        <li><span class="history-date">11월 6일</span> GPT-4 Turbo, GPTs, 더 긴 문맥, 도구 호출 기능이 함께 발표됐습니다. <a class="li-src" href="https://openai.com/index/new-models-and-developer-products-announced-at-devday/" target="_blank" rel="noopener">DevDay 발표 ↗</a></li>
+                        <li><span class="history-date">3월 14일</span> GPT-4가 공개되며 더 어려운 추론과 이미지 입력 기능이 ChatGPT Plus에 도입되었습니다. <a class="li-src" href="https://openai.com/index/gpt-4-research/" target="_blank" rel="noopener">GPT-4 발표 ↗</a></li>
+                        <li><span class="history-date">11월 6일</span> GPT-4 Turbo, GPTs, 더 긴 문맥, 도구 호출 기능이 함께 발표되었습니다. <a class="li-src" href="https://openai.com/index/new-models-and-developer-products-announced-at-devday/" target="_blank" rel="noopener">DevDay 발표 ↗</a></li>
                     </ul>
                 </div>
-                <p class="history-takeaway">ChatGPT는 단순히 답하는 도구를 넘어, 긴 자료와 맞춤형 업무까지 다루는 도구로 넓어졌습니다.</p>
+                <p class="history-takeaway">ChatGPT에 긴 문맥과 맞춤형 GPT 기능이 추가되었습니다.</p>
             </article>
 
             <article class="history-row">
@@ -1584,26 +1620,26 @@
                 <div class="history-main">
                     <h3>멀티모달과 추론 모델</h3>
                     <ul>
-                        <li><span class="history-date">5월 13일</span> GPT-4o가 공개되며 텍스트, 이미지, 음성을 더 빠르게 오갈 수 있게 됐습니다. <a class="li-src" href="https://openai.com/index/hello-gpt-4o/" target="_blank" rel="noopener">GPT-4o 발표 ↗</a></li>
-                        <li><span class="history-date">9월 12일</span> o1-preview와 o1-mini가 ChatGPT에 들어오며 오래 생각하는 모델이 등장했습니다. <a class="li-src" href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener">o1 발표 ↗</a></li>
-                        <li><span class="history-date">10월</span> canvas와 ChatGPT search가 추가되며 작성, 코드, 검색 작업이 더 분명한 작업 공간을 얻었습니다.</li>
+                        <li><span class="history-date">5월 13일</span> GPT-4o가 공개되며 텍스트, 이미지, 음성을 더 빠르게 처리할 수 있게 되었습니다. <a class="li-src" href="https://openai.com/index/hello-gpt-4o/" target="_blank" rel="noopener">GPT-4o 발표 ↗</a></li>
+                        <li><span class="history-date">9월 12일</span> o1-preview와 o1-mini가 ChatGPT에 도입되며 추론 모델 계열이 추가되었습니다. <a class="li-src" href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener">o1 발표 ↗</a></li>
+                        <li><span class="history-date">10월</span> canvas와 ChatGPT search가 추가되어 문서 작성, 코드 편집, 웹 검색 기능이 강화되었습니다.</li>
                     </ul>
                 </div>
-                <p class="history-takeaway">보고 듣고 답하던 모델이, 오래 생각하고 외부 정보를 찾아 작업하는 모델로 발전했습니다.</p>
+                <p class="history-takeaway">멀티모달 입력, 추론, 웹 검색 기능이 추가되었습니다.</p>
             </article>
 
             <article class="history-row">
                 <div class="history-year">2025</div>
                 <div class="history-main">
-                    <h3>에이전트와 Codex의 등장</h3>
+                    <h3>Codex와 GPT-5 출시</h3>
                     <ul>
-                        <li><span class="history-date">2월 27일</span> GPT-4.5가 연구 프리뷰로 나왔습니다. <a class="li-src" href="https://openai.com/index/introducing-gpt-4-5/" target="_blank" rel="noopener">GPT-4.5 발표 ↗</a></li>
-                        <li><span class="history-date">4월 16일</span> o3와 o4-mini가 공개됐고, Codex CLI가 본격화됐습니다. <a class="li-src" href="https://openai.com/index/introducing-o3-and-o4-mini/" target="_blank" rel="noopener">o3 발표 ↗</a></li>
-                        <li><span class="history-date">5월 16일</span> ChatGPT 안의 Codex와 웹 작업이 공개됐습니다. <a class="li-src" href="https://openai.com/index/introducing-codex/" target="_blank" rel="noopener">Codex 발표 ↗</a></li>
-                        <li><span class="history-date">8월 7일</span> GPT-5가 나왔고, 11월 GPT-5.1, 12월 GPT-5.2로 이어졌습니다. <a class="li-src" href="https://openai.com/index/introducing-gpt-5/" target="_blank" rel="noopener">GPT-5 발표 ↗</a></li>
+                        <li><span class="history-date">2월 27일</span> GPT-4.5가 연구 프리뷰로 공개되었습니다. <a class="li-src" href="https://openai.com/index/introducing-gpt-4-5/" target="_blank" rel="noopener">GPT-4.5 발표 ↗</a></li>
+                        <li><span class="history-date">4월 16일</span> o3와 o4-mini가 공개되었고 Codex CLI도 출시되었습니다. <a class="li-src" href="https://openai.com/index/introducing-o3-and-o4-mini/" target="_blank" rel="noopener">o3 발표 ↗</a></li>
+                        <li><span class="history-date">5월 16일</span> ChatGPT 안의 Codex와 웹 작업이 공개되었습니다. <a class="li-src" href="https://openai.com/index/introducing-codex/" target="_blank" rel="noopener">Codex 발표 ↗</a></li>
+                        <li><span class="history-date">8월 7일</span> GPT-5가 출시되었고 11월에는 GPT-5.1, 12월에는 GPT-5.2가 출시되었습니다. <a class="li-src" href="https://openai.com/index/introducing-gpt-5/" target="_blank" rel="noopener">GPT-5 발표 ↗</a></li>
                     </ul>
                 </div>
-                <p class="history-takeaway">ChatGPT는 답변을 만드는 도구를 넘어, 파일과 도구를 직접 다루며 긴 작업을 이어 가는 에이전트 환경으로 자리 잡았습니다.</p>
+                <p class="history-takeaway">ChatGPT에 파일·도구 활용과 에이전트 기능이 추가되었습니다.</p>
             </article>
 
             <article class="history-row">
@@ -1611,25 +1647,25 @@
                 <div class="history-main">
                     <h3>ChatGPT Work와 GPT-5.6</h3>
                     <ul>
-                        <li><span class="history-date">2월 2일</span> Codex 앱이 macOS용으로 나왔습니다. <a class="li-src" href="https://openai.com/index/introducing-the-codex-app/" target="_blank" rel="noopener">Codex 앱 발표 ↗</a></li>
-                        <li><span class="history-date">3월 4일</span> Codex 앱 Windows 지원이 추가됐습니다. <a class="li-src" href="https://openai.com/index/introducing-the-codex-app/" target="_blank" rel="noopener">Codex 앱 발표 ↗</a></li>
-                        <li><span class="history-date">3월 5일</span> GPT-5.4가 ChatGPT, API, Codex로 배포됐습니다. <a class="li-src" href="https://openai.com/index/introducing-gpt-5-4/" target="_blank" rel="noopener">GPT-5.4 발표 ↗</a></li>
-                        <li><span class="history-date">4월 23일</span> GPT-5.5가 ChatGPT와 Codex로 배포됐습니다. <a class="li-src" href="https://openai.com/index/introducing-gpt-5-5/" target="_blank" rel="noopener">GPT-5.5 발표 ↗</a></li>
-                        <li><span class="history-date">7월 9일</span> GPT-5.6 Sol·Terra·Luna가 ChatGPT, Codex, API에 정식 출시됐습니다. <a class="li-src" href="https://openai.com/index/gpt-5-6/" target="_blank" rel="noopener">GPT-5.6 발표 ↗</a></li>
-                        <li><span class="history-date">7월 9일</span> Codex 기술을 긴 지식 업무로 확장한 ChatGPT Work가 출시됐습니다. <a class="li-src" href="https://learn.chatgpt.com/docs/enterprise/work-admin-faq" target="_blank" rel="noopener">Work 안내 ↗</a></li>
+                        <li><span class="history-date">2월 2일</span> Codex 앱이 macOS용으로 출시되었습니다. <a class="li-src" href="https://openai.com/index/introducing-the-codex-app/" target="_blank" rel="noopener">Codex 앱 발표 ↗</a></li>
+                        <li><span class="history-date">3월 4일</span> Codex 앱이 Windows용으로 출시되었습니다. <a class="li-src" href="https://openai.com/index/introducing-the-codex-app/" target="_blank" rel="noopener">Codex 앱 발표 ↗</a></li>
+                        <li><span class="history-date">3월 5일</span> GPT-5.4가 ChatGPT, API, Codex에 배포되었습니다. <a class="li-src" href="https://openai.com/index/introducing-gpt-5-4/" target="_blank" rel="noopener">GPT-5.4 발표 ↗</a></li>
+                        <li><span class="history-date">4월 23일</span> GPT-5.5가 ChatGPT와 Codex에 배포되었습니다. <a class="li-src" href="https://openai.com/index/introducing-gpt-5-5/" target="_blank" rel="noopener">GPT-5.5 발표 ↗</a></li>
+                        <li><span class="history-date">7월 9일</span> GPT-5.6 Sol·Terra·Luna가 ChatGPT, Codex, API에 정식 출시되었습니다. <a class="li-src" href="https://openai.com/index/gpt-5-6/" target="_blank" rel="noopener">GPT-5.6 발표 ↗</a></li>
+                        <li><span class="history-date">7월 9일</span> 자료를 조사하고 분석해 문서·표·슬라이드 같은 업무 결과물을 만드는 ChatGPT Work가 출시되었습니다. <a class="li-src" href="https://learn.chatgpt.com/docs/enterprise/work-admin-faq" target="_blank" rel="noopener">Work 안내 ↗</a></li>
                     </ul>
                 </div>
-                <p class="history-takeaway">GPT-5.6은 성능과 비용에 따라 Sol, Terra, Luna로 나뉘고, Work와 Codex는 맡길 업무의 성격에 따라 선택하는 실행 환경이 됐습니다.</p>
+                <p class="history-takeaway">GPT-5.6은 성능과 비용에 따라 Sol, Terra, Luna로 구분됩니다. Work와 Codex는 맡길 업무의 성격에 따라 선택하는 실행 환경입니다.</p>
             </article>
         </div>
     </section>
 
     <div class="final-cta reveal">
-        <h3>10년 전의 질문이 이제 책상 위의 도구가 됐습니다</h3>
-        <p>남은 건 어디까지 맡길지 정하는 일입니다. 내 현재 위치부터 확인하면, 첫 작업의 범위가 선명해집니다.</p>
+        <h3>AI 활용 수준을 진단하고 첫 작업 범위를 정하세요</h3>
+        <p>현재 활용 수준을 확인하면 적절한 작업 범위와 검토 기준을 정할 수 있습니다.</p>
         <div class="final-cta-actions">
             <a class="final-cta-btn" href="ai-levels.html">AI 활용 수준 진단하기 &rarr;</a>
-            <a class="final-cta-btn secondary" href="project-intro.html">맞춤 프로젝트 세팅으로 가기</a>
+            <a class="final-cta-btn secondary" href="project-intro.html">맞춤 프로젝트 설정하기</a>
         </div>
     </div>
 
@@ -1668,22 +1704,77 @@
     })();
 
     (function() {
-        var secIds = ['sec-why', 'sec-codex', 'sec-history', 'sec-usage', 'sec-safety', 'sec-first', 'sec-sources'];
-        var links = document.querySelectorAll('.sub-menu a');
-        if (!('IntersectionObserver' in window)) return;
-        var io = new IntersectionObserver(function(entries) {
-            entries.forEach(function(en) {
-                if (en.isIntersecting) {
-                    links.forEach(function(a) { a.classList.remove('active'); });
-                    var idx = secIds.indexOf(en.target.id);
-                    if (idx >= 0 && links[idx]) links[idx].classList.add('active');
-                }
+        var historySection = document.getElementById('sec-history');
+        var appStructureSection = document.getElementById('sec-codex');
+        if (historySection && appStructureSection) {
+            appStructureSection.parentNode.insertBefore(historySection, appStructureSection);
+        }
+
+        var secIds = ['sec-why', 'sec-history', 'sec-codex', 'sec-safety', 'sec-first'];
+        var sections = secIds.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+        var menu = document.getElementById('subMenu');
+        var menuInner = menu ? menu.querySelector('.sub-menu-inner') : null;
+        var links = menu ? Array.from(menu.querySelectorAll('a[href^="#"]')) : [];
+        var manualSelectionUntil = 0;
+        var ticking = false;
+
+        function findLink(id) {
+            return links.find(function(link) { return link.getAttribute('href') === '#' + id; });
+        }
+
+        function setActive(id, revealInMenu) {
+            var activeLink = findLink(id);
+            if (!activeLink) return;
+            links.forEach(function(link) { link.classList.toggle('active', link === activeLink); });
+            if (revealInMenu && menuInner) {
+                activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+
+        function selectSection(id) {
+            var section = document.getElementById(id);
+            if (!section) return;
+            manualSelectionUntil = Date.now() + 1100;
+            setActive(id, true);
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (window.history && window.history.replaceState) {
+                window.history.replaceState(null, '', '#' + id);
+            }
+        }
+
+        links.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                var id = link.getAttribute('href').slice(1);
+                if (!document.getElementById(id)) return;
+                event.preventDefault();
+                selectSection(id);
             });
-        }, { rootMargin: '-30% 0px -60% 0px' });
-        secIds.forEach(function(id) {
-            var el = document.getElementById(id);
-            if (el) io.observe(el);
         });
+
+        function updateFromScroll() {
+            ticking = false;
+            if (!sections.length || Date.now() < manualSelectionUntil) return;
+            var menuBottom = menu ? menu.getBoundingClientRect().bottom : 0;
+            var marker = Math.max(menuBottom + 24, window.innerHeight * 0.24);
+            var current = sections[0];
+            sections.forEach(function(section) {
+                if (section.getBoundingClientRect().top <= marker) current = section;
+            });
+            setActive(current.id, false);
+        }
+
+        window.addEventListener('scroll', function() {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(updateFromScroll);
+        }, { passive: true });
+        window.addEventListener('resize', updateFromScroll);
+
+        var initialId = window.location.hash.slice(1);
+        setActive(secIds.indexOf(initialId) >= 0 ? initialId : secIds[0], false);
+        window.requestAnimationFrame(updateFromScroll);
+
+        window.selectOrientationSection = selectSection;
     })();
 </script>
 
@@ -2120,7 +2211,16 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         if (sub && sub.textContent.trim()) html += '<span class="sm-drawer-sub">' + sub.textContent + '</span>';
         html += '</span>';
         item.innerHTML = html;
-        item.addEventListener('click', function() { setOpen(false); });
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            setOpen(false);
+            var id = a.getAttribute('href').replace(/^#/, '');
+            if (typeof window.selectOrientationSection === 'function') {
+                window.selectOrientationSection(id);
+            } else {
+                a.click();
+            }
+        });
         list.appendChild(item);
         drawerItems.push(item);
     });
@@ -2298,6 +2398,15 @@ nav.sub-menu {
     transition: color .2s ease, background .2s ease !important;
 }
 .sub-menu a:hover { background: rgba(66,85,212,.055) !important; }
+@media (min-width: 769px) and (max-width: 900px) {
+    .sub-menu-inner {
+        justify-content: flex-start !important;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+    }
+    .sub-menu-inner::-webkit-scrollbar { display: none; }
+}
 .container { max-width: 1080px; }
 main section { padding: 74px 0 0; }
 .step-divider { margin-bottom: 22px; }
@@ -2440,6 +2549,63 @@ footer { margin-top: 80px; border-radius: 24px 24px 0 0; background: #111526; }
     .work-card { padding: 20px; }
 }
 /* ## ORIENTATION-PRO-POLISH END ## */
+</style>
+<style id="orientation-choice-nav">
+/* ## ORIENTATION-CHOICE-NAV START ## Excel 플러그인 헤더 메뉴 규격 */
+@media (min-width: 769px) {
+    .header-pages {
+        width: auto;
+        max-width: 490px;
+        margin: 22px auto 0;
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        translate: none;
+    }
+    .header-page-link {
+        width: auto;
+        min-height: 0;
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: 280px;
+        padding: 12px 22px;
+        gap: 8px;
+        border: 0;
+        border-radius: 16px;
+        color: rgba(255,255,255,.7);
+        background: rgba(255,255,255,.07);
+        box-shadow: 5px 5px 12px rgba(0,0,0,.35), -5px -5px 12px rgba(255,255,255,.06);
+        backdrop-filter: none;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0;
+    }
+    .header-page-link:hover { color: rgba(255,255,255,.92); }
+    .header-page-link.active {
+        color: #fff;
+        background: rgba(255,255,255,.14);
+        border: 0;
+        box-shadow: inset 3px 3px 8px rgba(0,0,0,.35), inset -3px -3px 8px rgba(255,255,255,.06);
+    }
+    .hpl-icon {
+        display: inline-flex;
+        width: 16px;
+        height: 16px;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 16px;
+    }
+    .hpl-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+}
+/* ## ORIENTATION-CHOICE-NAV END ## */
 </style>
 </body>
 </html>

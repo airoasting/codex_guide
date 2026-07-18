@@ -2459,11 +2459,21 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     border: 1px solid rgba(255,255,255,0.66) !important;
     box-shadow: var(--codex-pill-shadow) !important;
 }
+.step-divider { margin-bottom: 22px; }
+.step-divider::before,
+.step-divider::after { background: #E4E7EC; }
 .step-badge {
-    background: #FFFFFF !important;
-    color: #20242E !important;
-    border: 1px solid #D2D6E2 !important;
-    box-shadow: 0 1px 3px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border: 1px solid #D9DDF5 !important;
+    border-radius: 999px;
+    background: #F0F2FF !important;
+    color: #3546B8 !important;
+    box-shadow: none !important;
+    font-size: 11px;
+    letter-spacing: .04em;
 }
 .hero-badge .hb-dot {
     background: #8D9CF5 !important;

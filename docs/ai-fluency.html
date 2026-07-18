@@ -13,6 +13,8 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
+    <link rel="apple-touch-icon" href="assets/favicon-teal.png">
     <title>프롬프트 잘 쓰는 비결 | AI ROASTING</title>
     <style>
         @font-face {
@@ -22,6 +24,9 @@
             font-style: normal;
             font-display: swap;
         }
+        @font-face { font-family: 'JetBrains Mono'; src: url('assets/fonts/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'JetBrains Mono'; src: url('assets/fonts/JetBrainsMono-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'JetBrains Mono'; src: url('assets/fonts/JetBrainsMono-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
 
         :root {
             --bg:       #F3F5FD;
@@ -1915,18 +1920,14 @@
         <span class="sm-title">실전 템플릿</span>
         <span class="sm-sub">예시 · 체크리스트</span>
     </a>
+    <a href="#cd-4" data-sec="sec-leaders" data-secs="cd-4,sec-leaders">
+        <span class="sm-num">4</span>
+        <span class="sm-title">팀 적용</span>
+        <span class="sm-sub">표준 뼈대 · 템플릿</span>
+    </a>
 </nav>
 
 <main class="container">
-
-    <div class="tldr-box">
-        <span class="tldr-label">결론부터</span>
-        <ul class="tldr-list">
-            <li><span class="tldr-num">1</span><span>GPT-5.5 Instant는 <strong>명확한 지시, 맥락, 예시, 출력 형식</strong>을 잘 쓰는 법에 초점을 맞춥니다.</span></li>
-            <li><span class="tldr-num">2</span><span>GPT-5.6은 <strong>목표와 완료 조건</strong>을 분명히 주고, 업무 난이도에 맞춰 <strong>추론 강도</strong>를 고르는 것이 중요합니다.</span></li>
-            <li><span class="tldr-num">3</span><span>업무 프롬프트는 이제 "무엇을 해라"보다 <strong>"어떤 결과가 나오면 성공인가"</strong>를 먼저 정리해야 합니다.</span></li>
-        </ul>
-    </div>
 
     <div class="chapter-divider" id="cd-1">
         <span class="chapter-badge">무엇이 달라졌나</span>
@@ -1934,7 +1935,7 @@
 
     <div class="section-block" id="sec-overview">
         <div class="info-box">
-            <strong style="font-size: 17px; display: inline-block; margin-bottom: 10px;">프롬프트의 중심이 "설명 많이 하기"에서 "결과를 정확히 정의하기"로 옮겨갔습니다.</strong><br>
+            <strong style="font-size: 17px; display: inline-block; margin-bottom: 10px;">프롬프트의 중심이 "자세한 설명"에서 "명확한 목표"로 옮겨갔습니다.</strong><br>
             GPT-5.5 Instant는 모델에게 역할을 주고, 배경을 설명하고, 예시를 보여주고, 출력 형식을 지정하는 데서 출발합니다. 이 원칙은 GPT-5.6에도 여전히 유효합니다.<br><br>
             GPT-5.6에서도 모든 절차를 길게 지시하기보다 목표, 성공 기준, 제약, 근거, 최종 답변의 모양을 분명히 정하는 방식이 잘 맞습니다. 여기에 업무 난이도에 맞는 모델과 추론 강도를 고르는 판단이 더해졌습니다.
         </div>
@@ -1962,7 +1963,7 @@
         </div>
 
         <div class="section-hd" style="margin-top: 36px;">
-            <h2>프롬프트 구성 요소, 기본 5개에서 업무용 7개로</h2>
+            <h2>프롬프트 구성 요소</h2>
             <p class="section-sub">기본 다섯 요소에 성격, 성공 기준, 중단 규칙을 보강하면 긴 업무도 안정적으로 맡길 수 있습니다</p>
         </div>
 
@@ -1998,7 +1999,7 @@
 
         <div class="formula-takeaway">
             <span class="ft-key">한 문장 규칙</span>
-            <p><strong>역할·성격·목표·성공 기준·제약·출력·중단 규칙</strong>, 이 일곱 가지 순서로 적으세요. 프롬프트는 짧아지되 판단 기준은 더 분명해집니다.</p>
+            <p><strong>역할·성격·목표·성공 기준·제약·출력·중단 규칙</strong>, 이 일곱 가지 순서로 적으세요. 프롬프트는 더 짧게 쓰되, 목표를 분명히 하는 것이 중요합니다.</p>
         </div>
     </div>
 
@@ -2070,49 +2071,6 @@
         </div>
     </div>
 
-    <div class="chapter-divider">
-        <span class="chapter-badge">For Leaders</span>
-    </div>
-
-    <div class="section-block">
-        <div class="section-hd">
-            <h2>비즈니스 리더가 GPT-5.6에서 챙겨야 할 세 가지</h2>
-            <p class="section-sub">OpenAI 공식 GPT-5.6 모델·프롬프트 지침을 팀 운영 관점으로 정리했습니다</p>
-        </div>
-
-        <div class="leader-skeleton">
-            <span class="ls-label">공식 원칙을 반영한 업무용 프롬프트 뼈대</span>
-            <ul class="ls-steps">
-                <li class="ls-step"><span class="ls-n">I</span><span class="ls-en">Role</span><span class="ls-ko">역할</span></li>
-                <li class="ls-step"><span class="ls-n">II</span><span class="ls-en">Personality</span><span class="ls-ko">성격</span></li>
-                <li class="ls-step"><span class="ls-n">III</span><span class="ls-en">Goal</span><span class="ls-ko">목표</span></li>
-                <li class="ls-step"><span class="ls-n">IV</span><span class="ls-en">Success</span><span class="ls-ko">성공 기준</span></li>
-                <li class="ls-step"><span class="ls-n">V</span><span class="ls-en">Constraints</span><span class="ls-ko">제약</span></li>
-                <li class="ls-step"><span class="ls-n">VI</span><span class="ls-en">Output</span><span class="ls-ko">출력</span></li>
-                <li class="ls-step"><span class="ls-n">VII</span><span class="ls-en">Stop rules</span><span class="ls-ko">중단 규칙</span></li>
-            </ul>
-            <p class="ls-note">OpenAI의 프롬프트 원칙을 팀 업무에 맞게 정리한 순서입니다. 팀 프롬프트와 AGENTS.md를 이 일곱 항목으로 통일하면 작성자가 달라도 목표, 품질 기준, 중단 조건을 빠뜨리지 않을 수 있습니다.</p>
-        </div>
-
-        <div class="action-grid">
-            <div class="action-card">
-                <span class="action-num">1</span>
-                <strong>표준 뼈대를 정하라</strong>
-                <span>위 일곱 항목을 팀 공통 양식으로 고정합니다. 사람마다 프롬프트 구조가 다르면 품질이 들쭉날쭉합니다. 표준 양식이 있으면 누구나 유사한 수준으로 사용할 수 있습니다.</span>
-            </div>
-            <div class="action-card">
-                <span class="action-num">2</span>
-                <strong>성격과 협업 방식을 나눠라</strong>
-                <span>성격은 "어떻게 들리는가"(말투, 온도, 격식)이고, 협업 방식은 "어떻게 일하는가"(언제 묻고, 언제 가정하고, 어디까지 주도할지)입니다.</span>
-            </div>
-            <div class="action-card">
-                <span class="action-num">3</span>
-                <strong>비용과 리스크를 기본값으로 통제하라</strong>
-                <span>추론 강도는 low, medium부터 시작해 복잡한 일만 올려 비용을 줄입니다. 검색 예산과 검증 명령을 넣어 근거 없는 주장과 미검증 산출물을 막습니다.</span>
-            </div>
-        </div>
-    </div>
-
     <div class="chapter-divider" id="cd-3">
         <span class="chapter-badge">실전 템플릿</span>
     </div>
@@ -2128,7 +2086,7 @@
                 <span class="prompt-card-label">이전 방식</span>
                 <h3>절차를 길게 설명하는 프롬프트</h3>
                 <p>모델이 실수하지 않게 하려고 모든 단계를 적습니다. 그래서 프롬프트가 복잡한 지시 더미로 불어나기 쉽습니다.</p>
-                <pre>너는 전략 컨설턴트입니다.
+                <pre>당신은 20년차 전략 컨설턴트입니다.
 아래 회의록을 읽고 시장 상황, 경쟁사, 고객 반응, 실행 과제를 순서대로 분석하세요.
 각 항목을 자세히 설명하고, 가능한 모든 리스크를 검토한 뒤 보고서로 작성하세요.
 먼저 핵심 내용을 요약하고, 다음에 배경을 설명하고, 마지막에 액션 아이템을 정리하세요.</pre>
@@ -2215,12 +2173,55 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="chapter-divider" id="cd-4">
+        <span class="chapter-badge">팀 적용</span>
+    </div>
+
+    <div class="section-block" id="sec-leaders">
+        <div class="section-hd">
+            <h2>비즈니스 리더가 명심해야 할 세 가지</h2>
+            <p class="section-sub">OpenAI 공식 GPT-5.6 모델·프롬프트 지침을 팀 운영 관점으로 정리했습니다</p>
+        </div>
+
+        <div class="leader-skeleton">
+            <span class="ls-label">공식 원칙을 반영한 업무용 프롬프트 뼈대</span>
+            <ul class="ls-steps">
+                <li class="ls-step"><span class="ls-n">I</span><span class="ls-en">Role</span><span class="ls-ko">역할</span></li>
+                <li class="ls-step"><span class="ls-n">II</span><span class="ls-en">Personality</span><span class="ls-ko">성격</span></li>
+                <li class="ls-step"><span class="ls-n">III</span><span class="ls-en">Goal</span><span class="ls-ko">목표</span></li>
+                <li class="ls-step"><span class="ls-n">IV</span><span class="ls-en">Success</span><span class="ls-ko">성공 기준</span></li>
+                <li class="ls-step"><span class="ls-n">V</span><span class="ls-en">Constraints</span><span class="ls-ko">제약</span></li>
+                <li class="ls-step"><span class="ls-n">VI</span><span class="ls-en">Output</span><span class="ls-ko">출력</span></li>
+                <li class="ls-step"><span class="ls-n">VII</span><span class="ls-en">Stop rules</span><span class="ls-ko">중단 규칙</span></li>
+            </ul>
+            <p class="ls-note">OpenAI의 프롬프트 원칙을 팀 업무에 맞게 정리한 순서입니다. 팀 프롬프트와 AGENTS.md를 이 일곱 항목으로 통일하면 작성자가 달라도 목표, 품질 기준, 중단 조건을 빠뜨리지 않을 수 있습니다.</p>
+        </div>
+
+        <div class="action-grid">
+            <div class="action-card">
+                <span class="action-num">1</span>
+                <strong>표준 뼈대 정하기</strong>
+                <span>위 일곱 항목을 팀 공통 양식으로 고정합니다. 사람마다 프롬프트 구조가 다르면 품질이 들쭉날쭉합니다. 표준 양식이 있으면 누구나 유사한 수준으로 사용할 수 있습니다.</span>
+            </div>
+            <div class="action-card">
+                <span class="action-num">2</span>
+                <strong>성격과 협업 방식 나누기</strong>
+                <span>성격은 "어떻게 들리는가"(말투, 온도, 격식)이고, 협업 방식은 "어떻게 일하는가"(언제 묻고, 언제 가정하고, 어디까지 주도할지)입니다.</span>
+            </div>
+            <div class="action-card">
+                <span class="action-num">3</span>
+                <strong>비용·리스크 기본값 통제하기</strong>
+                <span>추론 강도는 low, medium부터 시작해 복잡한 일만 올려 비용을 줄입니다. 검색 예산과 검증 명령을 넣어 근거 없는 주장과 미검증 산출물을 막습니다.</span>
+            </div>
+        </div>
 
         <div class="leader-playbook">
             <div class="leader-playbook-header">
-                <span class="leader-playbook-tag">For Leaders</span>
+                <span class="leader-playbook-tag">바로 쓰는 템플릿</span>
             </div>
-            <h3>바로 쓰는 7요소 템플릿</h3>
+            <h3>7 요소를 채워 넣는 프롬프트 양식</h3>
             <div class="info-box" style="margin-bottom: 0;">
                 역할은 <strong>[역할]</strong>입니다. <strong>[성격]</strong> 태도로 답합니다.
                 <strong>[목표]</strong>를 위해 <strong>[독자]</strong>가 바로 쓸 수 있는 산출물을 만듭니다.
@@ -2253,9 +2254,9 @@
     <p class="footer-brand">AI ROASTING</p>
     <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
     <span class="footer-link-row">
-        <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
+        <a href="#" class="footer-about-link" data-guide-open="">가이드 소개</a>
         <span class="footer-link-sep" aria-hidden="true">·</span>
-        <a href="index.html?license=1" class="footer-about-link">라이선스</a>
+        <a href="#" class="footer-about-link" data-guide-open="license">라이선스</a>
     </span>
     <p class="footer-text" style="margin-top:10px;opacity:0.7;">© 2026 AI ROASTING. All rights reserved.</p>
 </footer>
@@ -3041,5 +3042,528 @@ nav.sub-menu a {
 }
 /* ## CODEX-LOAD-ANIM END ## */
 </style>
+
+<style id="ai-fluency-reskin">
+/* ═══════════════════════════════════════════════════════
+   AI-FLUENCY RESKIN · "명세서(Spec Sheet)" 에디토리얼
+   보라 그라디언트·글래스모피즘·배지 sheen·색 강조 스팬 제거.
+   잉크 + 웜 페이퍼 + 단일 페트롤 액센트 + 모노 라벨.
+   이 블록은 페이지 전용이며 파일 최하단에 위치해 기존 스타일을 덮는다.
+   ═══════════════════════════════════════════════════════ */
+:root {
+    --ink:      #1B1712;
+    --ink2:     #6B6459;
+    --paper:    #E9E6DC;
+    --masthead: #E3DFD2;
+    --card:     #F8F6EF;
+    --card2:    #EFECE3;
+    --rule:     #D9D3C4;
+    --rule2:    #C6BEAC;
+    --pine:     #0E5148;
+    --pine-d:   #0A3A34;
+    --pine-wash:#DCE6E1;
+    --mono:     'JetBrains Mono', ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
+    --codex-accent: #0E5148;
+    --t1: #1B1712;
+    --t2: #6B6459;
+}
+
+body { background: var(--paper) !important; color: var(--ink) !important; }
+
+/* ── 장식 애니메이션 정지(배지 제외) ── */
+.step-badge::after, .header-badge::after { content: none !important; animation: none !important; display: none !important; }
+
+/* ── 마스트헤드 (딥 페트롤 → 잉크 그라디언트, 라이트 텍스트) ── */
+.hero-video { display: none !important; }
+header {
+    background:
+        radial-gradient(120% 100% at 84% -14%, rgba(86,204,180,0.34) 0%, rgba(86,204,180,0) 54%),
+        linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
+    border-radius: 0 !important;
+    clip-path: none !important;
+    border-bottom: 3px solid #0A2A28 !important;
+    border-image: none !important;
+    padding: 36px 40px 40px !important;
+    overflow: visible !important;
+    min-height: 0 !important;
+}
+header::before, header::after { display: none !important; content: none !important; }
+header > :not(.hero-video) { position: relative; z-index: 2; }
+
+.hero-inner { max-width: 760px !important; }
+header h1 {
+    color: #F5F3EA !important;
+    font-size: 52px !important;
+    font-weight: 800 !important;
+    letter-spacing: -1.6px !important;
+    line-height: 1.08 !important;
+    text-shadow: 0 2px 22px rgba(0,0,0,0.28) !important;
+    margin-bottom: 12px !important;
+}
+header p, header .hero-sub {
+    color: rgba(245,243,234,0.84) !important;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.20) !important;
+    font-size: 16px !important;
+}
+.back-link { color: rgba(245,243,234,0.66) !important; font-family: var(--mono) !important; font-size: 13px !important; letter-spacing: .02em; }
+.back-link:hover { color: #FFF !important; }
+
+/* step-nav: 라이트 아웃라인 노드 */
+.step-node {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1.5px solid rgba(245,243,234,0.40) !important;
+    color: rgba(245,243,234,0.80) !important;
+    font-family: var(--mono) !important;
+    box-shadow: none !important;
+}
+.step-node:hover { border-color: rgba(245,243,234,0.80) !important; color: #FFF !important; background: rgba(255,255,255,0.10) !important; }
+.step-node.active { background: #F5F3EA !important; border-color: #F5F3EA !important; color: #10424A !important; }
+.step-line { background: rgba(245,243,234,0.30) !important; }
+.step-nav { transform: scale(0.9) !important; transform-origin: top center !important; margin-bottom: 12px !important; }
+
+/* mode-tabs: 반투명 세그먼트 */
+.mode-tabs { background: rgba(255,255,255,0.06) !important; box-shadow: none !important; border: 1px solid rgba(245,243,234,0.24) !important; border-radius: 6px !important; padding: 3px !important; }
+.mode-tab { background: transparent !important; color: rgba(245,243,234,0.74) !important; border-radius: 4px !important; font-weight: 700 !important; box-shadow: none !important; }
+.mode-tab.active { background: #F5F3EA !important; color: #10424A !important; box-shadow: none !important; }
+
+/* header-pages: 반투명 카드 */
+.header-page-link {
+    background: rgba(255,255,255,0.07) !important;
+    color: rgba(245,243,234,0.88) !important;
+    border: 1px solid rgba(245,243,234,0.20) !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    font-weight: 700 !important;
+}
+.header-page-link:hover { background: rgba(255,255,255,0.13) !important; color: #FFF !important; border-color: rgba(245,243,234,0.42) !important; transform: none !important; }
+.header-page-link.active { background: #F5F3EA !important; color: #10424A !important; border-color: #F5F3EA !important; box-shadow: none !important; }
+.header-page-link .hpl-icon svg { stroke: currentColor !important; }
+
+/* ── 스티키 서브메뉴: pill 그라디언트 제거 → 잉크 룰 탭 ── */
+.sub-menu { background: var(--masthead) !important; border-bottom: 1px solid var(--rule2) !important; box-shadow: none !important; }
+.sub-menu a { background: transparent !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; }
+.sub-menu a:hover { background: rgba(27,23,18,0.04) !important; }
+.sub-menu a.active { background: transparent !important; box-shadow: inset 0 -2px 0 var(--pine) !important; border-radius: 0 !important; }
+.sub-menu a .sm-num { background: transparent !important; color: var(--ink2) !important; font-family: var(--mono) !important; box-shadow: none !important; border: 1px solid var(--rule2) !important; }
+.sm-title { color: var(--ink) !important; }
+.sm-sub { color: var(--ink2) !important; }
+.sub-menu a.active .sm-num { color: var(--pine) !important; background: transparent !important; border-color: var(--pine) !important; box-shadow: none !important; }
+.sub-menu a.active .sm-title { color: var(--pine) !important; }
+.sub-menu a.active .sm-sub { color: var(--pine) !important; }
+.sub-menu a:hover .sm-num { background: transparent !important; color: var(--ink) !important; border-color: var(--ink2) !important; box-shadow: none !important; }
+.sub-menu a:hover .sm-title { color: var(--ink) !important; }
+
+/* ── 섹션 구분 배지: 번쩍이는 알약 → 모노 라벨 ── */
+.chapter-badge {
+    display: inline-block !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background: var(--pine-wash) !important;
+    color: var(--pine-d) !important;
+    border: 1.5px solid var(--pine) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 2px rgba(14,81,72,0.08) !important;
+    font-family: var(--mono) !important;
+    text-transform: uppercase;
+    letter-spacing: .14em !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    padding: 7px 16px !important;
+}
+.chapter-badge::after {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0; left: -140%;
+    width: 65%; height: 100%;
+    background: linear-gradient(110deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.72) 50%, rgba(255,255,255,0) 100%) !important;
+    transform: skewX(-20deg);
+    animation: cbSweep 1.5s ease-out 0.35s 1 both !important;
+    pointer-events: none;
+}
+@keyframes cbSweep { 0% { left: -140%; } 58%, 100% { left: 175%; } }
+@media (prefers-reduced-motion: reduce) { .chapter-badge::after { animation: none !important; opacity: 0 !important; } }
+.chapter-divider { line-height: 1 !important; }
+.section-hd h2 { color: var(--ink) !important; font-size: 24px !important; font-weight: 800 !important; letter-spacing: -.7px !important; line-height: 1.25 !important; padding-left: 0 !important; border-left: none !important; }
+.section-sub { color: var(--ink2) !important; font-size: 14.5px !important; padding-left: 0 !important; }
+/* ── 타이포 정제: 스펙 모노(JetBrains Mono) 가중·코드 렌더링 ── */
+header h1 { font-weight: 800 !important; letter-spacing: -1.8px !important; }
+.fi-key, .ls-en { font-weight: 700 !important; letter-spacing: 0 !important; }
+.chapter-badge, .formula-label, .prompt-card-label, .ls-label, .bridge-title, .tldr-label, .ft-key, .formula-flag, .leader-playbook-tag { font-weight: 700 !important; }
+.prompt-card pre { font-size: 13px !important; line-height: 1.85 !important; letter-spacing: -0.1px !important; }
+.stat-num { letter-spacing: -1px !important; font-weight: 700 !important; }
+.step-node { font-weight: 500 !important; }
+.sub-menu a .sm-num { font-weight: 500 !important; }
+/* 뼈대: GPT-5.6에서 더해진 Goal·Success·Stop rules 강조 배경 */
+.ls-steps .ls-step:nth-child(3), .ls-steps .ls-step:nth-child(4), .ls-steps .ls-step:nth-child(7) {
+    background: var(--pine-wash) !important; border-color: #B7CCC5 !important;
+}
+
+/* ── 공통 카드: 소프트 섀도 라운드 → 납작한 헤어라인 카드 ── */
+.info-box, .bridge-box, .leader-playbook, .source-box, .leader-skeleton,
+.formula-takeaway, .stat-card, .tldr-box, .action-card, .prompt-card,
+.check-item, .formula-card, .reading-group {
+    background: var(--card) !important;
+    border: 1px solid var(--rule2) !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+}
+.info-box strong { color: var(--ink) !important; }
+
+/* key-stats */
+.stat-num { color: var(--pine) !important; font-family: var(--mono) !important; }
+.stat-label, .stat-bench { color: var(--ink2) !important; }
+
+/* TLDR */
+.tldr-label { background: transparent !important; color: var(--pine) !important; border: none !important; padding: 0 !important; font-family: var(--mono) !important; text-transform: uppercase; letter-spacing: .1em !important; }
+.tldr-num { background: var(--pine) !important; color: #FFF !important; font-family: var(--mono) !important; box-shadow: none !important; }
+.tldr-list strong { color: var(--pine) !important; }
+
+/* ── 시그니처: 7요소 명세 카드 ── */
+.formula-card.old { background: var(--card2) !important; }
+.formula-card.new { border-color: var(--pine) !important; border-top: 3px solid var(--pine) !important; }
+.formula-label { background: transparent !important; color: var(--pine) !important; font-family: var(--mono) !important; text-transform: uppercase; letter-spacing: .08em !important; }
+.formula-card.old .formula-label { color: var(--ink2) !important; }
+.formula-flag { background: var(--ink) !important; color: var(--masthead) !important; border-radius: 3px !important; font-family: var(--mono) !important; box-shadow: none !important; }
+.formula-card h3 { color: var(--ink) !important; }
+.formula-list, .formula-card .formula-list { background: transparent !important; }
+.formula-card .formula-item { background: var(--card2) !important; border: 1px solid var(--rule) !important; border-radius: 4px !important; box-shadow: none !important; }
+.formula-card.new .formula-item { box-shadow: none !important; }
+.formula-card .formula-item.is-goal, .formula-card .formula-item.is-success, .formula-card .formula-item.is-stop { background: var(--pine-wash) !important; border-color: #B7CCC5 !important; }
+.ls-step { border-color: var(--rule2) !important; box-shadow: none !important; }
+.ls-steps .ls-step { border-color: var(--rule2) !important; box-shadow: none !important; }
+.formula-pair .formula-card.new .formula-item { box-shadow: none !important; }
+.fi-key { background: transparent !important; color: var(--pine) !important; font-family: var(--mono) !important; }
+.formula-card.old .fi-key { color: var(--ink2) !important; }
+.fi-ko { color: var(--ink) !important; }
+.fi-desc { color: var(--ink2) !important; }
+.formula-note { color: var(--ink2) !important; border-top: 1px solid var(--rule) !important; }
+.formula-note strong { color: var(--pine) !important; }
+.formula-takeaway .ft-key { background: transparent !important; color: var(--pine) !important; font-family: var(--mono) !important; }
+.formula-takeaway strong { color: var(--pine) !important; }
+
+/* 비교 표 */
+.guide-table { background: var(--card) !important; border: 1px solid var(--rule2) !important; border-radius: 6px !important; box-shadow: none !important; overflow: hidden; }
+.guide-table-head { background: var(--ink) !important; }
+.guide-table-head span { color: var(--masthead) !important; }
+.guide-row { border-top: 1px solid var(--rule) !important; }
+.guide-cell { background: var(--card) !important; color: var(--ink2) !important; }
+.guide-cell.topic { background: var(--card2) !important; color: var(--ink) !important; font-weight: 700 !important; }
+.guide-cell strong { color: var(--pine) !important; }
+.guide-row:hover .guide-cell { background: #F1EFE7 !important; }
+.guide-row:hover .guide-cell.topic { background: #E7E3D6 !important; }
+
+/* ── 잔여 인디고/보라 글로우·틴트 제거 ── */
+.tldr-num, .action-num, .stat-num, .ls-n, .formula-flag, .leader-playbook-tag,
+.formula-item.is-goal, .formula-item.is-success, .formula-item.is-stop,
+.guide-table:hover, .action-card:hover, .stat-card:hover,
+.check-item:hover, .formula-card:hover, .prompt-card:hover, .info-box:hover { box-shadow: none !important; }
+
+/* bridge */
+.bridge-title { color: var(--pine) !important; font-family: var(--mono) !important; text-transform: uppercase; letter-spacing: .08em; }
+.bridge-desc { color: var(--ink) !important; }
+.bridge-desc strong { color: var(--pine) !important; }
+
+/* insight-box: 대비용 잉크 블록 */
+.insight-box { background: var(--ink) !important; border: none !important; box-shadow: none !important; border-radius: 6px !important; }
+.insight-box h3 { color: #FFF !important; }
+.insight-box p { color: rgba(255,255,255,0.86) !important; }
+
+/* leader-skeleton */
+.ls-label { background: transparent !important; color: var(--pine) !important; font-family: var(--mono) !important; text-transform: uppercase; letter-spacing: .08em; }
+.ls-n { background: transparent !important; color: var(--pine) !important; font-family: var(--mono) !important; box-shadow: none !important; }
+.ls-en { color: var(--ink) !important; font-family: var(--mono) !important; }
+.ls-ko { color: var(--ink2) !important; }
+.ls-note { color: var(--ink2) !important; }
+.ls-note strong { color: var(--pine) !important; }
+
+/* action-grid: 큰 번호 원 → 모노 인덱스 */
+.action-num { background: transparent !important; color: var(--pine) !important; border: none !important; box-shadow: none !important; font-family: var(--mono) !important; font-size: 26px !important; font-weight: 800 !important; }
+.action-card strong { color: var(--ink) !important; }
+.action-card span { color: var(--ink2) !important; }
+
+/* prompt 예시 */
+.prompt-card-label { background: transparent !important; color: var(--pine) !important; font-family: var(--mono) !important; text-transform: uppercase; letter-spacing: .06em; box-shadow: none !important; }
+.prompt-card h3 { color: var(--ink) !important; }
+.prompt-card p { color: var(--ink2) !important; }
+.code-wrap { position: relative !important; }
+.prompt-card pre { background: #000 !important; color: #EDEBE3 !important; border: 1px solid #2B2B2B !important; border-radius: 6px !important; font-family: var(--mono) !important; padding: 38px 18px 18px !important; }
+.copy-btn {
+    position: absolute !important; top: 10px !important; right: 10px !important; z-index: 3;
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: var(--mono) !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: .03em;
+    color: rgba(245,243,234,0.74) !important; background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(245,243,234,0.22) !important; border-radius: 5px !important;
+    padding: 5px 11px !important; cursor: pointer; transition: all .15s;
+}
+.copy-btn:hover { color: #fff !important; background: rgba(255,255,255,0.16) !important; border-color: rgba(245,243,234,0.42) !important; }
+.copy-btn.copied { color: #56CCB4 !important; background: rgba(86,204,180,0.14) !important; border-color: rgba(86,204,180,0.5) !important; }
+/* 라이트 배경용 복사 버튼 (템플릿 info-box) */
+.leader-playbook .code-wrap { position: relative !important; }
+.leader-playbook .code-wrap .info-box { padding-top: 46px !important; }
+.copy-btn--light { color: var(--pine) !important; background: rgba(14,81,72,0.06) !important; border-color: rgba(14,81,72,0.30) !important; }
+.copy-btn--light:hover { color: var(--pine-d) !important; background: rgba(14,81,72,0.12) !important; border-color: var(--pine) !important; }
+.copy-btn--light.copied { color: var(--pine-d) !important; background: rgba(86,204,180,0.20) !important; border-color: var(--pine) !important; }
+
+/* checklist */
+.check-box { background: transparent !important; border: 1.5px solid var(--ink2) !important; border-radius: 3px !important; box-shadow: none !important; }
+.check-item.checked .check-box { background: var(--pine) !important; border-color: var(--pine) !important; }
+.check-text strong { color: var(--ink) !important; }
+.check-text span { color: var(--ink2) !important; }
+
+/* leader-playbook / source */
+.leader-playbook-tag { display: inline-block !important; background: var(--ink) !important; color: var(--masthead) !important; font-family: var(--mono) !important; border-radius: 999px !important; padding: 6px 16px !important; box-shadow: none !important; }
+/* 한 문장 규칙 박스: 라벨·문장 세로 중앙 정렬 */
+.formula-takeaway { align-items: center !important; }
+/* 템플릿 박스: 검정 + 밝은 틸 플레이스홀더(복사 버튼은 다크) */
+.leader-playbook .info-box { background: #000 !important; color: #EDEBE3 !important; border: 1px solid #2B2B2B !important; border-radius: 6px !important; }
+.leader-playbook .info-box strong { color: #6AD0B8 !important; }
+.leader-playbook h3 { color: var(--ink) !important; }
+.source-box h3 { color: var(--ink) !important; }
+.source-box a { color: var(--pine) !important; }
+
+/* 참고문헌(RD-INJECT) 보라 → 페트롤 */
+.reading > h2 { color: var(--ink) !important; }
+.reading-group h3 { color: var(--pine) !important; }
+.reading-group a { color: var(--pine) !important; }
+.reading-group li { color: var(--ink2) !important; }
+
+/* ── 푸터: 헤더와 짝을 이루는 딥 페트롤→잉크(방향 반전 북엔드) ── */
+footer {
+    background:
+        radial-gradient(120% 120% at 14% 0%, rgba(86,204,180,0.22) 0%, rgba(86,204,180,0) 55%),
+        linear-gradient(135deg, #131E33 0%, #10424A 50%, #0F5E52 100%) !important;
+    border-radius: 32px 32px 0 0 !important;
+    border-top: 3px solid #0A2A28 !important;
+    color: #F5F3EA !important;
+    padding: 46px 32px 42px !important;
+    isolation: isolate;
+    overflow: hidden;
+}
+footer::before, footer::after { display: none !important; content: none !important; }
+footer .footer-video { display: none !important; }
+footer .footer-brand { color: #F5F3EA !important; font-family: var(--mono) !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .3em !important; text-transform: uppercase; }
+footer .footer-text { color: rgba(245,243,234,0.6) !important; }
+.footer-about-link { color: rgba(245,243,234,0.82) !important; border-bottom: 1px solid rgba(245,243,234,0.3) !important; }
+.footer-about-link:hover { color: #FFF !important; border-color: rgba(245,243,234,0.72) !important; }
+.footer-link-sep { color: rgba(245,243,234,0.34) !important; }
+
+/* ── 편집형 정리: 장식 번호 제거 + 카드 획일성 완화 ── */
+/* 개요: 카드 → 선 없는 열린 텍스트 블록 */
+#sec-overview > .info-box {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 4px 2px 6px !important;
+}
+/* 섹션 제목 배지 양옆 선을 조금 더 진하게 */
+.chapter-divider::before, .chapter-divider::after {
+    background: linear-gradient(90deg, transparent, #A69B7E 26%, #A69B7E 74%, transparent) !important;
+    opacity: 1 !important;
+    height: 1.5px !important;
+}
+/* TLDR 번호 원 → 작은 페트롤 점(순서 아닌 병렬 항목) */
+.tldr-num {
+    background: var(--pine) !important; color: transparent !important;
+    box-shadow: none !important; font-size: 0 !important;
+    width: 7px !important; min-width: 7px !important; height: 7px !important;
+    border-radius: 50% !important; margin-top: 11px !important;
+}
+/* 액션: 채운 카드 → 페트롤 상단 룰의 열린 컬럼 */
+.action-card {
+    background: transparent !important; border: none !important;
+    border-top: 2px solid var(--pine) !important; border-radius: 0 !important;
+    box-shadow: none !important; padding: 16px 4px 4px !important;
+}
+/* 병렬 항목의 장식 번호·로마숫자 제거(진짜 순서 마커는 유지) */
+.action-num { display: none !important; }
+.ls-n { display: none !important; }
+/* 본문 색강조 → 잉크(라벨·키·플레이스홀더만 페트롤 유지) */
+.tldr-list strong, .bridge-desc strong { color: var(--ink) !important; }
+
+/* ── 모바일: 햄버거 토글·드로어 보라/회색 → 테마 정합 ── */
+.sm-menu-toggle { background: #1B1712 !important; color: #F5F3EA !important; border: 1px solid rgba(245,243,234,0.14) !important; box-shadow: 0 4px 14px rgba(0,0,0,0.28) !important; }
+.sm-menu-toggle:hover { background: #0E5148 !important; }
+.sm-menu-toggle svg { stroke: #F5F3EA !important; }
+.sm-drawer { background: #ECEAE0 !important; color: var(--ink) !important; }
+.sm-drawer-back, .sm-drawer-item { background: #F8F6EF !important; color: var(--ink) !important; border: 1px solid var(--rule2) !important; box-shadow: none !important; }
+.sm-drawer-back:hover, .sm-drawer-item:hover { background: #FFF !important; border-color: var(--ink2) !important; box-shadow: none !important; }
+.sm-drawer-item.active { background: var(--pine-wash) !important; border-color: var(--pine) !important; box-shadow: none !important; }
+.sm-drawer-title { color: var(--ink) !important; }
+.sm-drawer-sub { color: var(--ink2) !important; }
+.sm-drawer-num { background: transparent !important; color: var(--pine) !important; border: 1px solid var(--rule2) !important; box-shadow: none !important; font-family: var(--mono) !important; }
+.sm-drawer-item.active .sm-drawer-num { background: transparent !important; color: var(--pine) !important; border-color: var(--pine) !important; box-shadow: none !important; }
+.sm-drawer-item.active .sm-drawer-title { color: var(--pine) !important; }
+
+@media (max-width: 768px) {
+    header { padding: 60px 20px 28px !important; }
+    header h1 { font-size: 30px !important; letter-spacing: -.8px !important; }
+    .hero-sub { font-size: 14px !important; }
+    /* step-nav: 스케일 제거 + 노드 축소, 햄버거 아래로 내려 클립 해소 */
+    .step-nav { transform: none !important; max-width: 100% !important; gap: 0 !important; margin: 0 0 12px !important; }
+    .step-node { width: 32px !important; height: 32px !important; font-size: 11px !important; }
+    .step-node.sn-diag, .step-node.sn-final { font-size: 9.5px !important; }
+    .step-line { min-width: 4px !important; max-width: 16px !important; }
+    .section-hd h2 { font-size: 20px !important; }
+}
+</style>
+
+<script>
+/* 프롬프트 예시·템플릿 박스에 복사 버튼 추가 */
+(function () {
+    function attachCopy(target, light) {
+        if (target.parentNode.classList.contains('code-wrap')) return;
+        var wrap = document.createElement('div');
+        wrap.className = 'code-wrap';
+        target.parentNode.insertBefore(wrap, target);
+        wrap.appendChild(target);
+
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'copy-btn' + (light ? ' copy-btn--light' : '');
+        btn.textContent = '복사';
+        btn.setAttribute('aria-label', '내용 복사');
+        btn.addEventListener('click', function () {
+            var text = target.innerText.trim();
+            var done = function () {
+                btn.textContent = '복사됨';
+                btn.classList.add('copied');
+                setTimeout(function () { btn.textContent = '복사'; btn.classList.remove('copied'); }, 1600);
+            };
+            function fallback() {
+                var ta = document.createElement('textarea');
+                ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+                document.body.appendChild(ta); ta.select();
+                try { document.execCommand('copy'); done(); } catch (e) {}
+                document.body.removeChild(ta);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done).catch(fallback);
+            } else { fallback(); }
+        });
+        wrap.appendChild(btn);
+    }
+    function addCopyButtons() {
+        document.querySelectorAll('.prompt-card pre').forEach(function (pre) { attachCopy(pre, false); });
+        document.querySelectorAll('.leader-playbook .info-box').forEach(function (box) { attachCopy(box, false); });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addCopyButtons);
+    } else { addCopyButtons(); }
+})();
+</script>
+
+<!-- ── 가이드 소개 / 라이선스 모달 (이 창에서 뜸) ── -->
+<div class="gm-overlay" id="gmOverlay" role="dialog" aria-modal="true" aria-labelledby="gmTitle" aria-hidden="true">
+    <div class="gm-card" role="document">
+        <div class="gm-head">
+            <p class="gm-eyebrow">ABOUT</p>
+            <h2 id="gmTitle">가이드 소개</h2>
+            <button class="gm-close" id="gmClose" type="button" aria-label="닫기">&times;</button>
+        </div>
+        <div class="gm-body" id="gmBody">
+            <p class="gm-quote">"개발 말고, 비즈니스용으로는 Codex를 어떻게 써야 하나요?"</p>
+            <p>AI 이야기를 나누면서 가장 자주 받는 질문입니다.</p>
+            <p>시중에 나와 있는 Codex 자료는 대부분 개발자를 대상으로 합니다. 그래서 이 가이드는 <strong>비즈니스 리더가 의사결정과 보고, 자동화에 바로 활용할 수 있도록</strong> 같은 도구를 비즈니스 관점으로 다시 정리한 자료입니다. 코드를 한 줄도 모르는 리더도 진단부터 자동화까지 한 번에 따라올 수 있도록 전체 내용을 5단계로 구성했습니다.</p>
+
+            <p class="gm-eyebrow2">왜 만들었나요</p>
+            <p>AI 강의에서 가장 자주 받는 질문이 있습니다. "프롬프트는 어떻게 써야 잘 쓰나요?", "Codex는 어떻게 쓰나요?" 같은 질문입니다. 매번 같은 답을 반복하는 대신, <strong>한 권으로 정리된 표준 레퍼런스</strong>를 만들기로 했습니다.</p>
+
+            <p class="gm-eyebrow2">선정 기준</p>
+            <ul>
+                <li>코드나 터미널 지식 없이도 바로 시작할 수 있을 것</li>
+                <li>비즈니스 리더가 곧장 실무에 적용할 수 있을 것</li>
+                <li>한국의 업무 환경(보고, 결재, 미팅, 문서)에 맞을 것</li>
+            </ul>
+
+            <p class="gm-eyebrow2">만든 사람</p>
+            <p><strong>강정구 · Jayden Kang</strong><br><span class="gm-muted">LINER AI 전략 총괄</span></p>
+
+            <hr class="gm-rule">
+
+            <div id="gmLicense">
+                <p class="gm-eyebrow2" style="margin-top:0;">License</p>
+                <h3 class="gm-h3">저작권 안내 (Copyright Notice)</h3>
+                <p class="gm-muted">Copyright (c) 2026 AI ROASTING (강정구 / jaydenjkang@gmail.com) · v1.0 · 2026-05-03</p>
+                <p>본 가이드의 저작권은 작성자에게 있습니다. 인용된 OpenAI 콘텐츠와 사용된 외부 자산(Pretendard Variable, MIT/Apache 2.0 등 오픈소스 라이브러리)은 각 권리자에게 귀속되며 해당 라이선스가 적용됩니다.</p>
+                <p class="gm-h3">1. 금지되는 행위</p>
+                <ul>
+                    <li>사전 서면 동의 없는 복제, 배포, 전송, 2차적 저작물 작성</li>
+                    <li>상업적 활용 (강의, 교육 자료, 출판, 컨설팅, 사내 교육 포함)</li>
+                    <li>저작권 표시·출처 정보의 제거나 변형</li>
+                    <li>기계학습·생성형 AI 모델의 학습 데이터로 수집·사용</li>
+                </ul>
+                <p class="gm-h3">2. 허용되는 사용</p>
+                <ul>
+                    <li>개인 학습 목적의 열람과 참고</li>
+                    <li>저작권법 제28조에 따른 정당한 인용 (출처 URL과 작성자 명시)</li>
+                </ul>
+                <p class="gm-h3">3. 사용 허가 신청</p>
+                <p>상업적 사용이나 2차적 저작물 작성을 원하시면 jaydenjkang@gmail.com으로 사용 목적·범위·기간을 명시해 신청해 주십시오. 서면 회신으로 명시적 승인을 받은 경우에만 허가가 인정됩니다.</p>
+                <p class="gm-h3">4. 면책 및 준거법</p>
+                <p>본 콘텐츠는 있는 그대로(as-is) 제공되며, 사용으로 발생한 손해에 대해 작성자는 책임을 지지 않습니다. 본 약관은 대한민국법에 따라 해석되며, 사전 고지 후 변경될 수 있습니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style id="gm-styles">
+.gm-overlay { position: fixed; inset: 0; z-index: 4000; display: none; align-items: flex-start; justify-content: center; background: rgba(19,30,51,0.62); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); padding: 44px 16px; overflow-y: auto; }
+.gm-overlay.gm-open { display: flex; }
+.gm-card { background: #F5F3EA; color: #1B1712; width: 100%; max-width: 640px; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.4); position: relative; animation: gmUp .28s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes gmUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.gm-head { position: relative; background: linear-gradient(135deg, #0F5E52 0%, #131E33 100%); color: #F5F3EA; padding: 26px 30px 22px; }
+.gm-head .gm-eyebrow { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: #6AD0B8; margin: 0; }
+.gm-head h2 { font-size: 22px; font-weight: 800; letter-spacing: -.5px; margin: 8px 0 0; color: #F5F3EA; }
+.gm-close { position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(245,243,234,0.3); background: rgba(255,255,255,0.08); color: #F5F3EA; cursor: pointer; font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: background .15s; }
+.gm-close:hover { background: rgba(255,255,255,0.18); }
+.gm-body { padding: 24px 30px 30px; max-height: 72vh; overflow-y: auto; }
+.gm-body p { font-size: 14px; line-height: 1.75; color: #40392F; margin: 0 0 12px; }
+.gm-body strong { color: #1B1712; font-weight: 700; }
+.gm-quote { font-size: 18px !important; font-weight: 800; color: #0E5148 !important; line-height: 1.5; margin-bottom: 6px !important; }
+.gm-eyebrow2 { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px !important; letter-spacing: .16em; text-transform: uppercase; color: #0E5148 !important; font-weight: 700; margin: 22px 0 8px !important; }
+.gm-h3 { font-size: 15px; font-weight: 800; color: #1B1712; margin: 16px 0 6px; }
+.gm-muted { color: #6B6459; font-size: 13px; }
+.gm-body ul { margin: 6px 0 14px; padding-left: 18px; }
+.gm-body li { font-size: 13.5px; line-height: 1.7; color: #40392F; margin: 4px 0; }
+.gm-rule { height: 1px; background: #D9D3C4; border: 0; margin: 24px 0; }
+@media (max-width: 768px) { .gm-body { padding: 20px 20px 24px; } .gm-head { padding: 22px 20px 18px; } }
+@media (prefers-reduced-motion: reduce) { .gm-card { animation: none; } }
+</style>
+
+<script>
+/* 가이드 소개 / 라이선스 모달 열고 닫기 */
+(function () {
+    var overlay = document.getElementById('gmOverlay');
+    if (!overlay) return;
+    var body = document.getElementById('gmBody');
+    function open(section) {
+        overlay.classList.add('gm-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (section === 'license') {
+            var el = document.getElementById('gmLicense');
+            if (el) el.scrollIntoView({ block: 'start' });
+        } else if (body) {
+            body.scrollTop = 0;
+        }
+    }
+    function close() {
+        overlay.classList.remove('gm-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    document.querySelectorAll('[data-guide-open]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            open(a.getAttribute('data-guide-open'));
+        });
+    });
+    document.getElementById('gmClose').addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>

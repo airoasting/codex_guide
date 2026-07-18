@@ -1635,5 +1635,58 @@ nav.sub-menu a {
 }
 /* ## CODEX-LOAD-ANIM END ## */
 </style>
+<style id="section-name-standard">
+/* ## SECTION-NAME-STANDARD START ## codex-orientation.html 기준 섹션명 배지 */
+.step-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+.step-divider::before,
+.step-divider::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: #E4E7EC;
+}
+.step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border: 1px solid #D9DDF5 !important;
+    border-radius: 999px;
+    background: #F0F2FF !important;
+    color: #3546B8 !important;
+    box-shadow: none !important;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    position: relative;
+    overflow: hidden;
+}
+.step-badge::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.65) 50%, transparent 100%);
+    transform: skewX(-18deg);
+    pointer-events: none;
+    z-index: 1;
+    animation: badgeSheen 4s ease-in-out infinite;
+}
+@keyframes badgeSheen {
+    0% { left: -120%; }
+    60%, 100% { left: 170%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .step-badge::after { animation: none; }
+}
+/* ## SECTION-NAME-STANDARD END ## */
+</style>
 </body>
 </html>

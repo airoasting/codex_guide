@@ -1406,7 +1406,7 @@
         .roadmap-step:hover .roadmap-step-text strong, .roadmap-step:hover .roadmap-step-arrow { color: var(--codex-accent); }
         .roadmap-step-num { font-size: 12px; font-weight: 800; color: #fff; background: var(--codex-accent); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .roadmap-step-text { flex: 1; }
-        .roadmap-step-text strong { font-size: 14px; font-weight: 800; color: var(--codex-graphite); display: block; margin-bottom: 1px; transition: color 0.2s; }
+        .roadmap-step-text strong { font-size: 17px; line-height: 1.4; font-weight: 800; color: var(--card-title); display: block; margin-bottom: 8px; transition: color 0.2s; }
         .roadmap-step-text span { font-size: 12px; color: var(--text-soft); }
         .roadmap-step-arrow { font-size: 15px; color: #9AA0B5; flex-shrink: 0; transition: color 0.2s; }
 
@@ -1492,8 +1492,8 @@
     <main class="container">
 
         <!-- STEP 1: 자율주행 비유 + 6단계 요약표 -->
-        <div class="step-divider" id="step1" style="margin-top:0;"><span class="step-badge">단계 비교</span></div>
-        <section>
+        <section id="step1">
+            <div class="step-divider"><span class="step-badge">단계 비교</span></div>
             <div class="section-header-block reveal">
                 <h2>자율주행으로 이해하기</h2>
                 <p class="section-subtitle">자율주행 기술의 발전 단계와 AI 활용 수준은 놀랍도록 비슷합니다</p>
@@ -1642,9 +1642,9 @@
         </section>
 
         <!-- 기능 지도 -->
-        <div class="step-divider" id="step-map" style="margin-top:56px;"><span class="step-badge">기능 지도</span></div>
-        <section>
-            <div class="section-header-block reveal" style="margin-bottom:16px;">
+        <section id="step-map">
+            <div class="step-divider"><span class="step-badge">기능 지도</span></div>
+            <div class="section-header-block reveal">
                 <h2>Codex·ChatGPT 기능 전체 지도</h2>
                 <p class="section-subtitle">카테고리별로 어떤 기능이 있는지, 내 레벨과 연결해 확인하세요</p>
             </div>
@@ -1833,8 +1833,8 @@
         </section>
 
         <!-- STEP 2: 수준 진단 -->
-        <div class="step-divider" id="step2" style="margin-top:28px;"><span class="step-badge">수준 진단</span></div>
-        <section>
+        <section id="step2">
+            <div class="step-divider"><span class="step-badge">수준 진단</span></div>
             <div class="section-header-block reveal">
                 <h2>나의 수준 진단하기</h2>
                 <p class="section-subtitle">아래에서 나와 가장 가까운 단계를 클릭하세요</p>
@@ -1926,8 +1926,8 @@
         </section>
 
         <!-- STEP 3: 커리큘럼 -->
-        <div class="step-divider" id="step3" style="margin-top:40px;"><span class="step-badge">커리큘럼</span></div>
-        <section id="roadmap-section">
+        <section id="step3">
+            <div class="step-divider"><span class="step-badge">커리큘럼</span></div>
             <div class="section-header-block reveal">
                 <h2>다음 단계로 올라가기</h2>
                 <p class="section-subtitle">내 현재 레벨에서 다음 레벨로 업그레이드하는 커리큘럼입니다</p>
@@ -2753,6 +2753,159 @@ nav.sub-menu a {
     }
 }
 /* ## ORIENTATION-CHOICE-NAV END ## */
+</style>
+<style id="orientation-section-unify">
+/* codex-orientation.html과 같은 섹션 구분 규격 */
+:root {
+    --codex-accent: #4255D4;
+    --codex-graphite: #101828;
+    --codex-slate: #344054;
+    --text: #344054;
+    --text-soft: #667085;
+    --text-muted: #667085;
+    --nm-bg: #F6F7FB;
+    --neutral-surface: #FFFFFF;
+    --neutral-soft: #F8F9FC;
+    --neutral-panel: #F2F4F7;
+    --neutral-line: #E4E7EC;
+    --line: #EAECF0;
+    --card-bg: #FFFFFF;
+    --card-surface: #FFFFFF;
+    --card-border: #E4E7EC;
+    --card-border-hover: #B8C0F3;
+    --card-title: #101828;
+    --card-shadow: 0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.045);
+    --card-shadow-hover: 0 2px 4px rgba(16,24,40,.05), 0 16px 36px rgba(16,24,40,.08);
+}
+body {
+    background: #F6F7FB;
+    color: var(--text);
+    font-feature-settings: "ss01" 1, "cv02" 1;
+    letter-spacing: -.01em;
+}
+main.container section {
+    margin-bottom: 32px;
+    padding: 44px 0 0;
+}
+main.container .step-divider {
+    gap: 14px;
+    margin: 0 0 22px;
+}
+main.container .step-divider::before,
+main.container .step-divider::after {
+    background: #E4E7EC;
+}
+main.container .section-header-block {
+    max-width: 760px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+main.container .section-header-block h2 {
+    margin-bottom: 10px;
+    color: var(--card-title, #25231F);
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 760;
+    line-height: 1.28;
+    letter-spacing: -.035em;
+}
+main.container .section-subtitle {
+    margin-bottom: 0;
+    color: var(--text-soft);
+    font-size: 16px;
+    line-height: 1.75;
+}
+main.container #step-ai {
+    margin-top: 44px !important;
+}
+.gradient-bar,
+.level-card,
+.table-wrap,
+.fm-col,
+.fm-aux-row,
+.assessment-intro,
+.assessment-row,
+.roadmap-card,
+.roadmap-step {
+    border-color: var(--card-border);
+}
+.gradient-bar,
+.level-card,
+.table-wrap,
+.fm-col,
+.fm-aux-row,
+.assessment-row,
+.roadmap-card {
+    box-shadow: var(--card-shadow);
+}
+.level-card:hover,
+.fm-col:hover,
+.assessment-row:hover,
+.roadmap-card:hover {
+    border-color: var(--card-border-hover);
+    box-shadow: var(--card-shadow-hover);
+}
+@media (max-width: 768px) {
+    main.container section {
+        margin-bottom: 24px;
+        padding-top: 36px;
+    }
+    main.container .section-header-block h2 {
+        font-size: 28px;
+    }
+}
+</style>
+<style id="section-name-standard">
+/* ## SECTION-NAME-STANDARD START ## codex-orientation.html 기준 섹션명 배지 */
+.step-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+.step-divider::before,
+.step-divider::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: #E4E7EC;
+}
+.step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border: 1px solid #D9DDF5 !important;
+    border-radius: 999px;
+    background: #F0F2FF !important;
+    color: #3546B8 !important;
+    box-shadow: none !important;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    position: relative;
+    overflow: hidden;
+}
+.step-badge::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.65) 50%, transparent 100%);
+    transform: skewX(-18deg);
+    pointer-events: none;
+    z-index: 1;
+    animation: badgeSheen 4s ease-in-out infinite;
+}
+@keyframes badgeSheen {
+    0% { left: -120%; }
+    60%, 100% { left: 170%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .step-badge::after { animation: none; }
+}
+/* ## SECTION-NAME-STANDARD END ## */
 </style>
 </body>
 </html>

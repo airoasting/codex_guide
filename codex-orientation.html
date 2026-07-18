@@ -235,7 +235,7 @@
             color: #8D867D;
             white-space: nowrap;
         }
-        #sec-why, #sec-codex, #sec-history, #sec-safety, #sec-first, #sec-sources { scroll-margin-top: 155px; }
+        #sec-why, #sec-codex, #sec-history, #sec-first, #sec-sources { scroll-margin-top: 155px; }
 
         .container {
             max-width: 1080px;
@@ -1172,13 +1172,8 @@
             <span class="sm-title">앱 구조</span>
             <span class="sm-sub">Chat · Work · Codex</span>
         </a>
-        <a href="#sec-safety">
-            <span class="sm-num">4</span>
-            <span class="sm-title">안전한 위임</span>
-            <span class="sm-sub">성공 · 접근 · 검토</span>
-        </a>
         <a href="#sec-first">
-            <span class="sm-num">5</span>
+            <span class="sm-num">4</span>
             <span class="sm-title">첫 30분</span>
             <span class="sm-sub">작게 맡겨 보기</span>
         </a>
@@ -1477,41 +1472,6 @@
 
     </section>
 
-    <section id="sec-safety">
-        <div class="step-divider">
-            <span class="step-badge">안전한 위임</span>
-        </div>
-        <div class="section-header-block reveal">
-            <h2>위임 전에 운영 기준을 설정합니다</h2>
-            <p class="section-subtitle">성공 기준, 접근 범위, 결과 검토 절차를 먼저 정의합니다.</p>
-        </div>
-
-        <div class="safety-grid reveal stagger-1">
-            <article class="note-card">
-                <span class="eyebrow">비즈니스 리더 체크리스트</span>
-                <h3>일을 맡기기 전에 정할 기준</h3>
-                <ul>
-                    <li>이 작업의 성공 기준을 한 문장으로 씁니다.</li>
-                    <li>접근을 제한할 자료와 데이터 범위를 분리합니다.</li>
-                    <li>연결할 파일과 앱은 업무에 필요한 범위로 좁힙니다.</li>
-                    <li>결과 확인 기준을 화면, 표, 문서 중 하나로 정합니다.</li>
-                    <li>최종 배포와 외부 발송은 사람이 승인합니다.</li>
-                </ul>
-            </article>
-            <article class="note-card">
-                <span class="eyebrow">팀 운영 기준</span>
-                <h3>반복 업무의 운영 기준</h3>
-                <ul>
-                    <li>반복 업무는 프로젝트 지침이나 템플릿에 원칙과 금지 사항을 적습니다.</li>
-                    <li>일은 작게 나누고 단계마다 바뀐 부분을 확인합니다.</li>
-                    <li>확인 방법과 필요한 근거를 선택한 모드에 미리 알려줍니다.</li>
-                    <li>검증된 요청문은 템플릿으로 저장해 다시 사용합니다.</li>
-                    <li>실패한 작업은 원인과 다음 시도를 기록합니다.</li>
-                </ul>
-            </article>
-        </div>
-    </section>
-
     <section id="sec-first">
         <div class="step-divider">
             <span class="step-badge">첫 30분</span>
@@ -1711,7 +1671,7 @@
             appStructureSection.parentNode.insertBefore(historySection, appStructureSection);
         }
 
-        var secIds = ['sec-why', 'sec-history', 'sec-codex', 'sec-safety', 'sec-first'];
+        var secIds = ['sec-why', 'sec-history', 'sec-codex', 'sec-first'];
         var sections = secIds.map(function(id) { return document.getElementById(id); }).filter(Boolean);
         var menu = document.getElementById('subMenu');
         var menuInner = menu ? menu.querySelector('.sub-menu-inner') : null;

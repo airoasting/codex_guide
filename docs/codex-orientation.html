@@ -2692,6 +2692,17 @@ footer { margin-top: 80px; border-radius: 24px 24px 0 0; background: #111526; }
     --card-border-hover: var(--rule2) !important;
 }
 
+/* 서브메뉴 잔여 쿨톤: nav.sub-menu(특이도)가 petrol.css .sub-menu를 이겨 남은 배경과,
+   .sub-menu a .sm-title/.sm-sub 슬레이트 블루 텍스트 → 페트롤 마스트헤드/잉크 */
+nav.sub-menu {
+    background: var(--masthead) !important;
+    border-bottom: 1px solid var(--rule2) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+.sub-menu a .sm-title { color: var(--ink) !important; }
+.sub-menu a .sm-sub { color: var(--ink2) !important; }
+
 /* 라벤더 포커스 링(#AEB6FF) → 페트롤 */
 .header-page-link:focus-visible,
 .step-node:focus-visible,

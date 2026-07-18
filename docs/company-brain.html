@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>컴퍼니 브레인 축적하기 · AI ROASTING Codex</title>
     <style>
         @font-face {
@@ -2845,6 +2846,66 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* company-brain.html 고유 컴포넌트에 남은 보라/인디고/라벤더 → 페트롤.
+   공통 셸(헤더·푸터·서브메뉴·배지·햄버거)은 petrol.css가 처리하므로 여기서 손대지 않는다. */
+
+/* 카드/패널 배경 토큰: 라벤더(#F3F5FD) → 페트롤 카드(#F8F6EF), 테두리 → 웜 룰 */
+:root {
+    --bg: #F8F6EF !important;
+    --nm-lg:    0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #C6BEAC !important;
+    --nm:       0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #C6BEAC !important;
+    --nm-sm:    0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #C6BEAC !important;
+    --nm-in:    inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #C6BEAC !important;
+    --nm-in-sm: inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #C6BEAC !important;
+}
+
+/* step-key-tag: 연보라 태그 배경 → 페트롤 wash */
+.step-key-tag {
+    background: #DCE6E1 !important;
+    color: #0E5148 !important;
+    box-shadow: none !important;
+}
+
+/* 인사이트 카드 ic-gold: 인디고 액센트(#5B62D8) → 페트롤 */
+.ic-gold::before { background: #0E5148 !important; }
+.ic-gold .insight-badge { background: #DCE6E1 !important; color: #0E5148 !important; }
+.ic-gold .dot-badge { background: #0E5148 !important; }
+
+/* 인사이트 카드 ic-purple: 보라(#7B3FA0) → 딥 페트롤(카드 간 구분 유지) */
+.ic-purple::before { background: #0A3A34 !important; }
+.ic-purple .insight-badge { background: #DCE6E1 !important; color: #0A3A34 !important; }
+.ic-purple .dot-badge { background: #0A3A34 !important; }
+
+/* 체크박스 인디고 글로우 → 페트롤 */
+.real-cl-item input:checked ~ .nm-cb-visual {
+    box-shadow: inset 3px 3px 6px rgba(14,81,72,0.28), inset -2px -2px 4px rgba(255,255,255,0.2) !important;
+}
+/* 진행바 인디고 글로우 → 페트롤 */
+.cl-progress-fill { box-shadow: 0 1px 4px rgba(14,81,72,0.28) !important; }
+
+/* 기능 비교표 헤더: 라벤더 → 페트롤 wash */
+.feature-table thead th {
+    background: #DCE6E1 !important;
+    border-bottom: 2px solid #C6BEAC !important;
+}
+
+/* ChatGPT 목업/콜아웃 인디고 잔재 → 페트롤 */
+.cbadge { background: #0E5148 !important; box-shadow: 0 2px 7px rgba(14,81,72,0.3) !important; }
+.callout-num { box-shadow: 0 2px 8px rgba(14,81,72,0.3) !important; }
+.cs-send-btn { background: rgba(14,81,72,0.72) !important; }
+.cs-panel-edit { color: rgba(14,81,72,0.85) !important; }
+.cs-file-add { color: rgba(14,81,72,0.7) !important; }
+
+/* next-card 네이비/인디고 그라디언트 → 페트롤(헤더 셸과 정합) */
+.next-card {
+    background: linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
+}
+
+/* 참고문헌(RD-INJECT) 인디고 테두리 → 웜 룰 */
+.reading-group { border: 1px solid #D9D3C4 !important; }
 </style>
 </body>
 </html>

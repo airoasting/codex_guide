@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>멀티 페르소나 토론 | AI ROASTING</title>
     <meta name="description" content="5인 전문가 팀을 구성해 Codex 답변을 다각적으로 검증하는 멀티 페르소나 토론법">
     <style>
@@ -2507,6 +2508,48 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ── PETROL EDITORIAL · 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 잔재를 페트롤로 ── */
+:root {
+    /* 라벤더 카드 표면 → 웜 페이퍼 카드 */
+    --bg: #F8F6EF !important;
+    /* 쿨/흰 라벤더 카드 테두리 → 웜 룰 */
+    --nm-lg:    0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #C6BEAC !important;
+    --nm:       0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #C6BEAC !important;
+    --nm-sm:    0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #C6BEAC !important;
+    --nm-in:    inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #C6BEAC !important;
+    --nm-in-sm: inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #C6BEAC !important;
+    /* 페르소나 인디고/퍼플 → 페트롤 / 딥 파인 (5색 구분 유지) */
+    --c-gold:   #0E5148 !important;
+    --c-purple: #0A3A34 !important;
+}
+/* 인디고 tint 배경(gold 페르소나) → 페트롤 wash */
+.ic-gold .insight-badge,
+.d-gold,
+.oc-gold { background: rgba(14,81,72,0.10) !important; }
+/* 퍼플 tint 배경(purple 페르소나) → 딥 파인 wash */
+.ic-purple .insight-badge,
+.d-purple,
+.oc-purple { background: rgba(10,58,52,0.10) !important; }
+/* 강조 인디고 텍스트 → 페트롤 */
+.next-btn { color: #0E5148 !important; }
+/* 다크 CTA 그라디언트: 인디고 → 헤더/푸터와 짝 이루는 딥 페트롤 */
+.next-card { background: linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important; }
+/* 리서치 카드 상단 액센트 바: 인디고+모브 → 페트롤 */
+.research-card::before { background: linear-gradient(90deg, #0E5148, #0A3A34, #2A2A2A) !important; }
+/* 리서치 배지: 인디고 tint → 페트롤 tint */
+.research-badge { background: rgba(14,81,72,0.08) !important; border-color: rgba(14,81,72,0.20) !important; }
+/* 퀵스타트 상단 액센트 바: 모브 → 페트롤 */
+.quickstart-card::before { background: linear-gradient(90deg, #0E5148, #0A3A34) !important; }
+/* 프로젝트 스텝 번호 인디고 글로우 → 페트롤 */
+.project-step-num { box-shadow: 4px 4px 10px rgba(14,81,72,0.28), 0 1px 3px rgba(20,25,46,0.06) !important; }
+/* next-btn 인디고 펄스 글로우 → 페트롤 */
+@keyframes btnGlow {
+    0%, 100% { box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    50%      { box-shadow: 0 6px 24px rgba(14,81,72,0.35); }
+}
 </style>
 </body>
 </html>

@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="카카오톡 PlayMCP 연결하기 | AI ROASTING">
     <meta name="twitter:description" content="Codex와 Kakao PlayMCP를 연결해 카카오톡 나와의 채팅방으로 업무 결과를 보내는 방법">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>카카오톡 PlayMCP 연결하기 | AI ROASTING</title>
     <meta name="description" content="Kakao PlayMCP의 카카오톡 나와의 채팅방 도구를 Codex MCP 설정에 연결하고, 첫 테스트와 운영 기준까지 확인하는 실전 가이드.">
     <style>
@@ -1755,6 +1756,42 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-local">
+/* 이 페이지 고유 컴포넌트에 남은 보라/인디고/라벤더 → 페트롤 매핑.
+   헤더/푸터/서브메뉴/배지/햄버거/드로어는 petrol.css가 처리하므로 제외. */
+
+/* 라벤더 카드 배경(#F3F5FD) → 따뜻한 페트롤 카드 */
+:root { --nm-bg: #F8F6EF !important; }
+
+/* 인트로 콜아웃: 보라 그라디언트/테두리 → 페트롤 톤 */
+.callout {
+    background: #F8F6EF !important;
+    border: 1px solid #C6BEAC !important;
+}
+
+/* 플로우 아이콘 원형: 보라 글로우 제거 */
+.fn-icon { box-shadow: none !important; }
+
+/* 워크플로 번호 원형: 보라 글로우 제거 */
+.wf-step-num { box-shadow: none !important; }
+
+/* 워크플로 연결선: 보라 → 페트롤 */
+.wf-connector {
+    background: linear-gradient(180deg, rgba(14,81,72,0.45), rgba(14,81,72,0.12)) !important;
+}
+
+/* 하단 CTA 섹션: 인디고 그라디언트 → 다크 잉크 */
+.cta-section {
+    background: #1B1712 !important;
+}
+
+/* 참고문헌(reading) 그룹: 보라 테두리/그림자 → 페트롤 */
+.reading-group {
+    border: 1px solid #C6BEAC !important;
+    box-shadow: 0 4px 18px rgba(14,81,72,0.08) !important;
+}
 </style>
 </body>
 </html>

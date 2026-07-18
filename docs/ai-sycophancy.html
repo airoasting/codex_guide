@@ -10,6 +10,7 @@
     <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <meta property="og:url" content="https://airosting.github.io/codex_guide/ai-sycophancy.html">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>AI의 동조를 줄이는 법 | AI ROASTING</title>
     <meta name="description" content="AI의 동조(sycophancy)는 사람의 피드백으로 학습하는 과정에서 생기는 구조적 습성입니다. 공개 연구를 근거로 원인을 짚고, 점수·리셋·역할 분리로 동조를 줄이는 질문법을 정리했습니다.">
     <style>
@@ -804,7 +805,7 @@
                 <p>2025년 SycEval 연구는 ChatGPT·Gemini 같은 주요 모델에게 답을 내게 한 뒤 반박을 넣었습니다. 전체의 <strong>58.19%</strong>에서 모델이 입장을 바꿨습니다. 틀린 답이 정답으로 바로잡힌 경우(43.52%)도 있었지만, 맞던 답을 틀리게 바꾼 경우도 <strong>14.66%</strong>였습니다. 한 번 동조하면 <strong>78.5%</strong>는 그대로 굳었습니다.</p>
             </div>
 
-            <div style="padding: 16px 20px 18px; background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.04)); border: 1.5px solid rgba(99,102,241,0.3); border-radius: 14px; margin: 18px 0 4px;">
+            <div style="padding: 16px 20px 18px; background: #DCE6E1; border: 1.5px solid #C6BEAC; border-radius: 14px; margin: 18px 0 4px;">
                 <p style="font-size: 14px; color: #2C2F3A; margin: 0;"><strong>AI가 거짓말을 한 게 아닙니다. 질문이 동조를 허락한 겁니다.</strong> "어때요?"라고 물으면 칭찬이 나오고, "몇 점입니까"라고 물으면 약점이 나옵니다. 답을 바꾸는 것은 질문입니다.</p>
             </div>
 
@@ -1557,6 +1558,66 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL-PAGE-OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤.
+   헤더/푸터/서브메뉴/배지/햄버거 셸은 assets/petrol.css가 처리하므로 손대지 않는다. */
+:root {
+    --nm-bg: #F8F6EF !important;          /* 라벤더 카드 배경 → 카드 페이퍼 */
+    --gold: #0E5148 !important;
+    --gold-dark: #0A3A34 !important;
+    --gold-light: #0E5148 !important;
+    --book-teal: #0E5148 !important;      /* 액센트/링크/강조 보라 → 페트롤 */
+    --book-teal-dark: #0A3A34 !important;
+    --book-teal-light: #0E5148 !important;
+}
+/* 강조 콜아웃(highlight-box): 보라 그라디언트/테두리 → 페트롤 워시 + 뉴트럴 룰 */
+.highlight-box {
+    background: #DCE6E1 !important;
+    border: 1.5px solid #C6BEAC !important;
+}
+/* 워크플로 유리원 + 커넥터: 보라 글로우 → 페트롤 */
+.wf-step-num {
+    box-shadow:
+        inset 0 1.5px 2px rgba(255,255,255,0.95),
+        inset 0 -1.5px 2px rgba(14,81,72,0.10),
+        0 10px 22px rgba(14,81,72,0.16),
+        0 3px 8px rgba(0,0,0,0.06) !important;
+}
+.wf-connector {
+    background: linear-gradient(180deg, rgba(14,81,72,0.45) 0%, rgba(14,81,72,0.15) 100%) !important;
+}
+/* EDA 필 pill: 보라 프로스트 그림자/화살표 → 페트롤 */
+.eda-pill {
+    box-shadow:
+        inset 0 1px 1.5px rgba(255,255,255,0.95),
+        inset 0 -1px 2px rgba(14,81,72,0.08),
+        0 8px 20px rgba(14,81,72,0.14),
+        0 2px 6px rgba(0,0,0,0.05) !important;
+}
+.eda-pill:hover {
+    box-shadow:
+        inset 0 1px 1.5px rgba(255,255,255,0.95),
+        inset 0 -1px 2px rgba(14,81,72,0.10),
+        0 12px 26px rgba(14,81,72,0.20),
+        0 3px 8px rgba(0,0,0,0.07) !important;
+}
+.eda-pill .eda-icon { box-shadow: 0 2px 6px rgba(14,81,72,0.30) !important; }
+.eda-pill .eda-arrow { color: rgba(14,81,72,0.60) !important; }
+.eda-pill:hover .eda-arrow { color: #0E5148 !important; }
+/* 스킬 프리뷰(다크 카드): 보라 테두리/아이콘 프로스트 → 페트롤 */
+.skill-preview { border: 1px solid rgba(14,81,72,0.30) !important; }
+.skill-preview:hover { border-color: rgba(14,81,72,0.55) !important; }
+.skill-preview .sp-icon { background: rgba(14,81,72,0.20) !important; }
+/* 로드맵 번호 배지 그림자 */
+.roadmap-num { box-shadow: 0 2px 6px rgba(14,81,72,0.28) !important; }
+/* 데이터 테이블 헤더/hover: 연보라 → 페트롤 워시 */
+.data-table th { background: #DCE6E1 !important; color: #0E5148 !important; }
+.data-table tr:hover td { background: rgba(14,81,72,0.05) !important; }
+/* 체크리스트 체크 상태 글로우 */
+.syc-check input:checked ~ .cmark { box-shadow: 0 2px 7px rgba(14,81,72,0.40) !important; }
+/* ## PETROL-PAGE-OVERRIDES END ## */
 </style>
 </body>
 </html>

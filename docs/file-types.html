@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>파일 유형 한눈에 보기 | AI ROASTING</title>
     <style>
         @font-face {
@@ -1375,6 +1376,26 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ── 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤 매핑 ──
+   헤더/푸터/서브메뉴/배지/햄버거는 petrol.css 가 처리하므로 건드리지 않는다. */
+:root {
+    --nm-bg: #F8F6EF !important;      /* 라벤더 카드/칩 배경 → 크림 */
+    --c-data: #0E5148 !important;     /* 설정·데이터 카테고리 보라 → 페트롤 */
+}
+/* 큰 본문 패널은 살짝 짙은 크림으로 카드와 구분 */
+.section-box, .overview-card { background: #E9E6DC !important; }
+/* 라벤더 시나리오 콜아웃 → 페트롤 톤 틴트 */
+.section-scenario { background: rgba(14,81,72,0.06) !important; }
+/* 설정·데이터 카테고리 보라 pill → 페트롤 */
+.ov-cat.dt { background: #DCE6E1 !important; color: #0E5148 !important; box-shadow: none !important; }
+/* CTA 카드 인디고 그라디언트/글로우 → 페트롤 */
+.cta-card { background: #0E5148 !important; }
+.cta-card::before { background: radial-gradient(circle, rgba(14,81,72,0.15) 0%, transparent 60%) !important; }
+/* 코드 스니펫 키워드 인디고 → 다크 배경에서 읽히는 밝은 페트롤 */
+.sn-kw, .sn-at { color: #6FBFB0 !important; }
 </style>
 </body>
 </html>

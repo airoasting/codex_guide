@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/logos/logo1-lavender.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <link rel="canonical" href="https://airosting.github.io/codex_guide/">
     <meta property="og:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
@@ -3014,5 +3014,33 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 /* ## CODEX-HERO-SYNC END ## */
 </script>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="index-petrol">
+/* index 고유 컴포넌트 보라 → 페트롤 */
+:root {
+    --card-bg: #F8F6EF !important;
+    --codex-pill-bg: #DCE6E1 !important;
+    --codex-pill-bg-active: #DCE6E1 !important;
+    --codex-pill-bg-muted: #F0EEE6 !important;
+    --codex-panel: #E9E6DC !important;
+}
+body { background: #E9E6DC !important; }
+/* 라벤더 섹션 배경 → 페이퍼 */
+.bio-strip { background: #EFEDE4 !important; border-bottom-color: #C6BEAC !important; }
+/* 카드: 보라 글로우/보더 → 중립 헤어라인 */
+.card { border-color: #C6BEAC !important; box-shadow: 0 1px 3px rgba(27,23,18,0.06) !important; }
+.card:hover { box-shadow: 0 8px 22px rgba(27,23,18,0.10) !important; border-color: #0E5148 !important; }
+.card.active, .card:focus-visible { border-color: #0E5148 !important; }
+/* bio 카드 태그 pill: 라벤더 → pine-wash */
+.bio-card-tag, .track-label-badge { background: #DCE6E1 !important; color: #0E5148 !important; box-shadow: none !important; }
+.track-label-badge.cli { background: #DCE6E1 !important; }
+/* "가이드 소개" 링크 버튼: 보라 → 잉크 */
+.about-link { background: #1B1712 !important; color: #F5F3EA !important; border-color: transparent !important; box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important; }
+.about-link:hover { background: #0E5148 !important; }
+/* 자세히·강조 링크는 --codex-accent(페트롤) 상속 */
+.bio-card .bio-more, .card a { color: #0E5148 !important; }
+/* 키보드 포커스 링(접근성) */
+:focus-visible { outline: 2px solid #0E5148 !important; outline-offset: 3px !important; }
+</style>
 </body>
 </html>

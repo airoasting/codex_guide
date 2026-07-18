@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>하네스 엔지니어링 실전: Anthropic 사례 | AI ROASTING</title>
     <meta name="description" content="Anthropic이 직접 공개한 장기 실행 앱 개발용 하네스 설계 사례. Generator-Evaluator 아키텍처부터 레트로 게임 메이커, DAW까지.">
     <style>
@@ -1937,7 +1938,7 @@
                         <tr><td><strong>2차 QA (Evaluator)</strong></td><td>6.8분</td><td>$3.09</td></tr>
                         <tr class="build-row"><td><strong>3차 Build (Generator)</strong></td><td>10.9분</td><td>$5.88</td></tr>
                         <tr><td><strong>3차 QA (Evaluator)</strong></td><td>9.6분</td><td>$4.06</td></tr>
-                        <tr style="background: rgba(99,102,241,0.06);">
+                        <tr style="background: rgba(14,81,72,0.06);">
                             <td><strong style="color: var(--codex-accent);">합계</strong></td>
                             <td><strong style="color: var(--codex-accent);">약 3시간 50분</strong></td>
                             <td><strong style="color: var(--codex-accent);">$124.70</strong></td>
@@ -2834,6 +2835,107 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤 매핑.
+   공통 셸(헤더/푸터/서브메뉴/배지/햄버거/드로어)은 petrol.css가 처리하므로 제외.
+   의미색(빨강·주황·초록·골드)은 유지. */
+
+/* 스크롤 진행 바 */
+.scroll-progress {
+    background: linear-gradient(90deg, #0E5148, #4E8577) !important;
+    box-shadow: 0 0 8px rgba(14,81,72,0.4) !important;
+}
+
+/* 섹션 인트로 점선/라벨 */
+.section-intro { border-bottom-color: rgba(14,81,72,0.25) !important; }
+.section-intro .si-label { background: rgba(14,81,72,0.12) !important; }
+
+/* 출처 미니 카드 아이콘 그림자 */
+.source-mini-icon { box-shadow: 0 2px 8px rgba(14,81,72,0.3) !important; }
+
+/* 비유 박스 아이콘 그림자 */
+.analogy-icon { box-shadow: 0 4px 12px rgba(14,81,72,0.3) !important; }
+
+/* 문제 카드 2 (보라 장식) */
+.problem-card.pc-2::before { background: linear-gradient(90deg, #0E5148, #4E8577) !important; }
+.problem-card.pc-2 .problem-num {
+    background: linear-gradient(135deg, #0E5148, #4E8577) !important;
+    -webkit-background-clip: text !important; background-clip: text !important;
+}
+.problem-card.pc-2 .quote-box {
+    background: linear-gradient(135deg, rgba(14,81,72,0.05) 0%, rgba(14,81,72,0.01) 100%) !important;
+    border-left-color: #0E5148 !important;
+}
+.problem-card.pc-2 .quote-box::before { color: rgba(14,81,72,0.18) !important; }
+.problem-analogy .pa-label { background: rgba(14,81,72,0.12) !important; }
+
+/* 문제 → 원칙 브릿지 2열 */
+.pb-col.pb-2 { --pb-color: #0E5148; --pb-bg: rgba(14,81,72,0.12); }
+
+/* 처방(다크) 카드 위 보라 액센트 → 밝은 페트롤(가독성) */
+.solution-card::before { background: radial-gradient(circle, rgba(14,81,72,0.30) 0%, transparent 70%) !important; }
+.solution-card .sc-badge { background: rgba(220,230,225,0.14) !important; color: #DCE6E1 !important; }
+.solution-item .si-arrow { color: #DCE6E1 !important; }
+.solution-item .si-pill { background: rgba(220,230,225,0.14) !important; color: #DCE6E1 !important; }
+.solution-item--standalone.si-2::before { background: linear-gradient(90deg, #0E5148, #4E8577) !important; }
+
+/* 원칙 2 적용 카드/pill */
+.principle-pill.pp-2 { background: rgba(14,81,72,0.12) !important; color: #0E5148 !important; }
+.nm-card.pc-applied-2 { border-top-color: #0E5148 !important; }
+.applied-card.ac-2::before { background: linear-gradient(90deg, #0E5148, #4E8577) !important; }
+
+/* Planner 역할(인디고) → 페트롤 (Generator 주황·Evaluator 청록은 유지) */
+.applied-card.ac-planner::before { background: linear-gradient(90deg, #0E5148, #4E8577) !important; }
+.principle-pill.pp-planner { background: rgba(14,81,72,0.12) !important; color: #0E5148 !important; }
+.applied-card .role-card-pill.rcp-planner {
+    background: rgba(14,81,72,0.13) !important;
+    color: #0E5148 !important;
+    border-color: rgba(14,81,72,0.22) !important;
+}
+
+/* 테이블 build-row 강조(인디고) */
+.nm-table-wrap tbody tr.build-row,
+.nm-table-wrap tbody tr.build-row:nth-child(even) { background: rgba(14,81,72,0.10) !important; }
+.nm-table-wrap tbody tr:hover { background: rgba(14,81,72,0.06) !important; }
+.nm-table-wrap tbody tr.build-row:hover { background: rgba(14,81,72,0.16) !important; }
+
+/* 3열 역할 카드 상단 띠(라벤더/보라 끝) */
+.role-card:nth-child(2)::before { background: linear-gradient(90deg, #0E5148, #4E8577) !important; }
+.role-card:nth-child(3)::before { background: linear-gradient(90deg, #0E5148, #4E8577) !important; }
+
+/* CTA 섹션(다크 인디고 그라디언트) + 기본 버튼 */
+.cta-section { background: linear-gradient(150deg, #10424A 0%, #0E5148 100%) !important; }
+.cta-btn.primary { color: #0E5148 !important; }
+
+/* 핵심 메시지 배너 */
+.key-message {
+    background: linear-gradient(135deg, rgba(14,81,72,0.10) 0%, rgba(14,81,72,0.04) 100%) !important;
+    border-color: rgba(14,81,72,0.30) !important;
+}
+.key-message .km-highlight {
+    background: linear-gradient(180deg, transparent 60%, rgba(14,81,72,0.15) 60%) !important;
+}
+
+/* 인용 박스 기본(보라 틴트) — 의미색인 pc-1(빨강) quote-box는 유지 */
+.quote-box {
+    background: linear-gradient(135deg, rgba(14,81,72,0.05) 0%, rgba(14,81,72,0.01) 100%) !important;
+}
+.quote-box::before { color: rgba(14,81,72,0.15) !important; }
+
+/* 참고문헌 그룹 테두리(인디고) */
+.reading-group { border-color: rgba(14,81,72,0.14) !important; }
+
+/* 보라 글로우 키프레임 재정의(같은 이름 → 마지막 정의가 승리) */
+@keyframes borderGlow {
+    0%, 100% { border-color: rgba(14,81,72,0.25); box-shadow: none; }
+    50%       { border-color: rgba(14,81,72,0.55); box-shadow: 0 0 18px rgba(14,81,72,0.18); }
+}
+@keyframes nodeFlash {
+    0%, 100% { box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1; }
+    50%       { box-shadow: 0 0 0 3px rgba(14,81,72,0.35), 0 1px 3px rgba(20,25,46,0.06); }
+}
 </style>
 </body>
 </html>

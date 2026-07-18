@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>Codex의 도구란? · AI ROASTING Codex</title>
     <style>
         @font-face {
@@ -2885,6 +2886,38 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* 페이지 고유 컴포넌트의 잔여 보라/인디고 → 페트롤. 공통 셸(header/footer/sub-menu/sm-drawer/배지/토큰)은 petrol.css 담당이라 건드리지 않음 */
+
+/* 인사이트 카드 액센트(ic-gold=인디고, ic-purple=바이올렛) → 페트롤 */
+.ic-gold::before, .ic-purple::before { background: #0E5148 !important; }
+.ic-gold .insight-badge, .ic-purple .insight-badge { background: #DCE6E1 !important; color: #0E5148 !important; box-shadow: none !important; }
+.ic-gold .dot-badge, .ic-purple .dot-badge { background: #0E5148 !important; }
+
+/* ChatGPT 목업 콜아웃 배지 */
+.cbadge { background: #0E5148 !important; box-shadow: none !important; }
+.callout-num { box-shadow: 0 2px 8px rgba(14,81,72,0.10) !important; }
+
+/* 목업 내부 보라 요소 */
+.cs-send-btn { background: #0E5148 !important; }
+.cs-panel-edit, .cs-file-add { color: #0E5148 !important; }
+
+/* step-key 태그 연보라 pill 배경 */
+.step-key-tag { background: #DCE6E1 !important; }
+
+/* 체크박스 체크 상태 글로우 */
+.real-cl-item input:checked ~ .nm-cb-visual { box-shadow: none !important; }
+
+/* 진행바 글로우 */
+.cl-progress-fill { box-shadow: 0 1px 4px rgba(14,81,72,0.30) !important; }
+
+/* 비교 테이블 헤더 라벤더 틴트 */
+.feature-table thead th { background: #DCE6E1 !important; border-bottom: 2px solid #C6BEAC !important; }
+
+/* 다음 단계 CTA 카드 네이비/인디고 그라디언트 → 페트롤 다크 */
+.next-card { background: linear-gradient(150deg, #10312C 0%, #0E5148 100%) !important; }
 </style>
 </body>
 </html>

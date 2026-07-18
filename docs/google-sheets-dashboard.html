@@ -10,6 +10,7 @@
     <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <meta property="og:url" content="https://airosting.github.io/codex_guide/google-sheets-dashboard.html">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>구글 시트 기반 대시보드 만들기 | AI ROASTING</title>
     <meta name="description" content="ChatGPT 업무 워크스페이스 + Google Sheets + 뉴모피즘. Google Sheets CSV를 직접 읽어 5개 탭 인터랙티브 대시보드를 자동으로 만드는 실전 가이드.">
     <style>
@@ -1880,6 +1881,57 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style>
+/* ## PETROL-EDITORIAL (이 페이지 고유 컴포넌트만: 보라/인디고/라벤더 → 페트롤) ## */
+/* 헤더·푸터·서브메뉴·배지·햄버거는 petrol.css 가 처리하므로 제외 */
+:root {
+    --gold: #0E5148 !important;
+    --gold-dark: #0E5148 !important;
+    --book-teal: #0E5148 !important;
+    --book-teal-dark: #0E5148 !important;
+    --nm-bg: #F8F6EF !important;
+}
+/* 결과물/스킬 다크 인디고 박스 → 차콜 + 페트롤 테두리 */
+.skill-preview {
+    background: #1B1712 !important;
+    border-color: rgba(14,81,72,0.30) !important;
+}
+.skill-preview:hover {
+    border-color: rgba(14,81,72,0.55) !important;
+    box-shadow: 0 6px 20px rgba(14,81,72,0.18) !important;
+}
+/* 뉴모피즘 CTA 프리뷰 카드: 블루/보라 그라디언트·글로우 → 페트롤 */
+.preview-card {
+    background: #F8F6EF !important;
+    box-shadow: 0 1px 3px rgba(14,81,72,0.08), 0 0 0 1px #C6BEAC !important;
+}
+.preview-card:hover {
+    box-shadow: 0 6px 18px rgba(14,81,72,0.14), 0 0 0 1px #C6BEAC !important;
+}
+.preview-card::before {
+    background: radial-gradient(circle, rgba(14,81,72,0.12) 0%, transparent 60%) !important;
+}
+.preview-card::after {
+    background: radial-gradient(circle, rgba(14,81,72,0.07) 0%, transparent 60%) !important;
+}
+.preview-card .pv-label {
+    background: #0E5148 !important;
+    box-shadow: 0 4px 10px rgba(14,81,72,0.30) !important;
+}
+.preview-card .pv-cta {
+    background: #0E5148 !important;
+    box-shadow: 0 1px 3px rgba(14,81,72,0.20) !important;
+}
+.preview-card .pv-meta span {
+    background: #F8F6EF !important;
+    box-shadow: inset 0 1px 2px rgba(14,81,72,0.06), 0 0 0 1px #C6BEAC !important;
+}
+/* 참고문헌(RD-INJECT) 컴포넌트: 연보라 테두리 → 페트롤 톤 (렌더 시 대비) */
+.reading-group {
+    border-color: rgba(14,81,72,0.16) !important;
+}
 </style>
 </body>
 </html>

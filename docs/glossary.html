@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>AI 용어 사전 60선 | AI ROASTING</title>
     <style>
         @font-face {
@@ -445,7 +446,7 @@
                     <button class="history-term" type="button" data-term="에이전틱 코딩">에이전틱 코딩</button>
                 </div>
             </div>
-            <div class="history-card" style="--c:var(--c5); --card-bg:rgba(139,92,246,0.10)">
+            <div class="history-card" style="--c:var(--c5); --card-bg:rgba(14,81,72,0.10)">
                 <div class="history-badge">6막</div>
                 <div class="history-year">2025–</div>
                 <div class="history-title">하네스와 운영</div>
@@ -1414,6 +1415,34 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style>
+/* ## PETROL-OVERRIDE (page-unique 보라 → 페트롤) START ## */
+:root {
+    --codex-accent: #0E5148 !important;
+    --c3: #0E5148 !important;   /* 4막 섹션 아이덴티티 (인디고 → 페트롤) */
+    --c5: #0E5148 !important;   /* 6막 섹션 아이덴티티 (바이올렛 → 페트롤) */
+}
+/* 용어 별점·쉬운 설명: 인디고 텍스트 → 페트롤 */
+.term-stars,
+.term-stars[data-level="2"],
+.term-stars[data-level="3"],
+.term-easy { color: #0E5148 !important; }
+/* 검색 포커스·하이라이트 글로우 */
+.search-input:focus { box-shadow: 0 0 0 2px rgba(14,81,72,0.35), 0 1px 3px rgba(20,25,46,0.06) !important; }
+.term-card.search-highlight { box-shadow: 0 0 0 2px rgba(14,81,72,0.5) !important; }
+/* 레벨3 용어 카드 링 */
+.term-card[data-level="3"] { box-shadow: 0 0 0 1px rgba(14,81,72,0.18) !important; }
+.term-card[data-level="3"]:hover { box-shadow: 0 8px 22px rgba(14,81,72,0.18) !important; }
+/* TOP3 필: 인디고 아웃라인 → 페트롤 */
+.top3-pick { border-color: rgba(14,81,72,0.30) !important; }
+.top3-pick:hover { background: rgba(14,81,72,0.10) !important; border-color: rgba(14,81,72,0.55) !important; }
+.top3-pick:focus-visible { background: rgba(14,81,72,0.14) !important; border-color: #0E5148 !important; }
+/* CTA 카드: 네이비·인디고 그라디언트 → 페트롤 */
+.cta-card { background: linear-gradient(150deg, #0B322D 0%, #0E5148 60%, #14655A 100%) !important; }
+.cta-card::before { background: radial-gradient(circle, rgba(14,81,72,0.30) 0%, transparent 60%) !important; }
+/* ## PETROL-OVERRIDE END ## */
 </style>
 </body>
 </html>

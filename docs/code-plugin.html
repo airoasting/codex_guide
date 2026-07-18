@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="스킬·MCP를 플러그인으로 묶기 | AI ROASTING">
     <meta name="twitter:description" content="흩어진 스킬과 자주 쓰는 MCP를 하나의 패키지로 묶어 팀에 배포합니다. 한 줄 설치 명령으로 모두가 같은 자동화를 씁니다.">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>스킬·MCP를 플러그인으로 묶기 | AI ROASTING</title>
     <meta name="description" content="흩어진 스킬과 자주 쓰는 MCP를 하나의 패키지로 묶어 팀 전체가 같은 자동화를 쓰게 만드는 실전 가이드.">
     <style>
@@ -2355,6 +2356,51 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ══ PETROL EDITORIAL · code-plugin.html 고유 컴포넌트 보라 리매핑 ══
+   공통 셸(헤더/푸터/서브메뉴/배지/햄버거)은 petrol.css가 처리하므로 손대지 않는다.
+   여기서는 이 페이지 고유 컴포넌트에 남은 보라/인디고/라벤더만 페트롤로 바꾼다. */
+:root {
+    --nm-bg: #F8F6EF !important;        /* 라벤더 카드 표면(#F3F5FD) → 웜 카드 */
+    --skill-purple: #0E5148 !important;  /* 보라 카테고리색(#8B5CF6) → 페트롤 */
+}
+/* 모듈 번호 원형·라벨 띠: 페트롤 배경에 남은 보라 글로우 제거 */
+.module-num { box-shadow: 0 6px 14px rgba(14,81,72,0.22) !important; }
+.module-band-tag { box-shadow: 0 3px 8px rgba(14,81,72,0.20) !important; }
+.module-band-tag.practice { box-shadow: 0 3px 8px rgba(59,130,246,0.25) !important; }
+.module-band-tag.check { box-shadow: 0 3px 8px rgba(16,185,129,0.25) !important; }
+.ps-num, .ps-num.c-format, .ps-num.c-boundary { box-shadow: 0 2px 5px rgba(14,81,72,0.28) !important; }
+
+/* 상단 브릿지 콜아웃: 라벤더 프로스트 → 웜 뉴트럴 */
+.nm-card[style*="99,102,241"] { background: #EFEBDF !important; }
+
+/* CTA 섹션: 남보라 그라디언트 → 딥 페트롤(헤더·푸터 계열) */
+.cta-section {
+    background: linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
+}
+.cta-btn.primary { color: #0E5148 !important; }
+
+/* 비교표 skill 헤더 / 강조 프레임 보라 → 페트롤 */
+.vs-table .vs-head.skill { background: linear-gradient(135deg, #0E5148, #0A3A34) !important; }
+.desc-formula, .highlight-box {
+    background: #F1EDE3 !important;
+    border-color: #C6BEAC !important;
+}
+.nm-table-wrap tbody tr:hover { background: rgba(14,81,72,0.05) !important; }
+
+/* 잔여 라벤더 프로스트 pill/태그 → 페트롤 워시 */
+.pp-boundary, .cc-tag, .principle-label, .install-steps .kbd {
+    background: #DCE6E1 !important;
+    border-color: #C6BEAC !important;
+    color: #0E5148 !important;
+}
+.mock-quote { background: #F1EDE3 !important; }
+
+/* 페르소나 칩 보라 → 페트롤 */
+.pc-gold { color: #0E5148 !important; }
+.pc-purple { color: #0A3A34 !important; }
 </style>
 </body>
 </html>

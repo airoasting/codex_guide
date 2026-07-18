@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>UI 컴포넌트 갤러리 40 | AI ROASTING</title>
     <style>
         @font-face {
@@ -2504,6 +2505,49 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL-PAGE-OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤.
+   공통 셸(헤더/푸터/서브메뉴/섹션 배지/햄버거·드로어)은 petrol.css가 처리하므로 건드리지 않는다.
+   섹션 카테고리 색 c1(초록)·c2(파랑)·c4(플럼)·c5(슬레이트)는 분류 식별색이라 유지하고,
+   대표작 보라 #5B62D8(=c3, 구 브랜드 인디고)만 페트롤로 바꾼다. */
+
+/* 뉴모피즘 라벤더/냉회색 중립 토큰 → 페트롤 에디토리얼 크림/탠 */
+:root {
+    --nm-bg: #F8F6EF !important;
+    --nm-dark: #E4DECF !important;
+    --nm-shadow: 0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #E7E0D2 !important;
+    --nm-shadow-sm: 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+    --nm-inset: inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+    /* 섹션 3(입력/폼) 식별색: 브랜드 인디고 #5B62D8 → 페트롤. 체크박스·라디오·칩·슬라이더·배지에 파급 */
+    --c3: #0E5148 !important;
+}
+
+/* 검색창 포커스 인디고 글로우 → 페트롤 */
+.search-input:focus { box-shadow: var(--nm-inset), 0 0 0 2px rgba(14,81,72,0.28) !important; }
+@keyframes search-pulse {
+    0%, 100% { box-shadow: var(--nm-inset), 0 0 0 2px rgba(14,81,72,0.28); }
+    50%      { box-shadow: var(--nm-inset), 0 0 0 4px rgba(14,81,72,0.16); }
+}
+
+/* 인기 태그 활성 필터: 배경은 var(--codex-accent)라 자동 전환, 인디고 그림자만 페트롤 */
+.popular-tag.active-filter { box-shadow: 0 2px 8px rgba(14,81,72,0.35) !important; }
+
+/* 검색 하이라이트 카드 테두리 인디고 → 페트롤 */
+.comp-card.search-highlight { box-shadow: var(--nm-shadow), 0 0 0 2px rgba(14,81,72,0.32) !important; }
+
+/* 프롬프트 복사 박스 호버 인디고 틴트 → 페트롤 */
+.comp-prompt:hover { background: rgba(14,81,72,0.10) !important; }
+
+/* CTA 카드: 러스트↔인디고↔브라운 그라디언트의 인디고 중간 스톱 → 페트롤, 인디고 글로우 제거 */
+.cta-card {
+    background: linear-gradient(150deg, #A83820 0%, #0E5148 42%, #4A1208 100%) !important;
+}
+.cta-card::before {
+    background: radial-gradient(circle, rgba(86,204,180,0.20) 0%, transparent 60%) !important;
+}
+/* ## PETROL-PAGE-OVERRIDES END ## */
 </style>
 </body>
 </html>

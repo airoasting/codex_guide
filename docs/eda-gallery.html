@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>EDA 차트 갤러리 12 | AI ROASTING</title>
     <style>
         @font-face {
@@ -1606,6 +1607,34 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-local">
+/* ── 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤 매핑 ──
+   공통 셸(헤더·푸터·서브메뉴·배지·햄버거)은 petrol.css가 처리하므로 제외.
+   초록(c1)·파랑(c2)·플럼(c4) 카테고리색과 골드/의미색은 그대로 둔다. */
+:root {
+    --codex-accent: #0E5148 !important;   /* 인디고 액센트 → 페트롤 */
+    --c3: #0E5148 !important;             /* 섹션3 인디고 카테고리색 → 페트롤 */
+    --nm-bg: #F8F6EF !important;          /* 라벤더 카드 배경(#F3F5FD) → 페트롤 카드 */
+}
+/* chart-usage: 연보라 톤 배경 → 페트롤 워시, 텍스트는 --codex-accent 토큰으로 이미 전환 */
+.chart-usage {
+    background: rgba(14,81,72,0.08) !important;
+    color: #0E5148 !important;
+}
+/* CTA 카드: 인디고/네이비 그라디언트 → 마스트헤드와 동일한 딥 페트롤 */
+.cta-card {
+    background:
+        radial-gradient(120% 100% at 84% -14%, rgba(86,204,180,0.30) 0%, rgba(86,204,180,0) 54%),
+        linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
+}
+.cta-card::before { display: none !important; }
+.cta-btn.primary { color: #0E5148 !important; }           /* 흰 버튼의 보라 글자 → 페트롤 */
+.cta-btn.primary:hover { background: #EFECE3 !important; }
+/* 차트 미리보기 SVG 안의 인디고 액센트(#5B62D8) → 페트롤 (하이라이트/회귀선/이상치 등) */
+.chart-preview svg [fill="#5B62D8"]   { fill: #0E5148 !important; }
+.chart-preview svg [stroke="#5B62D8"] { stroke: #0E5148 !important; }
 </style>
 </body>
 </html>

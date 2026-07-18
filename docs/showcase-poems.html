@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="시로 쓴 자화상 | AI ROASTING">
     <meta name="twitter:description" content="멀티 페르소나 실습으로 완성한 37편. AI 시대, 일하는 사람들의 하루.">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>시로 쓴 자화상 | AI ROASTING</title>
     <style>
         @font-face {
@@ -1370,6 +1371,16 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* 페이지 고유 컴포넌트의 보라/인디고만 페트롤로 매핑.
+   공통 셸(헤더/푸터/서브메뉴/섹션 배지/햄버거 드로어)은 petrol.css가 처리하므로 건드리지 않는다. */
+/* CTA 카드 (인디고 그라디언트 → 페트롤 블록) */
+.cta-card { background: #0E5148 !important; }
+.cta-card::before { background: radial-gradient(circle, rgba(245,243,234,0.10) 0%, transparent 65%) !important; }
+/* 흰 버튼 안의 보라 글자 → 페트롤 */
+.cta-btn.primary { color: #0E5148 !important; }
 </style>
 </body>
 </html>

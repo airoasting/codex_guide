@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>고수처럼 쓰는 9가지 원칙 · AI ROASTING Codex</title>
     <style>
         @font-face {
@@ -2910,6 +2911,72 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL-PAGE-OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤.
+   공통 셸(헤더/푸터/서브메뉴/섹션 배지/햄버거·드로어)은 petrol.css가 처리하므로 건드리지 않는다.
+   성공 초록·경고 빨강·등급 색은 유지한다. */
+
+/* 카드·표면 라벤더 배경(#F3F5FD)과 냉회색 테두리 링(#ECECF1) → 페트롤 에디토리얼 크림/탠 */
+:root {
+    --bg: #F8F6EF !important;
+    --sh-dark: #C6BEAC !important;
+    --nm-lg:    0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #E7E0D2 !important;
+    --nm:       0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #E7E0D2 !important;
+    --nm-sm:    0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #E7E0D2 !important;
+    --nm-in:    inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+    --nm-in-sm: inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+}
+
+/* Step 적용 태그: 연보라 pill 배경 → 페트롤 워시 (글자색은 var(--codex-accent)로 자동 전환) */
+.step-key-tag { background: rgba(14,81,72,0.10) !important; box-shadow: none !important; }
+
+/* 인사이트 카드 ic-gold: 인디고 액센트 → 페트롤 (ic-red 등 의미색은 유지) */
+.ic-gold::before        { background: #0E5148 !important; }
+.ic-gold .insight-badge { background: rgba(14,81,72,0.09) !important; color: #0E5148 !important; }
+.ic-gold .dot-badge     { background: #0E5148 !important; }
+
+/* ChatGPT 목업 콜아웃 배지: 인디고 → 페트롤, 보라 글로우 완화 */
+.cbadge { background: #0E5148 !important; box-shadow: 0 2px 7px rgba(14,81,72,0.45) !important; }
+
+/* ChatGPT 목업 내부 인디고 액센트들 → 페트롤 */
+.cs-send-btn   { background: #0E5148 !important; }
+.cs-panel-edit { color: #0E5148 !important; }
+.cs-file-add   { color: rgba(14,81,72,0.72) !important; }
+
+/* 콜아웃 번호 배지: 보라 글로우 → 페트롤 (배경은 var(--codex-accent)라 자동 전환) */
+.callout-num { box-shadow: 0 2px 8px rgba(14,81,72,0.4) !important; }
+
+/* 체크리스트 체크박스 체크 상태: 보라 inset 글로우 → 페트롤 */
+.real-cl-item input:checked ~ .nm-cb-visual {
+    box-shadow: inset 3px 3px 6px rgba(14,81,72,0.4), inset -2px -2px 4px rgba(255,255,255,0.2) !important;
+}
+
+/* 진행바 채움: 인디고→네이비 그라디언트 + 보라 글로우 → 페트롤 */
+.cl-progress-fill {
+    background: linear-gradient(90deg, #0E5148, #2E9C86) !important;
+    box-shadow: 0 1px 4px rgba(14,81,72,0.4) !important;
+}
+
+/* 비교 표 헤더: 인디고 틴트 배경/테두리 → 페트롤 틴트 */
+.feature-table thead th {
+    background: rgba(14,81,72,0.08) !important;
+    border-bottom: 2px solid rgba(14,81,72,0.15) !important;
+}
+
+/* 다음 단계 CTA 카드: 인디고/네이비 그라디언트 → 페트롤 딥 그라디언트 (버튼 글자색은 자동 전환) */
+.next-card {
+    background:
+        radial-gradient(120% 120% at 84% -10%, rgba(46,156,134,0.24) 0%, rgba(46,156,134,0) 56%),
+        linear-gradient(150deg, #0F5E52 0%, #10424A 55%, #131E33 100%) !important;
+}
+
+/* 어두운 코드/프롬프트/AI 말풍선 위 라벨: 페트롤이 너무 어두우므로 밝은 페트롤로 대비 확보 */
+.instr-example-label,
+.code-block-label,
+.ba-bubble.ai .ba-sender { color: #56CCB4 !important; }
+/* ## PETROL-PAGE-OVERRIDES END ## */
 </style>
 </body>
 </html>

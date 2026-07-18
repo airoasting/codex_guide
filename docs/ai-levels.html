@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="Codex 활용 5단계 진단 | AI ROASTING">
     <meta name="twitter:description" content="ChatGPT 기본기부터 Codex, 에이전트 설계, 루프 자동화까지 AI 활용 성숙도를 진단하고 다음 실행 과제를 정합니다.">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>Codex 활용 5단계 진단 | AI ROASTING</title>
     <meta name="description" content="ChatGPT 기본기부터 Codex, 에이전트 설계, 루프 자동화까지 AI 활용 성숙도를 진단하고 다음 실행 과제를 정합니다.">
     <style>
@@ -2906,6 +2907,45 @@ main.container #step-ai {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL-PAGE-OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤 매핑 (공통 셸 제외) */
+
+/* 기능 지도: 레벨 컬럼 헤드(인디고 계열) → 페트롤 스케일 (L0 뉴트럴은 유지) */
+.fm-col-l1 .fm-col-head { background: #4E8C82 !important; }
+.fm-col-l2 .fm-col-head { background: #3B7A6F !important; }
+.fm-col-l3 .fm-col-head { background: #2A6A5F !important; }
+.fm-col-l4 .fm-col-head { background: #1C5D53 !important; }
+.fm-col-l5 .fm-col-head { background: #0E5148 !important; }
+.fm-col-l1 { background: #E4EEEA !important; }
+.fm-col-l2 { background: #DCE8E3 !important; }
+.fm-col-l3 { background: #D4E2DC !important; }
+.fm-col-l4 { background: #CBDCD4 !important; }
+.fm-col-l5 { background: #C2D6CD !important; }
+.fm-item:hover { box-shadow: 0 8px 18px rgba(14,81,72,0.16) !important; border-color: rgba(14,81,72,0.30) !important; }
+.fm-item:hover .fm-item-title { color: #0E5148 !important; }
+.fm-item:focus-visible { outline-color: #0E5148 !important; }
+.fm-aux-label { background: #244A44 !important; }
+.fm-aux-plans .fm-aux-label { background: #2E5750 !important; }
+.fm-aux-thinking .fm-aux-label { background: #294F48 !important; }
+.fm-tag { color: #0E5148 !important; }
+
+/* 수준 진단: 레벨별 인디고 강조(테두리/라벨/퍼센트) → 페트롤 스케일 (al0 뉴트럴은 유지) */
+.assessment-row.al1 { border-left-color: #A8CDC4 !important; }
+.al1 .a-label, .al1 .assessment-percent { color: #3B7A6F !important; }
+.assessment-row.al2 { border-left-color: #8FC0B5 !important; }
+.al2 .a-label, .al2 .assessment-percent { color: #2F7267 !important; }
+.assessment-row.al3 { border-left-color: #6BB0A3 !important; }
+.al3 .a-label, .al3 .assessment-percent { color: #26695E !important; }
+.assessment-row.al4 { border-left-color: #4E9284 !important; }
+.al4 .a-label, .al4 .assessment-percent { color: #1A5C52 !important; }
+.assessment-row.al5 { border-left-color: #2A6A5F !important; }
+.al5 .a-label, .al5 .assessment-percent { color: #0E5148 !important; }
+
+/* 커리큘럼: 선택 강조 링(보라) → 페트롤 */
+.roadmap-card.highlight { box-shadow: var(--nm-inset), 0 0 0 2px rgba(14,81,72,0.35) !important; }
+/* ## PETROL-PAGE-OVERRIDES END ## */
 </style>
 </body>
 </html>

@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>Codex 앱 시작하기 | AI ROASTING</title>
     <meta name="description" content="Codex 앱에서 프로젝트를 열고 첫 작업을 맡기는 비개발자용 입문 가이드.">
     <style>
@@ -1894,6 +1895,69 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL-PAGE-OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤.
+   공통 셸(헤더/푸터/서브메뉴/섹션 배지/햄버거·드로어)은 petrol.css가 처리하므로 건드리지 않는다. */
+
+/* 카드·박스 라벤더 배경(#F3F5FD)과 냉회색 테두리(#ECECF1)를 페트롤 에디토리얼 크림/탠으로 */
+:root {
+    --nm-bg: #F8F6EF !important;
+    --nm-dark: #E4DECF !important;
+    --nm-shadow: 0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #E7E0D2 !important;
+    --nm-shadow-sm: 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+    --nm-inset: inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+}
+
+/* 상단 진행바 보라 그라디언트 → 페트롤 */
+.progress-bar { background: linear-gradient(90deg, #0E5148, #2E9C86) !important; }
+
+/* 강조 박스: 보라 프로스트 → 페트롤 워시 */
+.highlight-box {
+    background: linear-gradient(135deg, rgba(14,81,72,0.07) 0%, rgba(14,81,72,0.03) 100%) !important;
+    border: 1.5px solid rgba(14,81,72,0.22) !important;
+}
+
+/* 아코디언 힌트/호버 보라 틴트 → 페트롤 (열림 상태의 초록 성공색은 유지) */
+.acc-header:hover { background: rgba(14,81,72,0.06) !important; }
+.acc-hint { background: rgba(14,81,72,0.10) !important; }
+
+/* 본문 링크 밑줄 보라 → 페트롤 */
+.flow-desc a { border-bottom-color: rgba(14,81,72,0.4) !important; }
+
+/* 트러블슈팅 "공통" 배지 보라 틴트 → 페트롤 (win 파랑 / mac 회색 OS 색은 유지) */
+.trouble-item .trouble-os.both { background: rgba(14,81,72,0.12) !important; }
+
+/* 참고문헌 그룹 카드 보라 테두리 → 페트롤 */
+.reading-group { border: 1px solid rgba(14,81,72,0.14) !important; }
+
+/* 다운로드/기본 버튼 보라 그림자 → 페트롤 (배경은 var(--codex-accent)라 자동 전환) */
+.dl-btn { box-shadow: 0 4px 16px rgba(14,81,72,0.30) !important; }
+.dl-btn:hover { box-shadow: 0 8px 24px rgba(14,81,72,0.42) !important; }
+.flow-btn.primary { box-shadow: 0 3px 12px rgba(14,81,72,0.32) !important; }
+.flow-btn.primary:hover { box-shadow: 0 5px 16px rgba(14,81,72,0.42) !important; }
+
+/* 코드/프롬프트 박스(어두운 배경) 라벨 보라 → 밝은 페트롤 (대비 확보) */
+.cmd-label { color: #56CCB4 !important; }
+.prompt-label { color: #56CCB4 !important; }
+.cmd-copy-btn:hover { background: #0E5148 !important; border-color: #0E5148 !important; }
+
+/* CTA 섹션: 인디고/네이비 그라디언트 → 페트롤 딥 그라디언트, 보라 글로우 제거 */
+.cta-section {
+    background:
+        radial-gradient(120% 120% at 84% -10%, rgba(86,204,180,0.28) 0%, rgba(86,204,180,0) 56%),
+        linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
+}
+.cta-section::before { background: none !important; }
+.cta-btn.primary { color: #0E5148 !important; }
+
+/* 흰 CTA 버튼 보라 글로우 펄스 → 페트롤 글로우 */
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(14,81,72,0.35); }
+    50%      { box-shadow: 0 4px 28px rgba(14,81,72,0.60); }
+}
+/* ## PETROL-PAGE-OVERRIDES END ## */
 </style>
 </body>
 </html>

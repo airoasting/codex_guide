@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>나만의 Skill 만들기 | AI ROASTING</title>
     <meta name="description" content="반복 설명 없이 Codex가 내 방식대로 결과물을 만들어주는 비법. 스킬 입문 가이드.">
     <style>
@@ -2627,6 +2628,89 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL-PAGE-OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤.
+   공통 셸(헤더/푸터/서브메뉴/섹션 배지/햄버거·드로어)은 petrol.css가 처리하므로 건드리지 않는다.
+   초록/주황/빨강/골드(실전예제) 등 의미색은 유지하고 보라 계열만 바꾼다. */
+
+/* 카드·박스 라벤더 배경(#F3F5FD)과 냉회색 톤을 페트롤 에디토리얼 크림/탠으로 */
+:root {
+    --nm-bg: #F8F6EF !important;
+    --nm-dark: #E4DECF !important;
+    --nm-shadow: 0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #E7E0D2 !important;
+    --nm-shadow-sm: 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+    --nm-inset: inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+    /* 5구성요소 색코딩의 "format" 보라(#8B5CF6) → 밝은 페트롤(보라 제거, boundary 딥페트롤과 구분) */
+    --skill-purple: #2E9C86 !important;
+}
+
+/* 모듈 번호/라벨 배지: 배경은 var(--codex-accent)라 자동 전환, 보라 글로우만 페트롤로 */
+.module-num { box-shadow: 0 6px 14px rgba(14,81,72,0.30) !important; }
+.module-band-tag { box-shadow: 0 3px 8px rgba(14,81,72,0.25) !important; }
+
+/* 점진 공개 레벨 배지 보라 틴트 → 페트롤 (텍스트는 var(--codex-accent) 자동) */
+.disclosure-card .dc-level { background: rgba(14,81,72,0.10) !important; }
+
+/* MCP vs Skills 표: skill 헤더 인디고 그라디언트 → 페트롤 딥 그라디언트 */
+.vs-table .vs-head.skill { background: linear-gradient(135deg, #0E5148, #131E33) !important; }
+
+/* description 공식 박스 보라 프로스트 → 페트롤 워시 */
+.desc-formula {
+    background: linear-gradient(135deg, rgba(14,81,72,0.08), rgba(14,81,72,0.03)) !important;
+    border: 1.5px solid rgba(14,81,72,0.22) !important;
+}
+
+/* 강조 박스 보라 프로스트 → 페트롤 워시 */
+.highlight-box {
+    background: linear-gradient(135deg, rgba(14,81,72,0.08) 0%, rgba(14,81,72,0.03) 100%) !important;
+    border: 1.5px solid rgba(14,81,72,0.22) !important;
+}
+
+/* 표 행 호버 보라 틴트 → 페트롤 */
+.nm-table-wrap tbody tr:hover { background: rgba(14,81,72,0.04) !important; }
+
+/* 5요소 라벨/태그 보라 틴트 → 페트롤 (텍스트는 var(--codex-accent) 자동) */
+.pp-boundary { background: rgba(14,81,72,0.12) !important; }
+.cc-tag { background: rgba(14,81,72,0.12) !important; }
+
+/* format 카테고리 칩의 보라 글로우 → 페트롤 (배경은 --skill-purple 재정의로 자동) */
+.pp-format { background: rgba(46,156,134,0.12) !important; }
+.ps-num.c-format { box-shadow: 0 2px 5px rgba(46,156,134,0.30) !important; }
+
+/* 실습 스텝/코드 라벨 보라 글로우 → 페트롤 (배경은 var(--codex-accent) 자동) */
+.ps-num { box-shadow: 0 2px 5px rgba(14,81,72,0.30) !important; }
+.ps-num.c-boundary { box-shadow: 0 2px 5px rgba(14,81,72,0.30) !important; }
+.copy-btn-nm { background: var(--codex-accent) !important; }
+.copy-btn-nm:hover { background: #0B3E37 !important; }
+
+/* 어두운 코드박스 위 원칙 라벨 보라 배경/테두리 → 페트롤 */
+.principle-label {
+    background: rgba(46,156,134,0.22) !important;
+    border: 1px solid rgba(46,156,134,0.42) !important;
+    color: #EAF4F0 !important;
+}
+
+/* 인용/키캡 보라 틴트 → 페트롤 (kbd 텍스트는 var(--codex-accent) 자동) */
+.mock-quote { background: rgba(14,81,72,0.06) !important; }
+.install-steps .kbd { background: rgba(14,81,72,0.10) !important; }
+
+/* 라이브러리 CTA 버튼: 보라 → 딥 페트롤 (흰 글씨 대비 확보) */
+.library-link { background: #0E5148 !important; }
+
+/* 페르소나 칩: 인디고 "골드" → 실제 골드(이름 일치), 퍼플 → 페트롤 */
+.pc-gold { color: #B8860B !important; }
+.pc-purple { color: #0E5148 !important; }
+
+/* CTA 섹션: 인디고/네이비 그라디언트 → 페트롤 딥 그라디언트, 흰 버튼 글씨 페트롤 */
+.cta-section {
+    background:
+        radial-gradient(120% 120% at 84% -10%, rgba(86,204,180,0.28) 0%, rgba(86,204,180,0) 56%),
+        linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
+}
+.cta-btn.primary { color: #0E5148 !important; }
+/* ## PETROL-PAGE-OVERRIDES END ## */
 </style>
 </body>
 </html>

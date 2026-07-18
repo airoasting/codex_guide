@@ -10,6 +10,7 @@
     <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <meta property="og:url" content="https://airosting.github.io/codex_guide/ai-writing.html">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>AI가 쓴 티를 지우는 법 | AI ROASTING</title>
     <meta name="description" content="AI 한국어의 말버릇 8가지를 가려내고, 감정을 설명하는 대신 장면으로 보여주며, 금지어 프롬프트와 사람의 마지막 손질로 AI 티를 지우는 글쓰기 가이드.">
     <style>
@@ -823,7 +824,7 @@
 
             <p style="margin-top: 12px;">독자에게 "누가 먼저 썼느냐"는 남지 않습니다. "이게 AI 같으냐 아니냐"만 남습니다. 보고서든 이메일이든 제안서든, AI 티가 나는 순간 글의 신뢰가 깎입니다. 이 글은 AI 한국어의 버릇을 가려내고 사람 글로 되돌리는 순서를 다룹니다.</p>
 
-            <div style="padding: 16px 20px 18px; background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.04)); border: 1.5px solid rgba(99,102,241,0.3); border-radius: 14px; margin: 18px 0 4px;">
+            <div style="padding: 16px 20px 18px; background: linear-gradient(135deg, rgba(14,81,72,0.12), rgba(14,81,72,0.04)); border: 1.5px solid rgba(14,81,72,0.3); border-radius: 14px; margin: 18px 0 4px;">
                 <p style="font-size: 14px; color: #2C2F3A; margin: 0;"><strong>핵심 비율은 8 대 2입니다.</strong> 버릇의 대부분은 프롬프트로 막을 수 있습니다. 단어와 문장 단위의 AI 티는 금지어 목록으로 처음부터 못 쓰게 하면 8할이 잡힙니다. 나머지 2할, 구체적인 장면과 고유명사와 모순은 사람이 직접 넣어야 합니다.</p>
             </div>
 
@@ -1552,6 +1553,61 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL-PAGE-OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/라벤더만 페트롤로 매핑. 공통 셸(header/footer/sub-menu/badge/hamburger/drawer)은 petrol.css가 처리. */
+:root {
+    --gold: #0E5148 !important;
+    --gold-dark: #0E5148 !important;
+    --gold-light: #0E5148 !important;
+    --book-teal: #0E5148 !important;
+    --book-teal-dark: #0A3A34 !important;
+    --book-teal-light: #0E5148 !important;
+    --nm-bg: #F8F6EF !important;      /* 라벤더 카드 배경 → 크림 카드 */
+    --hairline: #C6BEAC !important;   /* 연보라 카드 테두리 → 웜 그레이 */
+}
+/* 강조 콜아웃: 보라 그라디언트 → 페트롤 워시 */
+.highlight-box {
+    background: linear-gradient(135deg, rgba(14,81,72,0.08) 0%, rgba(14,81,72,0.03) 100%) !important;
+    border: 1.5px solid rgba(14,81,72,0.22) !important;
+}
+/* 표 헤더/호버 */
+.data-table th { background: #DCE6E1 !important; color: #0E5148 !important; }
+.data-table tr:hover td { background: rgba(14,81,72,0.05) !important; }
+/* 워크플로우 리퀴드 글래스 동그라미: 보라 글로우/inset 제거 */
+.wf-step-num {
+    background: radial-gradient(circle at 32% 28%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.72) 50%, rgba(240,237,227,0.6) 100%) !important;
+    border: 1px solid rgba(255,255,255,0.9) !important;
+    box-shadow:
+        inset 0 1.5px 2px rgba(255,255,255,0.9),
+        0 8px 18px rgba(14,81,72,0.16),
+        0 2px 6px rgba(0,0,0,0.05) !important;
+}
+.wf-connector { background: linear-gradient(180deg, rgba(14,81,72,0.5) 0%, rgba(14,81,72,0.18) 100%) !important; }
+/* 로드맵 넘버 글로우 */
+.roadmap-num { box-shadow: 0 2px 6px rgba(14,81,72,0.28) !important; }
+/* 데이터 셀 라벨 */
+.data-cell .dc-label { color: #0E5148 !important; }
+/* EDA 필 (사용 시) */
+.eda-pill {
+    box-shadow:
+        inset 0 1px 1.5px rgba(255,255,255,0.95),
+        0 8px 20px rgba(14,81,72,0.16),
+        0 2px 6px rgba(0,0,0,0.05) !important;
+}
+.eda-pill .eda-icon { box-shadow: 0 2px 6px rgba(14,81,72,0.3) !important; }
+.eda-pill .eda-arrow { color: rgba(14,81,72,0.65) !important; }
+/* 스킬 프리뷰 검정 박스 (사용 시): 보라 테두리 → 웜 */
+.skill-preview { border: 1px solid #C6BEAC !important; }
+.skill-preview:hover { border-color: #0E5148 !important; box-shadow: 0 6px 20px rgba(0,0,0,0.18) !important; }
+.skill-preview .sp-icon { background: rgba(14,81,72,0.14) !important; }
+/* 프리뷰 카드 (사용 시): 파랑/보라 그라디언트 → 페트롤 */
+.preview-card::before,
+.preview-card::after { background: radial-gradient(circle, rgba(14,81,72,0.14) 0%, transparent 60%) !important; }
+.preview-card .pv-label,
+.preview-card .pv-cta { background: #0E5148 !important; box-shadow: none !important; }
+/* ## PETROL-PAGE-OVERRIDES END ## */
 </style>
 </body>
 </html>

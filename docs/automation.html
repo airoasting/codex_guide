@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="자동화 | AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="Codex 예약됨(Automations)은 정해진 주기로 같은 작업을 알아서 반복 실행하고, 결과만 Triage 받은편지함에 모읍니다. 만드는 법과 실전 사례, 관리법까지.">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>자동화: 정해진 주기로 알아서 도는 Codex 예약됨 | AI ROASTING</title>
     <meta name="description" content="Codex 예약됨(Automations)은 정해진 주기로 같은 작업을 자동 실행합니다. 스레드형·독립형 두 유형, 만드는 법, 일일 트리아지·CI 점검·릴리스 브리프 같은 실전 사례와 관리법까지.">
     <style>
@@ -922,7 +923,7 @@
             <p>예약됨에는 두 유형이 있습니다. 차이는 "예약이 켜질 때 <strong>같은 대화를 이어 갈지, 매번 새로 시작할지</strong>"입니다.</p>
             <div class="compare-grid" style="margin-top:20px;">
                 <div class="compare-nm">
-                    <div class="cmp-header"><span class="cmp-dot" style="background:#5B62D8;"></span><h4>스레드형 · Thread</h4></div>
+                    <div class="cmp-header"><span class="cmp-dot" style="background:#0E5148;"></span><h4>스레드형 · Thread</h4></div>
                     <div class="cmp-quote">같은 대화로 되돌아온다</div>
                     <ul>
                         <li>지금 열어 둔 스레드에 붙는 반복 깨우기</li>
@@ -1070,7 +1071,7 @@
             <p>한 번 만든 예약은 <strong>예약됨</strong> 메뉴에서 확인하고 언제든 수정하거나 멈출 수 있습니다. 실행 결과는 받은편지함인 Triage에 쌓입니다. 배경에서 자동으로 돌기 때문에 <strong>처음 만들 때 권한을 알맞게 거는 것</strong>이 중요합니다.</p>
             <div class="compare-grid" style="margin-top:20px;">
                 <div class="compare-nm">
-                    <div class="cmp-header"><span class="cmp-dot" style="background:#5B62D8;"></span><h4>이렇게 관리합니다</h4></div>
+                    <div class="cmp-header"><span class="cmp-dot" style="background:#0E5148;"></span><h4>이렇게 관리합니다</h4></div>
                     <ul>
                         <li>예약됨 목록에서 등록한 작업·주기 확인</li>
                         <li>주기·작업 내용·유형 수정</li>
@@ -1814,6 +1815,48 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style>
+/* ## PETROL-PAGE-LOCAL START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤 */
+:root {
+    --ant-orange: #0E5148 !important;   /* 액센트 토큰: 링크·강조·번호·라벨(qa-q, grade-stat 등) */
+    --nm-bg: #F8F6EF !important;        /* 뉴모피즘 카드 배경(라벤더 #F3F5FD → 아이보리) */
+}
+
+/* 스크롤 프로그레스 바 (보라 그라디언트/글로우) */
+.scroll-progress {
+    background: linear-gradient(90deg, #0E5148, #56CCB4) !important;
+    box-shadow: 0 0 8px rgba(14,81,72,0.35) !important;
+}
+
+/* grade 번호 배지 (인라인 #5B62D8, 4개 전부 보라) */
+.grade-num { background: #0E5148 !important; }
+
+/* FAQ 카드 hover 보라 글로우 */
+.qa-item:hover { box-shadow: 0 8px 18px rgba(14,81,72,0.10) !important; }
+
+/* key-message 배너 (보라 프로스트 + 하이라이트) */
+.key-message {
+    background: linear-gradient(135deg, rgba(14,81,72,0.10) 0%, rgba(14,81,72,0.03) 100%) !important;
+    border-color: rgba(14,81,72,0.28) !important;
+}
+.key-message .km-highlight {
+    color: #0E5148 !important;
+    background: linear-gradient(180deg, transparent 60%, rgba(14,81,72,0.15) 60%) !important;
+}
+
+/* CTA 섹션 (인디고 그라디언트 → 페트롤 딥) */
+.cta-section {
+    background: linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
+}
+.cta-btn.primary { color: #0E5148 !important; }
+.cta-btn.primary:hover { background: #EDEAE0 !important; }
+
+/* 프롬프트 코드 블록: 다크 배경 위 periwinkle(#8D9CF5) → 민트 페트롤 */
+.prompt-block-label { color: #56CCB4 !important; }
+.prompt-block .kw { color: #56CCB4 !important; }
+/* ## PETROL-PAGE-LOCAL END ## */
 </style>
 </body>
 </html>

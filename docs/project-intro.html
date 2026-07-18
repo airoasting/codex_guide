@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>ChatGPT 프로젝트 만들기 | AI ROASTING</title>
     <style>
         @font-face {
@@ -3909,6 +3910,81 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL-PAGE-OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤.
+   공통 셸(헤더/푸터/서브메뉴/섹션 배지/햄버거·드로어)은 petrol.css가 처리하므로 건드리지 않는다. */
+
+/* 카드/섹션 라벤더 배경(#F3F5FD)·냉회색 테두리(#ECECF1)·냉회색 셰이드(#C5C8D8) → 페트롤 에디토리얼 크림/탠 */
+:root {
+    --bg: #F8F6EF !important;
+    --sh-dark: #C6BEAC !important;
+    --nm-lg: 0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #E7E0D2 !important;
+    --nm: 0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #E7E0D2 !important;
+    --nm-sm: 0 1px 3px rgba(27,23,18,0.06), 0 0 0 1px #E7E0D2 !important;
+    --nm-in: inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+    --nm-in-sm: inset 0 1px 2px rgba(27,23,18,0.05), 0 0 0 1px #E7E0D2 !important;
+}
+
+/* 인트로 비교 래퍼: 보라 테두리·라벤더 워시 → 페트롤/크림 (내부 good/bad 의미색은 유지) */
+.intro-compare {
+    border-color: rgba(14,81,72,0.14) !important;
+    background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(233,230,220,0.58)) !important;
+    box-shadow: 0 14px 36px rgba(27,23,18,0.08) !important;
+}
+/* good/bad 카드: 시작 색(빨강/초록 의미색)은 유지하고, 끝의 라벤더 스톱만 크림으로 */
+.intro-compare .compare-item:first-child { background: linear-gradient(135deg, #FFF7F8 0%, #FBF7F1 100%) !important; }
+.intro-compare .compare-item:last-child  { background: linear-gradient(135deg, #F2FBF5 0%, #F5F8F1 100%) !important; }
+
+/* Step 키 태그 연보라 pill → 페트롤 pill */
+.step-key-tag { background: #DCE6E1 !important; color: #0E5148 !important; }
+
+/* 인사이트 카드(gold=인디고, purple=보라) → 페트롤 (black/red/white 역할색은 유지) */
+.ic-gold::before   { background: #0E5148 !important; }
+.ic-purple::before { background: #0E5148 !important; }
+.ic-gold   .insight-badge { background: rgba(14,81,72,0.09) !important; color: #0E5148 !important; }
+.ic-gold   .dot-badge     { background: #0E5148 !important; }
+.ic-purple .insight-badge { background: rgba(14,81,72,0.09) !important; color: #0E5148 !important; }
+.ic-purple .dot-badge     { background: #0E5148 !important; }
+
+/* 체크박스 체크 상태 보라 inset 글로우 → 페트롤 */
+.real-cl-item input:checked ~ .nm-cb-visual {
+    box-shadow: inset 3px 3px 6px rgba(14,81,72,0.4), inset -2px -2px 4px rgba(255,255,255,0.2) !important;
+}
+
+/* 진행바 보라·네이비 그라디언트/글로우 → 페트롤 */
+.cl-progress-fill {
+    background: linear-gradient(90deg, #0E5148, #0A2A28) !important;
+    box-shadow: 0 1px 4px rgba(14,81,72,0.35) !important;
+}
+
+/* 피처 비교표 헤더 보라 틴트 → 페트롤 */
+.feature-table thead th {
+    background: rgba(14,81,72,0.07) !important;
+    border-bottom-color: rgba(14,81,72,0.16) !important;
+}
+
+/* 다음 단계 CTA 카드: 네이비/인디고 그라디언트 → 페트롤 딥 그라디언트 */
+.next-card {
+    background:
+        radial-gradient(120% 120% at 84% -10%, rgba(86,204,180,0.26) 0%, rgba(86,204,180,0) 56%),
+        linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
+}
+
+/* 콜아웃 번호/맵 번호/콜아웃 배지 보라 글로우 → 페트롤 (배경은 var(--codex-accent)라 자동 전환) */
+.callout-num  { box-shadow: 0 2px 8px rgba(14,81,72,0.4) !important; }
+.mock-map-num { box-shadow: 0 6px 18px rgba(14,81,72,0.34) !important; }
+.cbadge       { background: #0E5148 !important; box-shadow: 0 2px 7px rgba(14,81,72,0.5) !important; }
+
+/* ChatGPT 목업 내부 보라 액센트 → 페트롤 */
+.cs-send-btn   { background: rgba(14,81,72,0.85) !important; }
+.cs-panel-edit { color: rgba(14,81,72,0.8) !important; }
+.cs-file-add   { color: rgba(14,81,72,0.7) !important; }
+
+/* 참고문헌(RD-INJECT) 카드 보라 테두리 → 페트롤 */
+.reading-group { border-color: rgba(14,81,72,0.14) !important; }
+/* ## PETROL-PAGE-OVERRIDES END ## */
 </style>
 </body>
 </html>

@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>AGENTS.md · MEMORY.md | Codex</title>
     <style>
         @font-face {
@@ -1687,6 +1688,30 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ── 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 잔재만 페트롤로 교체 ──
+   공통 셸(헤더/푸터/서브메뉴/섹션 배지/햄버거·드로어)은 petrol.css가 처리하므로 손대지 않는다. */
+
+/* 뉴모피즘 카드 배경 라벤더(#F3F5FD) → 웜 카드 톤 */
+:root { --nm-bg: #F8F6EF !important; }
+
+/* 본문 강조 하이라이트(em) 연보라 밑줄 → 페트롤 워시 */
+.lead-line em {
+    background: linear-gradient(transparent 62%, rgba(14,81,72,0.20) 62%) !important;
+}
+
+/* 파일 카드/플로우/스코프의 보조 인디고(#6B8CFF) → 페트롤 */
+.trio-card.entry { border-top-color: #0E5148 !important; }
+.trio-card.entry .trio-name { color: #0E5148 !important; }
+.flow-pill.entry { color: #0E5148 !important; }
+.scope-card.global { border-top-color: #0E5148 !important; }
+.scope-card.global .scope-label { color: #0E5148 !important; }
+
+/* 참고문헌(RD-INJECT) 그룹 인디고 테두리/제목 → 페트롤 */
+.reading-group { border-color: rgba(14,81,72,0.16) !important; }
+.reading-group h3 { color: #0E5148 !important; }
 </style>
 </body>
 </html>

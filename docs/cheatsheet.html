@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>Codex 명령어 모음 · AI ROASTING Codex</title>
     <style>
         @font-face {
@@ -2861,6 +2862,44 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* 이 페이지 고유 컴포넌트에 남은 보라/인디고/라벤더 → 페트롤.
+   셸(헤더·푸터·서브메뉴·배지·햄버거)은 petrol.css가 처리하므로 건드리지 않는다. */
+
+/* 라벤더 카드/섹션 배경 토큰(#F3F5FD) → 웜 카드 */
+:root { --bg: #F8F6EF !important; }
+
+/* 비교표 헤더의 인디고 틴트 → 웜/페트롤 룰 */
+.feature-table thead th {
+    background: #EFECE3 !important;
+    border-bottom-color: #C6BEAC !important;
+}
+
+/* 인디고 pill/태그 → 연페트롤 */
+.step-key-tag { background: #DCE6E1 !important; color: #0E5148 !important; }
+
+/* ChatGPT 목업 콜아웃/버튼의 인디고 */
+.cbadge { background: #0E5148 !important; box-shadow: 0 2px 7px rgba(14,81,72,0.35) !important; }
+.cs-send-btn { background: #0E5148 !important; }
+.cs-panel-edit { color: #0E5148 !important; }
+.cs-file-add { color: #0E5148 !important; }
+.callout-num { box-shadow: 0 2px 8px rgba(14,81,72,0.35) !important; }
+
+/* 진행바 / 체크박스 보라 글로우 */
+.cl-progress-fill { box-shadow: 0 1px 4px rgba(14,81,72,0.3) !important; }
+.real-cl-item input:checked ~ .nm-cb-visual {
+    box-shadow: inset 3px 3px 6px rgba(14,81,72,0.4), inset -2px -2px 4px rgba(255,255,255,0.2) !important;
+}
+
+/* 인사이트 카드의 인디고 액센트(ic-gold) → 페트롤 */
+.ic-gold::before { background: #0E5148 !important; }
+.ic-gold .insight-badge { background: rgba(14,81,72,0.09) !important; color: #0E5148 !important; }
+.ic-gold .dot-badge { background: #0E5148 !important; }
+
+/* 다음 단계 카드의 보라-네이비 그라디언트 → 페트롤-잉크 */
+.next-card { background: linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important; }
 </style>
 </body>
 </html>

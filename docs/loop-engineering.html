@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>루프 엔지니어링이란? · AI ROASTING Codex</title>
     <style>
         @font-face {
@@ -2867,6 +2868,48 @@ nav.sub-menu a {
     }
 }
 /* ## CODEX-LOAD-ANIM END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style>
+/* ── 페이지 고유 컴포넌트 보라/인디고 → 페트롤 재매핑 (공통 셸은 petrol.css 담당) ── */
+:root {
+    /* 라벤더 카드 배경(#F3F5FD) → 크림 카드 */
+    --bg: #F8F6EF !important;
+    /* 블루-퍼플 그림자 토큰 → 중립 */
+    --sh-dark: #C6BEAC !important;
+}
+
+/* 인사이트 카드: 인디고 GOLD / 바이올렛 PURPLE 액센트 → 페트롤 계열 */
+.ic-gold::before   { background: #0E5148 !important; }
+.ic-gold   .insight-badge { background: rgba(14,81,72,0.09) !important; color: #0E5148 !important; }
+.ic-gold   .dot-badge     { background: #0E5148 !important; }
+.ic-purple::before { background: #0A3A34 !important; }
+.ic-purple .insight-badge { background: rgba(10,58,52,0.09) !important; color: #0A3A34 !important; }
+.ic-purple .dot-badge     { background: #0A3A34 !important; }
+
+/* 연보라 pill/태그 → 페트롤 워시 */
+.step-key-tag { background: #DCE6E1 !important; color: #0E5148 !important; box-shadow: none !important; }
+
+/* 인터랙티브 체크박스 체크 상태 인디고 글로우 → 페트롤 */
+.real-cl-item input:checked ~ .nm-cb-visual {
+    box-shadow: inset 3px 3px 6px rgba(14,81,72,0.35), inset -2px -2px 4px rgba(255,255,255,0.2) !important;
+}
+
+/* 진행바: 인디고→네이비 그라디언트 → 페트롤 */
+.cl-progress-fill { background: linear-gradient(90deg, #0E5148, #0A3A34) !important; box-shadow: 0 1px 4px rgba(14,81,72,0.28) !important; }
+
+/* Next 카드: 인디고 그라디언트 → 페트롤 그라디언트 */
+.next-card { background: linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important; }
+
+/* 기능 비교표 헤더: 인디고 틴트 → 페트롤 워시 */
+.feature-table thead th { background: rgba(14,81,72,0.06) !important; border-bottom-color: rgba(14,81,72,0.15) !important; }
+
+/* ChatGPT 목업 콜아웃/보라 잔재 → 페트롤 */
+.cbadge { background: #0E5148 !important; box-shadow: 0 2px 7px rgba(14,81,72,0.45) !important; }
+.callout-num { box-shadow: 0 2px 8px rgba(14,81,72,0.45) !important; }
+.cs-send-btn { background: rgba(14,81,72,0.85) !important; }
+.cs-panel-edit { color: rgba(14,81,72,0.85) !important; }
+.cs-file-add  { color: rgba(14,81,72,0.7) !important; }
 </style>
 </body>
 </html>

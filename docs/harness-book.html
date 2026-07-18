@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>하네스 엔지니어링으로 책 쓰기 | AI ROASTING</title>
     <meta name="description" content="AI 에이전트 팀으로 책 한 권을 완성하는 하네스 엔지니어링 실전 가이드. AGENTS.md, 스킬, 리뷰 파이프라인까지.">
     <style>
@@ -2385,6 +2386,57 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL PAGE OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더만 페트롤로 매핑.
+   헤더/푸터/서브메뉴/배지/햄버거는 petrol.css 소관이라 제외. */
+:root {
+    --gold: #0E5148 !important;
+    --book-teal: #0E5148 !important;
+    --nm-bg: #F8F6EF !important;
+}
+/* 강조 박스 */
+.highlight-box {
+    background: linear-gradient(135deg, rgba(14,81,72,0.08) 0%, rgba(14,81,72,0.03) 100%) !important;
+    border-color: rgba(14,81,72,0.25) !important;
+}
+.key-message {
+    background: linear-gradient(135deg, rgba(14,81,72,0.10) 0%, rgba(14,81,72,0.04) 100%) !important;
+    border-color: rgba(14,81,72,0.3) !important;
+}
+.key-message .km-highlight { color: #0E5148 !important; }
+/* 테이블/파이프라인 hover, 점선 테두리 */
+.nm-table-wrap tbody tr:hover { background: rgba(14,81,72,0.05) !important; }
+.pipeline-row:hover { background: rgba(14,81,72,0.05) !important; }
+.pipeline-rotation { border-bottom-color: rgba(14,81,72,0.3) !important; }
+.prompt-collection { border-color: rgba(14,81,72,0.3) !important; }
+/* 워크플로우 커넥터 그라디언트 */
+.wf-connector { background: linear-gradient(to bottom, #0E5148, rgba(14,81,72,0.3)) !important; }
+/* 파이프라인 '사람' 페르소나 pill (인디고) */
+.pr-p-human { background: rgba(14,81,72,0.12) !important; color: #0E5148 !important; }
+.pr-p-human::before { background: #0E5148 !important; }
+/* 플로우 다이어그램: 에이전트 그룹 라벨 + publish 스텝 */
+.flow-group-label.fgl-agent {
+    background: linear-gradient(90deg, rgba(14,81,72,0.08), rgba(14,81,72,0.08)) !important;
+    border-color: rgba(14,81,72,0.4) !important;
+}
+.flow-box.fb-publish { background: #0E5148 !important; }
+.flow-step:has(.fb-publish) { color: #0E5148 !important; }
+/* 참고문헌 컴포넌트 테두리 (accent) */
+.reading-group { border-color: rgba(14,81,72,0.14) !important; }
+/* CTA 배너 (인디고/네이비 그라디언트) */
+.cta-section { background: linear-gradient(150deg, #0A2521 0%, #0E5148 58%, #14746A 100%) !important; }
+/* 보라 글로우 애니메이션 재정의 */
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(14,81,72,0.3); }
+    50% { box-shadow: 0 6px 28px rgba(14,81,72,0.5); }
+}
+@keyframes borderGlow {
+    0%, 100% { border-color: rgba(14,81,72,0.25); }
+    50% { border-color: rgba(14,81,72,0.6); }
+}
+/* ## PETROL PAGE OVERRIDES END ## */
 </style>
 </body>
 </html>

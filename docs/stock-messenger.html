@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>종목 분석 후 텔레그램으로 보고 받기 | AI ROASTING</title>
     <meta name="description" content="DART 스킬을 먼저 설치하고 테스트한 뒤 텔레그램으로 자동 보고받는 Codex 실전 워크플로우. 스킬 설치부터 봇 연결, 스케줄링까지.">
     <style>
@@ -1092,7 +1093,7 @@ DART_API_KEY=여기에_40자_API_키_붙여넣기<button class="copy-btn" onclic
                 </div>
                 <div class="compare-nm">
                     <div class="cmp-header">
-                        <span class="cmp-dot" style="background: #6B21A8;"></span>
+                        <span class="cmp-dot" style="background: #0E5148;"></span>
                         <h4>13인 투자자 페르소나</h4>
                     </div>
                     <ul>
@@ -2233,6 +2234,35 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ===== PETROL EDITORIAL · 페이지 고유 컴포넌트 보라/인디고/라벤더 → 페트롤 매핑 ===== */
+:root {
+    --gold: #0E5148 !important;
+    --gold-dark: #0E5148 !important;
+    --book-teal: #0E5148 !important;
+    --book-teal-dark: #0E5148 !important;
+    --nm-bg: #F8F6EF !important;
+    --nm-shadow: 0 1px 3px rgba(14,81,72,0.06), 0 0 0 1px #E7E1D4 !important;
+    --nm-shadow-sm: 0 1px 2px rgba(14,81,72,0.05), 0 0 0 1px #E7E1D4 !important;
+    --nm-inset: inset 0 1px 2px rgba(14,81,72,0.05), 0 0 0 1px #E7E1D4 !important;
+}
+/* CTA 배너: 네이비/인디고 그라디언트 → 페트롤 */
+.cta-section {
+    background: linear-gradient(150deg, #0E5148 0%, #103F39 52%, #0B322C 100%) !important;
+}
+/* 스킬 미리보기 카드: 인디고 테두리/아이콘 배경 → 페트롤 (초록 라벨·화살표는 유지) */
+.skill-preview { border-color: rgba(14,81,72,0.30) !important; }
+.skill-preview:hover { border-color: rgba(14,81,72,0.60) !important; }
+.skill-preview .sp-icon { background: rgba(14,81,72,0.15) !important; }
+/* FAQ 인라인 코드 pill: 연보라 배경 → 페트롤 pill */
+.faq-q code { background: #DCE6E1 !important; color: #0E5148 !important; }
+/* 참고문헌(RD-INJECT): 인디고 테두리/그림자 → 페트롤 */
+.reading-group {
+    border-color: rgba(14,81,72,0.14) !important;
+    box-shadow: 0 4px 18px rgba(14,81,72,0.05) !important;
+}
 </style>
 </body>
 </html>

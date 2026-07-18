@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
     <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
     <meta name="twitter:image" content="assets/thumbnails/thumbnail.png">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
     <title>Vercel 배포 가이드 | Codex</title>
     <style>
         @font-face {
@@ -2108,6 +2109,54 @@ nav.sub-menu a {
     .step-badge::after { animation: none; }
 }
 /* ## SECTION-NAME-STANDARD END ## */
+</style>
+<link rel="stylesheet" href="assets/petrol.css">
+<style id="petrol-page-overrides">
+/* ## PETROL-PAGE-OVERRIDES START ## 이 페이지 고유 컴포넌트의 보라/인디고/라벤더만 페트롤로 매핑
+   (헤더/푸터/서브메뉴/배지/햄버거 셸은 petrol.css가 처리하므로 손대지 않음) */
+
+/* 라벤더 카드/박스/구분선 배경 (#F3F5FD --nm-bg) → 크림 카드 톤 */
+:root { --nm-bg: #F8F6EF !important; }
+
+/* 다크 인디고 그라디언트 배너(#1B1F3B→#3B45A8) → 페트롤 마스트헤드 톤 */
+.hook-banner,
+.cta-section {
+    background: linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
+}
+.hook-banner::before {
+    background: radial-gradient(circle, rgba(86,204,180,0.16) 0%, transparent 65%) !important;
+}
+
+/* 다크 배너 위 URL 칩: 보라 틴트 → 라이트 페트롤/크림 (가독성 확보) */
+.hook-url {
+    color: #DCE6E1 !important;
+    background: rgba(245,243,234,0.10) !important;
+    border-color: rgba(245,243,234,0.28) !important;
+}
+.hook-url-arrow { color: #DCE6E1 !important; }
+
+/* 다크 CTA 섹션 위 텍스트 링크: 페트롤은 어두워 대비 부족 → 라이트 민트 */
+.cta-section p a { color: #8FD4C4 !important; }
+
+/* 흰 버튼 위 보라 텍스트(#5B62D8) → 페트롤 */
+.cta-btn.primary { color: #0E5148 !important; }
+
+/* step-goal 보라 프로스트 배경(rgba(99,102,241,0.07)) → 페트롤 워시 */
+.step-block > .step-goal { background: rgba(14,81,72,0.06) !important; }
+
+/* 보라 글로우/그림자(rgba(99,102,241,*)) 제거 (배지 원은 페트롤 var로 이미 전환됨) */
+.pages-card-num,
+.step-number,
+.step-block .step-number,
+.check-item.checked .check-box,
+.progress-fill { box-shadow: none !important; }
+
+/* step hover 펄스 글로우 키프레임 재정의: 보라 → 페트롤 */
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(14,81,72,0.4); }
+    50%      { box-shadow: 0 0 0 14px rgba(14,81,72,0); }
+}
+/* ## PETROL-PAGE-OVERRIDES END ## */
 </style>
 </body>
 </html>

@@ -25,13 +25,14 @@
         }
 
         :root {
-            --nm-bg: #F3F5FD;
-            --nm-dark: #C5C8D8;
+            /* 페트롤 플랫 토큰 (옛 차가운 뉴모피즘·흰색 하이라이트 폐기). base부터 페트롤이라 첫 페인트에 트랜지션이 걸리지 않는다 */
+            --nm-bg: #F8F6EF;
+            --nm-dark: rgba(11,42,40,0.10);
             --nm-light: #FFFFFF;
-            --nm-shadow: 2px 2px 10px rgba(20,25,46,0.06), -2px -2px 8px rgba(255,255,255,0.7);
-            --nm-shadow-sm: 1px 1px 5px rgba(20,25,46,0.05), -1px -1px 4px rgba(255,255,255,0.6);
-            --nm-inset: inset 2px 2px 6px rgba(20,25,46,0.05), inset -2px -2px 5px rgba(255,255,255,0.6);
-            --hairline: #ECECF1;
+            --nm-shadow: 0 1px 2px rgba(11,42,40,0.05), 0 10px 24px rgba(11,42,40,0.06);
+            --nm-shadow-sm: 0 1px 3px rgba(11,42,40,0.05);
+            --nm-inset: inset 0 1px 3px rgba(11,42,40,0.06);
+            --hairline: #C6BEAC;
             --ant-orange: #5B62D8;
             --ant-dark: #20242E;
             --c-dev:     #6366f1;
@@ -249,8 +250,8 @@
         .case-entry {
             display: grid; grid-template-columns: 116px 1fr; gap: 26px;
             padding: 24px 28px;
-            background: rgba(255,255,255,0.5);
-            border: 1px solid #ECECF1;
+            background: #F8F6EF;
+            border: 1px solid var(--rule2, #C6BEAC);
             border-radius: 14px;
             transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
         }
@@ -285,7 +286,7 @@
         .step-divider { display: flex; align-items: center; gap: 0; margin: 52px 0 22px; }
         .step-divider:first-of-type { margin-top: 8px; }
         .step-divider-line { flex: 1; height: 1px; background: #ECECF1; }
-        .step-divider-badge { padding: 10px 24px; border-radius: 28px; background: #FFFFFF; box-shadow: 4px 4px 8px #C5C8D8, -4px -4px 8px #FFFFFF; font-size: 13px; font-weight: 700; color: var(--ant-orange); letter-spacing: 0.5px; white-space: nowrap; display: flex; align-items: center; gap: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .step-divider-badge { padding: 10px 24px; border-radius: 28px; background: var(--pine-wash, #DCE6E1); border: 1.5px solid var(--pine, #0E5148); box-shadow: 0 1px 2px rgba(14,81,72,0.08); font-size: 13px; font-weight: 700; color: var(--pine-d, #0A3A34); letter-spacing: 0.5px; white-space: nowrap; display: flex; align-items: center; gap: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 
         /* ── Section Box ── */
         .section-box {
@@ -316,9 +317,9 @@
 
         /* ── Topic Card ── */
         .topic-card {
-            background: rgba(255,255,255,0.62);
-            box-shadow: 1px 1px 6px rgba(20,25,46,0.35);
-            border: 1px solid #ECECF1;
+            background: #F8F6EF;
+            box-shadow: none;
+            border: 1px solid var(--rule2, #C6BEAC);
             border-radius: 14px;
             padding: 20px;
             display: flex; flex-direction: column; gap: 10px;
@@ -382,7 +383,7 @@
 
         /* ── Checklist ── */
         .check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .check-item { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: rgba(255,255,255,0.62); border: 1px solid #ECECF1; border-radius: 12px; box-shadow: 1px 1px 6px rgba(20,25,46,0.3); font-size: 13px; color: #20242E; line-height: 1.6; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
+        .check-item { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: #F8F6EF; border: 1px solid var(--rule2, #C6BEAC); border-radius: 12px; box-shadow: none; font-size: 13px; color: #20242E; line-height: 1.6; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
         .check-item:hover { transform: translateY(-3px); border-color: var(--ant-orange); background: rgba(255,255,255,0.6); box-shadow: 0 8px 18px rgba(99,102,241,0.1); }
         .check-item:hover .ck-box { background: var(--ant-orange); color: #fff; }
         .check-item .ck-box { flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--ant-orange); color: var(--ant-orange); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; margin-top: 1px; }
@@ -519,6 +520,26 @@
         .mode-tab.active { background: rgba(255,255,255,0.2); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
         .mode-tab:hover:not(.active) { color: rgba(255,255,255,0.85); }
     </style>
+<style id="petrol-preload">
+/* PETROL-PRELOAD: 첫 페인트 라벤더/보라 플래시 제거. head 끝에서 옛 라벤더 인라인을 선점하고,
+   </body>의 assets/petrol.css가 이후 전체를 정밀 오버라이드한다. AGENTS.md 3.11 참조. */
+:root{
+  --ink:#1B1712;--ink2:#6B6459;--paper:#E9E6DC;--masthead:#E3DFD2;--card:#F8F6EF;--card2:#EFECE3;
+  --rule:#D9D3C4;--rule2:#C6BEAC;--pine:#0E5148;--pine-d:#0A3A34;--pine-wash:#DCE6E1;
+  --codex-accent:#0E5148;--orange:#0E5148;--t1:#1B1712;--t2:#6B6459;
+  --codex-pill-text:#1B1712;--codex-pill-bg:#F8F6EF;--codex-pill-bg-active:#DCE6E1;--codex-pill-bg-muted:#F8F6EF;--codex-pill-shadow:none;
+  --bg:#F8F6EF;--nm-bg:#F8F6EF;--card-bg:#F8F6EF;--nm-card:#F8F6EF;--card-border:#C6BEAC;
+  --book-teal:#0E5148;--book-teal-dark:#0A3A34;--accent:#0E5148;--codex-panel:#E9E6DC;
+}
+html{background:#E9E6DC!important}
+body{background:#E9E6DC!important;color:#1B1712!important}
+header .hero-video,header .footer-video{display:none!important}
+header{background:radial-gradient(120% 100% at 84% -14%,rgba(86,204,180,.34) 0%,rgba(86,204,180,0) 54%),linear-gradient(135deg,#0F5E52 0%,#10424A 50%,#131E33 100%)!important;border-radius:0!important;clip-path:none!important}
+header::before,header::after{display:none!important;content:none!important}
+header h1{color:#F5F3EA!important}
+header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
+.back-link{color:rgba(245,243,234,.66)!important}
+</style>
 </head>
 <body>
 
@@ -532,7 +553,7 @@
         <div class="step-line"></div>
         <a class="step-node active" href="ai-fluency.html">1</a>
         <div class="step-line"></div>
-        <a class="step-node" href="excel-plugin.html">2</a>
+        <a class="step-node" href="chrome-plugin.html">2</a>
         <div class="step-line"></div>
         <a class="step-node" href="codex-101.html">3</a>
         <div class="step-line"></div>
@@ -1539,7 +1560,14 @@ nav.sub-menu a {
 /* 페이지 고유 액센트 변수: 보라 → 페트롤 (fact-label, overview-badge, case-label,
    cs-label, step-divider-badge, kind-pass, topic-link, compare-axis, law-quote-label,
    faq-q, ck-box, ref-go 등 var(--ant-orange) 사용처 전부) */
-:root { --ant-orange: #0E5148 !important; --c-dev: #0E5148 !important; }
+:root {
+    --ant-orange: #0E5148 !important; --c-dev: #0E5148 !important;
+    /* 차가운 헤어라인·뉴모피즘 그림자 → 페트롤 플랫 */
+    --hairline: #C6BEAC !important;
+    --nm-shadow: 0 1px 2px rgba(11,42,40,0.05), 0 10px 24px rgba(11,42,40,0.06) !important;
+    --nm-shadow-sm: 0 1px 3px rgba(11,42,40,0.05) !important;
+    --nm-inset: inset 0 1px 3px rgba(11,42,40,0.06) !important;
+}
 
 /* 인트로 강조 규칙 */
 .lead-rule { background: #DCE6E1 !important; border-color: #C6BEAC !important; color: #0E5148 !important; }
@@ -1574,6 +1602,30 @@ nav.sub-menu a {
 /* CTA 카드: 보라·네이비 그라디언트 → 페트롤(헤더/푸터와 동일 계열) */
 .cta-card { background: linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important; }
 .cta-card::before { background: radial-gradient(circle, rgba(86,204,180,0.22) 0%, transparent 60%) !important; }
+
+/* 카드 표면: 차가운 흰색 + 무거운 뉴모피즘 그림자 → 웜 페이퍼 + 페트롤 헤어라인 + 소프트 드롭 */
+.section-box, .lead-card, .fact-card, .overview-card {
+    background: #F8F6EF !important;
+    border: 1px solid var(--rule2, #C6BEAC) !important;
+    box-shadow: 0 1px 2px rgba(11,42,40,0.05), 0 10px 24px rgba(11,42,40,0.06) !important;
+}
+.case-entry, .topic-card, .check-item {
+    background: #F8F6EF !important;
+    border: 1px solid var(--rule2, #C6BEAC) !important;
+    box-shadow: none !important;
+}
+/* 호버: 차가운 흰색 플래시 → 웜 라이트 + 페트롤 헤어라인 */
+.case-entry:hover, .topic-card:hover, .check-item:hover {
+    background: #FCFAF3 !important;
+    border-color: var(--pine, #0E5148) !important;
+}
+/* 섹션 구분 배지: 차가운 뉴모피즘 → 페트롤 표준 배지(.step-badge와 동일 계열) */
+.step-divider-badge {
+    background: var(--pine-wash, #DCE6E1) !important;
+    border: 1.5px solid var(--pine, #0E5148) !important;
+    box-shadow: 0 1px 2px rgba(14,81,72,0.08) !important;
+    color: var(--pine-d, #0A3A34) !important;
+}
 </style>
 </body>
 </html>

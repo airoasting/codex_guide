@@ -34,24 +34,24 @@
             --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
             --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
             /* 카드: 순백 배경과 구분되는 은은한 라벤더 블루 (과하지 않게) */
-            --card-bg: #F3F5FD;
-            --card-border: #E3E7F6;
+            --card-bg: #F8F6EF;
+            --card-border: #C6BEAC;
             --ant-dark: #1A1917;
             --codex-graphite: #070707;
             --codex-slate: #14192E;
-            --codex-accent: #5B62D8;
+            --codex-accent: #0E5148;
             --codex-blue: var(--codex-accent);
-            --codex-panel: #F0F1F3;
+            --codex-panel: #E9E6DC;
             --codex-pill-text: #283052;
-            --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
-            --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
-            --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
-            --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
-            /* 진단·단계 필버튼: 더 진한 라벤더 블루 */
-            --codex-num-bg: linear-gradient(135deg, #7E84EC 0%, #5762D6 100%);
-            --codex-num-bg-active: linear-gradient(135deg, #6A73E6 0%, #444FCE 100%);
+            --codex-pill-bg: #DCE6E1;
+            --codex-pill-bg-active: #DCE6E1;
+            --codex-pill-bg-muted: #F0EEE6;
+            --codex-pill-shadow: none;
+            /* 진단·단계 필버튼: 솔리드 페트롤 */
+            --codex-num-bg: #0E5148;
+            --codex-num-bg-active: #0E5148;
             --codex-num-text: #fff;
-            --codex-num-shadow: 0 4px 12px rgba(78,90,210,0.34), inset 1px 1px 0 rgba(255,255,255,0.28);
+            --codex-num-shadow: none;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,7 +60,9 @@
 
         /* ── HERO ── */
         .hero {
-            background: #6F7FF0;
+            background:
+                radial-gradient(120% 100% at 84% -14%, rgba(86,204,180,0.34) 0%, rgba(86,204,180,0) 54%),
+                linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%);
             padding: 56px 40px 48px;
             position: relative;
             overflow: hidden;
@@ -104,9 +106,62 @@
             pointer-events: none;
             z-index: 1;
         }
-        .hero-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 2; }
+        .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
 
         .hero-watermark { display: none; }
+        .hero-gpt-mark {
+            --gpt-op: 0.07;
+            position: absolute;
+            bottom: -10%;
+            right: -2.5%;
+            width: 320px;
+            height: 320px;
+            opacity: var(--gpt-op);
+            pointer-events: none;
+            z-index: 1;
+            transform-origin: 68% 68%;
+            transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+            animation: heroGptRevealT 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+        }
+        .hero-gpt-mark svg {
+            width: 100%; height: 100%; display: block;
+            fill: #fff;
+            -webkit-filter: blur(0.4px);
+            filter: blur(0.4px);
+            transform-origin: 50% 50%;
+            transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+                        filter 0.55s ease;
+            animation: heroGptRevealO 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+        }
+        /* 브랜드 로고에 마우스를 올리면 GPT 마크도 함께 반응한다 */
+        .hero:has(.hero-brand:hover) .hero-gpt-mark { opacity: 0.17; }
+        .hero:has(.hero-brand:hover) .hero-gpt-mark svg {
+            transform: rotate(360deg) scale(1.05);
+            -webkit-filter: blur(0);
+            filter: blur(0);
+        }
+        @keyframes heroGptRevealT {
+            from { transform: scale(0.8) rotate(-14deg); }
+            to   { transform: none; }
+        }
+        @keyframes heroGptRevealO {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-gpt-mark { animation: none; opacity: var(--gpt-op); }
+            .hero-gpt-mark svg { animation: none; opacity: 1; transition: none; }
+            .hero:has(.hero-brand:hover) .hero-gpt-mark svg { transform: none; }
+        }
+        /* 헤더 라운드 바깥(노치) 배경을 서브메뉴 헤더 색(#F8F6EF)과 통일 */
+        .hero-shell { position: relative; }
+        .hero-shell::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: #F8F6EF;
+        }
 
         .hero-brand {
             display: inline-flex; align-items: center; gap: 8px;
@@ -143,14 +198,14 @@
             flex-wrap: wrap;
             gap: 7px;
             align-items: center;
-            margin: 0 0 32px;
+            margin: 20px 0 32px;
         }
         .hero-status-pill {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            min-height: 25px;
-            padding: 4.5px 11px;
+            min-height: 30px;
+            padding: 5.4px 11px;
             border-radius: 999px;
             border: 1px solid rgba(255,255,255,0.22);
             background: rgba(14,16,38,0.30);
@@ -193,8 +248,10 @@
 
         /* 히어로 내 Codex 소개 */
         .hero-intro {
-            max-width: 980px;
-            margin-top: 38px;
+            max-width: none;
+            margin-top: 36px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
         .hero-intro-header {
             display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
@@ -202,7 +259,7 @@
         }
         .hero-intro-header strong { font-size: 14px; font-weight: 700; color: #fff; }
         .hero-intro-header span  { font-size: 13px; color: rgba(255,255,255,0.92); }
-        .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+        .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; max-width: 840px; }
         .hero-btn { flex: 1; }
         .hero-btn {
             display: inline-flex; flex-direction: column; align-items: flex-start;
@@ -246,11 +303,21 @@
 
         /* 가이드 정보 카드 */
         .bio-strip {
-            background: linear-gradient(180deg, #F7F8FF 0%, #EEF1FD 100%);
-            border-bottom: 1px solid #E1E6F7;
+            background: #EFEDE4;
+            border-bottom: 1px solid #C6BEAC;
             padding: 48px calc(50vw - 50%) 30px;
-            margin: -20px calc(-50vw + 50%) 8px;
+            margin: -20px calc(-50vw + 50%) 0;
+            border-radius: 0 0 32px 32px;
             position: relative;
+        }
+        /* 라운드 하단 좌우 바깥(노치)을 서브메뉴 헤더 색(#F8F6EF)과 통일 */
+        .bio-strip::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: #F8F6EF;
+            pointer-events: none;
         }
         .bio-wrap { position: relative; max-width: 1180px; margin: 0 auto; }
         .bio-stage { display: flex; align-items: center; gap: 24px; }
@@ -341,7 +408,7 @@
             height: 38px;
             border-radius: 50%;
             background: #FFFFFF;
-            border: 1px solid #E3E7F6;
+            border: 1px solid #C6BEAC;
             box-shadow: 0 4px 14px rgba(20,25,46,0.10);
             cursor: pointer;
             z-index: 2;
@@ -387,7 +454,7 @@
             display: block;
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #8F96FF 0%, #5B62D8 100%);
+            background: #0E5148;
             border-radius: 2px;
             transform-origin: left center;
         }
@@ -399,7 +466,9 @@
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             padding: 12px calc(50vw - 50%);
             margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
-            margin-top: 12px; margin-bottom: 24px;
+            margin-top: 0; margin-bottom: 24px;
+            border-radius: 0 0 32px 32px;
+            overflow: hidden;
         }
         .nav-wrapper.scrolled { box-shadow: 0 8px 24px rgba(56,65,61,0.18), 0 -2px 8px var(--nm-light); }
         .guide-btn-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; position: relative; }
@@ -1283,6 +1352,7 @@
             body.menu-open .menu-toggle .icon-open { display: none; }
             body.menu-open .menu-toggle .icon-close { display: block; }
             .hero { min-height: 0; padding: 32px 20px 28px; border-radius: 0 0 32px 32px; background-position: center right; }
+            .hero-gpt-mark { --gpt-op: 0.055; width: 168px; height: 168px; bottom: -6%; right: -7%; }
             .hero h1 { font-size: 25px; letter-spacing: 0; }
             .hero h1 .hero-h1-br { display: inline; }
             .hero-brand { font-size: 11px; margin-bottom: 10px; }
@@ -1528,16 +1598,38 @@
         }
 
     </style>
+<style id="petrol-preload">
+/* PETROL-PRELOAD: 첫 페인트 라벤더/보라 플래시 제거. head 끝에서 옛 라벤더 인라인을 선점하고,
+   </body>의 assets/petrol.css가 이후 전체를 정밀 오버라이드한다. AGENTS.md 3.11 참조. */
+:root{
+  --ink:#1B1712;--ink2:#6B6459;--paper:#E9E6DC;--masthead:#E3DFD2;--card:#F8F6EF;--card2:#EFECE3;
+  --rule:#D9D3C4;--rule2:#C6BEAC;--pine:#0E5148;--pine-d:#0A3A34;--pine-wash:#DCE6E1;
+  --codex-accent:#0E5148;--orange:#0E5148;--t1:#1B1712;--t2:#6B6459;
+  --codex-pill-text:#1B1712;--codex-pill-bg:#F8F6EF;--codex-pill-bg-active:#DCE6E1;--codex-pill-bg-muted:#F8F6EF;--codex-pill-shadow:none;
+  --bg:#F8F6EF;--nm-bg:#F8F6EF;--card-bg:#F8F6EF;--nm-card:#F8F6EF;--card-border:#C6BEAC;
+  --book-teal:#0E5148;--book-teal-dark:#0A3A34;--accent:#0E5148;--codex-panel:#E9E6DC;
+}
+html{background:#E9E6DC!important}
+body{background:#E9E6DC!important;color:#1B1712!important}
+header .hero-video,header .footer-video{display:none!important}
+header{background:radial-gradient(120% 100% at 84% -14%,rgba(86,204,180,.34) 0%,rgba(86,204,180,0) 54%),linear-gradient(135deg,#0F5E52 0%,#10424A 50%,#131E33 100%)!important;border-radius:0!important;clip-path:none!important}
+header::before,header::after{display:none!important;content:none!important}
+header h1{color:#F5F3EA!important}
+header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
+.back-link{color:rgba(245,243,234,.66)!important}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polygon points="16 8 13.5 13.5 8 16 10.5 10.5 16 8"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><line x1="6" y1="20" x2="6" y2="15"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="3" y1="20" x2="21" y2="20"/></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></symbol><symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol><symbol id="i-presentation" viewBox="0 0 24 24"><path d="M2 3h20v12H2z"/><path d="M12 15v4"/><path d="M8 21l4-2 4 2"/></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol><symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="1.3"/><circle cx="17.5" cy="10.5" r="1.3"/><circle cx="8.5" cy="7.5" r="1.3"/><circle cx="6.5" cy="12.5" r="1.3"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.7 0 2-1.5 1-2.5-.8-.8-.5-2.5 1-2.5h2c2.5 0 4-2 4-4.5C20 6 16.4 2 12 2z"/></symbol><symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4.5a1.5 1.5 0 0 1 3 0V6h3a1 1 0 0 1 1 1v3h1.5a1.5 1.5 0 0 1 0 3H17v3a1 1 0 0 1-1 1h-3v1.5a1.5 1.5 0 0 1-3 0V17H7a1 1 0 0 1-1-1v-3H4.5a1.5 1.5 0 0 1 0-3H6V7a1 1 0 0 1 1-1h3z"/></symbol><symbol id="i-toolbox" viewBox="0 0 24 24"><rect x="2" y="9" width="20" height="11" rx="2"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><line x1="2" y1="13" x2="22" y2="13"/><line x1="10" y1="13" x2="10" y2="15"/><line x1="14" y1="13" x2="14" y2="15"/></symbol><symbol id="i-trending" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol><symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6h6z"/><path d="M19 7l-3 6h6z"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol><symbol id="i-bookopen" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22 6 12 13 2 6"/></symbol><symbol id="i-coffee" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></symbol><symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol><symbol id="i-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol><symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol><symbol id="i-repeat" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></symbol><symbol id="i-news" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2V9c0-1.1.9-2 2-2h2"/><path d="M18 14H10"/><path d="M15 10H10"/><rect x="10" y="6" width="8" height="4"/></symbol><symbol id="i-brain" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.14"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.14"/></symbol></svg>
 
 <!-- ── HERO ── -->
+<div class="hero-shell">
 <header class="hero">
     <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
         <source src="assets/media/hero-bg.mp4" type="video/mp4">
     </video>
     <img class="hero-watermark" src="assets/logos/logo1-white.png" alt="" aria-hidden="true">
+    <span class="hero-gpt-mark" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.1419.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg></span>
     <div class="hero-inner">
         <a href="index.html" class="hero-brand" aria-label="AI ROASTING 홈으로"><span class="hero-brand-logo"><img src="assets/logos/logo1-white.png" alt="AI ROASTING 로고"></span>AI ROASTING</a>
         <h1>비즈니스 리더를 위한 <br class="hero-h1-br" aria-hidden="true">Codex 완전 정복</h1>
@@ -1573,6 +1665,7 @@
         </div>
     </div>
 </header>
+</div>
 
 
 <!-- 모바일 햄버거 버튼 + 백드롭 -->
@@ -1720,17 +1813,17 @@
             <span class="section-num">2단계</span>
             <span class="section-title">확장 프로그램</span>
         </div>
-        <p class="section-subtitle">지금 쓰는 오피스에서 ChatGPT를 바로 불러 씁니다</p>
+        <p class="section-subtitle">브라우저와 오피스에서 ChatGPT를 바로 불러 씁니다</p>
         <section class="cards">
-            <a class="card" href="excel-plugin.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span><h2>Excel에서 ChatGPT 사용</h2></div>
+            <a class="card" href="chrome-plugin.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span><h2>크롬에서 ChatGPT 사용</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
-                <p>Excel 사이드바에서 워크북을 만들고, 수식을 설명하고, 시나리오와 민감도 분석을 실행합니다.</p>
+                <p>탭을 오가지 않고, 지금 보고 있는 웹페이지 위에서 요약과 번역, 메일 초안, 검색 분석을 바로 처리합니다.</p>
             </a>
-            <a class="card" href="pptx-plugin.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-presentation"/></svg></span><h2>PowerPoint에서 ChatGPT 사용</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level beginner">입문</span></div>
-                <p>PowerPoint 사이드바에서 슬라이드 초안, 기존 덱 수정, 스토리 점검, 발표 준비를 진행합니다.</p>
+            <a class="card" href="office-plugin.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-presentation"/></svg></span><h2>PowerPoint·Excel에서 ChatGPT 사용</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level beginner">입문</span></div>
+                <p>PowerPoint와 Excel 사이드바에서 덱 초안과 워크북을 만들고, 수식과 스토리를 점검하고, 시나리오와 발표를 준비합니다.</p>
             </a>
         </section>
     </div>
@@ -1760,12 +1853,16 @@
                 <p>저장소를 만들고 파일을 올립니다. GitHub Pages, Vercel, Netlify로 웹 주소를 바로 만드는 과정을 익힙니다.</p>
             </a>
         </section>
-        <div class="card-subsection"><span class="sub-name">비법</span><span class="sub-desc">노코드·CLI 공통 원칙</span></div>
-        <section class="cards">
-            <a class="card" href="codex-best-practices.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg></span><h2>고수처럼 쓰는 9가지 원칙</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
-                <p>작업을 맡기는 사람이 지키는 9가지 원칙을 정리합니다.</p>
+        <section class="cards" style="grid-template-columns: 1fr 1fr;">
+            <a class="card" href="checklist.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.3 12.3 2.6 2.6 4.6-5.6"/></svg></span><h2>Codex 20단계로 따라하기</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 단계별</span><span class="badge-level advanced">고급</span></div>
+                <p>기초부터 고급까지 20개 항목. 체크할수록 내가 무엇을 모르는지 보입니다.</p>
+            </a>
+            <a class="card" href="cheatsheet.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="11" rx="2"/><path d="M6.5 10.2h.01M10 10.2h.01M13.5 10.2h.01M17 10.2h.01M6.5 13.7h11"/></svg></span><h2>명령어 모음</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 레퍼런스</span><span class="badge-level reference">참고</span></div>
+                <p>외울 필요 없습니다. 자주 쓰는 슬래시 명령어와 단축키를 한 곳에 모았습니다.</p>
             </a>
         </section>
     </div>
@@ -1790,10 +1887,10 @@
                 <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
                 <p>에이전트가 손발로 쓰는 도구의 개념과 종류를 정리합니다.</p>
             </a>
-            <a class="card" href="agent-design.html">
+            <a class="card" href="harness-workflows.html">
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><h2>멀티 에이전트 소환</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
-                <p>솔로에서 오케스트라까지, 여러 에이전트를 동시에 부리는 설계를 다룹니다.</p>
+                <p>/goal 한 줄로 목표를 선언하면 Codex가 에이전트 팀을 꾸려 검수·수정·검증까지 알아서 진행합니다. 이 가이드가 그 증거입니다.</p>
             </a>
         </section>
 
@@ -1833,6 +1930,11 @@
                 <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
                 <p>Codex 예약됨(Automations)으로 정해진 주기에 같은 작업을 자동 실행합니다.</p>
             </a>
+            <a class="card" href="codex-best-practices.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg></span><h2>고수처럼 쓰는 9가지 원칙</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
+                <p>노코드든 CLI든, Codex로 잘 일하는 방식. 컨텍스트 관리와 탐색·계획·구현·검증 루프까지, Anthropic 내부 팀이 검증한 원칙 9가지.</p>
+            </a>
         </section>
     </div>
 
@@ -1850,70 +1952,21 @@
         </div>
         <p class="section-subtitle">실제 업무에 Codex와 자동화 작업을 붙이는 사례</p>
 
-        <div class="card-subsection"><span class="sub-name">기본</span><span class="sub-desc">바로 써먹는 실무 자동화</span></div>
         <section class="cards">
-            <a class="card" href="ai-writing.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-pencil"/></svg></span><h2>AI가 쓴 티를 지우는 법</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
-                <p>번역투와 AI 특유의 패턴을 걷어내 사람이 쓴 글로 다듬습니다.</p>
+            <a class="card" href="mcp-examples.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-grid"/></svg></span><h2>MCP 연결 실전</h2><span style="font-size:11px;font-weight:700;color:#0E5148;background:rgba(14,81,72,0.12);padding:3px 10px;border-radius:20px;margin-left:auto;">실전</span></div>
+                <div class="card-meta"><span class="badge-time">⏱ 10~15분</span><span class="badge-level intermediate">중급~고급</span></div>
+                <p>카카오톡·법령·구글 드라이브·DART 공시·텔레그램을 Codex에 연결하는 다섯 가지 MCP 실전 예제.</p>
             </a>
-            <a class="card" href="news-clipping.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span><h2>뉴스 클리핑 자동화</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level intermediate">중급</span></div>
-                <p>관심 주제 뉴스를 모아 요약하는 작업을 자동화합니다.</p>
-            </a>
-            <a class="card" href="google-sheets-dashboard.html">
-                <div class="card-title-row">
-                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-trending"/></svg></span>
-                    <h2>구글 시트 기반 대시보드 만들기</h2>
-                </div>
-                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
-                <p>구글 시트에 있는 데이터를 분석하여 인터랙티브 대시보드 만들기.</p>
-            </a>
-        </section>
-
-        <div class="card-subsection"><span class="sub-name">MCP연결</span><span class="sub-desc">외부 도구와 연동</span></div>
-        <section class="cards">
-            <a class="card" href="playmcp-kakao.html">
-                <div class="card-title-row">
-                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chat"/></svg></span>
-                    <h2>카카오톡 PlayMCP 연결하기</h2>
-                </div>
-                <div class="card-meta"><span class="badge-time">⏱ 12분</span><span class="badge-level intermediate">중급</span></div>
-                <p>Codex와 Kakao PlayMCP를 MCP로 연결해, 작업 요약을 카카오톡 나와의 채팅방으로 보내는 실전 과정.</p>
-            </a>
-            <a class="card" href="korean-law-mcp.html">
-                <div class="card-title-row">
-                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span>
-                    <h2>한국 법령 검색 MCP 연결하기</h2>
-                </div>
+            <a class="card" href="seven-steps.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-list"/></svg></span><h2>AI와 함께 일하는 7단계</h2><span style="font-size:11px;font-weight:700;color:#0E5148;background:rgba(14,81,72,0.12);padding:3px 10px;border-radius:20px;margin-left:auto;">실전</span></div>
                 <div class="card-meta"><span class="badge-time">⏱ 10분</span><span class="badge-level intermediate">중급</span></div>
-                <p>Codex의 Customize 메뉴에서 커스텀 MCP를 붙여, 법령·판례·조례를 실시간으로 검색하고 환각까지 검증하는 실전 사례.</p>
+                <p>스킬 다섯 개를 하나의 워크플로우로 잇는 7단계. 목표부터 검증까지 매번 같은 품질로 만듭니다.</p>
             </a>
-            <a class="card" href="stock-messenger.html">
-                <div class="card-title-row">
-                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span>
-                    <h2>기업 공시 데이터 분석</h2>
-                </div>
-                <div class="card-meta"><span class="badge-time">⏱ 15분</span><span class="badge-level advanced">고급</span></div>
-                <p>DART 스킬을 먼저 설치하고 테스트한 뒤, 텔레그램 봇으로 리포트를 받아보는 MCP 연동 워크플로우.</p>
-            </a>
-        </section>
-
-        <div class="card-subsection"><span class="sub-name">심화</span><span class="sub-desc">계속 자라는 지식 자산</span></div>
-        <section class="cards">
             <a class="card" href="harness-book.html">
-                <div class="card-title-row">
-                    <span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-book"/></svg></span>
-                    <h2>하네스 엔지니어링으로 책 쓰기</h2>
-                </div>
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-book"/></svg></span><h2>하네스 엔지니어링으로 책 쓰기</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 20분</span><span class="badge-level advanced">고급</span></div>
                 <p>AI 에이전트 팀으로 책 한 권을 완성하는 하네스 엔지니어링 실전 가이드.</p>
-            </a>
-            <a class="card" href="company-brain.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-brain"/></svg></span><h2>컴퍼니 브레인 축적하기</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 18분</span><span class="badge-level advanced">고급</span></div>
-                <p>조직의 지식을 에이전트가 계속 쌓아가는 자산으로 만듭니다.</p>
             </a>
         </section>
     </div>
@@ -2000,21 +2053,26 @@
             <span class="section-title">디자인·시각화 갤러리</span>
         </div>
         <p class="section-subtitle">바이브 코딩 결과물을 더 풍부하게 만드는 시각 자료 모음</p>
-        <section class="cards" style="grid-template-columns: 1fr 1fr 1fr;">
+        <section class="cards">
             <a class="card" href="eda-gallery.html">
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span><h2>EDA 차트 갤러리 12</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
                 <p>히스토그램, 박스플롯, 상관 히트맵… 본격 분석 전에 데이터를 들여다보는 12가지 차트를 모았습니다.</p>
+            </a>
+            <a class="card" href="ui-design.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-palette"/></svg></span><h2>UI 디자인 트렌드 18</h2></div>
+                <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
+                <p>머터리얼, 뉴모피즘, 글라스모피즘… 디자인 스타일을 알면 Codex에게 더 정확히 요청할 수 있습니다.</p>
             </a>
             <a class="card" href="component-gallery.html">
                 <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-grid"/></svg></span><h2>UI 컴포넌트 갤러리 40</h2></div>
                 <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
                 <p>버튼, 카드, 모달, 폼… 바이브 코딩할 때 자주 쓰는 UI 부품을 한눈에 모았습니다.</p>
             </a>
-            <a class="card" href="ui-design.html">
-                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-palette"/></svg></span><h2>UI 디자인 트렌드 18</h2></div>
-                <div class="card-meta"><span class="badge-time">⏱ 필요할 때</span><span class="badge-level reference">참고</span></div>
-                <p>머터리얼, 뉴모피즘, 글라스모피즘… 디자인 스타일을 알면 Codex에게 더 정확히 요청할 수 있습니다.</p>
+            <a class="card" href="icon-gallery.html">
+                <div class="card-title-row"><span class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-image"/></svg></span><h2>SVG 아이콘 갤러리 300</h2></div>
+                <div class="card-meta"><span class="badge-level reference">참고</span></div>
+                <p>화살표, 사용자, 하트, 브랜드 로고… 버튼·카드에 바로 붙여 쓰는 라인 아이콘 300개를 모았습니다.</p>
             </a>
         </section>
     </div>
@@ -3016,6 +3074,12 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <link rel="stylesheet" href="assets/petrol.css">
 <style id="index-petrol">
+/* index 헤더는 넓은 콘텐츠(카드 3열)라 공유 petrol.css의 760px를 덮어 1200px 유지 */
+.hero-inner { max-width: 1200px !important; }
+/* 헤더 글자 위치·여백을 라이브(airoasting.vercel.app) 기준으로 맞춤 — petrol.css 공통 타이포 덮기 */
+.hero { padding: 48px 40px 44px !important; }
+.hero h1 { font-size: 49px !important; line-height: 1.2 !important; letter-spacing: -1px !important; margin-bottom: 8px !important; }
+.hero .hero-sub { font-size: 15px !important; line-height: 24px !important; }
 /* index 고유 컴포넌트 보라 → 페트롤 */
 :root {
     --card-bg: #F8F6EF !important;
@@ -3035,8 +3099,8 @@ body { background: #E9E6DC !important; }
 .bio-card-tag, .track-label-badge { background: #DCE6E1 !important; color: #0E5148 !important; box-shadow: none !important; }
 .track-label-badge.cli { background: #DCE6E1 !important; }
 /* "가이드 소개" 링크 버튼: 보라 → 잉크 */
-.about-link { background: #1B1712 !important; color: #F5F3EA !important; border-color: transparent !important; box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important; }
-.about-link:hover { background: #0E5148 !important; }
+.about-link { background: rgba(255,255,255,0.12) !important; color: #F5F3EA !important; border-color: rgba(255,255,255,0.28) !important; box-shadow: 0 4px 14px rgba(0,0,0,0.12) !important; }
+.about-link:hover { background: rgba(255,255,255,0.20) !important; border-color: rgba(255,255,255,0.40) !important; }
 /* 자세히·강조 링크는 --codex-accent(페트롤) 상속 */
 .bio-card .bio-more, .card a { color: #0E5148 !important; }
 /* 키보드 포커스 링(접근성) */
@@ -3061,7 +3125,7 @@ body { background: #E9E6DC !important; }
 .badge-level.reference { background: rgba(107,100,89,0.10) !important; color: #6B6459 !important; }
 .guide-btn.active { background: #E7EEEA !important; border-color: #0E5148 !important; color: #1B1712 !important; box-shadow: 0 8px 18px rgba(14,81,72,0.14) !important; }
 #section-voices::before { background: #EDEBE2 !important; }
-.newsletter-section { background: linear-gradient(165deg, #DCE6E1 0%, #C9D8D2 100%) !important; }
+.newsletter-section { background: #DED9CB !important; border-radius: 0 !important; }
 .newsletter-section::before, .newsletter-section::after { background: none !important; }
 </style>
 </body>

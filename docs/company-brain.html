@@ -1872,6 +1872,26 @@
 
 /* RD-INJECT 참고문헌 컴포넌트 */ .reading{margin-top:48px;padding-top:8px} .reading>h2{font-size:1.4rem;font-weight:800;margin:0 0 18px} .reading-group{background:#fff;border:1px solid rgba(91,98,216,.14);border-radius:16px;padding:20px 22px;margin-bottom:16px;box-shadow:0 4px 18px rgba(40,40,90,.05)} .reading-group h3{margin:0 0 12px;font-size:1.02rem;font-weight:700;color:var(--codex-accent)} .reading-group ul{margin:0;padding-left:18px} .reading-group li{margin:7px 0;line-height:1.6;color:#3a3f55} .reading-group a{color:var(--codex-accent);text-decoration:none;font-weight:600} .reading-group a:hover{text-decoration:underline}
 </style>
+<style id="petrol-preload">
+/* PETROL-PRELOAD: 첫 페인트 라벤더/보라 플래시 제거. head 끝에서 옛 라벤더 인라인을 선점하고,
+   </body>의 assets/petrol.css가 이후 전체를 정밀 오버라이드한다. AGENTS.md 3.11 참조. */
+:root{
+  --ink:#1B1712;--ink2:#6B6459;--paper:#E9E6DC;--masthead:#E3DFD2;--card:#F8F6EF;--card2:#EFECE3;
+  --rule:#D9D3C4;--rule2:#C6BEAC;--pine:#0E5148;--pine-d:#0A3A34;--pine-wash:#DCE6E1;
+  --codex-accent:#0E5148;--orange:#0E5148;--t1:#1B1712;--t2:#6B6459;
+  --codex-pill-text:#1B1712;--codex-pill-bg:#F8F6EF;--codex-pill-bg-active:#DCE6E1;--codex-pill-bg-muted:#F8F6EF;--codex-pill-shadow:none;
+  --bg:#F8F6EF;--nm-bg:#F8F6EF;--card-bg:#F8F6EF;--nm-card:#F8F6EF;--card-border:#C6BEAC;
+  --book-teal:#0E5148;--book-teal-dark:#0A3A34;--accent:#0E5148;--codex-panel:#E9E6DC;
+}
+html{background:#E9E6DC!important}
+body{background:#E9E6DC!important;color:#1B1712!important}
+header .hero-video,header .footer-video{display:none!important}
+header{background:radial-gradient(120% 100% at 84% -14%,rgba(86,204,180,.34) 0%,rgba(86,204,180,0) 54%),linear-gradient(135deg,#0F5E52 0%,#10424A 50%,#131E33 100%)!important;border-radius:0!important;clip-path:none!important}
+header::before,header::after{display:none!important;content:none!important}
+header h1{color:#F5F3EA!important}
+header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
+.back-link{color:rgba(245,243,234,.66)!important}
+</style>
 </head>
 <body>
 
@@ -1886,7 +1906,7 @@
             <div class="step-line"></div>
             <a class="step-node" href="ai-fluency.html">1</a>
             <div class="step-line"></div>
-            <a class="step-node" href="excel-plugin.html">2</a>
+            <a class="step-node" href="chrome-plugin.html">2</a>
             <div class="step-line"></div>
             <a class="step-node" href="codex-101.html">3</a>
             <div class="step-line"></div>
@@ -1954,7 +1974,7 @@
             </div>
         </div>
         <div class="nm-card">
-            <p>컴퍼니 브레인은 조직의 노하우, 의사결정 기록, 고객 이해, 산업 맥락을 <strong>AI 에이전트가 참조할 수 있는 형태로 누적한 저장소</strong>다. ChatGPT의 프로젝트 지시문이나 Claude의 CLAUDE.md 파일이 그 가장 단순한 형태다.</p>
+            <p>컴퍼니 브레인은 조직의 노하우, 의사결정 기록, 고객 이해, 산업 맥락을 <strong>AI 에이전트가 참조할 수 있는 형태로 누적한 저장소</strong>다. ChatGPT의 프로젝트 지시문이나 Codex의 AGENTS.md 파일이 그 가장 단순한 형태다.</p>
             <p>컴퍼니 브레인이 없으면 AI는 매번 일반 지식으로 대답한다. 컴퍼니 브레인이 있으면 AI는 우리 회사의 언어, 기준, 맥락으로 대답한다. 이 차이가 산출물의 재사용 가능성을 결정한다.</p>
         </div>
         <div class="element-grid">
@@ -2042,7 +2062,7 @@
         <div class="insight-grid">
             <div class="insight-card ic-gold">
                 <div class="insight-badge"><span class="dot-badge"></span>시스템 프롬프트 주입</div>
-                <p><strong>L1을 항상 포함.</strong> ChatGPT 프로젝트 지시문, Claude의 CLAUDE.md처럼 시스템 레벨에서 L1 정체성 레이어를 주입한다. 매번 설명하지 않아도 AI가 기본값으로 따른다.</p>
+                <p><strong>L1을 항상 포함.</strong> ChatGPT 프로젝트 지시문, Codex의 AGENTS.md처럼 시스템 레벨에서 L1 정체성 레이어를 주입한다. 매번 설명하지 않아도 AI가 기본값으로 따른다.</p>
             </div>
             <div class="insight-card ic-black">
                 <div class="insight-badge"><span class="dot-badge"></span>작업 시작 시 컨텍스트 로드</div>

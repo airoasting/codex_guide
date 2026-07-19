@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
+    <link rel="apple-touch-icon" href="assets/favicon-teal.png">
     <link rel="canonical" href="https://airosting.github.io/codex_guide/eda-gallery.html">
-    <meta property="og:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
-    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta property="og:title" content="AI ROASTING · Codex 완전 정복">
+    <meta property="og:description" content="비즈니스 리더를 위한 Codex 완전 정복 확장 프로그램부터 Codex까지 5단계 실전 가이드">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <meta property="og:url" content="https://airosting.github.io/codex_guide/eda-gallery.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI ROASTING · 비즈니스 리더를 위한 Codex 완전 정복">
-    <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지 5단계 실전 가이드">
+    <meta name="twitter:title" content="AI ROASTING · Codex 완전 정복">
+    <meta name="twitter:description" content="비즈니스 리더를 위한 Codex 완전 정복 확장 프로그램부터 Codex까지 5단계 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
-    <link rel="icon" type="image/png" href="assets/favicon-teal.png">
-    <title>EDA 차트 갤러리 12 | AI ROASTING</title>
+    <title>EDA 차트 갤러리 28 | AI ROASTING</title>
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -25,33 +26,34 @@
         }
 
         :root {
-            --nm-bg: #F3F5FD;
-            --nm-dark: #ECECF1;
+            --nm-bg: #F8F6EF;
+            --nm-dark: #C6BEAC;
             --nm-light: #FFFFFF;
-            --nm-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
-            --nm-shadow-sm: 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
-            --nm-inset: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1;
-            --codex-accent: #5B62D8;
-            --ant-dark: #1A1917;
+            --nm-shadow: 6px 6px 14px #C6BEAC, -6px -6px 14px #FFFFFF;
+            --nm-shadow-sm: 4px 4px 8px #C6BEAC, -4px -4px 8px #FFFFFF;
+            --nm-inset: inset 4px 4px 10px #C6BEAC, inset -4px -4px 10px #FFFFFF;
+            --ant-orange: #0E5148;
+            --ant-dark: #1B1712;
             --c1: #3a7a5a;
             --c2: #2a6a9a;
-            --c3: #5B62D8;
+            --c3: #8a5a2a;
             --c4: #7a3a6a;
+            --c5: #0E5148;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { word-break: keep-all;
             font-family: 'Pretendard', 'Helvetica Neue', Arial, -apple-system, system-ui, sans-serif;
-            background: #FFFFFF;
-            color: #2C2F3A;
+            background: var(--nm-bg);
+            color: #1B1712;
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
         /* ── Header ── */
         header {
-            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
+            background: linear-gradient(150deg, #0E5148 0%, #0A3A34 35%, #0A3A34 100%);
             padding: 28px 40px 40px;
             border-radius: 0 0 32px 32px;
             text-align: center;
@@ -62,7 +64,7 @@
             content: '';
             position: absolute; top: -80px; right: -40px;
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(14,81,72,0.18) 0%, transparent 60%);
             pointer-events: none;
         }
         .back-link {
@@ -88,27 +90,27 @@
         header p { font-size: 16px; color: rgba(255,255,255,0.8); position: relative; z-index: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 
         /* ── Header Page Links ── */
-        .header-pages {
-            max-width: 700px;
+        .header-pages { max-width: 700px; gap: 14px;
+
             margin-left: auto;
             margin-right: auto;
-            display: flex; justify-content: center; gap: 14px; margin: 22px auto 0; position: relative; z-index: 1;
+            display: flex; justify-content: center; margin: 22px auto 0; position: relative; z-index: 1;
         }
-        .header-page-link {
-            flex: 1 1 0;
-            min-width: 0;
-            max-width: 280px;
+        .header-page-link { flex: 1 1 0; min-width: 0; max-width: 280px; gap: 8px; font-size: 14px; padding: 12px 22px; border-radius: 16px;
+
+
+
             justify-content: center;
             display: flex;
             align-items: center;
-            gap: 8px;
+
             text-decoration: none;
             color: rgba(255,255,255,0.7);
-            font-size: 14px;
+
             font-weight: 700;
-            padding: 12px 22px;
+
             white-space: nowrap;
-            border-radius: 16px;
+
             background: rgba(255,255,255,0.07);
             box-shadow: 5px 5px 12px rgba(0,0,0,0.35), -5px -5px 12px rgba(255,255,255,0.06);
             transition: all 0.25s;
@@ -137,31 +139,170 @@
             margin-bottom: 44px;
         }
         .intro-card h2 {
-            font-size: 18px; font-weight: 800; color: #3A3530;
+            font-size: 18px; font-weight: 800; color: #1B1712;
             margin-bottom: 12px;
             display: flex; align-items: center; gap: 8px;
         }
         .intro-card h2::before {
             content: '';
             width: 4px; height: 18px;
-            background: var(--codex-accent);
+            background: var(--ant-orange);
             border-radius: 2px;
         }
         .intro-card p {
             font-size: 15px;
-            color: #7a756e;
+            color: #6B6459;
             line-height: 1.85;
         }
-        .intro-card strong { color: #3A3530; font-weight: 700; }
+        .intro-card strong { color: #1B1712; font-weight: 700; }
+
+        /* ── Intro Section Divider (개념·역사) ── */
+        .sec-divide .cat-sub { color: var(--ant-orange); }
+
+        /* ── History (EDA 연대기) ── */
+        .history-card {
+            background: var(--nm-bg);
+            border-radius: 18px;
+            box-shadow: var(--nm-inset);
+            padding: 34px 40px 34px;
+            margin-bottom: 44px;
+        }
+        .history-card > h2 {
+            font-size: 18px; font-weight: 800; color: #1B1712;
+            margin-bottom: 12px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .history-card > h2::before {
+            content: '';
+            width: 4px; height: 18px;
+            background: var(--ant-orange);
+            border-radius: 2px;
+        }
+        .history-lead {
+            font-size: 15px; color: #6B6459; line-height: 1.85;
+            margin-bottom: 34px;
+        }
+        .history-lead strong { color: #1B1712; font-weight: 700; }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px; top: 6px; bottom: 8px;
+            width: 2px;
+            background: #DAD6D0;
+            border-radius: 2px;
+        }
+        .tl-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+        .tl-item:last-child { padding-bottom: 0; }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -30px; top: 3px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--nm-bg);
+            border: 3px solid var(--dot, #C6BEAC);
+        }
+        .tl-year {
+            display: inline-block;
+            font-size: 13px; font-weight: 800; letter-spacing: 0.4px;
+            color: var(--dot, #9a9590);
+            margin-bottom: 4px;
+        }
+        .tl-title {
+            font-size: 16px; font-weight: 800; color: #1B1712;
+            margin-bottom: 6px; line-height: 1.5;
+        }
+        .tl-desc {
+            font-size: 14.5px; color: #6B6459; line-height: 1.8;
+        }
+        .tl-item--key {
+            background: var(--nm-bg);
+            box-shadow: var(--nm-shadow-sm);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 2px 0 30px -12px;
+        }
+        .tl-item--key::before { top: 23px; left: -18px; }
+        .tl-tag {
+            display: inline-block;
+            font-size: 11px; font-weight: 800; letter-spacing: 0.4px;
+            color: #fff; background: var(--ant-orange);
+            padding: 3px 10px; border-radius: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 6px rgba(14,81,72,0.35);
+        }
+        .tl-quote {
+            margin-top: 28px;
+            padding: 18px 24px;
+            border-radius: 14px;
+            box-shadow: var(--nm-inset);
+            font-size: 15px; font-style: italic; color: #6a655e;
+            line-height: 1.7;
+        }
+        .tl-quote cite {
+            display: block;
+            margin-top: 8px;
+            font-size: 13px; font-style: normal; font-weight: 700;
+            color: var(--ant-orange);
+        }
+
+        /* ── Combined Card Divider (정의 | 역사) ── */
+        .card-divider {
+            border: none;
+            border-top: 1.5px dashed #CDC8C0;
+            margin: 30px 0;
+        }
+
+        /* ── Mini Accordion (역사 보충) ── */
+        .mini-accordion { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+        .mini-accordion details {
+            background: var(--nm-bg);
+            border-radius: 12px;
+            box-shadow: var(--nm-shadow-sm);
+            overflow: hidden;
+        }
+        .mini-accordion summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 12px 16px;
+            font-size: 13.5px; font-weight: 700; color: #1B1712;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 10px;
+        }
+        .mini-accordion summary::-webkit-details-marker { display: none; }
+        .mini-accordion summary::after {
+            content: '+';
+            font-size: 17px; font-weight: 700; color: var(--c1);
+            line-height: 1;
+        }
+        .mini-accordion details[open] summary::after { content: '\2212'; }
+        .acc-body { padding: 0 16px 16px; }
+        .acc-body > p { font-size: 13.5px; color: #6B6459; line-height: 1.78; margin: 0 0 12px; }
+        .acc-chart {
+            background: #f3f1ec;
+            border-radius: 10px;
+            padding: 16px 16px 12px;
+            box-shadow: var(--nm-inset);
+        }
+        .acc-chart svg { display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto; }
+        .acc-cap { font-size: 7.5px; color: #9a9590; text-align: center; margin: 12px 0 0; line-height: 1.5; }
 
         /* ── Sub Menu (Sticky) ── */
         .sub-menu {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: #F0EDE8;
+            background: #F8F6EF;
             box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-            border-bottom: 1px solid #E0DDD7;
+            border-bottom: 1px solid #EFECE3;
             border-radius: 0 0 32px 32px;
             padding: 14px 0;
             display: flex;
@@ -173,7 +314,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 9px;
+            gap: 5px;
             text-decoration: none;
             padding: 8px 18px;
             transition: all 0.2s;
@@ -183,25 +324,24 @@
         .sub-menu a:hover .sm-num { transform: scale(1.1); }
         .sub-menu a:hover .sm-title { color: var(--ant-dark); }
         .sub-menu a.active {
-            background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58));
+            background: rgba(14,81,72,0.10);
             border-radius: 14px;
         }
         .sub-menu a.active .sm-num {
-            background: var(--codex-pill-bg-active);
-            color: var(--codex-pill-text);
-            box-shadow: var(--codex-pill-shadow);
+            background: var(--ant-orange) !important;
+            box-shadow: 0 2px 8px rgba(14,81,72,0.4);
         }
         .sub-menu a.active .sm-title { color: var(--ant-dark); font-weight: 800; }
-        .sub-menu a.active .sm-sub { color: var(--codex-accent); }
+        .sub-menu a.active .sm-sub { color: var(--ant-orange); }
         .sm-num {
             width: 28px; height: 28px; border-radius: 50%;
-            background: #C8C3BA;
+            background: #C6BEAC;
             display: flex; align-items: center; justify-content: center;
             font-size: 13px; font-weight: 700; color: #fff;
             transition: all 0.2s;
         }
-        .sm-title { font-size: 16px; font-weight: 600; color: #7A756E; transition: color 0.2s; white-space: nowrap; }
-        .sm-sub { font-size: 14px; color: #aaa; transition: color 0.2s; white-space: nowrap; }
+        .sm-title { font-size: 14px; font-weight: 600; color: #6B6459; transition: color 0.2s; white-space: nowrap; }
+        .sm-sub { font-size: 12px; color: #aaa; transition: color 0.2s; white-space: nowrap; }
         .sm-count { font-weight: 700; }
 
         /* ── Category Label ── */
@@ -213,7 +353,7 @@
             position: relative;
         }
         .cat-label:first-of-type { margin-top: 8px; }
-        .cat-label { scroll-margin-top: 155px; }
+        .cat-label { scroll-margin-top: 160px; }
         .cat-label::before {
             content: '';
             position: absolute;
@@ -251,6 +391,8 @@
         #s3 .cat-count { background: var(--c3); color: #fff; }
         #s4 .cat-sub { color: var(--c4); }
         #s4 .cat-count { background: var(--c4); color: #fff; }
+        #s5 .cat-sub { color: var(--c5); }
+        #s5 .cat-count { background: var(--c5); color: #fff; }
 
         /* ── Chart Grid ── */
         .chart-list {
@@ -284,27 +426,28 @@
         [data-section="s2"] .chart-preview { background: #d4e2f0; }
         [data-section="s3"] .chart-preview { background: #e8ddd0; }
         [data-section="s4"] .chart-preview { background: #e4d8e4; }
+        [data-section="s5"] .chart-preview { background: #d3e6e2; }
         .chart-preview svg { width: 100%; height: 100%; }
 
         .chart-body { padding: 18px 22px 22px; flex: 1; }
         .chart-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
-        .chart-name { font-size: 16px; font-weight: 700; color: #3A3530; }
+        .chart-name { font-size: 16px; font-weight: 700; color: #1B1712; }
         .chart-en { font-size: 12px; font-weight: 500; color: #aaa; }
-        .chart-desc { font-size: 14px; color: #7a756e; line-height: 1.65; }
+        .chart-desc { font-size: 14px; color: #6B6459; line-height: 1.65; }
         .chart-usage {
-            font-size: 12px; color: var(--codex-accent);
+            font-size: 12px; color: var(--ant-orange);
             font-weight: 600;
             margin-top: 10px;
             padding: 8px 12px;
-            background: rgba(99,102,241,0.08);
+            background: rgba(14,81,72,0.08);
             border-radius: 10px;
             line-height: 1.5;
         }
-        .chart-usage strong { color: #3A3530; }
+        .chart-usage strong { color: #1B1712; }
 
         /* ── CTA Card ── */
         .cta-card {
-            background: linear-gradient(150deg, #1B1F3B 0%, #232A5E 52%, #3B45A8 100%);
+            background: linear-gradient(150deg, #0E5148 0%, #0A3A34 35%, #0A3A34 100%);
             border-radius: 24px;
             padding: 48px 32px;
             text-align: center;
@@ -333,14 +476,14 @@
             text-decoration: none; transition: all 0.25s;
             white-space: nowrap; flex: 1; max-width: 320px;
         }
-        .cta-btn.primary { background: #fff; color: #5B62D8; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
-        .cta-btn.primary:hover { background: #f5f0ee; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+        .cta-btn.primary { background: #fff; color: #7A1E0C; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+        .cta-btn.primary:hover { background: #F8F6EF; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
         .cta-btn.secondary { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.78); border: 1px solid rgba(255,255,255,0.18); }
         .cta-btn.secondary:hover { background: rgba(255,255,255,0.15); color: #fff; transform: translateY(-2px); }
 
         /* ── Footer ── */
-        footer { background: #14161D; border-top: none; text-align: center; padding: 40px 32px 36px; border-radius: 32px 32px 0 0; position: relative; isolation: isolate; }
-        .footer-brand { font-size: 13px; font-weight: 700; color: #AEB6FF; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        footer { background: var(--ant-dark); text-align: center; padding: 36px 32px 28px; }
+        .footer-brand { font-size: 13px; font-weight: 700; color: var(--ant-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.6); }
         .footer-about-link {
             display: inline-block; margin-top: 8px;
@@ -349,7 +492,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 1px; transition: all 0.2s;
         }
-        .footer-about-link:hover { color: #AEB6FF; border-color: #AEB6FF; }
+        .footer-about-link:hover { color: #fff; border-color: #fff; }
         .footer-link-row { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; }
         .footer-link-row .footer-about-link { margin-top: 0; }
         .footer-link-sep { color: rgba(255,255,255,0.35); font-size: 12px; }
@@ -367,31 +510,17 @@
         }
         .chart-card.reveal { transition-delay: calc(var(--i, 0) * 90ms); }
 
-        /* ── Page Load (상단 순차 등장, 섹션 페이지 공통) ── */
-        @keyframes load-fade-down {
-            from { opacity: 0; transform: translateY(-16px); }
-            to   { opacity: 1; transform: translateY(0); }
+        /* Header entrance */
+        header h1, header > p, .header-pages {
+            opacity: 0;
+            transform: translateY(-12px);
+            animation: headerFadeIn 0.8s cubic-bezier(.22,.61,.36,1) forwards;
         }
-        @keyframes load-fade-up {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
+        header > p { animation-delay: 0.12s; }
+        .header-pages { animation-delay: 0.24s; }
+        @keyframes headerFadeIn {
+            to { opacity: 1; transform: translateY(0); }
         }
-        header .back-link { animation: load-fade-down 0.5s ease-out 0.1s both; }
-        header h1         { animation: load-fade-down 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
-        header > p        { animation: load-fade-down 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
-        .header-pages     { animation: load-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
-        .header-page-link { opacity: 0; animation: load-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
-        .header-page-link:nth-child(1) { animation-delay: 0.55s; }
-        .header-page-link:nth-child(2) { animation-delay: 0.65s; }
-        .header-page-link:nth-child(3) { animation-delay: 0.75s; }
-
-        .sub-menu   { animation: load-fade-down 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both; }
-        .sub-menu a { opacity: 0; animation: load-fade-down 0.4s ease-out both; }
-        .sub-menu a:nth-child(1) { animation-delay: 0.80s; }
-        .sub-menu a:nth-child(2) { animation-delay: 0.86s; }
-        .sub-menu a:nth-child(3) { animation-delay: 0.92s; }
-        .sub-menu a:nth-child(4) { animation-delay: 0.98s; }
-        .sub-menu a:nth-child(5) { animation-delay: 1.04s; }
 
         /* Chart preview SVG: gentle entrance on card reveal */
         .chart-card .chart-preview svg {
@@ -413,9 +542,7 @@
         /* Respect reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
             .reveal, .chart-card .chart-preview svg,
-            header .back-link, header h1, header > p,
-            .header-pages, .header-page-link,
-            .sub-menu, .sub-menu a {
+            header h1, header > p, .header-pages {
                 opacity: 1 !important;
                 transform: none !important;
                 animation: none !important;
@@ -432,6 +559,9 @@
             header h1 { font-size: 28px; }
             .container { padding: 36px 16px 24px; }
             .intro-card { padding: 22px 20px; }
+            .history-card { padding: 24px 20px; }
+            .tl-item--key { padding: 18px 18px; margin-left: -8px; }
+            .tl-item--key::before { left: -14px; }
             .header-pages { flex-wrap: wrap; gap: 8px; width: 100%; max-width: 100%; }
             .header-page-link { font-size: 12px; padding: 8px 12px; border-radius: 12px; }
             .chart-list { gap: 12px; }
@@ -449,7 +579,44 @@
             header h1 { font-size: 24px; }
             .header-page-link { font-size: 11px; padding: 7px 10px; }
         }
+    
+        /* ── 헤더 배경 루프 영상 (원래 색 위에 빛의 움직임만 얹는다) ── */
+        header { isolation: isolate; }
+        .hero-video {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center;
+            z-index: -1;
+            opacity: 0.6;
+            filter: grayscale(1) contrast(1.05) brightness(1.08);
+            mix-blend-mode: soft-light;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-video { display: none; }
+        }
     </style>
+<style id="petrol-preload">
+/* PETROL-PRELOAD: 첫 페인트 라벤더/보라 플래시 제거. head 끝에서 옛 라벤더 인라인을 선점하고,
+   </body>의 assets/petrol.css가 이후 전체를 정밀 오버라이드한다. AGENTS.md 3.11 참조. */
+:root{
+  --ink:#1B1712;--ink2:#6B6459;--paper:#E9E6DC;--masthead:#E3DFD2;--card:#F8F6EF;--card2:#EFECE3;
+  --rule:#D9D3C4;--rule2:#C6BEAC;--pine:#0E5148;--pine-d:#0A3A34;--pine-wash:#DCE6E1;
+  --codex-accent:#0E5148;--orange:#0E5148;--t1:#1B1712;--t2:#6B6459;
+  --codex-pill-text:#1B1712;--codex-pill-bg:#F8F6EF;--codex-pill-bg-active:#DCE6E1;--codex-pill-bg-muted:#F8F6EF;--codex-pill-shadow:none;
+  --bg:#F8F6EF;--nm-bg:#F8F6EF;--card-bg:#F8F6EF;--nm-card:#F8F6EF;--card-border:#C6BEAC;
+  --book-teal:#0E5148;--book-teal-dark:#0A3A34;--accent:#0E5148;--codex-panel:#E9E6DC;
+}
+html{background:#E9E6DC!important}
+body{background:#E9E6DC!important;color:#1B1712!important}
+header .hero-video,header .footer-video{display:none!important}
+header{background:radial-gradient(120% 100% at 84% -14%,rgba(86,204,180,.34) 0%,rgba(86,204,180,0) 54%),linear-gradient(135deg,#0F5E52 0%,#10424A 50%,#131E33 100%)!important;border-radius:0!important;clip-path:none!important}
+header::before,header::after{display:none!important;content:none!important}
+header h1{color:#F5F3EA!important}
+header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
+.back-link{color:rgba(245,243,234,.66)!important}
+</style>
 </head>
 <body>
 
@@ -457,50 +624,192 @@
     <video class="hero-video" autoplay muted loop playsinline poster="assets/media/hero-poster.webp" aria-hidden="true">
         <source src="assets/media/hero-bg.mp4" type="video/mp4">
     </video>
+
     <a href="index.html" class="back-link">&larr; 목록으로</a>
-    <h1>EDA 차트 갤러리 12</h1>
-    <p>본격 분석 전에 데이터를 들여다보는 12가지 차트</p>
-    <div class="header-pages">
-        <a href="eda-gallery.html" class="header-page-link active">EDA 차트</a>
-        <a href="component-gallery.html" class="header-page-link">컴포넌트 갤러리</a>
+    <h1>EDA 차트 갤러리 28</h1>
+    <p>본격 분석 전에 데이터를 들여다보는 28가지 차트</p>
+    <div class="header-pages">        <a href="eda-gallery.html" class="header-page-link active">EDA 차트</a>
         <a href="ui-design.html" class="header-page-link">UI 디자인</a>
+        <a href="component-gallery.html" class="header-page-link">UI 컴포넌트</a>
+        <a href="icon-gallery.html" class="header-page-link">SVG 아이콘</a>
     </div>
 </header>
 
 <!-- 서브 메뉴 (Sticky) -->
 <nav class="sub-menu" id="subMenu" aria-label="섹션 바로가기">
+    <a href="#s0" data-sec="s0">
+        <span class="sm-num" style="background:var(--ant-orange)">?</span>
+        <span class="sm-title">EDA란?</span>
+        <span class="sm-sub">개념 · 역사</span>
+    </a>
     <a href="#s1" data-sec="s1">
         <span class="sm-num" style="background:var(--c1)">1</span>
         <span class="sm-title">분포 분석</span>
-        <span class="sm-sub">Distribution <span class="sm-count">(3)</span></span>
+        <span class="sm-sub">Distribution <span class="sm-count">(6)</span></span>
     </a>
     <a href="#s2" data-sec="s2">
         <span class="sm-num" style="background:var(--c2)">2</span>
         <span class="sm-title">관계 분석</span>
-        <span class="sm-sub">Relationship <span class="sm-count">(3)</span></span>
+        <span class="sm-sub">Relationship <span class="sm-count">(6)</span></span>
     </a>
     <a href="#s3" data-sec="s3">
         <span class="sm-num" style="background:var(--c3)">3</span>
         <span class="sm-title">시계열·범주</span>
-        <span class="sm-sub">Time & Category <span class="sm-count">(3)</span></span>
+        <span class="sm-sub">Time & Category <span class="sm-count">(6)</span></span>
     </a>
     <a href="#s4" data-sec="s4">
         <span class="sm-num" style="background:var(--c4)">4</span>
         <span class="sm-title">데이터 품질</span>
         <span class="sm-sub">Quality <span class="sm-count">(3)</span></span>
     </a>
+    <a href="#s5" data-sec="s5">
+        <span class="sm-num" style="background:var(--c5)">5</span>
+        <span class="sm-title">튜키의 원조 도구</span>
+        <span class="sm-sub">Tukey's Classics <span class="sm-count">(7)</span></span>
+    </a>
 </nav>
 
 <main class="container">
 
-    <!-- 인트로 -->
+    <!-- 섹션: EDA란? (개념 + 역사) -->
+    <div class="cat-label sec-divide reveal" id="s0">
+        <div class="cat-pill"><span class="cat-sub">EDA란?</span></div>
+    </div>
     <div class="intro-card reveal">
-        <h2>EDA란 무엇인가요</h2>
         <p>
             <strong>EDA (Exploratory Data Analysis, 탐색적 데이터 분석)</strong>는 본격적인 분석이나 머신러닝 모델을 만들기 전에 <strong>데이터를 이리저리 들여다보며 어떤 모양인지, 무엇이 숨어 있는지를 먼저 파악하는 단계</strong>입니다.
             엑셀에서 피벗 테이블을 돌려보고, 차트를 그려보고, 평균과 분산을 훑어보는 일 모두가 EDA에 해당합니다.
             EDA의 결과물은 보고서가 아니라 <strong>"데이터에 대한 감"</strong>입니다. 어떤 변수가 중요한지, 어디에 이상치가 있는지, 어떤 가설을 세울지를 이 단계에서 정합니다.
         </p>
+
+        <hr class="card-divider">
+
+        <p class="history-lead">
+            EDA에는 분명한 출발점이 있습니다. <strong>1977년, 통계학자 존 튜키(John Tukey)</strong>입니다.
+            그전까지 통계는 세운 가설이 맞는지 검정하는 일에 가까웠습니다. 튜키는 순서를 뒤집었습니다.
+            가설을 세우기 전에 데이터를 먼저 열어 보는 일 자체를 하나의 방법으로 만들었습니다.
+        </p>
+
+        <div class="timeline">
+            <div class="tl-item" style="--dot:var(--c2)">
+                <span class="tl-year">1786</span>
+                <h3 class="tl-title">윌리엄 플레이페어, 숫자를 그림으로</h3>
+                <p class="tl-desc">막대그래프, 꺾은선그래프, 파이차트를 처음 그렸습니다. 데이터를 표가 아니라 형태로 읽는 전통이 여기서 출발합니다.</p>
+            </div>
+
+            <div class="tl-item" style="--dot:var(--c1)">
+                <span class="tl-year">1850년대</span>
+                <h3 class="tl-title">나이팅게일과 스노우, 그림으로 설득하다</h3>
+                <p class="tl-desc">나이팅게일의 로즈 다이어그램(1858), 존 스노우의 콜레라 지도(1854)는 그림 한 장으로 사람을 움직인 초기 사례입니다. 데이터를 보여주는 힘은 증명했지만, 데이터를 분석하는 방법은 아직 아니었습니다.</p>
+                <div class="mini-accordion">
+                    <details>
+                        <summary>로즈 다이어그램이란?</summary>
+                        <div class="acc-body">
+                            <p>플로렌스 나이팅게일이 1858년에 그린 그림입니다. 크림 전쟁에서 죽은 병사의 사인을 달마다 나눠, 파이를 닮은 부채꼴로 펼쳤습니다. 부채꼴의 넓이가 그 달의 사망자 수이고, 파란 부분은 병으로 인한 죽음, 붉은 부분은 부상으로 인한 죽음입니다. 총칼이 아니라 병으로 죽는 병사가 훨씬 많다는 사실을 숫자 표 대신 한 장의 그림으로 보여줘, 야전 병원의 위생 개혁을 이끌어냈습니다.</p>
+                            <div class="acc-chart">
+                                <svg viewBox="0 0 280 280" preserveAspectRatio="xMidYMid meet">
+                                    <path d="M140 140 L140 70 A70 70 0 0 1 175 79.4 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L187.5 57.7 A95 95 0 0 1 222.3 92.5 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L243.9 80 A120 120 0 0 1 260 140 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L255 140 A115 115 0 0 1 239.6 197.5 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L226.6 190 A100 100 0 0 1 190 226.6 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L180 209.3 A80 80 0 0 1 140 220 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L140 200 A60 60 0 0 1 110 192 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L116 181.6 A48 48 0 0 1 98.4 164 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L92.4 167.5 A55 55 0 0 1 85 140 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L68 140 A72 72 0 0 1 77.6 104 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L62.1 95 A90 90 0 0 1 95 62.1 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L101 72.5 A78 78 0 0 1 140 62 Z" fill="#6d97b5" stroke="#fff" stroke-width="1"/>
+                                    <path d="M140 140 L140 128 A12 12 0 0 1 146 129.6 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L148 126.1 A16 16 0 0 1 153.9 132 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L157.3 130 A20 20 0 0 1 160 140 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L158 140 A18 18 0 0 1 155.6 149 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L153 147.5 A15 15 0 0 1 147.5 153 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L146 150.4 A12 12 0 0 1 140 152 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L140 149 A9 9 0 0 1 135.5 147.8 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L136.5 146.1 A7 7 0 0 1 133.9 143.5 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L133.1 144 A8 8 0 0 1 132 140 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L129 140 A11 11 0 0 1 130.5 134.5 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L127.9 133 A14 14 0 0 1 133 127.9 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                    <path d="M140 140 L134 129.6 A12 12 0 0 1 140 128 Z" fill="#0E5148" stroke="#fff" stroke-width="0.5"/>
+                                </svg>
+                                <p class="acc-cap">나이팅게일 로즈 다이어그램 (1858) 재현 · 파랑=질병, 빨강=부상</p>
+                            </div>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>콜레라 지도란?</summary>
+                        <div class="acc-body">
+                            <p>존 스노우가 1854년 런던 소호에서 그린 지도입니다. 콜레라로 죽은 사람의 집을 지도 위에 점으로 하나씩 찍었더니, 브로드 가의 한 우물(펌프) 주변에 죽음이 빽빽하게 몰려 있었습니다. 당시 통설이던 나쁜 공기설 대신, 오염된 물이 원인이라는 사실을 지도가 드러냈습니다. 펌프 손잡이를 떼어내자 유행이 잦아들었습니다.</p>
+                            <div class="acc-chart">
+                                <svg viewBox="0 0 280 190" preserveAspectRatio="xMidYMid meet">
+                                    <line x1="18" y1="52" x2="262" y2="46" stroke="#C6BEAC" stroke-width="6" stroke-linecap="round"/>
+                                    <line x1="16" y1="118" x2="264" y2="126" stroke="#C6BEAC" stroke-width="6" stroke-linecap="round"/>
+                                    <line x1="68" y1="14" x2="58" y2="178" stroke="#C6BEAC" stroke-width="6" stroke-linecap="round"/>
+                                    <line x1="148" y1="10" x2="143" y2="180" stroke="#C6BEAC" stroke-width="6" stroke-linecap="round"/>
+                                    <line x1="208" y1="16" x2="216" y2="176" stroke="#C6BEAC" stroke-width="6" stroke-linecap="round"/>
+                                    <circle cx="140" cy="100" r="34" fill="#0E5148" opacity="0.14"/>
+                                    <circle cx="140" cy="100" r="20" fill="#0E5148" opacity="0.18"/>
+                                    <circle cx="132" cy="90" r="2.6" fill="#6B6459"/>
+                                    <circle cx="138" cy="95" r="2.6" fill="#6B6459"/>
+                                    <circle cx="145" cy="89" r="2.6" fill="#6B6459"/>
+                                    <circle cx="150" cy="97" r="2.6" fill="#6B6459"/>
+                                    <circle cx="136" cy="103" r="2.6" fill="#6B6459"/>
+                                    <circle cx="147" cy="105" r="2.6" fill="#6B6459"/>
+                                    <circle cx="128" cy="99" r="2.6" fill="#6B6459"/>
+                                    <circle cx="153" cy="91" r="2.6" fill="#6B6459"/>
+                                    <circle cx="134" cy="85" r="2.6" fill="#6B6459"/>
+                                    <circle cx="149" cy="83" r="2.6" fill="#6B6459"/>
+                                    <circle cx="143" cy="110" r="2.6" fill="#6B6459"/>
+                                    <circle cx="157" cy="101" r="2.6" fill="#6B6459"/>
+                                    <circle cx="126" cy="93" r="2.6" fill="#6B6459"/>
+                                    <circle cx="159" cy="95" r="2.6" fill="#6B6459"/>
+                                    <circle cx="151" cy="111" r="2.6" fill="#6B6459"/>
+                                    <circle cx="130" cy="111" r="2.6" fill="#6B6459"/>
+                                    <circle cx="144" cy="117" r="2.6" fill="#6B6459"/>
+                                    <circle cx="122" cy="105" r="2.6" fill="#6B6459"/>
+                                    <circle cx="162" cy="110" r="2.6" fill="#6B6459"/>
+                                    <circle cx="110" cy="79" r="2.6" fill="#6B6459" opacity="0.9"/>
+                                    <circle cx="116" cy="120" r="2.6" fill="#6B6459" opacity="0.9"/>
+                                    <circle cx="166" cy="79" r="2.6" fill="#6B6459" opacity="0.9"/>
+                                    <circle cx="170" cy="116" r="2.6" fill="#6B6459" opacity="0.9"/>
+                                    <circle cx="120" cy="68" r="2.6" fill="#6B6459" opacity="0.9"/>
+                                    <circle cx="160" cy="124" r="2.6" fill="#6B6459" opacity="0.9"/>
+                                    <circle cx="104" cy="100" r="2.6" fill="#6B6459" opacity="0.9"/>
+                                    <circle cx="176" cy="96" r="2.6" fill="#6B6459" opacity="0.9"/>
+                                    <circle cx="100" cy="132" r="2.6" fill="#6B6459" opacity="0.75"/>
+                                    <circle cx="84" cy="60" r="2.6" fill="#6B6459" opacity="0.7"/>
+                                    <circle cx="200" cy="68" r="2.6" fill="#6B6459" opacity="0.7"/>
+                                    <circle cx="90" cy="140" r="2.6" fill="#6B6459" opacity="0.7"/>
+                                    <circle cx="196" cy="138" r="2.6" fill="#6B6459" opacity="0.7"/>
+                                    <circle cx="80" cy="104" r="2.6" fill="#6B6459" opacity="0.7"/>
+                                    <circle cx="140" cy="100" r="6" fill="#0E5148" stroke="#fff" stroke-width="2"/>
+                                </svg>
+                                <p class="acc-cap">존 스노우 콜레라 지도 (1854) 재현 · 점=사망자, 주황=펌프 위치</p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <div class="tl-item tl-item--key" style="--dot:var(--ant-orange)">
+                <span class="tl-tag">EDA의 시작</span>
+                <span class="tl-year" style="color:var(--ant-orange)">1977</span>
+                <h3 class="tl-title">존 튜키, 『Exploratory Data Analysis』</h3>
+                <p class="tl-desc">통계학자 존 튜키가 이 책을 출간하며 EDA라는 이름과 방법을 정립했습니다. 당시 통계학의 중심은 가설을 세우고 검증하는 확증적 분석이었습니다. 튜키는 데이터를 먼저 들여다보라고 말했습니다. 이 갤러리 첫 섹션의 박스플롯이 바로 그가 만든 도구이고, 줄기-잎 그림도 같은 책에서 선보였습니다.</p>
+            </div>
+
+            <div class="tl-item" style="--dot:var(--c3)">
+                <span class="tl-year">오늘</span>
+                <h3 class="tl-title">코드와 AI로, 몇 초 만에</h3>
+                <p class="tl-desc">튜키가 손으로 그리던 그림을 지금은 코드 몇 줄이나 한 문장으로 몇 초 만에 그립니다. 이 페이지의 28개 차트가 그 도구 상자입니다.</p>
+            </div>
+        </div>
+
+        <blockquote class="tl-quote">
+            "정확한 질문에 대한 근사한 답이, 틀린 질문에 대한 정확한 답보다 낫다."
+            <cite>존 튜키</cite>
+        </blockquote>
     </div>
 
 
@@ -508,7 +817,7 @@
     <div class="cat-label reveal" id="s1">
         <div class="cat-pill">
             <span class="cat-sub">분포 분석 · Distribution</span>
-            <span class="cat-count">3</span>
+            <span class="cat-count">6</span>
         </div>
     </div>
     <p style="text-align:center; font-size:14px; color:#9a9590; margin-top:-10px; margin-bottom:24px;">한 변수가 어떻게 퍼져 있는지를 본다. 평균, 중앙값, 치우침, 꼬리를 함께 확인한다.</p>
@@ -518,8 +827,8 @@
         <div class="chart-card reveal">
             <div class="chart-preview">
                 <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
-                    <line x1="20" y1="130" x2="230" y2="130" stroke="#7a756e" stroke-width="1"/>
-                    <line x1="20" y1="20" x2="20" y2="130" stroke="#7a756e" stroke-width="1"/>
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
                     <rect x="24" y="115" width="18" height="15" fill="#3a7a5a" opacity="0.75"/>
                     <rect x="42" y="95" width="18" height="35" fill="#3a7a5a" opacity="0.8"/>
                     <rect x="60" y="70" width="18" height="60" fill="#3a7a5a" opacity="0.85"/>
@@ -546,15 +855,15 @@
         <div class="chart-card reveal">
             <div class="chart-preview">
                 <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
-                    <line x1="20" y1="120" x2="230" y2="120" stroke="#7a756e" stroke-width="1"/>
+                    <line x1="20" y1="120" x2="230" y2="120" stroke="#6B6459" stroke-width="1"/>
                     <line x1="40" y1="75" x2="70" y2="75" stroke="#3a7a5a" stroke-width="2"/>
                     <line x1="55" y1="60" x2="55" y2="90" stroke="#3a7a5a" stroke-width="2"/>
                     <rect x="70" y="50" width="80" height="50" fill="#3a7a5a" opacity="0.25" stroke="#3a7a5a" stroke-width="2"/>
                     <line x1="110" y1="50" x2="110" y2="100" stroke="#1a4530" stroke-width="3"/>
                     <line x1="150" y1="75" x2="180" y2="75" stroke="#3a7a5a" stroke-width="2"/>
                     <line x1="165" y1="60" x2="165" y2="90" stroke="#3a7a5a" stroke-width="2"/>
-                    <circle cx="205" cy="75" r="3" fill="#5B62D8"/>
-                    <circle cx="218" cy="75" r="3" fill="#5B62D8"/>
+                    <circle cx="205" cy="75" r="3" fill="#0E5148"/>
+                    <circle cx="218" cy="75" r="3" fill="#0E5148"/>
                     <text x="55" y="140" font-size="9" fill="#9a9590" text-anchor="middle">Q1</text>
                     <text x="110" y="140" font-size="9" fill="#9a9590" text-anchor="middle">중앙값</text>
                     <text x="165" y="140" font-size="9" fill="#9a9590" text-anchor="middle">Q3</text>
@@ -573,7 +882,7 @@
         <div class="chart-card reveal">
             <div class="chart-preview">
                 <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
-                    <line x1="20" y1="130" x2="230" y2="130" stroke="#7a756e" stroke-width="1"/>
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
                     <g transform="translate(60,75)">
                         <path d="M 0 -50 C 22 -50 22 -30 14 -10 C 22 10 22 30 0 50 C -22 30 -22 10 -14 -10 C -22 -30 -22 -50 0 -50 Z" fill="#3a7a5a" opacity="0.55" stroke="#3a7a5a" stroke-width="1.5"/>
                         <line x1="-3" y1="0" x2="3" y2="0" stroke="#1a4530" stroke-width="3"/>
@@ -598,13 +907,81 @@
             </div>
         </div>
 
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <path d="M 25 130 C 65 130 70 42 105 42 C 140 42 145 130 185 130 Z" fill="#3a7a5a" opacity="0.35"/>
+                    <path d="M 25 130 C 65 130 70 42 105 42 C 140 42 145 130 185 130" fill="none" stroke="#1a4530" stroke-width="2"/>
+                    <path d="M 55 130 C 100 130 105 72 150 72 C 195 72 200 130 228 130" fill="none" stroke="#3a7a5a" stroke-width="1.5" opacity="0.55" stroke-dasharray="4 3"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">밀도 곡선</span>
+                    <span class="chart-en">Density Plot (KDE)</span>
+                </div>
+                <p class="chart-desc">히스토그램을 매끄러운 곡선으로 바꾼 그림입니다. 막대 구간 폭에 휘둘리지 않고 분포의 진짜 모양을 보여주며, 여러 집단을 겹쳐 비교하기 좋습니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 올해와 작년 고객 구매액 분포를 한 그림에 겹쳐, 우리 시장이 어느 쪽으로 이동했는지 볼 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="32" y1="120" x2="216" y2="30" stroke="#1a4530" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.65"/>
+                    <circle cx="44" cy="122" r="3" fill="#3a7a5a" opacity="0.85"/>
+                    <circle cx="62" cy="111" r="3" fill="#3a7a5a" opacity="0.85"/>
+                    <circle cx="82" cy="103" r="3" fill="#3a7a5a" opacity="0.85"/>
+                    <circle cx="102" cy="91" r="3" fill="#3a7a5a" opacity="0.85"/>
+                    <circle cx="122" cy="82" r="3" fill="#3a7a5a" opacity="0.85"/>
+                    <circle cx="142" cy="70" r="3" fill="#3a7a5a" opacity="0.85"/>
+                    <circle cx="162" cy="62" r="3" fill="#3a7a5a" opacity="0.85"/>
+                    <circle cx="182" cy="48" r="3" fill="#3a7a5a" opacity="0.85"/>
+                    <circle cx="202" cy="42" r="3" fill="#3a7a5a" opacity="0.85"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">Q-Q 플롯</span>
+                    <span class="chart-en">Q-Q Plot</span>
+                </div>
+                <p class="chart-desc">데이터가 정규분포를 얼마나 따르는지 점이 대각선 위에 놓이는지로 진단합니다. 양 끝이 휘면 한쪽으로 치우쳤거나 극단값이 많다는 신호입니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 평균·표준편차로 요약해도 되는 데이터인지, 통계 모델의 정규성 가정이 맞는지 점검할 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="77" x2="125" y2="77" stroke="#9a9590" stroke-width="1" stroke-dasharray="3 3"/>
+                    <line x1="125" y1="77" x2="125" y2="130" stroke="#9a9590" stroke-width="1" stroke-dasharray="3 3"/>
+                    <text x="34" y="71" font-size="9" fill="#9a9590">50%</text>
+                    <path d="M 25 128 H 52 V 116 H 74 V 96 H 96 V 70 H 125 V 48 H 156 V 34 H 192 V 26 H 226" fill="none" stroke="#1a4530" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">누적분포 곡선</span>
+                    <span class="chart-en">ECDF</span>
+                </div>
+                <p class="chart-desc">값이 작은 쪽부터 누적 비율을 그려, "이 값 이하가 전체의 몇 %인가"를 곡선에서 바로 읽습니다. 중앙값·분위수·구간 비중을 한 번에 확인합니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · "응답 시간 2초 이내가 전체의 몇 %인지", "상위 10% 고객의 구매액 기준선"을 정할 때</p>
+            </div>
+        </div>
+
     </section>
 
     <!-- ── 2. 관계 ── -->
     <div class="cat-label reveal" id="s2">
         <div class="cat-pill">
             <span class="cat-sub">관계 분석 · Relationship</span>
-            <span class="cat-count">3</span>
+            <span class="cat-count">6</span>
         </div>
     </div>
     <p style="text-align:center; font-size:14px; color:#9a9590; margin-top:-10px; margin-bottom:24px;">두 변수가 어떻게 함께 움직이는지를 본다. 상관관계와 인과 후보를 찾아낸다.</p>
@@ -614,8 +991,8 @@
         <div class="chart-card reveal">
             <div class="chart-preview">
                 <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
-                    <line x1="20" y1="130" x2="230" y2="130" stroke="#7a756e" stroke-width="1"/>
-                    <line x1="20" y1="20" x2="20" y2="130" stroke="#7a756e" stroke-width="1"/>
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
                     <circle cx="40" cy="115" r="3" fill="#2a6a9a" opacity="0.7"/>
                     <circle cx="55" cy="108" r="3" fill="#2a6a9a" opacity="0.7"/>
                     <circle cx="62" cy="118" r="3" fill="#2a6a9a" opacity="0.7"/>
@@ -652,14 +1029,14 @@
                         <rect x="0" y="0" width="24" height="24" fill="#1a4570"/>
                         <rect x="24" y="0" width="24" height="24" fill="#6a9ac3"/>
                         <rect x="48" y="0" width="24" height="24" fill="#d4d4d4"/>
-                        <rect x="72" y="0" width="24" height="24" fill="#e8a888"/>
-                        <rect x="96" y="0" width="24" height="24" fill="#c46844"/>
+                        <rect x="72" y="0" width="24" height="24" fill="#2E8B7A"/>
+                        <rect x="96" y="0" width="24" height="24" fill="#0E5148"/>
 
                         <rect x="0" y="24" width="24" height="24" fill="#6a9ac3"/>
                         <rect x="24" y="24" width="24" height="24" fill="#1a4570"/>
                         <rect x="48" y="24" width="24" height="24" fill="#8ab2d0"/>
                         <rect x="72" y="24" width="24" height="24" fill="#d4d4d4"/>
-                        <rect x="96" y="24" width="24" height="24" fill="#e8a888"/>
+                        <rect x="96" y="24" width="24" height="24" fill="#2E8B7A"/>
 
                         <rect x="0" y="48" width="24" height="24" fill="#d4d4d4"/>
                         <rect x="24" y="48" width="24" height="24" fill="#8ab2d0"/>
@@ -667,14 +1044,14 @@
                         <rect x="72" y="48" width="24" height="24" fill="#8ab2d0"/>
                         <rect x="96" y="48" width="24" height="24" fill="#d4d4d4"/>
 
-                        <rect x="0" y="72" width="24" height="24" fill="#e8a888"/>
+                        <rect x="0" y="72" width="24" height="24" fill="#2E8B7A"/>
                         <rect x="24" y="72" width="24" height="24" fill="#d4d4d4"/>
                         <rect x="48" y="72" width="24" height="24" fill="#8ab2d0"/>
                         <rect x="72" y="72" width="24" height="24" fill="#1a4570"/>
                         <rect x="96" y="72" width="24" height="24" fill="#6a9ac3"/>
 
-                        <rect x="0" y="96" width="24" height="24" fill="#c46844"/>
-                        <rect x="24" y="96" width="24" height="24" fill="#e8a888"/>
+                        <rect x="0" y="96" width="24" height="24" fill="#0E5148"/>
+                        <rect x="24" y="96" width="24" height="24" fill="#2E8B7A"/>
                         <rect x="48" y="96" width="24" height="24" fill="#d4d4d4"/>
                         <rect x="72" y="96" width="24" height="24" fill="#6a9ac3"/>
                         <rect x="96" y="96" width="24" height="24" fill="#1a4570"/>
@@ -694,8 +1071,8 @@
         <div class="chart-card reveal">
             <div class="chart-preview">
                 <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
-                    <line x1="20" y1="130" x2="230" y2="130" stroke="#7a756e" stroke-width="1"/>
-                    <line x1="20" y1="20" x2="20" y2="130" stroke="#7a756e" stroke-width="1"/>
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
                     <circle cx="40" cy="115" r="3" fill="#2a6a9a" opacity="0.6"/>
                     <circle cx="55" cy="105" r="3" fill="#2a6a9a" opacity="0.6"/>
                     <circle cx="70" cy="112" r="3" fill="#2a6a9a" opacity="0.6"/>
@@ -709,9 +1086,9 @@
                     <circle cx="190" cy="45" r="3" fill="#2a6a9a" opacity="0.6"/>
                     <circle cx="205" cy="50" r="3" fill="#2a6a9a" opacity="0.6"/>
                     <circle cx="220" cy="35" r="3" fill="#2a6a9a" opacity="0.6"/>
-                    <path d="M 30 122 L 225 32" stroke="#5B62D8" stroke-width="2.5"/>
-                    <path d="M 30 132 L 225 42" stroke="#5B62D8" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
-                    <path d="M 30 112 L 225 22" stroke="#5B62D8" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+                    <path d="M 30 122 L 225 32" stroke="#0E5148" stroke-width="2.5"/>
+                    <path d="M 30 132 L 225 42" stroke="#0E5148" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+                    <path d="M 30 112 L 225 22" stroke="#0E5148" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
                 </svg>
             </div>
             <div class="chart-body">
@@ -724,13 +1101,111 @@
             </div>
         </div>
 
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <g transform="translate(48,15)">
+                        <rect width="68" height="55" fill="none" stroke="#9a9590" stroke-width="0.8"/>
+                        <rect x="8" y="34" width="11" height="21" fill="#2a6a9a" opacity="0.7"/>
+                        <rect x="21" y="22" width="11" height="33" fill="#2a6a9a" opacity="0.85"/>
+                        <rect x="34" y="14" width="11" height="41" fill="#2a6a9a"/>
+                        <rect x="47" y="30" width="11" height="25" fill="#2a6a9a" opacity="0.8"/>
+                    </g>
+                    <g transform="translate(124,15)">
+                        <rect width="68" height="55" fill="none" stroke="#9a9590" stroke-width="0.8"/>
+                        <circle cx="14" cy="44" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                        <circle cx="24" cy="38" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                        <circle cx="33" cy="30" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                        <circle cx="42" cy="24" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                        <circle cx="52" cy="16" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                    </g>
+                    <g transform="translate(48,78)">
+                        <rect width="68" height="55" fill="none" stroke="#9a9590" stroke-width="0.8"/>
+                        <circle cx="14" cy="16" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                        <circle cx="26" cy="26" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                        <circle cx="34" cy="22" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                        <circle cx="44" cy="38" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                        <circle cx="54" cy="44" r="2.5" fill="#2a6a9a" opacity="0.75"/>
+                    </g>
+                    <g transform="translate(124,78)">
+                        <rect width="68" height="55" fill="none" stroke="#9a9590" stroke-width="0.8"/>
+                        <rect x="8" y="28" width="11" height="27" fill="#2a6a9a" opacity="0.8"/>
+                        <rect x="21" y="16" width="11" height="39" fill="#2a6a9a"/>
+                        <rect x="34" y="24" width="11" height="31" fill="#2a6a9a" opacity="0.85"/>
+                        <rect x="47" y="36" width="11" height="19" fill="#2a6a9a" opacity="0.7"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">페어플롯</span>
+                    <span class="chart-en">Pair Plot</span>
+                </div>
+                <p class="chart-desc">여러 변수의 모든 짝을 산점도 격자로 한 번에 펼칩니다. 대각선은 각 변수의 분포, 나머지 칸은 변수 사이의 관계를 담아 어떤 조합이 함께 움직이는지 한눈에 훑습니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 매출·광고비·방문자·객단가처럼 지표가 여러 개일 때, 어떤 쌍을 깊게 파고들지 먼저 추릴 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <circle cx="55" cy="100" r="9" fill="#2a6a9a" opacity="0.4" stroke="#2a6a9a" stroke-width="1"/>
+                    <circle cx="92" cy="72" r="15" fill="#2a6a9a" opacity="0.4" stroke="#2a6a9a" stroke-width="1"/>
+                    <circle cx="125" cy="98" r="7" fill="#2a6a9a" opacity="0.45" stroke="#2a6a9a" stroke-width="1"/>
+                    <circle cx="158" cy="56" r="21" fill="#2a6a9a" opacity="0.35" stroke="#2a6a9a" stroke-width="1"/>
+                    <circle cx="195" cy="84" r="11" fill="#2a6a9a" opacity="0.4" stroke="#2a6a9a" stroke-width="1"/>
+                    <circle cx="210" cy="44" r="6" fill="#2a6a9a" opacity="0.5" stroke="#2a6a9a" stroke-width="1"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">버블 차트</span>
+                    <span class="chart-en">Bubble Chart</span>
+                </div>
+                <p class="chart-desc">산점도의 두 축에 점 크기라는 세 번째 지표를 더합니다. x·y·크기로 세 변수를 한 그림에 담아 규모까지 함께 비교합니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 제품별 가격(x)·판매량(y)·매출액(크기)을 한눈에 비교할 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <defs><polygon id="hxb" points="12,0 6,10.4 -6,10.4 -12,0 -6,-10.4 6,-10.4" fill="#2a6a9a"/></defs>
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <use href="#hxb" x="100" y="56" fill-opacity="0.3"/>
+                    <use href="#hxb" x="100" y="77" fill-opacity="0.5"/>
+                    <use href="#hxb" x="100" y="98" fill-opacity="0.3"/>
+                    <use href="#hxb" x="118" y="46" fill-opacity="0.35"/>
+                    <use href="#hxb" x="118" y="66" fill-opacity="0.8"/>
+                    <use href="#hxb" x="118" y="87" fill-opacity="0.45"/>
+                    <use href="#hxb" x="136" y="56" fill-opacity="0.45"/>
+                    <use href="#hxb" x="136" y="77" fill-opacity="0.85"/>
+                    <use href="#hxb" x="136" y="98" fill-opacity="0.4"/>
+                    <use href="#hxb" x="154" y="46" fill-opacity="0.25"/>
+                    <use href="#hxb" x="154" y="66" fill-opacity="0.5"/>
+                    <use href="#hxb" x="154" y="87" fill-opacity="0.3"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">육각 밀도</span>
+                    <span class="chart-en">Hexbin</span>
+                </div>
+                <p class="chart-desc">점이 수만 개라 산점도가 까맣게 뭉갤 때, 영역을 육각형으로 나눠 칸마다 점의 밀집도를 색 진하기로 보여줍니다. 어디에 데이터가 몰리는지 드러납니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 거래·로그처럼 데이터 점이 너무 많아 일반 산점도로는 패턴이 안 보일 때</p>
+            </div>
+        </div>
+
     </section>
 
     <!-- ── 3. 시계열·범주 ── -->
     <div class="cat-label reveal" id="s3">
         <div class="cat-pill">
             <span class="cat-sub">시계열·범주 · Time & Category</span>
-            <span class="cat-count">3</span>
+            <span class="cat-count">6</span>
         </div>
     </div>
     <p style="text-align:center; font-size:14px; color:#9a9590; margin-top:-10px; margin-bottom:24px;">시간 흐름과 그룹별 차이를 본다. 추세, 계절성, 점유율을 파악한다.</p>
@@ -740,8 +1215,8 @@
         <div class="chart-card reveal">
             <div class="chart-preview">
                 <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
-                    <line x1="20" y1="130" x2="230" y2="130" stroke="#7a756e" stroke-width="1"/>
-                    <line x1="20" y1="20" x2="20" y2="130" stroke="#7a756e" stroke-width="1"/>
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
                     <path d="M 30 105 L 50 95 L 70 110 L 90 80 L 110 90 L 130 60 L 150 75 L 170 45 L 190 55 L 210 30 L 225 40" fill="none" stroke="#8a5a2a" stroke-width="2.5"/>
                     <path d="M 30 105 L 50 95 L 70 110 L 90 80 L 110 90 L 130 60 L 150 75 L 170 45 L 190 55 L 210 30 L 225 40 L 225 130 L 30 130 Z" fill="#8a5a2a" opacity="0.15"/>
                     <circle cx="30" cy="105" r="3" fill="#8a5a2a"/>
@@ -763,8 +1238,8 @@
         <div class="chart-card reveal">
             <div class="chart-preview">
                 <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
-                    <line x1="20" y1="130" x2="230" y2="130" stroke="#7a756e" stroke-width="1"/>
-                    <line x1="20" y1="20" x2="20" y2="130" stroke="#7a756e" stroke-width="1"/>
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
                     <rect x="35" y="60" width="22" height="70" fill="#8a5a2a" opacity="0.85"/>
                     <rect x="65" y="40" width="22" height="90" fill="#8a5a2a"/>
                     <rect x="95" y="75" width="22" height="55" fill="#8a5a2a" opacity="0.75"/>
@@ -810,6 +1285,87 @@
                 </div>
                 <p class="chart-desc">전체에서 각 카테고리가 차지하는 비율을 보여줍니다. 5~6개 이하의 분할에 적합하며, 합계가 의미 있을 때만 씁니다.</p>
                 <p class="chart-usage"><strong>이럴 때</strong> · 유입 채널 점유율, 결제 수단 비중처럼 "전체의 N%"가 메시지일 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <rect x="45" y="92" width="34" height="38" fill="#8a5a2a"/>
+                    <rect x="45" y="62" width="34" height="30" fill="#b48450"/>
+                    <rect x="45" y="44" width="34" height="18" fill="#d4a878"/>
+                    <rect x="103" y="100" width="34" height="30" fill="#8a5a2a"/>
+                    <rect x="103" y="64" width="34" height="36" fill="#b48450"/>
+                    <rect x="103" y="38" width="34" height="26" fill="#d4a878"/>
+                    <rect x="161" y="84" width="34" height="46" fill="#8a5a2a"/>
+                    <rect x="161" y="58" width="34" height="26" fill="#b48450"/>
+                    <rect x="161" y="40" width="34" height="18" fill="#d4a878"/>
+                    <text x="62" y="142" font-size="9" fill="#9a9590" text-anchor="middle">1Q</text>
+                    <text x="120" y="142" font-size="9" fill="#9a9590" text-anchor="middle">2Q</text>
+                    <text x="178" y="142" font-size="9" fill="#9a9590" text-anchor="middle">3Q</text>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">누적 막대 차트</span>
+                    <span class="chart-en">Stacked Bar</span>
+                </div>
+                <p class="chart-desc">막대 하나를 여러 구성 요소로 쌓아 전체 크기와 내부 구성 비율을 동시에 보여줍니다. 100% 기준으로 맞추면 그룹 간 구성 비교가 더 선명해집니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 분기별 매출을 제품군별로 쌓아, 전체도 늘었는지 구성도 바뀌었는지 함께 볼 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <rect x="35" y="90" width="26" height="40" fill="#8a5a2a"/>
+                    <rect x="70" y="70" width="26" height="20" fill="#b48450"/>
+                    <rect x="105" y="52" width="26" height="18" fill="#b48450"/>
+                    <rect x="140" y="52" width="26" height="12" fill="#d4a878"/>
+                    <rect x="175" y="64" width="26" height="66" fill="#8a5a2a"/>
+                    <path d="M 61 90 H 70 M 96 70 H 105 M 131 52 H 140 M 166 64 H 175" stroke="#5a3a15" stroke-width="1" stroke-dasharray="3 2" opacity="0.6"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">워터폴 차트</span>
+                    <span class="chart-en">Waterfall</span>
+                </div>
+                <p class="chart-desc">시작값에서 증가·감소 요인을 차례로 쌓아 최종값에 이르는 과정을 보여줍니다. 무엇이 얼마나 보탰고 깎았는지를 한 그림으로 설명합니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 지난 분기 대비 이번 분기 매출이 어떤 요인으로 늘고 줄었는지 브릿지로 설명할 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="220" y1="20" x2="220" y2="130" stroke="#6B6459" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+                    <rect x="38" y="80" width="24" height="50" fill="#8a5a2a" opacity="0.8"/>
+                    <rect x="74" y="66" width="24" height="64" fill="#8a5a2a" opacity="0.8"/>
+                    <rect x="110" y="72" width="24" height="58" fill="#8a5a2a" opacity="0.8"/>
+                    <rect x="146" y="54" width="24" height="76" fill="#8a5a2a" opacity="0.8"/>
+                    <rect x="182" y="60" width="24" height="70" fill="#8a5a2a" opacity="0.8"/>
+                    <path d="M 50 56 L 86 42 L 122 50 L 158 32 L 194 44" fill="none" stroke="#5a3a15" stroke-width="2.5"/>
+                    <circle cx="50" cy="56" r="3" fill="#5a3a15"/>
+                    <circle cx="86" cy="42" r="3" fill="#5a3a15"/>
+                    <circle cx="122" cy="50" r="3" fill="#5a3a15"/>
+                    <circle cx="158" cy="32" r="3" fill="#5a3a15"/>
+                    <circle cx="194" cy="44" r="3" fill="#5a3a15"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">콤보 차트</span>
+                    <span class="chart-en">Combo (Dual-Axis)</span>
+                </div>
+                <p class="chart-desc">막대와 선을 한 그래프에 겹쳐 단위가 다른 두 지표를 함께 봅니다. 왼쪽 축은 금액, 오른쪽 축은 비율처럼 척도를 나눠 관계를 읽습니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 월 매출(막대)과 성장률(선)을 함께 놓고 규모와 추세를 동시에 볼 때</p>
             </div>
         </div>
 
@@ -935,8 +1491,8 @@
         <div class="chart-card reveal">
             <div class="chart-preview">
                 <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
-                    <line x1="20" y1="130" x2="230" y2="130" stroke="#7a756e" stroke-width="1"/>
-                    <line x1="20" y1="20" x2="20" y2="130" stroke="#7a756e" stroke-width="1"/>
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
                     <!-- main scatter cluster -->
                     <circle cx="60" cy="100" r="3" fill="#7a3a6a" opacity="0.55"/>
                     <circle cx="72" cy="92" r="3" fill="#7a3a6a" opacity="0.55"/>
@@ -954,10 +1510,10 @@
                     <!-- ellipse around cluster -->
                     <ellipse cx="110" cy="95" rx="65" ry="22" fill="none" stroke="#7a3a6a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
                     <!-- outliers -->
-                    <circle cx="200" cy="35" r="5" fill="#5B62D8"/>
-                    <circle cx="215" cy="45" r="5" fill="#5B62D8"/>
-                    <circle cx="35" cy="40" r="5" fill="#5B62D8"/>
-                    <text x="195" y="28" font-size="9" font-weight="700" fill="#5B62D8">이상치</text>
+                    <circle cx="200" cy="35" r="5" fill="#0E5148"/>
+                    <circle cx="215" cy="45" r="5" fill="#0E5148"/>
+                    <circle cx="35" cy="40" r="5" fill="#0E5148"/>
+                    <text x="195" y="28" font-size="9" font-weight="700" fill="#0E5148">이상치</text>
                 </svg>
             </div>
             <div class="chart-body">
@@ -973,14 +1529,14 @@
         <div class="chart-card reveal">
             <div class="chart-preview">
                 <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
-                    <line x1="20" y1="130" x2="230" y2="130" stroke="#7a756e" stroke-width="1"/>
-                    <line x1="20" y1="20" x2="20" y2="130" stroke="#7a756e" stroke-width="1"/>
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
                     <rect x="50" y="32" width="60" height="98" fill="#7a3a6a"/>
-                    <rect x="135" y="105" width="60" height="25" fill="#5B62D8"/>
+                    <rect x="135" y="105" width="60" height="25" fill="#0E5148"/>
                     <text x="80" y="25" font-size="11" font-weight="700" fill="#5a2050" text-anchor="middle">92%</text>
-                    <text x="80" y="148" font-size="10" fill="#7a756e" text-anchor="middle">정상</text>
-                    <text x="165" y="98" font-size="11" font-weight="700" fill="#5B62D8" text-anchor="middle">8%</text>
-                    <text x="165" y="148" font-size="10" fill="#7a756e" text-anchor="middle">사기</text>
+                    <text x="80" y="148" font-size="10" fill="#6B6459" text-anchor="middle">정상</text>
+                    <text x="165" y="98" font-size="11" font-weight="700" fill="#0E5148" text-anchor="middle">8%</text>
+                    <text x="165" y="148" font-size="10" fill="#6B6459" text-anchor="middle">사기</text>
                 </svg>
             </div>
             <div class="chart-body">
@@ -995,6 +1551,243 @@
 
     </section>
 
+    <!-- ── 5. 튜키의 원조 도구 ── -->
+    <div class="cat-label reveal" id="s5">
+        <div class="cat-pill">
+            <span class="cat-sub">튜키의 원조 도구 · Tukey's Classics</span>
+            <span class="cat-count">7</span>
+        </div>
+    </div>
+    <p style="text-align:center; font-size:14px; color:#9a9590; margin-top:-10px; margin-bottom:24px;">위 역사 섹션에서 짚은, 존 튜키가 1977년 EDA에서 직접 선보인 도구들이다. 지금은 덜 쓰이지만 EDA의 원형을 보여준다.</p>
+
+    <section class="chart-list" data-section="s5">
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="95" y1="22" x2="95" y2="122" stroke="#0E5148" stroke-width="2"/>
+                    <rect x="78" y="26" width="12" height="8" rx="2" fill="#0E5148" opacity="0.7"/>
+                    <rect x="101" y="26" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="78" y="40" width="12" height="8" rx="2" fill="#0E5148" opacity="0.7"/>
+                    <rect x="101" y="40" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="112" y="40" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="123" y="40" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="78" y="54" width="12" height="8" rx="2" fill="#0E5148" opacity="0.7"/>
+                    <rect x="101" y="54" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="112" y="54" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="123" y="54" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="134" y="54" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="145" y="54" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="78" y="68" width="12" height="8" rx="2" fill="#0E5148" opacity="0.7"/>
+                    <rect x="101" y="68" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="112" y="68" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="123" y="68" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="134" y="68" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="145" y="68" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="156" y="68" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="78" y="82" width="12" height="8" rx="2" fill="#0E5148" opacity="0.7"/>
+                    <rect x="101" y="82" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="112" y="82" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="123" y="82" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="134" y="82" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="78" y="96" width="12" height="8" rx="2" fill="#0E5148" opacity="0.7"/>
+                    <rect x="101" y="96" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="112" y="96" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                    <rect x="78" y="110" width="12" height="8" rx="2" fill="#0E5148" opacity="0.7"/>
+                    <rect x="101" y="110" width="8" height="8" rx="2" fill="#0E5148" opacity="0.85"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">줄기-잎 그림</span>
+                    <span class="chart-en">Stem-and-Leaf</span>
+                </div>
+                <p class="chart-desc">히스토그램과 같은 모양을 숫자로 그립니다. 막대 대신 실제 값의 끝자리를 늘어놓아, 분포도 보고 원래 숫자도 그대로 읽습니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 데이터가 수십 개로 적을 때, 분포 모양과 실제 값을 한 번에 보고 싶을 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="110" x2="220" y2="110" stroke="#6B6459" stroke-width="1"/>
+                    <rect x="80" y="60" width="80" height="40" fill="#0E5148" opacity="0.14" stroke="#0E5148" stroke-width="1.5"/>
+                    <line x1="120" y1="60" x2="120" y2="100" stroke="#0E5148" stroke-width="2"/>
+                    <line x1="35" y1="80" x2="80" y2="80" stroke="#0E5148" stroke-width="1.5"/>
+                    <line x1="160" y1="80" x2="205" y2="80" stroke="#0E5148" stroke-width="1.5"/>
+                    <line x1="35" y1="70" x2="35" y2="90" stroke="#0E5148" stroke-width="1.5"/>
+                    <line x1="205" y1="70" x2="205" y2="90" stroke="#0E5148" stroke-width="1.5"/>
+                    <line x1="35" y1="80" x2="35" y2="110" stroke="#0E5148" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
+                    <line x1="80" y1="80" x2="80" y2="110" stroke="#0E5148" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
+                    <line x1="120" y1="80" x2="120" y2="110" stroke="#0E5148" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
+                    <line x1="160" y1="80" x2="160" y2="110" stroke="#0E5148" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
+                    <line x1="205" y1="80" x2="205" y2="110" stroke="#0E5148" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
+                    <circle cx="35" cy="110" r="4" fill="#0E5148"/>
+                    <circle cx="80" cy="110" r="4" fill="#0E5148"/>
+                    <circle cx="120" cy="110" r="4" fill="#0E5148"/>
+                    <circle cx="160" cy="110" r="4" fill="#0E5148"/>
+                    <circle cx="205" cy="110" r="4" fill="#0E5148"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">5요약 수치</span>
+                    <span class="chart-en">Five-Number Summary</span>
+                </div>
+                <p class="chart-desc">최소값, 1사분위, 중앙값, 3사분위, 최대값 다섯 개로 분포를 요약합니다. 박스플롯이 바로 이 다섯 숫자를 그림으로 옮긴 것입니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 평균 하나로는 놓치는 중심과 퍼짐, 치우침을 최소한의 숫자로 잡을 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <rect x="24" y="26" width="12" height="82" fill="#0E5148" opacity="0.5"/>
+                    <rect x="46" y="49" width="12" height="56" fill="#0E5148" opacity="0.5"/>
+                    <rect x="68" y="66" width="12" height="42" fill="#0E5148" opacity="0.5"/>
+                    <rect x="90" y="82" width="12" height="20" fill="#0E5148" opacity="0.5"/>
+                    <rect x="112" y="88" width="12" height="24" fill="#0E5148" opacity="0.5"/>
+                    <rect x="134" y="76" width="12" height="30" fill="#0E5148" opacity="0.5"/>
+                    <rect x="156" y="58" width="12" height="46" fill="#0E5148" opacity="0.5"/>
+                    <rect x="178" y="42" width="12" height="66" fill="#0E5148" opacity="0.5"/>
+                    <rect x="200" y="30" width="12" height="78" fill="#0E5148" opacity="0.5"/>
+                    <path d="M 30 100 Q 75 30 120 26 Q 165 30 206 100" fill="none" stroke="#0E5148" stroke-width="2"/>
+                    <line x1="20" y1="105" x2="220" y2="105" stroke="#6B6459" stroke-width="1" stroke-dasharray="3 3"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">뿌리그림</span>
+                    <span class="chart-en">Rootogram</span>
+                </div>
+                <p class="chart-desc">히스토그램 막대를 이론 곡선에 매달아 아래로 늘어뜨립니다. 막대 끝이 기준선에서 얼마나 벗어나는지로 분포 가정이 맞는지 봅니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 데이터가 정규분포 같은 특정 분포를 따르는지, 어느 구간이 어긋나는지 진단할 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="20" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <line x1="30" y1="120" x2="222" y2="56" stroke="#0E5148" stroke-width="2.5"/>
+                    <line x1="30" y1="118" x2="222" y2="38" stroke="#6B6459" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.55"/>
+                    <circle cx="48" cy="116" r="3.5" fill="#0E5148" opacity="0.8"/>
+                    <circle cx="72" cy="107" r="3.5" fill="#0E5148" opacity="0.8"/>
+                    <circle cx="98" cy="99" r="3.5" fill="#0E5148" opacity="0.8"/>
+                    <circle cx="124" cy="90" r="3.5" fill="#0E5148" opacity="0.8"/>
+                    <circle cx="176" cy="73" r="3.5" fill="#0E5148" opacity="0.8"/>
+                    <circle cx="202" cy="64" r="3.5" fill="#0E5148" opacity="0.8"/>
+                    <circle cx="150" cy="34" r="4.5" fill="#0E5148"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">저항선</span>
+                    <span class="chart-en">Resistant Line</span>
+                </div>
+                <p class="chart-desc">데이터를 셋으로 나눠 양 끝 중앙값으로 기울기를 잡습니다. 극단값 몇 개에 흔들리지 않아, 이상치가 있어도 큰 추세를 지킵니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 산점도에 이상치가 섞여 일반 회귀선이 엉뚱하게 끌려갈 때, 견고한 추세선이 필요할 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="20" y1="130" x2="230" y2="130" stroke="#6B6459" stroke-width="1"/>
+                    <polyline points="25,102 37,86 49,95 61,72 73,80 85,58 97,66 109,46 121,55 133,49 145,63 157,57 169,73 181,67 193,85 205,79 216,92" fill="none" stroke="#0E5148" stroke-width="1.2" opacity="0.32"/>
+                    <path d="M 25 100 Q 78 54 120 51 Q 165 57 216 91" fill="none" stroke="#0E5148" stroke-width="2.6"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">중앙값 다듬기</span>
+                    <span class="chart-en">Median Smoothing</span>
+                </div>
+                <p class="chart-desc">이웃한 값들의 중앙값으로 선을 다시 그립니다. 평균과 달리 튀는 값에 끌려가지 않아, 뾰족한 잡음을 걷어내고 흐름만 남깁니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 노이즈가 심한 시계열에서 급등락에 흔들리지 않는 추세를 뽑아낼 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <rect x="55" y="26" width="26" height="7" fill="#0E5148" opacity="0.7"/>
+                    <rect x="83" y="24" width="26" height="9" fill="#0E5148" opacity="0.7"/>
+                    <rect x="111" y="28" width="26" height="5" fill="#0E5148" opacity="0.7"/>
+                    <rect x="139" y="25" width="26" height="8" fill="#0E5148" opacity="0.7"/>
+                    <rect x="167" y="27" width="26" height="6" fill="#0E5148" opacity="0.7"/>
+                    <rect x="38" y="42" width="9" height="16" fill="#0E5148" opacity="0.7"/>
+                    <rect x="38" y="65" width="9" height="16" fill="#0E5148" opacity="0.7"/>
+                    <rect x="38" y="88" width="9" height="16" fill="#0E5148" opacity="0.7"/>
+                    <rect x="38" y="111" width="9" height="16" fill="#0E5148" opacity="0.7"/>
+                    <rect x="55" y="40" width="26" height="20" fill="#0E5148" opacity="0.3"/>
+                    <rect x="83" y="40" width="26" height="20" fill="#0E5148" opacity="0.5"/>
+                    <rect x="111" y="40" width="26" height="20" fill="#0E5148" opacity="0.75"/>
+                    <rect x="139" y="40" width="26" height="20" fill="#0E5148" opacity="0.4"/>
+                    <rect x="167" y="40" width="26" height="20" fill="#0E5148" opacity="0.2"/>
+                    <rect x="55" y="63" width="26" height="20" fill="#0E5148" opacity="0.6"/>
+                    <rect x="83" y="63" width="26" height="20" fill="#0E5148" opacity="0.35"/>
+                    <rect x="111" y="63" width="26" height="20" fill="#0E5148" opacity="0.8"/>
+                    <rect x="139" y="63" width="26" height="20" fill="#0E5148" opacity="0.55"/>
+                    <rect x="167" y="63" width="26" height="20" fill="#0E5148" opacity="0.3"/>
+                    <rect x="55" y="86" width="26" height="20" fill="#0E5148" opacity="0.25"/>
+                    <rect x="83" y="86" width="26" height="20" fill="#0E5148" opacity="0.7"/>
+                    <rect x="111" y="86" width="26" height="20" fill="#0E5148" opacity="0.45"/>
+                    <rect x="139" y="86" width="26" height="20" fill="#0E5148" opacity="0.3"/>
+                    <rect x="167" y="86" width="26" height="20" fill="#0E5148" opacity="0.6"/>
+                    <rect x="55" y="109" width="26" height="20" fill="#0E5148" opacity="0.5"/>
+                    <rect x="83" y="109" width="26" height="20" fill="#0E5148" opacity="0.3"/>
+                    <rect x="111" y="109" width="26" height="20" fill="#0E5148" opacity="0.6"/>
+                    <rect x="139" y="109" width="26" height="20" fill="#0E5148" opacity="0.78"/>
+                    <rect x="167" y="109" width="26" height="20" fill="#0E5148" opacity="0.4"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">중앙값 폴리시</span>
+                    <span class="chart-en">Median Polish</span>
+                </div>
+                <p class="chart-desc">행과 열의 중앙값을 번갈아 빼내며 표를 정리합니다. 행 효과와 열 효과를 걷어내고 남은 잔차로 어느 칸이 유독 튀는지 찾습니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 지역×월, 제품×채널 같은 두 방향 표에서 순수하게 튀는 칸을 가려낼 때</p>
+            </div>
+        </div>
+
+        <div class="chart-card reveal">
+            <div class="chart-preview">
+                <svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+                    <line x1="18" y1="122" x2="106" y2="122" stroke="#6B6459" stroke-width="1"/>
+                    <rect x="22" y="100" width="10" height="22" fill="#0E5148" opacity="0.65"/>
+                    <rect x="34" y="66" width="10" height="56" fill="#0E5148" opacity="0.65"/>
+                    <rect x="46" y="52" width="10" height="70" fill="#0E5148" opacity="0.65"/>
+                    <rect x="58" y="72" width="10" height="50" fill="#0E5148" opacity="0.65"/>
+                    <rect x="70" y="92" width="10" height="30" fill="#0E5148" opacity="0.65"/>
+                    <rect x="82" y="104" width="10" height="18" fill="#0E5148" opacity="0.65"/>
+                    <rect x="94" y="112" width="10" height="10" fill="#0E5148" opacity="0.65"/>
+                    <line x1="112" y1="78" x2="130" y2="78" stroke="#0E5148" stroke-width="2"/>
+                    <path d="M 126 72 L 134 78 L 126 84 Z" fill="#0E5148"/>
+                    <line x1="134" y1="122" x2="222" y2="122" stroke="#6B6459" stroke-width="1"/>
+                    <rect x="138" y="104" width="10" height="18" fill="#0E5148" opacity="0.85"/>
+                    <rect x="150" y="82" width="10" height="40" fill="#0E5148" opacity="0.85"/>
+                    <rect x="162" y="58" width="10" height="64" fill="#0E5148" opacity="0.85"/>
+                    <rect x="174" y="50" width="10" height="72" fill="#0E5148" opacity="0.85"/>
+                    <rect x="186" y="60" width="10" height="62" fill="#0E5148" opacity="0.85"/>
+                    <rect x="198" y="84" width="10" height="38" fill="#0E5148" opacity="0.85"/>
+                    <rect x="210" y="106" width="10" height="16" fill="#0E5148" opacity="0.85"/>
+                </svg>
+            </div>
+            <div class="chart-body">
+                <div class="chart-header">
+                    <span class="chart-name">재표현</span>
+                    <span class="chart-en">Re-expression</span>
+                </div>
+                <p class="chart-desc">로그나 제곱근으로 축을 바꿔 봅니다. 한쪽으로 쏠린 분포가 대칭에 가까워지면, 평균과 상관 같은 도구를 다시 쓸 수 있습니다.</p>
+                <p class="chart-usage"><strong>이럴 때</strong> · 매출·소득처럼 한쪽 꼬리가 긴 데이터를 다루기 쉬운 형태로 바꿀 때</p>
+            </div>
+        </div>
+
+    </section>
+
     <!-- CTA -->
     <div class="cta-card reveal">
         <h3 class="cta-title">이제 Codex에게 직접 부탁해 보세요</h3>
@@ -1003,8 +1796,7 @@
             <strong style="color:#fff;">필요한 차트를 이름으로 지정</strong>하면 훨씬 빠르고 정확한 결과를 받습니다.
         </p>
         <div class="cta-buttons">
-            <a class="cta-btn secondary" href="https://chatgpt.com/" target="_blank" rel="noopener">💬 ChatGPT 열기</a>
-            <a class="cta-btn primary" href="codex-101.html">🎯 Codex 앱 시작하기 →</a>
+            <a class="cta-btn primary" href="https://openai.com/ko-KR/codex/" target="_blank" rel="noopener">💻 Codex 시작하기</a>
         </div>
     </div>
 
@@ -1076,7 +1868,10 @@
                 var linkRect = activeLink.getBoundingClientRect();
                 var navRect = navEl.getBoundingClientRect();
                 if(linkRect.left < navRect.left || linkRect.right > navRect.right){
-                    activeLink.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+                    // 가로 서브메뉴만 스크롤한다. sticky 컨테이너 안에서 scrollIntoView를 부르면
+                    // 브라우저가 창을 서브메뉴의 원래(고정 전) 위치로 끌어올려 하단을 못 보게 만든다.
+                    var target = activeLink.offsetLeft - (navEl.clientWidth - activeLink.clientWidth) / 2;
+                    navEl.scrollTo({left: target, behavior: 'smooth'});
                 }
             }
         }
@@ -1089,9 +1884,9 @@
     <p class="footer-brand">AI ROASTING</p>
     <p class="footer-text">비즈니스 리더를 위한 Codex 완전 정복</p>
     <span class="footer-link-row">
-        <a href="index.html?about=1" class="footer-about-link">가이드 소개</a>
+        <a href="#" class="footer-about-link" data-about-open>가이드 소개</a>
         <span class="footer-link-sep" aria-hidden="true">·</span>
-        <a href="index.html?license=1" class="footer-about-link">라이선스</a>
+        <a href="#" class="footer-about-link" data-license-open>라이선스</a>
     </span>
     <p class="footer-text" style="margin-top:10px;opacity:0.7;">© 2026 AI ROASTING. All rights reserved.</p>
 </footer>
@@ -1133,7 +1928,7 @@ body.sm-menu-open { overflow: hidden; }
     display: none;
     position: fixed; top: 0; right: 0; z-index: 1160;
     width: 78%; max-width: 320px; height: 100vh; height: 100dvh;
-    background: #EDE8DF;
+    background: #F8F6EF;
     box-shadow: -8px 0 28px rgba(0,0,0,0.25);
     padding: 72px 18px 24px;
     overflow-y: auto; -webkit-overflow-scrolling: touch;
@@ -1143,7 +1938,7 @@ body.sm-menu-open { overflow: hidden; }
 }
 body.sm-menu-open .sm-drawer { transform: translateX(0); }
 .sm-drawer-heading {
-    font-size: 17px; font-weight: 800; color: #1F1A17;
+    font-size: 17px; font-weight: 800; color: #1B1712;
     line-height: 1.35; letter-spacing: -0.3px;
     padding: 0 4px 12px;
     margin: 0 0 12px;
@@ -1155,40 +1950,36 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
     display: flex; align-items: center; gap: 10px;
     margin: 0 0 16px;
     padding: 14px 16px;
-    background: #F0F1F3;
+    background: #F8F6EF;
     border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
-    color: #38404F; text-decoration: none;
+    box-shadow: 4px 4px 9px #C6BEAC, -4px -4px 9px #FFFFFF;
+    color: #1B1712; text-decoration: none;
     font-size: 14px; font-weight: 700;
 }
 .sm-drawer-list { display: flex; flex-direction: column; gap: 8px; }
 .sm-drawer-item {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 14px;
-    background: #F0F1F3;
+    background: #F8F6EF;
     border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1;
+    box-shadow: 4px 4px 9px #C6BEAC, -4px -4px 9px #FFFFFF;
     text-decoration: none;
-    color: #38404F;
+    color: #1B1712;
     transition: all 0.15s;
 }
-.sm-drawer-item:hover { box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1; }
-.sm-drawer-item.active { background: rgba(236,232,255,0.50); }
-.sm-drawer-item.active .sm-drawer-num {
-    background: var(--codex-pill-bg-active);
-    color: var(--codex-pill-text);
-    box-shadow: var(--codex-pill-shadow);
-}
-.sm-drawer-item.active .sm-drawer-title { color: #14192E; font-weight: 800; }
+.sm-drawer-item:hover { box-shadow: inset 3px 3px 7px #C6BEAC, inset -3px -3px 7px #FFFFFF; }
+.sm-drawer-item.active { background: rgba(14,81,72,0.10); }
+.sm-drawer-item.active .sm-drawer-num { background: #0E5148; box-shadow: 0 2px 8px rgba(14,81,72,0.4); }
+.sm-drawer-item.active .sm-drawer-title { color: #1B1712; font-weight: 800; }
 .sm-drawer-num {
     width: 28px; height: 28px; border-radius: 50%;
-    background: var(--codex-pill-bg-muted); color: var(--codex-pill-text);
+    background: #0E5148; color: #fff;
     font-size: 13px; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: all 0.2s;
 }
 .sm-drawer-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.sm-drawer-title { font-size: 14px; font-weight: 700; color: #38404F; line-height: 1.35; }
+.sm-drawer-title { font-size: 14px; font-weight: 700; color: #1B1712; line-height: 1.35; }
 .sm-drawer-sub { font-size: 11px; color: #999; line-height: 1.4; }
 @media (max-width: 768px) {
     .sm-menu-toggle { display: inline-flex; }
@@ -1240,226 +2031,7 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
         height: 2px !important;
     }
 }
-        /* ## CODEX-HERO-VIDEO START ## */
-        header {
-            background: #6F7FF0 !important;
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-        }
-        header .hero-video {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            opacity: 0.92;
-            filter: saturate(1.14) contrast(1.02) brightness(1.02);
-            z-index: 0;
-            pointer-events: none;
-            animation: none !important;
-            border-radius: inherit !important;
-        }
-        header::before {
-            content: '' !important;
-            position: absolute !important;
-            inset: 0 !important;
-            top: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            width: auto !important;
-            height: auto !important;
-            transform: none !important;
-            border-radius: 0 !important;
-            opacity: 1 !important;
-            background:
-                radial-gradient(ellipse at 36% 39%, rgba(7,7,7,0.24) 0%, rgba(20,25,46,0.14) 38%, rgba(20,25,46,0) 70%),
-                linear-gradient(90deg, rgba(7,7,7,0.36) 0%, rgba(20,25,46,0.18) 48%, rgba(20,25,46,0.08) 100%),
-                linear-gradient(115deg, rgba(92,108,232,0.58) 0%, rgba(147,196,248,0.32) 32%, rgba(237,244,255,0.26) 54%, rgba(152,133,246,0.48) 100%),
-                linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%) !important;
-            pointer-events: none !important;
-            z-index: 1 !important;
-        }
-        header {
-            padding: 56px 40px 48px !important;
-            border-radius: 0 0 32px 32px !important;
-            clip-path: inset(0 round 0 0 32px 32px) !important;
-        }
-        @media (max-width: 768px) {
-            header { min-height: 0 !important; padding: 32px 20px 28px !important; border-radius: 0 0 32px 32px !important; }
-        }
-        header > :not(.hero-video) {
-            position: relative;
-            z-index: 2;
-        }
-        header h1 {
-            color: #fff !important;
-            text-shadow: 0 2px 8px rgba(7,7,7,0.32), 0 10px 30px rgba(20,25,46,0.28) !important;
-        }
-        header p,
-        header .hero-sub {
-            color: rgba(255,255,255,0.96) !important;
-            text-shadow: 0 2px 8px rgba(7,7,7,0.30), 0 8px 22px rgba(20,25,46,0.22) !important;
-        }
-        header .back-link {
-            color: rgba(255,255,255,0.72) !important;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            header .hero-video { display: none; }
-            header {
-                background:
-                    linear-gradient(115deg, #5C6CE8 0%, #93C4F8 32%, #AFA7F6 100%),
-                    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,54,142,0.24) 100%) !important;
-            }
-        }
-        /* ## CODEX-HERO-VIDEO END ## */
-
-/* ## CODEX-SUBMENU-COLOR START ## */
-:root {
-    --codex-pill-text: #283052;
-    --codex-pill-bg: linear-gradient(135deg, #FFF4F0 0%, #ECE8FF 48%, #D9E0FF 100%);
-    --codex-pill-bg-active: linear-gradient(135deg, #FFECE5 0%, #DED8FF 48%, #B8C5FF 100%);
-    --codex-pill-bg-muted: linear-gradient(135deg, #F7F1EA 0%, #E9E5FF 100%);
-    --codex-pill-shadow: 0 4px 12px rgba(141,156,245,0.22), inset 1px 1px 0 rgba(255,255,255,0.82);
-}
-.nav-wrapper {
-    background: var(--codex-panel, #F0F1F3) !important;
-}
-.sub-menu {
-    background: rgba(240, 241, 243, 0.92) !important;
-}
-.sub-menu a {
-    color: #596070 !important;
-}
-.sub-menu a .sm-title {
-    color: #38404F !important;
-}
-.sub-menu a .sm-sub {
-    color: #7B8498 !important;
-}
-.sub-menu a .sm-num {
-    background: var(--codex-pill-bg-muted) !important;
-    color: var(--codex-pill-text) !important;
-    border: 1px solid rgba(255,255,255,0.66) !important;
-    box-shadow: var(--codex-pill-shadow) !important;
-}
-.sub-menu a:hover {
-    background: rgba(236, 232, 255, 0.46) !important;
-    border-radius: 14px;
-}
-.sub-menu a:hover .sm-title {
-    color: #14192E !important;
-}
-.sub-menu a:hover .sm-num {
-    background: var(--codex-pill-bg-active) !important;
-    color: var(--codex-pill-text) !important;
-    box-shadow: var(--codex-pill-shadow) !important;
-}
-.sub-menu a.active {
-    background: linear-gradient(135deg, rgba(255,244,240,0.66), rgba(236,232,255,0.58)) !important;
-    border-radius: 14px;
-    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 8px 20px rgba(141,156,245,0.10) !important;
-}
-.sub-menu a.active .sm-num {
-    background: var(--codex-pill-bg-active) !important;
-    color: var(--codex-pill-text) !important;
-    border: 1px solid rgba(255,255,255,0.66) !important;
-    box-shadow: var(--codex-pill-shadow) !important;
-}
-.sub-menu a.active .sm-title {
-    color: #14192E !important;
-    font-weight: 800;
-}
-.sub-menu a.active .sm-sub {
-    color: #5B62D8 !important;
-}
-.step-badge,
-.section-num,
-.hero-badge,
-.header-badge,
-.levelup-badge {
-    background: var(--codex-pill-bg) !important;
-    color: var(--codex-pill-text) !important;
-    border: 1px solid rgba(255,255,255,0.66) !important;
-    box-shadow: var(--codex-pill-shadow) !important;
-}
-.hero-badge .hb-dot {
-    background: #8D9CF5 !important;
-}
-.sm-menu-toggle {
-    background: rgba(240, 241, 243, 0.84) !important;
-    color: #14192E !important;
-    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
-}
-.sm-drawer {
-    background: #F0F1F3 !important;
-    color: #14192E !important;
-}
-.sm-drawer-back,
-.sm-drawer-item {
-    background: #F0F1F3 !important;
-    color: #14192E !important;
-    box-shadow: 0 1px 3px rgba(20,25,46,0.06), 0 0 0 1px #ECECF1 !important;
-}
-.sm-drawer-back:hover,
-.sm-drawer-item:hover {
-    background: rgba(236, 232, 255, 0.50) !important;
-    box-shadow: inset 0 1px 2px rgba(20,25,46,0.05), 0 0 0 1px #ECECF1 !important;
-}
-.sm-drawer-title {
-    color: #38404F !important;
-}
-.sm-drawer-sub {
-    color: #7B8498 !important;
-}
-.sm-drawer-num {
-    background: var(--codex-pill-bg-muted) !important;
-    color: var(--codex-pill-text) !important;
-    border: 1px solid rgba(255,255,255,0.66) !important;
-    box-shadow: var(--codex-pill-shadow) !important;
-}
-.sm-drawer-item.active {
-    background: rgba(236,232,255,0.50) !important;
-    box-shadow: inset 0 0 0 1px rgba(141,156,245,0.18), 0 1px 3px rgba(20,25,46,0.06) !important;
-}
-.sm-drawer-item.active .sm-drawer-num {
-    background: var(--codex-pill-bg-active) !important;
-    color: var(--codex-pill-text) !important;
-    border: 1px solid rgba(255,255,255,0.66) !important;
-    box-shadow: var(--codex-pill-shadow) !important;
-}
-.sm-drawer-item.active .sm-drawer-title {
-    color: #14192E !important;
-}
-/* ## CODEX-SUBMENU-COLOR END ## */
-
-        /* === 서브 메뉴 정렬 표준: 고정 영역(136x104) + 균등 간격(16px) 전 페이지 통일 === */
-        .sub-menu,
-        .sub-menu-inner {
-            justify-content: center !important;
-            gap: 16px !important;
-        }
-        .sub-menu a {
-            flex: 0 0 auto !important;
-            width: 136px !important;
-            height: 104px !important;
-            box-sizing: border-box !important;
-            max-width: none !important;
-            padding: 10px 8px !important;
-            justify-content: center !important;
-            gap: 6px !important;
-        }
-        .sub-menu a .sm-title { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
-        .sub-menu a .sm-sub { white-space: normal !important; text-align: center !important; line-height: 1.3 !important; }
-    
-        /* ## SM-UNIFY (모든 페이지 서브메뉴 글자/포맷 통일) ## */
-        nav.sub-menu a { gap: 5px !important; padding: 8px 14px !important; }
-        nav.sub-menu a .sm-num { width: 28px !important; height: 28px !important; min-width: 28px !important; font-size: 13px !important; }
-        nav.sub-menu a .sm-title { font-size: 13px !important; }
-        nav.sub-menu a .sm-sub { font-size: 11px !important; }
-    </style>
+</style>
 <button class="sm-menu-toggle" id="smMenuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
     <svg class="sm-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     <svg class="sm-icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -1542,99 +2114,27 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 })();
 </script>
 <!-- ## SM-HAMBURGER END ## -->
+
+<!-- 가이드 소개 모달: 단일 소스 assets/about-modal.js 에서 주입 -->
+<script src="assets/about-modal.js"></script>
+
+<!-- 헤더 배경 영상: 자동재생 보장 + reduced-motion 시 정지 -->
 <script>
-/* ## CODEX-HERO-SYNC START ## 모든 페이지 헤더 영상을 공용 시계로 같은 프레임에 맞춘다 */
-(function(){
-  var v = document.querySelector('.hero-video');
-  if(!v) return;
-  function sync(){
-    if(!v.duration || !isFinite(v.duration)) return;
-    var t = (Date.now()/1000) % v.duration;
-    if(Math.abs(v.currentTime - t) > 0.25){ try{ v.currentTime = t; }catch(e){} }
-  }
-  if(v.readyState >= 1) sync();
-  v.addEventListener('loadedmetadata', sync);
-  v.addEventListener('play', sync);
-  document.addEventListener('visibilitychange', function(){ if(!document.hidden) sync(); });
-  setInterval(sync, 3000);
+(function () {
+    var v = document.querySelector('.hero-video');
+    if (!v) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { try { v.pause(); } catch (e) {} return; }
+    v.muted = true;
+    var tryPlay = function () { var p = v.play(); if (p && typeof p.catch === 'function') p.catch(function () {}); };
+    tryPlay();
+    v.addEventListener('canplay', tryPlay, { once: true });
+    v.addEventListener('loadeddata', tryPlay, { once: true });
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) tryPlay(); });
+    var onFirst = function () { tryPlay(); window.removeEventListener('pointerdown', onFirst); window.removeEventListener('keydown', onFirst); };
+    window.addEventListener('pointerdown', onFirst);
+    window.addEventListener('keydown', onFirst);
 })();
-/* ## CODEX-HERO-SYNC END ## */
 </script>
-<style id="hero-subnav-fix">
-/* hero의 둥근 하단 모서리는 유지하고, 회색 sub-menu를 hero 뒤로 깔아 모서리 바깥 흰 여백만 회색으로 메운다.
-   sub-menu 자체의 padding은 건드리지 않으므로 스크롤 고정(sticky) 시 상단 여백이 원래대로 유지된다. (데스크톱 한정) */
-@media (min-width: 769px){
-  header{ position: relative !important; z-index: 101 !important; }
-  nav.sub-menu{ margin-top: 0 !important; overflow: visible !important; }
-  nav.sub-menu::before{
-    content: '' !important; position: absolute !important;
-    left: 0 !important; right: 0 !important; bottom: 100% !important;
-    height: 40px !important; background: inherit !important;
-    z-index: -1 !important; pointer-events: none !important;
-  }
-}
-</style>
-<style id="codex-load-anim">
-/* ## CODEX-LOAD-ANIM START ## github-guide.html과 동일한 화면 로딩 애니메이션 통일 */
-@keyframes codexLoadFadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-header .back-link,
-header h1,
-header > p,
-.header-pages,
-nav.sub-menu {
-    opacity: 0;
-    animation: codexLoadFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
-}
-header .back-link { animation-delay: 0.15s !important; }
-header h1         { animation-delay: 0.25s !important; }
-header > p        { animation-delay: 0.35s !important; }
-.header-pages     { animation-delay: 0.55s !important; }
-nav.sub-menu      { animation-delay: 0.55s !important; }
-/* 서브메뉴 항목 개별 등장(좌우 이동/스태거) 제거: 메뉴 전체가 한 번에 떠오른다 */
-nav.sub-menu a {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-}
-@media (prefers-reduced-motion: reduce) {
-    header .back-link, header h1, header > p, .header-pages, nav.sub-menu {
-        opacity: 1 !important;
-        transform: none !important;
-        animation: none !important;
-    }
-}
-/* ## CODEX-LOAD-ANIM END ## */
-</style>
-<link rel="stylesheet" href="assets/petrol.css">
-<style id="petrol-page-local">
-/* ── 이 페이지 고유 컴포넌트의 보라/인디고/라벤더 → 페트롤 매핑 ──
-   공통 셸(헤더·푸터·서브메뉴·배지·햄버거)은 petrol.css가 처리하므로 제외.
-   초록(c1)·파랑(c2)·플럼(c4) 카테고리색과 골드/의미색은 그대로 둔다. */
-:root {
-    --codex-accent: #0E5148 !important;   /* 인디고 액센트 → 페트롤 */
-    --c3: #0E5148 !important;             /* 섹션3 인디고 카테고리색 → 페트롤 */
-    --nm-bg: #F8F6EF !important;          /* 라벤더 카드 배경(#F3F5FD) → 페트롤 카드 */
-}
-/* chart-usage: 연보라 톤 배경 → 페트롤 워시, 텍스트는 --codex-accent 토큰으로 이미 전환 */
-.chart-usage {
-    background: rgba(14,81,72,0.08) !important;
-    color: #0E5148 !important;
-}
-/* CTA 카드: 인디고/네이비 그라디언트 → 마스트헤드와 동일한 딥 페트롤 */
-.cta-card {
-    background:
-        radial-gradient(120% 100% at 84% -14%, rgba(86,204,180,0.30) 0%, rgba(86,204,180,0) 54%),
-        linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
-}
-.cta-card::before { display: none !important; }
-.cta-btn.primary { color: #0E5148 !important; }           /* 흰 버튼의 보라 글자 → 페트롤 */
-.cta-btn.primary:hover { background: #EFECE3 !important; }
-/* 차트 미리보기 SVG 안의 인디고 액센트(#5B62D8) → 페트롤 (하이라이트/회귀선/이상치 등) */
-.chart-preview svg [fill="#5B62D8"]   { fill: #0E5148 !important; }
-.chart-preview svg [stroke="#5B62D8"] { stroke: #0E5148 !important; }
-</style>
+
 </body>
 </html>

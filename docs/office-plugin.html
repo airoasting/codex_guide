@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://airosting.github.io/codex_guide/excel-plugin.html">
-    <meta property="og:title" content="Excel에서 ChatGPT 사용 | AI ROASTING">
-    <meta property="og:description" content="ChatGPT for Excel 설치, 워크북 분석, 수식 점검, 시나리오 작업을 정리한 실전 가이드">
+    <link rel="canonical" href="https://airosting.github.io/codex_guide/office-plugin.html">
+    <meta property="og:title" content="PowerPoint·Excel에서 ChatGPT 사용 | AI ROASTING">
+    <meta property="og:description" content="ChatGPT for PowerPoint와 Excel 확장 프로그램 설치, 덱·워크북 작업, 검수까지 한 번에 정리한 실전 가이드">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
-    <meta property="og:url" content="https://airosting.github.io/codex_guide/excel-plugin.html">
+    <meta property="og:url" content="https://airosting.github.io/codex_guide/office-plugin.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Excel에서 ChatGPT 사용 | AI ROASTING">
-    <meta name="twitter:description" content="ChatGPT for Excel 설치, 워크북 분석, 수식 점검, 시나리오 작업을 정리한 실전 가이드">
+    <meta name="twitter:title" content="PowerPoint·Excel에서 ChatGPT 사용 | AI ROASTING">
+    <meta name="twitter:description" content="ChatGPT for PowerPoint와 Excel 확장 프로그램 설치, 덱·워크북 작업, 검수까지 한 번에 정리한 실전 가이드">
     <meta name="twitter:image" content="https://airosting.github.io/codex_guide/assets/thumbnails/thumbnail.png">
     <link rel="icon" type="image/png" href="assets/favicon-teal.png">
-    <title>Excel에서 ChatGPT 사용 | AI ROASTING</title>
-    <meta name="description" content="Excel 안에서 ChatGPT를 열어 스프레드시트를 만들고, 고치고, 설명하게 만드는 실전 가이드.">
+    <title>파워포인트·엑셀에서 ChatGPT 사용 | AI ROASTING</title>
+    <meta name="description" content="PowerPoint와 Excel 안에서 ChatGPT 확장 프로그램을 열어 덱과 워크북을 만들고, 고치고, 검수하게 만드는 실전 가이드.">
     <style>
         @font-face {
             font-family: 'Pretendard';
@@ -199,12 +199,10 @@
             font-weight: 700;
             color: #3A3530;
             margin-bottom: 6px;
-            padding-left: 16px;
-            border-left: 4px solid transparent;
         }
         .nm-card h3 { font-size: 17px; font-weight: 700; color: #3A3530; margin: 22px 0 8px; }
         .nm-card p, .nm-card li { font-size: 14px; color: #5C5650; line-height: 1.75; }
-        .card-subtitle { font-size: 13px; color: #888; margin-bottom: 18px; padding-left: 20px; }
+        .card-subtitle { font-size: 13px; color: #888; margin-bottom: 18px; }
         .step-divider { display: flex; align-items: center; gap: 16px; margin: 24px 0 28px; }
         .step-divider::before, .step-divider::after { content: ''; flex: 1; height: 1px; background: #E8E4DE; }
         .step-badge {
@@ -305,7 +303,15 @@
             padding: 10px 18px;
             font-size: 13px;
             font-weight: 800;
-            box-shadow: var(--nm-shadow-sm);
+            box-shadow: 0 1px 2px rgba(20,25,46,0.05);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+        }
+        .install-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(14,81,72,0.28); background: #0A3E37; }
+        .install-btn:active { transform: translateY(0); box-shadow: 0 2px 6px rgba(14,81,72,0.22); }
+        .install-btn.soft { background: rgba(14,81,72,0.12); color: var(--codex-accent); box-shadow: none; }
+        .install-btn.soft:hover { transform: translateY(-2px); background: rgba(14,81,72,0.22); box-shadow: 0 6px 14px rgba(14,81,72,0.16); }
+        @media (prefers-reduced-motion: reduce) {
+            .install-btn, .install-btn:hover, .install-btn.soft:hover { transition: none; transform: none; }
         }
         .summary-table-wrap { overflow-x: auto; margin-top: 16px; border-radius: 16px; box-shadow: var(--nm-shadow-sm); }
         .summary-table { width: 100%; border-collapse: collapse; min-width: 720px; background: var(--nm-bg); }
@@ -366,6 +372,26 @@
             }
         }
     </style>
+<style id="petrol-preload">
+/* PETROL-PRELOAD: 첫 페인트 라벤더/보라 플래시 제거. head 끝에서 옛 라벤더 인라인을 선점하고,
+   </body>의 assets/petrol.css가 이후 전체를 정밀 오버라이드한다. AGENTS.md 3.11 참조. */
+:root{
+  --ink:#1B1712;--ink2:#6B6459;--paper:#E9E6DC;--masthead:#E3DFD2;--card:#F8F6EF;--card2:#EFECE3;
+  --rule:#D9D3C4;--rule2:#C6BEAC;--pine:#0E5148;--pine-d:#0A3A34;--pine-wash:#DCE6E1;
+  --codex-accent:#0E5148;--orange:#0E5148;--t1:#1B1712;--t2:#6B6459;
+  --codex-pill-text:#1B1712;--codex-pill-bg:#F8F6EF;--codex-pill-bg-active:#DCE6E1;--codex-pill-bg-muted:#F8F6EF;--codex-pill-shadow:none;
+  --bg:#F8F6EF;--nm-bg:#F8F6EF;--card-bg:#F8F6EF;--nm-card:#F8F6EF;--card-border:#C6BEAC;
+  --book-teal:#0E5148;--book-teal-dark:#0A3A34;--accent:#0E5148;--codex-panel:#E9E6DC;
+}
+html{background:#E9E6DC!important}
+body{background:#E9E6DC!important;color:#1B1712!important}
+header .hero-video,header .footer-video{display:none!important}
+header{background:radial-gradient(120% 100% at 84% -14%,rgba(86,204,180,.34) 0%,rgba(86,204,180,0) 54%),linear-gradient(135deg,#0F5E52 0%,#10424A 50%,#131E33 100%)!important;border-radius:0!important;clip-path:none!important}
+header::before,header::after{display:none!important;content:none!important}
+header h1{color:#F5F3EA!important}
+header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
+.back-link{color:rgba(245,243,234,.66)!important}
+</style>
 </head>
 <body>
 <header>
@@ -377,7 +403,7 @@
         <div class="step-line"></div>
         <a class="step-node" href="ai-fluency.html">1</a>
         <div class="step-line"></div>
-        <a class="step-node active" href="excel-plugin.html">2</a>
+        <a class="step-node active" href="chrome-plugin.html">2</a>
         <div class="step-line"></div>
         <a class="step-node" href="codex-101.html">3</a>
         <div class="step-line"></div>
@@ -388,49 +414,49 @@
         <a class="step-node sn-final" href="ai-writing.html">예제</a>
     </nav>
     <a class="back-link" href="index.html">← 목록으로</a>
-    <h1>Excel에서 ChatGPT 사용</h1>
-    <p>워크북 안에서 수식, 탭, 가정을 설명하고 직접 고치는 스프레드시트 네이티브 경험입니다</p>
+    <h1>파워포인트·엑셀에서 ChatGPT 사용</h1>
+    <p>슬라이드와 워크북 옆 사이드바에서 덱을 만들고, 수식을 설명하고, 결과를 검수하는 Office 네이티브 경험입니다</p>
     <div class="header-pages">
-        <a href="excel-plugin.html" class="header-page-link active">📊 Excel</a>
-        <a href="pptx-plugin.html" class="header-page-link">📑 PowerPoint</a>
+        <a href="chrome-plugin.html" class="header-page-link">🌐 Chrome</a>
+        <a href="office-plugin.html" class="header-page-link active">📑 PowerPoint·Excel</a>
     </div>
 </header>
 
 <nav class="sub-menu" id="subMenu">
     <a href="#sec-why" class="active" data-sec="sec-why"><span class="sm-num">1</span><span class="sm-title">개요</span><span class="sm-sub">역할</span></a>
-    <a href="#sec-install" data-sec="sec-install"><span class="sm-num">2</span><span class="sm-title">설치</span><span class="sm-sub">시작</span></a>
-    <a href="#sec-first" data-sec="sec-first"><span class="sm-num">3</span><span class="sm-title">첫 작업</span><span class="sm-sub">안전</span></a>
-    <a href="#sec-scenarios" data-sec="sec-scenarios"><span class="sm-num">4</span><span class="sm-title">실무</span><span class="sm-sub">프롬프트</span></a>
+    <a href="#sec-install" data-sec="sec-install"><span class="sm-num">2</span><span class="sm-title">설치</span><span class="sm-sub">공통</span></a>
+    <a href="#sec-pptx" data-sec="sec-pptx"><span class="sm-num">3</span><span class="sm-title">PowerPoint</span><span class="sm-sub">덱 실무</span></a>
+    <a href="#sec-excel" data-sec="sec-excel"><span class="sm-num">4</span><span class="sm-title">Excel</span><span class="sm-sub">워크북 실무</span></a>
     <a href="#sec-review" data-sec="sec-review"><span class="sm-num">5</span><span class="sm-title">검수</span><span class="sm-sub">한계</span></a>
     <a href="#sec-faq" data-sec="sec-faq"><span class="sm-num">6</span><span class="sm-title">FAQ</span><span class="sm-sub">링크</span></a>
 </nav>
 
 <main class="container">
-    <div id="sec-why" class="step-divider content-section"><span class="step-badge">Excel에서 ChatGPT가 하는 일</span></div>
+    <div id="sec-why" class="step-divider content-section"><span class="step-badge">Office에서 ChatGPT가 하는 일</span></div>
     <section class="nm-card">
-        <h2>ChatGPT가 워크북 옆 사이드바로 들어옵니다</h2>
-        <p class="card-subtitle">OpenAI 공식 문서 기준으로 Excel과 Google Sheets용 스프레드시트 네이티브 경험입니다</p>
-        <p>ChatGPT for Excel은 Microsoft Excel 안의 사이드바에서 열립니다. 여러 시트, 수식, 참조, 가정이 들어 있는 워크북을 만들고, 고치고, 설명하는 일을 자연어로 맡길 수 있습니다.</p>
-        <p style="margin-top:10px;">Excel 파일을 ChatGPT 대화창에 올려 분석하는 방식과 다릅니다. 이 페이지는 Excel 리본의 Add-ins에서 여는 ChatGPT for Excel 흐름을 기준으로 설명합니다.</p>
+        <h2>ChatGPT가 PowerPoint와 Excel 옆 사이드바로 들어옵니다</h2>
+        <p class="card-subtitle">OpenAI 공식 문서 기준으로 PowerPoint와 Excel 안에서 열리는 확장 프로그램(Add-in) 경험입니다</p>
+        <p>ChatGPT for PowerPoint와 ChatGPT for Excel은 각각 Microsoft PowerPoint와 Excel 안의 사이드바에서 열립니다. 파일을 ChatGPT 대화창에 올리는 방식과 달리, 지금 보고 있는 덱과 워크북 옆에서 슬라이드와 수식을 자연어로 만들고, 고치고, 설명하게 할 수 있습니다.</p>
+        <p style="margin-top:10px;">이 페이지는 리본의 Add-ins에서 여는 두 확장 프로그램 흐름을 한곳에 모아 설명합니다. PowerPoint 쪽은 베타로, Excel 쪽은 Google Sheets와 함께 제공됩니다.</p>
         <div class="use-case-grid">
-            <div class="use-case-item"><div class="uc-icon">📋</div><h4>새 표 만들기</h4><p>예산표, 트래커, 계획표, 템플릿을 빈 워크북에서 시작합니다.</p></div>
-            <div class="use-case-item"><div class="uc-icon">🧹</div><h4>지저분한 표 정리</h4><p>서식, 라벨, 중복 행, 깨진 수식을 점검하고 정리합니다.</p></div>
-            <div class="use-case-item"><div class="uc-icon">🔎</div><h4>수식 설명</h4><p>낯선 파일의 가정, 핵심 수식, 오류 원인을 설명합니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">📄</div><h4>덱 초안 만들기</h4><p>메모, 문서, 워크북을 바탕으로 PowerPoint 첫 덱을 만듭니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">🧱</div><h4>기존 덱 수정</h4><p>슬라이드를 추가하고, 순서를 바꾸고, 메시지를 다듬습니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">📋</div><h4>새 표 만들기</h4><p>예산표, 트래커, 계획표를 빈 Excel 워크북에서 시작합니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">🔎</div><h4>수식·스토리 점검</h4><p>낯선 수식의 오류 원인과 덱의 빠진 근거를 설명합니다.</p></div>
             <div class="use-case-item"><div class="uc-icon">📈</div><h4>시나리오 실행</h4><p>기본, 낙관, 보수 케이스를 나눠 민감도 표를 만듭니다.</p></div>
-            <div class="use-case-item"><div class="uc-icon">🧩</div><h4>Skills와 앱</h4><p>반복되는 재무 모델링 방식이나 연결 데이터 소스를 함께 씁니다.</p></div>
-            <div class="use-case-item"><div class="uc-icon">✅</div><h4>변경 요약</h4><p>어떤 탭과 셀을 고쳤는지 검토용으로 남깁니다.</p></div>
+            <div class="use-case-item"><div class="uc-icon">✅</div><h4>변경 검수</h4><p>바뀐 슬라이드, 탭, 셀을 검토용으로 남깁니다.</p></div>
         </div>
     </section>
 
-    <div id="sec-install" class="step-divider content-section"><span class="step-badge">설치와 권한</span></div>
+    <div id="sec-install" class="step-divider content-section"><span class="step-badge">설치와 권한 (공통)</span></div>
     <section class="nm-card">
-        <h2>Excel의 Add-ins에서 ChatGPT를 추가합니다</h2>
-        <p class="card-subtitle">개인 계정과 회사 계정 모두 지원되지만, 회사 계정은 관리자가 막아둘 수 있습니다</p>
+        <h2>PowerPoint와 Excel의 Add-ins에서 ChatGPT를 추가합니다</h2>
+        <p class="card-subtitle">설치 절차는 두 앱이 같습니다. 회사 계정은 관리자가 사용을 막아둘 수 있습니다</p>
         <ol class="step-list">
-            <li><div><strong>Microsoft Excel 열기</strong><br>데스크톱 Excel이나 웹 Excel을 엽니다.</div></li>
+            <li><div><strong>Microsoft PowerPoint 또는 Excel 열기</strong><br>데스크톱이나 웹에서 원하는 앱을 엽니다.</div></li>
             <li><div><strong>Home에서 Add-ins로 이동</strong><br>리본 메뉴의 Home 탭에서 Add-ins를 엽니다.</div></li>
             <li><div><strong>ChatGPT 검색</strong><br>Microsoft Marketplace에서 ChatGPT를 검색합니다.</div></li>
-            <li><div><strong>Add 후 리본에서 열기</strong><br>추가한 뒤 Excel 리본에서 ChatGPT를 엽니다.</div></li>
+            <li><div><strong>Add 후 리본에서 열기</strong><br>추가한 뒤 앱 리본에서 ChatGPT를 엽니다.</div></li>
             <li><div><strong>ChatGPT 계정으로 로그인</strong><br>지원 플랜이 있는 ChatGPT 계정으로 로그인합니다.</div></li>
         </ol>
         <div class="tip-box">
@@ -438,15 +464,48 @@
             <p>조직이 Microsoft Store 접근을 막아둔 환경이면 Microsoft 365 관리자가 manifest XML 파일을 써서 내부 배포할 수 있습니다. Integrated apps에서 Deploy Add-in을 선택하고 사용자나 그룹에 할당합니다.</p>
         </div>
         <div class="install-row">
-            <a class="install-btn" href="https://help.openai.com/en/articles/20001063-chatgpt-for-excel-and-google-sheets" target="_blank" rel="noopener">OpenAI Excel 공식 가이드</a>
             <a class="install-btn" href="https://marketplace.microsoft.com/en-us/product/office/WA200010215" target="_blank" rel="noopener">Microsoft Marketplace</a>
+            <a class="install-btn soft" href="https://help.openai.com/en/articles/20001242-chatgpt-for-powerpoint" target="_blank" rel="noopener">OpenAI PowerPoint 가이드</a>
+            <a class="install-btn soft" href="https://help.openai.com/en/articles/20001063-chatgpt-for-excel-and-google-sheets" target="_blank" rel="noopener">OpenAI Excel 가이드</a>
         </div>
     </section>
 
-    <div id="sec-first" class="step-divider content-section"><span class="step-badge">첫 작업 안전하게 맡기기</span></div>
+    <div id="sec-pptx" class="step-divider content-section"><span class="step-badge">PowerPoint 실무</span></div>
     <section class="nm-card">
-        <h2>큰 수정 전에는 계획을 먼저 받습니다</h2>
-        <p class="card-subtitle">보존할 것, 바꿀 것, 작업 범위를 한 문장에 넣습니다</p>
+        <h2>덱은 내용보다 목적과 청중을 먼저 알려줍니다</h2>
+        <p class="card-subtitle">큰 수정 전에는 "바로 고치지 말고 계획부터"라고 요청하면 검수하기 쉽습니다</p>
+        <h3>1. 첫 덱 초안</h3>
+        <div class="prompt-example">다음 메모와 KPI를 바탕으로 10장짜리 임원 보고 초안을 만들어 주세요.
+
+청중: 대표이사, CFO
+목적: 다음 분기 투자 우선순위 승인
+발표 시간: 12분
+톤: 결론 먼저, 숫자는 보수적으로
+
+먼저 다음을 제안해 주세요.
+1. 전체 스토리라인
+2. 슬라이드별 제목
+3. 각 장에 필요한 근거 자료
+4. 발표자가 받을 질문 5개
+5. 바로 만들기 전에 확인할 정보</div>
+        <h3>2. 스토리 진단</h3>
+        <div class="prompt-example">이 덱의 스토리를 진단해 주세요.
+핵심 메시지, 중복 슬라이드, 빠진 근거, 순서가 어색한 부분을 표로 정리해 주세요.
+수정은 아직 하지 말고 이유를 먼저 설명해 주세요.</div>
+        <h3>3. 경영진용으로 압축</h3>
+        <div class="prompt-example">이 덱을 경영진 보고용으로 더 날카롭게 줄여 주세요.
+삭제 후보, 합칠 슬라이드, 액션 타이틀로 바꿀 제목을 표로 정리해 주세요.
+결론이 약한 장표는 새 제목을 제안해 주세요.</div>
+        <h3>4. 발표 준비</h3>
+        <div class="prompt-example">이 발표자료를 12분 발표로 준비해 주세요.
+슬라이드별 말할 순서, 예상 질문 7개, 답변 초안, 시간이 부족할 때 건너뛸 슬라이드를 알려 주세요.</div>
+    </section>
+
+    <div id="sec-excel" class="step-divider content-section"><span class="step-badge">Excel 실무</span></div>
+    <section class="nm-card">
+        <h2>워크북은 보존 범위와 작업 범위를 먼저 정합니다</h2>
+        <p class="card-subtitle">선택한 시트를 @로 언급해 프롬프트 범위를 좁힐 수 있습니다</p>
+        <h3>1. 큰 수정 전 계획</h3>
         <div class="prompt-example">이 워크북을 바로 고치기 전에 먼저 계획을 세워 주세요.
 
 목표: 월별 매출 리포트를 임원 보고용으로 정리
@@ -458,23 +517,10 @@
 2. 새로 만들 탭
 3. 위험한 수식이나 참조
 4. 작업 후 내가 검수할 항목</div>
-        <div class="inset-box">
-            <strong>@로 시트를 좁히기</strong>
-            <p>공식 가이드에 따르면 선택한 시트를 @로 언급해 프롬프트 범위를 좁힐 수 있습니다. 큰 파일에서는 "Inputs 탭만", "Summary 탭은 건드리지 마"처럼 범위를 분명히 적으세요.</p>
-        </div>
-    </section>
-
-    <div id="sec-scenarios" class="step-divider content-section"><span class="step-badge">실무 프롬프트</span></div>
-    <section class="nm-card">
-        <h2>반복 업무를 프롬프트 세트로 만듭니다</h2>
-        <h3>1. 수식 오류 추적</h3>
+        <h3>2. 수식 오류 추적</h3>
         <div class="prompt-example">B145 셀 오류의 원인을 찾아 주세요.
 참조되는 셀과 수식 체인을 따라가며 설명하고, 수정안 2가지를 제안해 주세요.
 기존 구조를 바꾸는 수정안과 최소 수정안을 나눠 주세요.</div>
-        <h3>2. 지저분한 시트 정리</h3>
-        <div class="prompt-example">이 시트를 정리해 주세요.
-라벨 표기 통일, 중복 행 제거 후보, 빈 값 처리 기준, 깨진 수식 후보를 먼저 표로 보여 주세요.
-내가 승인하기 전에는 셀 값을 바꾸지 마세요.</div>
         <h3>3. 시나리오 탭 생성</h3>
         <div class="prompt-example">Base, Upside, Downside 3개 케이스를 비교하는 새 시나리오 탭을 설계해 주세요.
 가격, 전환율, CAC, 매출총이익률을 주요 가정으로 두고 민감도 표 구조와 필요한 수식을 제안해 주세요.</div>
@@ -486,21 +532,23 @@
     <div id="sec-review" class="step-divider content-section"><span class="step-badge">검수와 한계</span></div>
     <section class="nm-card">
         <h2>검수 기준을 먼저 정하면 사고가 줄어듭니다</h2>
+        <p class="card-subtitle">PowerPoint 확장은 베타라 특히 수동 검수가 필요합니다</p>
         <div class="summary-table-wrap">
             <table class="summary-table">
                 <thead><tr><th>항목</th><th>확인할 것</th><th>왜 중요한가</th></tr></thead>
                 <tbody>
+                    <tr><td>스토리</td><td>결론, 근거, 반론 대응</td><td>예쁜 장표보다 설득 구조가 먼저입니다.</td></tr>
                     <tr><td>수식</td><td>참조 범위, 절대 참조, 숨은 시트 연결</td><td>한 셀 수정이 다른 탭 전체를 흔들 수 있습니다.</td></tr>
-                    <tr><td>숫자</td><td>합계, 증감률, 단위, 반올림 기준</td><td>보고서 숫자는 원본과 다시 맞춰야 합니다.</td></tr>
-                    <tr><td>변경 셀</td><td>ChatGPT가 바꾼 탭과 범위</td><td>원치 않는 덮어쓰기를 찾는 기준입니다.</td></tr>
-                    <tr><td>고급 기능</td><td>VBA, 매크로, 복잡한 서식</td><td>공식 문서는 고급 스프레드시트 기능 지원이 제한될 수 있다고 안내합니다.</td></tr>
-                    <tr><td>대화 기록</td><td>Excel 사이드바 대화와 ChatGPT.com 대화</td><td>스프레드시트 대화는 메인 ChatGPT 대화 기록과 분리됩니다.</td></tr>
+                    <tr><td>숫자</td><td>합계, 증감률, 단위, 반올림, 원본 표</td><td>보고서 숫자는 원본과 다시 맞춰야 합니다.</td></tr>
+                    <tr><td>변경 사항</td><td>ChatGPT가 바꾼 슬라이드, 탭, 셀</td><td>원치 않는 덮어쓰기를 찾는 기준입니다.</td></tr>
+                    <tr><td>고급 기능</td><td>차트, 애니메이션, VBA, 매크로, 복잡한 서식</td><td>공식 문서는 고급 기능 지원이 제한될 수 있다고 안내합니다.</td></tr>
+                    <tr><td>대화 기록</td><td>Office 사이드바 대화와 ChatGPT.com 대화</td><td>Add-in 대화는 메인 ChatGPT 대화 기록과 분리됩니다.</td></tr>
                 </tbody>
             </table>
         </div>
         <div class="tip-box">
             <span class="tip-label">중요 파일은 복사본에서</span>
-            <p>공식 가이드도 중요한 작업은 파일을 복제한 뒤 진행하라고 안내합니다. 특히 재무 모델, 예산안, 고객 데이터는 복사본에서 먼저 테스트하세요.</p>
+            <p>공식 가이드도 공유하거나 의존하기 전에 주장, 숫자, 인용, 변경 사항을 검토하라고 안내합니다. 재무 모델, 예산안, 고객 데이터, 중요한 덱은 복사본에서 먼저 테스트하세요.</p>
         </div>
     </section>
 
@@ -509,10 +557,14 @@
         <h2>자주 묻는 질문</h2>
         <div class="inset-box">
             <strong>Q. 누가 쓸 수 있나요?</strong>
-            <p>OpenAI 공식 문서 기준으로 Free, Go, Plus, Pro, Business, Enterprise, Edu, K-12 사용자가 전 세계에서 쓸 수 있습니다. Free와 Go는 제한된 사용량이 붙습니다.</p>
+            <p>OpenAI 공식 문서 기준으로 Free, Go, Plus, Pro, Business, Enterprise, Edu, K-12 사용자가 전 세계에서 쓸 수 있습니다. PowerPoint 확장은 베타이고, Free와 Go는 제한된 사용량이 붙습니다.</p>
         </div>
         <div class="inset-box">
-            <strong>Q. Google Sheets도 같은가요?</strong>
+            <strong>Q. PowerPoint가 베타라는 말은 무슨 뜻인가요?</strong>
+            <p>기능과 품질이 계속 바뀔 수 있다는 뜻입니다. 생성된 슬라이드는 수동 정리와 검수가 필요할 수 있습니다.</p>
+        </div>
+        <div class="inset-box">
+            <strong>Q. Excel과 Google Sheets는 같은가요?</strong>
             <p>Excel과 Google Sheets는 별도 경험이지만, 새 시트 만들기, 기존 시트 질문, 자연어 업데이트 같은 주요 흐름은 비슷합니다.</p>
         </div>
         <div class="inset-box">
@@ -521,11 +573,11 @@
         </div>
         <div class="inset-box">
             <strong>Q. 데이터는 어떻게 처리되나요?</strong>
-            <p>ChatGPT는 답변을 만들기 위해 프롬프트, 첨부 파일, 관련 스프레드시트 맥락을 처리합니다. Microsoft Excel 안에서 실행되므로 Microsoft 약관도 함께 적용됩니다.</p>
+            <p>ChatGPT는 답변을 만들기 위해 프롬프트, 첨부 파일, 관련 덱·스프레드시트 맥락을 처리합니다. Microsoft Office 안에서 실행되므로 Microsoft 약관도 함께 적용됩니다.</p>
         </div>
         <div class="install-row">
-            <a class="install-btn" href="https://help.openai.com/en/articles/20001063-chatgpt-for-excel-and-google-sheets" target="_blank" rel="noopener">OpenAI Help Center</a>
-            <a class="install-btn" href="https://openai.com/index/chatgpt-for-excel/" target="_blank" rel="noopener">OpenAI 공지</a>
+            <a class="install-btn" href="https://help.openai.com/en/articles/20001242-chatgpt-for-powerpoint" target="_blank" rel="noopener">PowerPoint Help Center</a>
+            <a class="install-btn" href="https://help.openai.com/en/articles/20001063-chatgpt-for-excel-and-google-sheets" target="_blank" rel="noopener">Excel Help Center</a>
         </div>
     </section>
 </main>
@@ -550,7 +602,7 @@
         if (section) sections.push({ el: section, link: link });
     });
     function update() {
-        var offset = window.scrollY + 120;
+        var offset = window.scrollY + 160;
         var current = sections[0];
         sections.forEach(function(section) {
             if (section.el.offsetTop <= offset) current = section;

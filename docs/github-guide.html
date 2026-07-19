@@ -779,6 +779,20 @@
             scrollbar-width: none;
         }
         .sub-menu::-webkit-scrollbar { display: none; }
+        .sub-menu-inner {
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            box-sizing: border-box;
+        }
+        @media (min-width: 769px) and (max-width: 980px) {
+            .sub-menu-inner { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+            .sub-menu-inner::-webkit-scrollbar { display: none; }
+        }
         .sub-menu a {
             display: flex;
             flex-direction: column;
@@ -1118,7 +1132,39 @@
             .hook-text h3 { font-size: 16px; }
         }
     
+        /* ── GitHub·Vercel·Netlify 배포 훅 확장 (airoasting 포팅) ── */
+        .hook-urls { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; grid-template-columns: none; }
+        .hook-deploy-pair { display: inline-flex; gap: 6px; align-items: center; }
+        .hook-plus { color: var(--codex-accent); font-size: 22px; font-weight: 800; }
+        .hook-url-arrow { color: var(--codex-accent); font-size: 20px; font-weight: 800; }
+        .hook-deploy-urls { display: flex; flex-wrap: nowrap; gap: 14px; align-items: center; }
+        .hook-brand-icon.brand-nl svg { width: 56%; height: 56%; }
+        .brand-icon.brand-nl svg { width: 64%; height: 64%; }
+        @media (max-width: 768px) {
+            .hook-deploy-urls { flex-direction: column; align-items: stretch; gap: 10px; }
+        }
+
 /* RD-INJECT 참고문헌 컴포넌트 */ .reading{margin-top:48px;padding-top:8px} .reading>h2{font-size:1.4rem;font-weight:800;margin:0 0 18px} .reading-group{background:#fff;border:1px solid rgba(91,98,216,.14);border-radius:16px;padding:20px 22px;margin-bottom:16px;box-shadow:0 4px 18px rgba(40,40,90,.05)} .reading-group h3{margin:0 0 12px;font-size:1.02rem;font-weight:700;color:var(--codex-accent)} .reading-group ul{margin:0;padding-left:18px} .reading-group li{margin:7px 0;line-height:1.6;color:#3a3f55} .reading-group a{color:var(--codex-accent);text-decoration:none;font-weight:600} .reading-group a:hover{text-decoration:underline}
+</style>
+<style id="petrol-preload">
+/* PETROL-PRELOAD: 첫 페인트 라벤더/보라 플래시 제거. head 끝에서 옛 라벤더 인라인을 선점하고,
+   </body>의 assets/petrol.css가 이후 전체를 정밀 오버라이드한다. AGENTS.md 3.11 참조. */
+:root{
+  --ink:#1B1712;--ink2:#6B6459;--paper:#E9E6DC;--masthead:#E3DFD2;--card:#F8F6EF;--card2:#EFECE3;
+  --rule:#D9D3C4;--rule2:#C6BEAC;--pine:#0E5148;--pine-d:#0A3A34;--pine-wash:#DCE6E1;
+  --codex-accent:#0E5148;--orange:#0E5148;--t1:#1B1712;--t2:#6B6459;
+  --codex-pill-text:#1B1712;--codex-pill-bg:#F8F6EF;--codex-pill-bg-active:#DCE6E1;--codex-pill-bg-muted:#F8F6EF;--codex-pill-shadow:none;
+  --bg:#F8F6EF;--nm-bg:#F8F6EF;--card-bg:#F8F6EF;--nm-card:#F8F6EF;--card-border:#C6BEAC;
+  --book-teal:#0E5148;--book-teal-dark:#0A3A34;--accent:#0E5148;--codex-panel:#E9E6DC;
+}
+html{background:#E9E6DC!important}
+body{background:#E9E6DC!important;color:#1B1712!important}
+header .hero-video,header .footer-video{display:none!important}
+header{background:radial-gradient(120% 100% at 84% -14%,rgba(86,204,180,.34) 0%,rgba(86,204,180,0) 54%),linear-gradient(135deg,#0F5E52 0%,#10424A 50%,#131E33 100%)!important;border-radius:0!important;clip-path:none!important}
+header::before,header::after{display:none!important;content:none!important}
+header h1{color:#F5F3EA!important}
+header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
+.back-link{color:rgba(245,243,234,.66)!important}
 </style>
 </head>
 <body>
@@ -1133,7 +1179,7 @@
         <div class="step-line"></div>
         <a class="step-node" href="ai-fluency.html">1</a>
         <div class="step-line"></div>
-        <a class="step-node" href="excel-plugin.html">2</a>
+        <a class="step-node" href="chrome-plugin.html">2</a>
         <div class="step-line"></div>
         <a class="step-node" href="codex-101.html">3</a>
         <div class="step-line"></div>
@@ -1144,16 +1190,18 @@
         <a class="step-node sn-final" href="ai-writing.html">예제</a>
     </nav>
     <a class="back-link load-anim load-d2" href="index.html">← 목록으로</a>
-    <h1 class="load-anim load-d3">GitHub 저장과 공유</h1>
-    <p class="load-anim load-d4">저장소를 만들고, 파일을 올리고, GitHub Pages로 공개합니다</p>
+    <h1 class="load-anim load-d3">GitHub · Vercel · Netlify</h1>
+    <p class="load-anim load-d4">코드를 저장하고, 웹 주소로 접속하기까지 한번에</p>
     <div class="header-pages load-anim load-d6">
-        <a href="github-guide.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 16 16" aria-hidden="true" class="ic-fill"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span> GitHub 저장과 공유</a>
-        <a href="vercel-guide.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span> Vercel 배포</a>
+        <a href="codex-101.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span> Codex 앱 시작하기</a>
+        <a href="codex-tasks.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span> Codex 실전 과제 8가지</a>
+        <a href="github-guide.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span> GitHub·Vercel·Netlify</a>
     </div>
 </header>
 
 <!-- ── SUB MENU ── -->
 <nav class="sub-menu load-anim load-d6" id="subMenu">
+    <div class="sub-menu-inner">
     <a href="#sec-why" class="active" data-sec="sec-why">
         <span class="sm-num">0</span>
         <span class="sm-title">개념 설명</span>
@@ -1171,330 +1219,651 @@
     </a>
     <a href="#sec-step3" data-sec="sec-step3">
         <span class="sm-num">3</span>
-        <span class="sm-title">Pages 공개</span>
+        <span class="sm-title">GitHub Pages</span>
         <span class="sm-sub">STEP 3</span>
     </a>
-    <a href="#sec-ref" data-sec="sec-ref">
+    <a href="#sec-step4" data-sec="sec-step4">
         <span class="sm-num">4</span>
+        <span class="sm-title">Vercel·Netlify</span>
+        <span class="sm-sub">STEP 4</span>
+    </a>
+    <a href="#sec-ref" data-sec="sec-ref">
+        <span class="sm-num">5</span>
         <span class="sm-title">참고</span>
         <span class="sm-sub">도움말</span>
     </a>
+    </div>
 </nav>
 
 <main class="container">
 
+    <!-- 섹션 0: 왜 할까? -->
     <section class="content-section" id="sec-why">
-        <div class="hook-banner reveal-scale">
-            <div class="hook-head">
-                <div class="hook-brand-stack">
-                    <span class="hook-brand-icon brand-gh"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
-                </div>
-                <div class="hook-text">
-                    <h3>GitHub은 프로젝트를 저장하고 공유하는 코드 창고입니다</h3>
-                </div>
-            </div>
+
+    <!-- ── 한 문장 요약 (페이지 첫 화면) ── -->
+    <div class="hook-banner reveal-scale">
+        <div class="hook-brand-stack">
+            <span class="hook-brand-icon brand-gh"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
+            <span class="hook-plus">+</span>
+            <span class="hook-deploy-pair">
+                <span class="hook-brand-icon brand-vc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L22 20H2L12 2z"/></svg></span>
+                <span class="hook-brand-icon brand-nl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V4h3.2l7.6 10V4H19v16h-3.2L8.2 10v10z"/></svg></span>
+            </span>
+        </div>
+        <div class="hook-text">
+            <h3>GitHub에 올린 코드를 Vercel·Netlify가 자동으로 웹 주소로 띄워줍니다</h3>
             <div class="hook-urls">
                 <span class="hook-url-block">
-                    <span class="hook-url-label">저장소 주소</span>
-                    <span class="hook-url">https://github.com/내아이디/프로젝트이름</span>
-                </span>
-                <span class="hook-url-block">
-                    <span class="hook-url-label">Pages 주소</span>
+                    <span class="hook-url-label">GitHub Pages</span>
                     <span class="hook-url">https://내아이디.github.io/프로젝트이름/</span>
                 </span>
+                <span class="hook-url-arrow">→</span>
+                <span class="hook-deploy-urls">
+                    <span class="hook-url-block">
+                        <span class="hook-url-label">Vercel</span>
+                        <span class="hook-url">https://내프로젝트.vercel.app/</span>
+                    </span>
+                    <span class="hook-url-block">
+                        <span class="hook-url-label">Netlify</span>
+                        <span class="hook-url">https://내프로젝트.netlify.app/</span>
+                    </span>
+                </span>
             </div>
         </div>
+    </div>
 
-        <p class="section-subhead reveal" style="margin-top: 32px; margin-bottom: 12px;">GitHub에서 무엇을 하나요?</p>
-        <div class="info-box reveal" style="margin-bottom: 16px;">
-            <p>GitHub은 프로젝트 파일과 변경 이력을 한곳에 보관합니다. Codex가 만든 결과물을 저장소에 올리면, 작업 기록을 남기고 다른 사람에게 공유할 수 있습니다.</p>
+    <!-- ── 비즈니스 리더 한눈에 ── -->
+    <div class="info-box reveal" style="margin-top: 22px; margin-bottom: 8px;">
+        <p style="margin-bottom: 12px;"><strong style="color:#3A3530; font-size:16px;">💼 바쁜 리더라면, 이 세 가지만 기억하면 됩니다</strong></p>
+        <p style="margin-bottom: 7px;"><span class="highlight">① GitHub</span> = 코드를 안전하게 보관하는 <strong>창고</strong>입니다. 구글 드라이브의 코드 버전이라고 생각하면 됩니다.</p>
+        <p style="margin-bottom: 7px;"><span class="highlight">② Vercel · Netlify</span> = 창고에 있는 코드를 실제 웹사이트 주소로 띄워주는 <strong>배달 서비스</strong>입니다.</p>
+        <p style="margin-bottom: 0;"><span class="highlight">③ 내가 할 일</span> = 명령어를 외울 필요 없이 <strong>Codex에게 한국어로 말하는 것</strong>뿐입니다. 직접 만든 랜딩페이지·대시보드·데모를 개발자나 외주 없이 바로 공개할 수 있습니다.</p>
+    </div>
+
+    <!-- ── GitHub란 무엇인가요? ── -->
+    <p class="section-subhead reveal" style="margin-top: 32px; margin-bottom: 12px;">GitHub는 무엇인가요?</p>
+    <div class="table-wrapper reveal">
+        <table class="brand-cmp">
+            <thead>
+                <tr><th style="width: 26%; text-align: center;">항목</th><th style="width: 74%; text-align: center;"><span class="brand-icon brand-gh"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>GitHub<a href="https://github.com" target="_blank" rel="noopener" class="th-go">바로가기 ↗</a></th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>한 줄 정체성</strong></td>
+                    <td>코드를 저장·관리·공유하는 클라우드 창고</td>
+                </tr>
+                <tr>
+                    <td><strong>무엇을 할 수 있나</strong></td>
+                    <td>코드를 인터넷에 백업하고, 변경 이력을 남겨 이전 상태로 되돌리고, 여러 사람이 함께 작업하거나 코드를 공개할 수 있습니다.</td>
+                </tr>
+                <tr>
+                    <td><strong>만든 사람·연도</strong></td>
+                    <td>2008년 톰 프레스턴 워너, 크리스 완스트라스 등이 창립했습니다. 2018년 마이크로소프트가 인수했습니다.</td>
+                </tr>
+                <tr>
+                    <td><strong>이름의 뜻·어원</strong></td>
+                    <td><strong>Git</strong>(버전 관리 도구) + <strong>Hub</strong>(중심·허브)의 조합입니다. 2005년에 리누스 토르발스가 만든 도구 'Git'을 인터넷에 모아두는 허브 역할을 한다는 뜻에서, 2008년에 'GitHub'이라는 이름이 붙었습니다.<div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(206,202,195,0.7); font-size: 13px; color: #6F665E;">참고로 영어 단어 <strong>git</strong>은 영국 속어로 "고집불통" 또는 "얼간이"를 뜻합니다. 토르발스가 자기 이름처럼 고집 센 프로그램이라며 농담조로 붙인 이름이라고 알려져 있습니다.</div></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ── Vercel vs Netlify 비교표 ── -->
+    <p class="section-subhead reveal" style="margin-top: 32px; margin-bottom: 12px;">배포 서비스, Vercel과 Netlify는 무엇이 다른가요?</p>
+    <div class="note-box reveal" style="margin-bottom: 14px;">
+        <strong>한 줄 요약 ·</strong> 둘 다 GitHub과 연동해, <strong>푸시</strong>(내 변경사항을 GitHub에 올리는 일)하면 자동으로 <strong>배포</strong>(웹에 올려 누구나 접속하게 만드는 일)해 주는 서비스입니다. <strong>Next.js·React 같은 동적 앱이면 Vercel</strong>, <strong>정적 사이트</strong>(화면이 거의 바뀌지 않는 일반 웹사이트)에 폼·함수를 간단히 붙이려면 <strong>Netlify</strong>가 강점을 보입니다. 처음에는 둘 중 무엇을 골라도 정적 사이트는 똑같이 잘 올라갑니다.
+    </div>
+    <div class="table-wrapper reveal">
+        <table class="brand-cmp">
+            <thead>
+                <tr><th style="width: 22%; text-align: center;">항목</th><th style="width: 39%; text-align: center;"><span class="brand-icon brand-vc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L22 20H2L12 2z"/></svg></span>Vercel<a href="https://vercel.com" target="_blank" rel="noopener" class="th-go">바로가기 ↗</a></th><th style="width: 39%; text-align: center;"><span class="brand-icon brand-nl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V4h3.2l7.6 10V4H19v16h-3.2L8.2 10v10z"/></svg></span>Netlify<a href="https://www.netlify.com" target="_blank" rel="noopener" class="th-go">바로가기 ↗</a></th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>한 줄 정체성</strong></td>
+                    <td>Next.js를 만든 회사가 운영하는 배포 플랫폼</td>
+                    <td>정적 사이트(Jamstack) 배포를 대중화한 원조 서비스</td>
+                </tr>
+                <tr>
+                    <td><strong>만든 사람·연도</strong></td>
+                    <td>2015년 기예르모 라우치가 ZEIT로 창업, 2020년 Vercel로 개명했습니다.</td>
+                    <td>2014년 매트 빌만과 크리스천 바흐가 BitBalloon으로 창업, 2015년 Netlify로 개명했습니다.</td>
+                </tr>
+                <tr>
+                    <td><strong>이름의 뜻·어원</strong></td>
+                    <td>라틴어 vertere(베르테레, 돌다·전환하다)에서 따온 신조어로, "전환·움직임"의 어감을 담았습니다.</td>
+                    <td><strong>Net</strong>(네트워크·인터넷) + <strong>-ify</strong>(~하게 만들다)의 조합입니다. "웹 배포를 누구나 쉽게"라는 의미를 담았습니다. 'Jamstack'이라는 용어를 만든 회사로도 알려져 있습니다.</td>
+                </tr>
+                <tr>
+                    <td><strong>가장 강한 영역</strong></td>
+                    <td>Next.js·React 같은 동적 프레임워크, 서버리스 함수, 빠른 글로벌 배포</td>
+                    <td>정적 사이트, 폼·인증·함수 같은 내장 기능, 빌드 플러그인 생태계</td>
+                </tr>
+                <tr>
+                    <td><strong>자동 배포·미리보기</strong></td>
+                    <td>GitHub 푸시 시 자동 빌드 + 브랜치·PR별 Preview URL 제공</td>
+                    <td>동일하게 푸시 시 자동 빌드 + Deploy Preview 제공</td>
+                </tr>
+                <tr>
+                    <td><strong>무료 플랜·기본 주소</strong></td>
+                    <td>Hobby 플랜(개인·비상업) · <code>프로젝트.vercel.app</code></td>
+                    <td>Free 플랜(개인·소규모) · <code>프로젝트.netlify.app</code></td>
+                </tr>
+                <tr>
+                    <td><strong>이런 분께 추천</strong></td>
+                    <td>Next.js 앱이나 동적 기능이 핵심인 프로젝트</td>
+                    <td>정적 사이트에 폼·함수를 손쉽게 붙이고 싶은 프로젝트</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ── 왜 GitHub와 배포 서비스를 함께 쓸까요? ── -->
+    <p class="section-subhead reveal" style="margin-top: 32px; margin-bottom: 12px;">왜 GitHub와 배포 서비스를 함께 쓸까요?</p>
+    <div class="info-box reveal" style="margin-bottom: 16px;">
+        <p>역할이 다릅니다. <span class="highlight">GitHub은 '코드 창고', Vercel·Netlify는 '서비스 운영 환경'</span>입니다. 코드는 GitHub에 두고, <strong>자동 배포·빠른 속도·동적 기능</strong>이 필요할 때 Vercel·Netlify로 띄웁니다.</p>
+    </div>
+
+    <div class="why-both-grid">
+        <div class="why-card gh reveal-left">
+            <h4><span class="brand-icon brand-gh"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>GitHub Pages만으로 충분한 경우</h4>
+            <ul>
+                <li>오픈소스 프로젝트의 문서나 데모를 코드와 함께 공개할 때</li>
+                <li>회사 소개·랜딩 페이지처럼 단순한 정적 사이트</li>
+                <li>블로그·문서·포트폴리오처럼 화면이 거의 바뀌지 않는 사이트</li>
+                <li>다른 서비스 가입 없이 GitHub 한 계정으로 끝내고 싶을 때</li>
+            </ul>
         </div>
-
-        <div class="why-both-grid">
-            <div class="why-card gh reveal-left">
-                <h4>저장소가 필요한 경우</h4>
-                <ul>
-                    <li>작업 파일을 안전하게 백업하고 싶을 때</li>
-                    <li>수정 전과 후의 기록을 남겨야 할 때</li>
-                    <li>동료와 같은 프로젝트를 함께 봐야 할 때</li>
-                    <li>정적 HTML 사이트를 GitHub Pages로 공개하고 싶을 때</li>
-                </ul>
-            </div>
-            <div class="why-card gh reveal-right">
-                <h4>이 페이지에서 끝내는 일</h4>
-                <ul>
-                    <li>계정 만들기</li>
-                    <li>저장소 만들기</li>
-                    <li>Codex로 파일 올리기</li>
-                    <li>GitHub Pages 주소 확인하기</li>
-                </ul>
-            </div>
+        <div class="why-card vc reveal-right">
+            <h4><span class="brand-icon brand-vc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L22 20H2L12 2z"/></svg></span><span class="brand-icon brand-nl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V4h3.2l7.6 10V4H19v16h-3.2L8.2 10v10z"/></svg></span>Vercel·Netlify가 진가를 발휘하는 경우</h4>
+            <ul>
+                <li>로그인·대시보드·DB 연동처럼 동적 기능이 있는 웹앱을 띄울 때</li>
+                <li>Next.js·React 같은 프레임워크 앱을 자동 빌드·배포할 때</li>
+                <li>브랜치별 미리보기 URL로 변경 전·후를 비교할 때</li>
+                <li>서버나 인프라를 직접 관리하지 않고 빠르게 서비스를 띄우고 싶을 때</li>
+            </ul>
         </div>
-    </section>
+    </div>
 
+    </section><!-- /sec-why -->
+
+    <!-- STEP 1: 가입하기 -->
     <div class="step-divider reveal"><h2 class="step-badge">STEP 1: GitHub 가입하기</h2></div>
     <section class="content-section" id="sec-step1">
         <div class="step-block">
-            <div class="step-goal">
-                <div class="goal-label">이 단계의 목표</div>
-                <p>GitHub 계정을 만들고 첫 번째 저장소를 생성합니다</p>
-            </div>
+        <div class="step-goal">
+            <div class="goal-label">이 단계의 목표</div>
+            <p>GitHub 계정을 만들고 첫 번째 저장소를 생성합니다</p>
+        </div>
 
-            <div class="step step-1 reveal reveal-left">
-                <div class="step-header">
-                    <div class="step-number">1</div>
-                    <h3>github.com 접속 후 Sign up</h3>
-                </div>
-                <p><a href="https://github.com" style="color: var(--codex-accent); font-weight: 600;">github.com</a>에 접속해서 <strong>Sign up</strong> 버튼을 클릭합니다. 이메일, 비밀번호, 사용자명을 입력합니다.</p>
-                <p class="step-tip">사용자명은 주소에 들어갑니다. 기억하기 쉬운 영문 이름으로 만드세요.</p>
+        <div class="step step-1 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <h3>github.com 접속 → Sign up</h3>
             </div>
+            <p><a href="https://github.com" style="color: var(--codex-accent); font-weight: 600;">github.com</a>에 접속해서 <strong>Sign up</strong> 버튼을 클릭합니다. 이메일, 비밀번호, 사용자명을 입력하면 끝입니다.</p>
+            <p class="step-tip">💡 사용자명은 나중에 URL에 포함됩니다. 기억하기 쉬운 영문으로 만드세요. (예: honggildong → hong.github.io)</p>
+        </div>
 
-            <div class="step step-2 reveal reveal-left">
-                <div class="step-header">
-                    <div class="step-number">2</div>
-                    <h3>새 저장소 만들기</h3>
-                </div>
-                <p>로그인 후 왼쪽 상단 <strong>New</strong> 버튼을 클릭합니다.</p>
-                <div class="code-block-wrap">
-                    <div class="code-block">
-                        <code><span class="comment"># 저장소 설정</span>
+        <div class="step step-2 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <h3>새 저장소 만들기</h3>
+            </div>
+            <p>로그인 후 왼쪽 상단 <strong>New</strong> 버튼을 클릭합니다.</p>
+            <div class="code-block-wrap">
+                <div class="code-block">
+                    <code><span class="comment"># 저장소 설정</span>
 Repository name: my-project    <span class="comment">← 프로젝트 이름 입력</span>
-Public / Private 선택          <span class="comment">← 공개 또는 비공개</span>
+Public / Private 선택          <span class="comment">← 공개 or 비공개</span>
 [Create repository] 클릭</code>
-                    </div>
-                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 </div>
-                <p class="code-note">Private 저장소로 만들면 본인과 초대한 사람만 볼 수 있습니다.</p>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
             </div>
+            <p class="code-note">※ Private(비공개)으로 만들면 나만 볼 수 있습니다.</p>
+        </div>
 
-            <div class="step step-3 reveal reveal-left">
-                <div class="step-header">
-                    <div class="step-number">3</div>
-                    <h3>Personal Access Token 발급 <span class="pat-warning">가장 까다로운 단계</span></h3>
+        <div class="step step-3 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <h3>API Key (Personal Access Token) 발급 <span class="pat-warning">가장 까다로운 단계</span></h3>
+            </div>
+            <p>Codex가 GitHub에 접근하려면 인증 키가 필요합니다. 화면 위치가 자주 바뀌니 천천히 따라가세요.</p>
+            <div class="pages-cards" style="margin: 16px 0;">
+                <div class="pages-card reveal-scale stagger-1">
+                    <div class="pages-card-num">1</div>
+                    <div class="pages-card-icon">👤</div>
+                    <h4>프로필 클릭</h4>
+                    <p>우측 상단 프로필 사진 → <strong>Settings</strong></p>
                 </div>
-                <p>Codex가 GitHub에 접근하려면 인증 키가 필요합니다. 화면 위치가 바뀔 수 있으니 메뉴 이름을 기준으로 찾으세요.</p>
-                <div class="pages-cards" style="margin: 16px 0;">
-                    <div class="pages-card reveal-scale stagger-1">
-                        <div class="pages-card-num">1</div>
-                        <div class="pages-card-icon">👤</div>
-                        <h4>프로필 클릭</h4>
-                        <p>우측 상단 프로필 사진 → <strong>Settings</strong></p>
-                    </div>
-                    <div class="pages-card reveal-scale stagger-2">
-                        <div class="pages-card-num">2</div>
-                        <div class="pages-card-icon">🔧</div>
-                        <h4>Developer Settings</h4>
-                        <p>왼쪽 하단 <strong>Developer settings</strong> 클릭</p>
-                    </div>
-                    <div class="pages-card reveal-scale stagger-3">
-                        <div class="pages-card-num">3</div>
-                        <div class="pages-card-icon">🔑</div>
-                        <h4>토큰 생성</h4>
-                        <p>Personal access tokens → <strong>Tokens classic</strong> → Generate new token</p>
-                    </div>
+                <div class="pages-card reveal-scale stagger-2">
+                    <div class="pages-card-num">2</div>
+                    <div class="pages-card-icon">🔧</div>
+                    <h4>Developer Settings</h4>
+                    <p>왼쪽 맨 하단 <strong>Developer settings</strong> 클릭</p>
                 </div>
-                <div class="code-block-wrap">
-                    <div class="code-block">
-                        <code><span class="comment"># 토큰 설정</span>
-Note: codex-access             <span class="comment">← 이름</span>
-Expiration: 90 days            <span class="comment">← 유효기간</span>
-Scopes: repo 체크              <span class="comment">← 저장소 접근 권한</span>
-[Generate token] 클릭 후 토큰 복사</code>
-                    </div>
-                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                <div class="pages-card reveal-scale stagger-3">
+                    <div class="pages-card-num">3</div>
+                    <div class="pages-card-icon">🔑</div>
+                    <h4>토큰 생성</h4>
+                    <p>Personal access tokens → <strong>Tokens (classic)</strong> → Generate new token</p>
                 </div>
-                <div class="note-box note-danger">
-                    <strong>보안 주의:</strong> 이 토큰은 비밀번호와 같습니다. Codex에게 전달할 때 <strong>"이 키는 절대 메모리나 파일에 저장하지 마"</strong>라고 함께 말하세요.
+            </div>
+            <div class="code-block-wrap">
+                <div class="code-block">
+                    <code><span class="comment"># 토큰 설정</span>
+Note: codex-access              <span class="comment">← 이름 (자유롭게)</span>
+Expiration: 90 days             <span class="comment">← 유효기간</span>
+Scopes: repo 체크 ✓             <span class="comment">← 저장소 접근 권한</span>
+[Generate token] 클릭 → 토큰 복사 (한 번만 표시됩니다!)</code>
                 </div>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+            </div>
+            <div class="note-box note-danger">
+                <strong>🔒 보안 주의:</strong> 이 토큰은 비밀번호와 같습니다. Codex에게 전달할 때 <strong>"이 키는 절대 메모리나 파일에 저장하지 마"</strong>라고 함께 말하세요. 세션이 끝나면 토큰을 재발급받는 것이 안전합니다.
             </div>
         </div>
+        </div>
+
     </section>
 
+    <!-- STEP 2: 올리기 -->
     <div class="step-divider reveal"><h2 class="step-badge">STEP 2: Codex로 올리기</h2></div>
     <section class="content-section" id="sec-step2">
         <div class="step-block">
-            <div class="step-goal">
-                <div class="goal-label">이 단계의 목표</div>
-                <p>Codex에서 프로젝트를 GitHub 저장소에 올립니다</p>
-            </div>
+        <div class="step-goal">
+            <div class="goal-label">이 단계의 목표</div>
+            <p>Codex에서 프로젝트를 GitHub에 올립니다</p>
+        </div>
 
-            <div class="note-box">
-                <strong>시작 전 확인:</strong> Codex에서 작업할 프로젝트 폴더가 열려 있어야 합니다. STEP 1에서 발급받은 토큰도 준비하세요.
-            </div>
+        <div class="note-box">
+            <strong>💬 시작 전 확인:</strong> Codex가 열려 있고, 작업할 프로젝트 폴더가 현재 열려 있어야 합니다. STEP 1에서 발급받은 API Key도 준비하세요.
+        </div>
 
-            <div class="step step-2 reveal reveal-left">
-                <div class="step-header">
-                    <div class="step-number">1</div>
-                    <h3>토큰 전달하기</h3>
-                </div>
-                <p>Codex에게 토큰을 전달할 때는 저장 금지 지시를 함께 줍니다.</p>
-                <div class="code-block-wrap">
-                    <div class="code-block">
-                        <code><span class="comment"># Codex에게 이렇게 말하세요</span>
+        <div class="step step-2 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <h3>API Key를 Codex에게 전달하기</h3>
+            </div>
+            <p>Codex에서 GitHub에 처음 접근할 때 API Key가 필요합니다. 이렇게 말하세요:</p>
+            <div class="code-block-wrap">
+                <div class="code-block">
+                    <code><span class="comment"># Codex에게 이렇게 말하세요</span>
 > GitHub Personal Access Token은 ghp_xxxxxxxxxxxx야
 > 이 키는 절대 메모리나 파일에 저장하지 마</code>
-                    </div>
-                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 </div>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
             </div>
-
-            <div class="step step-3 reveal reveal-left">
-                <div class="step-header">
-                    <div class="step-number">2</div>
-                    <h3>처음 올릴 때</h3>
-                </div>
-                <div class="code-block-wrap">
-                    <div class="code-block">
-                        <code><span class="comment"># Codex에게 이렇게 말하세요</span>
-> 이 프로젝트를 GitHub에 올려줘
-> GitHub 주소는 https://github.com/내아이디/my-project 야</code>
-                    </div>
-                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
-                </div>
-                <p class="code-note">Codex가 필요한 git 명령을 실행합니다. 명령어를 외울 필요는 없습니다.</p>
-            </div>
-
-            <div class="step step-1 reveal reveal-left">
-                <div class="step-header">
-                    <div class="step-number">3</div>
-                    <h3>수정한 내용을 다시 올릴 때</h3>
-                </div>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr><th>하고 싶은 것</th><th>Codex에게 이렇게 말하세요</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>변경사항 저장하기</td><td>"지금까지 바꾼 거 커밋해줘"</td></tr>
-                            <tr><td>GitHub에 올리기</td><td>"GitHub에 푸시해줘"</td></tr>
-                            <tr><td>최신 코드 받기</td><td>"GitHub에서 최신 코드 받아줘"</td></tr>
-                            <tr><td>이전 버전으로 돌리기</td><td>"마지막 커밋 전으로 되돌려줘"</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="note-box note-danger">
+                <strong>🔒 보안:</strong> API Key는 해당 세션에서만 사용하고, 코드나 파일에 절대 저장하지 마세요. 토큰이 노출되면 즉시 GitHub에서 삭제하고 재발급하세요.
             </div>
         </div>
+
+        <div class="step step-3 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <h3>처음 올릴 때</h3>
+            </div>
+            <p>이미 내 컴퓨터에 프로젝트가 있다면 Codex에게 말하세요:</p>
+            <div class="code-block-wrap">
+                <div class="code-block">
+                    <code><span class="comment"># Codex에게 이렇게 말하세요</span>
+> 이 프로젝트를 GitHub에 올려줘
+> GitHub 주소는 https://github.com/내아이디/my-project 야</code>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+            </div>
+            <p style="margin-top: 16px;">GitHub에 있는 프로젝트를 내려받고 싶다면:</p>
+            <div class="code-block-wrap">
+                <div class="code-block">
+                    <code><span class="comment"># Codex에게 이렇게 말하세요</span>
+> https://github.com/내아이디/my-project 클론해줘</code>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+            </div>
+            <p class="code-note">※ Codex가 알아서 git 명령어를 실행해줍니다. 명령어를 외울 필요 없습니다.</p>
+        </div>
+
+        <div class="step step-1 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <h3>이후에 수정했을 때</h3>
+            </div>
+            <div class="key-point" style="margin-bottom: 16px;">
+                🗣️ 한국어로 말하면 Codex가 알아서 git 명령어를 실행합니다
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>하고 싶은 것</th><th>Codex에게 이렇게 말하세요</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>변경사항 저장하기</td><td>"지금까지 바꾼 거 커밋해줘"</td></tr>
+                        <tr><td>GitHub에 올리기</td><td>"GitHub에 푸시해줘"</td></tr>
+                        <tr><td>최신 코드 받기</td><td>"GitHub에서 최신 코드 받아줘"</td></tr>
+                        <tr><td>이전 버전으로 돌리기</td><td>"마지막 커밋 전으로 되돌려줘"</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        </div>
+
     </section>
 
+    <!-- STEP 3: 공개하기 -->
     <div class="step-divider reveal"><h2 class="step-badge">STEP 3: GitHub Pages로 공개하기</h2></div>
     <section class="content-section" id="sec-step3">
         <div class="step-block">
-            <div class="step-goal">
-                <div class="goal-label">이 단계의 목표</div>
-                <p>GitHub Pages를 켜서 정적 사이트 주소를 확인합니다</p>
-            </div>
+        <div class="step-goal">
+            <div class="goal-label">이 단계의 목표</div>
+            <p>GitHub의 무료 호스팅 기능을 켜서 내 URL로 사이트가 열리는 것을 확인합니다</p>
+        </div>
 
-            <div class="step-row">
-                <p class="section-subhead">GitHub Pages 활성화 3단계</p>
-                <div class="pages-cards">
-                    <div class="pages-card reveal-scale stagger-1">
-                        <div class="pages-card-num">1</div>
-                        <div class="pages-card-icon">⚙️</div>
-                        <h4>Settings 클릭</h4>
-                        <p>저장소 상단 탭에서 <strong>Settings</strong> 선택</p>
-                    </div>
-                    <div class="pages-card reveal-scale stagger-2">
-                        <div class="pages-card-num">2</div>
-                        <div class="pages-card-icon">📄</div>
-                        <h4>Pages 메뉴</h4>
-                        <p>왼쪽 사이드바에서 <strong>Pages</strong> 클릭</p>
-                    </div>
-                    <div class="pages-card reveal-scale stagger-3">
-                        <div class="pages-card-num">3</div>
-                        <div class="pages-card-icon">🚀</div>
-                        <h4>브랜치 선택 후 Save</h4>
-                        <p><strong>main</strong> 브랜치 선택 후 Save<br><small style="color:#888;">1~2분 후 공개됩니다</small></p>
-                    </div>
-                </div>
-            </div>
+        <div class="note-box">
+            <strong>💬 어디까지 하면 되나요?</strong> 블로그·소개 페이지·포트폴리오처럼 화면이 거의 바뀌지 않는 정적 사이트라면, <strong>이 STEP 3만으로 공개가 끝납니다.</strong> 로그인·결제·데이터베이스 같은 동적 기능이 필요하거나, 푸시할 때마다 자동으로 갱신되게 하고 싶다면 <strong>STEP 4</strong>로 이어가세요.
+        </div>
 
-            <div class="step-row">
-                <div class="info-box reveal">
-                    <p>저장소에 올린 HTML/CSS/JS 파일이 바로 웹사이트로 공개됩니다. 주소 형식은 다음과 같습니다.</p>
-                    <div class="code-block-wrap" style="margin-top: 12px;">
-                        <div class="code-block">
-                            <code>https://<span style="color: #e8706a;">내아이디</span>.github.io/<span style="color: #e8706a;">프로젝트이름</span>/</code>
-                        </div>
-                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
-                    </div>
-                    <p class="example-line">예) 아이디 <code>hong</code>, 저장소 <code>my-site</code> → <strong>https://hong.github.io/my-site/</strong></p>
-                </div>
+        <div class="step-row">
+        <p class="section-subhead">GitHub Pages 활성화 3단계</p>
+        <div class="pages-cards">
+            <div class="pages-card reveal-scale stagger-1">
+                <div class="pages-card-num">1</div>
+                <div class="pages-card-icon">⚙️</div>
+                <h4>Settings 클릭</h4>
+                <p>저장소 상단 탭에서 <strong>Settings</strong> 선택</p>
+            </div>
+            <div class="pages-card reveal-scale stagger-2">
+                <div class="pages-card-num">2</div>
+                <div class="pages-card-icon">📄</div>
+                <h4>Pages 메뉴</h4>
+                <p>왼쪽 사이드바에서 <strong>Pages</strong> 클릭</p>
+            </div>
+            <div class="pages-card reveal-scale stagger-3">
+                <div class="pages-card-num">3</div>
+                <div class="pages-card-icon">🚀</div>
+                <h4>branch 선택 후 Save</h4>
+                <p><strong>main</strong> 브랜치 선택 → Save<br><small style="color:#6F665E;">1~2분 후 공개됩니다</small></p>
             </div>
         </div>
+        </div>
+
+        <div class="step-row">
+        <div class="info-box reveal">
+            <p>저장소에 올린 HTML/CSS/JS 파일이 바로 웹사이트로 공개됩니다. 내 URL은:</p>
+            <div class="code-block-wrap" style="margin-top: 12px;">
+                <div class="code-block">
+                    <code>https://<span style="color: #e8706a;">내아이디</span>.github.io/<span style="color: #e8706a;">프로젝트이름</span>/</code>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+            </div>
+            <p class="example-line">예) 아이디 <code>hong</code>, 저장소 <code>my-site</code> → <strong>https://hong.github.io/my-site/</strong></p>
+        </div>
+        </div>
+        </div>
+
     </section>
 
-    <div class="step-divider reveal"><h2 class="step-badge">STEP 4: 더 알고 싶다면</h2></div>
+    <!-- STEP 4: Vercel·Netlify로 배포하기 -->
+    <div class="step-divider reveal"><h2 class="step-badge">STEP 4: Vercel·Netlify로 배포하기</h2></div>
+    <section class="content-section" id="sec-step4">
+        <div class="step-block">
+        <div class="step-goal">
+            <div class="goal-label">이 단계의 목표</div>
+            <p>GitHub와 Vercel(또는 Netlify)을 연동해 푸시하면 자동으로 사이트가 갱신되도록 만듭니다</p>
+        </div>
+
+        <div class="note-box">
+            <strong>💬 어느 쪽을 따라 하면 되나요?</strong> 아래 1~4단계는 <strong>Vercel</strong> 기준입니다. <strong>Netlify</strong>도 흐름이 같으니 맨 아래 'Netlify도 똑같습니다' 박스만 참고하세요. 둘 중 하나만 연동해도 충분합니다.
+        </div>
+
+        <div class="step step-1 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <h3>vercel.com 접속 → GitHub로 로그인</h3>
+            </div>
+            <p><a href="https://vercel.com" style="color: var(--codex-accent); font-weight: 600;">vercel.com</a>에 접속해서 <strong>Sign Up</strong> 또는 <strong>Continue with GitHub</strong>을 클릭합니다. GitHub 계정과 자동으로 연동되므로 새로 회원가입을 하지 않아도 됩니다.</p>
+            <p class="step-tip">💡 권한 요청 화면이 뜨면 <strong>Authorize Vercel</strong>을 눌러 저장소 접근을 허용합니다. 처음에는 무료 Hobby 플랜으로 시작해도 충분합니다.</p>
+        </div>
+
+        <div class="step step-2 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <h3>새 프로젝트 만들기 (Import)</h3>
+            </div>
+            <p>대시보드 우측 상단 <strong>Add New ▾</strong> → <strong>Project</strong>를 누르고, GitHub 저장소 목록에서 STEP 1에서 만든 저장소를 찾아 <strong>Import</strong> 버튼을 클릭합니다.</p>
+            <div class="code-block-wrap">
+                <div class="code-block">
+                    <code><span class="comment"># Import 화면 설정</span>
+Project Name: my-project        <span class="comment">← 자동 입력됨</span>
+Framework Preset: Other         <span class="comment">← 정적 HTML이면 그대로</span>
+Root Directory: ./              <span class="comment">← 보통 그대로 둠</span>
+[Deploy] 클릭</code>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+            </div>
+            <p class="code-note">※ Next.js · React · Vite 같은 프레임워크는 Vercel이 자동으로 감지합니다.</p>
+        </div>
+
+        <div class="step step-3 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <h3>1~2분 대기 → 배포된 URL 확인</h3>
+            </div>
+            <p>Deploy를 누르면 1~2분 안에 빌드가 끝나고, Vercel이 자동으로 무료 도메인을 만들어줍니다. 만들어진 URL은 다음과 같은 형식입니다.</p>
+            <div class="code-block-wrap">
+                <div class="code-block">
+                    <code>https://<span style="color: #e8706a;">프로젝트이름</span>.vercel.app/</code>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+            </div>
+            <p class="example-line">예) 저장소 <code>my-site</code> → <strong>https://my-site.vercel.app/</strong></p>
+            <p class="step-tip">💡 내 도메인이 있다면 Settings → Domains에서 직접 연결할 수 있습니다.</p>
+        </div>
+
+        <div class="step step-1 reveal reveal-left">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <h3>이후엔 푸시만 하면 자동 재배포</h3>
+            </div>
+            <p>한 번 연동해두면, 다음부터는 Codex에게 푸시해달라고 말하는 것만으로 사이트가 자동으로 갱신됩니다.</p>
+            <div class="code-block-wrap">
+                <div class="code-block">
+                    <code><span class="comment"># Codex에게 이렇게 말하세요</span>
+> 변경사항 커밋하고 GitHub에 푸시해줘</code>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+            </div>
+            <p class="code-note">※ 푸시 직후 Vercel 대시보드에서 빌드 진행 상황을 실시간으로 볼 수 있습니다.</p>
+        </div>
+
+        <div class="step-row">
+        <p class="section-subhead"><span class="brand-icon brand-nl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V4h3.2l7.6 10V4H19v16h-3.2L8.2 10v10z"/></svg></span>Netlify도 똑같습니다</p>
+        <div class="info-box reveal">
+            <p>Netlify를 고른 경우에도 흐름은 위 Vercel과 거의 같습니다. 버튼·메뉴 이름만 다릅니다.</p>
+            <div class="table-wrapper" style="margin-top: 12px; box-shadow: var(--nm-inset);">
+                <table>
+                    <thead>
+                        <tr><th style="width: 14%;">단계</th><th style="width: 43%;">Vercel</th><th style="width: 43%;">Netlify</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>1. 로그인</strong></td><td>vercel.com → Continue with GitHub</td><td><a href="https://www.netlify.com" target="_blank" rel="noopener" style="color: var(--codex-accent); font-weight: 600;">netlify.com</a> → Sign up / Log in with GitHub</td></tr>
+                        <tr><td><strong>2. 불러오기</strong></td><td>Add New ▾ → Project → Import</td><td>Add new site → Import an existing project → GitHub 저장소 선택</td></tr>
+                        <tr><td><strong>3. 배포</strong></td><td>Framework·Root 확인 → Deploy</td><td>빌드 설정(정적이면 비워둠) → Deploy site</td></tr>
+                        <tr><td><strong>4. 주소</strong></td><td><code>프로젝트.vercel.app</code></td><td><code>프로젝트.netlify.app</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="step-tip">💡 Netlify도 한 번 연동하면 이후엔 GitHub에 푸시만 해도 자동으로 재배포됩니다. 내 도메인은 Site settings → Domain management에서 연결합니다.</p>
+        </div>
+        </div>
+        </div>
+
+    </section>
+
+    <!-- STEP 5: 참고 -->
+    <div class="step-divider reveal"><h2 class="step-badge">STEP 5: 더 알고 싶다면</h2></div>
     <section class="content-section" id="sec-ref">
         <div class="step-block">
-            <div class="step-row">
-                <p class="section-subhead">꼭 알아야 할 용어</p>
-                <div class="table-wrapper">
-                    <table class="vocab-table">
-                        <thead>
-                            <tr><th>용어</th><th>뜻</th><th>쉽게 말하면</th></tr>
-                        </thead>
-                        <tbody id="vocab-core">
-                            <tr><td>push</td><td>내 컴퓨터에서 GitHub으로 올리기</td><td>구글 드라이브에 업로드</td></tr>
-                            <tr><td>pull</td><td>GitHub에서 내 컴퓨터로 받기</td><td>구글 드라이브에서 다운로드</td></tr>
-                            <tr><td>clone</td><td>GitHub 저장소를 통째로 복사</td><td>공유 폴더를 내 컴퓨터에 복사</td></tr>
-                            <tr><td>commit</td><td>변경 내용을 로컬에 저장</td><td>게임 세이브 포인트</td></tr>
-                            <tr><td>branch</td><td>독립된 작업 공간</td><td>원본을 복사해 따로 작업</td></tr>
-                        </tbody>
-                        <tbody id="vocab-more" class="vocab-more">
-                            <tr><td>PR</td><td>코드 변경 검토 요청</td><td>"이거 확인해주세요" 요청서</td></tr>
-                            <tr><td>fork</td><td>남의 저장소를 내 계정으로 복사</td><td>남의 레시피를 내 노트에 복사</td></tr>
-                            <tr><td>conflict</td><td>같은 부분을 다르게 수정했을 때</td><td>두 사람이 같은 문장을 다르게 고침</td></tr>
-                            <tr><td>.gitignore</td><td>Git이 무시할 파일 목록</td><td>"이 파일들은 추적하지 마" 목록</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <button class="vocab-more-toggle" id="vocab-toggle" onclick="toggleVocab()">
-                    <span id="vocab-toggle-icon">▼</span> 심화 용어 4개 더 보기
-                </button>
-            </div>
+        <div class="step-row">
+        <p class="section-subhead">꼭 알아야 할 용어</p>
+        <div class="table-wrapper">
+            <table class="vocab-table">
+                <thead>
+                    <tr><th>용어</th><th>뜻</th><th>쉽게 말하면</th></tr>
+                </thead>
+                <tbody id="vocab-core">
+                    <tr><td>push (푸시)</td><td>내 컴퓨터 → GitHub으로 올리기</td><td>구글 드라이브에 업로드</td></tr>
+                    <tr><td>pull (풀)</td><td>GitHub → 내 컴퓨터로 받기</td><td>구글 드라이브에서 다운로드</td></tr>
+                    <tr><td>clone (클론)</td><td>GitHub 저장소를 통째로 복사</td><td>공유 폴더를 내 컴퓨터에 복사</td></tr>
+                    <tr><td>commit (커밋)</td><td>변경 내용을 로컬에 저장</td><td>게임 세이브 포인트</td></tr>
+                    <tr><td>branch (브랜치)</td><td>독립된 작업 공간</td><td>원본 복사해서 따로 작업</td></tr>
+                </tbody>
+                <tbody id="vocab-more" class="vocab-more">
+                    <tr><td>PR (풀 리퀘스트)</td><td>코드 변경을 검토 요청</td><td>"이거 확인해주세요" 요청서</td></tr>
+                    <tr><td>fork (포크)</td><td>남의 저장소를 내 계정으로 복사</td><td>남의 레시피를 내 노트에 복사</td></tr>
+                    <tr><td>conflict (충돌)</td><td>같은 부분을 다르게 수정했을 때</td><td>두 사람이 같은 문장을 다르게 고침</td></tr>
+                    <tr><td>.gitignore</td><td>Git이 무시할 파일 목록</td><td>"이 파일들은 추적하지 마" 목록</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="vocab-more-toggle" id="vocab-toggle" onclick="toggleVocab()">
+            <span id="vocab-toggle-icon">▼</span> 심화 용어 4개 더 보기
+        </button>
+        </div>
+
+        <div class="step-row">
+        <p class="section-subhead">Git 용어, 왜 이런 이름이 붙었을까요?</p>
+        <div class="table-wrapper">
+            <table class="origin-cmp">
+                <thead>
+                    <tr><th style="width: 18%; text-align: center;">용어</th><th style="text-align: center;">어원 / 유래</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Git</strong></td>
+                        <td>2005년 리누스 토르발스(Linux 창시자)가 만들었습니다. "git"은 영국 속어로 "고집불통"이라는 뜻. 그는 농담으로 "내 이름처럼 고집 센 프로그램"이라며 이름을 붙였습니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>commit</strong></td>
+                        <td>"commit to paper(기록하다)"에서 유래. 변경 내용을 영구적으로 기록한다는 의미입니다. 게임의 세이브 포인트처럼 특정 시점을 확정하는 행위입니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>push / pull</strong></td>
+                        <td>방향 비유입니다. 내 컴퓨터에서 서버로 밀어내면(push), 서버에서 내 컴퓨터로 당겨오면(pull)이라고 표현합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>branch</strong></td>
+                        <td>나무 가지(branch)에서 유래. 메인 줄기(main)에서 뻗어나온 독립 작업 공간을 나뭇가지에 비유한 것입니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>clone</strong></td>
+                        <td>생물학의 클론(유전적으로 동일한 복제체)에서 유래. 저장소를 100% 동일하게 복사한다는 뜻입니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>repository</strong></td>
+                        <td>라틴어 "repositorium(레포지토리움, 보관소·창고)"에서 유래. 코드와 히스토리를 보관하는 공간을 뜻합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>fork</strong></td>
+                        <td>갈림길(fork in the road)에서 유래. 남의 저장소를 내 계정으로 복사해 독립적인 방향으로 발전시킨다는 의미입니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="step-row">
+        <p class="section-subhead">React와 Next.js는 무엇인가요?</p>
+        <div class="table-wrapper">
+            <table class="tech-cmp">
+                <thead>
+                    <tr>
+                        <th style="width: 18%; text-align: center;">용어</th>
+                        <th style="text-align: center;">쉬운 설명</th>
+                        <th style="width: 22%; text-align: center;">대표 사용 사례</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>React<br>(리액트)</strong></td>
+                        <td>2013년 페이스북(Meta)이 공개한 자바스크립트 라이브러리입니다. 화면을 작은 부품(컴포넌트)으로 나눠 조립하는 방식입니다.<div style="margin-top: 8px; padding: 8px 12px; background: rgba(14,81,72,0.08); border-radius: 8px; font-size: 13px; color: #5C5650;">🧱 <strong>비유</strong> · 레고 블록처럼 화면 조각을 만들어 두고 조립합니다. 같은 블록을 여러 페이지에 재사용해 개발이 빨라집니다.</div></td>
+                        <td>인스타그램, 넷플릭스, 에어비앤비, 페이스북</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Next.js<br>(넥스트JS)</strong></td>
+                        <td>2016년 Vercel이 공개한 React 기반 프레임워크입니다. React에 서버 처리·자동 라우팅·이미지 최적화·SEO 같은 기능을 더했습니다.<div style="margin-top: 8px; padding: 8px 12px; background: rgba(14,81,72,0.08); border-radius: 8px; font-size: 13px; color: #5C5650;">📦 <strong>비유</strong> · React가 '레고 블록'이라면, Next.js는 '조립 매뉴얼과 부속이 한 박스에 담긴 풀세트'입니다.</div></td>
+                        <td>틱톡, 노션, 트위치, 훌루</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
         </div>
     </section>
 
+    <!-- 섹션 6: 워크트리 (참고 자료) -->
     <section class="content-section" id="sec-worktree">
         <div class="step-block">
+
             <div class="step-row">
                 <p class="section-subhead">워크트리(worktree) · 한 저장소를 여러 폴더에서 동시에 다루기</p>
-                <p style="font-size: 15px;">한 프로젝트에서 진행 중인 일을 멈추지 않고 다른 버전을 확인해야 할 때가 있습니다. 워크트리는 같은 프로젝트의 사본을 여러 폴더로 펼쳐 두는 기능입니다.</p>
+                <p style="font-size: 15px;">워크트리는 같은 프로젝트를 여러 폴더에 동시에 펼쳐 두는 기능입니다. 한 폴더에서 신규 기능을 개발하면서 옆 폴더에서는 긴급 수정을 진행할 수 있어, 작업 흐름이 끊기지 않습니다.</p>
             </div>
+
+            <div class="step-row">
+                <p class="section-subhead">언제 쓰면 좋을까요?</p>
+                <div class="note-box" style="font-size: 14px;">
+                    <strong>💡 자주 쓰이는 상황</strong>
+                    <ul style="margin: 8px 0 0 20px; padding: 0;">
+                        <li>개발 도중 긴급 수정 요청이 왔을 때, 작업을 멈추지 않고 옆 폴더에서 바로 처리</li>
+                        <li>동료 코드를 검토할 때, 내 폴더는 그대로 둔 채 별도 폴더에서 확인</li>
+                        <li>Codex에게 작업을 맡길 때, 내 폴더와 분리해 충돌 예방</li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="step-row">
                 <p class="section-subhead">핵심 명령어 3가지</p>
                 <div class="code-block-wrap">
                     <div class="code-block">
-                        <code><span class="comment"># 새 워크트리 만들기</span>
+                        <code><span class="comment"># 새 워크트리 만들기 (fix-login 브랜치를 ../my-project-fix 폴더로 펼침)</span>
 git worktree add ../my-project-fix fix-login
 
-<span class="comment"># 목록 보기</span>
+<span class="comment"># 현재 만들어진 워크트리 목록 보기</span>
 git worktree list
 
-<span class="comment"># 정리하기</span>
+<span class="comment"># 다 쓴 워크트리 정리하기</span>
 git worktree remove ../my-project-fix</code>
                     </div>
                     <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 </div>
+                <p class="code-note">※ <strong>add</strong> 뒤에는 새로 만들 폴더 경로와 그 폴더에서 사용할 브랜치 이름을 차례대로 적습니다.</p>
             </div>
+
+            <div class="step-row">
+                <div class="note-box note-danger" style="font-size: 14px;">
+                    <strong>⚠️ 주의</strong> · 같은 작업 버전(브랜치)을 두 폴더에서 동시에 열 수는 없습니다. 한 작업 버전은 한 폴더에서만 열 수 있다고 기억하시면 됩니다. 서로 다른 작업 버전은 얼마든지 동시에 펼쳐 둘 수 있습니다.
+                </div>
+            </div>
+
         </div>
     </section>
 
+    <!-- CTA -->
     <div class="cta-section reveal-scale">
-        <h3>이제 프로젝트를 저장소에 올려볼 차례입니다</h3>
-        <p>계정 생성, 저장소 생성, Codex 업로드, Pages 공개까지 이 페이지 안에서 마무리합니다.</p>
+        <h3>이제 내 프로젝트로 직접 띄워볼 차례입니다</h3>
+        <p>STEP 1~4를 그대로 따라하면 명령어 없이 GitHub 업로드부터 Vercel·Netlify 배포까지 한번에 끝납니다.<br>실전 과제에서 한 번 더 연습하거나, 다음 단계인 자동화 규칙 만들기로 이어가 보세요.</p>
         <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
             <a class="cta-btn secondary" style="min-width:200px; max-width:260px; flex:1; justify-content:center;" href="codex-tasks.html">← 실전 과제로 돌아가기</a>
             <a class="cta-btn primary" style="min-width:200px; max-width:260px; flex:1;" href="agents-md-templates.html">다음: 자동화 규칙 만들기 →</a>
         </div>
-        <p style="margin-top: 18px; font-size: 12px; color: rgba(255,255,255,0.55);">바로 시작하기 ·
-            <a href="https://github.com" target="_blank" rel="noopener" style="color: var(--codex-accent); text-decoration: none; font-weight: 700;">GitHub</a>
+        <p style="margin-top: 18px; font-size: 12px; color: rgba(255,255,255,0.55);">또는 바로 시작하기 ·
+            <a href="https://github.com" target="_blank" rel="noopener" style="color: var(--codex-accent); text-decoration: none; font-weight: 700;">GitHub</a> ·
+            <a href="https://vercel.com" target="_blank" rel="noopener" style="color: var(--codex-accent); text-decoration: none; font-weight: 700;">Vercel</a> ·
+            <a href="https://www.netlify.com" target="_blank" rel="noopener" style="color: var(--codex-accent); text-decoration: none; font-weight: 700;">Netlify</a>
         </p>
     </div>
-
-
-
-
 
 </main>
 
@@ -1531,6 +1900,7 @@ git worktree remove ../my-project-fix</code>
         document.getElementById('sec-step1'),
         document.getElementById('sec-step2'),
         document.getElementById('sec-step3'),
+        document.getElementById('sec-step4'),
         document.getElementById('sec-ref')
     ];
     const navLinks = document.querySelectorAll('.sub-menu a[data-sec]');
@@ -2190,6 +2560,100 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 .reading-group {
     border: 1px solid #C6BEAC !important;
     box-shadow: 0 4px 18px rgba(14,81,72,0.05) !important;
+}
+</style>
+<style id="gold-uiux-polish">
+/* ══════════════════════════════════════════════════════════════
+   GOLD · UI/UX 폴리시 패스 (petrol editorial)
+   1) 컬러 띠지(초록·파랑 밴드) 제거 → 중립 헤어라인
+   2) 절제된 hover 마이크로 인터랙션 + 포커스 링 + reduced-motion
+   ══════════════════════════════════════════════════════════════ */
+:root { --gold-ease: cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* ── 1. 컬러 띠지 제거 ── */
+.why-card { border-top: 1px solid var(--rule2, #C6BEAC) !important; }
+.why-card.gh, .why-card.vc { border-top-color: var(--rule2, #C6BEAC) !important; }
+.step.step-1, .step.step-2, .step.step-3 { border-left-color: transparent !important; }
+.step.step-1 .step-number, .step.step-3 .step-number {
+    background: var(--pine, #0E5148) !important;
+    box-shadow: 0 1px 2px rgba(14,81,72,0.18) !important;
+}
+
+/* ── 2. 카드 hover: 리프트 + 페트롤 그림자 + 하단 액센트 성장 ── */
+.why-card, .pages-card, .compare-item, .concept-card {
+    position: relative;
+    transition: transform 0.32s var(--gold-ease), box-shadow 0.32s var(--gold-ease);
+}
+.why-card::after, .pages-card::after {
+    content: '';
+    position: absolute; left: 18px; right: 18px; bottom: 0; height: 2px;
+    background: var(--pine, #0E5148); border-radius: 2px;
+    transform: scaleX(0); transform-origin: center;
+    transition: transform 0.34s var(--gold-ease);
+    pointer-events: none;
+}
+.why-card:hover, .pages-card:hover, .compare-item:hover, .concept-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(14,81,72,0.14), 0 2px 6px rgba(14,81,72,0.08);
+}
+.why-card:hover::after, .pages-card:hover::after { transform: scaleX(1); }
+.pages-card .pages-card-icon { transition: transform 0.34s var(--gold-ease); }
+.pages-card:hover .pages-card-icon { transform: translateY(-3px) scale(1.06); }
+
+/* ── 브랜드 아이콘 hover: 스케일 + 미세 회전 ── */
+.hook-brand-icon, .brand-icon { transition: transform 0.3s var(--gold-ease); }
+.hook-brand-icon:hover, .brand-icon:hover { transform: scale(1.12) rotate(-4deg); }
+
+/* ── 시그니처: 배포 훅 배너 hover 시 화살표가 흐름을 타고 이동 ── */
+.hook-banner { transition: box-shadow 0.32s var(--gold-ease) !important; }
+.hook-banner:hover { box-shadow: 0 18px 44px rgba(14,81,72,0.12) !important; }
+.hook-url-arrow { transition: transform 0.4s var(--gold-ease); }
+.hook-banner:hover .hook-url-arrow { animation: gold-flow 1.1s var(--gold-ease) infinite; }
+@keyframes gold-flow {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(5px); }
+}
+
+/* ── 표: 행 hover 페트롤 워시 + th-go 버튼 ── */
+tbody tr { transition: background 0.2s var(--gold-ease); }
+tbody tr:hover { background: rgba(14,81,72,0.055) !important; }
+.brand-cmp .th-go { transition: background 0.22s var(--gold-ease), color 0.22s var(--gold-ease), transform 0.22s var(--gold-ease); }
+.brand-cmp .th-go:hover { transform: translateY(-1px); }
+
+/* ── 코드 복사 버튼 · CTA 버튼 ── */
+.copy-btn { transition: background 0.2s var(--gold-ease), color 0.2s var(--gold-ease), transform 0.2s var(--gold-ease); }
+.copy-btn:hover { transform: translateY(-1px); }
+.cta-btn { transition: transform 0.25s var(--gold-ease), box-shadow 0.25s var(--gold-ease), background 0.2s var(--gold-ease); }
+.cta-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.24); }
+.cta-btn.secondary:hover { transform: translateY(-2px); }
+
+/* ── 본문 인라인 링크: 페트롤 언더라인 슬라이드 ── */
+.info-box a, .step p a, td a:not(.th-go) {
+    background-image: linear-gradient(var(--pine, #0E5148), var(--pine, #0E5148));
+    background-size: 0% 1.5px; background-position: 0 100%; background-repeat: no-repeat;
+    transition: background-size 0.3s var(--gold-ease); text-decoration: none;
+}
+.info-box a:hover, .step p a:hover, td a:not(.th-go):hover { background-size: 100% 1.5px; }
+
+/* ── 서브메뉴 번호 hover 스케일 ── */
+.sub-menu a .sm-num { transition: transform 0.2s var(--gold-ease); }
+.sub-menu a:hover .sm-num { transform: scale(1.1); }
+
+/* ── 접근성: 키보드 포커스 링 ── */
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--pine, #0E5148); outline-offset: 3px; border-radius: 6px;
+}
+
+/* ── reduced-motion 존중 ── */
+@media (prefers-reduced-motion: reduce) {
+    .why-card, .pages-card, .compare-item, .concept-card, .hook-brand-icon, .brand-icon,
+    .hook-url-arrow, .cta-btn, .pages-card-icon, .sub-menu a .sm-num, .copy-btn, tbody tr {
+        transition: none !important;
+    }
+    .hook-banner:hover .hook-url-arrow { animation: none !important; }
+    .why-card::after, .pages-card::after { display: none !important; }
+    .why-card:hover, .pages-card:hover, .compare-item:hover, .concept-card:hover,
+    .cta-btn:hover, .hook-brand-icon:hover, .brand-icon:hover, .pages-card:hover .pages-card-icon { transform: none !important; }
 }
 </style>
 </body>

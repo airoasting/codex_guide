@@ -161,3 +161,83 @@ header::before, .hero::after { background: none !important; }
 /* 라벤더 카드 테두리·그림자 잔재 */
 .nm-card, .summary-card, .insight-card, .card, .tip-box, .inset-box { border-color: var(--rule2) !important; }
 .skill-preview { border-color: var(--rule2) !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   AI-FLUENCY 통일 · 상단 영역(헤더·스텝내비·서브메뉴) 기하/타이포
+   ai-fluency.html의 인라인 리스킨(#ai-fluency-reskin)에서 상단 chrome의
+   모양·위치·폰트 크기를 추출해 전 페이지에 동일 적용한다.
+   파일 최하단에 두어 위쪽 header{border-radius:0} 등을 카스케이드로 덮는다.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 헤더: 하단 좌우 32px 라운드 + 통일 여백 ── */
+header {
+    border-radius: 0 0 32px 32px !important;
+    clip-path: none !important;
+    overflow: hidden !important;
+    padding: 36px 40px 40px !important;
+    min-height: 0 !important;
+}
+.hero-inner { max-width: 760px !important; }
+header h1 {
+    font-size: 52px !important;
+    font-weight: 800 !important;
+    letter-spacing: -1.8px !important;
+    line-height: 1.08 !important;
+    margin-bottom: 12px !important;
+}
+header p, header .hero-sub { font-size: 16px !important; }
+.back-link { font-size: 13px !important; letter-spacing: .02em !important; }
+
+/* ── 스텝 내비: 37px 노드 + 0.9 스케일 (전 페이지 동일 크기/모양) ── */
+.step-nav {
+    transform: scale(0.9) !important;
+    transform-origin: top center !important;
+    margin-bottom: 12px !important;
+}
+.step-node {
+    width: 37px !important; height: 37px !important;
+    font-size: 13px !important; font-weight: 500 !important;
+}
+.step-node.sn-diag, .step-node.sn-final { font-size: 12px !important; }
+.step-line { min-width: 13px !important; max-width: 34px !important; }
+
+/* ── 스티키 서브메뉴: 하단 좌우 32px 라운드 + 글자 크기 통일 ── */
+.sub-menu { border-radius: 0 0 32px 32px !important; }
+nav.sub-menu a .sm-num {
+    width: 28px !important; height: 28px !important; min-width: 28px !important;
+    font-size: 13px !important; font-weight: 500 !important;
+}
+nav.sub-menu a .sm-title { font-size: 13px !important; }
+nav.sub-menu a .sm-sub { font-size: 11px !important; }
+
+/* ── 섹션 제목/부제 크기 통일 (좌측 액센트 바 제거, 플러시 정렬) ── */
+.section-hd h2 {
+    font-size: 24px !important; font-weight: 800 !important;
+    letter-spacing: -.7px !important; line-height: 1.25 !important;
+    padding-left: 0 !important; border-left: none !important;
+}
+.section-sub { font-size: 14.5px !important; padding-left: 0 !important; }
+
+/* ── 데스크톱: 헤더 라운드 코너 뒤를 서브메뉴 배경으로 채움 ── */
+@media (min-width: 769px) {
+    header { position: relative !important; z-index: 101 !important; }
+    nav.sub-menu { margin-top: 0 !important; overflow: visible !important; }
+    nav.sub-menu::before {
+        content: '' !important; position: absolute !important;
+        left: 0 !important; right: 0 !important; bottom: 100% !important;
+        height: 40px !important; background: inherit !important;
+        z-index: -1 !important; pointer-events: none !important;
+    }
+}
+
+/* ── 모바일(≤768px): 헤더 여백·스텝내비·타이포 통일 ── */
+@media (max-width: 768px) {
+    header { padding: 60px 20px 28px !important; }
+    header h1 { font-size: 30px !important; letter-spacing: -.8px !important; }
+    header p, header .hero-sub, .hero-sub { font-size: 14px !important; }
+    .step-nav { transform: none !important; max-width: 100% !important; gap: 0 !important; margin: 0 0 12px !important; }
+    .step-node { width: 32px !important; height: 32px !important; font-size: 11px !important; }
+    .step-node.sn-diag, .step-node.sn-final { font-size: 9.5px !important; }
+    .step-line { min-width: 4px !important; max-width: 16px !important; }
+    .section-hd h2 { font-size: 20px !important; }
+}

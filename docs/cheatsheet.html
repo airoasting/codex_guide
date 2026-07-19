@@ -1903,9 +1903,18 @@ header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
         <a class="back-link" href="index.html">← 목록으로</a>
         <h1>Codex 명령어 모음</h1>
         <p class="hero-sub">자주 쓰는 명령어와 옵션을 한 장에 모았습니다</p>
-        <div class="header-pages">
-            <a href="checklist.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>20단계 따라하기</a>
-            <a href="cheatsheet.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>명령어 모음</a>
+        <div class="mode-tabs">
+            <span class="mode-tab" id="tab-nocode" onclick="switchMode('nocode')">노코드</span>
+            <span class="mode-tab active" id="tab-cli" onclick="switchMode('cli')">CLI</span>
+        </div>
+        <div class="header-pages" id="pages-nocode" style="display:none;">
+            <a href="codex-101.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span> Codex 앱 시작하기</a>
+            <a href="codex-tasks.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span> 실전 과제 8가지</a>
+            <a href="github-guide.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span> GitHub·Vercel·Netlify</a>
+        </div>
+        <div class="header-pages" id="pages-cli">
+            <a href="checklist.html" class="header-page-link"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m8.3 12.3 2.6 2.6 4.6-5.6"/></svg></span> 20단계 따라하기</a>
+            <a href="cheatsheet.html" class="header-page-link active"><span class="hpl-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6.5" width="18" height="11" rx="2"/><path d="M6.5 10.2h.01M10 10.2h.01M13.5 10.2h.01M17 10.2h.01M6.5 13.7h11"/></svg></span> 명령어 모음</a>
         </div>
     </div>
 </header>
@@ -1914,33 +1923,48 @@ header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
 <nav class="sub-menu" id="subMenu">
     <a href="#sec-1" class="active" data-secs="sec-1">
         <span class="sm-num">1</span>
-        <span class="sm-title">기본 명령</span>
-        <span class="sm-sub">설치 · 인증 · 실행</span>
+        <span class="sm-title">설치 · 인증</span>
+        <span class="sm-sub">설치 · 로그인</span>
     </a>
     <a href="#sec-2" data-secs="sec-2">
         <span class="sm-num">2</span>
-        <span class="sm-title">작업 제어</span>
-        <span class="sm-sub">승인 모드 · 모델</span>
+        <span class="sm-title">실행</span>
+        <span class="sm-sub">대화 · exec · 재개</span>
     </a>
     <a href="#sec-3" data-secs="sec-3">
         <span class="sm-num">3</span>
-        <span class="sm-title">설정</span>
-        <span class="sm-sub">환경 변수 · AGENTS.md</span>
+        <span class="sm-title">승인 · 샌드박스</span>
+        <span class="sm-sub">-a · -s</span>
     </a>
     <a href="#sec-4" data-secs="sec-4">
         <span class="sm-num">4</span>
-        <span class="sm-title">자주 쓰는 팁</span>
-        <span class="sm-sub">실전 패턴</span>
+        <span class="sm-title">모델 · 옵션</span>
+        <span class="sm-sub">-m · -c · -i</span>
+    </a>
+    <a href="#sec-5" data-secs="sec-5">
+        <span class="sm-num">5</span>
+        <span class="sm-title">슬래시 명령</span>
+        <span class="sm-sub">대화 중 /명령</span>
+    </a>
+    <a href="#sec-6" data-secs="sec-6">
+        <span class="sm-num">6</span>
+        <span class="sm-title">서브커맨드</span>
+        <span class="sm-sub">mcp · apply · review</span>
+    </a>
+    <a href="#sec-7" data-secs="sec-7">
+        <span class="sm-num">7</span>
+        <span class="sm-title">설정</span>
+        <span class="sm-sub">config.toml · AGENTS.md</span>
     </a>
 </nav>
 
 <main class="container">
-    <!-- ─── SEC 1: 기본 명령 ─── -->
+    <!-- ─── SEC 1: 설치 · 인증 ─── -->
     <div class="content-section" id="sec-1">
         <div class="section-hd">
             <div>
-                <h2>기본 명령</h2>
-                <div class="section-desc">설치, 인증, 실행에 쓰는 필수 명령어입니다.</div>
+                <h2>설치 · 인증</h2>
+                <div class="section-desc">Codex CLI를 설치하고 계정을 연결하는 명령어입니다.</div>
             </div>
         </div>
 
@@ -1951,14 +1975,39 @@ header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
                 </thead>
                 <tbody>
                     <tr>
-                        <td><code>codex "prompt"</code></td>
-                        <td><code>codex "버그를 수정해줘"</code></td>
-                        <td>지시를 주고 코드 수정을 요청합니다. 기본 진입점입니다.</td>
+                        <td><code>npm install -g @openai/codex</code></td>
+                        <td>(설치 시 1회)</td>
+                        <td>Codex CLI를 전역으로 설치합니다. Node.js 22 이상이 필요합니다.</td>
                     </tr>
                     <tr>
-                        <td><code>codex</code></td>
-                        <td>(인수 없이 실행)</td>
-                        <td>대화형 모드로 진입합니다. 여러 차례 주고받으며 작업할 때 사용합니다.</td>
+                        <td><code>brew install --cask codex</code></td>
+                        <td>macOS</td>
+                        <td>Homebrew로 설치하는 방법입니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex update</code></td>
+                        <td><code>codex update</code></td>
+                        <td>설치된 CLI를 최신 버전으로 업데이트합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex login</code></td>
+                        <td>(브라우저 인증)</td>
+                        <td>ChatGPT 계정으로 로그인합니다. 현재 기본 인증 방식입니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex login --with-api-key</code></td>
+                        <td><code>printenv OPENAI_API_KEY | codex login --with-api-key</code></td>
+                        <td>API 키를 표준입력으로 전달해 로그인합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex login status</code></td>
+                        <td><code>codex login status</code></td>
+                        <td>현재 로그인 상태를 확인합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex logout</code></td>
+                        <td><code>codex logout</code></td>
+                        <td>저장된 자격증명을 삭제합니다.</td>
                     </tr>
                     <tr>
                         <td><code>codex --version</code></td>
@@ -1971,54 +2020,165 @@ header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
                         <td>사용 가능한 명령어와 옵션 목록을 출력합니다.</td>
                     </tr>
                     <tr>
-                        <td><code>npm install -g @openai/codex</code></td>
-                        <td>(설치 시 1회)</td>
-                        <td>Codex CLI를 전역으로 설치합니다. Node.js 20 이상 필요합니다.</td>
+                        <td><code>codex doctor</code></td>
+                        <td><code>codex doctor</code></td>
+                        <td>설치와 설정을 점검하는 진단 리포트를 만듭니다.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        <div class="tip-box" style="margin-top:16px;">
+            <div class="tip-icon-wrap">&#128273;</div>
+            <div>
+                <div class="tip-label">인증 방식 변경점</div>
+                <p>예전에는 <code>OPENAI_API_KEY</code> 환경 변수만으로 인증했지만, 현재 기본은 <code>codex login</code>(ChatGPT 계정 로그인)입니다. API 키를 쓰려면 <code>codex login --with-api-key</code>로 값을 전달합니다.</p>
+            </div>
+        </div>
     </div>
 
-    <!-- ─── SEC 2: 작업 제어 ─── -->
+    <!-- ─── SEC 2: 실행 ─── -->
     <div class="content-section" id="sec-2">
         <div class="section-hd">
             <div>
-                <h2>작업 제어</h2>
-                <div class="section-desc">승인 방식과 모델 선택 등 작업 흐름을 조정하는 옵션입니다.</div>
+                <h2>실행</h2>
+                <div class="section-desc">대화형, 비대화형(exec), 세션 재개 방식입니다.</div>
             </div>
         </div>
 
         <div class="feature-table-wrap">
             <table class="feature-table">
                 <thead>
-                    <tr><th>옵션</th><th>값</th><th>설명</th></tr>
+                    <tr><th>명령어</th><th>형식/예시</th><th>설명</th></tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><code>--approval-mode</code></td>
-                        <td><code>suggest</code></td>
-                        <td>변경 전 항상 확인을 요청합니다. 기본값. 처음 사용할 때 권장합니다.</td>
+                        <td><code>codex</code></td>
+                        <td>(인수 없이 실행)</td>
+                        <td>대화형 모드로 진입합니다. 여러 차례 주고받으며 작업할 때 사용합니다.</td>
                     </tr>
                     <tr>
-                        <td><code>--approval-mode</code></td>
-                        <td><code>auto-edit</code></td>
-                        <td>파일 수정은 자동 적용, 셸 명령은 확인합니다. 신뢰된 작업에 적합합니다.</td>
+                        <td><code>codex "프롬프트"</code></td>
+                        <td><code>codex "버그를 수정해줘"</code></td>
+                        <td>지시를 준 채로 바로 시작합니다. 기본 진입점입니다.</td>
                     </tr>
                     <tr>
-                        <td><code>--approval-mode</code></td>
-                        <td><code>full-auto</code></td>
-                        <td>모든 작업을 자동 실행합니다. 격리된 환경에서만 사용하세요.</td>
+                        <td><code>codex exec "프롬프트"</code></td>
+                        <td><code>codex exec "테스트를 실행하고 실패를 고쳐줘"</code></td>
+                        <td>비대화형(자동)으로 실행합니다. 스크립트나 CI에 적합합니다. 별칭은 <code>codex e</code>.</td>
                     </tr>
                     <tr>
-                        <td><code>--model</code></td>
-                        <td><code>o4-mini</code>, <code>gpt-4o</code> 등</td>
-                        <td>사용할 OpenAI 모델을 지정합니다. 기본값은 최신 모델입니다.</td>
+                        <td><code>codex exec --json</code></td>
+                        <td><code>codex exec --json "..."</code></td>
+                        <td>결과를 줄 단위 JSON 이벤트로 출력합니다. 후처리에 유용합니다.</td>
                     </tr>
                     <tr>
-                        <td><code>q</code> 또는 <code>Ctrl+C</code></td>
-                        <td>(대화 중)</td>
-                        <td>현재 세션을 종료합니다.</td>
+                        <td><code>codex resume</code></td>
+                        <td><code>codex resume</code></td>
+                        <td>이전 세션을 골라 이어서 진행합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex resume --last</code></td>
+                        <td><code>codex resume --last</code></td>
+                        <td>가장 최근 세션을 바로 재개합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex exec resume --last</code></td>
+                        <td><code>codex exec resume --last</code></td>
+                        <td>비대화형으로 최근 세션을 재개합니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tip-box" style="margin-top:16px;">
+            <div class="tip-icon-wrap">&#9889;</div>
+            <div>
+                <div class="tip-label">비대화형 실행 변경점</div>
+                <p>예전의 <code>--quiet</code> 방식 대신 지금은 <code>codex exec</code>가 표준 비대화형 실행 방식입니다. 사람이 지켜보지 않아도 한 번에 작업을 끝냅니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SEC 3: 승인 · 샌드박스 ─── -->
+    <div class="content-section" id="sec-3">
+        <div class="section-hd">
+            <div>
+                <h2>승인 · 샌드박스</h2>
+                <div class="section-desc">승인 빈도(-a)와 쓰기 범위(-s)를 분리해 지정합니다.</div>
+            </div>
+        </div>
+
+        <div class="feature-table-wrap">
+            <table class="feature-table">
+                <thead>
+                    <tr><th>승인 <code>-a, --ask-for-approval</code></th><th>값</th><th>설명</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>신뢰되지 않은 명령마다 확인</td>
+                        <td><code>untrusted</code></td>
+                        <td>위험할 수 있는 명령마다 확인을 요청합니다. 마찰이 가장 큽니다.</td>
+                    </tr>
+                    <tr>
+                        <td>필요할 때만 요청</td>
+                        <td><code>on-request</code></td>
+                        <td>모델이 필요하다고 판단할 때만 승인을 요청합니다. 기본값입니다.</td>
+                    </tr>
+                    <tr>
+                        <td>요청 안 함</td>
+                        <td><code>never</code></td>
+                        <td>승인을 요청하지 않고 진행합니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="feature-table-wrap" style="margin-top:14px;">
+            <table class="feature-table">
+                <thead>
+                    <tr><th>샌드박스 <code>-s, --sandbox</code></th><th>값</th><th>설명</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>읽기 전용</td>
+                        <td><code>read-only</code></td>
+                        <td>파일을 읽기만 합니다. 수정은 불가합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>작업 폴더 쓰기</td>
+                        <td><code>workspace-write</code></td>
+                        <td>작업 폴더 안에서만 파일 쓰기를 허용합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>제한 없음</td>
+                        <td><code>danger-full-access</code></td>
+                        <td>샌드박스를 해제해 모든 접근을 허용합니다. 주의가 필요합니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="feature-table-wrap" style="margin-top:14px;">
+            <table class="feature-table">
+                <thead>
+                    <tr><th>조합 · 예시</th><th>형식</th><th>설명</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>승인 + 쓰기 조합</td>
+                        <td><code>codex -s workspace-write -a on-request "..."</code></td>
+                        <td>쓰기 권한을 열고 필요할 때만 확인하는 실전 조합입니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>--full-auto</code></td>
+                        <td>(폐기됨)</td>
+                        <td>구 옵션입니다. 대신 <code>-s workspace-write</code>를 사용합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>--dangerously-bypass-approvals-and-sandbox</code></td>
+                        <td>별칭 <code>--yolo</code></td>
+                        <td>승인과 샌드박스를 완전히 우회합니다. 격리된 환경에서만 씁니다.</td>
                     </tr>
                 </tbody>
             </table>
@@ -2027,46 +2187,257 @@ header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
         <div class="tip-box" style="margin-top:16px;">
             <div class="tip-icon-wrap">&#9888;&#65039;</div>
             <div>
-                <div class="tip-label">full-auto 주의사항</div>
-                <p><code>full-auto</code> 모드에서는 Codex가 파일 수정과 셸 명령을 모두 승인 없이 실행합니다. 반드시 Git으로 버전 관리된 폴더에서만 사용하세요.</p>
+                <div class="tip-label">승인 옵션 변경점</div>
+                <p>구 <code>--approval-mode suggest/auto-edit/full-auto</code>는 폐기되었습니다. 이제 승인(<code>-a</code>)과 쓰기 범위(<code>-s</code>)를 나눠서 지정합니다. <code>--yolo</code>는 반드시 Git으로 관리되는 격리 폴더에서만 사용하세요.</p>
             </div>
         </div>
     </div>
 
-    <!-- ─── SEC 3: 설정 ─── -->
-    <div class="content-section" id="sec-3">
+    <!-- ─── SEC 4: 모델 · 옵션 ─── -->
+    <div class="content-section" id="sec-4">
         <div class="section-hd">
             <div>
-                <h2>설정</h2>
-                <div class="section-desc">환경 변수와 AGENTS.md로 Codex의 기본 동작을 조정합니다.</div>
+                <h2>모델 · 옵션</h2>
+                <div class="section-desc">모델 선택과 실행 옵션을 조정하는 플래그입니다.</div>
             </div>
         </div>
 
         <div class="feature-table-wrap">
             <table class="feature-table">
                 <thead>
-                    <tr><th>설정</th><th>값/위치</th><th>설명</th></tr>
+                    <tr><th>옵션</th><th>형식/예시</th><th>설명</th></tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><code>OPENAI_API_KEY</code></td>
-                        <td>~/.zshrc 또는 ~/.bashrc</td>
-                        <td>OpenAI API 키를 환경 변수로 지정합니다. Codex CLI 실행에 필수입니다.</td>
+                        <td><code>-m, --model</code></td>
+                        <td><code>codex -m gpt-5.6 "..."</code></td>
+                        <td>사용할 모델을 지정합니다. 구 <code>o4-mini</code>, <code>gpt-4o</code>는 더 이상 쓰지 않습니다.</td>
                     </tr>
                     <tr>
-                        <td><code>CODEX_MODEL</code></td>
-                        <td>모델 이름 문자열</td>
-                        <td>기본 모델을 환경 변수로 고정합니다. <code>--model</code> 옵션보다 낮은 우선순위입니다.</td>
+                        <td><code>-c, --config</code></td>
+                        <td><code>-c model_reasoning_effort="high"</code></td>
+                        <td>설정 값을 즉석에서 덮어씁니다. 여러 번 반복해 쓸 수 있습니다.</td>
                     </tr>
                     <tr>
-                        <td><code>AGENTS.md</code></td>
-                        <td>프로젝트 루트</td>
-                        <td>Codex가 작업 전 자동으로 읽는 지침 파일입니다. 역할, 규칙, 금지사항 등을 적어둡니다.</td>
+                        <td><code>-i, --image</code></td>
+                        <td><code>codex -i shot.png "이 화면의 버그를 고쳐줘"</code></td>
+                        <td>이미지 파일을 첨부합니다. 쉼표로 여러 개를 넘길 수 있습니다.</td>
                     </tr>
                     <tr>
-                        <td><code>AGENTS.md</code></td>
-                        <td>하위 폴더</td>
-                        <td>하위 폴더에 두면 해당 폴더 범위에만 적용됩니다. 폴더별 규칙 분리에 유용합니다.</td>
+                        <td><code>-C, --cd</code></td>
+                        <td><code>codex -C ~/proj "..."</code></td>
+                        <td>실행 전에 작업 디렉터리를 바꿉니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>-p, --profile</code></td>
+                        <td><code>codex -p work</code></td>
+                        <td>config.toml에 정의한 설정 묶음(프로필)을 불러옵니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>--search</code></td>
+                        <td><code>codex --search "..."</code></td>
+                        <td>웹 검색을 켜고 실행합니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tip-box" style="margin-top:16px;">
+            <div class="tip-icon-wrap">&#129302;</div>
+            <div>
+                <div class="tip-label">모델 목록 확인</div>
+                <p>쓸 수 있는 모델 목록은 대화 모드에서 <code>/model</code>로 확인합니다. 모델을 지정하지 않으면 권장 기본 모델이 자동으로 적용됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SEC 5: 슬래시 명령 ─── -->
+    <div class="content-section" id="sec-5">
+        <div class="section-hd">
+            <div>
+                <h2>슬래시 명령</h2>
+                <div class="section-desc">대화형 세션 안에서 <code>/</code>로 시작해 쓰는 명령입니다.</div>
+            </div>
+        </div>
+
+        <div class="feature-table-wrap">
+            <table class="feature-table">
+                <thead>
+                    <tr><th>명령</th><th>설명</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/model</code></td>
+                        <td>모델과 reasoning 강도를 변경합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>/permissions</code></td>
+                        <td>세션 중에 승인·샌드박스 수준을 변경합니다. (구 <code>/approvals</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>/init</code></td>
+                        <td>AGENTS.md 초안을 생성합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>/new</code></td>
+                        <td>같은 세션에서 새 대화를 시작합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>/compact</code></td>
+                        <td>대화를 요약해 토큰을 확보합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>/diff</code></td>
+                        <td>추적되지 않은 파일까지 포함한 Git diff를 표시합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>/review</code></td>
+                        <td>현재 워킹 트리에 대한 코드 리뷰를 요청합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>/mention</code></td>
+                        <td>파일을 대화에 첨부합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>/mcp</code></td>
+                        <td>설정된 MCP 툴 목록을 표시합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>/status</code></td>
+                        <td>세션 설정과 토큰 사용량을 표시합니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tip-box" style="margin-top:16px;">
+            <div class="tip-icon-wrap">&#9000;&#65039;</div>
+            <div>
+                <div class="tip-label">대화 중 단축키</div>
+                <p><code>@</code> 파일 첨부, <code>!</code> 로컬 셸 실행, <code>Ctrl+R</code> 히스토리 검색, <code>Esc</code>를 두 번 누르면 이전 메시지를 편집해 다시 진행합니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SEC 6: 서브커맨드 ─── -->
+    <div class="content-section" id="sec-6">
+        <div class="section-hd">
+            <div>
+                <h2>서브커맨드</h2>
+                <div class="section-desc">실행 외에 자주 쓰는 codex 하위 명령입니다.</div>
+            </div>
+        </div>
+
+        <div class="feature-table-wrap">
+            <table class="feature-table">
+                <thead>
+                    <tr><th>명령어</th><th>형식/예시</th><th>설명</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>codex mcp</code></td>
+                        <td><code>codex mcp list</code>, <code>codex mcp add</code></td>
+                        <td>MCP 서버를 관리합니다(등록, 목록, 삭제, 로그인). 외부 도구 연결에 씁니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex apply</code></td>
+                        <td><code>codex apply &lt;TASK_ID&gt;</code></td>
+                        <td>클라우드 대화의 변경(diff)을 로컬 저장소에 적용합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex review</code></td>
+                        <td><code>codex review --uncommitted</code></td>
+                        <td>비대화형 코드 리뷰입니다. <code>--base &lt;브랜치&gt;</code>, <code>--commit &lt;SHA&gt;</code>도 됩니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex fork</code></td>
+                        <td><code>codex fork --last</code></td>
+                        <td>기존 세션을 새 대화로 복제합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex completion</code></td>
+                        <td><code>codex completion zsh</code></td>
+                        <td>bash, zsh, fish 등 셸 자동완성 스크립트를 생성합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>codex update</code></td>
+                        <td><code>codex update</code></td>
+                        <td>CLI를 최신 버전으로 업데이트합니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ─── SEC 7: 설정 ─── -->
+    <div class="content-section" id="sec-7">
+        <div class="section-hd">
+            <div>
+                <h2>설정</h2>
+                <div class="section-desc">config.toml과 AGENTS.md로 Codex의 기본 동작을 정합니다.</div>
+            </div>
+        </div>
+
+        <div class="feature-table-wrap">
+            <table class="feature-table">
+                <thead>
+                    <tr><th>config.toml 키</th><th>값 예시</th><th>설명</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>model</code></td>
+                        <td><code>"gpt-5.6"</code></td>
+                        <td>기본 모델을 고정합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>approval_policy</code></td>
+                        <td><code>on-request</code></td>
+                        <td>기본 승인 방식입니다. untrusted, on-request, never 중 선택합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>sandbox_mode</code></td>
+                        <td><code>workspace-write</code></td>
+                        <td>기본 쓰기 범위입니다. read-only, workspace-write, danger-full-access 중 선택합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>model_reasoning_effort</code></td>
+                        <td><code>high</code></td>
+                        <td>reasoning 강도입니다. minimal, low, medium, high, xhigh 중 선택합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>[mcp_servers.&lt;id&gt;]</code></td>
+                        <td>(블록)</td>
+                        <td>연결할 MCP 서버를 등록하는 블록입니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>[profiles.&lt;name&gt;]</code></td>
+                        <td>(블록)</td>
+                        <td><code>-p</code>로 불러올 설정 묶음을 정의하는 블록입니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="feature-table-wrap" style="margin-top:14px;">
+            <table class="feature-table">
+                <thead>
+                    <tr><th>AGENTS.md 위치</th><th>범위</th><th>설명</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>~/.codex/AGENTS.md</code></td>
+                        <td>전역</td>
+                        <td>모든 프로젝트에 적용되는 공통 지침입니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>프로젝트 루트</code></td>
+                        <td>프로젝트</td>
+                        <td>Codex가 작업 전 자동으로 읽는 지침입니다. 역할, 규칙, 금지사항을 적어둡니다.</td>
+                    </tr>
+                    <tr>
+                        <td><code>하위 폴더</code></td>
+                        <td>폴더</td>
+                        <td>해당 폴더 범위에만 적용됩니다. 폴더별 규칙 분리에 유용합니다.</td>
                     </tr>
                 </tbody>
             </table>
@@ -2076,79 +2447,12 @@ header p,header .hero-sub{color:rgba(245,243,234,.84)!important}
             <div class="tip-icon-wrap">&#128161;</div>
             <div>
                 <div class="tip-label">AGENTS.md 우선순위</div>
-                <p>루트와 하위 폴더 모두에 AGENTS.md가 있으면 두 파일의 내용이 합산 적용됩니다. 충돌 시 Codex는 더 구체적인(하위) 파일을 우선합니다.</p>
+                <p><code>/init</code>로 초안을 만들 수 있습니다. 전역, 루트, 하위 순으로 겹쳐 적용되며, 충돌하면 더 가까운(구체적인) 파일이 우선합니다. 설정 파일은 기본 <code>~/.codex/config.toml</code>에 둡니다.</p>
             </div>
         </div>
     </div>
 
-    <!-- ─── SEC 4: 자주 쓰는 팁 ─── -->
-    <div class="content-section" id="sec-4">
-        <div class="section-hd">
-            <div>
-                <h2>자주 쓰는 팁</h2>
-                <div class="section-desc">실전에서 시간을 줄여주는 패턴입니다.</div>
-            </div>
-        </div>
 
-        <div class="nm-card-row">
-            <div class="nm-card">
-                <div class="nm-card-icon">&#128196;</div>
-                <div class="nm-card-content">
-                    <div class="nm-card-title">AGENTS.md를 첫 번째 작업으로</div>
-                    <p class="nm-card-desc">새 프로젝트를 시작할 때 코드보다 AGENTS.md를 먼저 만드세요. 역할, 코딩 컨벤션, 금지사항을 적어두면 이후 모든 요청에 자동 반영됩니다.</p>
-                </div>
-            </div>
-            <div class="nm-card">
-                <div class="nm-card-icon">&#128274;</div>
-                <div class="nm-card-content">
-                    <div class="nm-card-title">suggest 모드에서 시작</div>
-                    <p class="nm-card-desc">처음 사용하거나 중요한 파일을 다룰 때는 항상 기본 모드(suggest)로 시작하세요. 변경 내용을 직접 확인한 뒤에 자동화 수준을 높이는 것이 안전합니다.</p>
-                </div>
-            </div>
-            <div class="nm-card">
-                <div class="nm-card-icon">&#128640;</div>
-                <div class="nm-card-content">
-                    <div class="nm-card-title">Git 커밋 후 작업 시작</div>
-                    <p class="nm-card-desc">Codex를 실행하기 전에 현재 상태를 Git으로 커밋해두세요. 결과가 마음에 들지 않으면 <code>git checkout</code>으로 즉시 되돌릴 수 있습니다.</p>
-                </div>
-            </div>
-            <div class="nm-card">
-                <div class="nm-card-icon">&#127919;</div>
-                <div class="nm-card-content">
-                    <div class="nm-card-title">지시는 목표 중심으로</div>
-                    <p class="nm-card-desc">"이 함수를 고쳐줘"보다 "이 함수가 빈 리스트를 받으면 에러를 던지도록 수정해줘"처럼 구체적인 목표와 조건을 함께 주면 결과 품질이 올라갑니다.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="feature-table-wrap" style="margin-top:24px;">
-            <table class="feature-table">
-                <thead>
-                    <tr><th>상황</th><th>권장 패턴</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>여러 파일이 연관된 수정</td>
-                        <td>지시문에 파일 이름을 명시합니다. <code>"a.py와 b.py가 서로 맞도록 수정해줘"</code></td>
-                    </tr>
-                    <tr>
-                        <td>반복 작업 자동화</td>
-                        <td>AGENTS.md에 패턴을 등록한 뒤 짧은 지시만 사용합니다.</td>
-                    </tr>
-                    <tr>
-                        <td>의도치 않은 수정 방지</td>
-                        <td>수정하지 말아야 할 파일을 AGENTS.md의 금지 규칙에 명시합니다.</td>
-                    </tr>
-                    <tr>
-                        <td>결과 검토</td>
-                        <td><code>git diff</code>로 전체 변경 내역을 확인한 뒤 커밋합니다.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    
 
 </main>
 
@@ -2517,7 +2821,7 @@ body.sm-menu-open .sm-drawer { transform: translateX(0); }
 }
         /* ## CODEX-HERO-VIDEO START ## */
         header {
-            background: #6F7FF0 !important;
+            background: radial-gradient(120% 100% at 84% -14%, rgba(86,204,180,0.34) 0%, rgba(86,204,180,0) 54%), linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important;
             position: relative;
             overflow: hidden;
             isolation: isolate;
@@ -2884,6 +3188,11 @@ nav.sub-menu a {
 /* ## CODEX-LOAD-ANIM END ## */
 </style>
 <link rel="stylesheet" href="assets/petrol.css">
+<style id="mode-tabs-base">
+.mode-tabs { display: inline-flex; gap: 4px; padding: 4px; margin: 14px auto 0; position: relative; z-index: 1; }
+.mode-tab { font-size: 13px; font-weight: 700; padding: 6px 22px; cursor: pointer; user-select: none; transition: background 0.2s, color 0.2s; }
+</style>
+
 <style id="petrol-page-overrides">
 /* 이 페이지 고유 컴포넌트에 남은 보라/인디고/라벤더 → 페트롤.
    셸(헤더·푸터·서브메뉴·배지·햄버거)은 petrol.css가 처리하므로 건드리지 않는다. */
@@ -2921,5 +3230,16 @@ nav.sub-menu a {
 /* 다음 단계 카드의 보라-네이비 그라디언트 → 페트롤-잉크 */
 .next-card { background: linear-gradient(135deg, #0F5E52 0%, #10424A 50%, #131E33 100%) !important; }
 </style>
+<script id="mode-toggle">
+function switchMode(m){
+  var tn=document.getElementById('tab-nocode'), tc=document.getElementById('tab-cli');
+  var pn=document.getElementById('pages-nocode'), pc=document.getElementById('pages-cli');
+  if(!tn||!tc||!pn||!pc) return;
+  tn.classList.toggle('active', m==='nocode');
+  tc.classList.toggle('active', m==='cli');
+  pn.style.display = (m==='nocode')?'':'none';
+  pc.style.display = (m==='cli')?'':'none';
+}
+</script>
 </body>
 </html>

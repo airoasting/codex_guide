@@ -2,7 +2,7 @@
 
 비즈니스 리더를 위한 Codex 완전 정복. 작업 구상부터 코드 변경과 자동화까지, 5단계 실전 가이드.
 
-**라이브 사이트: [airoasting-codex.vercel.app](https://airoasting-codex.vercel.app/)**
+**라이브 사이트: [airoasting.github.io/codex_guide](https://airoasting.github.io/codex_guide/)**
 
 > 2026년 5월 3일 **v1.0**으로 첫 버전을 공개했습니다. 이후 매주 일요일마다 그 주의 개선 사항을 묶어 버전을 0.1씩 올립니다. 전체 내역은 아래 [버전 히스토리](#버전-히스토리)를 참고하세요.
 
